@@ -3,6 +3,23 @@
 A gym training platform. Phase 1: pick your basics, then explore an interactive
 3D anatomical model to see muscle groups.
 
+## Screenshots
+
+| Onboarding | Body explorer |
+| --- | --- |
+| ![Onboarding screen](docs/screenshots/01-onboarding.png) | ![3D muscle explorer](docs/screenshots/02-explorer.png) |
+
+| Muscle group selected | Mobile |
+| --- | --- |
+| ![Obliques selected with detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
+
+Screenshots are refreshed as each phase lands. To regenerate them yourself,
+start both dev servers (see below), then:
+
+```bash
+node docs/screenshots/capture.mjs
+```
+
 ## Structure
 
 - `apps/web` — React + Vite + TypeScript + react-three-fiber frontend
