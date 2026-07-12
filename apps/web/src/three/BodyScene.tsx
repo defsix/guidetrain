@@ -54,7 +54,7 @@ export default function BodyScene({ selectedSlug, onSelectSlug }: Props) {
   const groupRef = useRef<THREE.Group>(null);
 
   useEffect(() => {
-    fetch("/models/muscle-groups-manifest.json")
+    fetch(`${import.meta.env.BASE_URL}models/muscle-groups-manifest.json`)
       .then((res) => res.json())
       .then(setManifest);
   }, []);

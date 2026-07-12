@@ -18,7 +18,7 @@ interface Props {
 export default function MuscleGroupMesh({ parts, isSelected, isHovered, onSelect, onHoverStart, onHoverEnd }: Props) {
   const geometries = useLoader(
     STLLoader,
-    parts.map((p) => p.file)
+    parts.map((p) => `${import.meta.env.BASE_URL}${p.file}`)
   );
 
   const color = isSelected ? SELECTED_COLOR : isHovered ? HOVER_COLOR : BASE_COLOR;

@@ -24,6 +24,8 @@ node docs/screenshots/capture.mjs
 
 - `apps/web` — React + Vite + TypeScript + react-three-fiber frontend
 - `apps/api` — Express + TypeScript + Prisma (SQLite for local dev) backend
+- `data/muscle-groups.json` — shared muscle group data; both the API's Prisma
+  seed and the web app's static (no-backend) fallback read from this one file
 
 ## Muscle model assets
 
@@ -40,6 +42,30 @@ Each original file was ~2-27MB; they were decimated (~96%+ triangle reduction)
 down to ~6.7MB total for all 70 parts so they're reasonable to ship on the web.
 14 muscle groups are covered: chest, back, upper back, shoulders, trapezius,
 biceps, triceps, forearms, abs, obliques, glutes, quads, hamstrings, calves.
+
+## Hosting on GitHub Pages
+
+The web app is a static site once there's no backend to hit, so it deploys
+straight to GitHub Pages via `.github/workflows/deploy-pages.yml` — it builds
+and publishes `apps/web` on every push to `main` (and can be run manually from
+the Actions tab).
+
+**One-time setup** (repo admin, not something a workflow can do on its own):
+in the repo's **Settings → Pages**, set **Source** to **GitHub Actions**. After
+that the workflow deploys automatically; the URL shows up on the same Pages
+settings screen and on each deploy run.
+
+Two things only apply to the *Pages* build:
+
+- **No backend.** Phase 1's API is read-only (14 muscle groups, no accounts
+  yet), so the frontend falls back to the same seed data bundled at build
+  time (`data/muscle-groups.json`) whenever `VITE_API_URL` isn't set — which
+  it deliberately isn't in the Pages workflow. Local dev still talks to the
+  real Express/Prisma API. Once accounts/programs need real writes, Pages
+  hosting will need a real backend deployment (e.g. Render/Fly.io) instead.
+- **Hash-based routes.** GitHub Pages can't rewrite unknown paths back to
+  `index.html`, so the deployed app uses a `#` in the URL
+  (`.../guidetrain/#/explore`) instead of clean paths. Local dev is unaffected.
 
 ## Running locally
 
