@@ -1,0 +1,16 @@
+[
+  { "id": "chest", "slug": "chest", "name": "Chest", "latinName": "Pectoralis major", "description": "Presses the arm across the body; drives pushing movements like bench press and push-ups.", "sortOrder": 0 },
+  { "id": "back", "slug": "back", "name": "Back (Lats)", "latinName": "Latissimus dorsi", "description": "The broad back muscle that pulls the arm down and in; drives pull-ups and rows.", "sortOrder": 1 },
+  { "id": "upper-back", "slug": "upper-back", "name": "Upper Back", "latinName": "Rhomboids, Infraspinatus, Teres major", "description": "Retracts and stabilizes the shoulder blades; supports posture and pulling strength.", "sortOrder": 2 },
+  { "id": "shoulders", "slug": "shoulders", "name": "Shoulders", "latinName": "Deltoid", "description": "Caps the shoulder and lifts the arm in every direction; drives presses and raises.", "sortOrder": 3 },
+  { "id": "traps", "slug": "traps", "name": "Trapezius", "latinName": "Trapezius", "description": "Runs from the neck to mid-back; shrugs the shoulders and stabilizes the shoulder blades.", "sortOrder": 4 },
+  { "id": "biceps", "slug": "biceps", "name": "Biceps", "latinName": "Biceps brachii", "description": "Bends the elbow and rotates the forearm; drives curls and pulling movements.", "sortOrder": 5 },
+  { "id": "triceps", "slug": "triceps", "name": "Triceps", "latinName": "Triceps brachii", "description": "Straightens the elbow; drives pressing and pushdown movements.", "sortOrder": 6 },
+  { "id": "forearms", "slug": "forearms", "name": "Forearms", "latinName": "Brachioradialis, wrist flexors/extensors", "description": "Controls the wrist and grip; built up by carries, curls, and grip work.", "sortOrder": 7 },
+  { "id": "abs", "slug": "abs", "name": "Abs", "latinName": "Rectus abdominis", "description": "Flexes the spine; the 'six-pack' muscle worked by crunches and leg raises.", "sortOrder": 8 },
+  { "id": "obliques", "slug": "obliques", "name": "Obliques", "latinName": "External oblique", "description": "Rotates and side-bends the torso; worked by twisting and anti-rotation exercises.", "sortOrder": 9 },
+  { "id": "glutes", "slug": "glutes", "name": "Glutes", "latinName": "Gluteus maximus", "description": "The largest hip muscle; extends the hip and drives squats, deadlifts, and lunges.", "sortOrder": 10 },
+  { "id": "quads", "slug": "quads", "name": "Quads", "latinName": "Quadriceps femoris", "description": "Straightens the knee; the primary muscle group in squats, lunges, and leg press.", "sortOrder": 11 },
+  { "id": "hamstrings", "slug": "hamstrings", "name": "Hamstrings", "latinName": "Biceps femoris, Semitendinosus, Semimembranosus", "description": "Bends the knee and extends the hip; worked by deadlifts, leg curls, and sprints.", "sortOrder": 12 },
+  { "id": "calves", "slug": "calves", "name": "Calves", "latinName": "Gastrocnemius, Soleus", "description": "Points the foot downward; built up by calf raises and jumping/sprinting.", "sortOrder": 13 }
+]
