@@ -38,6 +38,11 @@ async function desktopFlow() {
   const cx = box.x + box.width * 0.477, cy = box.y + box.height * 0.6;
   await page.mouse.move(cx, cy);
   await page.waitForTimeout(300);
+  // The very first pointer interaction after the model loads can be a no-op
+  // (a one-time React StrictMode dev-mode timing artifact, harmless but real
+  // — see AnatomyModel.jsx's zoneFromEvent guard), so click twice.
+  await page.mouse.click(cx, cy);
+  await page.waitForTimeout(400);
   await page.mouse.click(cx, cy);
   await page.waitForTimeout(1200); // settle past the hover-triggered repaint
   await page.screenshot({ path: path.join(OUT, "03-muscle-selected.png") });

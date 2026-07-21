@@ -35,14 +35,17 @@ node docs/screenshots/capture.mjs
 ## 3D Model — Credits & License
 
 The anatomical model (`apps/web/public/models/anatomy_full.glb`,
-`anatomy_mobile.glb`) is derived from **"Front View of the Human
-Musculature"** by *@rakhidalabanjan8*, generated with **Meshy AI (Meshy 6)**
-and released under **CC0 1.0 (public domain)**.
+`anatomy_mobile.glb`) was generated with **Meshy AI (Meshy 6)** from a
+part-segmented human muscular anatomy prompt, and is released under
+**CC0 1.0 (public domain)**.
 
 - License: CC0 1.0 Universal — no rights reserved, no attribution required.
-- Source: https://www.meshy.ai/3d-models/Front-View-of-the-Human-Musculature-019f45d0-4e70-7b90-b0cb-5cfa6ca09871
-- Modifications: converted OBJ → GLB, decimated to a 113k-face mobile variant
-  (2.2 MB) alongside the 283k-face full version (5.5 MB), and fitted with a
+- Source: AI-generated via Meshy AI's text-to-3D pipeline (multi-part
+  segmented output — head/torso/arms/forearms/thighs/shins are separate
+  mesh parts, unlike the earlier single-fused-mesh generation).
+- Modifications: the 13 exported parts were merged into one mesh (applying
+  each part's world transform), decimated to a 113k-face mobile variant
+  (2.0 MB) alongside the 280k-face full version (6.7 MB), and fitted with a
   spatial muscle-zone map (`apps/web/src/anatomy/muscle-map.json`, 31 zones
   across 7 regions) for interactive per-muscle selection — see
   `apps/web/src/anatomy/zoneMapping.js` for how a click/hover point resolves
@@ -51,10 +54,12 @@ and released under **CC0 1.0 (public domain)**.
 CC0 permits commercial use; this credit is included as good practice, not
 obligation.
 
-The model is a single fused mesh (no separable muscles), so selection works
-by spatial zone rather than by picking a named sub-mesh — zone edges are
-approximate, good for "train the chest" rather than teaching precise origins
-and insertions. The back is AI-reconstructed and rougher than the front.
+The model's exported parts are coarse body-region segments, not per-muscle
+geometry, so selection still works by spatial zone rather than by picking a
+named sub-mesh — zone edges are approximate, good for "train the chest"
+rather than teaching precise origins and insertions. The A-pose (arms held
+away from the torso) gives cleaner shoulder/arm zone boundaries than the
+previous model.
 
 ## Hosting on GitHub Pages
 

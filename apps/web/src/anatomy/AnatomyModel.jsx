@@ -1,12 +1,21 @@
 import React, { useRef, useMemo, useEffect, useLayoutEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { bakeVertexZones, pickZoneAtLocal, REGION_COLORS } from './zoneMapping';
+import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtLocal, REGION_COLORS } from './zoneMapping';
 
 const BASE = new THREE.Color('#8a5347');
 const NEUTRAL = new THREE.Color('#33404f');
 const DIM = new THREE.Color('#2a2320');
 const HILITE = new THREE.Color('#ffd257');
+
+// How far outline lines are lifted off the surface (native units) to avoid
+// z-fighting with the mesh they trace.
+const OUTLINE_LIFT = 0.0015;
+
+// Scene-space height a model is normalized to, so the fixed camera/fog/
+// OrbitControls distances in AnatomyViewer keep working regardless of a
+// given model's native export scale.
+const SCENE_HEIGHT = 1.9;
 
 /**
  * AnatomyModel — loads the fused GLB, bakes muscle zones, and handles
@@ -40,13 +49,33 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
   // Bake zones once per geometry (heavy loop, memoized).
   const baked = useMemo(() => bakeVertexZones(geometry, map), [geometry, map]);
 
-  // Center the mesh at the origin (native scale preserved for correct picking).
+  // Clean traced lines along zone boundaries, instead of the jagged edge the
+  // flat vertex-color fill leaves. Computed once; selection just swaps which
+  // precomputed per-zone subset gets the brighter emphasis pass.
+  const boundary = useMemo(
+    () => computeZoneBoundaryEdges(geometry, baked, map, OUTLINE_LIFT),
+    [geometry, baked, map]
+  );
+  const selectedBoundary = selectedId ? boundary.byZone[selectedId] : null;
+
+  // Center the mesh at the origin and normalize it to SCENE_HEIGHT tall.
+  // Picking stays correct: worldToLocal() on the mesh inverts this group's
+  // full transform, handing pickZoneAtLocal/normOf back native (fit_bounds
+  // space) coordinates exactly as before.
   const offset = useMemo(() => {
     geometry.computeBoundingBox();
     const c = new THREE.Vector3();
     geometry.boundingBox.getCenter(c);
     return c;
   }, [geometry]);
+  const scale = useMemo(() => {
+    const size = map.fit_bounds.size || [
+      map.fit_bounds.max[0] - map.fit_bounds.min[0],
+      map.fit_bounds.max[1] - map.fit_bounds.min[1],
+      map.fit_bounds.max[2] - map.fit_bounds.min[2],
+    ];
+    return SCENE_HEIGHT / size[1];
+  }, [map]);
 
   // Paint vertex colors from current selection + region.
   const paint = () => {
@@ -72,7 +101,10 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
   useLayoutEffect(paint, [selectedId, region, baked, geometry, map]);
 
   // Resolve a pointer event to a muscle zone using the native-space hit point.
+  // meshRef can be transiently null between an outline-triggered re-render
+  // and the mesh's own ref commit; treat that as "no zone" rather than throw.
   const zoneFromEvent = (e) => {
+    if (!meshRef.current) return null;
     const lp = meshRef.current.worldToLocal(e.point.clone());
     return pickZoneAtLocal(lp.x, lp.y, lp.z, map, baked.localZ);
   };
@@ -88,15 +120,33 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
 
   useEffect(() => () => useGLTF.clear?.(url), [url]);
 
+  const groupPosition = [-offset.x * scale, -offset.y * scale, -offset.z * scale];
+
   return (
-    <mesh
-      ref={meshRef}
-      geometry={geometry}
-      material={material}
-      position={[-offset.x, -offset.y, -offset.z]}
-      onPointerMove={handleMove}
-      onPointerOut={handleOut}
-      onClick={handleClick}
-    />
+    <group position={groupPosition} scale={scale}>
+      <mesh
+        ref={meshRef}
+        geometry={geometry}
+        material={material}
+        onPointerMove={handleMove}
+        onPointerOut={handleOut}
+        onClick={handleClick}
+      />
+      <Outline points={boundary.all} color="#050708" opacity={0.45} />
+      {selectedBoundary && <Outline points={selectedBoundary} color="#fff4d6" opacity={0.95} />}
+    </group>
+  );
+}
+
+/** Thin traced line along a flat [x,y,z, x,y,z, ...] segment list. */
+function Outline({ points, color, opacity }) {
+  if (!points || points.length === 0) return null;
+  return (
+    <lineSegments raycast={() => null}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[points, 3]} />
+      </bufferGeometry>
+      <lineBasicMaterial color={color} transparent opacity={opacity} depthWrite={false} />
+    </lineSegments>
   );
 }
