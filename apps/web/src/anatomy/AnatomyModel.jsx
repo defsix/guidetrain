@@ -12,6 +12,11 @@ const HILITE = new THREE.Color('#ffd257');
 // z-fighting with the mesh they trace.
 const OUTLINE_LIFT = 0.0015;
 
+// Scene-space height a model is normalized to, so the fixed camera/fog/
+// OrbitControls distances in AnatomyViewer keep working regardless of a
+// given model's native export scale.
+const SCENE_HEIGHT = 1.9;
+
 /**
  * AnatomyModel — loads the fused GLB, bakes muscle zones, and handles
  * click / hover selection. Purely the 3D object; UI lives in AnatomyViewer.
@@ -53,13 +58,24 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
   );
   const selectedBoundary = selectedId ? boundary.byZone[selectedId] : null;
 
-  // Center the mesh at the origin (native scale preserved for correct picking).
+  // Center the mesh at the origin and normalize it to SCENE_HEIGHT tall.
+  // Picking stays correct: worldToLocal() on the mesh inverts this group's
+  // full transform, handing pickZoneAtLocal/normOf back native (fit_bounds
+  // space) coordinates exactly as before.
   const offset = useMemo(() => {
     geometry.computeBoundingBox();
     const c = new THREE.Vector3();
     geometry.boundingBox.getCenter(c);
     return c;
   }, [geometry]);
+  const scale = useMemo(() => {
+    const size = map.fit_bounds.size || [
+      map.fit_bounds.max[0] - map.fit_bounds.min[0],
+      map.fit_bounds.max[1] - map.fit_bounds.min[1],
+      map.fit_bounds.max[2] - map.fit_bounds.min[2],
+    ];
+    return SCENE_HEIGHT / size[1];
+  }, [map]);
 
   // Paint vertex colors from current selection + region.
   const paint = () => {
@@ -104,10 +120,10 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
 
   useEffect(() => () => useGLTF.clear?.(url), [url]);
 
-  const groupPosition = [-offset.x, -offset.y, -offset.z];
+  const groupPosition = [-offset.x * scale, -offset.y * scale, -offset.z * scale];
 
   return (
-    <group position={groupPosition}>
+    <group position={groupPosition} scale={scale}>
       <mesh
         ref={meshRef}
         geometry={geometry}
