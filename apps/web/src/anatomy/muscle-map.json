@@ -1,0 +1,799 @@
+{
+ "format": "anatomy-zone-map/v1",
+ "coordinate_space": "normalized: ny 0=feet 1=crown, nx -1..1 split0=R/L, nz -1..1 (+1 front)",
+ "fit_bounds": {
+  "min": [
+   -0.377156,
+   -0.950442,
+   -0.169386
+  ],
+  "max": [
+   0.375206,
+   0.948673,
+   0.163942
+  ],
+  "size": [
+   0.752362,
+   1.899115,
+   0.333328
+  ]
+ },
+ "flipSides": false,
+ "zones": [
+  {
+   "id": "traps",
+   "name": "Trapezius",
+   "region": "Shoulders",
+   "side": "C",
+   "priority": 2,
+   "ny": [
+    0.8,
+    0.9
+   ],
+   "nx": [
+    -0.34,
+    0.34
+   ],
+   "nz": [
+    -0.9,
+    0.4
+   ],
+   "center": [
+    0.0,
+    0.8500000000000001,
+    -0.25
+   ],
+   "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
+  },
+  {
+   "id": "neck_R",
+   "name": "Sternocleidomastoid",
+   "region": "Neck",
+   "side": "R",
+   "priority": 3,
+   "ny": [
+    0.83,
+    0.92
+   ],
+   "nx": [
+    -0.3,
+    -0.05
+   ],
+   "nz": [
+    0.1,
+    0.9
+   ],
+   "center": [
+    0.175,
+    0.875,
+    0.5
+   ],
+   "desc": "Strap of the neck; turns and flexes the head. Neck flexion work."
+  },
+  {
+   "id": "neck_L",
+   "name": "Sternocleidomastoid",
+   "region": "Neck",
+   "side": "L",
+   "priority": 3,
+   "ny": [
+    0.83,
+    0.92
+   ],
+   "nx": [
+    0.05,
+    0.3
+   ],
+   "nz": [
+    0.1,
+    0.9
+   ],
+   "center": [
+    0.175,
+    0.875,
+    0.5
+   ],
+   "desc": "Strap of the neck; turns and flexes the head. Neck flexion work."
+  },
+  {
+   "id": "delt_R",
+   "name": "Deltoid",
+   "region": "Shoulders",
+   "side": "R",
+   "priority": 3,
+   "ny": [
+    0.76,
+    0.87
+   ],
+   "nx": [
+    -0.98,
+    -0.4
+   ],
+   "nz": [
+    -0.7,
+    0.9
+   ],
+   "center": [
+    0.69,
+    0.815,
+    0.10000000000000003
+   ],
+   "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
+  },
+  {
+   "id": "delt_L",
+   "name": "Deltoid",
+   "region": "Shoulders",
+   "side": "L",
+   "priority": 3,
+   "ny": [
+    0.76,
+    0.87
+   ],
+   "nx": [
+    0.4,
+    0.98
+   ],
+   "nz": [
+    -0.7,
+    0.9
+   ],
+   "center": [
+    0.69,
+    0.815,
+    0.10000000000000003
+   ],
+   "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
+  },
+  {
+   "id": "pec_R",
+   "name": "Pectoralis Major",
+   "region": "Chest",
+   "side": "R",
+   "priority": 2,
+   "ny": [
+    0.64,
+    0.8
+   ],
+   "nx": [
+    -0.46,
+    -0.04
+   ],
+   "nz": [
+    0.15,
+    0.95
+   ],
+   "center": [
+    0.25,
+    0.72,
+    0.5499999999999999
+   ],
+   "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
+  },
+  {
+   "id": "pec_L",
+   "name": "Pectoralis Major",
+   "region": "Chest",
+   "side": "L",
+   "priority": 2,
+   "ny": [
+    0.64,
+    0.8
+   ],
+   "nx": [
+    0.04,
+    0.46
+   ],
+   "nz": [
+    0.15,
+    0.95
+   ],
+   "center": [
+    0.25,
+    0.72,
+    0.5499999999999999
+   ],
+   "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
+  },
+  {
+   "id": "bic_R",
+   "name": "Biceps Brachii",
+   "region": "Arms",
+   "side": "R",
+   "priority": 4,
+   "ny": [
+    0.56,
+    0.75
+   ],
+   "nx": [
+    -0.98,
+    -0.52
+   ],
+   "nz": [
+    0.0,
+    0.9
+   ],
+   "center": [
+    0.75,
+    0.655,
+    0.45
+   ],
+   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
+  },
+  {
+   "id": "bic_L",
+   "name": "Biceps Brachii",
+   "region": "Arms",
+   "side": "L",
+   "priority": 4,
+   "ny": [
+    0.56,
+    0.75
+   ],
+   "nx": [
+    0.52,
+    0.98
+   ],
+   "nz": [
+    0.0,
+    0.9
+   ],
+   "center": [
+    0.75,
+    0.655,
+    0.45
+   ],
+   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
+  },
+  {
+   "id": "tri_R",
+   "name": "Triceps Brachii",
+   "region": "Arms",
+   "side": "R",
+   "priority": 4,
+   "ny": [
+    0.56,
+    0.76
+   ],
+   "nx": [
+    -0.98,
+    -0.52
+   ],
+   "nz": [
+    -0.9,
+    0.0
+   ],
+   "center": [
+    0.75,
+    0.66,
+    -0.45
+   ],
+   "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
+  },
+  {
+   "id": "tri_L",
+   "name": "Triceps Brachii",
+   "region": "Arms",
+   "side": "L",
+   "priority": 4,
+   "ny": [
+    0.56,
+    0.76
+   ],
+   "nx": [
+    0.52,
+    0.98
+   ],
+   "nz": [
+    -0.9,
+    0.0
+   ],
+   "center": [
+    0.75,
+    0.66,
+    -0.45
+   ],
+   "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
+  },
+  {
+   "id": "fore_R",
+   "name": "Forearm",
+   "region": "Arms",
+   "side": "R",
+   "priority": 4,
+   "ny": [
+    0.4,
+    0.57
+   ],
+   "nx": [
+    -0.98,
+    -0.5
+   ],
+   "nz": [
+    -0.9,
+    0.9
+   ],
+   "center": [
+    0.74,
+    0.485,
+    0.0
+   ],
+   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
+  },
+  {
+   "id": "fore_L",
+   "name": "Forearm",
+   "region": "Arms",
+   "side": "L",
+   "priority": 4,
+   "ny": [
+    0.4,
+    0.57
+   ],
+   "nx": [
+    0.5,
+    0.98
+   ],
+   "nz": [
+    -0.9,
+    0.9
+   ],
+   "center": [
+    0.74,
+    0.485,
+    0.0
+   ],
+   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
+  },
+  {
+   "id": "abs",
+   "name": "Rectus Abdominis",
+   "region": "Core",
+   "side": "C",
+   "priority": 3,
+   "ny": [
+    0.48,
+    0.66
+   ],
+   "nx": [
+    -0.26,
+    0.26
+   ],
+   "nz": [
+    0.15,
+    0.95
+   ],
+   "center": [
+    0.0,
+    0.5700000000000001,
+    0.5499999999999999
+   ],
+   "desc": "The 'six-pack'; flexes the spine, resists extension. Crunches, leg raises, planks."
+  },
+  {
+   "id": "obl_R",
+   "name": "External Oblique",
+   "region": "Core",
+   "side": "R",
+   "priority": 3,
+   "ny": [
+    0.49,
+    0.65
+   ],
+   "nx": [
+    -0.5,
+    -0.26
+   ],
+   "nz": [
+    0.05,
+    0.95
+   ],
+   "center": [
+    0.38,
+    0.5700000000000001,
+    0.5
+   ],
+   "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
+  },
+  {
+   "id": "obl_L",
+   "name": "External Oblique",
+   "region": "Core",
+   "side": "L",
+   "priority": 3,
+   "ny": [
+    0.49,
+    0.65
+   ],
+   "nx": [
+    0.26,
+    0.5
+   ],
+   "nz": [
+    0.05,
+    0.95
+   ],
+   "center": [
+    0.38,
+    0.5700000000000001,
+    0.5
+   ],
+   "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
+  },
+  {
+   "id": "lat_R",
+   "name": "Latissimus Dorsi",
+   "region": "Back",
+   "side": "R",
+   "priority": 2,
+   "ny": [
+    0.58,
+    0.78
+   ],
+   "nx": [
+    -0.55,
+    -0.28
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.41500000000000004,
+    0.6799999999999999,
+    -0.5
+   ],
+   "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
+  },
+  {
+   "id": "lat_L",
+   "name": "Latissimus Dorsi",
+   "region": "Back",
+   "side": "L",
+   "priority": 2,
+   "ny": [
+    0.58,
+    0.78
+   ],
+   "nx": [
+    0.28,
+    0.55
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.41500000000000004,
+    0.6799999999999999,
+    -0.5
+   ],
+   "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
+  },
+  {
+   "id": "erector",
+   "name": "Erector Spinae / Lower Back",
+   "region": "Back",
+   "side": "C",
+   "priority": 2,
+   "ny": [
+    0.5,
+    0.66
+   ],
+   "nx": [
+    -0.26,
+    0.26
+   ],
+   "nz": [
+    -0.95,
+    -0.1
+   ],
+   "center": [
+    0.0,
+    0.5800000000000001,
+    -0.525
+   ],
+   "desc": "Columns beside the spine; extends and stabilises the back. Deadlifts, back extensions."
+  },
+  {
+   "id": "glute_R",
+   "name": "Gluteus Maximus",
+   "region": "Legs",
+   "side": "R",
+   "priority": 3,
+   "ny": [
+    0.44,
+    0.53
+   ],
+   "nx": [
+    -0.42,
+    -0.02
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.22,
+    0.485,
+    -0.5
+   ],
+   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
+  },
+  {
+   "id": "glute_L",
+   "name": "Gluteus Maximus",
+   "region": "Legs",
+   "side": "L",
+   "priority": 3,
+   "ny": [
+    0.44,
+    0.53
+   ],
+   "nx": [
+    0.02,
+    0.42
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.22,
+    0.485,
+    -0.5
+   ],
+   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
+  },
+  {
+   "id": "quad_R",
+   "name": "Quadriceps",
+   "region": "Legs",
+   "side": "R",
+   "priority": 2,
+   "ny": [
+    0.26,
+    0.47
+   ],
+   "nx": [
+    -0.46,
+    -0.02
+   ],
+   "nz": [
+    -0.1,
+    0.95
+   ],
+   "center": [
+    0.24000000000000002,
+    0.365,
+    0.425
+   ],
+   "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
+  },
+  {
+   "id": "quad_L",
+   "name": "Quadriceps",
+   "region": "Legs",
+   "side": "L",
+   "priority": 2,
+   "ny": [
+    0.26,
+    0.47
+   ],
+   "nx": [
+    0.02,
+    0.46
+   ],
+   "nz": [
+    -0.1,
+    0.95
+   ],
+   "center": [
+    0.24000000000000002,
+    0.365,
+    0.425
+   ],
+   "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
+  },
+  {
+   "id": "ham_R",
+   "name": "Hamstrings",
+   "region": "Legs",
+   "side": "R",
+   "priority": 2,
+   "ny": [
+    0.26,
+    0.46
+   ],
+   "nx": [
+    -0.46,
+    -0.02
+   ],
+   "nz": [
+    -0.95,
+    -0.1
+   ],
+   "center": [
+    0.24000000000000002,
+    0.36,
+    -0.525
+   ],
+   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
+  },
+  {
+   "id": "ham_L",
+   "name": "Hamstrings",
+   "region": "Legs",
+   "side": "L",
+   "priority": 2,
+   "ny": [
+    0.26,
+    0.46
+   ],
+   "nx": [
+    0.02,
+    0.46
+   ],
+   "nz": [
+    -0.95,
+    -0.1
+   ],
+   "center": [
+    0.24000000000000002,
+    0.36,
+    -0.525
+   ],
+   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
+  },
+  {
+   "id": "add_R",
+   "name": "Adductors",
+   "region": "Legs",
+   "side": "R",
+   "priority": 4,
+   "ny": [
+    0.28,
+    0.46
+   ],
+   "nx": [
+    -0.16,
+    -0.0
+   ],
+   "nz": [
+    -0.4,
+    0.6
+   ],
+   "center": [
+    0.08,
+    0.37,
+    0.09999999999999998
+   ],
+   "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
+  },
+  {
+   "id": "add_L",
+   "name": "Adductors",
+   "region": "Legs",
+   "side": "L",
+   "priority": 4,
+   "ny": [
+    0.28,
+    0.46
+   ],
+   "nx": [
+    0.0,
+    0.16
+   ],
+   "nz": [
+    -0.4,
+    0.6
+   ],
+   "center": [
+    0.08,
+    0.37,
+    0.09999999999999998
+   ],
+   "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
+  },
+  {
+   "id": "calf_R",
+   "name": "Gastrocnemius / Calf",
+   "region": "Legs",
+   "side": "R",
+   "priority": 3,
+   "ny": [
+    0.09,
+    0.26
+   ],
+   "nx": [
+    -0.42,
+    -0.02
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.22,
+    0.175,
+    -0.5
+   ],
+   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
+  },
+  {
+   "id": "calf_L",
+   "name": "Gastrocnemius / Calf",
+   "region": "Legs",
+   "side": "L",
+   "priority": 3,
+   "ny": [
+    0.09,
+    0.26
+   ],
+   "nx": [
+    0.02,
+    0.42
+   ],
+   "nz": [
+    -0.95,
+    -0.05
+   ],
+   "center": [
+    0.22,
+    0.175,
+    -0.5
+   ],
+   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
+  },
+  {
+   "id": "shin_R",
+   "name": "Tibialis Anterior",
+   "region": "Legs",
+   "side": "R",
+   "priority": 4,
+   "ny": [
+    0.09,
+    0.26
+   ],
+   "nx": [
+    -0.42,
+    -0.02
+   ],
+   "nz": [
+    0.0,
+    0.95
+   ],
+   "center": [
+    0.22,
+    0.175,
+    0.475
+   ],
+   "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
+  },
+  {
+   "id": "shin_L",
+   "name": "Tibialis Anterior",
+   "region": "Legs",
+   "side": "L",
+   "priority": 4,
+   "ny": [
+    0.09,
+    0.26
+   ],
+   "nx": [
+    0.02,
+    0.42
+   ],
+   "nz": [
+    0.0,
+    0.95
+   ],
+   "center": [
+    0.22,
+    0.175,
+    0.475
+   ],
+   "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
+  }
+ ]
+}

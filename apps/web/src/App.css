@@ -81,107 +81,29 @@
 .explorer {
   flex: 1;
   display: flex;
+  flex-direction: column;
   min-height: 100svh;
+}
+
+.explorer .greeting {
+  font-size: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel-bg);
 }
 
 .explorer-canvas {
   flex: 1;
   position: relative;
+  min-height: 0;
 }
 
-.explorer-panel {
-  width: 320px;
-  flex-shrink: 0;
-  background: var(--panel-bg);
-  border-left: 1px solid var(--border);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  overflow-y: auto;
-}
-
-.greeting {
-  font-size: 14px;
-}
-
-.error {
-  color: #e06767;
-  font-size: 14px;
-}
-
-.muscle-detail h2 {
-  margin-bottom: 4px;
-}
-
-.muscle-detail .latin {
-  font-style: italic;
-  font-size: 13px;
-  margin-bottom: 12px;
-}
-
-.muscle-detail p {
-  margin-bottom: 10px;
-  color: var(--text);
-}
-
-.placeholder-note {
-  color: var(--text-muted) !important;
-  font-size: 13px;
-}
-
-.muscle-detail-empty p {
-  color: var(--text-muted);
-}
-
-.muscle-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid var(--border);
-}
-
-.muscle-list-item {
-  text-align: left;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  padding: 8px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.muscle-list-item:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
-}
-
-.muscle-list-item-selected {
-  background: rgba(232, 162, 58, 0.12);
-  color: var(--accent);
-}
-
-.three-loading {
-  color: var(--text-muted);
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-@media (max-width: 720px) {
-  .explorer {
-    flex-direction: column;
-  }
-
-  .explorer-canvas {
-    height: 55svh;
-  }
-
-  .explorer-panel {
-    width: 100%;
-    border-left: none;
-    border-top: 1px solid var(--border);
-  }
+/* AnatomyViewer's root uses height:100%, which doesn't reliably resolve
+   against a flex-sized block parent across browsers. Force it to fill via
+   absolute positioning instead, since .explorer-canvas is already relative. */
+.explorer-canvas > .anatomy-root {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  min-height: 0;
 }

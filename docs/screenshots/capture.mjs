@@ -28,21 +28,18 @@ async function desktopFlow() {
   await page.click('button:has-text("18 - 29")');
   await page.click('button:has-text("Continue to body explorer")');
   await page.waitForURL("**/explore");
-  await page.waitForSelector("text=rotate the model");
-  await page.waitForTimeout(3500); // let STL loads + camera fit settle
+  await page.waitForSelector("text=Muscle Groups"); // AnatomyViewer's region panel
+  await page.waitForTimeout(3500); // let the GLB load + zone bake settle
   await page.screenshot({ path: path.join(OUT, "02-explorer.png") });
 
-  // Rotate to a 3/4 front angle, then click the torso to select a muscle group.
+  // Click the front thigh (quadriceps) to show hover + selection readout + Train button.
   const canvas = await page.$("canvas");
   const box = await canvas.boundingBox();
-  const cx = box.x + box.width / 2, cy = box.y + box.height / 2;
+  const cx = box.x + box.width * 0.477, cy = box.y + box.height * 0.6;
   await page.mouse.move(cx, cy);
-  await page.mouse.down();
-  await page.mouse.move(cx - 120, cy, { steps: 15 });
-  await page.mouse.up();
   await page.waitForTimeout(300);
-  await page.mouse.click(cx - 40, cy - 40);
-  await page.waitForTimeout(400);
+  await page.mouse.click(cx, cy);
+  await page.waitForTimeout(1200); // settle past the hover-triggered repaint
   await page.screenshot({ path: path.join(OUT, "03-muscle-selected.png") });
   await page.close();
 }
@@ -56,7 +53,9 @@ async function mobileFlow() {
       JSON.stringify({ username: "iron_ada", gender: "female", ageGroup: "18-29" })
     )
   );
-  await page.goto(`${WEB_URL}/explore`, { waitUntil: "networkidle" });
+  // HashRouter: the route lives in the hash, not the path.
+  await page.goto(`${WEB_URL}/#/explore`, { waitUntil: "networkidle" });
+  await page.waitForSelector("text=Muscle Groups");
   await page.waitForTimeout(3500);
   await page.screenshot({ path: path.join(OUT, "04-mobile.png") });
   await page.close();

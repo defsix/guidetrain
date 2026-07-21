@@ -11,10 +11,10 @@ A gym training platform. Phase 1: pick your basics, then explore an interactive
 
 | Muscle group selected | Mobile |
 | --- | --- |
-| ![Obliques selected with detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
+| ![Quadriceps selected, showing region chips and the muscle detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
 
 Screenshots are refreshed as each phase lands. To regenerate them yourself,
-start both dev servers (see below), then:
+start the web dev server (see below), then:
 
 ```bash
 node docs/screenshots/capture.mjs
@@ -23,25 +23,38 @@ node docs/screenshots/capture.mjs
 ## Structure
 
 - `apps/web` — React + Vite + TypeScript + react-three-fiber frontend
-- `apps/api` — Express + TypeScript + Prisma (SQLite for local dev) backend
-- `data/muscle-groups.json` — shared muscle group data; both the API's Prisma
-  seed and the web app's static (no-backend) fallback read from this one file
+  - `src/anatomy` — the 3D muscle-picker component (viewer, spatial zone
+    mapping, muscle data) — see [Muscle model assets](#muscle-model-assets)
+- `apps/api` — Express + TypeScript + Prisma (SQLite for local dev) backend.
+  Not used by the current 3D viewer (see below), kept in place for the
+  accounts/programs phases where it'll actually be needed.
+- `data/muscle-groups.json` — muscle-group category data for the API's Prisma
+  seed. Independent from `src/anatomy/muscle-map.json`, which drives the 3D
+  viewer's per-muscle zones.
 
-## Muscle model assets
+## 3D Model — Credits & License
 
-The 3D muscle meshes in `apps/web/public/models/muscles` are decimated from
-[BodyParts3D/Anatomography](http://lifesciencedb.jp/bp3d/), via the
-[Kevin-Mattheus-Moerman/BodyParts3D](https://github.com/Kevin-Mattheus-Moerman/BodyParts3D)
-STL mirror, licensed **CC BY-SA** (Life Science Integrated Database Center).
-If you redistribute this app, keep the attribution:
+The anatomical model (`apps/web/public/models/anatomy_full.glb`,
+`anatomy_mobile.glb`) is derived from **"Front View of the Human
+Musculature"** by *@rakhidalabanjan8*, generated with **Meshy AI (Meshy 6)**
+and released under **CC0 1.0 (public domain)**.
 
-> BodyParts3D, © Life Science Integrated Database Center, licensed under
-> CC Attribution-Share Alike 2.1 Japan.
+- License: CC0 1.0 Universal — no rights reserved, no attribution required.
+- Source: https://www.meshy.ai/3d-models/Front-View-of-the-Human-Musculature-019f45d0-4e70-7b90-b0cb-5cfa6ca09871
+- Modifications: converted OBJ → GLB, decimated to a 113k-face mobile variant
+  (2.2 MB) alongside the 283k-face full version (5.5 MB), and fitted with a
+  spatial muscle-zone map (`apps/web/src/anatomy/muscle-map.json`, 31 zones
+  across 7 regions) for interactive per-muscle selection — see
+  `apps/web/src/anatomy/zoneMapping.js` for how a click/hover point resolves
+  to a zone.
 
-Each original file was ~2-27MB; they were decimated (~96%+ triangle reduction)
-down to ~6.7MB total for all 70 parts so they're reasonable to ship on the web.
-14 muscle groups are covered: chest, back, upper back, shoulders, trapezius,
-biceps, triceps, forearms, abs, obliques, glutes, quads, hamstrings, calves.
+CC0 permits commercial use; this credit is included as good practice, not
+obligation.
+
+The model is a single fused mesh (no separable muscles), so selection works
+by spatial zone rather than by picking a named sub-mesh — zone edges are
+approximate, good for "train the chest" rather than teaching precise origins
+and insertions. The back is AI-reconstructed and rougher than the front.
 
 ## Hosting on GitHub Pages
 
@@ -57,12 +70,12 @@ settings screen and on each deploy run.
 
 Two things only apply to the *Pages* build:
 
-- **No backend.** Phase 1's API is read-only (14 muscle groups, no accounts
-  yet), so the frontend falls back to the same seed data bundled at build
-  time (`data/muscle-groups.json`) whenever `VITE_API_URL` isn't set — which
-  it deliberately isn't in the Pages workflow. Local dev still talks to the
-  real Express/Prisma API. Once accounts/programs need real writes, Pages
-  hosting will need a real backend deployment (e.g. Render/Fly.io) instead.
+- **No backend.** The 3D viewer's muscle data is bundled into the build
+  (`apps/web/src/anatomy/muscle-map.json`), not fetched from an API, so
+  there's nothing server-side to deploy for Pages. `apps/api` exists for
+  later phases (accounts, saved programs) — once those need real writes,
+  Pages hosting will need a real backend deployment (e.g. Render/Fly.io)
+  alongside it.
 - **Hash-based routes.** GitHub Pages can't rewrite unknown paths back to
   `index.html`, so the deployed app uses a `#` in the URL
   (`.../guidetrain/#/explore`) instead of clean paths. Local dev is unaffected.

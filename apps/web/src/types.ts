@@ -17,12 +17,3 @@ export interface MuscleGroup {
   sortOrder: number;
 }
 
-export interface MusclePart {
-  side: "left" | "right";
-  file: string;
-}
-
-export interface MuscleGroupManifestEntry {
-  slug: string;
-  parts: MusclePart[];
-}
