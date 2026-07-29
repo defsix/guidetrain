@@ -499,7 +499,7 @@
    "id": "delt_R",
    "name": "Deltoid",
    "region": "Shoulders",
-   "priority": 3,
+   "priority": 0,
    "ny": [
     0.72,
     0.87
@@ -524,7 +524,7 @@
    "id": "delt_L",
    "name": "Deltoid",
    "region": "Shoulders",
-   "priority": 3,
+   "priority": 0,
    "ny": [
     0.72,
     0.87
@@ -549,7 +549,7 @@
    "id": "bic_R",
    "name": "Biceps Brachii",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.6,
     0.77
@@ -574,7 +574,7 @@
    "id": "bic_L",
    "name": "Biceps Brachii",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.6,
     0.77
@@ -599,7 +599,7 @@
    "id": "tri_R",
    "name": "Triceps Brachii",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.6,
     0.78
@@ -624,7 +624,7 @@
    "id": "tri_L",
    "name": "Triceps Brachii",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.6,
     0.78
@@ -649,7 +649,7 @@
    "id": "fore_R",
    "name": "Forearm",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.42,
     0.7
@@ -674,7 +674,7 @@
    "id": "fore_L",
    "name": "Forearm",
    "region": "Arms",
-   "priority": 4,
+   "priority": 1,
    "ny": [
     0.42,
     0.7
