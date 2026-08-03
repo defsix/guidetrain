@@ -67,7 +67,13 @@ _y0,_y1=_fp[:,1].min(),_fp[:,1].max()
 _frac=(_fp[:,1]-_y0)/(_y1-_y0)
 CROTCH=0.50
 ARM_X=0.09
-region_id=np.where(_frac<CROTCH,0,1)+np.where(np.abs(_fp[:,0])>ARM_X,2,0)
+ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
+_is_arm=np.abs(_fp[:,0])>ARM_X
+region_id=(np.where(_frac<CROTCH,0,1)
+           + np.where(_is_arm,2,0)
+           # upper arm and forearm are separated too, or one patch spans the
+           # elbow and the forearm gets swallowed into biceps with it
+           + np.where(_is_arm&(_frac<ELBOW),4,0))
 
 STEP=0.016          # noise p75 is 0.0068; the closest border (bic-tri) is 0.039
 step=np.sqrt(((chrom[fa]-chrom[fb])**2).sum(1))

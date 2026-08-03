@@ -48,7 +48,8 @@ for f in np.arange(0.40,0.58,0.01):
     if best is None or a_/b_>best[1]: best=(f,a_/b_)
 CROTCH=best[0]
 ARM_X=0.09          # beyond this sideways, a patch is on a limb not the trunk
-print(f"landmarks: crotch f={CROTCH:.3f}  arm |x|>{ARM_X}")
+ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
+print(f"landmarks: crotch f={CROTCH:.3f}  elbow f={ELBOW}  arm |x|>{ARM_X}")
 
 # Body centre line in depth, per height slice, so "front" means in front of
 # the spine rather than in front of the world origin.
@@ -98,7 +99,7 @@ def classify(f,x,dz):
     armx = 0.07 if 0.76 < f < 0.90 else ARM_X
     if ax>armx:                                   # limb, clear of the trunk
         if f>0.76: return "delt"
-        if f>0.62: return "bic" if dz>0 else "tri"
+        if f>ELBOW: return "bic" if dz>0 else "tri"
         if f>0.46: return "fore"
         return "hand"
     if f<CROTCH:                                  # below the crotch: all leg
@@ -142,32 +143,21 @@ for c in ids:
     cens[c]=(fpos[m]*w[:,None]).sum(0)/w.sum(); areas[c]=w.sum()
 
 ARMSPLIT="__armsplit__"
-decision={}
-for c in ids:
-    cen=cens[c]; m=fm==c
-    f=(cen[1]-Y0)/H
-    # The upper arm is painted as one region wrapping right round the limb — the
-    # largest patch there is 47% front and 53% back — so biceps and triceps have
-    # no border between them to follow. That one place is cut front-from-back.
-    # Everywhere else, quadriceps against hamstrings included, the painted
-    # outline is the border.
-    if abs(cen[0])>ARM_X and 0.62<f<0.78:
-        decision[c]=ARMSPLIT
-        continue
-    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
-    decision[c]=classify(f,cen[0],dz)
 
-# The body is symmetric, so the labelling should be. Segmentation isn't quite
-# mirror-perfect, and where a patch's centre lands near one of the rule's
-# thresholds its mirror can fall the other side of it — which showed up as one
-# oblique reading half the area of the other. Patches are paired with whichever
-# patch most nearly mirrors them and the pair takes the larger one's decision.
-# This settles decisions only; any split is applied afterwards, or reconciling
-# would flatten a split patch back to a single label.
-paired=0
+# The body is symmetric, so a muscle and its mirror should be decided together.
+# Segmentation isn't quite mirror-perfect, and where one patch's centre lands
+# near a rule's threshold its twin can fall the other side of it — which showed
+# up as one oblique covering 2.57% of the body against 1.76% for the other.
+#
+# Patches are paired with whichever patch most nearly mirrors them, and the pair
+# is decided ONCE from the average of the two centres (mirroring x so the sides
+# can be averaged). Averaging is steadier than trusting either side alone: a
+# centre sitting right on a threshold is pulled to whichever side the pair
+# agrees on, instead of the two disagreeing.
+pair={}
 for c in ids:
     cen=cens[c]
-    if abs(cen[0])<0.012: continue                  # midline, mirrors to itself
+    if abs(cen[0])<0.012: continue                   # midline, mirrors to itself
     mirror=np.array([-cen[0],cen[1],cen[2]])
     best,bd=None,np.inf
     for d in ids:
@@ -175,9 +165,39 @@ for c in ids:
         dist=np.linalg.norm(cens[d]-mirror)
         if dist<bd: bd,best=dist,d
     if best is None or bd>0.020 or np.sign(cens[best][0])==np.sign(cen[0]): continue
-    winner=c if areas[c]>=areas[best] else best
-    decision[c]=decision[best]=decision[winner]
-    paired+=1
+    pair[c]=best
+
+def centre_for(c):
+    """Centre used to decide patch c: averaged with its mirror where there is one."""
+    cen=cens[c]
+    d=pair.get(c)
+    if d is None: return cen
+    twin=cens[d]*np.array([-1,1,1])                  # reflect the twin onto this side
+    wc,wd=areas[c],areas[d]
+    return (cen*wc+twin*wd)/(wc+wd)
+
+decision={}
+for c in ids:
+    cen=centre_for(c); m=fm==c
+    f=(cen[1]-Y0)/H
+    # The upper arm is painted as one region wrapping right round the limb — the
+    # largest patch there is 47% front and 53% back — so biceps and triceps have
+    # no border between them to follow. That one place is cut front-from-back.
+    # Everywhere else, quadriceps against hamstrings included, the painted
+    # outline is the border.
+    if abs(cen[0])>ARM_X and ELBOW<f<0.78:
+        decision[c]=ARMSPLIT
+        continue
+    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
+    decision[c]=classify(f,cen[0],dz)
+
+# Mirrored patches take the same decision. Settled here, before any split is
+# applied — reconciling afterwards flattens a split patch back to one label.
+for c,d in pair.items():
+    if decision[c]!=decision[d]:
+        winner=c if areas[c]>=areas[d] else d
+        decision[c]=decision[d]=decision[winner]
+paired=len(pair)//2
 
 face_group=per_face.copy()
 for c in ids:
