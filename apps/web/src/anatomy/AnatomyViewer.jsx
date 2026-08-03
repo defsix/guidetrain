@@ -54,12 +54,10 @@ export default function AnatomyViewer({
 
   const train = () => {
     if (!selected) return;
-    const detail = { id: selected.id, name: selected.name, region: selected.region, side: selected.side };
+    const detail = { id: selected.id, name: selected.name, region: selected.region };
     window.dispatchEvent(new CustomEvent('muscle:train', { detail }));
     onTrain && onTrain(detail);
   };
-
-  const sideLabel = (s) => (s === 'C' ? '' : s === 'L' ? ' · Left' : ' · Right');
 
   return (
     <div className="anatomy-root">
@@ -120,14 +118,14 @@ export default function AnatomyViewer({
       </div>
 
       {/* Hover tooltip */}
-      {hover && <div className="anatomy-hover">{hover.name}{sideLabel(hover.side)}</div>}
+      {hover && <div className="anatomy-hover">{hover.name}</div>}
 
       {/* Selection readout */}
       {selected && (
         <div className="anatomy-readout">
           <div className="body">
             <div className="mname">{selected.name}</div>
-            <div className="mmeta">{selected.region}{sideLabel(selected.side)}</div>
+            <div className="mmeta">{selected.region}</div>
             <div className="mdesc">{selected.desc}</div>
           </div>
           <button className="train-btn" onClick={train}>Train this</button>

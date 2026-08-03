@@ -30,7 +30,7 @@ export default function BodyExplorer() {
         <AnatomyViewer
           modelUrl={MODEL_URL}
           theme={resolved}
-          onTrain={(muscle: { id: string; name: string; region: string; side: string }) =>
+          onTrain={(muscle: { id: string; name: string; region: string }) =>
             console.log("muscle:train ->", muscle)
           }
           onSelect={() => {}}
