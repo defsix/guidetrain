@@ -45,21 +45,37 @@ Then copy the two `.glb` files to `apps/web/public/models/` and the generated
    the grouping across the surface and bake the zone index onto each vertex as
    the glTF `_ZONE` attribute.
 
-Grouping (step 5) leans on landmarks found in the mesh rather than raw height
-fractions — the crotch, where the legs merge, and the sideways reach that
-separates a limb from the trunk. Nothing below the crotch can be labelled
-torso, which is what previously let the abdominals creep down the thighs.
+### The painted outline is the border
+
+Each patch is labelled **as a whole**, from one reading of the rules at its
+centre of area. The patch outlines come from the colours painted on the model,
+so they already are the muscle borders; the rules only get to pick which muscle
+a patch is, never to carve one up. Labelling faces individually and then
+stitching the results put the seam wherever a threshold happened to fall,
+cutting straight across the artwork — that was the bleed between groups.
+
+Landmarks found in the mesh keep that honest: the crotch (where the legs merge)
+and the sideways reach that separates a limb from the trunk. They constrain the
+core connectivity **and** the fill, so a painted region running continuously
+from the abdomen onto the thigh can't become one patch. Leftover pockets with no
+core to grow from — the pelvis, mostly, which is bone and tendon and carries no
+tint — become patches in their own right rather than being swallowed by a
+neighbour across a landmark.
+
 Depth is measured against the body's own centre line at each height, taken as
 the midpoint of the slice rather than its median (the front of the body is
-tessellated much more finely than the back, so a median sits well forward of
-the real centre). The arms get their own centre line, since they hang behind
-the trunk's in this pose.
+tessellated much more finely than the back, so a median sits well forward of the
+real centre and the back reads as front). The arms get their own centre line,
+since they hang behind the trunk's in this pose.
 
-A patch is labelled as a unit when its faces overwhelmingly agree, which keeps
-muscles whole. Where they don't, the patch really does span two groups and is
-labelled face by face — but per-face rules cut straight through whatever they
-touch, leaving speckled boundaries, so a majority-smoothing pass over the face
-adjacency graph settles those into clean contiguous regions.
+### The one exception: quadriceps and hamstrings
+
+This model paints the front and back of the thigh in near-identical reds — one
+tint measures 8% front and 13% back — so colour cannot tell them apart, and a
+patch often wraps round the limb covering both. Those patches, and only those,
+are cut front-from-back along the limb's own centre line, which is roughly where
+the two groups actually divide. Colouring the two groups differently in the
+source model would remove the need for it.
 
 Decimation happens last. meshopt's simplifier only collapses edges, so the
 surviving vertices are a subset of the originals and their zone ids stay valid
