@@ -1,20 +1,17 @@
 """
 Map segmented muscle patches onto the app's muscle taxonomy.
 
-Two things keep the grouping anatomically honest:
+Each patch is labelled as a whole, from one reading at its centre of area, so
+the painted outline stays the border between groups.
 
-* Landmarks rather than raw height bands. The crotch (where the legs merge)
-  and the armpit are found from the mesh itself, so nothing below the crotch
-  can be labelled torso — which is what let the abdominals creep down the
-  thighs when only height fractions were used.
+Landmarks found in the mesh keep it anatomical: the crotch, where the legs
+merge, and the sideways reach separating a limb from the trunk. Depth is
+measured against the body's own centre line at each height, with the arms
+given their own since they hang behind the trunk's in this pose.
 
-* Depth measured against the body's own centre line at that height, not the
-  world origin, so front/back stays right where the model leans.
-
-A patch is labelled as a unit when its faces overwhelmingly agree, which keeps
-muscles whole and absorbs stray faces. Where they don't agree the patch really
-does span two groups — long straps like sartorius run hip to knee — and it's
-labelled face by face instead.
+Left and right are reconciled against each other, and the upper arm — painted
+as one region wrapping round the limb — is the single place a patch is cut
+rather than followed.
 """
 import struct, json
 import numpy as np
@@ -128,31 +125,71 @@ def classify(f,x,dz):
 per_face=np.array([classify(FR[i],fpos[i,0],DZ[i]) for i in range(len(tris))],dtype=object)
 
 
-# Every patch is labelled as a whole, by an area-weighted vote of the rules
-# over its faces.
+# Each patch gets one decision, taken at its centre of area.
 #
-# The patch outlines come from the colours painted on the model, so they already
-# ARE the muscle borders. Letting the positional rules label faces individually
-# cut straight across those outlines and put the seam wherever a threshold
-# happened to fall — the bleed between groups. The rules only get to pick which
-# muscle a patch is; they never get to carve one up.
-# The rules are evaluated once, at the patch's centre of area — not per face and
-# then voted. Per-face labels are noisy inside a single muscle (a thigh muscle
-# picks up "adductor" where it nears the midline and "hamstring" where it wraps
-# behind), and voting on that noise scatters neighbouring muscles into different
-# groups. One reading at the centre asks the question the rules can actually
-# answer: where does this muscle, as a whole, sit on the body.
-face_group=per_face.copy()
-split_n=0
-for c in np.unique(fm):
-    m=fm==c
-    w=area[m]
-    cen=(fpos[m]*w[:,None]).sum(0)/w.sum()
-    f=(cen[1]-Y0)/H
-    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
+# A patch outline comes from the colours painted on the model, so it already IS
+# a muscle border; the rules only choose which muscle a patch is, never carve
+# one up. Labelling faces individually put the seam wherever a threshold
+# happened to fall, cutting across the artwork — that was the bleed. And the
+# reading is taken once at the centre rather than voted over the faces, because
+# per-face labels are noisy inside a single muscle (a thigh muscle picks up
+# "adductor" where it nears the midline) and voting on that noise scatters
+# neighbouring muscles into different groups.
+ids=np.unique(fm)
+cens={}; areas={}
+for c in ids:
+    m=fm==c; w=area[m]
+    cens[c]=(fpos[m]*w[:,None]).sum(0)/w.sum(); areas[c]=w.sum()
 
-    face_group[m]=classify(f,cen[0],dz)
-print(f"patches: {len(np.unique(fm))} labelled from their own centre")
+ARMSPLIT="__armsplit__"
+decision={}
+for c in ids:
+    cen=cens[c]; m=fm==c
+    f=(cen[1]-Y0)/H
+    # The upper arm is painted as one region wrapping right round the limb — the
+    # largest patch there is 47% front and 53% back — so biceps and triceps have
+    # no border between them to follow. That one place is cut front-from-back.
+    # Everywhere else, quadriceps against hamstrings included, the painted
+    # outline is the border.
+    if abs(cen[0])>ARM_X and 0.62<f<0.78:
+        decision[c]=ARMSPLIT
+        continue
+    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
+    decision[c]=classify(f,cen[0],dz)
+
+# The body is symmetric, so the labelling should be. Segmentation isn't quite
+# mirror-perfect, and where a patch's centre lands near one of the rule's
+# thresholds its mirror can fall the other side of it — which showed up as one
+# oblique reading half the area of the other. Patches are paired with whichever
+# patch most nearly mirrors them and the pair takes the larger one's decision.
+# This settles decisions only; any split is applied afterwards, or reconciling
+# would flatten a split patch back to a single label.
+paired=0
+for c in ids:
+    cen=cens[c]
+    if abs(cen[0])<0.012: continue                  # midline, mirrors to itself
+    mirror=np.array([-cen[0],cen[1],cen[2]])
+    best,bd=None,np.inf
+    for d in ids:
+        if d==c: continue
+        dist=np.linalg.norm(cens[d]-mirror)
+        if dist<bd: bd,best=dist,d
+    if best is None or bd>0.020 or np.sign(cens[best][0])==np.sign(cen[0]): continue
+    winner=c if areas[c]>=areas[best] else best
+    decision[c]=decision[best]=decision[winner]
+    paired+=1
+
+face_group=per_face.copy()
+for c in ids:
+    m=fm==c
+    if decision[c]==ARMSPLIT:
+        dzf=fpos[m][:,2]-ZC_ARM[m]
+        face_group[np.where(m)[0]]=np.where(dzf>np.median(dzf),"bic","tri")
+    else:
+        face_group[m]=decision[c]
+print(f"patches: {len(ids)} labelled from their centre, "
+      f"{paired//2} mirror pairs reconciled, "
+      f"{sum(1 for v in decision.values() if v==ARMSPLIT)} upper-arm patches split")
 
 # No landmark correction or label smoothing pass here on purpose. Both worked
 # face by face, so both cut across the painted outlines — exactly the bleed

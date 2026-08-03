@@ -233,22 +233,12 @@
    "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
   },
   {
-   "id": "neck",
-   "key": "neck",
-   "name": "Neck",
-   "region": "Neck",
-   "side": "C",
-   "index": 23,
-   "selectable": true,
-   "desc": "Strap of the neck; turns and flexes the head. Neck flexion work."
-  },
-  {
    "id": "obl_L",
    "key": "obl",
    "name": "External Oblique",
    "region": "Core",
    "side": "L",
-   "index": 24,
+   "index": 23,
    "selectable": true,
    "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
   },
@@ -258,7 +248,7 @@
    "name": "External Oblique",
    "region": "Core",
    "side": "R",
-   "index": 25,
+   "index": 24,
    "selectable": true,
    "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
   },
@@ -268,7 +258,7 @@
    "name": "Pectoralis Major",
    "region": "Chest",
    "side": "L",
-   "index": 26,
+   "index": 25,
    "selectable": true,
    "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
   },
@@ -278,7 +268,7 @@
    "name": "Pectoralis Major",
    "region": "Chest",
    "side": "R",
-   "index": 27,
+   "index": 26,
    "selectable": true,
    "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
   },
@@ -288,7 +278,7 @@
    "name": "Quadriceps",
    "region": "Legs",
    "side": "L",
-   "index": 28,
+   "index": 27,
    "selectable": true,
    "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
   },
@@ -298,7 +288,7 @@
    "name": "Quadriceps",
    "region": "Legs",
    "side": "R",
-   "index": 29,
+   "index": 28,
    "selectable": true,
    "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
   },
@@ -308,7 +298,7 @@
    "name": "Tibialis Anterior",
    "region": "Legs",
    "side": "L",
-   "index": 30,
+   "index": 29,
    "selectable": true,
    "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
   },
@@ -318,7 +308,7 @@
    "name": "Tibialis Anterior",
    "region": "Legs",
    "side": "R",
-   "index": 31,
+   "index": 30,
    "selectable": true,
    "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
   },
@@ -328,7 +318,7 @@
    "name": "Trapezius",
    "region": "Shoulders",
    "side": "C",
-   "index": 32,
+   "index": 31,
    "selectable": true,
    "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
   },
@@ -338,7 +328,7 @@
    "name": "Triceps Brachii",
    "region": "Arms",
    "side": "L",
-   "index": 33,
+   "index": 32,
    "selectable": true,
    "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
   },
@@ -348,7 +338,7 @@
    "name": "Triceps Brachii",
    "region": "Arms",
    "side": "R",
-   "index": 34,
+   "index": 33,
    "selectable": true,
    "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
   }

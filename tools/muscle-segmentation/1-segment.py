@@ -69,7 +69,7 @@ CROTCH=0.50
 ARM_X=0.09
 region_id=np.where(_frac<CROTCH,0,1)+np.where(np.abs(_fp[:,0])>ARM_X,2,0)
 
-STEP=0.025          # well above the denoised noise floor, well below a border
+STEP=0.016          # noise p75 is 0.0068; the closest border (bic-tri) is 0.039
 step=np.sqrt(((chrom[fa]-chrom[fb])**2).sum(1))
 keep=(step<STEP)&tinted[fa]&tinted[fb]&(region_id[fa]==region_id[fb])
 g=coo_matrix((np.ones(keep.sum()),(fa[keep],fb[keep])),shape=(NF,NF))

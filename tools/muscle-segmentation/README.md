@@ -90,9 +90,25 @@ ever bleeding over an edge:
 | after | p50 0.0029, p75 0.0068 | p99 0.2254 |
 
 Noise drops sixfold and borders come out slightly sharper, which leaves a wide
-gap to put a threshold in. Region growing at 0.025 then separates every muscle
+gap to put a threshold in. Growing regions at 0.016 then separates every muscle
 group the model distinguishes — including quadriceps from hamstrings, which
-before denoising had to be cut geometrically.
+before denoising had to be cut geometrically. The threshold sits between the
+noise (p75 0.0068) and the closest real border, biceps against triceps at 0.039.
+
+### Symmetry, and the one place a patch is still cut
+
+Left and right are reconciled against each other: segmentation isn't quite
+mirror-perfect, and where a patch's centre lands near one of the rules'
+thresholds its mirror can fall the other side of it — which showed up as one
+oblique covering 2.57% of the body against 1.76% for the other. Each patch is
+paired with whichever patch most nearly mirrors it and the pair takes the larger
+one's decision. Decisions are settled before any split is applied; reconciling
+afterwards flattens a split patch back to one label.
+
+The upper arm is the single place a patch is cut rather than followed. It's
+painted as one region wrapping right round the limb — the largest patch there is
+47% front and 53% back — so biceps and triceps have no border between them to
+follow, and are divided at the patch's own midline.
 
 Decimation happens last. meshopt's simplifier only collapses edges, so the
 surviving vertices are a subset of the originals and their zone ids stay valid
