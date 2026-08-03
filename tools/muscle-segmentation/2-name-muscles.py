@@ -127,65 +127,54 @@ def classify(f,x,dz):
 
 per_face=np.array([classify(FR[i],fpos[i,0],DZ[i]) for i in range(len(tris))],dtype=object)
 
-# Let each patch vote. Strong agreement means it's one muscle and the whole
-# patch takes that label; weak agreement means it genuinely spans groups.
-AGREE=0.80
+
+# Every patch is labelled as a whole, by an area-weighted vote of the rules
+# over its faces.
+#
+# The patch outlines come from the colours painted on the model, so they already
+# ARE the muscle borders. Letting the positional rules label faces individually
+# cut straight across those outlines and put the seam wherever a threshold
+# happened to fall — the bleed between groups. The rules only get to pick which
+# muscle a patch is; they never get to carve one up.
+# The rules are evaluated once, at the patch's centre of area — not per face and
+# then voted. Per-face labels are noisy inside a single muscle (a thigh muscle
+# picks up "adductor" where it nears the midline and "hamstring" where it wraps
+# behind), and voting on that noise scatters neighbouring muscles into different
+# groups. One reading at the centre asks the question the rules can actually
+# answer: where does this muscle, as a whole, sit on the body.
 face_group=per_face.copy()
-whole=split=0
+split_n=0
 for c in np.unique(fm):
     m=fm==c
-    labs,counts=np.unique(per_face[m],return_counts=True)
-    w=np.array([area[m][per_face[m]==l].sum() for l in labs])
-    if w.max()/w.sum() >= AGREE:
-        face_group[m]=labs[w.argmax()]; whole+=1
-    else:
-        split+=1
-print(f"patches: {whole} labelled whole, {split} labelled per-face")
+    w=area[m]
+    cen=(fpos[m]*w[:,None]).sum(0)/w.sum()
+    f=(cen[1]-Y0)/H
+    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
 
-# The patch vote can outvote a landmark: a patch mostly over the pelvis but
-# reaching onto the thigh would take a torso label wholesale and drag the
-# abdominals down the leg. Landmarks win, so any face on the wrong side of one
-# falls back to its own label.
-TORSO={"abs","obl","lat","erector","pec","traps","delt"}
-UPPER_LEG={"quad","ham","add"}
-bad_torso=np.array([g in TORSO for g in face_group])&(FR<CROTCH)
-bad_leg=np.array([g in UPPER_LEG for g in face_group])&(FR>CROTCH+0.06)
-face_group[bad_torso]=per_face[bad_torso]
-face_group[bad_leg]=per_face[bad_leg]
-print(f"landmark corrections: {bad_torso.sum()} torso-below-crotch, "
-      f"{bad_leg.sum()} leg-above-hip")
+    # Quadriceps and hamstrings are painted in near-identical reds, and a patch
+    # often wraps round the limb covering both. Colour can't part them, so these
+    # are cut front-from-back along the limb's own centre line — the lateral
+    # seam of the thigh, which is where they actually divide. Everywhere else
+    # the painted outline is the border and the patch stays whole.
+    if f < CROTCH and 0.055 < f and abs(cen[0]) <= ARM_X:
+        dzf = fpos[m][:,2] - ZC_TRUNK[m]
+        if f < 0.30:
+            face_group[np.where(m)[0]] = np.where(dzf < 0.004, "calf", "shin")
+        else:
+            back = "glute" if f > 0.44 else "ham"
+            front = np.where(np.abs(fpos[m][:,0]) < 0.032, "add", "quad")
+            face_group[np.where(m)[0]] = np.where(dzf < -0.010, back, front)
+        split_n += 1
+        continue
 
-# Smooth the labels across the surface. Face-by-face rules put a hard cut
-# through whatever they touch, which leaves boundaries speckled where the
-# rule's threshold and the mesh disagree. Repeatedly giving each face the
-# label most of its neighbourhood carries settles those into clean, contiguous
-# regions with boundaries that follow the surface.
-from scipy.sparse import coo_matrix
-key=np.round(pos*1e5).astype(np.int64)
-_,weld=np.unique(key,axis=0,return_inverse=True)
-wt=weld[tris]
-edges=np.sort(np.concatenate([wt[:,[0,1]],wt[:,[1,2]],wt[:,[2,0]]]),axis=1)
-fo=np.tile(np.arange(len(tris)),3)
-o=np.lexsort((edges[:,1],edges[:,0])); edges,fo=edges[o],fo[o]
-same=np.all(edges[1:]==edges[:-1],axis=1)
-fa,fb=fo[:-1][same],fo[1:][same]
-A=np.concatenate([fa,fb]); B=np.concatenate([fb,fa])
+    face_group[m]=classify(f,cen[0],dz)
+print(f"patches: {len(np.unique(fm))} labelled from their own centre "
+      f"({split_n} leg patches cut front/back — see comment)")
 
-names=sorted(set(face_group))
-nidx={n:i for i,n in enumerate(names)}
-lab=np.array([nidx[g] for g in face_group])
-for _ in range(12):
-    votes=np.zeros((len(tris),len(names)))
-    np.add.at(votes,(A,lab[B]),area[B])
-    votes[np.arange(len(tris)),lab]+=area*1.4   # keep own label unless clearly outvoted
-    nxt=votes.argmax(1)
-    if (nxt==lab).all(): break
-    lab=nxt
-face_group=np.array([names[i] for i in lab],dtype=object)
-
-# landmarks again — smoothing can nudge a region back over one
-bad_torso=np.array([g in TORSO for g in face_group])&(FR<CROTCH)
-face_group[bad_torso]=per_face[bad_torso]
+# No landmark correction or label smoothing pass here on purpose. Both worked
+# face by face, so both cut across the painted outlines — exactly the bleed
+# they were meant to tidy up. Landmarks still do their job inside classify(),
+# deciding which muscle a patch is; the patch keeps its own edges.
 
 tot=area.sum()
 print(f"\n{'muscle':<22}{'region':<11}{'area%':>7}")

@@ -53,7 +53,18 @@ fa,fb=fo[:-1][same],fo[1:][same]
 # symmetric adjacency
 A=np.concatenate([fa,fb]); B=np.concatenate([fb,fa])
 
-keep=(tint[fa]==tint[fb])&(tint[fa]>=0)
+# Landmarks constrain the cores as well as the fill. A painted region can run
+# continuously from the abdomen onto the thigh, and joining it into one patch
+# would carry an abdominal label down the leg no matter how the patch is named
+# later.
+_fp=pos[tris].mean(1)
+_y0,_y1=_fp[:,1].min(),_fp[:,1].max()
+_frac=(_fp[:,1]-_y0)/(_y1-_y0)
+CROTCH=0.50
+ARM_X=0.09
+region_id=np.where(_frac<CROTCH,0,1)+np.where(np.abs(_fp[:,0])>ARM_X,2,0)
+
+keep=(tint[fa]==tint[fb])&(tint[fa]>=0)&(region_id[fa]==region_id[fb])
 g=coo_matrix((np.ones(keep.sum()),(fa[keep],fb[keep])),shape=(NF,NF))
 ncomp,lab=connected_components(g,directed=False)
 
@@ -65,17 +76,51 @@ core=np.where(valid[lab], lab, -1)
 print(f"cores: {valid.sum()} components, {(core>=0).mean()*100:.0f}% of faces")
 
 # --- watershed: expand cores into unclaimed faces ------------------------
+#
+# The fill is barred from crossing anatomical landmarks. Between the thighs and
+# the abdomen sits the pelvis, which is bone and tendon and carries no muscle
+# tint of its own — so a thigh core would otherwise flood straight up through it
+# and end up as one patch spanning the hip, dragging leg muscles onto the
+# stomach. The same applies where an arm passes the torso.
+crosses=region_id[A]!=region_id[B]
+
 cur=core.copy()
 for it in range(2000):
     # only grow FROM an already-labelled face INTO an unlabelled one, else an
     # unlabelled neighbour can win the write and stall the front permanently
-    m=(cur[A]>=0)&(cur[B]<0)
+    m=(cur[A]>=0)&(cur[B]<0)&(~crosses)
     if not m.any(): break
     nxt=cur.copy()
     nxt[B[m]]=cur[A[m]]
     if np.array_equal(nxt,cur): break
     cur=nxt
-print(f"after watershed: {(cur>=0).mean()*100:.1f}% of faces claimed ({it+1} iters)")
+print(f"after constrained fill: {(cur>=0).mean()*100:.1f}% claimed ({it+1} iters)")
+
+# Anything left sits in a pocket with no core to grow from — the pelvis, mostly.
+# Letting it take whatever reaches them would mean crossing a landmark after
+# all, re-joining the thigh to the abdomen. Each leftover pocket becomes a patch
+# in its own right instead, and gets named from its own position like any other.
+left=cur<0
+if left.any():
+    g2=coo_matrix((np.ones((~crosses&left[A]&left[B]).sum()),
+                   (A[~crosses&left[A]&left[B]], B[~crosses&left[A]&left[B]])),
+                  shape=(NF,NF))
+    n2,l2=connected_components(g2,directed=False)
+    nxt_id=cur.max()+1
+    for c in np.unique(l2[left]):
+        m=left&(l2==c)
+        if m.sum()<80: continue          # specks aren't muscles
+        cur[m]=nxt_id; nxt_id+=1
+    # tiny remnants still unclaimed: let them join a neighbour, within region
+    for _ in range(200):
+        m=(cur[A]>=0)&(cur[B]<0)&(~crosses)
+        if not m.any(): break
+        nxt=cur.copy(); nxt[B[m]]=cur[A[m]]
+        if np.array_equal(nxt,cur): break
+        cur=nxt
+    cur[cur<0]=cur.max()+1               # anything left over, one last patch
+print(f"after pocket pass:     {(cur>=0).mean()*100:.1f}% claimed, "
+      f"{len(np.unique(cur))} patches")
 
 face_muscle=cur
 np.save("face_muscle.npy",face_muscle)
