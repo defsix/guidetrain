@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { AgeGroup, Gender, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
+import { useTheme } from "../state/useTheme";
+import ThemeToggle from "../components/ThemeToggle";
 
 const AGE_GROUPS: { value: AgeGroup; label: string }[] = [
   { value: "teen", label: "Under 18" },
@@ -20,6 +22,7 @@ const GENDERS: { value: Gender; label: string }[] = [
 export default function Onboarding() {
   const navigate = useNavigate();
   const { setProfile } = useProfile();
+  const { pref, setPref } = useTheme();
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
@@ -35,8 +38,13 @@ export default function Onboarding() {
 
   return (
     <div className="onboarding">
-      <h1>Welcome to GuideTrain</h1>
-      <p className="subtitle">A few quick details so we can tailor your training.</p>
+      <div className="onboarding-head">
+        <div>
+          <h1>Welcome to GuideTrain</h1>
+          <p className="subtitle">A few quick details so we can tailor your training.</p>
+        </div>
+        <ThemeToggle pref={pref} onChange={setPref} />
+      </div>
 
       <label className="field">
         <span>Username</span>

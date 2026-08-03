@@ -3,9 +3,9 @@
   width: 100%;
   height: 100%;
   min-height: 480px;
-  background: radial-gradient(120% 90% at 50% 10%, #0e1830 0%, #070b16 55%, #03060d 100%);
+  background: var(--canvas-bg);
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  color: #dbe8ff;
+  color: var(--text);
   overflow: hidden;
 }
 .anatomy-root canvas { touch-action: none; }
@@ -13,8 +13,8 @@
 .anatomy-panel {
   position: absolute;
   z-index: 7;
-  background: rgba(9, 15, 28, 0.82);
-  border: 1px solid #1c2b45;
+  background: var(--panel-translucent);
+  border: 1px solid var(--border);
   backdrop-filter: blur(14px);
   border-radius: 14px;
   padding: 15px;
@@ -22,53 +22,53 @@
 .anatomy-panel h2 {
   font-family: 'JetBrains Mono', monospace;
   font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: #2a6d94; margin: 0 0 10px; display: flex; align-items: center; gap: 7px;
+  color: var(--text-muted); margin: 0 0 10px; display: flex; align-items: center; gap: 7px;
 }
 .anatomy-panel h2::before {
-  content: ''; width: 5px; height: 5px; background: #4cc9ff;
-  border-radius: 50%; box-shadow: 0 0 8px #4cc9ff;
+  content: ''; width: 5px; height: 5px; background: var(--accent);
+  border-radius: 50%;
 }
-.regions { top: 16px; right: 16px; width: 172px; }
-.controls { top: 16px; left: 16px; width: 172px; }
+.anatomy-root .regions { top: 16px; right: 16px; width: 172px; }
+.anatomy-root .controls { top: 16px; left: 16px; width: 172px; }
 
-.chip {
+.anatomy-root .chip {
   width: 100%; text-align: left; background: transparent;
-  border: 1px solid #1c2b45; color: #7f93b5; font-family: inherit;
+  border: 1px solid var(--border); color: var(--text-muted); font-family: inherit;
   font-size: 12px; padding: 7px 10px; border-radius: 9px; margin-bottom: 6px;
   cursor: pointer; transition: 0.15s; display: flex; justify-content: space-between; align-items: center;
 }
-.chip:last-child { margin-bottom: 0; }
-.chip .dot { width: 8px; height: 8px; border-radius: 2px; }
-.chip:hover { border-color: #2a6d94; color: #dbe8ff; }
-.chip.active { background: rgba(217, 68, 54, 0.12); border-color: #d94436; color: #ffd9d3; }
+.anatomy-root .chip:last-child { margin-bottom: 0; }
+.anatomy-root .chip .dot { width: 8px; height: 8px; border-radius: 2px; }
+.anatomy-root .chip:hover { border-color: var(--border-strong); color: var(--text); }
+.anatomy-root .chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 
-.toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; cursor: pointer; }
-.toggle-row input { accent-color: #4cc9ff; width: 16px; height: 16px; }
+.anatomy-root .toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; cursor: pointer; }
+.anatomy-root .toggle-row input { accent-color: var(--accent); width: 16px; height: 16px; }
 
 .anatomy-hover {
   position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9;
-  background: rgba(6, 11, 22, 0.94); border: 1px solid #2a6d94; border-radius: 7px;
+  background: var(--panel); border: 1px solid var(--border-strong); border-radius: 7px;
   padding: 6px 12px; font-size: 12px; pointer-events: none;
 }
 
 .anatomy-readout {
   position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 7;
   width: min(560px, calc(100% - 32px)); display: flex; gap: 14px; align-items: stretch;
-  background: rgba(9, 15, 28, 0.82); border: 1px solid #1c2b45; backdrop-filter: blur(14px);
+  background: var(--panel-translucent); border: 1px solid var(--border); backdrop-filter: blur(14px);
   border-radius: 14px; padding: 15px;
 }
 .anatomy-readout .body { flex: 1; }
 .anatomy-readout .mname { font-size: 16px; font-weight: 600; }
 .anatomy-readout .mmeta {
   font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.13em;
-  text-transform: uppercase; color: #2a6d94; margin: 3px 0 6px;
+  text-transform: uppercase; color: var(--text-muted); margin: 3px 0 6px;
 }
-.anatomy-readout .mdesc { font-size: 12px; line-height: 1.5; color: #7f93b5; }
+.anatomy-readout .mdesc { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
 .train-btn {
-  align-self: center; white-space: nowrap; background: #d94436; border: 0; color: #fff;
+  align-self: center; white-space: nowrap; background: var(--accent); border: 0; color: var(--accent-text);
   font-family: inherit; font-weight: 600; font-size: 12px; letter-spacing: 0.07em;
   text-transform: uppercase; padding: 11px 15px; border-radius: 10px; cursor: pointer;
-  box-shadow: 0 0 22px rgba(217, 68, 54, 0.35);
+  box-shadow: var(--shadow);
 }
 .train-btn:hover { filter: brightness(1.12); }
 

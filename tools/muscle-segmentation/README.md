@@ -41,12 +41,32 @@ Then copy the two `.glb` files to `apps/web/public/models/` and the generated
    aren't connected across the surface.
 4. **Fill** the remaining unclaimed surface (shaded edges, tendon, bone) by
    expanding the muscle cores into it until every face is owned.
-5. **Group** the resulting patches into the app's muscle groups, and bake the
-   zone index onto each vertex as the glTF `_ZONE` attribute.
+5. **Group** the resulting patches into the app's muscle groups, then **smooth**
+   the grouping across the surface and bake the zone index onto each vertex as
+   the glTF `_ZONE` attribute.
+
+Grouping (step 5) leans on landmarks found in the mesh rather than raw height
+fractions — the crotch, where the legs merge, and the sideways reach that
+separates a limb from the trunk. Nothing below the crotch can be labelled
+torso, which is what previously let the abdominals creep down the thighs.
+Depth is measured against the body's own centre line at each height, taken as
+the midpoint of the slice rather than its median (the front of the body is
+tessellated much more finely than the back, so a median sits well forward of
+the real centre). The arms get their own centre line, since they hang behind
+the trunk's in this pose.
+
+A patch is labelled as a unit when its faces overwhelmingly agree, which keeps
+muscles whole. Where they don't, the patch really does span two groups and is
+labelled face by face — but per-face rules cut straight through whatever they
+touch, leaving speckled boundaries, so a majority-smoothing pass over the face
+adjacency graph settles those into clean contiguous regions.
 
 Decimation happens last. meshopt's simplifier only collapses edges, so the
 surviving vertices are a subset of the originals and their zone ids stay valid
-without resampling.
+without resampling. Afterwards each triangle is given a single zone and
+vertices are split so none straddles two: without that, a boundary triangle has
+corners in different zones and the shader blends between their colours, smearing
+every muscle edge into a wide gradient instead of a clean line.
 
 ## UV convention
 

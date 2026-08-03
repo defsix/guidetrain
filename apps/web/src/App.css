@@ -1,44 +1,95 @@
 .onboarding {
-  max-width: 480px;
+  width: min(560px, 100%);
   margin: 0 auto;
-  padding: 64px 24px;
+  padding: 48px 24px 64px;
   display: flex;
   flex-direction: column;
+  gap: 26px;
+}
+
+.onboarding-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 20px;
+  flex-wrap: wrap;
+}
+
+.onboarding h1 {
+  font-size: clamp(24px, 5vw, 30px);
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
-  margin-top: -8px;
+  margin-top: 6px;
+  font-size: 15px;
 }
 
+/* --- theme switch ------------------------------------------------------ */
+.theme-toggle {
+  display: inline-flex;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  flex: 0 0 auto;
+}
+
+.theme-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.theme-toggle button:hover {
+  color: var(--text);
+}
+
+.theme-toggle button.active {
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+/* --- form -------------------------------------------------------------- */
 .field {
   border: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
-.field legend {
+.field legend,
+.field > span {
   padding: 0;
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.field span {
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--text-muted);
 }
 
 .field input {
-  background: var(--panel-bg);
+  background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: 10px;
+  padding: 12px 14px;
   color: var(--text);
   font-size: 16px;
+  box-shadow: var(--shadow);
+}
+
+.field input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
 }
 
 .chip-row {
@@ -48,36 +99,52 @@
 }
 
 .chip {
-  background: var(--panel-bg);
+  background: var(--panel);
   border: 1px solid var(--border);
   color: var(--text);
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 9px 16px;
   cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
 }
 
-.chip-selected {
+.chip:hover {
+  border-color: var(--border-strong);
+}
+
+.chip-selected,
+.chip-selected:hover {
   border-color: var(--accent);
+  background: var(--accent-soft);
   color: var(--accent);
+  font-weight: 600;
 }
 
 .primary-button {
-  margin-top: 12px;
+  margin-top: 8px;
   background: var(--accent);
-  color: #1a1200;
+  color: var(--accent-text);
   border: none;
-  border-radius: 8px;
-  padding: 14px;
+  border-radius: 10px;
+  padding: 15px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: filter 0.15s;
+}
+
+.primary-button:hover:not(:disabled) {
+  filter: brightness(1.08);
 }
 
 .primary-button:disabled {
-  opacity: 0.4;
+  opacity: 0.45;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
+/* --- explorer ---------------------------------------------------------- */
 .explorer {
   flex: 1;
   display: flex;
@@ -85,11 +152,19 @@
   min-height: 100svh;
 }
 
+.explorer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+}
+
 .explorer .greeting {
   font-size: 14px;
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
-  background: var(--panel-bg);
+  margin: 0;
 }
 
 .explorer-canvas {

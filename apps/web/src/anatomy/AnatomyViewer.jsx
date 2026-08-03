@@ -22,12 +22,29 @@ const REGION_DOT = {
  *
  * Also fires a window event: window.addEventListener('muscle:train', e => e.detail)
  */
+// Scene colours per theme. The 3D canvas can't read CSS variables, so the
+// resolved theme is passed in and mapped to real colours here.
+const SCENE = {
+  dark: {
+    bg: '#0b0d12', fog: ['#0b0d12', 4, 11],
+    ambient: ['#5d6b85', 1.05],
+    key: ['#ffffff', 1.25], fill: ['#7fb2ff', 0.55],
+  },
+  light: {
+    bg: '#e8ebf0', fog: ['#e8ebf0', 5, 13],
+    ambient: ['#ffffff', 1.5],
+    key: ['#ffffff', 1.5], fill: ['#c9d6ea', 0.7],
+  },
+};
+
 export default function AnatomyViewer({
   modelUrl = '/models/anatomy_mobile.glb',
   map = defaultMap,
+  theme = 'dark',
   onTrain,
   onSelect,
 }) {
+  const scene = SCENE[theme] || SCENE.dark;
   const [selected, setSelected] = useState(null);
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
@@ -47,15 +64,16 @@ export default function AnatomyViewer({
   return (
     <div className="anatomy-root">
       <Canvas camera={{ position: [0, 0.2, 3.4], fov: 42 }} dpr={[1, 2]}>
-        <color attach="background" args={['#070b16']} />
-        <fog attach="fog" args={['#070b16', 4, 9]} />
-        <ambientLight intensity={1.0} color="#3a5578" />
-        <directionalLight position={[4, 6, 8]} intensity={1.15} color="#bcd8ff" />
-        <directionalLight position={[-6, 3, -5]} intensity={0.8} color="#4cc9ff" />
+        <color attach="background" args={[scene.bg]} />
+        <fog attach="fog" args={scene.fog} />
+        <ambientLight intensity={scene.ambient[1]} color={scene.ambient[0]} />
+        <directionalLight position={[4, 6, 8]} intensity={scene.key[1]} color={scene.key[0]} />
+        <directionalLight position={[-6, 3, -5]} intensity={scene.fill[1]} color={scene.fill[0]} />
         <Suspense fallback={null}>
           <AnatomyModel
             url={modelUrl}
             map={map}
+            theme={theme}
             selectedId={selected?.id || null}
             region={region}
             onSelect={handleSelect}

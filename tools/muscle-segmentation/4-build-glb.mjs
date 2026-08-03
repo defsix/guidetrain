@@ -27,22 +27,44 @@ function build(targetTris, error, outName) {
     idx, pos, 3, targetTris * 3, error, ["LockBorder"]);
   console.log(`${outName}: ${simplified.length / 3} tris (err ${err.toFixed(5)})`);
 
-  // compact to only the vertices still referenced
-  const remap = new Int32Array(NV).fill(-1);
-  let n = 0;
-  for (const v of simplified) if (remap[v] < 0) remap[v] = n++;
+  // Give every triangle a single zone, then split vertices so no triangle
+  // straddles two. Without this a boundary triangle has corners in different
+  // zones and the shader blends between their colours, smearing every muscle
+  // edge into a wide gradient instead of a clean line.
+  const triCount = simplified.length / 3;
+  const triZone = new Uint8Array(triCount);
+  for (let t = 0; t < triCount; t++) {
+    const a = zone[simplified[t*3]], b = zone[simplified[t*3+1]], c = zone[simplified[t*3+2]];
+    // majority; with three different zones take the lowest for determinism
+    triZone[t] = (a === b || a === c) ? a : (b === c ? b : Math.min(a, b, c));
+  }
+
+  const key = new Map();          // `${vertex}:${zone}` -> new index
+  const srcOf = [];
+  const I32 = new Uint32Array(simplified.length);
+  for (let t = 0; t < triCount; t++) {
+    const z = triZone[t];
+    for (let k = 0; k < 3; k++) {
+      const v = simplified[t*3+k];
+      const kk = v * 256 + z;
+      let idx = key.get(kk);
+      if (idx === undefined) { idx = srcOf.length; key.set(kk, idx); srcOf.push(v); }
+      I32[t*3+k] = idx;
+    }
+  }
+  const n = srcOf.length;
   const P = new Float32Array(n * 3), N = new Float32Array(n * 3), Z = new Uint8Array(n);
-  for (let v = 0; v < NV; v++) {
-    const r = remap[v];
-    if (r < 0) continue;
+  for (let r = 0; r < n; r++) {
+    const v = srcOf[r];
     P[r*3] = pos[v*3]; P[r*3+1] = pos[v*3+1]; P[r*3+2] = pos[v*3+2];
     N[r*3] = nrm[v*3]; N[r*3+1] = nrm[v*3+1]; N[r*3+2] = nrm[v*3+2];
-    Z[r] = zone[v];
   }
+  for (let t = 0; t < triCount; t++)
+    for (let k = 0; k < 3; k++) Z[I32[t*3+k]] = triZone[t];
+
   const use16 = n < 65536;
-  const I = use16 ? new Uint16Array(simplified.length) : new Uint32Array(simplified.length);
-  for (let i = 0; i < simplified.length; i++) I[i] = remap[simplified[i]];
-  console.log(`  ${n} verts, ${use16 ? "uint16" : "uint32"} indices`);
+  const I = use16 ? new Uint16Array(I32) : I32;
+  console.log(`  ${n} verts after zone split, ${use16 ? "uint16" : "uint32"} indices`);
 
   // --- assemble GLB ---
   const parts = [], views = [], accs = [];

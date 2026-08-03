@@ -65,6 +65,13 @@ zones, baked onto each vertex as the model's `_ZONE` attribute. Picking at
 runtime is just reading that number — see
 `apps/web/src/anatomy/zoneMapping.js`.
 
+Each triangle carries a single zone and vertices are split along the borders,
+so muscle edges are hard lines rather than the gradient the shader would
+otherwise blend between neighbouring vertex colours. Every muscle also gets its
+own colour (`MUSCLE_COLORS`), with touching muscles deliberately given distant
+hues — colouring by region instead put five of the seven regions in the
+red/orange family, and a whole leg or arm read as one undifferentiated mass.
+
 Because the zones follow the artwork, muscle edges are exact rather than
 approximate. The earlier approach fitted an axis-aligned box per muscle in
 normalised body space; boxes inevitably overlapped — an arm box would reach
@@ -75,6 +82,18 @@ The textures aren't shipped: the viewer paints muscles from its own region
 palette, so the model only carries geometry plus the zone attribute. That
 puts the mobile variant at 1.05 MB (60k faces) and the full one at 3.5 MB
 (150k faces).
+
+## Theming
+
+Light, dark, or follow the device — a three-way switch in the header, remembered
+across visits. Everything reads from CSS custom properties keyed off a
+`data-theme` attribute on `<html>` (`apps/web/src/index.css`), so switching is a
+single attribute swap. On "device" the app tracks the OS setting live, including
+if it changes while the tab is open.
+
+The 3D canvas can't read CSS variables, so `AnatomyViewer` maps the resolved
+theme to real scene colours for the background, fog, lights and the inactive
+greys used for untrainable parts.
 
 ## Hosting on GitHub Pages
 

@@ -1,17 +1,69 @@
+/*
+ * Theme tokens.
+ *
+ * `data-theme` on <html> is one of light | dark | auto. Light is the base, dark
+ * overrides it, and auto picks up the dark set only when the device asks for
+ * it. Everything downstream reads these variables, so switching theme is a
+ * single attribute swap with no per-component logic.
+ */
 :root {
-  --text: #d7d5dd;
-  --text-muted: #9a97a6;
-  --bg: #0b0b0f;
-  --panel-bg: #16161d;
-  --border: #2a2a34;
-  --accent: #e8a23a;
   --sans: system-ui, "Segoe UI", Roboto, sans-serif;
 
+  /* light */
+  --bg: #f2f4f7;
+  --panel: #ffffff;
+  --panel-translucent: rgba(255, 255, 255, 0.9);
+  --border: #d9dee6;
+  --border-strong: #b9c1cd;
+  --text: #1a1f28;
+  --text-muted: #5c6673;
+  --accent: #c2410c;
+  --accent-text: #ffffff;
+  --accent-soft: rgba(194, 65, 12, 0.1);
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.08);
+  --canvas-bg: #e8ebf0;
+
+  color-scheme: light;
   font: 16px/1.5 var(--sans);
-  color-scheme: dark;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0b0d12;
+  --panel: #12151c;
+  --panel-translucent: rgba(12, 15, 22, 0.82);
+  --border: #232936;
+  --border-strong: #333b4b;
+  --text: #e6e9ef;
+  --text-muted: #98a2b3;
+  --accent: #f97316;
+  --accent-text: #1a1200;
+  --accent-soft: rgba(249, 115, 22, 0.16);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+  --canvas-bg: #0b0d12;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --bg: #0b0d12;
+    --panel: #12151c;
+    --panel-translucent: rgba(12, 15, 22, 0.82);
+    --border: #232936;
+    --border-strong: #333b4b;
+    --text: #e6e9ef;
+    --text-muted: #98a2b3;
+    --accent: #f97316;
+    --accent-text: #1a1200;
+    --accent-soft: rgba(249, 115, 22, 0.16);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.45);
+    --canvas-bg: #0b0d12;
+
+    color-scheme: dark;
+  }
 }
 
 * {
@@ -20,6 +72,8 @@
 
 body {
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
 #root {
@@ -42,4 +96,9 @@ p {
 
 button {
   font: inherit;
+}
+
+:where(button, input, a):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }

@@ -1,12 +1,15 @@
 import React, { useRef, useMemo, useEffect, useLayoutEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtFace, REGION_COLORS } from './zoneMapping';
+import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtFace, zoneColor } from './zoneMapping';
 
-const BASE = new THREE.Color('#8a5347');
-const NEUTRAL = new THREE.Color('#33404f');
-const DIM = new THREE.Color('#2a2320');
-const HILITE = new THREE.Color('#ffd257');
+// Untrainable parts (head, hands, feet) and region-filtered-out muscles, per
+// theme — a mid grey that reads as "inactive" against either background.
+const INACTIVE = {
+  dark: { neutral: '#4a5361', dim: '#2f353f', outline: '#05070a' },
+  light: { neutral: '#b6bec9', dim: '#cdd3db', outline: '#2c3440' },
+};
+const HILITE = new THREE.Color('#ffffff');
 
 // How far outline lines are lifted off the surface (native units) to avoid
 // z-fighting with the mesh they trace.
@@ -27,10 +30,11 @@ const OUTLINE_LIFT = 0.0015;
  *  onSelect(zone|null)
  *  onHover(zone|null)
  */
-export default function AnatomyModel({ url, map, selectedId, region = 'all', onSelect, onHover }) {
+export default function AnatomyModel({ url, map, theme = 'dark', selectedId, region = 'all', onSelect, onHover }) {
   const { scene } = useGLTF(url);
   const meshRef = useRef();
   const hoverRef = useRef(null);
+  const palette = INACTIVE[theme] || INACTIVE.dark;
 
   // Find the first mesh in the GLB and give it a fresh vertex-color material.
   const { geometry, material } = useMemo(() => {
@@ -70,25 +74,30 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
     const col = geometry.attributes.color;
     const pos = geometry.attributes.position;
     const Z = map.zones;
+    const neutral = new THREE.Color(palette.neutral);
+    const dim = new THREE.Color(palette.dim);
     for (let i = 0; i < pos.count; i++) {
-      let c = NEUTRAL;
+      let c = neutral;
       const zi = baked.vertZone[i];
       const zone = zi >= 0 ? Z[zi] : null;
       // Hands, feet and head aren't trainable groups — leave them neutral.
       if (zone && zone.selectable !== false) {
-        const reg = zone.region;
-        if (region === 'all' || reg === region) c = new THREE.Color(REGION_COLORS[reg]).lerp(BASE, 0.35);
-        else c = DIM;
+        if (region === 'all' || zone.region === region) c = new THREE.Color(zoneColor(zone));
+        else c = dim;
       }
       col.setXYZ(i, c.r, c.g, c.b);
     }
+    // Selection brightens the muscle's own colour rather than replacing it, so
+    // it stays identifiable while clearly standing out.
     if (selectedId && baked.zoneVerts[selectedId]) {
-      baked.zoneVerts[selectedId].forEach((i) => col.setXYZ(i, HILITE.r, HILITE.g, HILITE.b));
+      const zone = Z.find((z) => z.id === selectedId);
+      const c = new THREE.Color(zoneColor(zone)).lerp(HILITE, 0.45);
+      baked.zoneVerts[selectedId].forEach((i) => col.setXYZ(i, c.r, c.g, c.b));
     }
     col.needsUpdate = true;
   };
 
-  useLayoutEffect(paint, [selectedId, region, baked, geometry, map]);
+  useLayoutEffect(paint, [selectedId, region, baked, geometry, map, theme]);
 
   // Resolve a pointer event to a muscle zone via the picked triangle's
   // baked zone ids. meshRef can be transiently null between an
@@ -123,7 +132,7 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
         onPointerOut={handleOut}
         onClick={handleClick}
       />
-      <Outline points={boundary.all} color="#050708" opacity={0.45} />
+      <Outline points={boundary.all} color={palette.outline} opacity={theme === "light" ? 0.6 : 0.5} />
       {selectedBoundary && <Outline points={selectedBoundary} color="#fff4d6" opacity={0.95} />}
     </group>
   );

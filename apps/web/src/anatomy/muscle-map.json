@@ -1,6 +1,6 @@
 {
  "format": "anatomy-zone-map/v2",
- "note": "Zones are baked per-vertex into the model as the _ZONE attribute; index here matches that attribute value. No spatial boxes involved.",
+ "note": "Zones are baked per-vertex into the model as the _ZONE attribute; index here matches that attribute value.",
  "zones": [
   {
    "id": "abs",
