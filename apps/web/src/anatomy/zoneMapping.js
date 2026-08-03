@@ -179,7 +179,50 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
   return { all: new Float32Array(allPts), byZone };
 }
 
-export const REGION_COLORS = {
-  Shoulders: '#ff8a5c', Chest: '#e8574a', Back: '#c73f6e',
-  Arms: '#f2b13c', Core: '#d94436', Legs: '#b5503a', Neck: '#e06a4d',
+/**
+ * One colour per muscle, not per region.
+ *
+ * Colouring by region put five of seven regions in the red/orange family, so
+ * neighbouring muscles were nearly the same shade and a whole leg or arm read
+ * as one undifferentiated mass. These are spread around the hue circle instead,
+ * and muscles that touch on the body are deliberately given distant hues so
+ * every boundary is legible.
+ *
+ * Mid lightness and saturation throughout, so they hold up against both the
+ * light and the dark canvas background.
+ */
+export const MUSCLE_COLORS = {
+  // torso front
+  pec: '#e04b3c',       // red
+  abs: '#f5c451',       // amber
+  obl: '#8e6bd8',       // purple
+  // torso back
+  lat: '#3f7fd0',       // blue
+  erector: '#5b4bc4',   // blue-violet
+  traps: '#16a394',     // teal
+  delt: '#ffb020',      // yellow-orange
+  // arms
+  bic: '#37b26b',       // green
+  tri: '#145f73',       // dark teal
+  fore: '#cfa72e',      // gold
+  // legs
+  glute: '#e8559a',     // pink
+  quad: '#3fb8d8',      // cyan
+  ham: '#b5651d',       // bronze
+  add: '#7fbf3f',       // green
+  calf: '#2e8b57',      // sea green
+  shin: '#f2994a',      // light orange
+  // other
+  neck: '#c98a6b',      // tan
 };
+
+/** Chip swatches in the region filter — one representative hue per region. */
+export const REGION_COLORS = {
+  Shoulders: '#ffb020', Chest: '#e04b3c', Back: '#3f7fd0',
+  Arms: '#37b26b', Core: '#f5c451', Legs: '#3fb8d8', Neck: '#c98a6b',
+};
+
+/** Colour for a zone, falling back to its region if the muscle isn't listed. */
+export function zoneColor(zone) {
+  return MUSCLE_COLORS[zone.key] || REGION_COLORS[zone.region] || '#8a8f98';
+}
