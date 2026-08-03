@@ -15,6 +15,7 @@ install. Put the source model in this directory as `model.glb`, then:
 
 ```bash
 python3 check-uv-sampling.py   # sanity check (see "UV convention" below)
+python3 1b-denoise.py          # edge-preserving smooth of the colour samples
 python3 1-segment.py           # painted colours -> ~110 muscle regions
 python3 2-name-muscles.py      # regions -> the app's muscle groups
 python3 3-prepare-export.py    # per-vertex zone ids, normalised to viewer scale
@@ -30,20 +31,18 @@ Then copy the two `.glb` files to `apps/web/public/models/` and the generated
    The centroid matters: the atlas is made of thousands of small islands, and a
    vertex UV sits on an island border where JPEG bleed and gutter padding
    contaminate the texel.
-2. **Snap** each tint to the model's palette, discovered by clustering the
-   clearly-tinted faces. Comparison is in chromaticity (`rgb / sum`), which
-   ignores the shading baked into the texture. Snapping to a fixed palette
-   rather than comparing neighbours pairwise is what stops regions leaking into
-   each other through the gradual shading around tendons.
-3. **Grow** connected components over faces sharing a tint. Colours are reused
-   across the body, so a tint alone doesn't identify a muscle — a tint plus
-   spatial connectivity does, and left/right separate on their own because they
-   aren't connected across the surface.
+2. **Denoise** those samples with an edge-preserving filter — see below. Without
+   it the rest cannot work.
+3. **Grow** regions by comparing each face against its neighbour in chromaticity
+   (`rgb / sum`, which ignores the shading baked into the texture). Shading
+   inside a muscle changes gradually and passes; a painted border is a single
+   jump and stops growth. Colours repeat across the body, so connectivity is
+   what makes a region one muscle — and left/right separate on their own,
+   never being connected across the surface.
 4. **Fill** the remaining unclaimed surface (shaded edges, tendon, bone) by
    expanding the muscle cores into it until every face is owned.
-5. **Group** the resulting patches into the app's muscle groups, then **smooth**
-   the grouping across the surface and bake the zone index onto each vertex as
-   the glTF `_ZONE` attribute.
+5. **Group** the resulting patches into the app's muscle groups and bake the
+   zone index onto each vertex as the glTF `_ZONE` attribute.
 
 ### The painted outline is the border
 
@@ -68,14 +67,32 @@ tessellated much more finely than the back, so a median sits well forward of the
 real centre and the back reads as front). The arms get their own centre line,
 since they hang behind the trunk's in this pose.
 
-### The one exception: quadriceps and hamstrings
+### Denoising, and why it decides everything
 
-This model paints the front and back of the thigh in near-identical reds — one
-tint measures 8% front and 13% back — so colour cannot tell them apart, and a
-patch often wraps round the limb covering both. Those patches, and only those,
-are cut front-from-back along the limb's own centre line, which is roughly where
-the two groups actually divide. Colouring the two groups differently in the
-source model would remove the need for it.
+A triangle covers only a handful of texels, so a single sample carries the
+texture's JPEG artefacts and the fine striations painted along each muscle.
+Measured on the raw samples, the colour step between neighbouring faces *inside
+one muscle* had a median of 0.018 — about the same size as the step *between*
+two adjacent muscles. Quadriceps sample at RGB(190,66,54) and hamstrings at
+RGB(210,64,78), a chromaticity gap of 0.059, which the noise almost swallows.
+No threshold separates muscles at that signal-to-noise: tighten it and muscles
+shatter, loosen it and they merge.
+
+`1b-denoise.py` fixes that before anything else runs. It averages each face with
+its neighbours, weighting each by how close its colour already is, so shading and
+noise inside a muscle average away while a border — a large jump — is barely
+averaged across. Repeating it widens the neighbourhood a face can draw on without
+ever bleeding over an edge:
+
+| | inside a muscle | at a border |
+| --- | --- | --- |
+| before | p50 0.0184, p75 0.0384 | p99 0.2112 |
+| after | p50 0.0029, p75 0.0068 | p99 0.2254 |
+
+Noise drops sixfold and borders come out slightly sharper, which leaves a wide
+gap to put a threshold in. Region growing at 0.025 then separates every muscle
+group the model distinguishes — including quadriceps from hamstrings, which
+before denoising had to be cut geometrically.
 
 Decimation happens last. meshopt's simplifier only collapses edges, so the
 surviving vertices are a subset of the originals and their zone ids stay valid
@@ -99,7 +116,7 @@ Textures aren't shipped with the model. The viewer paints muscles from its own
 region palette, so the exported GLB carries only geometry, normals and the zone
 attribute — which is why it's a fraction of the source model's size.
 
-Patches spanning a large share of the body's height are labelled face by face
-rather than as a unit: long straps like sartorius run hip to knee, and the fill
-step can bridge two neighbours, so a single label taken from the centroid would
-drag a whole group out of place.
+Every patch is labelled as a whole — nothing is ever cut face by face, which is
+what kept seams off the artwork. Long straps like sartorius that run hip to knee
+are handled by the landmark constraints instead, which stop a patch forming
+across the hip in the first place.
