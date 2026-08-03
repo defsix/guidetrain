@@ -38,9 +38,14 @@ area=np.linalg.norm(np.cross(pos[tris[:,1]]-pos[tris[:,0]],
 chrom=fcol/np.maximum(fcol.sum(1,keepdims=True),1e-6)
 sat=(fcol.max(1)-fcol.min(1))/np.maximum(fcol.max(1),1e-6)
 
-d2=((chrom[:,None,:]-pal[None])**2).sum(-1)
-tint=d2.argmin(1); dist=np.sqrt(d2.min(1))
-tint[(sat<0.30)|(dist>0.085)]=-1
+# Faces are grown together by comparing each against its neighbour, rather than
+# snapping both to a shared palette. Muscles are painted with shading across
+# them, so two faces at opposite ends of one muscle can be further apart in
+# colour than two faces either side of a border — a palette wide enough to hold
+# a muscle together also merges muscles whose colours are close. Neighbour to
+# neighbour, shading changes gradually and a painted border is a single jump, so
+# growth crosses the first and stops at the second.
+tinted = sat >= 0.34          # bone, tendon and white can't carry a muscle
 
 key=np.round(pos*1e5).astype(np.int64)
 _,weld=np.unique(key,axis=0,return_inverse=True)
@@ -64,14 +69,16 @@ CROTCH=0.50
 ARM_X=0.09
 region_id=np.where(_frac<CROTCH,0,1)+np.where(np.abs(_fp[:,0])>ARM_X,2,0)
 
-keep=(tint[fa]==tint[fb])&(tint[fa]>=0)&(region_id[fa]==region_id[fb])
+STEP=0.025          # well above the denoised noise floor, well below a border
+step=np.sqrt(((chrom[fa]-chrom[fb])**2).sum(1))
+keep=(step<STEP)&tinted[fa]&tinted[fb]&(region_id[fa]==region_id[fb])
 g=coo_matrix((np.ones(keep.sum()),(fa[keep],fb[keep])),shape=(NF,NF))
 ncomp,lab=connected_components(g,directed=False)
 
 MIN_FACES=400
 cn=np.bincount(lab,minlength=ncomp)
 valid=(cn>=MIN_FACES)
-valid[np.unique(lab[tint<0])]=False          # untinted blobs aren't muscles
+valid[np.unique(lab[~tinted])]=False          # untinted blobs arent muscles
 core=np.where(valid[lab], lab, -1)
 print(f"cores: {valid.sum()} components, {(core>=0).mean()*100:.0f}% of faces")
 
@@ -133,7 +140,7 @@ for c in ids:
     p,cen=fpos[m],fpos[m].mean(0)
     rows.append(dict(comp=int(c),faces=int(m.sum()),
         pct=float(area[m].sum()/area.sum()*100),
-        rgb=[int(v) for v in np.median(fcol[m&(tint>=0)],axis=0)] if (m&(tint>=0)).any() else [0,0,0],
+        rgb=[int(v) for v in np.median(fcol[m&tinted],axis=0)] if (m&tinted).any() else [0,0,0],
         side=("L" if cen[0]>0.012 else "R" if cen[0]<-0.012 else "C"),
         cen=[float(v) for v in cen], frac=float((cen[1]-ymin)/(ymax-ymin)),
         xr=[float(p[:,0].min()),float(p[:,0].max())],

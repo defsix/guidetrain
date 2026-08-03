@@ -151,25 +151,8 @@ for c in np.unique(fm):
     f=(cen[1]-Y0)/H
     dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
 
-    # Quadriceps and hamstrings are painted in near-identical reds, and a patch
-    # often wraps round the limb covering both. Colour can't part them, so these
-    # are cut front-from-back along the limb's own centre line — the lateral
-    # seam of the thigh, which is where they actually divide. Everywhere else
-    # the painted outline is the border and the patch stays whole.
-    if f < CROTCH and 0.055 < f and abs(cen[0]) <= ARM_X:
-        dzf = fpos[m][:,2] - ZC_TRUNK[m]
-        if f < 0.30:
-            face_group[np.where(m)[0]] = np.where(dzf < 0.004, "calf", "shin")
-        else:
-            back = "glute" if f > 0.44 else "ham"
-            front = np.where(np.abs(fpos[m][:,0]) < 0.032, "add", "quad")
-            face_group[np.where(m)[0]] = np.where(dzf < -0.010, back, front)
-        split_n += 1
-        continue
-
     face_group[m]=classify(f,cen[0],dz)
-print(f"patches: {len(np.unique(fm))} labelled from their own centre "
-      f"({split_n} leg patches cut front/back — see comment)")
+print(f"patches: {len(np.unique(fm))} labelled from their own centre")
 
 # No landmark correction or label smoothing pass here on purpose. Both worked
 # face by face, so both cut across the painted outlines — exactly the bleed
