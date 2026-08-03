@@ -144,41 +144,31 @@ for c in ids:
 
 ARMSPLIT="__armsplit__"
 
-# The body is symmetric, so a muscle and its mirror should be decided together.
-# Segmentation isn't quite mirror-perfect, and where one patch's centre lands
-# near a rule's threshold its twin can fall the other side of it — which showed
-# up as one oblique covering 2.57% of the body against 1.76% for the other.
+# --- pair each patch with its mirror ------------------------------------
 #
-# Patches are paired with whichever patch most nearly mirrors them, and the pair
-# is decided ONCE from the average of the two centres (mirroring x so the sides
-# can be averaged). Averaging is steadier than trusting either side alone: a
-# centre sitting right on a threshold is pulled to whichever side the pair
-# agrees on, instead of the two disagreeing.
-pair={}
-for c in ids:
-    cen=cens[c]
-    if abs(cen[0])<0.012: continue                   # midline, mirrors to itself
-    mirror=np.array([-cen[0],cen[1],cen[2]])
-    best,bd=None,np.inf
-    for d in ids:
-        if d==c: continue
-        dist=np.linalg.norm(cens[d]-mirror)
-        if dist<bd: bd,best=dist,d
-    if best is None or bd>0.020 or np.sign(cens[best][0])==np.sign(cen[0]): continue
-    pair[c]=best
+# The body is symmetric, so a muscle and its mirror must be decided together —
+# otherwise one thigh comes out "quadriceps" and the other "adductors" purely
+# because their centres fell either side of a rule's threshold.
+#
+# Patches are paired by geometry rather than by comparing centres: every face is
+# matched to the face nearest its own mirrored position, and a patch pairs with
+# whichever patch owns most of those matches. Comparing centres only found 19
+# pairs out of 112, because segmentation is not mirror-perfect and two halves of
+# the same muscle can have quite different centres; matching face by face pairs
+# nearly all of them.
+from scipy.spatial import cKDTree
+tree=cKDTree(fpos)
+mirrored=fpos*np.array([-1.0,1.0,1.0])
+_,partner_face=tree.query(mirrored, k=1)
+partner_patch=fm[partner_face]
 
-def centre_for(c):
-    """Centre used to decide patch c: averaged with its mirror where there is one."""
-    cen=cens[c]
-    d=pair.get(c)
-    if d is None: return cen
-    twin=cens[d]*np.array([-1,1,1])                  # reflect the twin onto this side
-    wc,wd=areas[c],areas[d]
-    return (cen*wc+twin*wd)/(wc+wd)
+# Every face is matched to the face nearest its own mirrored position, so each
+# patch can see what the opposite side of the body says about the same place.
+partner_patch=fm[partner_face]
 
 decision={}
 for c in ids:
-    cen=centre_for(c); m=fm==c
+    cen=cens[c]; m=fm==c
     f=(cen[1]-Y0)/H
     # The upper arm is painted as one region wrapping right round the limb — the
     # largest patch there is 47% front and 53% back — so biceps and triceps have
@@ -191,13 +181,31 @@ for c in ids:
     dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
     decision[c]=classify(f,cen[0],dz)
 
-# Mirrored patches take the same decision. Settled here, before any split is
-# applied — reconciling afterwards flattens a split patch back to one label.
-for c,d in pair.items():
-    if decision[c]!=decision[d]:
-        winner=c if areas[c]>=areas[d] else d
-        decision[c]=decision[d]=decision[winner]
-paired=len(pair)//2
+# Reconcile each patch with the opposite side of the body.
+#
+# The two halves aren't segmented identically, so a patch rarely has one clean
+# twin — pairing by nearest centre matched only 19 of 112. Instead each patch
+# weighs its own decision against the decisions covering its mirror image, and
+# takes whichever wins by area. Repeating settles the two sides onto the same
+# answer, which is what stops one thigh reading "quadriceps" and the other
+# "adductors" purely because their centres fell either side of a threshold.
+for _ in range(6):
+    face_lab=np.array([decision[c] for c in fm],dtype=object)
+    mir_lab=face_lab[partner_face]
+    changed=0
+    nxt=dict(decision)
+    for c in ids:
+        if decision[c]==ARMSPLIT: continue
+        m=fm==c
+        tally={decision[c]: areas[c]}
+        for lab in np.unique(mir_lab[m]):
+            if lab==ARMSPLIT: continue
+            tally[lab]=tally.get(lab,0.0)+area[m][mir_lab[m]==lab].sum()
+        best=max(tally,key=tally.get)
+        if best!=decision[c]: nxt[c]=best; changed+=1
+    decision=nxt
+    if not changed: break
+paired=sum(1 for c in ids if abs(cens[c][0])>=0.012)//2
 
 face_group=per_face.copy()
 for c in ids:
@@ -221,18 +229,19 @@ print(f"\n{'muscle':<22}{'region':<11}{'area%':>7}")
 for g in sorted(set(face_group), key=lambda g:-area[face_group==g].sum()):
     print(f"{NAME[g]:<22}{REGION[g]:<11}{area[face_group==g].sum()/tot*100:>7.2f}")
 
-MIDLINE={"abs","erector","neck","head","traps"}
+# One zone per muscle, covering both sides.
+#
+# Left and right biceps are the same muscle group as far as training goes, so
+# they are one selectable zone and highlight together. Splitting them meant
+# tapping an arm lit only that arm, and the readout carried a "LEFT"/"RIGHT"
+# that nothing acted on.
 INERT={"hand","foot","head"}
-side=np.where(fpos[:,0]>0,"L","R")
-for g in MIDLINE: side[face_group==g]="C"
-
-zid={}
-for i,(g,s) in enumerate(sorted({(g,s) for g,s in zip(face_group,side)})):
-    zid[(g,s)]=i
-fid=np.array([zid[(g,s)] for g,s in zip(face_group,side)],np.int32)
+keys=sorted(set(face_group))
+zid={g:i for i,g in enumerate(keys)}
+fid=np.array([zid[g] for g in face_group],np.int32)
 np.save("face_zone.npy",fid)
-zones=[{"id":(g if s=="C" else f"{g}_{s}"),"key":g,"name":NAME[g],
-        "region":REGION[g],"side":s,"index":i,"selectable":g not in INERT}
-       for (g,s),i in sorted(zid.items(),key=lambda kv:kv[1])]
+zones=[{"id":g,"key":g,"name":NAME[g],"region":REGION[g],"index":i,
+        "selectable":g not in INERT}
+       for g,i in sorted(zid.items(),key=lambda kv:kv[1])]
 json.dump(zones,open("zones.json","w"),indent=1)
 print(f"\n{len(zones)} zones ({sum(z['selectable'] for z in zones)} selectable)")

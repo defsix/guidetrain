@@ -1,94 +1,49 @@
 {
- "format": "anatomy-zone-map/v2",
- "note": "Zones baked per-vertex as _ZONE.",
+ "format": "anatomy-zone-map/v3",
+ "note": "One zone per muscle, both sides. Baked per-vertex as _ZONE.",
  "zones": [
   {
    "id": "abs",
    "key": "abs",
    "name": "Rectus Abdominis",
    "region": "Core",
-   "side": "C",
    "index": 0,
    "selectable": true,
    "desc": "The 'six-pack'; flexes the spine, resists extension. Crunches, leg raises, planks."
   },
   {
-   "id": "add_L",
+   "id": "add",
    "key": "add",
    "name": "Adductors",
    "region": "Legs",
-   "side": "L",
    "index": 1,
    "selectable": true,
    "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
   },
   {
-   "id": "add_R",
-   "key": "add",
-   "name": "Adductors",
-   "region": "Legs",
-   "side": "R",
+   "id": "bic",
+   "key": "bic",
+   "name": "Biceps Brachii",
+   "region": "Arms",
    "index": 2,
    "selectable": true,
-   "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
+   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
   },
   {
-   "id": "bic_L",
-   "key": "bic",
-   "name": "Biceps Brachii",
-   "region": "Arms",
-   "side": "L",
+   "id": "calf",
+   "key": "calf",
+   "name": "Gastrocnemius / Calf",
+   "region": "Legs",
    "index": 3,
    "selectable": true,
-   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
+   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
   },
   {
-   "id": "bic_R",
-   "key": "bic",
-   "name": "Biceps Brachii",
-   "region": "Arms",
-   "side": "R",
+   "id": "delt",
+   "key": "delt",
+   "name": "Deltoid",
+   "region": "Shoulders",
    "index": 4,
-   "selectable": true,
-   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
-  },
-  {
-   "id": "calf_L",
-   "key": "calf",
-   "name": "Gastrocnemius / Calf",
-   "region": "Legs",
-   "side": "L",
-   "index": 5,
-   "selectable": true,
-   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
-  },
-  {
-   "id": "calf_R",
-   "key": "calf",
-   "name": "Gastrocnemius / Calf",
-   "region": "Legs",
-   "side": "R",
-   "index": 6,
-   "selectable": true,
-   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
-  },
-  {
-   "id": "delt_L",
-   "key": "delt",
-   "name": "Deltoid",
-   "region": "Shoulders",
-   "side": "L",
-   "index": 7,
-   "selectable": true,
-   "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
-  },
-  {
-   "id": "delt_R",
-   "key": "delt",
-   "name": "Deltoid",
-   "region": "Shoulders",
-   "side": "R",
-   "index": 8,
    "selectable": true,
    "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
   },
@@ -97,108 +52,52 @@
    "key": "erector",
    "name": "Erector Spinae",
    "region": "Back",
-   "side": "C",
-   "index": 9,
+   "index": 5,
    "selectable": true,
    "desc": "Columns beside the spine; extends and stabilises the back. Deadlifts, back extensions."
   },
   {
-   "id": "foot_L",
+   "id": "foot",
    "key": "foot",
    "name": "Foot",
    "region": "Legs",
-   "side": "L",
+   "index": 6,
+   "selectable": false,
+   "desc": ""
+  },
+  {
+   "id": "fore",
+   "key": "fore",
+   "name": "Forearm",
+   "region": "Arms",
+   "index": 7,
+   "selectable": true,
+   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
+  },
+  {
+   "id": "glute",
+   "key": "glute",
+   "name": "Gluteus Maximus",
+   "region": "Legs",
+   "index": 8,
+   "selectable": true,
+   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
+  },
+  {
+   "id": "ham",
+   "key": "ham",
+   "name": "Hamstrings",
+   "region": "Legs",
+   "index": 9,
+   "selectable": true,
+   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
+  },
+  {
+   "id": "hand",
+   "key": "hand",
+   "name": "Hand",
+   "region": "Arms",
    "index": 10,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "foot_R",
-   "key": "foot",
-   "name": "Foot",
-   "region": "Legs",
-   "side": "R",
-   "index": 11,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "fore_L",
-   "key": "fore",
-   "name": "Forearm",
-   "region": "Arms",
-   "side": "L",
-   "index": 12,
-   "selectable": true,
-   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
-  },
-  {
-   "id": "fore_R",
-   "key": "fore",
-   "name": "Forearm",
-   "region": "Arms",
-   "side": "R",
-   "index": 13,
-   "selectable": true,
-   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
-  },
-  {
-   "id": "glute_L",
-   "key": "glute",
-   "name": "Gluteus Maximus",
-   "region": "Legs",
-   "side": "L",
-   "index": 14,
-   "selectable": true,
-   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
-  },
-  {
-   "id": "glute_R",
-   "key": "glute",
-   "name": "Gluteus Maximus",
-   "region": "Legs",
-   "side": "R",
-   "index": 15,
-   "selectable": true,
-   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
-  },
-  {
-   "id": "ham_L",
-   "key": "ham",
-   "name": "Hamstrings",
-   "region": "Legs",
-   "side": "L",
-   "index": 16,
-   "selectable": true,
-   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
-  },
-  {
-   "id": "ham_R",
-   "key": "ham",
-   "name": "Hamstrings",
-   "region": "Legs",
-   "side": "R",
-   "index": 17,
-   "selectable": true,
-   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
-  },
-  {
-   "id": "hand_L",
-   "key": "hand",
-   "name": "Hand",
-   "region": "Arms",
-   "side": "L",
-   "index": 18,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "hand_R",
-   "key": "hand",
-   "name": "Hand",
-   "region": "Arms",
-   "side": "R",
-   "index": 19,
    "selectable": false,
    "desc": ""
   },
@@ -207,108 +106,52 @@
    "key": "head",
    "name": "Head",
    "region": "Head",
-   "side": "C",
-   "index": 20,
+   "index": 11,
    "selectable": false,
    "desc": ""
   },
   {
-   "id": "lat_L",
+   "id": "lat",
    "key": "lat",
    "name": "Latissimus Dorsi",
    "region": "Back",
-   "side": "L",
-   "index": 21,
+   "index": 12,
    "selectable": true,
    "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
   },
   {
-   "id": "lat_R",
-   "key": "lat",
-   "name": "Latissimus Dorsi",
-   "region": "Back",
-   "side": "R",
-   "index": 22,
-   "selectable": true,
-   "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
-  },
-  {
-   "id": "obl_L",
+   "id": "obl",
    "key": "obl",
    "name": "External Oblique",
    "region": "Core",
-   "side": "L",
-   "index": 23,
+   "index": 13,
    "selectable": true,
    "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
   },
   {
-   "id": "obl_R",
-   "key": "obl",
-   "name": "External Oblique",
-   "region": "Core",
-   "side": "R",
-   "index": 24,
-   "selectable": true,
-   "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
-  },
-  {
-   "id": "pec_L",
+   "id": "pec",
    "key": "pec",
    "name": "Pectoralis Major",
    "region": "Chest",
-   "side": "L",
-   "index": 25,
+   "index": 14,
    "selectable": true,
    "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
   },
   {
-   "id": "pec_R",
-   "key": "pec",
-   "name": "Pectoralis Major",
-   "region": "Chest",
-   "side": "R",
-   "index": 26,
-   "selectable": true,
-   "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
-  },
-  {
-   "id": "quad_L",
+   "id": "quad",
    "key": "quad",
    "name": "Quadriceps",
    "region": "Legs",
-   "side": "L",
-   "index": 27,
+   "index": 15,
    "selectable": true,
    "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
   },
   {
-   "id": "quad_R",
-   "key": "quad",
-   "name": "Quadriceps",
-   "region": "Legs",
-   "side": "R",
-   "index": 28,
-   "selectable": true,
-   "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
-  },
-  {
-   "id": "shin_L",
+   "id": "shin",
    "key": "shin",
    "name": "Tibialis Anterior",
    "region": "Legs",
-   "side": "L",
-   "index": 29,
-   "selectable": true,
-   "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
-  },
-  {
-   "id": "shin_R",
-   "key": "shin",
-   "name": "Tibialis Anterior",
-   "region": "Legs",
-   "side": "R",
-   "index": 30,
+   "index": 16,
    "selectable": true,
    "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
   },
@@ -317,28 +160,16 @@
    "key": "traps",
    "name": "Trapezius",
    "region": "Shoulders",
-   "side": "C",
-   "index": 31,
+   "index": 17,
    "selectable": true,
    "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
   },
   {
-   "id": "tri_L",
+   "id": "tri",
    "key": "tri",
    "name": "Triceps Brachii",
    "region": "Arms",
-   "side": "L",
-   "index": 32,
-   "selectable": true,
-   "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
-  },
-  {
-   "id": "tri_R",
-   "key": "tri",
-   "name": "Triceps Brachii",
-   "region": "Arms",
-   "side": "R",
-   "index": 33,
+   "index": 18,
    "selectable": true,
    "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
   }

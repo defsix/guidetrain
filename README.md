@@ -60,8 +60,9 @@ them into geometry rather than approximating muscles with shapes:
 3. Regions expand across the shaded, tendon and bone surface between them
    until every triangle is claimed.
 
-That yields ~110 individual muscles, grouped into 18 muscle groups / 35
-zones, baked onto each vertex as the model's `_ZONE` attribute. Picking at
+That yields ~110 individual muscles, grouped into 19 zones — one per muscle,
+covering both sides, since left and right biceps are the same thing to train —
+baked onto each vertex as the model's `_ZONE` attribute. Picking at
 runtime is just reading that number — see
 `apps/web/src/anatomy/zoneMapping.js`.
 

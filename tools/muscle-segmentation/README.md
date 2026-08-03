@@ -97,16 +97,17 @@ noise (p75 0.0068) and the closest real border, biceps against triceps at 0.039.
 
 ### Symmetry, and the one place a patch is still cut
 
-Left and right are decided together: segmentation isn't quite mirror-perfect,
-and where a patch's centre lands near one of the rules' thresholds its mirror can
-fall the other side of it — which showed up as one oblique covering 2.57% of the
-body against 1.76% for the other. Each patch is paired with whichever patch most
-nearly mirrors it, and the pair is decided once from the **average** of the two
-centres (reflecting the twin's x so the sides can be averaged). Averaging is
-steadier than trusting either side alone: a centre sitting on a threshold gets
-pulled to whichever side the pair agrees on rather than the two disagreeing.
-Decisions are settled before any split is applied; reconciling afterwards
-flattens a split patch back to one label.
+Left and right are decided together, or one thigh comes out "quadriceps" and the
+other "adductors" purely because their centres fell either side of a threshold.
+
+Pairing patches by nearest mirrored centre doesn't work — it matched only 19 of
+112, because the two halves aren't segmented identically and the same muscle can
+have quite different centres on each side. Instead every face is matched to the
+face nearest its own mirrored position, and each patch then weighs its own
+decision against the decisions covering its mirror image, taking whichever wins
+by area. Repeating that settles both sides onto the same answer. Decisions are
+settled before any split is applied; reconciling afterwards flattens a split
+patch back to one label.
 
 Landmarks are measured, not assumed. The crotch is found by scanning upward for
 where surface on the midline jumps as the legs merge; the elbow is the thinnest
