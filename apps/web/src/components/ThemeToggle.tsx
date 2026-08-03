@@ -1,12 +1,15 @@
 import type { ThemePref } from "../state/useTheme";
 
-const OPTIONS: { value: ThemePref; label: string; title: string }[] = [
-  { value: "light", label: "Light", title: "Always light" },
-  { value: "dark", label: "Dark", title: "Always dark" },
-  { value: "auto", label: "Device", title: "Follow device setting" },
-];
+// Order the button cycles through.
+const ORDER: ThemePref[] = ["light", "dark", "auto"];
 
-/** Three-way theme switch: light, dark, or follow the device. */
+const FACE: Record<ThemePref, { icon: string; label: string; title: string }> = {
+  light: { icon: "☀", label: "Light", title: "Light — tap for dark" },
+  dark: { icon: "☾", label: "Dark", title: "Dark — tap to follow device" },
+  auto: { icon: "◐", label: "Device", title: "Following device — tap for light" },
+};
+
+/** One button, cycling light → dark → device. */
 export default function ThemeToggle({
   pref,
   onChange,
@@ -14,21 +17,19 @@ export default function ThemeToggle({
   pref: ThemePref;
   onChange: (next: ThemePref) => void;
 }) {
+  const face = FACE[pref];
+  const next = ORDER[(ORDER.indexOf(pref) + 1) % ORDER.length];
+
   return (
-    <div className="theme-toggle" role="radiogroup" aria-label="Colour theme">
-      {OPTIONS.map((o) => (
-        <button
-          key={o.value}
-          type="button"
-          role="radio"
-          aria-checked={pref === o.value}
-          title={o.title}
-          className={pref === o.value ? "active" : ""}
-          onClick={() => onChange(o.value)}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
+    <button
+      type="button"
+      className="theme-toggle"
+      title={face.title}
+      aria-label={`Colour theme: ${face.label}. Tap to switch to ${FACE[next].label}.`}
+      onClick={() => onChange(next)}
+    >
+      <span className="theme-toggle-icon" aria-hidden="true">{face.icon}</span>
+      <span className="theme-toggle-label">{face.label}</span>
+    </button>
   );
 }

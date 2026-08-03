@@ -85,8 +85,8 @@ puts the mobile variant at 1.05 MB (60k faces) and the full one at 3.5 MB
 
 ## Theming
 
-Light, dark, or follow the device — a three-way switch in the header, remembered
-across visits. Everything reads from CSS custom properties keyed off a
+Light, dark, or follow the device — one button in the header cycling the three,
+remembered across visits. Everything reads from CSS custom properties keyed off a
 `data-theme` attribute on `<html>` (`apps/web/src/index.css`), so switching is a
 single attribute swap. On "device" the app tracks the OS setting live, including
 if it changes while the tab is open.
