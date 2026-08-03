@@ -1,7 +1,7 @@
 import React, { useRef, useMemo, useEffect, useLayoutEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtLocal, REGION_COLORS } from './zoneMapping';
+import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtFace, REGION_COLORS } from './zoneMapping';
 
 const BASE = new THREE.Color('#8a5347');
 const NEUTRAL = new THREE.Color('#33404f');
@@ -12,14 +12,12 @@ const HILITE = new THREE.Color('#ffd257');
 // z-fighting with the mesh they trace.
 const OUTLINE_LIFT = 0.0015;
 
-// Scene-space height a model is normalized to, so the fixed camera/fog/
-// OrbitControls distances in AnatomyViewer keep working regardless of a
-// given model's native export scale.
-const SCENE_HEIGHT = 1.9;
-
 /**
- * AnatomyModel — loads the fused GLB, bakes muscle zones, and handles
+ * AnatomyModel — loads the segmented GLB, paints muscle zones, and handles
  * click / hover selection. Purely the 3D object; UI lives in AnatomyViewer.
+ *
+ * Which muscle each vertex belongs to is baked into the model itself (see
+ * zoneMapping.js), so selection is a direct lookup rather than a spatial test.
  *
  * Props:
  *  url        model path (served from /public)
@@ -46,7 +44,6 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
     return { geometry: geo, material: mat };
   }, [scene]);
 
-  // Bake zones once per geometry (heavy loop, memoized).
   const baked = useMemo(() => bakeVertexZones(geometry, map), [geometry, map]);
 
   // Clean traced lines along zone boundaries, instead of the jagged edge the
@@ -58,24 +55,15 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
   );
   const selectedBoundary = selectedId ? boundary.byZone[selectedId] : null;
 
-  // Center the mesh at the origin and normalize it to SCENE_HEIGHT tall.
-  // Picking stays correct: worldToLocal() on the mesh inverts this group's
-  // full transform, handing pickZoneAtLocal/normOf back native (fit_bounds
-  // space) coordinates exactly as before.
+  // Centre the mesh at the origin. The export pipeline already normalises the
+  // model to the height the camera in AnatomyViewer is framed for, so there's
+  // nothing to rescale here.
   const offset = useMemo(() => {
     geometry.computeBoundingBox();
     const c = new THREE.Vector3();
     geometry.boundingBox.getCenter(c);
     return c;
   }, [geometry]);
-  const scale = useMemo(() => {
-    const size = map.fit_bounds.size || [
-      map.fit_bounds.max[0] - map.fit_bounds.min[0],
-      map.fit_bounds.max[1] - map.fit_bounds.min[1],
-      map.fit_bounds.max[2] - map.fit_bounds.min[2],
-    ];
-    return SCENE_HEIGHT / size[1];
-  }, [map]);
 
   // Paint vertex colors from current selection + region.
   const paint = () => {
@@ -85,8 +73,10 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
     for (let i = 0; i < pos.count; i++) {
       let c = NEUTRAL;
       const zi = baked.vertZone[i];
-      if (zi >= 0) {
-        const reg = Z[zi].region;
+      const zone = zi >= 0 ? Z[zi] : null;
+      // Hands, feet and head aren't trainable groups — leave them neutral.
+      if (zone && zone.selectable !== false) {
+        const reg = zone.region;
         if (region === 'all' || reg === region) c = new THREE.Color(REGION_COLORS[reg]).lerp(BASE, 0.35);
         else c = DIM;
       }
@@ -100,13 +90,14 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
 
   useLayoutEffect(paint, [selectedId, region, baked, geometry, map]);
 
-  // Resolve a pointer event to a muscle zone using the native-space hit point.
-  // meshRef can be transiently null between an outline-triggered re-render
-  // and the mesh's own ref commit; treat that as "no zone" rather than throw.
+  // Resolve a pointer event to a muscle zone via the picked triangle's
+  // baked zone ids. meshRef can be transiently null between an
+  // outline-triggered re-render and the mesh's own ref commit; treat that as
+  // "no zone" rather than throw.
   const zoneFromEvent = (e) => {
-    if (!meshRef.current) return null;
+    if (!meshRef.current || !e.face) return null;
     const lp = meshRef.current.worldToLocal(e.point.clone());
-    return pickZoneAtLocal(lp.x, lp.y, lp.z, map, baked.localZ);
+    return pickZoneAtFace(geometry, map, [e.face.a, e.face.b, e.face.c], lp);
   };
 
   const handleMove = (e) => {
@@ -120,10 +111,10 @@ export default function AnatomyModel({ url, map, selectedId, region = 'all', onS
 
   useEffect(() => () => useGLTF.clear?.(url), [url]);
 
-  const groupPosition = [-offset.x * scale, -offset.y * scale, -offset.z * scale];
+  const groupPosition = [-offset.x, -offset.y, -offset.z];
 
   return (
-    <group position={groupPosition} scale={scale}>
+    <group position={groupPosition}>
       <mesh
         ref={meshRef}
         geometry={geometry}

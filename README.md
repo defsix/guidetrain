@@ -35,31 +35,46 @@ node docs/screenshots/capture.mjs
 ## 3D Model — Credits & License
 
 The anatomical model (`apps/web/public/models/anatomy_full.glb`,
-`anatomy_mobile.glb`) was generated with **Meshy AI (Meshy 6)** from a
-part-segmented human muscular anatomy prompt, and is released under
-**CC0 1.0 (public domain)**.
+`anatomy_mobile.glb`) is derived from a **Meshy AI (Meshy 6)** generation
+released under **CC0 1.0 (public domain)**, with each muscle group then
+hand-painted a distinct colour in the source texture.
 
 - License: CC0 1.0 Universal — no rights reserved, no attribution required.
-- Source: AI-generated via Meshy AI's text-to-3D pipeline (multi-part
-  segmented output — head/torso/arms/forearms/thighs/shins are separate
-  mesh parts, unlike the earlier single-fused-mesh generation).
-- Modifications: the 13 exported parts were merged into one mesh (applying
-  each part's world transform), decimated to a 113k-face mobile variant
-  (2.0 MB) alongside the 280k-face full version (6.7 MB), and fitted with a
-  spatial muscle-zone map (`apps/web/src/anatomy/muscle-map.json`, 31 zones
-  across 7 regions) for interactive per-muscle selection — see
-  `apps/web/src/anatomy/zoneMapping.js` for how a click/hover point resolves
-  to a zone.
+- Source: AI-generated via Meshy AI's text-to-3D pipeline, then colour-coded
+  per muscle group by hand.
 
 CC0 permits commercial use; this credit is included as good practice, not
 obligation.
 
-The model's exported parts are coarse body-region segments, not per-muscle
-geometry, so selection still works by spatial zone rather than by picking a
-named sub-mesh — zone edges are approximate, good for "train the chest"
-rather than teaching precise origins and insertions. The A-pose (arms held
-away from the torso) gives cleaner shoulder/arm zone boundaries than the
-previous model.
+### How muscle selection works
+
+Those hand-painted colours are what defines each muscle, so the build turns
+them into geometry rather than approximating muscles with shapes:
+
+1. Every triangle is sampled at its UV centroid to read the tint it was
+   painted (the centroid keeps the sample clear of the atlas island borders,
+   where JPEG bleed contaminates the colour).
+2. Tints snap to the model's palette, and neighbouring triangles sharing a
+   tint are grown into connected regions — one region per muscle, with left
+   and right separating naturally since they don't touch.
+3. Regions expand across the shaded, tendon and bone surface between them
+   until every triangle is claimed.
+
+That yields ~110 individual muscles, grouped into 18 muscle groups / 35
+zones, baked onto each vertex as the model's `_ZONE` attribute. Picking at
+runtime is just reading that number — see
+`apps/web/src/anatomy/zoneMapping.js`.
+
+Because the zones follow the artwork, muscle edges are exact rather than
+approximate. The earlier approach fitted an axis-aligned box per muscle in
+normalised body space; boxes inevitably overlapped — an arm box would reach
+across the torso and claim part of the back — so boundaries drifted from the
+anatomy and needed hand-tuning.
+
+The textures aren't shipped: the viewer paints muscles from its own region
+palette, so the model only carries geometry plus the zone attribute. That
+puts the mobile variant at 1.05 MB (60k faces) and the full one at 3.5 MB
+(150k faces).
 
 ## Hosting on GitHub Pages
 

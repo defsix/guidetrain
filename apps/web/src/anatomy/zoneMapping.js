@@ -1,123 +1,96 @@
 /**
  * zoneMapping.js — framework-agnostic muscle zone logic.
  *
- * The anatomy model is a single fused mesh (no separable muscles), so we
- * select muscles by SPATIAL ZONES: each muscle group is a box in normalized
- * body coordinates (ny 0=feet..1=crown, nx -1..1 split0=R/L, nz -1..1 +1=front).
+ * Which muscle a point belongs to is decided when the model is built, not at
+ * runtime: the segmentation pipeline reads the colour the artist painted each
+ * muscle in the source texture, grows that into whole muscle regions across the
+ * mesh, and bakes the resulting zone index onto every vertex as the model's
+ * `_ZONE` attribute. So a lookup here is just reading that number.
  *
- * Front/back is measured relative to a LOCAL center per height-slice, which
- * keeps limbs correct even in a contrapposto / arms-at-side pose.
- *
- * All coordinates are the model's NATIVE coordinates (as authored in the GLB);
- * map.fit_bounds describes that native bounding box.
+ * This replaces the earlier approach of approximating each muscle with an
+ * axis-aligned box in normalised body space. Boxes inevitably overlapped —
+ * an arm box would reach across the torso and claim part of the back — so
+ * boundaries drifted from the anatomy and had to be hand-tuned. Zone edges now
+ * follow the artwork exactly, and a vertex belongs to exactly one muscle.
  */
 
-const SLICES = 48;
-
-/** Normalize native (x,y,z) -> [nx, ny, nzLocal] using a precomputed localZ table. */
-export function normOf(x, y, z, map, localZ) {
-  const { min, max, size } = map.fit_bounds;
-  const cx = (min[0] + max[0]) / 2;
-  const czc = (min[2] + max[2]) / 2;
-  const nx = (x - cx) / (size[0] / 2);
-  const ny = (y - min[1]) / size[1];
-  const nzr = (z - czc) / (size[2] / 2);
-  const b = Math.max(0, Math.min(SLICES - 1, (ny * SLICES) | 0));
-  return [nx, ny, nzr - localZ[b]];
-}
-
-/** Compute the median native-z per height slice (the "spine" of the body). */
-function computeLocalZ(position, map) {
-  const { min, max, size } = map.fit_bounds;
-  const czc = (min[2] + max[2]) / 2;
-  const buckets = Array.from({ length: SLICES }, () => []);
-  const n = position.count;
-  for (let i = 0; i < n; i++) {
-    const y = position.getY(i), z = position.getZ(i);
-    const ny = (y - min[1]) / size[1];
-    const b = Math.max(0, Math.min(SLICES - 1, (ny * SLICES) | 0));
-    buckets[b].push((z - czc) / (size[2] / 2));
-  }
-  const localZ = new Float32Array(SLICES);
-  for (let b = 0; b < SLICES; b++) {
-    const a = buckets[b];
-    if (a.length) { a.sort((p, q) => p - q); localZ[b] = a[a.length >> 1]; }
-  }
-  return localZ;
-}
-
-function inZone(P, z) {
-  return P[0] >= z.nx[0] && P[0] <= z.nx[1] &&
-         P[1] >= z.ny[0] && P[1] <= z.ny[1] &&
-         P[2] >= z.nz[0] && P[2] <= z.nz[1];
+/** Zone index baked onto each vertex, or null if the model lacks the attribute. */
+export function zoneAttribute(geometry) {
+  return geometry.attributes._zone || null;
 }
 
 /**
- * Bake each vertex to its muscle zone.
- * @returns { localZ, vertZone: Int16Array, zoneVerts: {id: number[]} }
+ * Bake per-vertex zone assignments.
+ *
+ * Kept as a function (rather than reading the attribute directly at each call
+ * site) so callers get the same shape of result as before, and so a model
+ * without the attribute fails loudly instead of silently colouring nothing.
+ *
+ * @returns { vertZone: Int16Array, zoneVerts: {id: number[]} }
  */
 export function bakeVertexZones(geometry, map) {
-  const position = geometry.attributes.position;
-  const n = position.count;
-  const localZ = computeLocalZ(position, map);
-  const Z = map.zones;
-
-  const vertZone = new Int16Array(n).fill(-1);
-  const bestPri = new Int8Array(n).fill(-1);
-  const bestD = new Float32Array(n).fill(1e9);
+  const attr = zoneAttribute(geometry);
+  if (!attr) {
+    throw new Error(
+      'Model has no _ZONE attribute — it predates the segmented muscle pipeline.'
+    );
+  }
+  const n = attr.count;
+  const zones = map.zones;
+  const vertZone = new Int16Array(n);
+  const zoneVerts = {};
+  zones.forEach((z) => (zoneVerts[z.id] = []));
 
   for (let i = 0; i < n; i++) {
-    const P = normOf(position.getX(i), position.getY(i), position.getZ(i), map, localZ);
-    for (let zi = 0; zi < Z.length; zi++) {
-      const z = Z[zi];
-      if (!inZone(P, z)) continue;
-      const dx = P[0] - z.center[0], dy = P[1] - z.center[1], dz = P[2] - z.center[2];
-      const d = dx * dx + dy * dy + dz * dz;
-      if (z.priority > bestPri[i] || (z.priority === bestPri[i] && d < bestD[i])) {
-        bestPri[i] = z.priority; bestD[i] = d; vertZone[i] = zi;
-      }
-    }
+    const zi = attr.getX(i);
+    const zone = zones[zi];
+    // An out-of-range index means model and map are out of step; treat as unzoned.
+    if (!zone) { vertZone[i] = -1; continue; }
+    vertZone[i] = zi;
+    zoneVerts[zone.id].push(i);
   }
-
-  const zoneVerts = {};
-  Z.forEach((z) => (zoneVerts[z.id] = []));
-  for (let i = 0; i < n; i++) if (vertZone[i] >= 0) zoneVerts[Z[vertZone[i]].id].push(i);
-
-  return { localZ, vertZone, zoneVerts };
-}
-
-/** Given a native-space point, return the matching zone (or null). */
-export function pickZoneAtLocal(px, py, pz, map, localZ) {
-  const P = normOf(px, py, pz, map, localZ);
-  const Z = map.zones;
-  let best = null, bp = -1, bd = 1e9;
-  for (let zi = 0; zi < Z.length; zi++) {
-    const z = Z[zi];
-    if (!inZone(P, z)) continue;
-    const dx = P[0] - z.center[0], dy = P[1] - z.center[1], dz = P[2] - z.center[2];
-    const d = dx * dx + dy * dy + dz * dz;
-    if (z.priority > bp || (z.priority === bp && d < bd)) { bp = z.priority; bd = d; best = z; }
-  }
-  return best;
+  return { vertZone, zoneVerts };
 }
 
 /**
- * Trace clean boundary lines between muscle zones (and between a zone and
- * unzoned surface), instead of relying on the jagged edge the flat
- * per-vertex zone fill leaves wherever a zone's spatial box happens to cut
- * across the mesh at an angle.
+ * Resolve a picked triangle to its muscle zone.
  *
- * A mesh edge is a "boundary" edge when its two endpoints fall in different
- * zones (including zoned vs. unzoned). The raw boundary is just as jagged as
- * the mesh's own vertex spacing, so it's smoothed afterward: boundary
- * vertices form chains (a vertex with exactly two boundary-neighbors is an
- * interior chain point), and each chain point is iteratively pulled toward
- * its neighbors' midpoint. Junctions — one or three-plus neighbors, e.g.
- * where three zones meet — are left as fixed anchors so chains don't detach
- * from each other or from the surface.
+ * All three corners of a triangle usually share a zone; where they don't the
+ * triangle straddles a boundary, and the nearest corner to the hit point wins.
+ */
+export function pickZoneAtFace(geometry, map, faceIndices, point) {
+  const attr = zoneAttribute(geometry);
+  if (!attr || !faceIndices) return null;
+  const pos = geometry.attributes.position;
+  const [a, b, c] = faceIndices;
+
+  let best = a, bestD = Infinity;
+  for (const v of [a, b, c]) {
+    const dx = pos.getX(v) - point.x;
+    const dy = pos.getY(v) - point.y;
+    const dz = pos.getZ(v) - point.z;
+    const d = dx * dx + dy * dy + dz * dz;
+    if (d < bestD) { bestD = d; best = v; }
+  }
+  const zone = map.zones[attr.getX(best)];
+  if (!zone || zone.selectable === false) return null;
+  return zone;
+}
+
+/**
+ * Trace clean boundary lines between muscle zones, instead of the jagged edge
+ * the flat per-vertex zone fill leaves along the triangle steps.
  *
- * @returns { all: Float32Array, byZone: {id: Float32Array} } — each is a
- * flat [x,y,z, x,y,z, ...] position list for a THREE.LineSegments geometry.
+ * A mesh edge is a boundary edge when its two endpoints fall in different
+ * zones. The raw boundary is as jagged as the mesh's own vertex spacing, so
+ * it's smoothed afterwards: boundary vertices form chains (a vertex with
+ * exactly two boundary-neighbours is an interior chain point), and each chain
+ * point is iteratively pulled toward its neighbours' midpoint. Junctions —
+ * one, or three-plus neighbours, e.g. where three zones meet — stay fixed as
+ * anchors so chains don't detach from each other or from the surface.
+ *
+ * @returns { all: Float32Array, byZone: {id: Float32Array} } — each a flat
+ * [x,y,z, x,y,z, ...] position list for a THREE.LineSegments geometry.
  */
 export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoothIterations = 12) {
   const index = geometry.index;
@@ -126,20 +99,17 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
   const vertZone = baked.vertZone;
   const Z = map.zones;
 
-  // Nudge a point slightly along its vertex normal so the line sits just
-  // above the surface instead of z-fighting with the mesh it traces.
   function liftedPoint(i) {
     const x = position.getX(i), y = position.getY(i), z = position.getZ(i);
     if (!normal || !liftEps) return [x, y, z];
     return [x + normal.getX(i) * liftEps, y + normal.getY(i) * liftEps, z + normal.getZ(i) * liftEps];
   }
 
-  // Phase 1: find every boundary edge and which zone(s) it borders.
   const seen = new Set();
-  const edges = []; // [a, b] mesh vertex indices
-  const edgeZoneIds = []; // parallel: [zoneIdOrNull, zoneIdOrNull]
+  const edges = [];
+  const edgeZoneIds = [];
   const boundaryVerts = new Set();
-  const adjacency = new Map(); // vertex index -> Set of boundary-neighbor indices
+  const adjacency = new Map();
 
   function link(a, b) {
     if (!adjacency.has(a)) adjacency.set(a, new Set());
@@ -148,7 +118,7 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
 
   function addEdge(a, b) {
     const za = vertZone[a], zb = vertZone[b];
-    if (za === zb) return; // interior edge, not a zone boundary
+    if (za === zb) return;
     const key = a < b ? a * 1e7 + b : b * 1e7 + a;
     if (seen.has(key)) return;
     seen.add(key);
@@ -172,7 +142,6 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
     }
   }
 
-  // Phase 2: smooth boundary-vertex positions along their local chain.
   let smoothed = new Map();
   for (const v of boundaryVerts) smoothed.set(v, liftedPoint(v));
   for (let iter = 0; iter < smoothIterations; iter++) {
@@ -195,7 +164,6 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
     smoothed = next;
   }
 
-  // Phase 3: materialize segments from the smoothed positions.
   const allPts = [];
   const byZonePts = {};
   edges.forEach(([a, b], i) => {
@@ -209,13 +177,6 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
   const byZone = {};
   for (const id in byZonePts) byZone[id] = new Float32Array(byZonePts[id]);
   return { all: new Float32Array(allPts), byZone };
-}
-
-/** Convert a normalized center back to native coords (for 3D labels / boxes). */
-export function normToNative(nx, ny, nz, map) {
-  const { min, max, size } = map.fit_bounds;
-  const cx = (min[0] + max[0]) / 2, czc = (min[2] + max[2]) / 2;
-  return [cx + nx * size[0] / 2, min[1] + ny * size[1], czc + nz * size[2] / 2];
 }
 
 export const REGION_COLORS = {
