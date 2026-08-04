@@ -86,12 +86,18 @@
   padding: 6px 12px; font-size: 12px; pointer-events: none;
 }
 
+/* Down the left, not across the middle. Once the exercise list is in here the
+   panel is tall, and centred it covered the model completely — which is the one
+   thing it must not do, since opening an exercise lights up the muscles it
+   trains on that very model. */
 .anatomy-readout {
-  position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 7;
-  width: min(560px, calc(100% - 32px)); display: flex; gap: 14px; align-items: stretch;
+  position: absolute; bottom: 16px; left: 16px; z-index: 7;
+  width: 340px; max-height: calc(100% - 122px);
+  display: flex; flex-direction: column;
   background: var(--panel-translucent); border: 1px solid var(--border); backdrop-filter: blur(14px);
   border-radius: 14px; padding: 15px;
 }
+.anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; }
 .anatomy-readout .body { flex: 1; }
 .anatomy-readout .mname { font-size: 16px; font-weight: 600; }
 .anatomy-readout .mmeta {
@@ -107,9 +113,68 @@
 }
 .train-btn:hover { filter: brightness(1.12); }
 
+/* Exercises for the selected muscle. The list scrolls inside the readout so a
+   long one can't push the panel off the canvas. */
+.anatomy-readout .drills {
+  margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--border);
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.anatomy-readout .drills h3 {
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--text-muted); margin: 0 0 8px;
+}
+.anatomy-readout .drills ul { list-style: none; margin: 0; padding: 0; }
+.anatomy-readout .drills li { border-radius: 9px; margin-bottom: 3px; }
+.anatomy-readout .drills li.open { background: var(--panel); }
+
+.drill-head {
+  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  background: none; border: 0; padding: 8px 10px; border-radius: 9px; cursor: pointer;
+  font-family: inherit; font-size: 12.5px; color: var(--text); text-align: left;
+}
+.drill-head:hover { background: var(--panel); }
+.drill-head .dname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.drill-head .tags { display: flex; gap: 5px; flex: none; }
+.drill-head .tags em {
+  font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
+  border: 1px solid var(--border); border-radius: 5px; padding: 2px 5px; white-space: nowrap;
+}
+
+.drill-body { padding: 0 10px 11px; }
+.drill-body .works { display: flex; flex-wrap: wrap; gap: 5px 9px; margin-bottom: 9px; }
+.drill-body .work {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--text-muted);
+}
+/* Secondary muscles read quieter, matching how they're painted on the model. */
+.drill-body .work .dot {
+  width: 9px; height: 9px; border-radius: 3px; opacity: 0.45;
+  box-shadow: 0 0 0 1px var(--border-strong) inset;
+}
+.drill-body .work.primary { color: var(--text); }
+.drill-body .work.primary .dot { opacity: 1; }
+
+.drill-body .steps {
+  margin: 0 0 10px; padding-left: 17px; font-size: 12px; line-height: 1.55;
+  color: var(--text-muted);
+}
+.drill-body .steps li { margin-bottom: 4px; }
+.drill-body .watch {
+  display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--accent);
+  text-decoration: none; letter-spacing: 0.02em;
+}
+.drill-body .watch:hover { text-decoration: underline; }
+
 @media (max-width: 720px) {
   .anatomy-root .regions { width: 158px; max-height: calc(100% - 130px); }
   .anatomy-root .controls { width: 140px; }
   .anatomy-root .muscle { font-size: 11.5px; padding: 4px 6px; }
-  .anatomy-readout { flex-wrap: wrap; }
+  /* No room beside the model on a phone, so it goes back to a bottom sheet —
+     capped at half the height so the body stays visible above it. */
+  .anatomy-readout {
+    left: 16px; right: 16px; width: auto; bottom: 12px;
+    max-height: 52%;
+  }
+  .anatomy-readout .head { flex-wrap: wrap; }
 }

@@ -71,6 +71,27 @@ normal vision and under simulated colour blindness. The palette clears the
 lightness band, chroma floor and both separation floors against **the light and
 the dark canvas alike**. Built by `tools/muscle-segmentation/palette-design.py`.
 
+## Exercises
+
+Selecting a muscle lists the exercises that train it — step-by-step
+instructions, equipment, difficulty, and a YouTube search link (a search rather
+than a fixed video id, so it can't rot and needs no API key). 180 exercises
+across all 17 zones, built by `tools/exercises/build-exercises.py` from the
+[Free Exercise DB](https://github.com/yuhonas/free-exercise-db), which is public
+domain under the Unlicense.
+
+**No third-party images are bundled.** That dataset ships photos, but they carry
+no stated licence — the question was [asked in 2024](https://github.com/yuhonas/free-exercise-db/issues/12)
+and closed unanswered, and the upstream doesn't say where they came from. Every
+other reachable illustrated set was worse. So an exercise is illustrated on the
+app's own model instead: opening one lights the muscles it trains, primary solid
+and secondary dimmed. That is more useful than a stock photo and entirely ours.
+
+Two zones needed work the source couldn't do. It has no oblique category — all
+rotation and side-bending sits under "abdominals" — so those are separated by
+movement. It has nothing usable for tibialis anterior, so six exercises are
+named in the build script and marked `"source": "curated"`.
+
 ## Theming
 
 Light, dark, or follow the device — one button in the header cycles the three
