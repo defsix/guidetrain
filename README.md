@@ -11,7 +11,7 @@ A gym training platform. Phase 1: pick your basics, then explore an interactive
 
 | Muscle group selected | Mobile |
 | --- | --- |
-| ![Quadriceps selected, showing region chips and the muscle detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
+| ![Quadriceps selected, showing the muscle picker and the detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
 
 Screenshots are refreshed as each phase lands. To regenerate them yourself,
 start the web dev server (see below), then:
@@ -83,10 +83,20 @@ between them.
 
 Each triangle carries a single zone and vertices are split along the borders,
 so muscle edges are hard lines rather than the gradient the shader would
-otherwise blend between neighbouring vertex colours. Every muscle also gets its
-own colour (`MUSCLE_COLORS`), with touching muscles deliberately given distant
-hues — colouring by region instead put five of the seven regions in the
-red/orange family, and a whole leg or arm read as one undifferentiated mass.
+otherwise blend between neighbouring vertex colours. Borders are also smoothed
+on the decimated mesh — the one actually drawn — by blurring each zone's field
+across the surface and reading off the winner; done on the full-resolution mesh
+instead it is undone by the decimation that follows.
+
+`MUSCLE_COLORS` is the single source of colour for both the model and the
+picker, so a swatch in the list is exactly the colour on the body. It is a
+system rather than seventeen separate choices: nine hues evenly spaced round the
+wheel, each at a deep and a bright step at matched chroma. Every pair a person
+can confuse — muscles that touch on the model, muscles listed one above the
+other in the picker — is scored by OKLab distance under normal vision and under
+simulated colour blindness, and the palette clears the lightness band, chroma
+floor and separation floors against **both** the light and the dark canvas. See
+`tools/muscle-segmentation/palette-design.py`.
 
 Because the zones follow the artwork, muscle edges are exact rather than
 approximate. The earlier approach fitted an axis-aligned box per muscle in

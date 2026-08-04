@@ -39,6 +39,120 @@ function build(targetTris, error, outName) {
     triZone[t] = (a === b || a === c) ? a : (b === c ? b : Math.min(a, b, c));
   }
 
+  // Smooth the borders, here rather than before decimating.
+  //
+  // A border is where two painted colours met on a noisy texture, so it starts
+  // out as sawtooth; then decimation makes each triangle nine times larger and
+  // every wobble becomes a visible spike. Smoothing the fine mesh barely helps
+  // because the coarse mesh is re-cut from it anyway — the border has to be
+  // settled on the triangles that are actually drawn.
+  //
+  // Each triangle takes whichever zone covers the most area among itself and
+  // the three it shares an edge with. A spike disagrees with all three
+  // neighbours and is rounded off; a straight border has as much of itself on
+  // each side and holds. It also clears up the three-way ties above, which
+  // otherwise resolve by zone number — an alphabetical accident, not geometry.
+  const triArea = new Float32Array(triCount);
+  for (let t = 0; t < triCount; t++) {
+    const i = simplified[t*3]*3, j = simplified[t*3+1]*3, k = simplified[t*3+2]*3;
+    const ux = pos[j]-pos[i], uy = pos[j+1]-pos[i+1], uz = pos[j+2]-pos[i+2];
+    const vx = pos[k]-pos[i], vy = pos[k+1]-pos[i+1], vz = pos[k+2]-pos[i+2];
+    const cx = uy*vz-uz*vy, cy = uz*vx-ux*vz, cz = ux*vy-uy*vx;
+    triArea[t] = Math.hypot(cx, cy, cz) * 0.5;
+  }
+  // triangles sharing an edge
+  const edge = new Map(), nbrA = [], nbrB = [];
+  for (let t = 0; t < triCount; t++) {
+    for (let k = 0; k < 3; k++) {
+      const p = simplified[t*3+k], q = simplified[t*3+(k+1)%3];
+      const kk = p < q ? `${p}_${q}` : `${q}_${p}`;
+      const prev = edge.get(kk);
+      if (prev === undefined) edge.set(kk, t);
+      else { nbrA.push(prev, t); nbrB.push(t, prev); }
+    }
+  }
+  // Pair each triangle with the one nearest its own mirrored position, so the
+  // two sides are smoothed as one. Left and right are not decimated to the same
+  // triangles, so smoothing them independently lets them drift apart — doing
+  // that cost the labelling most of its symmetry until the pairing went in.
+  const cen = new Float64Array(triCount * 3);
+  let xlo = Infinity, xhi = -Infinity, edgeSum = 0;
+  for (let t = 0; t < triCount; t++) {
+    for (let c = 0; c < 3; c++)
+      cen[t*3+c] = (pos[simplified[t*3]*3+c] + pos[simplified[t*3+1]*3+c] + pos[simplified[t*3+2]*3+c]) / 3;
+    if (cen[t*3] < xlo) xlo = cen[t*3];
+    if (cen[t*3] > xhi) xhi = cen[t*3];
+    edgeSum += Math.sqrt(triArea[t]);
+  }
+  const xmid = (xlo + xhi) / 2, cell = Math.max(2 * edgeSum / triCount, 1e-4);
+  const grid = new Map();
+  const ckey = (x, y, z) =>
+    `${Math.floor(x/cell)}_${Math.floor(y/cell)}_${Math.floor(z/cell)}`;
+  for (let t = 0; t < triCount; t++) {
+    const k = ckey(cen[t*3], cen[t*3+1], cen[t*3+2]);
+    const b = grid.get(k); if (b) b.push(t); else grid.set(k, [t]);
+  }
+  const mirror = new Int32Array(triCount).fill(-1);
+  for (let t = 0; t < triCount; t++) {
+    const mx = 2*xmid - cen[t*3], my = cen[t*3+1], mz = cen[t*3+2];
+    let best = -1, bd = Infinity;
+    const gx = Math.floor(mx/cell), gy = Math.floor(my/cell), gz = Math.floor(mz/cell);
+    for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) for (let c = -1; c <= 1; c++) {
+      const bucket = grid.get(`${gx+a}_${gy+b}_${gz+c}`);
+      if (!bucket) continue;
+      for (const s of bucket) {
+        const d = (cen[s*3]-mx)**2 + (cen[s*3+1]-my)**2 + (cen[s*3+2]-mz)**2;
+        if (d < bd) { bd = d; best = s; }
+      }
+    }
+    if (best >= 0 && bd < cell*cell) mirror[t] = best;
+  }
+
+  // Each zone is turned into a field that is 1 on its own triangles and 0
+  // elsewhere, and those fields are blurred across the surface before the
+  // winner is read off. Re-labelling by a straight majority vote instead stalls
+  // almost at once — every triangle already agrees with most of its neighbours
+  // while the border is still sawtooth — whereas blurring keeps shortening the
+  // border for as long as it runs, which is what pulls a ragged edge into a
+  // smooth curve.
+  const NZONE = meta.zones, ALPHA = 0.5, PASSES = 24;
+  let F = new Float32Array(triCount * NZONE);
+  for (let t = 0; t < triCount; t++) F[t*NZONE + triZone[t]] = 1;
+  const wsum = new Float64Array(triCount);
+  for (let e = 0; e < nbrA.length; e++) wsum[nbrA[e]] += triArea[nbrB[e]];
+  let G = new Float32Array(triCount * NZONE);
+  for (let pass = 0; pass < PASSES; pass++) {
+    G.fill(0);
+    for (let e = 0; e < nbrA.length; e++) {
+      const a = nbrA[e]*NZONE, b = nbrB[e]*NZONE, w = triArea[nbrB[e]];
+      for (let z = 0; z < NZONE; z++) G[a+z] += F[b+z] * w;
+    }
+    for (let t = 0; t < triCount; t++) {
+      const s = wsum[t] || 1;
+      for (let z = 0; z < NZONE; z++)
+        G[t*NZONE+z] = (1-ALPHA)*F[t*NZONE+z] + ALPHA*G[t*NZONE+z]/s;
+    }
+    // fold the two sides together so they can never drift apart
+    for (let t = 0; t < triCount; t++) {
+      const m = mirror[t];
+      if (m > t) for (let z = 0; z < NZONE; z++) {
+        const v = (G[t*NZONE+z] + G[m*NZONE+z]) / 2;
+        G[t*NZONE+z] = v; G[m*NZONE+z] = v;
+      }
+    }
+    const tmp = F; F = G; G = tmp;
+  }
+  for (let t = 0; t < triCount; t++) {
+    let best = 0;
+    for (let z = 1; z < NZONE; z++) if (F[t*NZONE+z] > F[t*NZONE+best]) best = z;
+    triZone[t] = best;
+  }
+  {
+    let seam = 0;
+    for (let e = 0; e < nbrA.length; e += 2) if (triZone[nbrA[e]] !== triZone[nbrB[e]]) seam++;
+    console.log(`  ${seam} border edges after smoothing`);
+  }
+
   const key = new Map();          // `${vertex}:${zone}` -> new index
   const srcOf = [];
   const I32 = new Uint32Array(simplified.length);

@@ -180,49 +180,51 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
 }
 
 /**
- * One colour per muscle, not per region.
+ * The muscle palette — the single source of colour for both the model and the
+ * picker, so a swatch in the list is exactly the colour on the body.
  *
- * Colouring by region put five of seven regions in the red/orange family, so
- * neighbouring muscles were nearly the same shade and a whole leg or arm read
- * as one undifferentiated mass. These are spread around the hue circle instead,
- * and muscles that touch on the body are deliberately given distant hues so
- * every boundary is legible.
+ * These are not chosen by eye. Every pair that a person can actually confuse —
+ * muscles that touch on the model, and muscles listed one above the other in
+ * the picker — is scored by OKLab distance under normal vision and under
+ * simulated protanopia and deuteranopia, and the worst pair is what the palette
+ * was optimised to maximise. See tools/muscle-segmentation/palette-design.py.
  *
- * Mid lightness and saturation throughout, so they hold up against both the
- * light and the dark canvas background.
+ * Every colour clears the lightness band and chroma floor for both the light
+ * and the dark canvas. A few sit a little under 3:1 against one surface or the
+ * other; the picker gives each swatch a ring and its name, and the model has a
+ * hover label and a selection readout, so identity is never carried by colour
+ * alone.
+ *
+ * They are deliberately NOT grouped into a hue family per region. With
+ * seventeen muscles, six in the legs alone, a family wide enough to separate
+ * its own members is wide enough to collide with the next family — and colouring
+ * by region is what previously made a whole leg read as one mass. The picker
+ * carries the grouping in its layout and headings instead.
  */
 export const MUSCLE_COLORS = {
-  // torso front
-  pec: '#e04b3c',       // red
-  abs: '#f5c451',       // amber
-  obl: '#8e6bd8',       // purple
-  // torso back
-  lat: '#3f7fd0',       // blue
-  erector: '#5b4bc4',   // blue-violet
-  traps: '#16a394',     // teal
-  delt: '#ffb020',      // yellow-orange
-  // arms
-  bic: '#37b26b',       // green
-  tri: '#145f73',       // dark teal
-  fore: '#cfa72e',      // gold
-  // legs
-  glute: '#e8559a',     // pink
-  quad: '#3fb8d8',      // cyan
-  ham: '#b5651d',       // bronze
-  add: '#7fbf3f',       // green
-  calf: '#2e8b57',      // sea green
-  shin: '#f2994a',      // light orange
-  // other
-  neck: '#c98a6b',      // tan
+  neck: '#8ba03f',
+  traps: '#3e9ed9',
+  delt: '#a33600',
+  pec: '#006698',
+  lat: '#bc8b28',
+  erector: '#7d5800',
+  bic: '#00a9b0',
+  tri: '#88359a',
+  fore: '#586800',
+  abs: '#a5245c',
+  obl: '#d27291',
+  glute: '#868be0',
+  quad: '#514cbc',
+  add: '#3fac7a',
+  ham: '#007249',
+  calf: '#b67ac4',
+  shin: '#d57857',
 };
 
-/** Chip swatches in the region filter — one representative hue per region. */
-export const REGION_COLORS = {
-  Shoulders: '#ffb020', Chest: '#e04b3c', Back: '#3f7fd0',
-  Arms: '#37b26b', Core: '#f5c451', Legs: '#3fb8d8', Neck: '#c98a6b',
-};
+/** Head, hands and feet aren't trainable, so they stay neutral. */
+export const INERT_COLOR = '#b9bdc4';
 
-/** Colour for a zone, falling back to its region if the muscle isn't listed. */
+/** Colour for a zone; anything not a trainable muscle comes back neutral. */
 export function zoneColor(zone) {
-  return MUSCLE_COLORS[zone.key] || REGION_COLORS[zone.region] || '#8a8f98';
+  return MUSCLE_COLORS[zone.key] || INERT_COLOR;
 }

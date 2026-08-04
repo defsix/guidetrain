@@ -66,10 +66,20 @@ _fp=pos[tris].mean(1)
 _y0,_y1=_fp[:,1].min(),_fp[:,1].max()
 _frac=(_fp[:,1]-_y0)/(_y1-_y0)
 CROTCH=0.50
+ILIAC=0.57          # top of the pelvis, where the hips stop flaring
+HIPX=0.094          # half-width of the body at the hips
 ARM_X=0.09
 ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
 _is_arm=np.abs(_fp[:,0])>ARM_X
-region_id=(np.where(_frac<CROTCH,0,1)
+
+# Where the leg stops being the trunk. Not a horizontal plane: the hip crease
+# is lowest at the midline, where the legs meet, and rises to the crest of the
+# pelvis at the sides. Cutting straight across instead left a ruled line over
+# both hips — obliques covering the top of the quadriceps in front, and the
+# same seam over the glutes behind.
+_ax=np.abs(_fp[:,0]-(pos[:,0].min()+pos[:,0].max())/2)
+_hip=CROTCH+(ILIAC-CROTCH)*np.minimum(1.0,_ax/HIPX)
+region_id=(np.where(_frac<_hip,0,1)
            + np.where(_is_arm,2,0)
            # upper arm and forearm are separated too, or one patch spans the
            # elbow and the forearm gets swallowed into biceps with it
