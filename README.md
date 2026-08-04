@@ -60,11 +60,17 @@ them into geometry rather than approximating muscles with shapes:
 3. Regions expand across the shaded, tendon and bone surface between them
    until every triangle is claimed.
 
-That yields ~110 individual muscles, grouped into 19 zones — one per muscle,
+That yields ~110 individual muscles, grouped into 20 zones — one per muscle,
 covering both sides, since left and right biceps are the same thing to train —
 baked onto each vertex as the model's `_ZONE` attribute. Picking at
 runtime is just reading that number — see
 `apps/web/src/anatomy/zoneMapping.js`.
+
+The two halves are made to agree by folding the model onto itself: each region
+is joined to the region covering its mirror image, then cut along the mirror of
+the other side's borders, so every unit that gets a label spans both sides and
+is its own mirror. `tools/muscle-segmentation/check-symmetry.py` measures what
+is left — no muscle's left and right areas now differ by more than 3%.
 
 Each triangle carries a single zone and vertices are split along the borders,
 so muscle edges are hard lines rather than the gradient the shader would

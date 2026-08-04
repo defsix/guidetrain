@@ -9,9 +9,10 @@ merge, and the sideways reach separating a limb from the trunk. Depth is
 measured against the body's own centre line at each height, with the arms
 given their own since they hang behind the trunk's in this pose.
 
-Left and right are reconciled against each other, and the upper arm — painted
-as one region wrapping round the limb — is the single place a patch is cut
-rather than followed.
+Left and right are reconciled against each other by mirroring the model onto
+itself, so the two sides always come out with the same muscles. The upper arm —
+painted as one region wrapping round the limb — is the one place a patch is cut
+on anatomy rather than followed.
 """
 import struct, json
 import numpy as np
@@ -49,7 +50,27 @@ for f in np.arange(0.40,0.58,0.01):
 CROTCH=best[0]
 ARM_X=0.09          # beyond this sideways, a patch is on a limb not the trunk
 ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
-print(f"landmarks: crotch f={CROTCH:.3f}  elbow f={ELBOW}  arm |x|>{ARM_X}")
+
+# Neck: above the shoulders the trunk narrows to a column. Its foot is where
+# the shoulders have finished tapering — the lowest slice no wider than half
+# again the narrowest — and its top is the chin, where the front surface juts
+# forward out of the throat. Assuming heights instead put the chest's upper
+# bound inside the throat, so the whole neck came out labelled as chest; and
+# the skull here is barely wider than the neck, so width alone reads the face
+# as neck.
+_fs=np.arange(0.78,0.98,0.005)
+_w=[];_z=[]
+for f in _fs:
+    m=(FR>=f)&(FR<f+0.005)&(np.abs(fpos[:,0])<0.12)
+    _w.append(np.ptp(np.percentile(fpos[m,0],[1,99])) if m.sum()>20 else np.inf)
+    _z.append(np.percentile(fpos[m,2],99) if m.sum()>20 else 0.0)
+_w=np.array(_w); _z=np.array(_z); _k=int(_w.argmin()); _thr=_w[_k]*1.5
+_lo=_k
+while _lo>0 and _w[_lo-1]<=_thr: _lo-=1
+NECK_LO=_fs[_lo]
+NECK_HI=_fs[_lo+1+int(np.diff(_z[_lo:]).argmax())]
+print(f"landmarks: crotch f={CROTCH:.3f}  elbow f={ELBOW}  arm |x|>{ARM_X}  "
+      f"neck f={NECK_LO:.3f}..{NECK_HI:.3f}")
 
 # Body centre line in depth, per height slice, so "front" means in front of
 # the spine rather than in front of the world origin.
@@ -119,8 +140,8 @@ def classify(f,x,dz):
         # trapezius runs down the middle of the upper back, lats to the sides
         if dz<-0.010: return "traps" if ax<0.055 else "lat"
         return "pec"
-    if f<0.88:  return "traps" if dz<-0.012 else "pec"
-    if f<0.90:  return "neck"
+    if f<NECK_LO: return "traps" if dz<-0.012 else "pec"
+    if f<NECK_HI: return "neck"
     return "head"
 
 per_face=np.array([classify(FR[i],fpos[i,0],DZ[i]) for i in range(len(tris))],dtype=object)
@@ -144,90 +165,151 @@ for c in ids:
 
 ARMSPLIT="__armsplit__"
 
-# --- pair each patch with its mirror ------------------------------------
+# --- match every face to its mirror -------------------------------------
 #
-# The body is symmetric, so a muscle and its mirror must be decided together —
-# otherwise one thigh comes out "quadriceps" and the other "adductors" purely
-# because their centres fell either side of a rule's threshold.
+# The body is symmetric, so a muscle and its mirror have to be decided together,
+# or one thigh comes out "quadriceps" and the other "adductors" purely because
+# their centres fell either side of a rule's threshold.
 #
-# Patches are paired by geometry rather than by comparing centres: every face is
-# matched to the face nearest its own mirrored position, and a patch pairs with
-# whichever patch owns most of those matches. Comparing centres only found 19
-# pairs out of 112, because segmentation is not mirror-perfect and two halves of
-# the same muscle can have quite different centres; matching face by face pairs
-# nearly all of them.
+# Matching is done face by face rather than by comparing patch centres: each
+# face is paired with the face nearest its own mirrored position. Comparing
+# centres pairs only 19 patches out of 112 — segmentation is not mirror-perfect,
+# and the two halves of one muscle can have quite different centres.
 from scipy.spatial import cKDTree
-tree=cKDTree(fpos)
-mirrored=fpos*np.array([-1.0,1.0,1.0])
-_,partner_face=tree.query(mirrored, k=1)
+XMID=(pos[:,0].min()+pos[:,0].max())/2
+FX=fpos[:,0]-XMID
+tree=cKDTree(np.column_stack([FX,fpos[:,1],fpos[:,2]]))
+mdist,partner_face=tree.query(np.column_stack([-FX,fpos[:,1],fpos[:,2]]),k=1)
+MATCHED=mdist<0.004*H       # a poor match means the surface isn't mirrored here
 partner_patch=fm[partner_face]
 
-# Every face is matched to the face nearest its own mirrored position, so each
-# patch can see what the opposite side of the body says about the same place.
-partner_patch=fm[partner_face]
+# --- 1. join each patch to its mirror -----------------------------------
+#
+# A patch is joined to whichever patch covers most of its mirror image. Needing
+# that to be more than half the patch stops two different muscles from being
+# chained together: relaxing it to a fifth does drive the disagreement lower,
+# but only by merging trapezius, latissimus and erector spinae into one region.
+parent={c:c for c in ids}
+def find(x):
+    while parent[x]!=x: parent[x]=parent[parent[x]]; x=parent[x]
+    return x
+def union(x,y):
+    rx,ry=find(x),find(y)
+    if rx!=ry: parent[rx]=ry
 
-decision={}
 for c in ids:
-    cen=cens[c]; m=fm==c
+    m=fm==c
+    if abs(cens[c][0]-XMID)<0.012: continue           # midline mirrors to itself
+    cand=np.unique(partner_patch[m])
+    w=np.array([area[m][partner_patch[m]==k].sum() for k in cand])
+    d=cand[w.argmax()]
+    if (d!=c and w.max()/areas[c]>0.5
+            and np.sign(cens[d][0]-XMID)!=np.sign(cens[c][0]-XMID)):
+        union(c,d)
+
+gid=np.array([find(c) for c in fm])
+paired=sum(1 for c in ids if find(c)!=c)
+
+# --- 2. cut what is left along its own mirror ---------------------------
+#
+# Joining is not enough on its own: where one side is painted as a single patch
+# and the other as three, no pairing of whole patches can agree, and that is
+# exactly where the abdomen and flank stayed lopsided. So each joined region is
+# cut along the mirror image of the other side's borders — a region is split by
+# which region its mirror lands in. Every unit that comes out of this spans both
+# halves of the body and is its own mirror, so a single decision per unit is
+# symmetric by construction.
+#
+# The new cuts are not arbitrary: each one is the reflection of a border the
+# model itself was painted with, which is where that border belongs on the other
+# side. Cutting the raw patches this way instead of the joined regions gives the
+# same symmetry but four times the cutting, because pairs that already agreed
+# get split too.
+a=np.minimum(gid,gid[partner_face])
+b=np.maximum(gid,gid[partner_face])
+key=a.astype(np.int64)*(gid.max()+1)+b
+key[~MATCHED]=-1-gid[~MATCHED]
+_,unit=np.unique(key,return_inverse=True)
+
+# --- 3. fold the offcuts back in ----------------------------------------
+#
+# Where the two sides disagree only slightly the cut leaves a narrow offcut.
+# Each is merged into the neighbour it shares the most border with. The units
+# are their own mirror, so their shared borders are too and the merge stays
+# symmetric.
+wkey=np.round(pos*1e5).astype(np.int64)
+_,weld=np.unique(wkey,axis=0,return_inverse=True)
+wt=weld[tris]
+E=np.sort(np.concatenate([wt[:,[0,1]],wt[:,[1,2]],wt[:,[2,0]]]),axis=1)
+fo=np.tile(np.arange(len(tris)),3)
+o=np.lexsort((E[:,1],E[:,0])); E,fo=E[o],fo[o]
+dup=np.all(E[1:]==E[:-1],axis=1)
+FA=np.concatenate([fo[:-1][dup],fo[1:][dup]])
+FB=np.concatenate([fo[1:][dup],fo[:-1][dup]])
+
+TOT=area.sum(); MINFRAC=0.0015
+NU=int(unit.max())+1
+par=np.arange(NU)
+def ufind(x):
+    while par[x]!=x: par[x]=par[par[x]]; x=par[x]
+    return x
+cross=unit[FA]!=unit[FB]
+pk=unit[FA][cross].astype(np.int64)*NU+unit[FB][cross]
+upk,pc=np.unique(pk,return_counts=True)
+EA,EB=(upk//NU).astype(int),(upk%NU).astype(int)
+uarea=np.zeros(NU); np.add.at(uarea,unit,area)
+offcuts=0
+for _ in range(8):
+    root=np.array([ufind(i) for i in range(NU)])
+    ra=np.zeros(NU); np.add.at(ra,root,uarea)
+    small=[c for c in range(NU) if root[c]==c and ra[c]/TOT<MINFRAC]
+    if not small: break
+    RA,RB=root[EA],root[EB]
+    moved=False
+    for c in sorted(small,key=lambda c:ra[c]):
+        if ufind(c)!=c: continue
+        m=(RA==c)&(RB!=c)
+        if not m.any(): continue
+        nb,inv=np.unique(RB[m],return_inverse=True)
+        w=np.zeros(len(nb)); np.add.at(w,inv,pc[m])
+        par[ufind(c)]=ufind(int(nb[w.argmax()])); moved=True; offcuts+=1
+    if not moved: break
+unit=np.array([ufind(u) for u in unit])
+units=np.unique(unit)
+
+# --- 4. one decision per unit -------------------------------------------
+decision={}
+for u in units:
+    m=unit==u; w=area[m]
+    # x is folded per face, not per unit: a unit spans both sides, so averaging
+    # its raw x would cancel to nothing and the unit would read as if it sat on
+    # the midline.
+    cen=np.array([(np.abs(fpos[m,0]-XMID)*w).sum()/w.sum(),
+                  (fpos[m,1]*w).sum()/w.sum(),
+                  (fpos[m,2]*w).sum()/w.sum()])
     f=(cen[1]-Y0)/H
     # The upper arm is painted as one region wrapping right round the limb — the
     # largest patch there is 47% front and 53% back — so biceps and triceps have
     # no border between them to follow. That one place is cut front-from-back.
     # Everywhere else, quadriceps against hamstrings included, the painted
     # outline is the border.
-    if abs(cen[0])>ARM_X and ELBOW<f<0.78:
-        decision[c]=ARMSPLIT
-        continue
-    dz=cen[2]-(ZC_ARM[m] if abs(cen[0])>ARM_X else ZC_TRUNK[m]).mean()
-    decision[c]=classify(f,cen[0],dz)
-
-# Reconcile each patch with the opposite side of the body.
-#
-# The two halves aren't segmented identically, so a patch rarely has one clean
-# twin — pairing by nearest centre matched only 19 of 112. Instead each patch
-# weighs its own decision against the decisions covering its mirror image, and
-# takes whichever wins by area. Repeating settles the two sides onto the same
-# answer, which is what stops one thigh reading "quadriceps" and the other
-# "adductors" purely because their centres fell either side of a threshold.
-for _ in range(6):
-    face_lab=np.array([decision[c] for c in fm],dtype=object)
-    mir_lab=face_lab[partner_face]
-    changed=0
-    nxt=dict(decision)
-    for c in ids:
-        if decision[c]==ARMSPLIT: continue
-        m=fm==c
-        tally={decision[c]: areas[c]}
-        for lab in np.unique(mir_lab[m]):
-            if lab==ARMSPLIT: continue
-            tally[lab]=tally.get(lab,0.0)+area[m][mir_lab[m]==lab].sum()
-        best=max(tally,key=tally.get)
-        if best!=decision[c]: nxt[c]=best; changed+=1
-    decision=nxt
-    if not changed: break
-paired=sum(1 for c in ids if abs(cens[c][0])>=0.012)//2
+    if cen[0]>ARM_X and ELBOW<f<0.78:
+        decision[u]=ARMSPLIT
+    else:
+        dz=cen[2]-(ZC_ARM[m] if cen[0]>ARM_X else ZC_TRUNK[m]).mean()
+        decision[u]=classify(f,cen[0],dz)
 
 face_group=per_face.copy()
-for c in ids:
-    m=fm==c
-    if decision[c]==ARMSPLIT:
+for u in units:
+    m=unit==u
+    if decision[u]==ARMSPLIT:
         dzf=fpos[m][:,2]-ZC_ARM[m]
         face_group[np.where(m)[0]]=np.where(dzf>np.median(dzf),"bic","tri")
     else:
-        face_group[m]=decision[c]
-print(f"patches: {len(ids)} labelled from their centre, "
-      f"{paired//2} mirror pairs reconciled, "
-      f"{sum(1 for v in decision.values() if v==ARMSPLIT)} upper-arm patches split")
-
-# No landmark correction or label smoothing pass here on purpose. Both worked
-# face by face, so both cut across the painted outlines — exactly the bleed
-# they were meant to tidy up. Landmarks still do their job inside classify(),
-# deciding which muscle a patch is; the patch keeps its own edges.
-
-tot=area.sum()
-print(f"\n{'muscle':<22}{'region':<11}{'area%':>7}")
-for g in sorted(set(face_group), key=lambda g:-area[face_group==g].sum()):
-    print(f"{NAME[g]:<22}{REGION[g]:<11}{area[face_group==g].sum()/tot*100:>7.2f}")
+        face_group[m]=decision[u]
+print(f"patches: {len(ids)} ({paired} joined to a mirror) -> {len(units)} "
+      f"self-mirroring units, {offcuts} offcuts folded back in, "
+      f"{sum(1 for v in decision.values() if v==ARMSPLIT)} arm units split")
 
 # One zone per muscle, covering both sides.
 #

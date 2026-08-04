@@ -22,6 +22,12 @@ python3 3-prepare-export.py    # per-vertex zone ids, normalised to viewer scale
 node    4-build-glb.mjs        # decimate + write anatomy_mobile/full.glb
 ```
 
+Then, once the result is copied into the app:
+
+```bash
+python3 check-symmetry.py      # left/right agreement of the shipped model
+```
+
 Then copy the two `.glb` files to `apps/web/public/models/` and the generated
 `muscle-map.json` to `apps/web/src/anatomy/`.
 
@@ -46,10 +52,10 @@ Then copy the two `.glb` files to `apps/web/public/models/` and the generated
 
 ### The painted outline is the border
 
-Each patch is labelled **as a whole**, from one reading of the rules at its
-centre of area. The patch outlines come from the colours painted on the model,
-so they already are the muscle borders; the rules only get to pick which muscle
-a patch is, never to carve one up. Labelling faces individually and then
+A region is labelled **as a whole**, from one reading of the rules at its centre
+of area. The patch outlines come from the colours painted on the model, so they
+already are the muscle borders; the rules only get to pick which muscle a region
+is, never to carve one up on a threshold. Labelling faces individually and then
 stitching the results put the seam wherever a threshold happened to fall,
 cutting straight across the artwork — that was the bleed between groups.
 
@@ -95,25 +101,58 @@ group the model distinguishes — including quadriceps from hamstrings, which
 before denoising had to be cut geometrically. The threshold sits between the
 noise (p75 0.0068) and the closest real border, biceps against triceps at 0.039.
 
-### Symmetry, and the one place a patch is still cut
+### Symmetry: the model is folded onto itself
 
-Left and right are decided together, or one thigh comes out "quadriceps" and the
-other "adductors" purely because their centres fell either side of a threshold.
+Left and right have to be decided together, or one thigh comes out "quadriceps"
+and the other "adductors" purely because their centres fell either side of a
+threshold. `check-symmetry.py` measures this on the shipped `.glb`: it mirrors
+every triangle, finds the triangle nearest that mirrored position, and reports
+the surface where the two carry different muscles.
 
-Pairing patches by nearest mirrored centre doesn't work — it matched only 19 of
+Pairing patches by nearest mirrored centre doesn't work — it matches only 19 of
 112, because the two halves aren't segmented identically and the same muscle can
-have quite different centres on each side. Instead every face is matched to the
-face nearest its own mirrored position, and each patch then weighs its own
-decision against the decisions covering its mirror image, taking whichever wins
-by area. Repeating that settles both sides onto the same answer. Decisions are
-settled before any split is applied; reconciling afterwards flattens a split
-patch back to one label.
+have quite different centres on each side. Matching face by face and joining
+each patch to the patch covering most of its mirror image pairs 61 of them, and
+that alone takes the disagreement from 13.5% to 5.6%.
+
+The rest is not a labelling problem but a segmentation one: where one side is
+painted as a single patch and the other as three, no pairing of whole patches
+can agree, which is why the abdomen and flank stayed lopsided (obliques 42%
+disagreement, left/right areas differing by 42%). Loosening the pairing to chain
+those together only trades the anatomy away — at a fifth coverage, trapezius,
+latissimus and erector spinae merge into one region and the number improves for
+the wrong reason.
+
+So after joining, each region is **cut along the mirror image of the other
+side's borders** — split by which region its mirror lands in. Every unit that
+comes out spans both halves of the body and is its own mirror, so one decision
+per unit is symmetric by construction. The new cuts aren't arbitrary: each is
+the reflection of a border the model was painted with, which is where that
+border belongs on the other side. Narrow offcuts left where the two sides differ
+only slightly are merged into the neighbour they share the most border with;
+the units are their own mirror, so that merge stays symmetric too.
+
+| | disagreement | surface cut across a painted patch |
+| --- | --- | --- |
+| join patches to their mirror | 5.56% | 2.4% |
+| …then cut along the mirror | 0.19% | 6.2% |
+
+Cutting the raw patches instead of the joined regions reaches the same symmetry
+with four times the cutting, because pairs that already agreed get split too.
+
+On the shipped model the figure is 3.1% rather than 0.19%: decimation collapses
+edges without regard for the mirror, leaving a one-triangle fringe along every
+border. No muscle's left and right areas now differ by more than 3%.
 
 Landmarks are measured, not assumed. The crotch is found by scanning upward for
-where surface on the midline jumps as the legs merge; the elbow is the thinnest
+where surface on the midline jumps as the legs merge. The elbow is the thinnest
 point of the limb between shoulder and wrist, which lands at f=0.67 — the rules
 had assumed 0.62, and the gap let a patch span the elbow so the forearm was
-swallowed into biceps along with it.
+swallowed into biceps along with it. The neck runs from where the shoulders
+finish tapering up to the chin, found as the slice where the front surface juts
+forward out of the throat; assuming a height instead put the chest's upper bound
+inside the throat and the whole neck came out labelled as chest, and the skull
+here is barely wider than the neck, so width alone reads the face as neck.
 
 The upper arm is the single place a patch is cut rather than followed. It's
 painted as one region wrapping right round the limb — the largest patch there is
@@ -142,7 +181,8 @@ Textures aren't shipped with the model. The viewer paints muscles from its own
 region palette, so the exported GLB carries only geometry, normals and the zone
 attribute — which is why it's a fraction of the source model's size.
 
-Every patch is labelled as a whole — nothing is ever cut face by face, which is
-what kept seams off the artwork. Long straps like sartorius that run hip to knee
-are handled by the landmark constraints instead, which stop a patch forming
-across the hip in the first place.
+Nothing is ever labelled face by face, which is what kept seams off the artwork:
+a region is labelled as a whole, and the only cuts made are the mirror images of
+borders the model was already painted with. Long straps like sartorius that run
+hip to knee are handled by the landmark constraints instead, which stop a patch
+forming across the hip in the first place.

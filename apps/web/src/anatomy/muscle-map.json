@@ -1,177 +1,186 @@
 {
- "format": "anatomy-zone-map/v3",
- "note": "One zone per muscle, both sides. Baked per-vertex as _ZONE.",
- "zones": [
-  {
-   "id": "abs",
-   "key": "abs",
-   "name": "Rectus Abdominis",
-   "region": "Core",
-   "index": 0,
-   "selectable": true,
-   "desc": "The 'six-pack'; flexes the spine, resists extension. Crunches, leg raises, planks."
-  },
-  {
-   "id": "add",
-   "key": "add",
-   "name": "Adductors",
-   "region": "Legs",
-   "index": 1,
-   "selectable": true,
-   "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
-  },
-  {
-   "id": "bic",
-   "key": "bic",
-   "name": "Biceps Brachii",
-   "region": "Arms",
-   "index": 2,
-   "selectable": true,
-   "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
-  },
-  {
-   "id": "calf",
-   "key": "calf",
-   "name": "Gastrocnemius / Calf",
-   "region": "Legs",
-   "index": 3,
-   "selectable": true,
-   "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
-  },
-  {
-   "id": "delt",
-   "key": "delt",
-   "name": "Deltoid",
-   "region": "Shoulders",
-   "index": 4,
-   "selectable": true,
-   "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
-  },
-  {
-   "id": "erector",
-   "key": "erector",
-   "name": "Erector Spinae",
-   "region": "Back",
-   "index": 5,
-   "selectable": true,
-   "desc": "Columns beside the spine; extends and stabilises the back. Deadlifts, back extensions."
-  },
-  {
-   "id": "foot",
-   "key": "foot",
-   "name": "Foot",
-   "region": "Legs",
-   "index": 6,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "fore",
-   "key": "fore",
-   "name": "Forearm",
-   "region": "Arms",
-   "index": 7,
-   "selectable": true,
-   "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
-  },
-  {
-   "id": "glute",
-   "key": "glute",
-   "name": "Gluteus Maximus",
-   "region": "Legs",
-   "index": 8,
-   "selectable": true,
-   "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
-  },
-  {
-   "id": "ham",
-   "key": "ham",
-   "name": "Hamstrings",
-   "region": "Legs",
-   "index": 9,
-   "selectable": true,
-   "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
-  },
-  {
-   "id": "hand",
-   "key": "hand",
-   "name": "Hand",
-   "region": "Arms",
-   "index": 10,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "head",
-   "key": "head",
-   "name": "Head",
-   "region": "Head",
-   "index": 11,
-   "selectable": false,
-   "desc": ""
-  },
-  {
-   "id": "lat",
-   "key": "lat",
-   "name": "Latissimus Dorsi",
-   "region": "Back",
-   "index": 12,
-   "selectable": true,
-   "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
-  },
-  {
-   "id": "obl",
-   "key": "obl",
-   "name": "External Oblique",
-   "region": "Core",
-   "index": 13,
-   "selectable": true,
-   "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
-  },
-  {
-   "id": "pec",
-   "key": "pec",
-   "name": "Pectoralis Major",
-   "region": "Chest",
-   "index": 14,
-   "selectable": true,
-   "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
-  },
-  {
-   "id": "quad",
-   "key": "quad",
-   "name": "Quadriceps",
-   "region": "Legs",
-   "index": 15,
-   "selectable": true,
-   "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
-  },
-  {
-   "id": "shin",
-   "key": "shin",
-   "name": "Tibialis Anterior",
-   "region": "Legs",
-   "index": 16,
-   "selectable": true,
-   "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
-  },
-  {
-   "id": "traps",
-   "key": "traps",
-   "name": "Trapezius",
-   "region": "Shoulders",
-   "index": 17,
-   "selectable": true,
-   "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
-  },
-  {
-   "id": "tri",
-   "key": "tri",
-   "name": "Triceps Brachii",
-   "region": "Arms",
-   "index": 18,
-   "selectable": true,
-   "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
-  }
- ]
+  "format": "anatomy-zone-map/v3",
+  "note": "One zone per muscle, both sides. Baked per-vertex as _ZONE.",
+  "zones": [
+    {
+      "id": "abs",
+      "key": "abs",
+      "name": "Rectus Abdominis",
+      "region": "Core",
+      "index": 0,
+      "selectable": true,
+      "desc": "The 'six-pack'; flexes the spine, resists extension. Crunches, leg raises, planks."
+    },
+    {
+      "id": "add",
+      "key": "add",
+      "name": "Adductors",
+      "region": "Legs",
+      "index": 1,
+      "selectable": true,
+      "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
+    },
+    {
+      "id": "bic",
+      "key": "bic",
+      "name": "Biceps Brachii",
+      "region": "Arms",
+      "index": 2,
+      "selectable": true,
+      "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
+    },
+    {
+      "id": "calf",
+      "key": "calf",
+      "name": "Gastrocnemius / Calf",
+      "region": "Legs",
+      "index": 3,
+      "selectable": true,
+      "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
+    },
+    {
+      "id": "delt",
+      "key": "delt",
+      "name": "Deltoid",
+      "region": "Shoulders",
+      "index": 4,
+      "selectable": true,
+      "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
+    },
+    {
+      "id": "erector",
+      "key": "erector",
+      "name": "Erector Spinae",
+      "region": "Back",
+      "index": 5,
+      "selectable": true,
+      "desc": "Columns beside the spine; extends and stabilises the back. Deadlifts, back extensions."
+    },
+    {
+      "id": "foot",
+      "key": "foot",
+      "name": "Foot",
+      "region": "Legs",
+      "index": 6,
+      "selectable": false,
+      "desc": ""
+    },
+    {
+      "id": "fore",
+      "key": "fore",
+      "name": "Forearm",
+      "region": "Arms",
+      "index": 7,
+      "selectable": true,
+      "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
+    },
+    {
+      "id": "glute",
+      "key": "glute",
+      "name": "Gluteus Maximus",
+      "region": "Legs",
+      "index": 8,
+      "selectable": true,
+      "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
+    },
+    {
+      "id": "ham",
+      "key": "ham",
+      "name": "Hamstrings",
+      "region": "Legs",
+      "index": 9,
+      "selectable": true,
+      "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
+    },
+    {
+      "id": "hand",
+      "key": "hand",
+      "name": "Hand",
+      "region": "Arms",
+      "index": 10,
+      "selectable": false,
+      "desc": ""
+    },
+    {
+      "id": "head",
+      "key": "head",
+      "name": "Head",
+      "region": "Head",
+      "index": 11,
+      "selectable": false,
+      "desc": ""
+    },
+    {
+      "id": "lat",
+      "key": "lat",
+      "name": "Latissimus Dorsi",
+      "region": "Back",
+      "index": 12,
+      "selectable": true,
+      "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
+    },
+    {
+      "id": "neck",
+      "key": "neck",
+      "name": "Neck",
+      "region": "Neck",
+      "index": 13,
+      "selectable": true,
+      "desc": "Sternocleidomastoid and neck extensors; turns and steadies the head. Neck curls, shrugs, harness work."
+    },
+    {
+      "id": "obl",
+      "key": "obl",
+      "name": "External Oblique",
+      "region": "Core",
+      "index": 14,
+      "selectable": true,
+      "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
+    },
+    {
+      "id": "pec",
+      "key": "pec",
+      "name": "Pectoralis Major",
+      "region": "Chest",
+      "index": 15,
+      "selectable": true,
+      "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
+    },
+    {
+      "id": "quad",
+      "key": "quad",
+      "name": "Quadriceps",
+      "region": "Legs",
+      "index": 16,
+      "selectable": true,
+      "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
+    },
+    {
+      "id": "shin",
+      "key": "shin",
+      "name": "Tibialis Anterior",
+      "region": "Legs",
+      "index": 17,
+      "selectable": true,
+      "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
+    },
+    {
+      "id": "traps",
+      "key": "traps",
+      "name": "Trapezius",
+      "region": "Shoulders",
+      "index": 18,
+      "selectable": true,
+      "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
+    },
+    {
+      "id": "tri",
+      "key": "tri",
+      "name": "Triceps Brachii",
+      "region": "Arms",
+      "index": 19,
+      "selectable": true,
+      "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
+    }
+  ]
 }
