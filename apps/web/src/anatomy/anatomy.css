@@ -28,8 +28,12 @@
   content: ''; width: 5px; height: 5px; background: var(--accent);
   border-radius: 50%;
 }
-.anatomy-root .regions { top: 16px; right: 16px; width: 172px; }
+.anatomy-root .regions { top: 16px; right: 16px; width: 196px; max-height: calc(100% - 32px); display: flex; flex-direction: column; }
 .anatomy-root .controls { top: 16px; left: 16px; width: 172px; }
+
+/* The whole list can be taller than the canvas, so it scrolls inside the panel
+   rather than pushing the panel off-screen. */
+.anatomy-root .muscle-list { overflow-y: auto; overscroll-behavior: contain; margin: -2px; padding: 2px; }
 
 .anatomy-root .chip {
   width: 100%; text-align: left; background: transparent;
@@ -41,6 +45,37 @@
 .anatomy-root .chip .dot { width: 8px; height: 8px; border-radius: 2px; }
 .anatomy-root .chip:hover { border-color: var(--border-strong); color: var(--text); }
 .anatomy-root .chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.anatomy-root .chip .count {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);
+}
+
+.anatomy-root .region-group { margin-top: 10px; }
+.anatomy-root .region-head {
+  width: 100%; text-align: left; background: none; border: 0; padding: 2px 2px 5px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: 0.15s;
+}
+.anatomy-root .region-head:hover { color: var(--text); }
+.anatomy-root .region-head.active { color: var(--accent); }
+
+.anatomy-root .muscle {
+  width: 100%; display: flex; align-items: center; gap: 8px;
+  background: transparent; border: 1px solid transparent; border-radius: 8px;
+  padding: 5px 8px; margin-bottom: 2px; cursor: pointer; transition: 0.12s;
+  font-family: inherit; font-size: 12px; color: var(--text-muted); text-align: left;
+}
+.anatomy-root .muscle:hover { background: var(--panel); color: var(--text); }
+.anatomy-root .muscle.active {
+  background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+}
+/* A ring keeps the swatch legible on both canvases: several of the muscle
+   colours sit just under 3:1 against one surface or the other, and the ring
+   plus the name beside it is what carries them. */
+.anatomy-root .muscle .dot {
+  width: 11px; height: 11px; border-radius: 3px; flex: none;
+  box-shadow: 0 0 0 1px var(--border-strong) inset, 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+.anatomy-root .muscle .mlabel { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .anatomy-root .toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; cursor: pointer; }
 .anatomy-root .toggle-row input { accent-color: var(--accent); width: 16px; height: 16px; }
@@ -73,6 +108,8 @@
 .train-btn:hover { filter: brightness(1.12); }
 
 @media (max-width: 720px) {
-  .regions, .controls { width: 140px; }
+  .anatomy-root .regions { width: 158px; max-height: calc(100% - 130px); }
+  .anatomy-root .controls { width: 140px; }
+  .anatomy-root .muscle { font-size: 11.5px; padding: 4px 6px; }
   .anatomy-readout { flex-wrap: wrap; }
 }

@@ -26,6 +26,8 @@ Then, once the result is copied into the app:
 
 ```bash
 python3 check-symmetry.py      # left/right agreement of the shipped model
+python3 palette-adjacency.py   # which muscles touch -> adjacency.json
+python3 palette-design.py      # the muscle colours
 ```
 
 Then copy the two `.glb` files to `apps/web/public/models/` and the generated
@@ -207,6 +209,55 @@ with four times the cutting, because pairs that already agreed get split too.
 On the shipped model the figure is 3.3% rather than 0.33%: decimation collapses
 edges without regard for the mirror, leaving a one-triangle fringe along every
 border. No muscle's left and right areas now differ by more than 3%.
+
+### Smoothing the borders, on the mesh that is drawn
+
+A border is where two painted colours met on a noisy texture, so it arrives as
+sawtooth — and decimation then makes every triangle nine times larger, turning
+each wobble into a visible spike. Two colours meeting along a ragged edge reads
+as the two bleeding into each other rather than meeting at a line.
+
+Smoothing the full-resolution mesh barely helps, because the coarse mesh is
+re-cut from it afterwards: the border has to be settled on the triangles that
+are actually drawn. So `4-build-glb.mjs` does it after decimating. Each zone
+becomes a field that is 1 on its own triangles and 0 elsewhere, and those fields
+are blurred across the surface before the winner is read off. A straight
+majority vote stalls almost immediately — every triangle already agrees with
+most of its neighbours while the border is still sawtooth — whereas blurring
+keeps shortening the border for as long as it runs. It also settles the
+three-way ties left by decimation, which otherwise resolve by zone number, an
+alphabetical accident rather than geometry.
+
+Left and right are decimated to different triangles, so smoothing them
+separately lets them drift apart: doing that cost most of the symmetry the
+previous pass had won (0.6% → 5.4% disagreement). Each triangle is therefore
+paired with the one nearest its own mirrored position and the two are smoothed
+as one. That also repairs the asymmetry decimation introduces on its own —
+which is why the shipped model now measures 0.8% rather than the 3.3% that was
+previously written off as an unavoidable cost of decimating.
+
+### The palette
+
+`palette-design.py` builds the muscle colours; `palette-adjacency.py` works out
+which muscles touch on the model, since those are the pairs that can actually be
+confused. The colours are checked, not eyeballed: every pair that touches, and
+every pair listed one above the other in the picker, is scored by OKLab distance
+under normal vision and under simulated protanopia and deuteranopia, against the
+same floors the app's data-viz guidance uses (ΔE 15 normal, 8 colour-blind).
+
+The palette is a **system, not seventeen separate choices**: nine hues evenly
+spaced round the wheel, each at two steps — one deep, one bright — at matched
+chroma, so every colour is the same two recipes applied to one ring. Only the
+assignment is searched. Free-optimising seventeen hues scores better on paper
+and produces a clown suit; holding one hue family per region instead cannot
+separate six leg muscles without colliding with the next family. A region takes
+a hue and gives its muscles different steps of it where the separation allows,
+and the picker's headings carry the rest of the grouping.
+
+Both canvases constrain it: lightness sits in the overlap of the light-mode and
+dark-mode bands, and chroma is checked on the colour that actually comes out —
+a hue outside sRGB gets clipped and can land under the floor where it reads as
+grey, which is why the deep step avoids the cyans.
 
 Decimation happens last. meshopt's simplifier only collapses edges, so the
 surviving vertices are a subset of the originals and their zone ids stay valid

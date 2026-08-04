@@ -11,129 +11,74 @@ A gym training platform. Phase 1: pick your basics, then explore an interactive
 
 | Muscle group selected | Mobile |
 | --- | --- |
-| ![Quadriceps selected, showing region chips and the muscle detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
+| ![Quadriceps selected, showing the muscle picker and the detail panel](docs/screenshots/03-muscle-selected.png) | ![Mobile responsive layout](docs/screenshots/04-mobile.png) |
 
-Screenshots are refreshed as each phase lands. To regenerate them yourself,
-start the web dev server (see below), then:
-
-```bash
-node docs/screenshots/capture.mjs
-```
+Regenerate them with the web dev server running: `node docs/screenshots/capture.mjs`.
 
 ## Structure
 
 - `apps/web` — React + Vite + TypeScript + react-three-fiber frontend
-  - `src/anatomy` — the 3D muscle-picker component (viewer, spatial zone
-    mapping, muscle data) — see [Muscle model assets](#muscle-model-assets)
-- `apps/api` — Express + TypeScript + Prisma (SQLite for local dev) backend.
-  Not used by the current 3D viewer (see below), kept in place for the
-  accounts/programs phases where it'll actually be needed.
-- `data/muscle-groups.json` — muscle-group category data for the API's Prisma
-  seed. Independent from `src/anatomy/muscle-map.json`, which drives the 3D
-  viewer's per-muscle zones.
+  - `src/anatomy` — the 3D muscle picker (viewer, zone lookup, muscle data)
+- `apps/api` — Express + TypeScript + Prisma (SQLite locally). Not used by the
+  viewer yet; kept for the accounts/programs phases.
+- `data/muscle-groups.json` — category data for the API's Prisma seed, separate
+  from `src/anatomy/muscle-map.json`, which drives the viewer's zones.
+- `tools/muscle-segmentation` — the build that turns the painted model into the
+  shipped `.glb`. See [its README](tools/muscle-segmentation/README.md).
 
-## 3D Model — Credits & License
+## The 3D model
 
-The anatomical model (`apps/web/public/models/anatomy_full.glb`,
-`anatomy_mobile.glb`) is derived from a **Meshy AI (Meshy 6)** generation
-released under **CC0 1.0 (public domain)**, with each muscle group then
-hand-painted a distinct colour in the source texture.
+`apps/web/public/models/anatomy_{full,mobile}.glb` is derived from a **Meshy AI
+(Meshy 6)** generation released under **CC0 1.0** (no rights reserved, no
+attribution required — this credit is good practice, not obligation), with each
+muscle group then hand-painted a distinct colour in the source texture.
 
-- License: CC0 1.0 Universal — no rights reserved, no attribution required.
-- Source: AI-generated via Meshy AI's text-to-3D pipeline, then colour-coded
-  per muscle group by hand.
+Those painted colours are what define each muscle. The build reads them and
+turns them into geometry rather than approximating muscles with boxes: triangles
+are sampled at their UV centroids, grown into connected regions of one tint, and
+expanded across the untinted surface between them. That yields ~110 regions,
+grouped into **20 zones** — one per muscle, covering both sides, since left and
+right biceps are the same thing to train — baked onto every vertex as the glTF
+`_ZONE` attribute. Picking at runtime is just reading that number
+(`apps/web/src/anatomy/zoneMapping.js`).
 
-CC0 permits commercial use; this credit is included as good practice, not
-obligation.
+Because zones follow the artwork, muscle edges are exact. The earlier approach
+fitted an axis-aligned box per muscle; boxes overlapped, so an arm box would
+reach across the torso and claim part of the back.
 
-### How muscle selection works
+Textures aren't shipped — the viewer paints from its own palette, so the model
+carries only geometry and the zone attribute: 1.1 MB (60k faces) for mobile,
+3.6 MB (150k faces) for the full one.
 
-Those hand-painted colours are what defines each muscle, so the build turns
-them into geometry rather than approximating muscles with shapes:
+**How the labelling is kept honest** — measured landmarks instead of assumed
+heights, front/back decided by which way a region's surface faces, the model
+folded onto itself so left and right always agree (0.8% mirror disagreement,
+`tools/muscle-segmentation/check-symmetry.py`), and borders smoothed on the
+decimated mesh. All of it, with the numbers, is in the
+[pipeline README](tools/muscle-segmentation/README.md).
 
-1. Every triangle is sampled at its UV centroid to read the tint it was
-   painted (the centroid keeps the sample clear of the atlas island borders,
-   where JPEG bleed contaminates the colour).
-2. Tints snap to the model's palette, and neighbouring triangles sharing a
-   tint are grown into connected regions — one region per muscle, with left
-   and right separating naturally since they don't touch.
-3. Regions expand across the shaded, tendon and bone surface between them
-   until every triangle is claimed.
+## Colour
 
-That yields ~110 individual muscles, grouped into 20 zones — one per muscle,
-covering both sides, since left and right biceps are the same thing to train —
-baked onto each vertex as the model's `_ZONE` attribute. Picking at
-runtime is just reading that number — see
-`apps/web/src/anatomy/zoneMapping.js`.
+`MUSCLE_COLORS` (`apps/web/src/anatomy/zoneMapping.js`) is the single source of
+colour for both the model and the picker, so a swatch in the list is exactly the
+colour on the body. It's a system, not seventeen separate choices: nine hues
+evenly spaced round the wheel, each at a deep and a bright step at matched
+chroma.
 
-The two halves are made to agree by folding the model onto itself: each region
-is joined to the region covering its mirror image, then cut along the mirror of
-the other side's borders, so every unit that gets a label spans both sides and
-is its own mirror. `tools/muscle-segmentation/check-symmetry.py` measures what
-is left — no muscle's left and right areas now differ by more than 3%.
-
-Which muscle a region is gets decided from how much of its surface faces each
-way, rather than where its centre sits — a limb is round, so the centre of a
-patch running down the back of the thigh is barely behind the axis, and it used
-to come out as quadriceps. Heights come from landmarks measured on the mesh (the
-crotch, the ribcage's lower edge, the elbow, the throat hollow, the chin), and a
-painted region covering two muscle groups — the model has three, including one
-spanning the lumbar spine to the shoulder blades — is cut at the landmark
-between them.
-
-Each triangle carries a single zone and vertices are split along the borders,
-so muscle edges are hard lines rather than the gradient the shader would
-otherwise blend between neighbouring vertex colours. Every muscle also gets its
-own colour (`MUSCLE_COLORS`), with touching muscles deliberately given distant
-hues — colouring by region instead put five of the seven regions in the
-red/orange family, and a whole leg or arm read as one undifferentiated mass.
-
-Because the zones follow the artwork, muscle edges are exact rather than
-approximate. The earlier approach fitted an axis-aligned box per muscle in
-normalised body space; boxes inevitably overlapped — an arm box would reach
-across the torso and claim part of the back — so boundaries drifted from the
-anatomy and needed hand-tuning.
-
-The textures aren't shipped: the viewer paints muscles from its own region
-palette, so the model only carries geometry plus the zone attribute. That
-puts the mobile variant at 1.05 MB (60k faces) and the full one at 3.5 MB
-(150k faces).
+Every pair a person can confuse — muscles that touch on the model, muscles
+listed one above the other in the picker — is scored by OKLab distance under
+normal vision and under simulated colour blindness. The palette clears the
+lightness band, chroma floor and both separation floors against **the light and
+the dark canvas alike**. Built by `tools/muscle-segmentation/palette-design.py`.
 
 ## Theming
 
-Light, dark, or follow the device — one button in the header cycling the three,
-remembered across visits. Everything reads from CSS custom properties keyed off a
-`data-theme` attribute on `<html>` (`apps/web/src/index.css`), so switching is a
-single attribute swap. On "device" the app tracks the OS setting live, including
-if it changes while the tab is open.
-
-The 3D canvas can't read CSS variables, so `AnatomyViewer` maps the resolved
-theme to real scene colours for the background, fog, lights and the inactive
-greys used for untrainable parts.
-
-## Hosting on GitHub Pages
-
-The web app is a static site once there's no backend to hit, so it deploys
-straight to GitHub Pages via `.github/workflows/deploy-pages.yml` — it builds
-and publishes `apps/web` on every push to `main` (and can be run manually from
-the Actions tab).
-
-**One-time setup** (repo admin, not something a workflow can do on its own):
-in the repo's **Settings → Pages**, set **Source** to **GitHub Actions**. After
-that the workflow deploys automatically; the URL shows up on the same Pages
-settings screen and on each deploy run.
-
-Two things only apply to the *Pages* build:
-
-- **No backend.** The 3D viewer's muscle data is bundled into the build
-  (`apps/web/src/anatomy/muscle-map.json`), not fetched from an API, so
-  there's nothing server-side to deploy for Pages. `apps/api` exists for
-  later phases (accounts, saved programs) — once those need real writes,
-  Pages hosting will need a real backend deployment (e.g. Render/Fly.io)
-  alongside it.
-- **Hash-based routes.** GitHub Pages can't rewrite unknown paths back to
-  `index.html`, so the deployed app uses a `#` in the URL
-  (`.../guidetrain/#/explore`) instead of clean paths. Local dev is unaffected.
+Light, dark, or follow the device — one button in the header cycles the three
+and remembers the choice. Everything reads from CSS custom properties keyed off
+`data-theme` on `<html>` (`apps/web/src/index.css`), so switching is one
+attribute swap; on "device" the app tracks the OS setting live. The 3D canvas
+can't read CSS variables, so `AnatomyViewer` maps the resolved theme to real
+scene colours for the background, fog, lights and inactive greys.
 
 ## Running locally
 
@@ -143,9 +88,7 @@ npm install
 # API (http://localhost:4000)
 cd apps/api
 cp .env.example .env
-npx prisma migrate dev
-npx prisma db seed
-npm run dev
+npx prisma migrate dev && npx prisma db seed && npm run dev
 
 # Web (http://localhost:5173), in another terminal
 cd apps/web
@@ -153,9 +96,25 @@ cp .env.example .env.local
 npm run dev
 ```
 
+## Hosting on GitHub Pages
+
+`.github/workflows/deploy-pages.yml` builds and publishes `apps/web` on every
+push to `main`. **One-time setup:** in **Settings → Pages**, set **Source** to
+**GitHub Actions**.
+
+Two things apply only to the Pages build:
+
+- **No backend.** Muscle data is bundled (`src/anatomy/muscle-map.json`), not
+  fetched. `apps/api` exists for later phases; once those need real writes,
+  Pages will need a backend deployed alongside (e.g. Render/Fly.io).
+- **Hash routes.** Pages can't rewrite unknown paths to `index.html`, so the
+  deployed app uses `.../guidetrain/#/explore`. Local dev is unaffected.
+
 ## Roadmap
 
 1. ✅ 3D anatomical body model with selectable muscle groups
 2. Training exercises per muscle group (illustrations, animations, YouTube search)
 3. Personal training programs (build your own, save/bookmark)
 4. Accounts (username, sex, approximate age) and public program library
+
+Changes are logged in [CHANGELOG.md](CHANGELOG.md).

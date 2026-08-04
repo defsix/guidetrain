@@ -1,16 +1,22 @@
-import React, { useState, useCallback, Suspense } from 'react';
+import React, { useState, useCallback, useMemo, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import AnatomyModel from './AnatomyModel';
 import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
+import { zoneColor } from './zoneMapping';
 import './anatomy.css';
 
-const REGIONS = ['all', 'Neck', 'Shoulders', 'Chest', 'Back', 'Arms', 'Core', 'Legs'];
-const REGION_DOT = {
-  all: '#4cc9ff', Neck: '#c98a6b', Shoulders: '#ff8a5c', Chest: '#e8574a',
-  Back: '#c73f6e', Arms: '#f2b13c', Core: '#d94436', Legs: '#b5503a',
-};
+// Regions top to bottom, and the muscles within each in the order they sit on
+// the body. The palette is tuned against this order: two swatches listed one
+// above the other have to be tellable apart even when the muscles are nowhere
+// near each other, so the order is part of the design, not decoration.
+const REGION_ORDER = ['Neck', 'Shoulders', 'Chest', 'Back', 'Arms', 'Core', 'Legs'];
+const MUSCLE_ORDER = [
+  'neck', 'traps', 'delt', 'pec', 'lat', 'erector',
+  'bic', 'tri', 'fore', 'abs', 'obl',
+  'glute', 'quad', 'add', 'ham', 'calf', 'shin',
+];
 
 /**
  * AnatomyViewer — drop-in interactive muscle picker.
@@ -50,7 +56,27 @@ export default function AnatomyViewer({
   const [region, setRegion] = useState('all');
   const [autoRotate, setAutoRotate] = useState(false);
 
-  const handleSelect = useCallback((z) => { setSelected(z); onSelect && onSelect(z); }, [onSelect]);
+  const selectable = useMemo(
+    () => map.zones.filter((z) => z.selectable !== false),
+    [map],
+  );
+  const byRegion = useMemo(() => {
+    const rank = (z) => {
+      const i = MUSCLE_ORDER.indexOf(z.key ?? z.id);
+      return i === -1 ? MUSCLE_ORDER.length : i;
+    };
+    return REGION_ORDER
+      .map((r) => [r, selectable.filter((z) => z.region === r).sort((a, b) => rank(a) - rank(b))])
+      .filter(([, ms]) => ms.length);
+  }, [selectable]);
+
+  const handleSelect = useCallback((z) => {
+    setSelected(z);
+    // Picking a muscle from outside the current filter would otherwise select
+    // something the model is showing greyed out, so the filter steps aside.
+    if (z && region !== 'all' && z.region !== region) setRegion('all');
+    onSelect && onSelect(z);
+  }, [onSelect, region]);
 
   const train = () => {
     if (!selected) return;
@@ -93,19 +119,42 @@ export default function AnatomyViewer({
         />
       </Canvas>
 
-      {/* Region filter */}
+      {/* Every muscle on the model, grouped by region. The swatches are the
+          model's own colours, so the list doubles as the legend. */}
       <div className="anatomy-panel regions">
         <h2>Muscle Groups</h2>
-        {REGIONS.map((r) => (
+        <div className="muscle-list">
           <button
-            key={r}
-            className={`chip ${region === r ? 'active' : ''}`}
-            onClick={() => setRegion(r)}
+            className={`chip all ${region === 'all' ? 'active' : ''}`}
+            onClick={() => { setRegion('all'); handleSelect(null); }}
           >
-            <span>{r === 'all' ? 'All' : r}</span>
-            <span className="dot" style={{ background: REGION_DOT[r] }} />
+            <span>All muscles</span>
+            <span className="count">{selectable.length}</span>
           </button>
-        ))}
+          {byRegion.map(([r, muscles]) => (
+            <div className="region-group" key={r}>
+              <button
+                className={`region-head ${region === r ? 'active' : ''}`}
+                onClick={() => setRegion(region === r ? 'all' : r)}
+              >
+                {r}
+              </button>
+              {muscles.map((z) => (
+                <button
+                  key={z.id}
+                  className={`muscle ${selected?.id === z.id ? 'active' : ''}`}
+                  onClick={() => handleSelect(selected?.id === z.id ? null : z)}
+                  onMouseEnter={() => setHover(z)}
+                  onMouseLeave={() => setHover(null)}
+                  title={z.desc}
+                >
+                  <span className="dot" style={{ background: zoneColor(z) }} />
+                  <span className="mlabel">{z.name}</span>
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Display controls */}

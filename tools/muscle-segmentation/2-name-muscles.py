@@ -55,6 +55,20 @@ CROTCH=best[0]
 ARM_X=0.09          # beyond this sideways, a patch is on a limb not the trunk
 ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
 
+# Iliac crest: the top of the pelvis. Walking down from the waist, the trunk
+# flares out to the hips; the crest is where it has gained half that flare.
+# It is the upper edge of the glutes behind and of the hip in front, and with
+# the crotch it fixes the line where the leg stops being the trunk.
+_XMID=(pos[:,0].min()+pos[:,0].max())/2
+_AX=np.abs(fpos[:,0]-_XMID)
+_hf=np.arange(CROTCH,0.62,0.01)
+_hw=np.array([np.percentile(_AX[(FR>=f)&(FR<f+0.01)&(_AX<0.14)],99) for f in _hf])
+_wk=int(np.argmin(_hw))                       # narrowest slice above the hips
+_half=(_hw[_wk]+_hw[:_wk+1].max())/2
+_cand=np.where(_hw[:_wk+1]>=_half)[0]         # highest slice still hip-wide
+ILIAC=float(_hf[_cand.max()]) if len(_cand) else CROTCH
+HIPX=float(_hw[0])                            # half-width at the hips
+
 # Ribs: the lower edge of the ribcage. Below it the trunk pinches in to the
 # waist; above it the chest is at full depth. Taken as the height where the
 # trunk has won back half the depth it loses at the waist. Trapezius reaches
@@ -86,7 +100,7 @@ _z=np.array(_z); _lo=int(np.argmin(_z))
 NECK_LO=_fs[_lo]
 NECK_HI=_fs[_lo+1+int(np.diff(_z[_lo:]).argmax())]
 print(f"landmarks: crotch f={CROTCH:.3f}  ribs f={RIBS:.2f}  elbow f={ELBOW}  "
-      f"arm |x|>{ARM_X}  neck f={NECK_LO:.3f}..{NECK_HI:.3f}")
+      f"arm |x|>{ARM_X}  iliac f={ILIAC:.2f}  neck f={NECK_LO:.3f}..{NECK_HI:.3f}")
 
 # Body centre line in depth, per height slice, so "front" means in front of
 # the spine rather than in front of the world origin.
@@ -166,7 +180,14 @@ def classify(f,x,ff,mf=0.0):
         if f>ELBOW: return "tri" if back else "bic"
         if f>0.46: return "fore"
         return "hand"
-    if f<CROTCH:                                  # below the crotch: all leg
+    # Where the leg stops being the trunk. In front the hip crease is lowest at
+    # the midline, where the legs meet, and rises to the crest of the pelvis at
+    # the sides; behind, the glutes simply end at the crest. Treating it as one
+    # horizontal plane ruled a straight line across both hips — obliques
+    # covering the top of the quadriceps in front, the same seam over the
+    # glutes behind.
+    hip = ILIAC if back else CROTCH+(ILIAC-CROTCH)*min(1.0,ax/HIPX)
+    if f<hip:                                     # pelvis and below: leg
         if f<0.055: return "foot"
         if f<0.30:  return "calf" if back else "shin"
         # The buttock hangs below the crotch line; hamstrings start under it.
@@ -177,7 +198,6 @@ def classify(f,x,ff,mf=0.0):
         if mf>0.6: return "add"
         return "quad"
     if back:                                      # trunk, back
-        if f<0.58:    return "glute"
         # trapezius runs down the middle of the back as far as the waist;
         # erector spinae is what shows below it. Lats are to the sides.
         if f<RIBS:    return "erector" if ax<0.042 else "lat"
@@ -382,6 +402,35 @@ print(f"patches: {len(ids)} ({paired} joined to a mirror) -> {len(units)} "
       f"self-mirroring units, {offcuts} offcuts folded back in, "
       f"{cuts} cut at a landmark, "
       f"{sum(1 for v in decision.values() if isinstance(v,str) and v==ARMSPLIT)} arm units split")
+
+# --- 5. smooth the borders ----------------------------------------------
+#
+# Region growing leaves ragged edges: a border is where two colours met on a
+# noisy texture, so it arrives as sawtooth, with spikes of one muscle several
+# triangles deep into its neighbour. At a glance that reads as the two colours
+# bleeding into each other rather than meeting at a line.
+#
+# Each face takes whichever muscle covers the most area among itself and its
+# neighbours, repeated a few times. A spike has neighbours on three sides that
+# disagree with it and gets rounded off; a border that is genuinely straight has
+# as much of itself on each side and stays put. Weighting a face's own area
+# against its neighbours' sets how hard the smoothing pulls — too hard and thin
+# muscles like the adductors erode away, so it is kept gentle and checked
+# against the areas afterwards.
+#
+# This cannot break the symmetry: it depends only on the mesh and on labels that
+# are already mirror-images, so both sides round off the same way.
+gk=sorted(set(face_group)); gi={g:i for i,g in enumerate(gk)}
+lab=np.array([gi[g] for g in face_group],np.int64)
+NG=len(gk); NFACE=len(tris); SELF=1.0
+for _ in range(4):
+    sc=np.bincount(FA*NG+lab[FB],weights=area[FB],minlength=NFACE*NG)
+    sc=sc.reshape(NFACE,NG)
+    sc[np.arange(NFACE),lab]+=area*SELF
+    lab=sc.argmax(1)
+moved=(np.array([gi[g] for g in face_group])!=lab)
+print(f"border smoothing moved {area[moved].sum()/area.sum()*100:.2f}% of the surface")
+face_group=np.array([gk[i] for i in lab],dtype=object)
 
 # One zone per muscle, covering both sides.
 #
