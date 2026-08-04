@@ -14,14 +14,15 @@ rather than a copy.
 
     python3 build-exercises.py path/to/exercises.json
 
-Writes data/exercises.json.
+Writes apps/web/src/anatomy/exercises.json.
 """
 import json, re, sys, os, urllib.parse
 from collections import defaultdict
 
 ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")
 SRC = sys.argv[1] if len(sys.argv) > 1 else "exercises.json"
-OUT = os.path.join(ROOT, "data", "exercises.json")
+# The viewer bundles this, the same way it bundles muscle-map.json.
+OUT = os.path.join(ROOT, "apps", "web", "src", "anatomy", "exercises.json")
 
 # Their muscle vocabulary onto the viewer's zone keys. "middle back" is the
 # rhomboids and mid-trapezius, which the model paints as trapezius; "abductors"
@@ -160,6 +161,7 @@ def main():
         if "abdominals" in primary and OBLIQUE.search(e["name"]):
             keys.discard("abs")
             keys.add("obl")
+        e["_primary"] = sorted(keys)
         for k in keys:
             by_muscle[k].append(e)
 
@@ -172,7 +174,11 @@ def main():
             "level": e.get("level"),
             "mechanic": e.get("mechanic"),
             "force": e.get("force"),
-            "secondary": [MAP[m] for m in (e.get("secondaryMuscles") or []) if m in MAP],
+            # Both lists are kept so the viewer can light an exercise up on the
+            # model — everything it trains, primary solid and secondary dimmed.
+            # That is the illustration; the dataset's own images are not used.
+            "primary": e["_primary"],
+            "secondary": sorted({MAP[m] for m in (e.get("secondaryMuscles") or []) if m in MAP}),
             "instructions": e.get("instructions") or [],
             "youtube": youtube(e["name"]),
             "source": "free-exercise-db",
@@ -181,8 +187,8 @@ def main():
     out["shin"] = [{
         "id": re.sub(r"[^a-z0-9]+", "_", n.lower()).strip("_"),
         "name": n, "equipment": eq, "level": lv, "mechanic": mech, "force": "pull",
-        "secondary": [], "instructions": [ins], "youtube": youtube(n),
-        "source": "curated",
+        "primary": ["shin"], "secondary": [], "instructions": [ins],
+        "youtube": youtube(n), "source": "curated",
     } for n, eq, lv, mech, ins in SHIN]
 
     doc = {
@@ -201,8 +207,13 @@ def main():
             },
         },
         "links": {
-            "note": "Each exercise carries a YouTube search URL rather than a "
-                    "fixed video id, so it cannot rot and needs no API key.",
+            "youtube": "A search URL rather than a fixed video id, so it cannot "
+                       "rot and needs no API key.",
+            "images": "None. The only reachable illustrated datasets either state "
+                      "no licence for their images (free-exercise-db, question "
+                      "closed unanswered) or ship none at all (exercemus). An "
+                      "exercise is instead shown on the app's own model, lighting "
+                      "the muscles it trains.",
         },
         "muscles": {k: out[k] for k in sorted(out)},
     }

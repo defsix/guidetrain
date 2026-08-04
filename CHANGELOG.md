@@ -2,6 +2,17 @@
 
 Newest first. Numbers in brackets are pull requests.
 
+## Exercises
+
+- **Exercises per muscle** — selecting a muscle lists the exercises that train
+  it, expandable to step-by-step instructions, equipment and difficulty, with a
+  YouTube search link. 180 exercises across all 17 zones, from the public-domain
+  [Free Exercise DB](https://github.com/yuhonas/free-exercise-db).
+- **Shown on the model, not in a photo** — opening an exercise lights the
+  muscles it trains on the body itself, primary solid and secondary dimmed. No
+  illustrated dataset with a usable image licence was reachable, and the app's
+  own model says it better than a stock photo would.
+
 ## Muscle model
 
 - **Hip crease, smooth borders, full picker** [#13] — the trunk-to-leg line

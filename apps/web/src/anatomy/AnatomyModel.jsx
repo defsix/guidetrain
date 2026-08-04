@@ -30,7 +30,7 @@ const OUTLINE_LIFT = 0.0015;
  *  onSelect(zone|null)
  *  onHover(zone|null)
  */
-export default function AnatomyModel({ url, map, theme = 'dark', selectedId, region = 'all', onSelect, onHover }) {
+export default function AnatomyModel({ url, map, theme = 'dark', selectedId, region = 'all', exercise = null, onSelect, onHover }) {
   const { scene } = useGLTF(url);
   const meshRef = useRef();
   const hoverRef = useRef(null);
@@ -76,20 +76,34 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
     const Z = map.zones;
     const neutral = new THREE.Color(palette.neutral);
     const dim = new THREE.Color(palette.dim);
+    // An exercise takes over the whole body: everything it trains is lit and
+    // everything else drops back, so what the movement works is legible at a
+    // glance. This is the illustration for an exercise — the app's own model
+    // rather than a stock photo of somebody lifting.
+    const prim = exercise ? new Set(exercise.primary || []) : null;
+    const sec = exercise ? new Set(exercise.secondary || []) : null;
+
     for (let i = 0; i < pos.count; i++) {
       let c = neutral;
       const zi = baked.vertZone[i];
       const zone = zi >= 0 ? Z[zi] : null;
       // Hands, feet and head aren't trainable groups — leave them neutral.
       if (zone && zone.selectable !== false) {
-        if (region === 'all' || zone.region === region) c = new THREE.Color(zoneColor(zone));
-        else c = dim;
+        if (exercise) {
+          if (prim.has(zone.key)) c = new THREE.Color(zoneColor(zone)).lerp(HILITE, 0.3);
+          else if (sec.has(zone.key)) c = new THREE.Color(zoneColor(zone)).lerp(dim, 0.45);
+          else c = dim;
+        } else if (region === 'all' || zone.region === region) {
+          c = new THREE.Color(zoneColor(zone));
+        } else {
+          c = dim;
+        }
       }
       col.setXYZ(i, c.r, c.g, c.b);
     }
     // Selection brightens the muscle's own colour rather than replacing it, so
     // it stays identifiable while clearly standing out.
-    if (selectedId && baked.zoneVerts[selectedId]) {
+    if (!exercise && selectedId && baked.zoneVerts[selectedId]) {
       const zone = Z.find((z) => z.id === selectedId);
       const c = new THREE.Color(zoneColor(zone)).lerp(HILITE, 0.45);
       baked.zoneVerts[selectedId].forEach((i) => col.setXYZ(i, c.r, c.g, c.b));
@@ -97,7 +111,7 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
     col.needsUpdate = true;
   };
 
-  useLayoutEffect(paint, [selectedId, region, baked, geometry, map, theme]);
+  useLayoutEffect(paint, [selectedId, region, exercise, baked, geometry, map, theme]);
 
   // Resolve a pointer event to a muscle zone via the picked triangle's
   // baked zone ids. meshRef can be transiently null between an

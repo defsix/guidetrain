@@ -5,6 +5,7 @@ import AnatomyModel from './AnatomyModel';
 import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
 import { zoneColor } from './zoneMapping';
+import exerciseData from './exercises.json';
 import './anatomy.css';
 
 // Regions top to bottom, and the muscles within each in the order they sit on
@@ -55,6 +56,18 @@ export default function AnatomyViewer({
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
   const [autoRotate, setAutoRotate] = useState(false);
+  const [openDrill, setOpenDrill] = useState(null);
+
+  // Exercises for the selected muscle, and the one whose detail is open — that
+  // one is painted onto the model so you can see what the movement trains.
+  const drills = useMemo(
+    () => (selected ? exerciseData.muscles[selected.key] || [] : []),
+    [selected],
+  );
+  const shownDrill = useMemo(
+    () => drills.find((x) => x.id === openDrill) || null,
+    [drills, openDrill],
+  );
 
   const selectable = useMemo(
     () => map.zones.filter((z) => z.selectable !== false),
@@ -75,6 +88,7 @@ export default function AnatomyViewer({
     // Picking a muscle from outside the current filter would otherwise select
     // something the model is showing greyed out, so the filter steps aside.
     if (z && region !== 'all' && z.region !== region) setRegion('all');
+    setOpenDrill(null);
     onSelect && onSelect(z);
   }, [onSelect, region]);
 
@@ -100,6 +114,7 @@ export default function AnatomyViewer({
             theme={theme}
             selectedId={selected?.id || null}
             region={region}
+            exercise={shownDrill}
             onSelect={handleSelect}
             onHover={setHover}
           />
@@ -169,15 +184,70 @@ export default function AnatomyViewer({
       {/* Hover tooltip */}
       {hover && <div className="anatomy-hover">{hover.name}</div>}
 
-      {/* Selection readout */}
+      {/* Selection readout, with the exercises that train this muscle */}
       {selected && (
         <div className="anatomy-readout">
-          <div className="body">
-            <div className="mname">{selected.name}</div>
-            <div className="mmeta">{selected.region}</div>
-            <div className="mdesc">{selected.desc}</div>
+          <div className="head">
+            <div className="body">
+              <div className="mname">{selected.name}</div>
+              <div className="mmeta">{selected.region}</div>
+              <div className="mdesc">{selected.desc}</div>
+            </div>
+            <button className="train-btn" onClick={train}>Train this</button>
           </div>
-          <button className="train-btn" onClick={train}>Train this</button>
+
+          {drills.length > 0 && (
+            <div className="drills">
+              <h3>{drills.length} exercises</h3>
+              <ul>
+                {drills.map((x) => {
+                  const open = openDrill === x.id;
+                  return (
+                    <li key={x.id} className={open ? 'open' : ''}>
+                      <button
+                        className="drill-head"
+                        onClick={() => setOpenDrill(open ? null : x.id)}
+                        aria-expanded={open}
+                      >
+                        <span className="dname">{x.name}</span>
+                        <span className="tags">
+                          {x.equipment && <em>{x.equipment}</em>}
+                          {x.level && <em>{x.level}</em>}
+                        </span>
+                      </button>
+                      {open && (
+                        <div className="drill-body">
+                          {/* The muscles it trains, shown on the model above:
+                              primary lit, secondary dimmed. */}
+                          <div className="works">
+                            {[...x.primary, ...x.secondary].map((k) => {
+                              const z = map.zones.find((v) => v.key === k);
+                              if (!z) return null;
+                              const isPrimary = x.primary.includes(k);
+                              return (
+                                <span key={k} className={`work ${isPrimary ? 'primary' : ''}`}>
+                                  <span className="dot" style={{ background: zoneColor(z) }} />
+                                  {z.name}
+                                </span>
+                              );
+                            })}
+                          </div>
+                          {x.instructions.length > 0 && (
+                            <ol className="steps">
+                              {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
+                            </ol>
+                          )}
+                          <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
+                            Watch on YouTube →
+                          </a>
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
         </div>
       )}
     </div>

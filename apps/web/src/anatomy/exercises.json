@@ -12,7 +12,8 @@
   }
  },
  "links": {
-  "note": "Each exercise carries a YouTube search URL rather than a fixed video id, so it cannot rot and needs no API key."
+  "youtube": "A search URL rather than a fixed video id, so it cannot rot and needs no API key.",
+  "images": "None. The only reachable illustrated datasets either state no licence for their images (free-exercise-db, question closed unanswered) or ship none at all (exercemus). An exercise is instead shown on the app's own model, lighting the muscles it trains."
  },
  "muscles": {
   "abs": [
@@ -23,6 +24,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Lie down on the floor and secure your feet. Your legs should be bent at the knees.",
@@ -41,6 +45,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Lie flat on the floor (or exercise mat) on your back with your arms extended straight back behind your head and your legs extended also. This will be your starting position.",
@@ -58,6 +65,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Lie flat on your back and bend your knees about 60 degrees.",
@@ -76,6 +86,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Lie on your back on a decline bench and hold on to the top of the bench with both hands. Don't let your body slip down from this position.",
@@ -94,9 +107,12 @@
     "level": "expert",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "abs"
+    ],
     "secondary": [
-     "pec",
      "delt",
+     "pec",
      "tri"
     ],
     "instructions": [
@@ -115,6 +131,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Kneel 1-2 feet in front of a cable system with a rope attached.",
@@ -133,6 +152,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Kneel below a high pulley that contains a rope attachment.",
@@ -152,6 +174,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Connect an ankle strap attachment to a low pulley cable and position a mat on the floor in front of it.",
@@ -171,6 +196,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Lie on an exercise ball with your lower back curvature pressed against the spherical surface of the ball. Your feet should be bent at the knee and pressed firmly against the floor. The upper torso should be hanging off the top of the ball. The arms should either be kept alongside the body or crossed on top of your chest as these positions avoid neck strains (as opposed to the hands behind the back of the head position).",
@@ -189,6 +217,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Secure a set of suspension straps with the handles hanging about a foot off of the ground. Move yourself into a pushup plank position facing away from the rack.",
@@ -206,6 +237,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [],
     "instructions": [
      "Select a light resistance and sit down on the ab machine placing your feet under the pads provided and grabbing the top handles. Your arms should be bent at a 90 degree angle as you rest the triceps on the pads provided. This will be your starting position.",
@@ -223,9 +257,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "abs"
+    ],
     "secondary": [
-     "glute",
-     "delt"
+     "delt",
+     "glute"
     ],
     "instructions": [
      "Hold a dumbbell in each hand with a pronated grip. Your feet should be wide with your hips and knees extended. This will be your starting position.",
@@ -245,6 +282,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "add"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -265,6 +305,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "add"
+    ],
     "secondary": [],
     "instructions": [
      "Anchor a band around a solid post or other object.",
@@ -284,8 +327,10 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "add"
+    ],
     "secondary": [
-     "glute",
      "calf",
      "glute",
      "ham",
@@ -308,8 +353,10 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "add"
+    ],
     "secondary": [
-     "glute",
      "calf",
      "glute",
      "ham",
@@ -332,8 +379,10 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "add"
+    ],
     "secondary": [
-     "glute",
      "calf",
      "glute",
      "ham",
@@ -355,9 +404,11 @@
     "level": "beginner",
     "mechanic": null,
     "force": null,
+    "primary": [
+     "add"
+    ],
     "secondary": [
      "abs",
-     "glute",
      "calf",
      "glute",
      "ham",
@@ -380,6 +431,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -399,6 +453,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -419,6 +476,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [],
     "instructions": [
      "To perform this movement you will need a preacher bench and an E-Z bar. Grab the E-Z curl bar at the close inner handle (either have someone hand you the bar which is preferable or grab the bar from the front bar rest provided by most preacher benches). The palm of your hands should be facing forward and they should be slightly tilted inwards due to the shape of the bar.",
@@ -437,6 +497,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -456,6 +519,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -475,6 +541,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [],
     "instructions": [
      "Sit on a flat bench with a dumbbell on each hand being held at arms length. The elbows should be close to the torso.",
@@ -493,6 +562,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -514,6 +586,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [],
     "instructions": [
      "Sit back on an incline bench with a dumbbell in each hand held at arms length. Keep your elbows close to your torso and rotate the palms of your hands until they are facing forward. This will be your starting position.",
@@ -531,6 +606,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [],
     "instructions": [
      "Adjust the seat to the appropriate height and make your weight selection. Place your upper arms against the pads and grasp the handles. This will be your starting position.",
@@ -548,6 +626,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -567,6 +648,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [
      "fore"
     ],
@@ -589,6 +673,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "bic"
+    ],
     "secondary": [],
     "instructions": [
      "Stand up with your torso upright while holding a cable curl bar that is attached to a low pulley. Grab the cable bar at shoulder width and keep the elbows close to the torso. The palm of your hands should be facing up (supinated grip). This will be your starting position.",
@@ -608,6 +695,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Place a block about 12 inches in front of a flat bench.",
@@ -627,6 +717,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack that best matches your height. Once the correct height is chosen and the bar is loaded, step under the bar and place it on the back of your shoulders (slightly below the neck).",
@@ -648,6 +741,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Place a block on the floor about 12 inches from a flat bench.",
@@ -667,6 +763,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Adjust the seat so that your legs are only slightly bent in the start position. The balls of your feet should be firmly on the platform.",
@@ -684,6 +783,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Sit on the machine and place your toes on the lower portion of the platform provided with the heels extending off. Choose the toe positioning of your choice (forward, in, or out) as per the beginning of this chapter.",
@@ -703,6 +805,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Place a block or weight plate below the bar on the Smith machine. Set the bar to a position that best matches your height. Once the correct height is chosen and the bar is loaded, step onto the plates with the balls of your feet and place the bar on the back of your shoulders.",
@@ -721,6 +826,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Using a leg press machine, sit down on the machine and place your legs on the platform directly in front of you at a medium (shoulder width) foot stance.",
@@ -739,6 +847,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": null,
+    "primary": [
+     "calf"
+    ],
     "secondary": [
      "ham",
      "quad"
@@ -758,6 +869,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "Grab an exercise band and stand on it with your toes making sure that the length of the band between the foot and the arms is the same for both sides.",
@@ -776,6 +890,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "calf"
+    ],
     "secondary": [],
     "instructions": [
      "For this exercise you will need access to a donkey calf raise machine. Start by positioning your lower back and hips under the padded lever provided. The tailbone area should be the one making contact with the pad.",
@@ -796,6 +913,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "traps"
     ],
@@ -815,6 +935,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "bic",
      "lat",
@@ -837,6 +960,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "tri"
     ],
@@ -858,9 +984,11 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "bic",
-     "traps",
      "traps"
     ],
     "instructions": [
@@ -880,6 +1008,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -901,6 +1032,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -922,6 +1056,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "tri"
     ],
@@ -942,6 +1079,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "traps"
     ],
@@ -958,6 +1098,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "tri"
     ],
@@ -976,6 +1119,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "tri"
     ],
@@ -993,6 +1139,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "abs",
      "ham",
@@ -1014,6 +1163,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "delt"
+    ],
     "secondary": [
      "abs",
      "calf",
@@ -1038,6 +1190,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -1060,13 +1215,15 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "calf",
      "fore",
      "glute",
      "ham",
      "lat",
-     "traps",
      "quad",
      "traps"
     ],
@@ -1087,11 +1244,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "fore",
      "glute",
      "ham",
-     "traps",
      "quad",
      "traps"
     ],
@@ -1110,6 +1269,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -1131,6 +1293,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "glute",
      "ham",
@@ -1152,11 +1317,13 @@
     "level": "expert",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "fore",
      "glute",
      "ham",
-     "traps",
      "quad",
      "traps"
     ],
@@ -1175,11 +1342,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "fore",
      "glute",
      "ham",
-     "traps",
      "quad",
      "traps"
     ],
@@ -1199,6 +1368,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -1221,16 +1393,18 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "abs",
      "bic",
      "calf",
+     "delt",
      "fore",
      "glute",
      "ham",
-     "traps",
      "quad",
-     "delt",
      "traps"
     ],
     "instructions": [
@@ -1249,6 +1423,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "erector"
+    ],
     "secondary": [
      "bic",
      "fore",
@@ -1274,6 +1451,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Hold a barbell with both hands and your palms facing up; hands spaced about shoulder width.",
@@ -1292,6 +1472,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start out by placing a barbell on one side of a flat bench.",
@@ -1312,6 +1495,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start out by placing two dumbbells on the floor in front of a flat bench.",
@@ -1332,6 +1518,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start out by placing a barbell on one side of a flat bench.",
@@ -1352,6 +1541,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start out by placing two dumbbells on one side of a flat bench.",
@@ -1372,6 +1564,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start by standing straight and holding a barbell behind your glutes at arm's length while using a pronated grip (palms will be facing back away from the glutes) and having your hands shoulder width apart from each other.",
@@ -1391,6 +1586,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Start out by placing a flat bench in front of a low pulley cable that has a straight bar attachment.",
@@ -1410,6 +1608,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [],
     "instructions": [
      "Put a bench in front of a low pulley machine that has a barbell or EZ Curl attachment on it.",
@@ -1432,11 +1633,14 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": null,
+    "primary": [
+     "fore"
+    ],
     "secondary": [
      "abs",
+     "erector",
      "glute",
      "ham",
-     "erector",
      "quad",
      "traps"
     ],
@@ -1455,6 +1659,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [
      "bic",
      "delt"
@@ -1473,6 +1680,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "fore"
+    ],
     "secondary": [
      "delt"
     ],
@@ -1493,6 +1703,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "static",
+    "primary": [
+     "fore"
+    ],
     "secondary": [
      "bic"
     ],
@@ -1514,6 +1727,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "ham"
     ],
@@ -1533,6 +1749,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "ham",
      "quad"
@@ -1552,10 +1771,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "abs",
-     "ham",
-     "erector"
+     "erector",
+     "ham"
     ],
     "instructions": [
      "Set the bar to the proper height in a power rack. Kneel behind the bar; it may be beneficial to put a mat down to pad your knees. Slide under the bar, racking it across the back of your shoulders. Your shoulder blades should be retracted and the bar tight across your back. Unrack the weight.",
@@ -1572,6 +1794,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "calf",
      "ham"
@@ -1591,6 +1816,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "calf",
      "ham"
@@ -1610,6 +1838,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "ham"
     ],
@@ -1629,6 +1860,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "ham"
     ],
@@ -1650,6 +1884,9 @@
     "level": "expert",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "calf",
      "ham",
@@ -1671,6 +1908,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "ham"
     ],
@@ -1691,9 +1931,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
-     "ham",
-     "erector"
+     "erector",
+     "ham"
     ],
     "instructions": [
      "Begin standing a few feet in front of a low pulley with a rope or handle attached. Face away from the machine, straddling the cable, with your feet set wide apart.",
@@ -1709,6 +1952,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "glute"
+    ],
     "secondary": [],
     "instructions": [
      "Place a band around both ankles and another around both knees. There should be enough tension that they are tight when your feet are shoulder width apart.",
@@ -1725,6 +1971,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "glute"
+    ],
     "secondary": [
      "calf",
      "ham"
@@ -1747,9 +1996,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Grasp a couple of dumbbells holding them by your side at arm's length.",
@@ -1768,9 +2020,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "To begin, set the bar on the smith machine to a height that is around the middle of your thighs. Once the correct height is chosen and the bar is loaded, grasp the bar using a pronated (palms forward) grip that is shoulder width apart. You may need some wrist wraps if using a significant amount of weight.",
@@ -1789,9 +2044,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Using a 41 inch band, stand on one end, spreading your feet a small amount. Bend at the hips to loop the end of the band behind your neck. This will be your starting position.",
@@ -1808,9 +2066,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Loop the band around a post. Standing a little ways away, loop the opposite end around the neck. Your hands can help hold the band in position.",
@@ -1827,10 +2088,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "abs",
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Begin with a bar on a rack at shoulder height. Rack the bar across the rear of your shoulders as you would a power squat, not on top of your shoulders. Keep your back tight, shoulder blades pinched together, and your knees slightly bent. Step back from the rack.",
@@ -1847,12 +2111,14 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "add",
+     "erector",
      "fore",
      "glute",
-     "erector",
-     "traps",
      "quad",
      "traps"
     ],
@@ -1872,10 +2138,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "calf",
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Put a barbell in front of you on the ground and grab it using a pronated (palms facing down) grip that a little wider than shoulder width. Tip: Depending on the weight used, you may need wrist wraps to perform the exercise and also a raised platform in order to allow for better range of motion.",
@@ -1894,10 +2163,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "abs",
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Begin with a bar on a rack at about the same height as your stomach. Bend over underneath the bar and rack the bar across the rear of your shoulders as you would a power squat, not on top of your shoulders. At the proper height, you should be near parallel to the floor when bent over. Keep your back tight, shoulder blades pinched together, and your knees slightly bent. Keep your back arched and your cervical spine in proper alignment.",
@@ -1913,6 +2185,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "calf",
      "glute",
@@ -1935,9 +2210,12 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
-     "glute",
-     "erector"
+     "erector",
+     "glute"
     ],
     "instructions": [
      "Hold a kettlebell by the handle in one hand. Stand on one leg, on the same side that you hold the kettlebell.",
@@ -1954,6 +2232,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [],
     "instructions": [
      "Adjust the machine lever to fit your height and sit on the machine with your back against the back support pad.",
@@ -1972,6 +2253,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "ham"
+    ],
     "secondary": [
      "calf",
      "glute"
@@ -1995,6 +2279,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "fore",
@@ -2017,10 +2304,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
-     "traps",
-     "delt"
+     "delt",
+     "traps"
     ],
     "instructions": [
      "Start by placing the middle of the V-bar in the middle of the pull-up bar (assuming that the pull-up station you are using does not have neutral grip handles). The V-Bar handles will be facing down so that you can hang from the pull-up bar through the use of the handles.",
@@ -2039,6 +2329,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -2059,6 +2352,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -2078,6 +2374,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -2098,10 +2397,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
-     "traps",
-     "delt"
+     "delt",
+     "traps"
     ],
     "instructions": [
      "Sit down on a pull-down machine with a wide bar attached to the top pulley. Make sure that you adjust the knee pad of the machine to fit your height. These pads will prevent your body from being raised by the resistance attached to the bar.",
@@ -2121,6 +2423,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -2140,6 +2445,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": null,
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "abs",
      "fore",
@@ -2161,10 +2469,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
-     "pec",
-     "lat",
      "delt",
+     "lat",
+     "pec",
      "tri"
     ],
     "instructions": [
@@ -2184,10 +2495,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
-     "traps",
-     "delt"
+     "delt",
+     "traps"
     ],
     "instructions": [
      "Grab the pull-up bar with the palms facing forward using a wide grip.",
@@ -2206,6 +2520,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "bic",
      "traps"
@@ -2227,12 +2544,14 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "lat"
+    ],
     "secondary": [
      "abs",
      "bic",
-     "fore",
-     "traps",
      "delt",
+     "fore",
      "traps",
      "tri"
     ],
@@ -2254,6 +2573,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "static",
+    "primary": [
+     "neck"
+    ],
     "secondary": [],
     "instructions": [
      "With your head and neck in a neutral position (normal position with head erect facing forward), place your left hand on the left side of your head.",
@@ -2272,6 +2594,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "static",
+    "primary": [
+     "neck"
+    ],
     "secondary": [],
     "instructions": [
      "With your head and neck in a neutral position (normal position with head erect facing forward), place both of your hands on the front side of your head.",
@@ -2290,6 +2615,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "neck"
+    ],
     "secondary": [],
     "instructions": [
      "Lie face up with your whole body straight on a flat bench while holding a weight plate on top of your forehead. Tip: You will need to position yourself so that your shoulders are slightly above the end of a flat bench in order for the traps, neck and head to be off the bench. This will be your starting position.",
@@ -2307,6 +2635,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "neck"
+    ],
     "secondary": [],
     "instructions": [
      "Place a neck strap on the floor at the end of a flat bench. Once you have selected the weights, sit at the end of the flat bench with your feet wider than shoulder width apart from each other. Your toes should be pointed out.",
@@ -2328,6 +2659,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "Secure your legs at the end of the decline bench and slowly lay down on the bench.",
@@ -2347,6 +2681,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [
      "delt"
     ],
@@ -2370,6 +2707,9 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [
      "erector"
     ],
@@ -2390,6 +2730,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [
      "erector"
     ],
@@ -2409,6 +2752,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "Stand up straight while holding a dumbbell on the left hand (palms facing the torso) as you have the right hand holding your waist. Your feet should be placed at shoulder width. This will be your starting position.",
@@ -2426,6 +2772,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "Connect a standard handle to each arm of a cable machine, and position them in the most downward position.",
@@ -2449,6 +2798,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "Connect a rope attachment to a high pulley cable and position a mat on the floor in front of it.",
@@ -2471,6 +2823,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "To begin, lie down on an exercise ball with your left side of the torso (waist, hips and shoulder) pressed against the ball.",
@@ -2491,10 +2846,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [
-     "glute",
+     "delt",
      "erector",
-     "delt"
+     "glute"
     ],
     "instructions": [
      "Position a bar into a landmine or securely anchor it in a corner. Load the bar to an appropriate weight.",
@@ -2513,6 +2871,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [],
     "youtube": "https://www.youtube.com/results?search_query=Side+Jackknife+exercise+proper+form",
@@ -2525,6 +2886,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [],
     "instructions": [
      "Connect a standard handle attachment, and position the cable to a middle pulley position.",
@@ -2545,10 +2909,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "obl"
+    ],
     "secondary": [
+     "delt",
      "glute",
      "ham",
-     "delt",
      "tri"
     ],
     "instructions": [
@@ -2568,6 +2935,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2589,9 +2959,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
-     "lat",
      "delt",
+     "lat",
      "tri"
     ],
     "instructions": [
@@ -2611,6 +2984,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2633,6 +3009,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2655,6 +3034,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2676,6 +3058,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2699,6 +3084,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2719,6 +3107,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2740,6 +3131,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": null,
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "abs",
      "delt",
@@ -2761,6 +3155,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "delt",
      "tri"
@@ -2780,6 +3177,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "abs",
      "delt",
@@ -2802,6 +3202,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "pec"
+    ],
     "secondary": [
      "abs",
      "delt",
@@ -2826,11 +3229,14 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
+     "erector",
      "glute",
-     "ham",
-     "erector"
+     "ham"
     ],
     "instructions": [
      "This exercise is best performed inside a squat rack for safety purposes. To begin, first set the bar on a rack to just below shoulder level. Once the correct height is chosen and the bar is loaded, step under the bar and place the back of your shoulders (slightly below the neck) across it.",
@@ -2850,11 +3256,14 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
+     "erector",
      "glute",
-     "ham",
-     "erector"
+     "ham"
     ],
     "instructions": [
      "Stand up straight while holding a dumbbell on each hand (palms facing the side of your legs).",
@@ -2873,6 +3282,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "abs",
      "calf",
@@ -2896,6 +3308,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
      "glute",
@@ -2917,10 +3332,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
-     "ham",
-     "erector"
+     "erector",
+     "ham"
     ],
     "instructions": [
      "Stand up straight while holding a barbell placed on the back of your shoulders (slightly below the neck). Your feet should be placed wide apart with the foot of the lead leg angled out to the side. This will be your starting position.",
@@ -2938,6 +3356,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -2958,6 +3379,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -2977,6 +3401,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
      "glute",
@@ -2999,6 +3426,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
      "glute",
@@ -3023,6 +3453,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
      "glute",
@@ -3046,6 +3479,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "glute",
      "ham"
@@ -3064,11 +3500,14 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "quad"
+    ],
     "secondary": [
      "calf",
+     "delt",
      "glute",
-     "ham",
-     "delt"
+     "ham"
     ],
     "instructions": [
      "Stand holding a light kettlebell by the horns close to your chest. This will be your starting position.",
@@ -3087,6 +3526,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Stand with your back against a wall, heels a step out, and lift your toes toward your shins."
@@ -3101,6 +3543,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Anchor a band around the top of your foot, sit with the leg straight, and pull your toes toward you."
@@ -3115,6 +3560,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Sit with your feet flat, keep your heels down, and raise your toes as high as they will go."
@@ -3129,6 +3577,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Sit with a light dumbbell resting across your toes and raise the toes against it."
@@ -3143,6 +3594,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Walk forward on your heels with your toes held clear of the floor."
@@ -3157,6 +3611,9 @@
     "level": "intermediate",
     "mechanic": "isolation",
     "force": "pull",
+    "primary": [
+     "shin"
+    ],
     "secondary": [],
     "instructions": [
      "Set your heels on the platform and pull your toes toward you against the sled."
@@ -3173,11 +3630,14 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
+     "delt",
      "fore",
-     "lat",
-     "delt"
+     "lat"
     ],
     "instructions": [
      "Using a neutral grip, lean into an incline bench.",
@@ -3195,10 +3655,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
-     "lat",
-     "delt"
+     "delt",
+     "lat"
     ],
     "instructions": [
      "Choose a flat bench and place a dumbbell on each side of it.",
@@ -3219,6 +3682,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
      "lat"
@@ -3240,10 +3706,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
-     "lat",
-     "delt"
+     "delt",
+     "lat"
     ],
     "instructions": [
      "Holding a barbell with a pronated grip (palms facing down), bend your knees slightly and bring your torso forward, by bending at the waist, while keeping the back straight until it is almost parallel to the floor. Tip: Make sure that you keep the head up. The barbell should hang directly in front of you as your arms hang perpendicular to the floor and your torso. This is your starting position.",
@@ -3261,6 +3730,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
      "lat"
@@ -3282,6 +3754,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
      "delt"
@@ -3302,6 +3777,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "lat"
     ],
@@ -3321,10 +3799,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
-     "traps",
-     "delt"
+     "delt",
+     "traps"
     ],
     "instructions": [
      "To begin, set the bar on the smith machine to a height that is around the middle of your thighs. Once the correct height is chosen and the bar is loaded, grasp the bar using a pronated (palms forward) grip that is shoulder width apart. You may need some wrist wraps if using a significant amount of weight.",
@@ -3343,10 +3824,13 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
-     "lat",
-     "delt"
+     "delt",
+     "lat"
     ],
     "instructions": [
      "Set the barbell attached to the smith machine to a height that is about 2 inches below your knees.",
@@ -3366,6 +3850,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "delt"
     ],
@@ -3385,6 +3872,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
      "lat"
@@ -3405,6 +3895,9 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "pull",
+    "primary": [
+     "traps"
+    ],
     "secondary": [
      "bic",
      "lat"
@@ -3426,9 +3919,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Lie back on a flat bench. Using a close grip (around shoulder width), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.",
@@ -3447,9 +3943,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Stand facing a Smith machine bar or sturdy elevated platform at an appropriate height.",
@@ -3468,9 +3967,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Sit securely in a dip machine, select the weight and firmly grasp the handles.",
@@ -3489,9 +3991,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Place a flat bench underneath the smith machine. Place the barbell at a height that you can reach when lying down and your arms are almost fully extended. Once the weight you need is selected, lie down on the flat bench. Using a close and pronated grip (palms facing forward) that is around shoulder width, unlock the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.",
@@ -3510,9 +4015,12 @@
     "level": "beginner",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Stand between a set of parallel bars. Place a hand on each bar, and then take a small jump to help you get into the starting position with your arms locked out.",
@@ -3530,12 +4038,15 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
+     "delt",
      "fore",
      "lat",
-     "traps",
-     "delt"
+     "pec",
+     "traps"
     ],
     "instructions": [
      "Position a bench inside a power rack, with the bar set to the correct height. Begin by anchoring bands either to band pegs or to the top of the rack. Ensure that you will be position properly under the bands. Attach the other end to the barbell.",
@@ -3553,11 +4064,14 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
+     "delt",
      "fore",
      "lat",
-     "delt"
+     "pec"
     ],
     "instructions": [
      "Begin by lying on the bench, getting your head beyond the bar if possible. Tuck your feet underneath you and arch your back. Using the bar to help support your weight, lift your shoulder off the bench and retract them, squeezing the shoulder blades together. Use your feet to drive your traps into the bench. Maintain this tight body position throughout the movement.",
@@ -3575,9 +4089,12 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Lie back on a flat bench. Using a close, supinated grip (around shoulder width), lift the bar from the rack and hold it straight over you with your arms locked extended in front of you and perpendicular to the floor. This will be your starting position.",
@@ -3596,10 +4113,13 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
      "abs",
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "Lie on the floor and place your hands on an upright dumbbell. Supporting your weight on your toes and hands, keep your torso rigid and your elbows in with your arms straight. This will be your starting position.",
@@ -3617,9 +4137,12 @@
     "level": "intermediate",
     "mechanic": "compound",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [
-     "pec",
-     "delt"
+     "delt",
+     "pec"
     ],
     "instructions": [
      "For this exercise you will need to place a bench behind your back and another one in front of you. With the benches perpendicular to your body, hold on to one bench on its edge with the hands close to your body, separated at shoulder width. Your arms should be fully extended.",
@@ -3638,6 +4161,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [],
     "instructions": [
      "Start with a dumbbell in each hand and your palms facing your torso. Keep your back straight with a slight bend in the knees and bend forward at the waist. Your torso should be almost parallel to the floor. Make sure to keep your head up. Your upper arms should be close to your torso and parallel to the floor. Your forearms should be pointed towards the floor as you hold the weights. There should be a 90-degree angle formed between your forearm and upper arm. This is your starting position.",
@@ -3655,6 +4181,9 @@
     "level": "beginner",
     "mechanic": "isolation",
     "force": "push",
+    "primary": [
+     "tri"
+    ],
     "secondary": [],
     "instructions": [
      "Secure your legs at the end of the decline bench and lie down with a dumbbell on each hand on top of your thighs. The palms of your hand will be facing each other.",
