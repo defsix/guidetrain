@@ -72,6 +72,15 @@ the other side's borders, so every unit that gets a label spans both sides and
 is its own mirror. `tools/muscle-segmentation/check-symmetry.py` measures what
 is left — no muscle's left and right areas now differ by more than 3%.
 
+Which muscle a region is gets decided from how much of its surface faces each
+way, rather than where its centre sits — a limb is round, so the centre of a
+patch running down the back of the thigh is barely behind the axis, and it used
+to come out as quadriceps. Heights come from landmarks measured on the mesh (the
+crotch, the ribcage's lower edge, the elbow, the throat hollow, the chin), and a
+painted region covering two muscle groups — the model has three, including one
+spanning the lumbar spine to the shoulder blades — is cut at the landmark
+between them.
+
 Each triangle carries a single zone and vertices are split along the borders,
 so muscle edges are hard lines rather than the gradient the shader would
 otherwise blend between neighbouring vertex colours. Every muscle also gets its
