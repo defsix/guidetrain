@@ -6,9 +6,9 @@ import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
 import './anatomy.css';
 
-const REGIONS = ['all', 'Shoulders', 'Chest', 'Back', 'Arms', 'Core', 'Legs'];
+const REGIONS = ['all', 'Neck', 'Shoulders', 'Chest', 'Back', 'Arms', 'Core', 'Legs'];
 const REGION_DOT = {
-  all: '#4cc9ff', Shoulders: '#ff8a5c', Chest: '#e8574a',
+  all: '#4cc9ff', Neck: '#c98a6b', Shoulders: '#ff8a5c', Chest: '#e8574a',
   Back: '#c73f6e', Arms: '#f2b13c', Core: '#d94436', Legs: '#b5503a',
 };
 
