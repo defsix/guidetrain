@@ -14,7 +14,7 @@
  "links": {
   "youtube": "A search URL rather than a fixed video id, so it cannot rot and needs no API key.",
   "images": "None. The only reachable illustrated datasets either state no licence for their images (free-exercise-db, question closed unanswered) or ship none at all (exercemus). An exercise is instead shown on the app's own model, lighting the muscles it trains.",
-  "video": "Video ids are resolved at build time by tools/exercises/resolve-videos.py, so the app ships no API key. Exercises without one fall back to the YouTube search link. The single hand-verified entry is a demonstrator so the player can be seen working before the resolver is run."
+  "video": "Video ids resolved at build time by tools/exercises/resolve-videos.py, so the app ships no API key. Exercises without one fall back to the YouTube search link."
  },
  "muscles": {
   "abs": [
@@ -37,7 +37,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=3%2F4+Sit-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "GSjm29FESiQ",
+    "videoTitle": "How Properly Perform Sit Ups With Different Hand Positions (Hardest to Easiest)",
+    "videoChannel": "Gerardi Performance"
    },
    {
     "id": "Jackknife_Sit-Up",
@@ -57,7 +60,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Jackknife+Sit-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "GEZ8NLbtc8Q",
+    "videoTitle": "Jackknife Sit Up - Core / Abs - Bodybuilding.com",
+    "videoChannel": "Bodybuilding.com"
    },
    {
     "id": "Cross-Body_Crunch",
@@ -78,7 +84,10 @@
      "Continue alternating in this manner until all prescribed repetitions are done."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Cross-Body+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "cFDS2S6Vqis",
+    "videoTitle": "\ud83d\udd25 Stop Wasting Your Bicycle Crunches! Rotate Your Core the Right Way \ud83d\udcaa",
+    "videoChannel": "Go with JO FITNESS"
    },
    {
     "id": "Decline_Reverse_Crunch",
@@ -99,7 +108,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Decline+Reverse+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "eX9vjAsdWvY",
+    "videoTitle": "Reverse Crunch - Proper Form To REALLY Train your Abs! #abs #core",
+    "videoChannel": "dailyglowwithme"
    },
    {
     "id": "Press_Sit-Up",
@@ -123,7 +135,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Press+Sit-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "GSjm29FESiQ",
+    "videoTitle": "How Properly Perform Sit Ups With Different Hand Positions (Hardest to Easiest)",
+    "videoChannel": "Gerardi Performance"
    },
    {
     "id": "Rope_Crunch",
@@ -144,7 +159,10 @@
      "These can be done with twists or to the side to hit the obliques."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Rope+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "dkGwcfo9zto",
+    "videoTitle": "How To: Cable Crunch | Form Tutorial",
+    "videoChannel": "Kade Howell"
    },
    {
     "id": "Cable_Crunch",
@@ -166,7 +184,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Cable+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "dkGwcfo9zto",
+    "videoTitle": "How To: Cable Crunch | Form Tutorial",
+    "videoChannel": "Kade Howell"
    },
    {
     "id": "Cable_Reverse_Crunch",
@@ -188,7 +209,10 @@
      "Repeat the same movement to failure."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Cable+Reverse+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "dkGwcfo9zto",
+    "videoTitle": "How To: Cable Crunch | Form Tutorial",
+    "videoChannel": "Kade Howell"
    },
    {
     "id": "Exercise_Ball_Crunch",
@@ -209,7 +233,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Exercise+Ball+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "uiWa19h6LUY",
+    "videoTitle": "How to do a stability ball crunch",
+    "videoChannel": "Jenn Alivea (Jenn Alivea Fitness)"
    },
    {
     "id": "Suspended_Reverse_Crunch",
@@ -229,7 +256,10 @@
      "At the top of the controlled motion, return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Suspended+Reverse+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "eX9vjAsdWvY",
+    "videoTitle": "Reverse Crunch - Proper Form To REALLY Train your Abs! #abs #core",
+    "videoChannel": "dailyglowwithme"
    },
    {
     "id": "Ab_Crunch_Machine",
@@ -249,7 +279,10 @@
      "Repeat the movement for the prescribed amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Ab+Crunch+Machine+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "7T0ZUEt1m8s",
+    "videoTitle": "Ab Crunch Machine Trainer Instruction Video",
+    "videoChannel": "NDSU Wellness Center"
    },
    {
     "id": "Spell_Caster",
@@ -272,7 +305,10 @@
      "Continue alternating, rotating from one side to the other until the set is complete."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Spell+Caster+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "YJK_UB07Tk0",
+    "videoTitle": "The best way to do spell caster workout.",
+    "videoChannel": "Explore Health Vlog"
    }
   ],
   "add": [
@@ -297,7 +333,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Thigh+Adductor+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "BXs0PIkdXGs",
+    "videoTitle": "Abductors vs. Adductors \u26a0\ufe0f #knowthedifference",
+    "videoChannel": "Hazzytrainer"
    },
    {
     "id": "Band_Hip_Adductions",
@@ -319,7 +358,10 @@
      "Switch sides."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Band+Hip+Adductions+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "UCVP0qaHzN8",
+    "videoTitle": "Banded Hip Abduction",
+    "videoChannel": "Kevlar Performance"
    },
    {
     "id": "Lateral_Bound",
@@ -345,7 +387,10 @@
      "Continue back and forth for several repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Lateral+Bound+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "ZkYORFHgRTw",
+    "videoTitle": "Lateral Bound",
+    "videoChannel": "Olympia Fitness and Performance"
    },
    {
     "id": "Lateral_Box_Jump",
@@ -371,7 +416,10 @@
      "Carefully jump down to the other side of the box, and continue going back and forth for several repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Lateral+Box+Jump+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "bXgFx93CGow",
+    "videoTitle": "DON\u2019T do THIS when doing box jumps!",
+    "videoChannel": "Sam Vickers Golf Performance"
    },
    {
     "id": "Lateral_Cone_Hops",
@@ -396,7 +444,10 @@
      "Use your legs to absorb impact upon landing, and rebound into the next jump, continuing down the row of cones."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Lateral+Cone+Hops+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "IjDguatdRKw",
+    "videoTitle": "How To Do Single Leg Lateral Cone Hops | Exercise Demonstration Video and Guide",
+    "videoChannel": "Live Lean TV Daily Exercises"
    },
    {
     "id": "Carioca_Quick_Step",
@@ -421,7 +472,10 @@
      "Fire your arms back up when you pull the right knee, being sure that your knee goes straight up and down. Avoid turning your feet as you move and continue to look forward as you move to the side."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Carioca+Quick+Step+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "5UtlTl-7bio",
+    "videoTitle": "Carioca step - Fit Family Physical Therapy",
+    "videoChannel": "Fit Family Physical Therapy"
    }
   ],
   "bic": [
@@ -445,7 +499,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Drag+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "Riw5fT4Dq2c",
+    "videoTitle": "Bicep peak ( drag curl ) #workout #biceps #fitness",
+    "videoChannel": "FitnessGuru"
    },
    {
     "id": "Barbell_Curl",
@@ -468,7 +525,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "54x2WF1_Suc",
+    "videoTitle": "The Perfect Barbell Bicep Curl (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Preacher_Curl",
@@ -489,7 +549,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Preacher+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "7ixqAPO6JvU",
+    "videoTitle": "FIX Your Preacher Curls (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Dumbbell_Bicep_Curl",
@@ -511,7 +574,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Dumbbell+Bicep+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "iui51E31sX8",
+    "videoTitle": "How To Properly Perform Dumbbell Bicep Curls With Good Form *Palms Up* (Exercise Demonstration)",
+    "videoChannel": "Gerardi Performance"
    },
    {
     "id": "Reverse_Barbell_Curl",
@@ -533,7 +599,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Reverse+Barbell+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "yz2eCSWoY4E",
+    "videoTitle": "\ud83d\udcaa BIGGER Forearms Workout (Do THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Seated_Dumbbell_Curl",
@@ -554,7 +623,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Dumbbell+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "XhIsIcjIbCw",
+    "videoTitle": "How to do the Incline Dumbbell Curl Correctly",
+    "videoChannel": "TylerPath"
    },
    {
     "id": "Alternate_Hammer_Curl",
@@ -578,7 +650,10 @@
      "Continue alternating in this manner for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Alternate+Hammer+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "8H5oWMNWWeQ",
+    "videoTitle": "Hammer Curls: Know The Difference \u26a0\ufe0f #armsworkout",
+    "videoChannel": "Hazzytrainer"
    },
    {
     "id": "Incline_Dumbbell_Curl",
@@ -598,7 +673,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Incline+Dumbbell+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "XhIsIcjIbCw",
+    "videoTitle": "How to do the Incline Dumbbell Curl Correctly",
+    "videoChannel": "TylerPath"
    },
    {
     "id": "Machine_Bicep_Curl",
@@ -618,7 +696,10 @@
      "Avoid returning the weight all the way to the stops until the set is complete to keep tension on the muscles being worked."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Machine+Bicep+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "S4dDLfp3e8w",
+    "videoTitle": "The PERFECT Machine Preacher Curl",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Reverse_Cable_Curl",
@@ -640,7 +721,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Reverse+Cable+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "IJZhj9szYcw",
+    "videoTitle": "Reverse Cable Curl mistakes! Here is a video showing the wrong way vs the right way of performing.",
+    "videoChannel": "Stan Bakh"
    },
    {
     "id": "Cable_Preacher_Curl",
@@ -665,7 +749,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Cable+Preacher+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "dyEZvuMZXsY",
+    "videoTitle": "You Should Start Doing Cable Curls Like This",
+    "videoChannel": "TylerPath"
    },
    {
     "id": "Standing_Biceps_Cable_Curl",
@@ -685,7 +772,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Standing+Biceps+Cable+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "CrbTqNOlFgE",
+    "videoTitle": "\u2705 The PERFECT Cable Bicep Curl",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    }
   ],
   "calf": [
@@ -709,7 +799,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Seated+Calf+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "baEXLy09Ncc",
+    "videoTitle": "Get NOTICEABLY BIGGER Calves With This Technique",
+    "videoChannel": "Jeff Nippard"
    },
    {
     "id": "Rocking_Standing_Calf_Raise",
@@ -733,7 +826,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Rocking+Standing+Calf+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "k8ipHzKeAkQ",
+    "videoTitle": "Exercises with an Athletic Trainer: Standing Calf Raises",
+    "videoChannel": "Children's Hospital Colorado"
    },
    {
     "id": "Dumbbell_Seated_One-Leg_Calf_Raise",
@@ -755,7 +851,10 @@
      "Repeat for your prescribed number of repetitions and then repeat with the right leg."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Dumbbell+Seated+One-Leg+Calf+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "E1mG5L9rpFc",
+    "videoTitle": "Dumbbell Single Leg Calf Raise",
+    "videoChannel": "Evolutio Sports Physio Richmond (Melbourne)"
    },
    {
     "id": "Calf_Press",
@@ -775,7 +874,10 @@
      "After a brief pause, reverse the motion and repeat."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Calf+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "qAQexys5Bv4",
+    "videoTitle": "Avoid Mistake Calf Press On The Leg Press Machine #shorts",
+    "videoChannel": "QIM FITNESS"
    },
    {
     "id": "Seated_Calf_Raise",
@@ -797,7 +899,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Calf+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "BxfKOyI8sUg",
+    "videoTitle": "How to Do a Seated Calf Raise: A Guide from Physical Therapists",
+    "videoChannel": "Hinge Health"
    },
    {
     "id": "Smith_Machine_Calf_Raise",
@@ -818,7 +923,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Smith+Machine+Calf+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "wlqTemUXPXY",
+    "videoTitle": "How To Do Standing Calf Raises On Smith Machine",
+    "videoChannel": "nutritioneering"
    },
    {
     "id": "Calf_Press_On_The_Leg_Press_Machine",
@@ -839,7 +947,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Calf+Press+On+The+Leg+Press+Machine+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "qAQexys5Bv4",
+    "videoTitle": "Avoid Mistake Calf Press On The Leg Press Machine #shorts",
+    "videoChannel": "QIM FITNESS"
    },
    {
     "id": "Balance_Board",
@@ -861,7 +972,10 @@
      "Hold the balance for as long as desired."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Balance+Board+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "jTF0bjAWBMI",
+    "videoTitle": "Basics Wood Wobble Exercise Balance Board#cantonfair #shorts #balanceboard",
+    "videoChannel": "ARTBELL FITNESS"
    },
    {
     "id": "Calf_Raises_-_With_Bands",
@@ -882,7 +996,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Calf+Raises+-+With+Bands+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "utU05RX7fEw",
+    "videoTitle": "Calf strengthening with a resistance band",
+    "videoChannel": "Triumph Physio"
    },
    {
     "id": "Donkey_Calf_Raises",
@@ -903,7 +1020,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Donkey+Calf+Raises+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "r30EoMPSNns",
+    "videoTitle": "The Donkey Calf Raise",
+    "videoChannel": "Men's Health"
    }
   ],
   "delt": [
@@ -927,7 +1047,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Upright+Barbell+Row+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "AWsGWt-VMl8",
+    "videoTitle": "STOP DOING THIS Upright Row Mistake\u203c\ufe0f",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Barbell_Rear_Delt_Row",
@@ -952,7 +1075,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Rear+Delt+Row+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "7SzAgsAVzMo",
+    "videoTitle": "Barbell Row Grip Widths & Muscles Worked",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Standing_Military_Press",
@@ -976,7 +1102,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Standing+Military+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "zoN5EH50Dro",
+    "videoTitle": "Perfect Overhead Press Form (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Low_Pulley_Row_To_Neck",
@@ -1000,7 +1129,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Low+Pulley+Row+To+Neck+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "QCBgZTPOUVk",
+    "videoTitle": "Low Pulley Row To Neck   Exercise Videos & Guides   Bodybuilding com",
+    "videoChannel": "how to lose weight with the keto diet"
    },
    {
     "id": "Smith_Machine_One-Arm_Upright_Row",
@@ -1024,7 +1156,10 @@
      "Repeat for the desired number of repetitions before engaging the hooks to rack the weight."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Smith+Machine+One-Arm+Upright+Row+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "-Anm7xrLikg",
+    "videoTitle": "How to do an Upright Row on a Smith Machine",
+    "videoChannel": "Stephen O'Brien Coaching"
    },
    {
     "id": "Dumbbell_One-Arm_Upright_Row",
@@ -1048,7 +1183,10 @@
      "Repeat for the recommended amount of repetitions and switch arms."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Dumbbell+One-Arm+Upright+Row+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "29-4QWdqd-g",
+    "videoTitle": "Dumbbell Upright Row Variations (KNOW THE DIFFERENCE!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Seated_Barbell_Military_Press",
@@ -1071,7 +1209,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Barbell+Military+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "E7ngsffMPR0",
+    "videoTitle": "\u2705 The PERFECT Smith Machine Shoulder Press",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Face_Pull",
@@ -1090,7 +1231,10 @@
      "Facing a high pulley with a rope or dual handles attached, pull the weight directly towards your face, separating your hands as you do so. Keep your upper arms parallel to the ground."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Face+Pull+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "IeOqdw9WI90",
+    "videoTitle": "4 Facepull Mistakes You Need to FIX!",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Kettlebell_Arnold_Press",
@@ -1111,7 +1255,10 @@
      "Return the kettlebell to the starting position, with the palm facing in."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kettlebell+Arnold+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "IKpCLwaeU6M",
+    "videoTitle": "Kettlebell Arnold Press",
+    "videoChannel": "Canvas Muscle"
    },
    {
     "id": "Two-Arm_Kettlebell_Military_Press",
@@ -1131,7 +1278,10 @@
      "Press the kettlebells up and out. As the kettlebells pass your head, lean into the weights so that the kettlebells are racked behind your head. Make sure to contract your lats, butt, and stomach for added stability."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Two-Arm+Kettlebell+Military+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "ykyeHMRKQPU",
+    "videoTitle": "The SAFEST Way to Do a Kettlebell Press in 2 Minutes!",
+    "videoChannel": "Coach Gabe West"
    },
    {
     "id": "Kettlebell_Turkish_Get-Up_Lunge_style",
@@ -1155,7 +1305,10 @@
      "While looking up at the kettlebell, slowly stand up. Reverse the motion back to the starting position and repeat."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kettlebell+Turkish+Get-Up+%28Lunge+style%29+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "XVEMTDlNLyU",
+    "videoTitle": "Kettlebell Turkish Get Up",
+    "videoChannel": "Tribe Fitness"
    },
    {
     "id": "Kettlebell_Turkish_Get-Up_Squat_style",
@@ -1180,7 +1333,10 @@
      "Using your free hand, push yourself to a seated position, then progressing to your feet. While looking up at the kettlebell, slowly stand up. Reverse the motion back to the starting position and repeat."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kettlebell+Turkish+Get-Up+%28Squat+style%29+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "XVEMTDlNLyU",
+    "videoTitle": "Kettlebell Turkish Get Up",
+    "videoChannel": "Tribe Fitness"
    }
   ],
   "erector": [
@@ -1207,7 +1363,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Stiff+Leg+Barbell+Good+Morning+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "f23vXjoG2e8",
+    "videoTitle": "HOW TO DO THE GOOD MORNING EXERCISE: Build Your Glutes, Hamstrings And Squat With Perfect Technique",
+    "videoChannel": "Jeff Nippard"
    },
    {
     "id": "Barbell_Deadlift",
@@ -1236,7 +1395,10 @@
      "Perform the amount of repetitions prescribed in the program."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "ZaTM37cfiDs",
+    "videoTitle": "How To Deadlift With Perfect Technique (Step By Step)",
+    "videoChannel": "Jeff Nippard"
    },
    {
     "id": "Deficit_Deadlift",
@@ -1261,7 +1423,10 @@
      "Lower the bar by bending at the hips and guiding it to the floor."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Deficit+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "CpWsUsqBtN8",
+    "videoTitle": "Movement Demo - The Deficit Deadlift",
+    "videoChannel": "Rogue Fitness"
    },
    {
     "id": "Hyperextensions_With_No_Hyperextension_Bench",
@@ -1285,7 +1450,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Hyperextensions+With+No+Hyperextension+Bench+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "8rXdAAwm8Rs",
+    "videoTitle": "Hyperextension (KNOW THE DIFFERENCE!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Weighted_Ball_Hyperextension",
@@ -1309,7 +1477,10 @@
      "Repeat for the recommended amount of repetitions prescribed in your program."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Weighted+Ball+Hyperextension+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "9XN23dIEqLE",
+    "videoTitle": "HYPEREXTENSION: right \u2705 vs wrong \u274cSTOP \u26d4\ufe0f doing your hyperextension incorrectly \u26a0\ufe0f",
+    "videoChannel": "Jos\u00e9 Meireles"
    },
    {
     "id": "Deadlift_with_Bands",
@@ -1334,7 +1505,10 @@
      "Lower the bar by bending at the hips and guiding it to the floor."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Deadlift+with+Bands+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "zTSKROuBMNY",
+    "videoTitle": "Resistance Band Deadlift",
+    "videoChannel": "LGN Lyfestile"
    },
    {
     "id": "Axle_Deadlift",
@@ -1360,7 +1534,10 @@
      "Lower the bar by bending at the hips and guiding it to the floor."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Axle+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "6ekU3WqUkuE",
+    "videoTitle": "HOW TO: AXLE BAR DEADLIFT IN 1 MIN",
+    "videoChannel": "DOP Strength"
    },
    {
     "id": "Hyperextensions_Back_Extensions",
@@ -1385,7 +1562,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Hyperextensions+%28Back+Extensions%29+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "EBui4Bt5N7o",
+    "videoTitle": "STOP Doing Back Extensions Like This!",
+    "videoChannel": "Squat University"
    },
    {
     "id": "Keg_Load",
@@ -1415,7 +1595,10 @@
      "Return to the starting position to retrieve the next keg, and repeat until the event is completed."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Keg+Load+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "PTFvXBvIr9I",
+    "videoTitle": "My top 3 tips to improve your keg press. Let me know your cues in the comments! #strongman #lhbk",
+    "videoChannel": "Mitchell Hooper"
    },
    {
     "id": "Atlas_Stone_Trainer",
@@ -1441,7 +1624,10 @@
      "Finish the movement by extending through your hips and knees to raise the weight as high as possible. The weight can be returned to the lap or to the ground for successive repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Atlas+Stone+Trainer+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "go0WMsBSN6w",
+    "videoTitle": "How To: Lift an Atlas Stone",
+    "videoChannel": "Rogue Fitness"
    }
   ],
   "fore": [
@@ -1464,7 +1650,10 @@
      "Now curl bar up as high as possible while flexing the forearms and exhaling. Hold the contraction at the top for a second and Tip: Only the wrist should move."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Palm-Up+Barbell+Wrist+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "yz2eCSWoY4E",
+    "videoTitle": "\ud83d\udcaa BIGGER Forearms Workout (Do THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Palms-Down_Wrist_Curl_Over_A_Bench",
@@ -1487,7 +1676,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Palms-Down+Wrist+Curl+Over+A+Bench+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "d5YiFNoiCa0",
+    "videoTitle": "Forearm Exercise Variations (KNOW THE DIFFERENCE!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Seated_Dumbbell_Palms-Up_Wrist_Curl",
@@ -1510,7 +1702,10 @@
      "When finished, simply lower the dumbbells to the floor."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Dumbbell+Palms-Up+Wrist+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "y-x14sVi12o",
+    "videoTitle": "Dumbbell Seated Wrist Curl",
+    "videoChannel": "Blue Collar Fitness"
    },
    {
     "id": "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",
@@ -1533,7 +1728,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Palms-Up+Barbell+Wrist+Curl+Over+A+Bench+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "d5YiFNoiCa0",
+    "videoTitle": "Forearm Exercise Variations (KNOW THE DIFFERENCE!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench",
@@ -1556,7 +1754,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Palms-Up+Dumbbell+Wrist+Curl+Over+A+Bench+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "wSwo6mKHgZI",
+    "videoTitle": "Dumbbell Forearm Exercise Variations",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl",
@@ -1578,7 +1779,10 @@
      "When finished, lower the barbell down to the squat rack or the floor by bending the knees. Tip: It is easiest to either pick it up from a squat rack or have a partner hand it to you."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Standing+Palms-Up+Barbell+Behind+The+Back+Wrist+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "yz2eCSWoY4E",
+    "videoTitle": "\ud83d\udcaa BIGGER Forearms Workout (Do THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Cable_Wrist_Curl",
@@ -1600,7 +1804,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Cable+Wrist+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "Avvmae4hIMA",
+    "videoTitle": "Best Way to do Wrist Curls for Forearms Growth (Forearm Flexors)",
+    "videoChannel": "TylerPath"
    },
    {
     "id": "Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl",
@@ -1625,7 +1832,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Two-Arm+Palms-Up+Low-Pulley+Wrist+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "YcXTlq3E3as",
+    "videoTitle": "Seated Two Arm Palms Up Low Pulley Wrist Curl - Forearms Exercise",
+    "videoChannel": "Yahya AK"
    },
    {
     "id": "Farmers_Walk",
@@ -1651,7 +1861,10 @@
      "Walk taking short, quick steps, and don't forget to breathe. Move for a given distance, typically 50-100 feet, as fast as possible."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Farmer%27s+Walk+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "1uOs1hP3u4A",
+    "videoTitle": "MUST TRY UNDERRATED EXERCISE! (FARMERS WALK EXPLAINED)",
+    "videoChannel": "Colossus Fitness"
    },
    {
     "id": "Bottoms-Up_Clean_From_The_Hang_Position",
@@ -1672,7 +1885,10 @@
      "Swing the kettlebell back forcefully and then reverse the motion forcefully. Crush the kettlebell handle as hard as possible and raise the kettlebell to your shoulder."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Bottoms-Up+Clean+From+The+Hang+Position+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "GQTU02df00c",
+    "videoTitle": "Kettlebell Hang Clean   Exercise Videos & Guides   Bodybuilding com",
+    "videoChannel": "how to lose weight with the keto diet"
    },
    {
     "id": "Wrist_Roller",
@@ -1695,7 +1911,10 @@
      "Repeat for the prescribed amount of repetitions in your program."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Wrist+Roller+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "i7_2Cxc4j_8",
+    "videoTitle": "STOP using your wrist roller wrong #gripstrength #workout #gym",
+    "videoChannel": "Zack Istre Fitness"
    },
    {
     "id": "Standing_Olympic_Plate_Hand_Squeeze",
@@ -1717,7 +1936,10 @@
      "Repeat for the recommended amount of repetitions prescribed in your program."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Standing+Olympic+Plate+Hand+Squeeze+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "K3mFeNz4e3w",
+    "videoTitle": "\u2705 The Perfect Lying Triceps Extension (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    }
   ],
   "glute": [
@@ -1741,7 +1963,10 @@
      "Continue to alternate legs until all of the recommended repetitions have been performed."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Glute+Kickback+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "n-cgsNePyFo",
+    "videoTitle": "How to Properly Perform Cable Glute Kickbacks With Good Form (Exercise Tutorial)",
+    "videoChannel": "Gerardi Performance"
    },
    {
     "id": "Step-up_with_Knee_Raise",
@@ -1763,7 +1988,10 @@
      "Reverse this motion to step down off the box, and then repeat the sequence on the opposite leg."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Step-up+with+Knee+Raise+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "8q9LVgN2RD4",
+    "videoTitle": "Step up form for QUADS vs GLUTES \ud83d\udd25 #shorts",
+    "videoChannel": "LISAFIITT"
    },
    {
     "id": "Kneeling_Squat",
@@ -1786,7 +2014,10 @@
      "Reverse the motion, returning the torso to an upright position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kneeling+Squat+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "pcuhCiNcENg",
+    "videoTitle": "KNEELING SQUAT \ud83c\udfcb\ufe0f\u200d\u2640\ufe0f #shorts",
+    "videoChannel": "Fitonomy - Get Fit at Home "
    },
    {
     "id": "Barbell_Hip_Thrust",
@@ -1808,7 +2039,10 @@
      "Begin the movement by driving through your feet, extending your hips vertically through the bar. Your weight should be supported by your shoulder blades and your feet. Extend as far as possible, then reverse the motion to return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Hip+Thrust+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "PqC0fmyNlmw",
+    "videoTitle": " Hip Thrust Tips",
+    "videoChannel": "ArielYu_Fit"
    },
    {
     "id": "Barbell_Glute_Bridge",
@@ -1830,7 +2064,10 @@
      "Extend as far as possible, then reverse the motion to return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Glute+Bridge+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "W86oVlnLqY4",
+    "videoTitle": "How to Properly Perform Barbell Hip Thrusts With Good Form (Perfect Set Up And Exercise Tutorial)",
+    "videoChannel": "Gerardi Performance"
    },
    {
     "id": "Single_Leg_Glute_Bridge",
@@ -1852,7 +2089,10 @@
      "Extend as far as possible, pause and then return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Single+Leg+Glute+Bridge+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "AVAXhy6pl7o",
+    "videoTitle": "Strengthening Exercise for ACL: Single Leg Bridge",
+    "videoChannel": "MedStar Health"
    },
    {
     "id": "One-Legged_Cable_Kickback",
@@ -1876,7 +2116,10 @@
      "Switch legs and repeat the movement for the other side."
     ],
     "youtube": "https://www.youtube.com/results?search_query=One-Legged+Cable+Kickback+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "SqO-VUEak2M",
+    "videoTitle": "How To Do Cable Kickbacks",
+    "videoChannel": "PureGym"
    },
    {
     "id": "Kneeling_Jump_Squat",
@@ -1900,7 +2143,10 @@
      "Continue with the squat by driving through your heels and extending the knees to come to a standing position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kneeling+Jump+Squat+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "4qK55avGyy4",
+    "videoTitle": "Kneeling Jump Squat | Plyometric | Strength and Conditioning Exercises",
+    "videoChannel": "Rehab My Patient"
    },
    {
     "id": "Flutter_Kicks",
@@ -1923,7 +2169,10 @@
      "Continue alternating in this manner (as though you are doing a flutter kick in water) until you have done the recommended amount of repetitions for each leg. Make sure that you keep a controlled movement at all times. Tip: You will breathe normally as you perform this movement."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Flutter+Kicks+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "tPmybsDX8ZY",
+    "videoTitle": "How To Do Flutter Kicks (The Right Way)",
+    "videoChannel": "Benson Specialized Fitness"
    },
    {
     "id": "Pull_Through",
@@ -1944,7 +2193,10 @@
      "Begin the movement by reaching through your legs as far as possible, bending at the hips. Keep your knees slightly bent. Keeping your arms straight, extend through the hip to stand straight up. Avoid pulling upward through the shoulders; all of the motion should originate through the hips."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Pull+Through+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "IU-ERkjTKXA",
+    "videoTitle": "How to properly perform cable pull through",
+    "videoChannel": "Mia Dales"
    },
    {
     "id": "Monster_Walk",
@@ -1963,7 +2215,10 @@
      "After several steps, do just the opposite and walk backward to where you started."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Monster+Walk+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "snbNxUIUQPc",
+    "videoTitle": "Monster Walk Exercise Demonstration",
+    "videoChannel": "MedStar Health"
    },
    {
     "id": "Hip_Lift_with_Band",
@@ -1986,7 +2241,10 @@
      "Pause at the top of the motion, and return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Hip+Lift+with+Band+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "6oYSPzZlwL0",
+    "videoTitle": "How to Properly Perform Resistance Band Glute Bridge With Good Form ( Exercise Demonstration)",
+    "videoChannel": "Gerardi Performance"
    }
   ],
   "ham": [
@@ -2012,7 +2270,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Stiff-Legged+Dumbbell+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "CBOhr6H7BEY",
+    "videoTitle": "RDL Tips",
+    "videoChannel": "ArielYu_Fit"
    },
    {
     "id": "Smith_Machine_Stiff-Legged_Deadlift",
@@ -2036,7 +2297,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Smith+Machine+Stiff-Legged+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "4ZEZd1zVJzE",
+    "videoTitle": "Carve your Body with Stiff Leg Deadlifts \u26a0\ufe0f #deadlift",
+    "videoChannel": "Hazzytrainer"
    },
    {
     "id": "Band_Good_Morning",
@@ -2058,7 +2322,10 @@
      "Ensure that you do not round your back as you go down back to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Band+Good+Morning+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "rQmkPvfcaSU",
+    "videoTitle": "Resistance Band Goodmorning",
+    "videoChannel": "Nick Forgione"
    },
    {
     "id": "Band_Good_Morning_Pull_Through",
@@ -2080,7 +2347,10 @@
      "Return to the starting position be driving through with the hips to come back to a standing position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Band+Good+Morning+%28Pull+Through%29+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "tb7JtugjLQ8",
+    "videoTitle": "Band Good Morning Pull Through, Tutorial, Exercise Video, Workout, SEXioFIT",
+    "videoChannel": "SEXioFIT"
    },
    {
     "id": "Good_Morning",
@@ -2103,7 +2373,10 @@
      "Reverse the motion by extending through the hips with your glutes and hamstrings. Continue until you have returned to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Good+Morning+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "7cpldMZjLOs",
+    "videoTitle": "Good morning",
+    "videoChannel": "Akademiet For Personlig Trening AFPT"
    },
    {
     "id": "Sumo_Deadlift",
@@ -2130,7 +2403,10 @@
      "Return the weight to the ground by bending at the hips and controlling the weight on the way down."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Sumo+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "e7oLkRlT2CQ",
+    "videoTitle": "How to Sumo Deadlift (DO THIS!)",
+    "videoChannel": "Squat University"
    },
    {
     "id": "Romanian_Deadlift",
@@ -2155,7 +2431,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Romanian+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "5rIqP63yWFg",
+    "videoTitle": "RDL Tutorial: 3 Simple Steps",
+    "videoChannel": "Davis Diley"
    },
    {
     "id": "Good_Morning_off_Pins",
@@ -2177,7 +2456,10 @@
      "Begin the motion by extending through the hips with your glutes and hamstrings, and you are standing with the weight. Slowly lower the weight back to the pins returning to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Good+Morning+off+Pins+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "5DonmXxz6Qk",
+    "videoTitle": "Mastering the Good Morning: Form Fixes for Stronger Hamstrings and Glutes",
+    "videoChannel": "Luka Grabowski"
    },
    {
     "id": "Lunge_Pass_Through",
@@ -2202,7 +2484,10 @@
      "Repeat the movement for the recommended amount of repetitions, alternating legs."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Lunge+Pass+Through+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "1cS-6KsJW9g",
+    "videoTitle": "Proper Lunge Technique",
+    "videoChannel": "Fundamentals Physiotherapy & Wellness Clinic"
    },
    {
     "id": "Kettlebell_One-Legged_Deadlift",
@@ -2245,7 +2530,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Seated+Leg+Curl+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "_lgE0gPvbik",
+    "videoTitle": "Leg Curl Form Tips (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Ball_Leg_Curl",
@@ -2296,7 +2584,10 @@
      "Repeat this motion for the prescribed amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Chin-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "Oi3bW9nQmGI",
+    "videoTitle": "\u2705 HOW to do CHIN UPS",
+    "videoChannel": "SaturnoMovement"
    },
    {
     "id": "V-Bar_Pullup",
@@ -2366,7 +2657,10 @@
      "Pause at the bottom of the motion, and then slowly return the handles to the starting position. For multiple repetitions, avoid completely returning the weight to the stops to keep tension on the muscles being worked."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Leverage+Iso+Row+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "18sn7P_vHuo",
+    "videoTitle": "How to Activate EVERY Muscle with the Hammer Strength Machine Row | Eb & Swole | Men's Health Muscle",
+    "videoChannel": "Men\u2019s Health Muscle"
    },
    {
     "id": "One_Arm_Lat_Pulldown",
@@ -2415,7 +2709,10 @@
      "Repeat this motion for the prescribed amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Wide-Grip+Lat+Pulldown+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "bNmvKpJSWKM",
+    "videoTitle": "\u2705 The PERFECT Lat Pulldown (DO THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Kneeling_High_Pulley_Row",
@@ -2461,7 +2758,10 @@
      "After a brief pause, return to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Band+Assisted+Pull-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "uvGUXzsQcUk",
+    "videoTitle": "Pull Up Hack - Use Resistance Bands!",
+    "videoChannel": "Swamp Fitness"
    },
    {
     "id": "Bent-Arm_Barbell_Pullover",
@@ -2512,7 +2812,10 @@
      "Repeat this motion for the prescribed amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Wide-Grip+Rear+Pull-Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "NwrJk3AWX50",
+    "videoTitle": "STOP \u26a0\ufe0f Wide Grip Pull Ups!",
+    "videoChannel": "Josef Rakich"
    },
    {
     "id": "Pullups",
@@ -2536,7 +2839,10 @@
      "Repeat this motion for the prescribed amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Pullups+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "ym1V5H35IpA",
+    "videoTitle": "\u2705 5 pull-up tips \ud83d\udcaa\ud83c\udffb #pullups #backworkout #calisthenics",
+    "videoChannel": "Tristan Nee"
    },
    {
     "id": "Muscle_Up",
@@ -2563,7 +2869,10 @@
      "Use care when lowering yourself to the ground."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Muscle+Up+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "lbEl3yg4YWA",
+    "videoTitle": "How To Do A Muscle Up",
+    "videoChannel": "Pierre Dalati"
    }
   ],
   "neck": [
@@ -2586,7 +2895,10 @@
      "Rest for the recommended amount of time and repeat with your right hand placed on the right side of your head."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Isometric+Neck+Exercise+-+Sides+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "0kWF968uFXY",
+    "videoTitle": "6 - Isometric Neck Strengthening Exercises - Ask Dr. Abelson",
+    "videoChannel": "Dr. Brian Abelson"
    },
    {
     "id": "Isometric_Neck_Exercise_-_Front_And_Back",
@@ -2673,7 +2985,10 @@
      "After completing one set on the right for the recommended amount of repetitions, switch to your left side. Tip: Focus on really twisting your torso and feeling the contraction when you are in the up position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Decline+Oblique+Crunch+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "aP4HfrLkOLU",
+    "videoTitle": "Abs Exercise Variations (KNOW THE DIFFERENCE!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Standing_Cable_Wood_Chop",
@@ -2863,7 +3178,10 @@
      "Continue alternating the movement until the set is complete."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Landmine+180%27s+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "0efz8srgH7c",
+    "videoTitle": "Stability Meets Range Of Motion With These Landmine Exercises #SHORT",
+    "videoChannel": "Marcus Filly"
    },
    {
     "id": "Side_Jackknife",
@@ -2925,7 +3243,10 @@
      "Pause for a second after reaching the ground and reverse the motion back to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Kettlebell+Windmill+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "q8K_Wg8OuV4",
+    "videoTitle": "How to Perform a Kettlebell Windmill | Nuffield Health",
+    "videoChannel": "Nuffield Health"
    }
   ],
   "pec": [
@@ -2951,7 +3272,10 @@
      "Repeat the movement for the prescribed amount of repetitions of your training program."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Dumbbell+Bench+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "WbCEvFA0NJs",
+    "videoTitle": "FIX Your Dumbbell Bench Press (DO THIS INSTEAD!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Front_Raise_And_Pullover",
@@ -3001,7 +3325,10 @@
      "When you are done, place the bar back in the rack."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Decline+Barbell+Bench+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "a-UFQE4oxWY",
+    "videoTitle": "\u274c Decline Bench Press Mistake (AVOID THIS!)",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Decline_Dumbbell_Bench_Press",
@@ -3076,7 +3403,10 @@
      "When you are done, place the dumbbells back in your thighs and then on the floor. This is the safest manner to dispose of the dumbbells."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Hammer+Grip+Incline+DB+Bench+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "8fXfwG4ftaQ",
+    "videoTitle": "The PERFECT Incline Dumbbell Chest Press",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Dumbbell_Bench_Press_with_Neutral_Grip",
@@ -3397,7 +3727,10 @@
      "Continue down to full depth if you are able,and quickly reverse the motion until you return to the starting position. As you squat, keep your head and chest up and push your knees out."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Bodyweight+Squat+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "eFEVKmp3M4g",
+    "videoTitle": "How to squat \u2705",
+    "videoChannel": "Oliver Sjostrom"
    },
    {
     "id": "Leg_Press",
@@ -3496,7 +3829,10 @@
      "Return the weight to the starting position."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Leverage+Deadlift+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "ZaTM37cfiDs",
+    "videoTitle": "How To Deadlift With Perfect Technique (Step By Step)",
+    "videoChannel": "Jeff Nippard"
    },
    {
     "id": "Goblet_Squat",
@@ -3624,7 +3960,10 @@
      "Set your heels on the platform and pull your toes toward you against the sled."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Reverse+Calf+Raise+on+Leg+Press+exercise+proper+form",
-    "source": "curated"
+    "source": "curated",
+    "videoId": "PYZY00hI43w",
+    "videoTitle": "How to PROPERLY Calf Raise on The Leg Press Machine (FIX THIS!)",
+    "videoChannel": "Colossus Fitness"
    }
   ],
   "traps": [
@@ -3939,7 +4278,10 @@
      "When you are done, place the bar back in the rack."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Close-Grip+Barbell+Bench+Press+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "4yKLxOsrGfg",
+    "videoTitle": "7 Steps to A Perfect Close Grip Bench \u26a0\ufe0f #bench",
+    "videoChannel": "Hazzytrainer"
    },
    {
     "id": "Incline_Push-Up_Close-Grip",
@@ -4157,7 +4499,10 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Weighted+Bench+Dip+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "4ua3MzaU0QU",
+    "videoTitle": "\u2705 The PERFECT Bench Dip!",
+    "videoChannel": "Andrew Kwong (DeltaBolic)"
    },
    {
     "id": "Tricep_Dumbbell_Kickback",
