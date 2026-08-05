@@ -4,6 +4,8 @@ import { AnatomyViewer } from "../anatomy";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
+import LanguageToggle from "../components/LanguageToggle";
+import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
 
@@ -11,6 +13,7 @@ export default function BodyExplorer() {
   const navigate = useNavigate();
   const { profile } = useProfile();
   const { pref, resolved, setPref } = useTheme();
+  const t = useT();
 
   useEffect(() => {
     if (!profile) {
@@ -21,10 +24,18 @@ export default function BodyExplorer() {
   return (
     <div className="explorer">
       <div className="explorer-bar">
+        {/* Two whole sentences rather than a name slot with "there" in it:
+            languages put the name in different places, and some have no
+            natural stand-in for an unknown one. */}
         <p className="greeting">
-          Hi {profile?.username ?? "there"} — rotate the model, filter by region, and tap a muscle.
+          {profile?.username
+            ? t("explorer.greeting", { name: profile.username })
+            : t("explorer.greetingAnon")}
         </p>
-        <ThemeToggle pref={pref} onChange={setPref} />
+        <div className="header-controls">
+          <LanguageToggle />
+          <ThemeToggle pref={pref} onChange={setPref} />
+        </div>
       </div>
       <div className="explorer-canvas">
         <AnatomyViewer

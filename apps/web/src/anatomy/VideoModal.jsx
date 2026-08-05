@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useT } from '../i18n/I18nProvider';
 
 /**
  * A YouTube demonstration, played in the app rather than in a new tab.
@@ -14,6 +15,7 @@ import React, { useEffect, useRef } from 'react';
  */
 export default function VideoModal({ exercise, onClose }) {
   const closeRef = useRef(null);
+  const t = useT();
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') onClose(); };
@@ -25,6 +27,9 @@ export default function VideoModal({ exercise, onClose }) {
   if (!exercise?.videoId) return null;
   const src = `https://www.youtube-nocookie.com/embed/${exercise.videoId}`
     + '?autoplay=1&rel=0&modestbranding=1';
+  // Exercise names are still English, so the label is a translated frame
+  // around an English name rather than a fully translated string.
+  const caption = t('video.demonstration', { name: exercise.name });
 
   return (
     <div
@@ -32,17 +37,17 @@ export default function VideoModal({ exercise, onClose }) {
       onClick={onClose}
       role="dialog"
       aria-modal="true"
-      aria-label={`${exercise.name} demonstration`}
+      aria-label={caption}
     >
       <div className="video-box" onClick={(e) => e.stopPropagation()}>
         <div className="video-bar">
           <span className="vtitle">{exercise.name}</span>
-          <button ref={closeRef} className="vclose" onClick={onClose} aria-label="Close video">✕</button>
+          <button ref={closeRef} className="vclose" onClick={onClose} aria-label={t('video.close')}>✕</button>
         </div>
         <div className="video-frame">
           <iframe
             src={src}
-            title={`${exercise.name} demonstration`}
+            title={caption}
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
             loading="lazy"
@@ -54,7 +59,7 @@ export default function VideoModal({ exercise, onClose }) {
           {/* Videos get deleted and made private, and an owner can withdraw
               embedding at any time, so the way out to YouTube always stays. */}
           <a href={exercise.youtube} target="_blank" rel="noreferrer noopener">
-            Search YouTube →
+            {t('video.searchYouTube')}
           </a>
         </div>
       </div>

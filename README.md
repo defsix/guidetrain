@@ -142,6 +142,29 @@ wger records, which has **no exercises at all** for neck, erector spinae,
 forearms, adductors or tibialis anterior — five of the seventeen zones — and
 only a third of its exercises carry an image.
 
+## Languages
+
+Ten: English, Czech, German, Spanish, French, Polish, Portuguese, Russian,
+Simplified Chinese, Japanese. **The device decides** — `navigator.languages` is
+negotiated against that list on load — and a picker in the header overrides it
+if you want something other than what the machine is set to.
+
+Regional tags collapse (`pt-BR` and `pt-PT` both get `pt`, `es-419` gets `es`),
+any `zh` lands on Simplified, and anything unsupported falls back to English.
+Only the active language is downloaded: each is its own ~4 KB chunk, with
+English in the main bundle because it is also the per-key fallback — an
+untranslated key renders English rather than a raw key.
+
+Translated: the whole interface, all 20 muscle names and descriptions, the
+region and equipment labels. **Exercise names and instructions are still
+English** — 815 steps of prose — and fall back per key, so they read as English
+text inside a translated app rather than as breakage.
+
+Counts use `Intl.PluralRules`, so Polish, Russian and Czech get their three
+forms (`5 ćwiczeń`, not `5 ćwiczenia`) rather than an English two-form guess.
+`node tools/i18n/check-locales.mjs` checks every locale against English for
+missing keys, dropped `{placeholders}` and missing plural forms.
+
 ## Theming
 
 Light, dark, or follow the device — one button in the header cycles the three
