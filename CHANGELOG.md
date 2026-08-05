@@ -4,6 +4,11 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Languages
 
+- **Exercise text, starting with Spanish** — all 180 exercise names and 815
+  instruction steps, ~23,000 words. Lazy-loaded separately from the interface
+  (~30 KB gzipped) and only once a muscle is opened, so the language chunk
+  every visitor waits on stays ~4 KB. Languages arrive one at a time; those
+  without a file fall back per key to English, so nothing renders broken.
 - **Ten languages, chosen by the device** — English, Czech, German, Spanish,
   French, Polish, Portuguese, Russian, Simplified Chinese and Japanese, matched
   from `navigator.languages` with a header picker to override. Regional tags
