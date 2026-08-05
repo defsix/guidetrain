@@ -105,10 +105,15 @@ YOUTUBE_API_KEY=... python3 tools/exercises/resolve-videos.py
 
 That runs at build time and writes the ids into `exercises.json`, so the shipped
 app carries no key — which matters on GitHub Pages, where anything in the bundle
-is public. It costs 100 quota units per exercise against a 10,000/day default,
-so roughly 100 a day; already-resolved exercises are skipped, so it can be run
-across several days. It also checks each video is actually embeddable, since an
-owner can forbid it and such a video would open an empty player.
+is public. The binding limit is a flat **100 `search.list` calls a day** — one
+per exercise — rather than the 10,000-unit pool, which covers the other
+endpoints; already-resolved exercises are skipped, so it can be run across
+several days. It also checks each video is actually embeddable, since an owner
+can forbid it and such a video would open an empty player.
+
+An API key is free and needs no billing. It reads public data only: it cannot
+touch a YouTube account, and it isn't used at runtime, so it can be deleted once
+the ids are baked in.
 
 Anything without an id keeps the YouTube search link, and the player always
 offers that way out too — video ids rot, which is why the search link exists in

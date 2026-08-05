@@ -8,9 +8,15 @@ anything in the bundle is public.
 
     YOUTUBE_API_KEY=... python3 resolve-videos.py [--limit N] [--force]
 
-Quota: search.list costs 100 units a call against a default 10,000/day, so about
-100 exercises a day. The script skips anything already resolved, so it can be
-run across several days, and --limit caps a single run.
+Quota, in Google's own words: "Projects that enable the YouTube Data API have a
+default quota allocation of 100 search.list calls, 100 videos.insert calls, and
+10,000 units per day combined for all other endpoints."
+
+So the binding limit is the flat **100 searches a day**, not the unit pool — one
+search per exercise, and the videos.list check costs 1 unit against the separate
+10,000. Roughly 100 exercises a day either way. The script skips anything already
+resolved so it can be run across several days, and --limit caps a single run.
+Quotas reset at midnight Pacific.
 
 Scraping the search page instead would need no key and is how you might be
 tempted to do all 180 at once. It is also against YouTube's terms, which permit
