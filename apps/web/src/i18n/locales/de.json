@@ -1,0 +1,153 @@
+{
+  "language": {
+    "label": "Sprache",
+    "auto": "Gerätesprache",
+    "aria": "Sprache"
+  },
+  "theme": {
+    "light": "Hell",
+    "dark": "Dunkel",
+    "auto": "Gerät",
+    "lightTitle": "Hell — tippen für dunkel",
+    "darkTitle": "Dunkel — tippen, um dem Gerät zu folgen",
+    "autoTitle": "Folgt dem Gerät — tippen für hell",
+    "aria": "Farbschema: {current}. Tippen, um zu {next} zu wechseln."
+  },
+  "onboarding": {
+    "title": "Willkommen bei GuideTrain",
+    "subtitle": "Ein paar Angaben, damit wir dein Training anpassen können.",
+    "username": "Benutzername",
+    "usernamePlaceholder": "z. B. iron_ada",
+    "gender": "Geschlecht",
+    "ageGroup": "Altersgruppe",
+    "continue": "Weiter zum Körper-Explorer"
+  },
+  "gender": {
+    "female": "Weiblich",
+    "male": "Männlich",
+    "other": "Divers / Keine Angabe"
+  },
+  "age": {
+    "teen": "Unter 18",
+    "60plus": "60+"
+  },
+  "explorer": {
+    "greeting": "Hallo {name} — drehe das Modell, filtere nach Region und tippe auf einen Muskel.",
+    "greetingAnon": "Drehe das Modell, filtere nach Region und tippe auf einen Muskel."
+  },
+  "viewer": {
+    "muscleGroups": "Muskelgruppen",
+    "allMuscles": "Alle Muskeln",
+    "display": "Anzeige",
+    "autoRotate": "Automatisch drehen",
+    "trainThis": "Diesen trainieren",
+    "exercises": { "one": "{count} Übung", "other": "{count} Übungen" },
+    "watch": "Demonstration ansehen",
+    "searchYouTube": "Auf YouTube suchen →"
+  },
+  "video": {
+    "close": "Video schließen",
+    "demonstration": "Demonstration: {name}",
+    "searchYouTube": "Auf YouTube suchen →"
+  },
+  "regions": {
+    "Neck": "Nacken",
+    "Shoulders": "Schultern",
+    "Chest": "Brust",
+    "Back": "Rücken",
+    "Arms": "Arme",
+    "Core": "Rumpf",
+    "Legs": "Beine",
+    "Head": "Kopf"
+  },
+  "equipment": {
+    "None": "keins",
+    "bands": "Bänder",
+    "barbell": "Langhantel",
+    "body only": "Körpergewicht",
+    "cable": "Kabelzug",
+    "dumbbell": "Kurzhantel",
+    "exercise ball": "Gymnastikball",
+    "kettlebells": "Kettlebells",
+    "machine": "Maschine",
+    "other": "sonstiges"
+  },
+  "level": {
+    "beginner": "Anfänger",
+    "intermediate": "fortgeschritten",
+    "expert": "Experte"
+  },
+  "muscles": {
+    "abs": {
+      "name": "Gerader Bauchmuskel",
+      "desc": "Das 'Sixpack'; beugt die Wirbelsäule, widersteht der Streckung. Crunches, Beinheben, Planks."
+    },
+    "add": {
+      "name": "Adduktoren",
+      "desc": "Innenseite des Oberschenkels; führt die Beine zusammen, stabilisiert die Hüfte. Adduktionen, Sumo-Kniebeugen."
+    },
+    "bic": {
+      "name": "Bizeps",
+      "desc": "Vorderseite des Oberarms; beugt den Ellenbogen, supiniert den Unterarm. Curls."
+    },
+    "calf": {
+      "name": "Zwillingswadenmuskel / Wade",
+      "desc": "Zweiköpfige Wölbung der Wade; streckt den Fuß (Plantarflexion). Wadenheben im Stehen."
+    },
+    "delt": {
+      "name": "Deltamuskel",
+      "desc": "Schulterkappe aus drei Köpfen; hebt den Arm in jede Richtung. Drücken, Seitheben."
+    },
+    "erector": {
+      "name": "Rückenstrecker",
+      "desc": "Säulen neben der Wirbelsäule; strecken und stabilisieren den Rücken. Kreuzheben, Rückenstrecken."
+    },
+    "foot": { "name": "Fuß", "desc": "" },
+    "fore": {
+      "name": "Unterarm",
+      "desc": "Antrieb für Griff, Handgelenk und Finger. Handgelenk-Curls, Grifftraining, Carries."
+    },
+    "glute": {
+      "name": "Großer Gesäßmuskel",
+      "desc": "Größter Muskel; streckt die Hüfte, erzeugt Kraft. Kniebeugen, Hip Thrusts, Brücken."
+    },
+    "ham": {
+      "name": "Beinbeuger",
+      "desc": "Gruppe an der Oberschenkelrückseite; beugt das Knie, streckt die Hüfte. Rumänisches Kreuzheben, Beincurls, Kreuzheben."
+    },
+    "hand": { "name": "Hand", "desc": "" },
+    "head": { "name": "Kopf", "desc": "" },
+    "lat": {
+      "name": "Breiter Rückenmuskel",
+      "desc": "Die 'Flügel' des Rückens; zieht die Arme nach unten und hinten. Klimmzüge, Rudern, Latzüge."
+    },
+    "neck": {
+      "name": "Nacken",
+      "desc": "Kopfwender und Nackenstrecker; dreht und stabilisiert den Kopf. Nacken-Curls, Shrugs, Arbeit mit dem Kopfgeschirr."
+    },
+    "obl": {
+      "name": "Äußerer Schräger Bauchmuskel",
+      "desc": "Flanken des Bauches; drehen und seitlich neigen den Rumpf. Drehungen, Side Planks."
+    },
+    "pec": {
+      "name": "Großer Brustmuskel",
+      "desc": "Fächer der Brust; drückt und führt den Arm vor dem Körper. Bankdrücken, Flys, Liegestütze."
+    },
+    "quad": {
+      "name": "Quadrizeps",
+      "desc": "Vierköpfige Gruppe an der Oberschenkelvorderseite; streckt das Knie. Kniebeugen, Ausfallschritte, Beinstrecken."
+    },
+    "shin": {
+      "name": "Vorderer Schienbeinmuskel",
+      "desc": "Vorderseite des Schienbeins; hebt den Fuß (Dorsalflexion). Zehenheben, Fersengehen."
+    },
+    "traps": {
+      "name": "Trapezmuskel",
+      "desc": "Joch aus oberem Rücken und Nacken; zuckt mit den Schultern und stabilisiert die Schulterblätter. Shrugs, Face Pulls."
+    },
+    "tri": {
+      "name": "Trizeps",
+      "desc": "Rückseite des Oberarms; streckt den Ellenbogen. Dips, Pushdowns, Überkopf-Strecken."
+    }
+  }
+}

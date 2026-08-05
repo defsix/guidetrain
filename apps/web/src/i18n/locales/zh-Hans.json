@@ -1,0 +1,153 @@
+{
+  "language": {
+    "label": "语言",
+    "auto": "设备语言",
+    "aria": "语言"
+  },
+  "theme": {
+    "light": "浅色",
+    "dark": "深色",
+    "auto": "设备",
+    "lightTitle": "浅色 — 点按切换到深色",
+    "darkTitle": "深色 — 点按以跟随设备",
+    "autoTitle": "跟随设备 — 点按切换到浅色",
+    "aria": "配色主题：{current}。点按切换到{next}。"
+  },
+  "onboarding": {
+    "title": "欢迎使用 GuideTrain",
+    "subtitle": "简单几项信息，帮助我们为你定制训练。",
+    "username": "用户名",
+    "usernamePlaceholder": "例如 iron_ada",
+    "gender": "性别",
+    "ageGroup": "年龄段",
+    "continue": "进入身体浏览器"
+  },
+  "gender": {
+    "female": "女",
+    "male": "男",
+    "other": "其他 / 不愿透露"
+  },
+  "age": {
+    "teen": "18 岁以下",
+    "60plus": "60 岁以上"
+  },
+  "explorer": {
+    "greeting": "你好，{name} — 旋转模型，按部位筛选，点按肌肉。",
+    "greetingAnon": "旋转模型，按部位筛选，点按肌肉。"
+  },
+  "viewer": {
+    "muscleGroups": "肌肉群",
+    "allMuscles": "所有肌肉",
+    "display": "显示",
+    "autoRotate": "自动旋转",
+    "trainThis": "训练这块",
+    "exercises": { "other": "{count} 个动作" },
+    "watch": "观看示范",
+    "searchYouTube": "在 YouTube 搜索 →"
+  },
+  "video": {
+    "close": "关闭视频",
+    "demonstration": "{name} 示范",
+    "searchYouTube": "在 YouTube 搜索 →"
+  },
+  "regions": {
+    "Neck": "颈部",
+    "Shoulders": "肩部",
+    "Chest": "胸部",
+    "Back": "背部",
+    "Arms": "手臂",
+    "Core": "核心",
+    "Legs": "腿部",
+    "Head": "头部"
+  },
+  "equipment": {
+    "None": "无",
+    "bands": "弹力带",
+    "barbell": "杠铃",
+    "body only": "自重",
+    "cable": "拉索",
+    "dumbbell": "哑铃",
+    "exercise ball": "健身球",
+    "kettlebells": "壶铃",
+    "machine": "器械",
+    "other": "其他"
+  },
+  "level": {
+    "beginner": "初级",
+    "intermediate": "中级",
+    "expert": "高级"
+  },
+  "muscles": {
+    "abs": {
+      "name": "腹直肌",
+      "desc": "所谓的「六块腹肌」；屈曲脊柱，抵抗后仰。卷腹、举腿、平板支撑。"
+    },
+    "add": {
+      "name": "内收肌群",
+      "desc": "大腿内侧；把双腿并拢，稳定髋部。内收训练、相扑深蹲。"
+    },
+    "bic": {
+      "name": "肱二头肌",
+      "desc": "上臂前侧；屈肘，前臂旋后。弯举。"
+    },
+    "calf": {
+      "name": "腓肠肌 / 小腿",
+      "desc": "小腿由两个头形成的隆起；绷直脚尖（跖屈）。站姿提踵。"
+    },
+    "delt": {
+      "name": "三角肌",
+      "desc": "由三个头组成的肩部帽状肌；向各个方向抬起手臂。推举、侧平举。"
+    },
+    "erector": {
+      "name": "竖脊肌",
+      "desc": "脊柱两侧的肌柱；伸展并稳定背部。硬拉、背部伸展。"
+    },
+    "foot": { "name": "足", "desc": "" },
+    "fore": {
+      "name": "前臂",
+      "desc": "握力、手腕和手指的动力来源。腕弯举、握力训练、负重行走。"
+    },
+    "glute": {
+      "name": "臀大肌",
+      "desc": "全身最大的肌肉；伸展髋关节，输出力量。深蹲、臀推、臀桥。"
+    },
+    "ham": {
+      "name": "腘绳肌",
+      "desc": "大腿后侧肌群；屈膝，伸髋。罗马尼亚硬拉、腿弯举、硬拉。"
+    },
+    "hand": { "name": "手", "desc": "" },
+    "head": { "name": "头", "desc": "" },
+    "lat": {
+      "name": "背阔肌",
+      "desc": "背部的「翅膀」；把手臂向下、向后拉。引体向上、划船、高位下拉。"
+    },
+    "neck": {
+      "name": "颈部",
+      "desc": "胸锁乳突肌与颈伸肌群；转动并稳定头部。颈部屈伸、耸肩、头带训练。"
+    },
+    "obl": {
+      "name": "腹外斜肌",
+      "desc": "腹部两侧；旋转并侧屈躯干。转体、侧平板支撑。"
+    },
+    "pec": {
+      "name": "胸大肌",
+      "desc": "胸部的扇形肌；推出手臂，并把它拉向身体中线。卧推、飞鸟、俯卧撑。"
+    },
+    "quad": {
+      "name": "股四头肌",
+      "desc": "大腿前侧的四头肌群；伸直膝关节。深蹲、弓步、腿屈伸。"
+    },
+    "shin": {
+      "name": "胫骨前肌",
+      "desc": "小腿前侧；抬起脚掌（背屈）。勾脚尖、脚跟行走。"
+    },
+    "traps": {
+      "name": "斜方肌",
+      "desc": "上背与颈部的轭状肌；耸肩并稳定肩胛骨。耸肩、面拉。"
+    },
+    "tri": {
+      "name": "肱三头肌",
+      "desc": "上臂后侧；伸直肘关节。双杠臂屈伸、绳索下压、过顶臂屈伸。"
+    }
+  }
+}

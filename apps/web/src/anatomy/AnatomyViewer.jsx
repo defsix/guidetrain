@@ -7,6 +7,7 @@ import defaultMap from './muscle-map.json';
 import { zoneColor } from './zoneMapping';
 import exerciseData from './exercises.json';
 import VideoModal from './VideoModal';
+import { useT } from '../i18n/I18nProvider';
 import './anatomy.css';
 
 // Regions top to bottom, and the muscles within each in the order they sit on
@@ -53,6 +54,7 @@ export default function AnatomyViewer({
   onSelect,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
+  const t = useT();
   const [selected, setSelected] = useState(null);
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
@@ -70,6 +72,16 @@ export default function AnatomyViewer({
     () => drills.find((x) => x.id === openDrill) || null,
     [drills, openDrill],
   );
+
+  // The map ships English. Its text is looked up by zone key and falls back to
+  // whatever the map itself says, so a zone added to the model before it has
+  // been translated still shows a real name rather than a missing-key stub.
+  //
+  // Region strings stay English *as keys* — they drive the filter and are
+  // compared against zone.region — and are translated only where drawn.
+  const zoneName = useCallback((z) => t(`muscles.${z.key ?? z.id}.name`, undefined, z.name), [t]);
+  const zoneDesc = useCallback((z) => t(`muscles.${z.key ?? z.id}.desc`, undefined, z.desc), [t]);
+  const regionName = useCallback((r) => t(`regions.${r}`, undefined, r), [t]);
 
   const selectable = useMemo(
     () => map.zones.filter((z) => z.selectable !== false),
@@ -96,7 +108,12 @@ export default function AnatomyViewer({
 
   const train = () => {
     if (!selected) return;
-    const detail = { id: selected.id, name: selected.name, region: selected.region };
+    // `name`/`region` stay English so a host app has a stable value to key on;
+    // `label` is the same thing in the user's language, for display.
+    const detail = {
+      id: selected.id, name: selected.name, region: selected.region,
+      label: zoneName(selected),
+    };
     window.dispatchEvent(new CustomEvent('muscle:train', { detail }));
     onTrain && onTrain(detail);
   };
@@ -139,13 +156,13 @@ export default function AnatomyViewer({
       {/* Every muscle on the model, grouped by region. The swatches are the
           model's own colours, so the list doubles as the legend. */}
       <div className="anatomy-panel regions">
-        <h2>Muscle Groups</h2>
+        <h2>{t('viewer.muscleGroups')}</h2>
         <div className="muscle-list">
           <button
             className={`chip all ${region === 'all' ? 'active' : ''}`}
             onClick={() => { setRegion('all'); handleSelect(null); }}
           >
-            <span>All muscles</span>
+            <span>{t('viewer.allMuscles')}</span>
             <span className="count">{selectable.length}</span>
           </button>
           {byRegion.map(([r, muscles]) => (
@@ -154,7 +171,7 @@ export default function AnatomyViewer({
                 className={`region-head ${region === r ? 'active' : ''}`}
                 onClick={() => setRegion(region === r ? 'all' : r)}
               >
-                {r}
+                {regionName(r)}
               </button>
               {muscles.map((z) => (
                 <button
@@ -163,10 +180,10 @@ export default function AnatomyViewer({
                   onClick={() => handleSelect(selected?.id === z.id ? null : z)}
                   onMouseEnter={() => setHover(z)}
                   onMouseLeave={() => setHover(null)}
-                  title={z.desc}
+                  title={zoneDesc(z)}
                 >
                   <span className="dot" style={{ background: zoneColor(z) }} />
-                  <span className="mlabel">{z.name}</span>
+                  <span className="mlabel">{zoneName(z)}</span>
                 </button>
               ))}
             </div>
@@ -176,9 +193,9 @@ export default function AnatomyViewer({
 
       {/* Display controls */}
       <div className="anatomy-panel controls">
-        <h2>Display</h2>
+        <h2>{t('viewer.display')}</h2>
         <label className="toggle-row">
-          <span>Auto-rotate</span>
+          <span>{t('viewer.autoRotate')}</span>
           <input type="checkbox" checked={autoRotate} onChange={(e) => setAutoRotate(e.target.checked)} />
         </label>
       </div>
@@ -186,23 +203,23 @@ export default function AnatomyViewer({
       {video && <VideoModal exercise={video} onClose={() => setVideo(null)} />}
 
       {/* Hover tooltip */}
-      {hover && <div className="anatomy-hover">{hover.name}</div>}
+      {hover && <div className="anatomy-hover">{zoneName(hover)}</div>}
 
       {/* Selection readout, with the exercises that train this muscle */}
       {selected && (
         <div className="anatomy-readout">
           <div className="head">
             <div className="body">
-              <div className="mname">{selected.name}</div>
-              <div className="mmeta">{selected.region}</div>
-              <div className="mdesc">{selected.desc}</div>
+              <div className="mname">{zoneName(selected)}</div>
+              <div className="mmeta">{regionName(selected.region)}</div>
+              <div className="mdesc">{zoneDesc(selected)}</div>
             </div>
-            <button className="train-btn" onClick={train}>Train this</button>
+            <button className="train-btn" onClick={train}>{t('viewer.trainThis')}</button>
           </div>
 
           {drills.length > 0 && (
             <div className="drills">
-              <h3>{drills.length} exercises</h3>
+              <h3>{t('viewer.exercises', { count: drills.length })}</h3>
               <ul>
                 {drills.map((x) => {
                   const open = openDrill === x.id;
@@ -215,8 +232,8 @@ export default function AnatomyViewer({
                       >
                         <span className="dname">{x.name}</span>
                         <span className="tags">
-                          {x.equipment && <em>{x.equipment}</em>}
-                          {x.level && <em>{x.level}</em>}
+                          {x.equipment && <em>{t(`equipment.${x.equipment}`, undefined, x.equipment)}</em>}
+                          {x.level && <em>{t(`level.${x.level}`, undefined, x.level)}</em>}
                         </span>
                       </button>
                       {open && (
@@ -231,7 +248,7 @@ export default function AnatomyViewer({
                               return (
                                 <span key={k} className={`work ${isPrimary ? 'primary' : ''}`}>
                                   <span className="dot" style={{ background: zoneColor(z) }} />
-                                  {z.name}
+                                  {zoneName(z)}
                                 </span>
                               );
                             })}
@@ -243,11 +260,11 @@ export default function AnatomyViewer({
                           )}
                           {x.videoId ? (
                             <button className="watch" onClick={() => setVideo(x)}>
-                              ▶ Watch demonstration
+                              ▶ {t('viewer.watch')}
                             </button>
                           ) : (
                             <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
-                              Search YouTube →
+                              {t('viewer.searchYouTube')}
                             </a>
                           )}
                         </div>

@@ -1,13 +1,10 @@
 import type { ThemePref } from "../state/useTheme";
+import { useT } from "../i18n/I18nProvider";
 
 // Order the button cycles through.
 const ORDER: ThemePref[] = ["light", "dark", "auto"];
 
-const FACE: Record<ThemePref, { icon: string; label: string; title: string }> = {
-  light: { icon: "☀", label: "Light", title: "Light — tap for dark" },
-  dark: { icon: "☾", label: "Dark", title: "Dark — tap to follow device" },
-  auto: { icon: "◐", label: "Device", title: "Following device — tap for light" },
-};
+const ICON: Record<ThemePref, string> = { light: "☀", dark: "☾", auto: "◐" };
 
 /** One button, cycling light → dark → device. */
 export default function ThemeToggle({
@@ -17,19 +14,20 @@ export default function ThemeToggle({
   pref: ThemePref;
   onChange: (next: ThemePref) => void;
 }) {
-  const face = FACE[pref];
+  const t = useT();
   const next = ORDER[(ORDER.indexOf(pref) + 1) % ORDER.length];
+  const label = t(`theme.${pref}`);
 
   return (
     <button
       type="button"
       className="theme-toggle"
-      title={face.title}
-      aria-label={`Colour theme: ${face.label}. Tap to switch to ${FACE[next].label}.`}
+      title={t(`theme.${pref}Title`)}
+      aria-label={t("theme.aria", { current: label, next: t(`theme.${next}`) })}
       onClick={() => onChange(next)}
     >
-      <span className="theme-toggle-icon" aria-hidden="true">{face.icon}</span>
-      <span className="theme-toggle-label">{face.label}</span>
+      <span className="theme-toggle-icon" aria-hidden="true">{ICON[pref]}</span>
+      <span className="theme-toggle-label">{label}</span>
     </button>
   );
 }

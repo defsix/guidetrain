@@ -183,3 +183,83 @@
   height: auto;
   min-height: 0;
 }
+
+/* --- language picker --------------------------------------------------- */
+/* Shaped like .theme-toggle so the two sit together as one control group.
+   Ten languages is too many to cycle through a button, so this is a native
+   <select> — which is also what already behaves on a phone and with a screen
+   reader. The select is transparent and laid over the pill so the closed state
+   can show just the language name; left to itself it would render the selected
+   option's text, and "Device language — Português" does not fit here. */
+.lang-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.lang-toggle:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.lang-toggle:focus-within {
+  border-color: var(--accent);
+  color: var(--text);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.lang-toggle-icon { font-size: 14px; line-height: 1; }
+
+.lang-toggle-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.lang-toggle-caret { font-size: 12px; line-height: 1; opacity: 0.7; }
+
+/* Covers the pill exactly. 16px keeps iOS Safari from zooming the page when
+   the control takes focus. */
+.lang-toggle select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* The open list is drawn by the OS, which does not inherit the page's colours
+   — so name them, or a dark-theme user gets black text on black. */
+.lang-toggle select option {
+  background: var(--panel);
+  color: var(--text);
+}
+
+/* Both controls travel together in each header, and stay right-aligned if the
+   heading beside them pushes them onto their own row. */
+.header-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  flex-wrap: wrap;
+}

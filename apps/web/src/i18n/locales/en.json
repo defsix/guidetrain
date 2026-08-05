@@ -1,0 +1,153 @@
+{
+  "language": {
+    "label": "Language",
+    "auto": "Device language",
+    "aria": "Language"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "auto": "Device",
+    "lightTitle": "Light — tap for dark",
+    "darkTitle": "Dark — tap to follow device",
+    "autoTitle": "Following device — tap for light",
+    "aria": "Colour theme: {current}. Tap to switch to {next}."
+  },
+  "onboarding": {
+    "title": "Welcome to GuideTrain",
+    "subtitle": "A few quick details so we can tailor your training.",
+    "username": "Username",
+    "usernamePlaceholder": "e.g. iron_ada",
+    "gender": "Gender",
+    "ageGroup": "Age group",
+    "continue": "Continue to body explorer"
+  },
+  "gender": {
+    "female": "Female",
+    "male": "Male",
+    "other": "Other / Prefer not to say"
+  },
+  "age": {
+    "teen": "Under 18",
+    "60plus": "60+"
+  },
+  "explorer": {
+    "greeting": "Hi {name} — rotate the model, filter by region, and tap a muscle.",
+    "greetingAnon": "Rotate the model, filter by region, and tap a muscle."
+  },
+  "viewer": {
+    "muscleGroups": "Muscle Groups",
+    "allMuscles": "All muscles",
+    "display": "Display",
+    "autoRotate": "Auto-rotate",
+    "trainThis": "Train this",
+    "exercises": { "one": "{count} exercise", "other": "{count} exercises" },
+    "watch": "Watch demonstration",
+    "searchYouTube": "Search YouTube →"
+  },
+  "video": {
+    "close": "Close video",
+    "demonstration": "{name} demonstration",
+    "searchYouTube": "Search YouTube →"
+  },
+  "regions": {
+    "Neck": "Neck",
+    "Shoulders": "Shoulders",
+    "Chest": "Chest",
+    "Back": "Back",
+    "Arms": "Arms",
+    "Core": "Core",
+    "Legs": "Legs",
+    "Head": "Head"
+  },
+  "equipment": {
+    "None": "None",
+    "bands": "bands",
+    "barbell": "barbell",
+    "body only": "body only",
+    "cable": "cable",
+    "dumbbell": "dumbbell",
+    "exercise ball": "exercise ball",
+    "kettlebells": "kettlebells",
+    "machine": "machine",
+    "other": "other"
+  },
+  "level": {
+    "beginner": "beginner",
+    "intermediate": "intermediate",
+    "expert": "expert"
+  },
+  "muscles": {
+    "abs": {
+      "name": "Rectus Abdominis",
+      "desc": "The 'six-pack'; flexes the spine, resists extension. Crunches, leg raises, planks."
+    },
+    "add": {
+      "name": "Adductors",
+      "desc": "Inner thigh; pulls the legs together, stabilises hips. Adduction, sumo squats."
+    },
+    "bic": {
+      "name": "Biceps Brachii",
+      "desc": "Front of the upper arm; bends the elbow, supinates the forearm. Curls."
+    },
+    "calf": {
+      "name": "Gastrocnemius / Calf",
+      "desc": "Two-headed calf bulge; points the toes (plantarflexion). Standing calf raises."
+    },
+    "delt": {
+      "name": "Deltoid",
+      "desc": "Shoulder cap in three heads; raises the arm every direction. Presses, lateral raises."
+    },
+    "erector": {
+      "name": "Erector Spinae",
+      "desc": "Columns beside the spine; extends and stabilises the back. Deadlifts, back extensions."
+    },
+    "foot": { "name": "Foot", "desc": "" },
+    "fore": {
+      "name": "Forearm",
+      "desc": "Grip, wrist and finger drivers. Wrist curls, grip work, carries."
+    },
+    "glute": {
+      "name": "Gluteus Maximus",
+      "desc": "Largest muscle; extends the hip, drives power. Squats, hip thrusts, bridges."
+    },
+    "ham": {
+      "name": "Hamstrings",
+      "desc": "Back-thigh group; bends the knee, extends the hip. RDLs, leg curls, deadlifts."
+    },
+    "hand": { "name": "Hand", "desc": "" },
+    "head": { "name": "Head", "desc": "" },
+    "lat": {
+      "name": "Latissimus Dorsi",
+      "desc": "The 'wings' of the back; pulls the arms down and back. Pull-ups, rows, pulldowns."
+    },
+    "neck": {
+      "name": "Neck",
+      "desc": "Sternocleidomastoid and neck extensors; turns and steadies the head. Neck curls, shrugs, harness work."
+    },
+    "obl": {
+      "name": "External Oblique",
+      "desc": "Flanks of the abdomen; rotates and side-bends the trunk. Twists, side planks."
+    },
+    "pec": {
+      "name": "Pectoralis Major",
+      "desc": "Chest fan; pushes and draws the arm across the body. Bench press, flyes, push-ups."
+    },
+    "quad": {
+      "name": "Quadriceps",
+      "desc": "Front-thigh group of four; straightens the knee. Squats, lunges, leg extensions."
+    },
+    "shin": {
+      "name": "Tibialis Anterior",
+      "desc": "Front of the shin; lifts the foot (dorsiflexion). Toe raises, walks."
+    },
+    "traps": {
+      "name": "Trapezius",
+      "desc": "Upper back & neck yoke; shrugs and stabilises the shoulder blades. Shrugs, face-pulls."
+    },
+    "tri": {
+      "name": "Triceps Brachii",
+      "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
+    }
+  }
+}

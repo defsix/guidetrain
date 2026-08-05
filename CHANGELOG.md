@@ -2,6 +2,24 @@
 
 Newest first. Numbers in brackets are pull requests.
 
+## Languages
+
+- **Ten languages, chosen by the device** — English, Czech, German, Spanish,
+  French, Polish, Portuguese, Russian, Simplified Chinese and Japanese, matched
+  from `navigator.languages` with a header picker to override. Regional tags
+  collapse (`pt-BR`/`pt-PT` → `pt`), any `zh` lands on Simplified, anything
+  unsupported falls back to English. Each language is its own ~4 KB chunk, so
+  only the active one is downloaded.
+- **Interface, muscles and equipment translated**; exercise names and
+  instructions stay English and fall back per key, so nothing renders as a raw
+  placeholder.
+- **Real plurals** — `Intl.PluralRules` picks the form, so Polish, Russian and
+  Czech get their three (`5 ćwiczeń`) instead of an English two-form guess.
+- **Muscle names wrap instead of truncating**, which they had started doing in
+  Russian and Polish once the anatomical names got long.
+- `tools/i18n/check-locales.mjs` fails on a missing key, a dropped
+  `{placeholder}` or a missing plural form.
+
 ## Exercises
 
 - **Relevance gate on resolved videos** — a video is kept only if its title

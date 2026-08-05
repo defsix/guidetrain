@@ -4,25 +4,26 @@ import type { AgeGroup, Gender, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
+import LanguageToggle from "../components/LanguageToggle";
+import { useT } from "../i18n/I18nProvider";
 
-const AGE_GROUPS: { value: AgeGroup; label: string }[] = [
-  { value: "teen", label: "Under 18" },
+// The numeric bands read the same in every language, so only the two worded
+// ends carry a translation key; the rest are digits and stay as they are.
+const AGE_GROUPS: { value: AgeGroup; key?: string; label?: string }[] = [
+  { value: "teen", key: "age.teen" },
   { value: "18-29", label: "18 - 29" },
   { value: "30-44", label: "30 - 44" },
   { value: "45-59", label: "45 - 59" },
-  { value: "60+", label: "60+" },
+  { value: "60+", key: "age.60plus" },
 ];
 
-const GENDERS: { value: Gender; label: string }[] = [
-  { value: "female", label: "Female" },
-  { value: "male", label: "Male" },
-  { value: "other", label: "Other / Prefer not to say" },
-];
+const GENDERS: Gender[] = ["female", "male", "other"];
 
 export default function Onboarding() {
   const navigate = useNavigate();
   const { setProfile } = useProfile();
   const { pref, setPref } = useTheme();
+  const t = useT();
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
@@ -40,40 +41,43 @@ export default function Onboarding() {
     <div className="onboarding">
       <div className="onboarding-head">
         <div>
-          <h1>Welcome to GuideTrain</h1>
-          <p className="subtitle">A few quick details so we can tailor your training.</p>
+          <h1>{t("onboarding.title")}</h1>
+          <p className="subtitle">{t("onboarding.subtitle")}</p>
         </div>
-        <ThemeToggle pref={pref} onChange={setPref} />
+        <div className="header-controls">
+          <LanguageToggle />
+          <ThemeToggle pref={pref} onChange={setPref} />
+        </div>
       </div>
 
       <label className="field">
-        <span>Username</span>
+        <span>{t("onboarding.username")}</span>
         <input
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder="e.g. iron_ada"
+          placeholder={t("onboarding.usernamePlaceholder")}
           maxLength={32}
         />
       </label>
 
       <fieldset className="field">
-        <legend>Gender</legend>
+        <legend>{t("onboarding.gender")}</legend>
         <div className="chip-row">
           {GENDERS.map((g) => (
             <button
-              key={g.value}
+              key={g}
               type="button"
-              className={`chip ${gender === g.value ? "chip-selected" : ""}`}
-              onClick={() => setGender(g.value)}
+              className={`chip ${gender === g ? "chip-selected" : ""}`}
+              onClick={() => setGender(g)}
             >
-              {g.label}
+              {t(`gender.${g}`)}
             </button>
           ))}
         </div>
       </fieldset>
 
       <fieldset className="field">
-        <legend>Age group</legend>
+        <legend>{t("onboarding.ageGroup")}</legend>
         <div className="chip-row">
           {AGE_GROUPS.map((a) => (
             <button
@@ -82,14 +86,14 @@ export default function Onboarding() {
               className={`chip ${ageGroup === a.value ? "chip-selected" : ""}`}
               onClick={() => setAgeGroup(a.value)}
             >
-              {a.label}
+              {a.key ? t(a.key) : a.label}
             </button>
           ))}
         </div>
       </fieldset>
 
       <button className="primary-button" disabled={!canContinue} onClick={handleContinue}>
-        Continue to body explorer
+        {t("onboarding.continue")}
       </button>
     </div>
   );

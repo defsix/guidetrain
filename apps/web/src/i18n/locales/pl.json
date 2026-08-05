@@ -1,0 +1,158 @@
+{
+  "language": {
+    "label": "Język",
+    "auto": "Język urządzenia",
+    "aria": "Język"
+  },
+  "theme": {
+    "light": "Jasny",
+    "dark": "Ciemny",
+    "auto": "Urządzenie",
+    "lightTitle": "Jasny — dotknij, aby przełączyć na ciemny",
+    "darkTitle": "Ciemny — dotknij, aby podążać za urządzeniem",
+    "autoTitle": "Podąża za urządzeniem — dotknij, aby przełączyć na jasny",
+    "aria": "Motyw kolorystyczny: {current}. Dotknij, aby przełączyć na {next}."
+  },
+  "onboarding": {
+    "title": "Witaj w GuideTrain",
+    "subtitle": "Kilka szybkich informacji, abyśmy mogli dopasować Twój trening.",
+    "username": "Nazwa użytkownika",
+    "usernamePlaceholder": "np. iron_ada",
+    "gender": "Płeć",
+    "ageGroup": "Grupa wiekowa",
+    "continue": "Przejdź do eksploratora ciała"
+  },
+  "gender": {
+    "female": "Kobieta",
+    "male": "Mężczyzna",
+    "other": "Inna / Wolę nie podawać"
+  },
+  "age": {
+    "teen": "Poniżej 18",
+    "60plus": "60+"
+  },
+  "explorer": {
+    "greeting": "Cześć {name} — obracaj model, filtruj według partii i dotknij mięśnia.",
+    "greetingAnon": "Obracaj model, filtruj według partii i dotknij mięśnia."
+  },
+  "viewer": {
+    "muscleGroups": "Grupy mięśniowe",
+    "allMuscles": "Wszystkie mięśnie",
+    "display": "Wyświetlanie",
+    "autoRotate": "Automatyczny obrót",
+    "trainThis": "Trenuj to",
+    "exercises": {
+      "one": "{count} ćwiczenie",
+      "few": "{count} ćwiczenia",
+      "many": "{count} ćwiczeń",
+      "other": "{count} ćwiczenia"
+    },
+    "watch": "Zobacz demonstrację",
+    "searchYouTube": "Szukaj w YouTube →"
+  },
+  "video": {
+    "close": "Zamknij wideo",
+    "demonstration": "Demonstracja: {name}",
+    "searchYouTube": "Szukaj w YouTube →"
+  },
+  "regions": {
+    "Neck": "Szyja",
+    "Shoulders": "Barki",
+    "Chest": "Klatka piersiowa",
+    "Back": "Plecy",
+    "Arms": "Ramiona",
+    "Core": "Core",
+    "Legs": "Nogi",
+    "Head": "Głowa"
+  },
+  "equipment": {
+    "None": "brak",
+    "bands": "gumy",
+    "barbell": "sztanga",
+    "body only": "masa ciała",
+    "cable": "wyciąg",
+    "dumbbell": "hantle",
+    "exercise ball": "piłka gimnastyczna",
+    "kettlebells": "kettlebell",
+    "machine": "maszyna",
+    "other": "inne"
+  },
+  "level": {
+    "beginner": "początkujący",
+    "intermediate": "średnio zaawansowany",
+    "expert": "zaawansowany"
+  },
+  "muscles": {
+    "abs": {
+      "name": "Mięsień Prosty Brzucha",
+      "desc": "'Sześciopak'; zgina kręgosłup, opiera się wyprostowi. Brzuszki, unoszenie nóg, deski."
+    },
+    "add": {
+      "name": "Przywodziciele",
+      "desc": "Wewnętrzna strona uda; ściąga nogi do siebie, stabilizuje biodra. Przywodzenie, przysiad sumo."
+    },
+    "bic": {
+      "name": "Mięsień Dwugłowy Ramienia",
+      "desc": "Przód ramienia; zgina łokieć, supinuje przedramię. Uginanie ramion."
+    },
+    "calf": {
+      "name": "Mięsień Brzuchaty Łydki",
+      "desc": "Dwugłowe wybrzuszenie łydki; prostuje stopę (zgięcie podeszwowe). Wspięcia na palce w staniu."
+    },
+    "delt": {
+      "name": "Mięsień Naramienny",
+      "desc": "Czepiec barku z trzech aktonów; unosi ramię w każdym kierunku. Wyciskanie, wznosy bokiem."
+    },
+    "erector": {
+      "name": "Prostownik Grzbietu",
+      "desc": "Kolumny wzdłuż kręgosłupa; prostują i stabilizują plecy. Martwy ciąg, wyprosty grzbietu."
+    },
+    "foot": { "name": "Stopa", "desc": "" },
+    "fore": {
+      "name": "Przedramię",
+      "desc": "Napęd chwytu, nadgarstka i palców. Uginanie nadgarstków, trening chwytu, marsze z obciążeniem."
+    },
+    "glute": {
+      "name": "Mięsień Pośladkowy Wielki",
+      "desc": "Największy mięsień; prostuje biodro, generuje moc. Przysiady, hip thrusty, mostki."
+    },
+    "ham": {
+      "name": "Mięśnie Kulszowo-Goleniowe",
+      "desc": "Grupa tylnej części uda; zgina kolano, prostuje biodro. Martwy ciąg rumuński, uginanie nóg, martwy ciąg."
+    },
+    "hand": { "name": "Dłoń", "desc": "" },
+    "head": { "name": "Głowa", "desc": "" },
+    "lat": {
+      "name": "Mięsień Najszerszy Grzbietu",
+      "desc": "'Skrzydła' pleców; ściąga ramiona w dół i do tyłu. Podciąganie, wiosłowanie, ściąganie drążka."
+    },
+    "neck": {
+      "name": "Szyja",
+      "desc": "Mięsień mostkowo-obojczykowo-sutkowy i prostowniki szyi; obraca i stabilizuje głowę. Uginanie szyi, wzruszenia ramion, praca z uprzężą."
+    },
+    "obl": {
+      "name": "Mięsień Skośny Zewnętrzny Brzucha",
+      "desc": "Boki brzucha; obracają i zginają tułów w bok. Skręty, deski bokiem."
+    },
+    "pec": {
+      "name": "Mięsień Piersiowy Większy",
+      "desc": "Wachlarz klatki piersiowej; popycha i przywodzi ramię w poprzek ciała. Wyciskanie na ławce, rozpiętki, pompki."
+    },
+    "quad": {
+      "name": "Mięsień Czworogłowy Uda",
+      "desc": "Czterogłowa grupa z przodu uda; prostuje kolano. Przysiady, wykroki, prostowanie nóg."
+    },
+    "shin": {
+      "name": "Mięsień Piszczelowy Przedni",
+      "desc": "Przód goleni; unosi stopę (zgięcie grzbietowe). Unoszenie palców, marsz na piętach."
+    },
+    "traps": {
+      "name": "Mięsień Czworoboczny",
+      "desc": "Jarzmo górnych pleców i szyi; wzrusza i stabilizuje łopatki. Wzruszenia ramion, face pull."
+    },
+    "tri": {
+      "name": "Mięsień Trójgłowy Ramienia",
+      "desc": "Tył ramienia; prostuje łokieć. Dipy, prostowanie na wyciągu, wyprosty zza głowy."
+    }
+  }
+}
