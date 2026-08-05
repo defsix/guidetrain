@@ -108,8 +108,20 @@ app carries no key — which matters on GitHub Pages, where anything in the bund
 is public. The binding limit is a flat **100 `search.list` calls a day** — one
 per exercise — rather than the 10,000-unit pool, which covers the other
 endpoints; already-resolved exercises are skipped, so it can be run across
-several days. It also checks each video is actually embeddable, since an owner
-can forbid it and such a video would open an empty player.
+several days. (Exhausting it returns **429 `rateLimitExceeded`**, not the 403
+`quotaExceeded` the docs imply, and only in the response body — so the script
+reads the body and stops rather than reporting every remaining exercise as
+broken.) It also checks each video is actually embeddable, since an owner can
+forbid it and such a video would open an empty player.
+
+**A wrong video is worse than none**, so a result is kept only if its title
+shares a meaningful word with the exercise name. The top hit for a less common
+movement is often a general muscle video: "Reverse Barbell Curl" came back with
+*BIGGER Forearms Workout*, "Standing Olympic Plate Hand Squeeze" with *The
+Perfect Lying Triceps Extension*. The gate rejects those and keeps differently
+worded good matches — "Romanian Deadlift" still meets *RDL Tutorial* through a
+small alias table. `--revalidate` re-checks ids already in the file and drops
+any that fail. Rejects fall back to the search link, which always works.
 
 An API key is free and needs no billing. It reads public data only: it cannot
 touch a YouTube account, and it isn't used at runtime, so it can be deleted once
