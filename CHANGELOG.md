@@ -4,6 +4,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Exercises
 
+- **Video in the app** — an exercise with a known video plays it in a
+  click-to-load `youtube-nocookie` player rather than sending you to a new tab;
+  nothing is fetched from YouTube until you open one. Ids are resolved at build
+  time by `tools/exercises/resolve-videos.py` so no API key ships, and anything
+  without one keeps the search link.
+- **wger evaluated and declined** — CC-BY-SA with clean per-image licensing, but
+  its images match this list at 4% by name, loosening the match starts pairing
+  biceps curls with wrist curls, and rebuilding around it would lose five of the
+  seventeen zones outright.
+
 - **Exercises per muscle** — selecting a muscle lists the exercises that train
   it, expandable to step-by-step instructions, equipment and difficulty, with a
   YouTube search link. 180 exercises across all 17 zones, from the public-domain

@@ -13,7 +13,8 @@
  },
  "links": {
   "youtube": "A search URL rather than a fixed video id, so it cannot rot and needs no API key.",
-  "images": "None. The only reachable illustrated datasets either state no licence for their images (free-exercise-db, question closed unanswered) or ship none at all (exercemus). An exercise is instead shown on the app's own model, lighting the muscles it trains."
+  "images": "None. The only reachable illustrated datasets either state no licence for their images (free-exercise-db, question closed unanswered) or ship none at all (exercemus). An exercise is instead shown on the app's own model, lighting the muscles it trains.",
+  "video": "Video ids are resolved at build time by tools/exercises/resolve-videos.py, so the app ships no API key. Exercises without one fall back to the YouTube search link. The single hand-verified entry is a demonstrator so the player can be seen working before the resolver is run."
  },
  "muscles": {
   "abs": [
@@ -3247,7 +3248,11 @@
      "Repeat for the recommended amount of repetitions."
     ],
     "youtube": "https://www.youtube.com/results?search_query=Barbell+Squat+exercise+proper+form",
-    "source": "free-exercise-db"
+    "source": "free-exercise-db",
+    "videoId": "dW3zj79xfrc",
+    "videoTitle": "The PERFECT Barbell Squat",
+    "videoChannel": "Andrew Kwong (DeltaBolic)",
+    "videoSource": "hand-verified"
    },
    {
     "id": "Dumbbell_Squat",

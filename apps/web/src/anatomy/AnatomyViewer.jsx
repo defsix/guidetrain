@@ -6,6 +6,7 @@ import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
 import { zoneColor } from './zoneMapping';
 import exerciseData from './exercises.json';
+import VideoModal from './VideoModal';
 import './anatomy.css';
 
 // Regions top to bottom, and the muscles within each in the order they sit on
@@ -57,6 +58,7 @@ export default function AnatomyViewer({
   const [region, setRegion] = useState('all');
   const [autoRotate, setAutoRotate] = useState(false);
   const [openDrill, setOpenDrill] = useState(null);
+  const [video, setVideo] = useState(null);
 
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
@@ -181,6 +183,8 @@ export default function AnatomyViewer({
         </label>
       </div>
 
+      {video && <VideoModal exercise={video} onClose={() => setVideo(null)} />}
+
       {/* Hover tooltip */}
       {hover && <div className="anatomy-hover">{hover.name}</div>}
 
@@ -237,9 +241,15 @@ export default function AnatomyViewer({
                               {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
                             </ol>
                           )}
-                          <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
-                            Watch on YouTube →
-                          </a>
+                          {x.videoId ? (
+                            <button className="watch" onClick={() => setVideo(x)}>
+                              ▶ Watch demonstration
+                            </button>
+                          ) : (
+                            <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
+                              Search YouTube →
+                            </a>
+                          )}
                         </div>
                       )}
                     </li>
