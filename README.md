@@ -92,6 +92,39 @@ rotation and side-bending sits under "abdominals" — so those are separated by
 movement. It has nothing usable for tibialis anterior, so six exercises are
 named in the build script and marked `"source": "curated"`.
 
+### Video
+
+An exercise with a known video plays it in the app, in a click-to-load
+`youtube-nocookie` player — nothing is fetched from YouTube until you open one.
+A *search* cannot be embedded (YouTube removed `listType=search` in November
+2020), so this needs real video ids:
+
+```bash
+YOUTUBE_API_KEY=... python3 tools/exercises/resolve-videos.py
+```
+
+That runs at build time and writes the ids into `exercises.json`, so the shipped
+app carries no key — which matters on GitHub Pages, where anything in the bundle
+is public. It costs 100 quota units per exercise against a 10,000/day default,
+so roughly 100 a day; already-resolved exercises are skipped, so it can be run
+across several days. It also checks each video is actually embeddable, since an
+owner can forbid it and such a video would open an empty player.
+
+Anything without an id keeps the YouTube search link, and the player always
+offers that way out too — video ids rot, which is why the search link exists in
+the first place.
+
+### wger, and why it isn't used
+
+wger's catalogue is CC-BY-SA with proper per-image licence and author fields,
+and share-alike is acceptable here — but it doesn't fit. Matching its images
+onto this list by name hits **4%**; loosening the match to reach 21% starts
+pairing "Barbell Curl" with "Barbell Wrist Curl", and a wrong illustration is
+worse than none. Pairing images correctly would mean rebuilding the list from
+wger records, which has **no exercises at all** for neck, erector spinae,
+forearms, adductors or tibialis anterior — five of the seventeen zones — and
+only a third of its exercises carry an image.
+
 ## Theming
 
 Light, dark, or follow the device — one button in the header cycles the three

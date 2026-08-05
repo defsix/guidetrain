@@ -163,8 +163,39 @@
 .drill-body .watch {
   display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--accent);
   text-decoration: none; letter-spacing: 0.02em;
+  background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit;
 }
 .drill-body .watch:hover { text-decoration: underline; }
+
+/* The demonstration player. Nothing is fetched from YouTube until this opens. */
+.video-backdrop {
+  position: absolute; inset: 0; z-index: 20; display: flex;
+  align-items: center; justify-content: center; padding: 20px;
+  background: rgba(4, 6, 10, 0.72); backdrop-filter: blur(3px);
+}
+.video-box {
+  width: min(860px, 100%); background: var(--panel); border: 1px solid var(--border-strong);
+  border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+}
+.video-bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 11px 14px; border-bottom: 1px solid var(--border);
+}
+.video-bar .vtitle { font-size: 13.5px; font-weight: 600; color: var(--text); }
+.video-bar .vclose {
+  background: none; border: 0; color: var(--text-muted); font-size: 15px;
+  cursor: pointer; line-height: 1; padding: 4px 6px; border-radius: 6px;
+}
+.video-bar .vclose:hover { color: var(--text); background: var(--panel-translucent); }
+/* 16:9, held by the padding trick so it reflows on a phone without JS. */
+.video-frame { position: relative; width: 100%; padding-top: 56.25%; background: #000; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 9px 14px; font-size: 11.5px; color: var(--text-muted);
+}
+.video-foot a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.video-foot a:hover { text-decoration: underline; }
 
 @media (max-width: 720px) {
   .anatomy-root .regions { width: 158px; max-height: calc(100% - 130px); }
