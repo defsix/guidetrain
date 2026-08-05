@@ -155,10 +155,17 @@ Only the active language is downloaded: each is its own ~4 KB chunk, with
 English in the main bundle because it is also the per-key fallback — an
 untranslated key renders English rather than a raw key.
 
-Translated: the whole interface, all 20 muscle names and descriptions, the
-region and equipment labels. **Exercise names and instructions are still
-English** — 815 steps of prose — and fall back per key, so they read as English
-text inside a translated app rather than as breakage.
+Translated everywhere: the whole interface, all 20 muscle names and
+descriptions, the region and equipment labels.
+
+Exercise names and instructions are a separate, much larger job — 180 names and
+815 steps, ~23,000 words per language — so they ship **one language at a time**
+in `src/i18n/exercises/<locale>.json`, lazy-loaded apart from the interface
+(~30 KB gzipped) and only when a muscle is opened. **Done: Spanish.** A
+language without a file falls back per key to the English text, so it reads as
+English prose inside a translated app rather than as breakage.
+
+    node tools/i18n/dump-exercises.mjs <from> <to>   # source text to translate
 
 Counts use `Intl.PluralRules`, so Polish, Russian and Czech get their three
 forms (`5 ćwiczeń`, not `5 ćwiczenia`) rather than an English two-form guess.

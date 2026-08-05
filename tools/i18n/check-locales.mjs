@@ -101,6 +101,49 @@ for (const file of files) {
   if (problems === before) console.log(`  ok  ${file.padEnd(14)} ${got.size} keys`);
 }
 
+// --- exercise text -------------------------------------------------------
+// Separate files, separate rules. These arrive one language at a time, so a
+// language having no file is fine; a file that exists must be complete and
+// must have the same number of steps per exercise, because a translation with
+// fewer steps silently drops instructions from a numbered list.
+const EX_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..',
+                    'apps', 'web', 'src', 'i18n', 'exercises');
+const SRC = join(dirname(fileURLToPath(import.meta.url)), '..', '..',
+                 'apps', 'web', 'src', 'anatomy', 'exercises.json');
+
+let exFiles = [];
+try {
+  exFiles = readdirSync(EX_DIR).filter((f) => f.endsWith('.json')).sort();
+} catch {
+  // No exercise translations yet.
+}
+
+if (exFiles.length) {
+  const src = {};
+  const doc = JSON.parse(readFileSync(SRC, 'utf8'));
+  for (const list of Object.values(doc.muscles)) for (const x of list) src[x.id] = x;
+  const total = Object.keys(src).length;
+
+  console.log('');
+  for (const file of exFiles) {
+    const tr = JSON.parse(readFileSync(join(EX_DIR, file), 'utf8'));
+    const before = problems;
+    for (const id of Object.keys(src)) if (!tr[id]) fail(file, `missing exercise "${id}"`);
+    for (const [id, t] of Object.entries(tr)) {
+      const s = src[id];
+      if (!s) { fail(file, `unknown exercise "${id}"`); continue; }
+      if (!t.name?.trim()) fail(file, `"${id}" has no name`);
+      const got = t.instructions?.length ?? 0;
+      if (got !== s.instructions.length) {
+        fail(file, `"${id}" has ${got} steps, English has ${s.instructions.length}`);
+      }
+    }
+    if (problems === before) {
+      console.log(`  ok  ${file.padEnd(14)} ${Object.keys(tr).length}/${total} exercises`);
+    }
+  }
+}
+
 console.log(problems
   ? `\n${problems} problem(s)`
   : `\n${files.length} locales, ${enLeaves.size} keys each — consistent`);

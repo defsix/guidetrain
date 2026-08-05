@@ -7,7 +7,7 @@ import defaultMap from './muscle-map.json';
 import { zoneColor } from './zoneMapping';
 import exerciseData from './exercises.json';
 import VideoModal from './VideoModal';
-import { useT } from '../i18n/I18nProvider';
+import { useI18n } from '../i18n/I18nProvider';
 import './anatomy.css';
 
 // Regions top to bottom, and the muscles within each in the order they sit on
@@ -54,7 +54,7 @@ export default function AnatomyViewer({
   onSelect,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
-  const t = useT();
+  const { t, localizeExercise } = useI18n();
   const [selected, setSelected] = useState(null);
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
@@ -65,8 +65,8 @@ export default function AnatomyViewer({
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
   const drills = useMemo(
-    () => (selected ? exerciseData.muscles[selected.key] || [] : []),
-    [selected],
+    () => (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise),
+    [selected, localizeExercise],
   );
   const shownDrill = useMemo(
     () => drills.find((x) => x.id === openDrill) || null,
