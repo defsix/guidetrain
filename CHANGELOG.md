@@ -4,6 +4,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Exercises
 
+- **Relevance gate on resolved videos** — a video is kept only if its title
+  shares a meaningful word with the exercise name, so "Reverse Barbell Curl" no
+  longer opens *BIGGER Forearms Workout*; an alias table keeps differently
+  worded good matches ("Romanian Deadlift" ↔ *RDL Tutorial*). Ten wrong ids were
+  dropped by the new `--revalidate` pass. Rejects fall back to the search link.
+  The resolver also now recognises an exhausted daily quota, which arrives as
+  429 in the response body rather than the documented 403, and stops instead of
+  reporting every remaining exercise as broken.
+- **Video ids resolved** [#17] — 109 of 180 exercises now open a real
+  demonstration; the rest keep the search link until the next quota day.
 - **Video in the app** — an exercise with a known video plays it in a
   click-to-load `youtube-nocookie` player rather than sending you to a new tab;
   nothing is fetched from YouTube until you open one. Ids are resolved at build
