@@ -71,10 +71,18 @@ ALIAS = {"rdl": {"romanian", "stiff", "legged", "deadlift"}, "db": {"dumbbell"},
 
 
 def words(s):
+    """Meaningful tokens in a name or title.
+
+    Single letters and bare numbers are dropped. Neither identifies a movement
+    on its own, and letting them count is how "V-Bar Pullup" matched "Top 9
+    Lats Exercises for a V-Shape Body" — on the lone "v". Real three-letter
+    words still count ("hip", "row", "box", "sit"), which is what keeps
+    "Lateral Box Jump" paired with "box jumps".
+    """
     out = set()
     for w in re.sub(r"[^a-z0-9 ]", " ", s.lower()).split():
         out |= ALIAS.get(w, {w})
-    return out - STOP
+    return {w for w in out - STOP if len(w) > 1 and not w.isdigit()}
 
 
 def relevant(name, title):

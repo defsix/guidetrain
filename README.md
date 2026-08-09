@@ -115,7 +115,8 @@ broken.) It also checks each video is actually embeddable, since an owner can
 forbid it and such a video would open an empty player.
 
 **A wrong video is worse than none**, so a result is kept only if its title
-shares a meaningful word with the exercise name. The top hit for a less common
+shares a meaningful word with the exercise name — a single letter or a bare
+number does not count, since neither identifies a movement. The top hit for a less common
 movement is often a general muscle video: "Reverse Barbell Curl" came back with
 *BIGGER Forearms Workout*, "Standing Olympic Plate Hand Squeeze" with *The
 Perfect Lying Triceps Extension*. The gate rejects those and keeps differently
