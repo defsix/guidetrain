@@ -1,0 +1,1716 @@
+{
+ "3_4_Sit-Up": {
+  "name": "Brzuszek 3/4",
+  "instructions": [
+   "Połóż się na podłodze i zablokuj stopy. Nogi powinny być ugięte w kolanach.",
+   "Ułóż dłonie za głową lub po jej bokach. Zaczynasz z plecami na podłodze. To jest pozycja wyjściowa.",
+   "Zegnij biodra i kręgosłup, unosząc tułów w kierunku kolan.",
+   "W szczycie skurczu tułów powinien być prostopadły do podłoża. Odwróć ruch i opuść się tylko na ¾ zakresu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Ab_Crunch_Machine": {
+  "name": "Maszyna do Brzuszków",
+  "instructions": [
+   "Ustaw niewielki opór i usiądź na maszynie, wsuwając stopy pod wałki i chwytając górne uchwyty. Ramiona powinny być ugięte pod kątem 90 stopni, z tricepsami opartymi o wałki. To jest pozycja wyjściowa.",
+   "Jednocześnie zacznij unosić nogi, spinając górną część tułowia. Wydychaj powietrze podczas ruchu. Wskazówka: ruch ma być wolny i kontrolowany. Skup się na pracy mięśni brzucha, rozluźniając nogi i stopy.",
+   "Po sekundowej przerwie wróć powoli do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Alternate_Hammer_Curl": {
+  "name": "Naprzemienne Uginanie Młotkowe",
+  "instructions": [
+   "Stań wyprostowany z hantlami w obu dłoniach, trzymanymi na wyprostowanych ramionach. Łokcie powinny być blisko tułowia.",
+   "Dłonie powinny być zwrócone wnętrzem do tułowia. To jest pozycja wyjściowa.",
+   "Trzymając ramię nieruchomo, ugnij prawą rękę, napinając biceps i wydychając powietrze. Kontynuuj, aż biceps będzie w pełni napięty, a hantel znajdzie się na wysokości barku. Zatrzymaj skurcz na sekundę, mocno spinając biceps. Wskazówka: poruszać się powinny wyłącznie przedramiona.",
+   "Zacznij powoli opuszczać hantel do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz ruch lewą ręką. To jest jedno powtórzenie.",
+   "Kontynuuj naprzemiennie przez zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Atlas_Stone_Trainer": {
+  "name": "Trenażer Kamienia Atlasa",
+  "instructions": [
+   "Ten przyrząd służy do budowania siły potrzebnej przy kamieniach Atlasa, gdy nie ma się do nich dostępu; zwykle wykonuje się go z końcówek gryfu lub ciężkiej rury.",
+   "Zacznij od załadowania odpowiedniego ciężaru na gryf. Stań okrakiem nad ciężarem, obejmij przyrząd ramionami i zegnij biodra.",
+   "Zacznij od pociągnięcia ciężaru powyżej kolan, prostując biodra. Gdy ciężar minie kolana, możesz oprzeć go na udach i odchylić się do tyłu, mocno przyciskając go do klatki piersiowej.",
+   "Zakończ ruch, prostując biodra i kolana, aby unieść ciężar jak najwyżej. Ciężar możesz odłożyć na uda lub na ziemię przed kolejnym powtórzeniem."
+  ]
+ },
+ "Axle_Deadlift": {
+  "name": "Martwy Ciąg ze Sztangą Axle",
+  "instructions": [
+   "Podejdź do sztangi tak, aby znalazła się nad środkiem stóp. Stopy ustaw na szerokość bioder. Zegnij biodra i chwyć gryf na szerokość barków, pozwalając łopatkom się rozsunąć. Zwykle stosuje się chwyt mieszany.",
+   "Mając ustawione stopy i chwyt, weź głęboki oddech, obniż biodra i ugnij kolana, aż golenie dotkną gryfu. Patrz przed siebie, trzymaj klatkę wysoko i plecy w łuku, po czym zacznij napierać piętami, unosząc ciężar.",
+   "Gdy gryf minie kolana, zdecydowanie pociągnij go do tyłu, ściągając łopatki i wypychając biodra w kierunku gryfu.",
+   "Opuść gryf, zginając biodra i prowadząc go do podłogi."
+  ]
+ },
+ "Balance_Board": {
+  "name": "Deska Balansowa",
+  "instructions": [
+   "Ustaw deskę balansową przed sobą.",
+   "Wejdź na nią i spróbuj utrzymać równowagę.",
+   "Utrzymuj równowagę tak długo, jak chcesz."
+  ]
+ },
+ "Ball_Leg_Curl": {
+  "name": "Uginanie Nóg z Piłką",
+  "instructions": [
+   "Połóż się na plecach na podłodze ze stopami na piłce.",
+   "Ustaw piłkę tak, aby przy wyprostowanych nogach kostki znajdowały się na jej szczycie. To jest pozycja wyjściowa.",
+   "Unieś biodra nad podłogę, opierając ciężar na łopatkach i stopach.",
+   "Ugnij kolana, przyciągając piłkę jak najbliżej siebie i napinając mięśnie dwugłowe uda.",
+   "Po krótkiej przerwie wróć do pozycji wyjściowej."
+  ]
+ },
+ "Band_Assisted_Pull-Up": {
+  "name": "Podciąganie z Gumą",
+  "instructions": [
+   "Zaczep gumę wokół środka drążka. Możesz używać różnych gum, aby zmieniać poziom asysty.",
+   "Pociągnij koniec gumy w dół i włóż w pętlę jedno ugięte kolano, upewniając się, że nie wyślizgnie się. Chwyć drążek chwytem średnim lub szerokim. To jest pozycja wyjściowa.",
+   "Podciągnij się, napinając mięśnie najszersze grzbietu i uginając łokcie. Łokieć powinien iść w kierunku boku. Podciągaj się do przodu, starając się przenieść brodę nad drążek. Unikaj bujania i szarpania.",
+   "Po krótkiej przerwie wróć do pozycji wyjściowej."
+  ]
+ },
+ "Band_Good_Morning": {
+  "name": "Dzień Dobry z Gumą",
+  "instructions": [
+   "Używając gumy o długości ok. 104 cm, stań na jednym jej końcu, lekko rozstawiając stopy. Zegnij biodra i przełóż drugi koniec gumy za kark. To jest pozycja wyjściowa.",
+   "Trzymając nogi wyprostowane, wyprostuj biodra, aż osiągniesz niemal pionową sylwetkę.",
+   "Uważaj, aby nie zaokrąglić pleców przy powrocie do pozycji wyjściowej."
+  ]
+ },
+ "Band_Good_Morning_Pull_Through": {
+  "name": "Dzień Dobry z Gumą (Pull Through)",
+  "instructions": [
+   "Zaczep gumę wokół słupka. Stojąc w pewnej odległości, przełóż drugi koniec za kark. Dłońmi możesz przytrzymywać gumę w miejscu.",
+   "Zacznij od zgięcia bioder, wypychając pośladki jak najdalej do tyłu. Trzymaj plecy płasko i pochyl się do przodu do około 90 stopni. Kolana powinny być tylko lekko ugięte.",
+   "Wróć do pozycji wyjściowej, wypychając biodra do przodu aż do wyprostowanej sylwetki."
+  ]
+ },
+ "Band_Hip_Adductions": {
+  "name": "Przywodzenie Bioder z Gumą",
+  "instructions": [
+   "Zaczep gumę wokół solidnego słupka lub innego przedmiotu.",
+   "Stań lewym bokiem do słupka i przełóż prawą stopę przez gumę, umieszczając ją wokół kostki.",
+   "Stań prosto i w razie potrzeby przytrzymaj się słupka. To jest pozycja wyjściowa.",
+   "Trzymając kolano wyprostowane, unieś prawą nogę w bok tak wysoko, jak potrafisz.",
+   "Wróć do pozycji wyjściowej i powtórz zaplanowaną liczbę powtórzeń.",
+   "Zmień stronę."
+  ]
+ },
+ "banded_dorsiflexion": {
+  "name": "Zgięcie Grzbietowe z Gumą",
+  "instructions": [
+   "Zaczep gumę wokół grzbietu stopy, usiądź z wyprostowaną nogą i przyciągnij palce stopy do siebie."
+  ]
+ },
+ "Barbell_Bench_Press_-_Medium_Grip": {
+  "name": "Wyciskanie Sztangi na Ławce Płaskiej - Chwyt Średni",
+  "instructions": [
+   "Połóż się na ławce płaskiej. Chwytem średnim (takim, który w połowie ruchu daje kąt 90 stopni między przedramieniem a ramieniem) zdejmij sztangę ze stojaka i trzymaj ją prosto nad sobą na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Z pozycji wyjściowej nabierz powietrza i zacznij powoli opuszczać sztangę, aż dotknie środka klatki piersiowej.",
+   "Po krótkiej przerwie wypchnij sztangę z powrotem do pozycji wyjściowej, wydychając powietrze. Skup się na wypychaniu sztangi mięśniami klatki piersiowej. Wyprostuj ramiona i spnij klatkę w górnej pozycji, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie ciężaru powinno trwać około dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak."
+  ]
+ },
+ "Barbell_Curl": {
+  "name": "Uginanie Ramion ze Sztangą",
+  "instructions": [
+   "Stań wyprostowany, trzymając sztangę chwytem na szerokość barków. Dłonie powinny być zwrócone wnętrzem do przodu, a łokcie blisko tułowia. To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, ugnij ręce, napinając bicepsy i wydychając powietrze. Wskazówka: poruszać się powinny wyłącznie przedramiona.",
+   "Kontynuuj ruch, aż bicepsy będą w pełni napięte, a gryf znajdzie się na wysokości barków. Zatrzymaj skurcz na sekundę i mocno spnij bicepsy.",
+   "Zacznij powoli opuszczać sztangę do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Barbell_Deadlift": {
+  "name": "Martwy Ciąg ze Sztangą",
+  "instructions": [
+   "Stań przed załadowaną sztangą.",
+   "Trzymając plecy możliwie prosto, ugnij kolana, pochyl się i chwyć gryf chwytem nachwytem na szerokość barków. To jest pozycja wyjściowa ćwiczenia. Wskazówka: jeśli utrzymanie gryfu tym chwytem sprawia trudność, zastosuj chwyt mieszany lub paski.",
+   "Trzymając gryf, rozpocznij ruch, napierając nogami i jednocześnie prostując tułów, wydychając powietrze. W pozycji wyprostowanej wypnij klatkę i napnij plecy, ściągając łopatki. Pomyśl o postawie żołnierza na baczność.",
+   "Wróć do pozycji wyjściowej, uginając kolana i jednocześnie pochylając tułów w biodrach, trzymając plecy prosto. Gdy obciążenie dotknie podłogi, jesteś z powrotem w pozycji wyjściowej i możesz wykonać kolejne powtórzenie.",
+   "Wykonaj liczbę powtórzeń przewidzianą w planie."
+  ]
+ },
+ "Barbell_Glute_Bridge": {
+  "name": "Mostek Pośladkowy ze Sztangą",
+  "instructions": [
+   "Usiądź na podłodze z załadowaną sztangą nad nogami. Gruby gryf lub podkładka na gryfie znacznie zmniejszają dyskomfort w tym ćwiczeniu. Przetocz gryf tak, aby znalazł się dokładnie nad biodrami, i połóż się płasko na podłodze.",
+   "Rozpocznij ruch, napierając piętami i prostując biodra pionowo w górę przeciw gryfowi. Ciężar ciała powinien opierać się na górnej części pleców i na piętach.",
+   "Wyprostuj się maksymalnie, po czym odwróć ruch, wracając do pozycji wyjściowej."
+  ]
+ },
+ "Barbell_Hip_Thrust": {
+  "name": "Hip Thrust ze Sztangą",
+  "instructions": [
+   "Usiądź na podłodze z ławką bezpośrednio za sobą. Umieść załadowaną sztangę nad nogami. Gruby gryf lub podkładka na gryfie znacznie zmniejszają dyskomfort w tym ćwiczeniu.",
+   "Przetocz gryf tak, aby znalazł się dokładnie nad biodrami, i oprzyj się plecami o ławkę tak, by łopatki znalazły się przy jej górnej krawędzi.",
+   "Rozpocznij ruch, napierając stopami i prostując biodra pionowo w górę przeciw gryfowi. Ciężar ciała powinien opierać się na łopatkach i stopach. Wyprostuj się maksymalnie, po czym odwróć ruch, wracając do pozycji wyjściowej."
+  ]
+ },
+ "Barbell_Incline_Bench_Press_-_Medium_Grip": {
+  "name": "Wyciskanie Sztangi na Ławce Skośnej - Chwyt Średni",
+  "instructions": [
+   "Połóż się na ławce skośnej. Chwytem średnim (takim, który w połowie ruchu daje kąt 90 stopni między przedramieniem a ramieniem) zdejmij sztangę ze stojaka i trzymaj ją prosto nad sobą na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli sztangę, aż poczujesz ją na górnej części klatki piersiowej.",
+   "Po sekundowej przerwie wypchnij sztangę z powrotem do pozycji wyjściowej, wydychając powietrze i napierając mięśniami klatki piersiowej. Wyprostuj ramiona w górnej pozycji, spnij klatkę, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak."
+  ]
+ },
+ "Barbell_Rear_Delt_Row": {
+  "name": "Wiosłowanie Sztangą na Tylne Aktony Barków",
+  "instructions": [
+   "Stań prosto, trzymając sztangę chwytem szerokim (szerszym niż barki) i nachwytem (dłonie zwrócone do ciała).",
+   "Ugnij lekko kolana i pochyl się, zachowując naturalny łuk pleców. Pozwól ramionom zwisać przed tobą, trzymając gryf. Gdy tułów będzie równoległy do podłogi, rozłóż łokcie na boki, z dala od ciała. Wskazówka: tułów i ramiona powinny tworzyć literę \"T\". Teraz możesz zacząć ćwiczenie.",
+   "Trzymając ramiona prostopadle do tułowia, pociągnij sztangę w kierunku górnej części klatki piersiowej, spinając tylne aktony barków i wydychając powietrze. Wskazówka: poprawnie wykonane, ćwiczenie przypomina wyciskanie na ławce w odwrotną stronę. Unikaj też pracy bicepsami. Skup się na tylnych aktonach; ramiona mają działać wyłącznie jak haki.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Barbell_Seated_Calf_Raise": {
+  "name": "Wspięcia na Palce Siedząc ze Sztangą",
+  "instructions": [
+   "Ustaw podest około 30 cm przed ławką płaską.",
+   "Usiądź na ławce i oprzyj śródstopie na podeście.",
+   "Poproś kogoś, aby ułożył sztangę na twoich udach, około 8 cm powyżej kolan, i przytrzymał ją. To jest pozycja wyjściowa.",
+   "Wznieś się na palce jak najwyżej, spinając łydki i wydychając powietrze.",
+   "Po sekundowym skurczu wróć powoli do pozycji wyjściowej. Wskazówka: aby uzyskać maksymalny efekt, rozciągnij łydki najgłębiej jak potrafisz.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Barbell_Side_Bend": {
+  "name": "Skłony Boczne ze Sztangą",
+  "instructions": [
+   "Stań prosto ze sztangą ułożoną na barkach (nieco poniżej karku). Stopy powinny być rozstawione na szerokość barków. To jest pozycja wyjściowa.",
+   "Trzymając plecy prosto i głowę uniesioną, wykonaj skłon wyłącznie w talii, w prawo, tak głęboko, jak potrafisz. Wdychaj powietrze podczas skłonu. Zatrzymaj na sekundę i wróć do pozycji wyjściowej, wydychając powietrze. Wskazówka: reszta ciała pozostaje nieruchoma.",
+   "Powtórz teraz ruch, wykonując skłon w lewo. Zatrzymaj na sekundę i wróć do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Barbell_Side_Split_Squat": {
+  "name": "Przysiad Boczny ze Sztangą",
+  "instructions": [
+   "Stań prosto ze sztangą ułożoną na barkach (nieco poniżej karku). Stopy ustaw szeroko, ze stopą nogi wykrocznej skierowaną na zewnątrz. To jest pozycja wyjściowa.",
+   "Opuść ciało w stronę skierowanej na zewnątrz stopy, uginając kolano i biodro nogi wykrocznej i utrzymując drugą nogę tylko lekko ugiętą. Wdychaj powietrze podczas opuszczania.",
+   "Wróć do pozycji wyjściowej, prostując biodro i kolano nogi wykrocznej. Wydychaj powietrze podczas tego ruchu.",
+   "Po wykonaniu zalecanej liczby powtórzeń powtórz ruch na drugą nogę."
+  ]
+ },
+ "Barbell_Squat": {
+  "name": "Przysiad ze Sztangą",
+  "instructions": [
+   "Ze względów bezpieczeństwa ćwiczenie najlepiej wykonywać w klatce do przysiadów. Na początek ustaw gryf na stojaku tuż poniżej wysokości barków. Po dobraniu właściwej wysokości i załadowaniu sztangi wejdź pod gryf i oprzyj go na barkach (nieco poniżej karku).",
+   "Chwyć gryf obiema rękami po bokach i zdejmij go ze stojaka, najpierw napierając nogami i jednocześnie prostując tułów.",
+   "Odejdź od stojaka i ustaw nogi w średnim rozstawie na szerokość barków, z palcami stóp skierowanymi lekko na zewnątrz. Przez cały czas trzymaj głowę uniesioną i plecy proste. To jest pozycja wyjściowa. (Uwaga: przyjmujemy tu opisany średni rozstaw, który rozwija mięśnie całościowo; możesz wybrać dowolny z trzech rozstawów opisanych w części o ustawieniu stóp).",
+   "Zacznij powoli opuszczać sztangę, uginając kolana i biodra, zachowując prostą sylwetkę i uniesioną głowę. Schodź w dół, aż kąt między udem a łydką będzie nieco mniejszy niż 90 stopni. Wdychaj powietrze podczas tej fazy ruchu. Wskazówka: przy poprawnym wykonaniu przód kolan powinien tworzyć z palcami stóp wyimaginowaną prostą linię, prostopadłą do kierunku patrzenia. Jeśli kolana wychodzą poza tę linię (poza palce stóp), obciążasz kolano nadmiernie i ćwiczenie jest wykonane błędnie.",
+   "Zacznij unosić sztangę, wydychając powietrze i napierając piętami na podłogę, prostując nogi i wracając do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Barbell_Walking_Lunge": {
+  "name": "Wykroki Chodzone ze Sztangą",
+  "instructions": [
+   "Stań ze stopami na szerokość barków i sztangą na górnej części pleców.",
+   "Zrób krok do przodu jedną nogą, uginając kolana i obniżając biodra. Schodź w dół, aż tylne kolano niemal dotknie podłogi. Sylwetka powinna pozostać wyprostowana, a przednie kolano nad przednią stopą.",
+   "Napierając piętą wykrocznej stopy, wyprostuj oba kolana i wróć do góry.",
+   "Zrób krok do przodu tylną nogą, powtarzając wykrok na drugą nogę."
+  ]
+ },
+ "Bench_Press_-_Powerlifting": {
+  "name": "Wyciskanie Leżąc - Trójbój",
+  "instructions": [
+   "Połóż się na ławce, jeśli to możliwe wysuwając głowę poza gryf. Podciągnij stopy pod siebie i wygnij plecy w łuk. Podpierając się gryfem, oderwij barki od ławki i ściągnij je, spinając łopatki. Napieraj stopami, wbijając czworoboczne w ławkę. Utrzymuj to napięcie przez cały ruch.",
+   "Niezależnie od szerokości chwytu powinien on obejmować pierścień na gryfie. Wyjmij gryf ze stojaka bez wysuwania barków do przodu. Skup się na mocnym ściskaniu gryfu i próbie jego rozerwania.",
+   "Opuść gryf na dolną część klatki piersiowej lub górę brzucha. Gryf, nadgarstek i łokieć powinny być przez cały czas w jednej linii.",
+   "Zatrzymaj się, gdy sztanga dotknie tułowia, po czym wypchnij ją w górę z maksymalną siłą. Łokcie pozostają przyciągnięte aż do pełnego wyprostu."
+  ]
+ },
+ "Bent_Over_Barbell_Row": {
+  "name": "Wiosłowanie Sztangą w Opadzie",
+  "instructions": [
+   "Trzymając sztangę chwytem nachwytem (dłonie zwrócone w dół), ugnij lekko kolana i pochyl tułów w biodrach, zachowując proste plecy, aż będzie niemal równoległy do podłogi. Wskazówka: pamiętaj o uniesionej głowie. Sztanga powinna zwisać dokładnie przed tobą, a ramiona pozostawać prostopadłe do podłogi i tułowia. To jest pozycja wyjściowa.",
+   "Trzymając tułów nieruchomo, wydychaj powietrze i przyciągnij sztangę do siebie. Trzymaj łokcie blisko ciała, a przedramionami jedynie utrzymuj ciężar. W górnej pozycji spnij mięśnie pleców i zatrzymaj na moment.",
+   "Następnie wdychaj powietrze i powoli opuść sztangę do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Bent-Arm_Barbell_Pullover": {
+  "name": "Pullover ze Sztangą przy Ugiętych Ramionach",
+  "instructions": [
+   "Połóż się na ławce płaskiej ze sztangą trzymaną chwytem na szerokość barków.",
+   "Trzymaj gryf prosto nad klatką piersiową z lekko ugiętymi ramionami. To jest pozycja wyjściowa.",
+   "Utrzymując ugięcie ramion, opuszczaj powoli ciężar łukiem za głowę, wdychając powietrze, aż poczujesz rozciąganie w klatce piersiowej.",
+   "W tym momencie sprowadź sztangę z powrotem do pozycji wyjściowej tym samym łukiem, wydychając powietrze.",
+   "Zatrzymaj ciężar na sekundę w pozycji wyjściowej i powtórz ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Bodyweight_Squat": {
+  "name": "Przysiad z Masą Ciała",
+  "instructions": [
+   "Stań ze stopami na szerokość barków. Dłonie możesz ułożyć za głową. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając kolana i biodra i wypychając biodra do tyłu.",
+   "Zejdź na pełną głębokość, jeśli potrafisz, po czym szybko odwróć ruch i wróć do pozycji wyjściowej. Schodząc, trzymaj głowę i klatkę wysoko i wypychaj kolana na zewnątrz."
+  ]
+ },
+ "Bosu_Ball_Cable_Crunch_With_Side_Bends": {
+  "name": "Spięcia na Bosu z Wyciągiem i Skłonami Bocznymi",
+  "instructions": [
+   "Podepnij standardowy uchwyt do każdego ramienia wyciągu i ustaw je w najniższej pozycji.",
+   "Weź piłkę Bosu i ustaw ją na wprost, na środku przed wyciągiem.",
+   "Połóż się na Bosu, opierając odcinek lędźwiowy o kulistą powierzchnię piłki. Pośladki powinny znaleźć się blisko podłogi, nie dotykając jej.",
+   "Sięgnij obiema rękami do tyłu i chwyć uchwyt każdej z linek.",
+   "Ze stopami w szerokim rozstawie wyprostuj ramiona przed sobą, pomiędzy kolanami. Dłonie powinny znaleźć się na wysokości kolan.",
+   "Trzymaj ramiona wyprostowane i w jednej linii ze skośnym przebiegiem linki. Unieś tułów ruchem spięcia, nie opuszczając ani nie uginając ramion.",
+   "Utrzymuj sztywne ramiona. Opuść się powoli do pozycji wyjściowej, z plecami wygiętymi na Bosu i rozciągniętymi mięśniami brzucha.",
+   "Powtarzaj tę serię ruchów aż do odmowy.",
+   "Po dojściu do odmowy napnij brzuch i unieś tułów do pozycji deski, tak aby plecy oderwały się od Bosu.",
+   "Opuść wyprostowane ramiona wzdłuż ciała. Zacznij wykonywać naprzemienne skłony boczne — sięgaj do pięt! To końcowe ćwiczenie skupia się na mięśniach skośnych."
+  ]
+ },
+ "Bottoms-Up_Clean_From_The_Hang_Position": {
+  "name": "Clean Bottoms-Up z Zawieszenia",
+  "instructions": [
+   "Rozpocznij ćwiczenie, stojąc wyprostowany z kettlebellem w jednej ręce.",
+   "Zamachnij kettlebellem energicznie do tyłu, po czym równie energicznie odwróć ruch. Ściśnij uchwyt kettlebella najmocniej jak potrafisz i unieś go do barku."
+  ]
+ },
+ "Cable_Crunch": {
+  "name": "Spięcia Brzucha na Wyciągu",
+  "instructions": [
+   "Uklęknij pod górnym wyciągiem z podpiętą liną.",
+   "Chwyć linę i opuść ją tak, aby dłonie znalazły się przy twarzy.",
+   "Ugnij lekko biodra i pozwól, aby ciężar wygiął odcinek lędźwiowy. To jest pozycja wyjściowa.",
+   "Trzymając biodra nieruchomo, zegnij tułów w talii, napinając mięśnie brzucha tak, aby łokcie powędrowały w kierunku środka ud. Wydychaj powietrze podczas tej fazy ruchu i zatrzymaj skurcz na sekundę.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze. Wskazówka: utrzymuj stałe napięcie mięśni brzucha przez cały ruch. Nie dobieraj też tak dużego ciężaru, żeby pracę przejął odcinek lędźwiowy.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Cable_Preacher_Curl": {
+  "name": "Uginanie Ramion na Modlitewniku z Wyciągiem",
+  "instructions": [
+   "Ustaw modlitewnik około 60 cm przed wyciągiem.",
+   "Podepnij prosty drążek do dolnego wyciągu.",
+   "Usiądź na modlitewniku z łokciami i ramionami pewnie opartymi na poduszce i poproś kogoś o podanie ci drążka z dolnego wyciągu.",
+   "Chwyć drążek i wyprostuj całkowicie ramiona na poduszce modlitewnika. To jest pozycja wyjściowa.",
+   "Zacznij przyciągać ciężar w kierunku barków i mocno spnij bicepsy w górnej pozycji. Wydychaj powietrze podczas tego ruchu i zatrzymaj na sekundę u góry.",
+   "Następnie powoli opuść ciężar do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Cable_Reverse_Crunch": {
+  "name": "Odwrotne Spięcia Brzucha na Wyciągu",
+  "instructions": [
+   "Podepnij opaski na kostki do dolnego wyciągu i połóż przed nim matę.",
+   "Usiądź stopami w stronę wyciągu i zapnij linkę na kostkach.",
+   "Połóż się, unieś nogi i ugnij kolana pod kątem 90 stopni. Nogi i linka powinny być w jednej linii; jeśli nie są, przesuń wyciąg w górę lub w dół.",
+   "Z dłońmi za głową przyciągnij kolana do tułowia i unieś biodra nad podłogę.",
+   "Zatrzymaj się na moment, po czym powoli i w kontrolowany sposób opuść biodra i wróć nogami do wyjściowego kąta 90 stopni. W pozycji spoczynkowej mięśnie brzucha powinny wciąż pozostawać napięte.",
+   "Powtarzaj ten sam ruch aż do odmowy."
+  ]
+ },
+ "Cable_Russian_Twists": {
+  "name": "Rosyjskie Skręty na Wyciągu",
+  "instructions": [
+   "Podepnij standardowy uchwyt i ustaw linkę na wysokości środkowego wyciągu.",
+   "Połóż się na piłce gimnastycznej prostopadle do linki i chwyć uchwyt jedną ręką. Powinieneś znajdować się mniej więcej na odległość ramienia od wyciągu, z napiętą linką.",
+   "Chwyć uchwyt obiema rękami i wyprostuj całkowicie ramiona nad klatką piersiową. Dłonie powinny być dokładnie w linii z wyciągiem; jeśli nie są, przesuń wyciąg w górę lub w dół.",
+   "Trzymaj biodra uniesione i brzuch napięty. Obróć tułów w kierunku przeciwnym do wyciągu o pełne ćwierć obrotu. Ciało powinno być płaskie od głowy do kolan.",
+   "Zatrzymaj się na moment, po czym powoli i w kontrolowany sposób wróć do pozycji wyjściowej. W pozycji spoczynkowej linka powinna wciąż ciągnąć w bok.",
+   "Powtarzaj ten sam ruch aż do odmowy.",
+   "Następnie zmień ustawienie i powtórz tę samą serię ruchów na drugą stronę."
+  ]
+ },
+ "Cable_Wrist_Curl": {
+  "name": "Uginanie Nadgarstków na Wyciągu",
+  "instructions": [
+   "Zacznij od ustawienia ławki płaskiej przed dolnym wyciągiem z podpiętym prostym drążkiem.",
+   "Chwyć drążek chwytem podchwytem (dłonie do góry) o szerokości od wąskiej do barkowej i unieś go tak, aby przedramiona spoczęły na udach. Nadgarstki powinny wystawać tuż za kolana.",
+   "Zacznij od uginania nadgarstków w górę, wydychając powietrze. Zatrzymaj skurcz na sekundę.",
+   "Opuść powoli nadgarstki do pozycji wyjściowej, wdychając powietrze.",
+   "Przedramiona powinny pozostać nieruchome — w tym ćwiczeniu porusza się wyłącznie nadgarstek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Calf_Press": {
+  "name": "Wyciskanie Łydkami",
+  "instructions": [
+   "Ustaw siedzisko tak, aby w pozycji wyjściowej nogi były tylko lekko ugięte. Śródstopie powinno pewnie opierać się o platformę.",
+   "Dobierz odpowiedni ciężar i chwyć uchwyty. To jest pozycja wyjściowa.",
+   "Wyprostuj nogi w kolanach, ledwie unosząc ciężar ze stosu. Staw skokowy powinien być w pełnym zgięciu, z palcami skierowanymi w górę. Wykonaj ruch, napierając śródstopiem tak daleko, jak potrafisz.",
+   "Po krótkiej przerwie odwróć ruch i powtórz."
+  ]
+ },
+ "Calf_Press_On_The_Leg_Press_Machine": {
+  "name": "Wyciskanie Łydkami na Suwnicy",
+  "instructions": [
+   "Usiądź na suwnicy i oprzyj nogi o platformę na wprost siebie, w średnim rozstawie (na szerokość barków).",
+   "Zwolnij zabezpieczenia trzymające obciążoną platformę i wypchnij ją do końca, aż nogi będą całkowicie wyprostowane, bez blokowania kolan. (Uwaga: w niektórych suwnicach można pozostawić zabezpieczenia dla większego bezpieczeństwa. Jeśli twoja to umożliwia, jest to zalecany sposób wykonania ćwiczenia). Tułów i nogi powinny tworzyć kąt prosty. Teraz ostrożnie oprzyj palce i śródstopie o dolną część platformy, tak aby pięty wystawały poza nią. Palce skieruj do przodu, na zewnątrz lub do wewnątrz, jak opisano na początku rozdziału. To jest pozycja wyjściowa.",
+   "Napieraj na platformę, unosząc pięty i wydychając powietrze, prostując stawy skokowe najwyżej jak potrafisz i napinając łydki. Kolano musi pozostać nieruchome przez cały czas — nie może się uginać w żadnym momencie. Zatrzymaj skurcz na sekundę, zanim zaczniesz opuszczać.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze i opuszczając pięty aż do pełnego rozciągnięcia łydek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Calf_Raises_-_With_Bands": {
+  "name": "Wspięcia na Palce - z Gumami",
+  "instructions": [
+   "Weź gumę oporową i stań na niej palcami stóp, upewniając się, że odcinek gumy między stopą a rękami jest po obu stronach tej samej długości.",
+   "Trzymając uchwyty gumy, unieś ramiona po bokach głowy, jakbyś szykował się do wyciskania nad głowę. Dłonie powinny być zwrócone do przodu, a łokcie ugięte i rozłożone na boki. Ten ruch wytworzy napięcie w gumie. To jest pozycja wyjściowa.",
+   "Trzymając dłonie przy barkach, wznieś się na palce, wydychając powietrze i mocno spinając łydki w górnej pozycji.",
+   "Po sekundowym skurczu wróć powoli do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Carioca_Quick_Step": {
+  "name": "Szybki Krok Carioca",
+  "instructions": [
+   "Zacznij ze stopami rozstawionymi na kilka centymetrów i lewym ramieniem uniesionym w rozluźnionej, sportowej pozycji.",
+   "Prawą stopą wykonaj szybki krok za siebie i podciągnij kolano w górę.",
+   "Wyrzuć ramiona w górę w momencie podciągania prawego kolana, pilnując, aby kolano szło pionowo w górę i w dół. Unikaj obracania stóp podczas ruchu i patrz przed siebie, przemieszczając się w bok."
+  ]
+ },
+ "Chair_Squat": {
+  "name": "Przysiad Krzesełkowy",
+  "instructions": [
+   "Na początek ustaw gryf na wysokości najlepiej dopasowanej do twojego wzrostu. Po załadowaniu sztangi wejdź pod nią i oprzyj gryf na barkach.",
+   "Chwyć gryf dłońmi skierowanymi do przodu, odblokuj go i zdejmij ze stojaka, prostując nogi.",
+   "Przesuń stopy około 45 cm do przodu względem gryfu. Ustaw nogi na szerokość barków, z palcami skierowanymi lekko na zewnątrz. Patrz cały czas przed siebie i utrzymuj neutralny lub lekko wygięty kręgosłup. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli sztangę, uginając kolana i zachowując prostą sylwetkę z uniesioną głową. Schodź, aż kąt między udem a podudziem przekroczy 90 stopni.",
+   "Zacznij unosić sztangę, wydychając powietrze i napierając piętami na podłogę, prostując kolana i wracając do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Chin-Up": {
+  "name": "Podciąganie Podchwytem",
+  "instructions": [
+   "Chwyć drążek dłońmi zwróconymi do tułowia, chwytem węższym niż szerokość barków.",
+   "Wisząc na wyprostowanych ramionach z wybraną szerokością chwytu, trzymaj tułów możliwie prosto, wyginając lekko odcinek lędźwiowy i wypychając klatkę piersiową. To jest pozycja wyjściowa. Wskazówka: utrzymanie prostego tułowia maksymalizuje pracę bicepsa i ogranicza udział pleców.",
+   "Wydychając powietrze, podciągnij tułów, aż głowa znajdzie się mniej więcej na wysokości drążka. Skup się na pracy bicepsów. Trzymaj łokcie blisko ciała. Wskazówka: górna część tułowia powinna pozostać nieruchoma, poruszać się mają wyłącznie ramiona. Przedramiona mają jedynie trzymać drążek.",
+   "Po sekundzie spinania bicepsów w górnej pozycji opuść powoli tułów do pozycji wyjściowej, aż ramiona będą całkowicie wyprostowane. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz ten ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Close-Grip_Barbell_Bench_Press": {
+  "name": "Wyciskanie Sztangi Wąskim Chwytem",
+  "instructions": [
+   "Połóż się na ławce płaskiej. Chwytem wąskim (mniej więcej na szerokość barków) zdejmij sztangę ze stojaka i trzymaj ją prosto nad sobą na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli sztangę, aż poczujesz ją na środku klatki piersiowej. Wskazówka: w odróżnieniu od zwykłego wyciskania trzymaj łokcie stale blisko tułowia, aby zmaksymalizować pracę tricepsów.",
+   "Po sekundowej przerwie wypchnij sztangę z powrotem do pozycji wyjściowej, wydychając powietrze i napierając tricepsami. Wyprostuj ramiona w górnej pozycji, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak."
+  ]
+ },
+ "Close-Grip_Push-Up_off_of_a_Dumbbell": {
+  "name": "Pompka Wąsko na Hantlu",
+  "instructions": [
+   "Połóż się na podłodze i oprzyj dłonie o postawiony pionowo hantel. Podpierając ciężar ciała na palcach stóp i dłoniach, trzymaj tułów sztywno, łokcie przy ciele, a ramiona wyprostowane. To jest pozycja wyjściowa.",
+   "Opuść ciało, pozwalając łokciom się ugiąć, wdychając powietrze. Trzymaj ciało prosto, nie pozwalając biodrom unosić się ani opadać.",
+   "Wypchnij się z powrotem do pozycji wyjściowej, prostując łokcie. Wydychaj powietrze podczas tej fazy.",
+   "Po przerwie w górnej pozycji powtórz ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Cross-Body_Crunch": {
+  "name": "Spięcia Skośne Brzucha",
+  "instructions": [
+   "Połóż się płasko na plecach i ugnij kolana pod kątem około 60 stopni.",
+   "Trzymaj stopy płasko na podłodze i ułóż dłonie luźno za głową. To jest pozycja wyjściowa.",
+   "Unieś się, prowadząc prawy łokieć i bark w poprzek ciała, jednocześnie przyciągając lewe kolano w kierunku lewego barku. Sięgaj łokciem i spróbuj dotknąć kolana. Wydychaj powietrze podczas ruchu. Wskazówka: staraj się prowadzić do kolana bark, a nie sam łokieć, i pamiętaj, że kluczem jest napięcie mięśni brzucha, a nie samo poruszenie łokciem.",
+   "Wróć do pozycji wyjściowej, wdychając powietrze, i powtórz z lewym łokciem i prawym kolanem.",
+   "Kontynuuj naprzemiennie, aż wykonasz wszystkie zalecone powtórzenia."
+  ]
+ },
+ "Deadlift_with_Bands": {
+  "name": "Martwy Ciąg z Gumami",
+  "instructions": [
+   "Przy krótkich gumach po prostu zaczep je na gryfie przed rozpoczęciem i stań na nich, ustawiając się do ćwiczenia. Długie gumy trzeba zakotwiczyć do stabilnej podstawy, na przykład ciężkich hantli lub klatki.",
+   "Mając ustawione stopy i chwyt, weź głęboki oddech, obniż biodra i ugnij kolana, aż golenie dotkną gryfu. Patrz przed siebie, trzymaj klatkę wysoko i plecy w łuku, po czym zacznij napierać piętami, unosząc ciężar. Gdy gryf minie kolana, zdecydowanie pociągnij go do tyłu, ściągając łopatki i wypychając biodra w kierunku gryfu.",
+   "Opuść gryf, zginając biodra i prowadząc go do podłogi."
+  ]
+ },
+ "Decline_Barbell_Bench_Press": {
+  "name": "Wyciskanie Sztangi na Ławce Ujemnej",
+  "instructions": [
+   "Zablokuj nogi na końcu ławki ujemnej i połóż się na niej powoli.",
+   "Chwytem średnim (takim, który w połowie ruchu daje kąt 90 stopni między przedramieniem a ramieniem) zdejmij sztangę ze stojaka i trzymaj ją prosto nad sobą na wyprostowanych ramionach. Ramiona powinny być prostopadłe do podłogi. To jest pozycja wyjściowa. Wskazówka: aby chronić stożek rotatorów, najlepiej poprosić asekurującego o pomoc przy zdejmowaniu sztangi ze stojaka.",
+   "Wdychając powietrze, opuszczaj powoli sztangę, aż poczujesz ją na dolnej części klatki piersiowej.",
+   "Po sekundowej przerwie wypchnij sztangę z powrotem do pozycji wyjściowej, wydychając powietrze i napierając mięśniami klatki piersiowej. Wyprostuj ramiona i spnij klatkę w górnej pozycji, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak."
+  ]
+ },
+ "Decline_Dumbbell_Bench_Press": {
+  "name": "Wyciskanie Hantli na Ławce Ujemnej",
+  "instructions": [
+   "Zablokuj nogi na końcu ławki ujemnej i połóż się z hantlami w obu dłoniach opartymi na udach. Dłonie powinny być zwrócone wnętrzem do siebie.",
+   "Gdy już leżysz, przenieś hantle przed siebie na szerokość barków.",
+   "Na szerokości barków obróć nadgarstki do przodu, tak aby dłonie były zwrócone wnętrzem od ciebie. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli ciężary do boków, wydychając powietrze. Przez cały czas zachowuj pełną kontrolę nad hantlami. Wskazówka: przez cały ruch przedramiona powinny pozostawać prostopadłe do podłogi.",
+   "Wydychając powietrze, wypchnij hantle w górę mięśniami piersiowymi. Wyprostuj ramiona w górnej pozycji, spnij klatkę, zatrzymaj na sekundę, po czym zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch liczbę powtórzeń przewidzianą w twoim planie treningowym."
+  ]
+ },
+ "Decline_Dumbbell_Triceps_Extension": {
+  "name": "Wyprost Tricepsów z Hantlami na Ławce Ujemnej",
+  "instructions": [
+   "Zablokuj nogi na końcu ławki ujemnej i połóż się z hantlami w obu dłoniach opartymi na udach. Dłonie powinny być zwrócone wnętrzem do siebie.",
+   "Gdy już leżysz, przenieś hantle przed siebie na szerokość barków. Dłonie powinny być zwrócone wnętrzem do siebie, a ramiona prostopadłe do podłogi i całkowicie wyprostowane. To jest pozycja wyjściowa.",
+   "Wdychając powietrze i trzymając ramiona nieruchomo (z łokciami przy ciele), opuszczaj powoli hantle, prowadząc przedramiona półkolistym ruchem do siebie, aż kciuki znajdą się przy uszach. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Unieś hantle z powrotem do pozycji wyjściowej, napinając tricepsy i wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Decline_Oblique_Crunch": {
+  "name": "Skośne Spięcia Brzucha na Ławce Ujemnej",
+  "instructions": [
+   "Zablokuj nogi na końcu ławki ujemnej i połóż się na niej powoli.",
+   "Unieś górną część ciała nad ławkę, aż tułów znajdzie się pod kątem około 35-45 stopni względem podłogi.",
+   "Ułóż jedną dłoń przy głowie, a drugą na udzie. To jest pozycja wyjściowa.",
+   "Unieś powoli górną część ciała z pozycji wyjściowej, jednocześnie skręcając tułów w lewo. Kontynuuj spięcie, wydychając powietrze, aż prawy łokieć dotknie lewego kolana. Zatrzymaj tę pozycję na sekundę. Wskazówka: skup się na utrzymaniu napiętego brzucha oraz wolnym i kontrolowanym ruchu.",
+   "Opuść powoli ciało do pozycji wyjściowej, wdychając powietrze.",
+   "Po wykonaniu serii na prawą stronę z zalecaną liczbą powtórzeń zmień na lewą. Wskazówka: skup się na wyraźnym skręcie tułowia i odczuciu skurczu w górnej pozycji."
+  ]
+ },
+ "Decline_Reverse_Crunch": {
+  "name": "Odwrotne Spięcia Brzucha na Ławce Ujemnej",
+  "instructions": [
+   "Połóż się na plecach na ławce ujemnej i chwyć obiema rękami jej górną krawędź. Nie pozwól, aby ciało zsuwało się z tej pozycji.",
+   "Utrzymuj nogi równolegle do podłogi, trzymając je tam mięśniami brzucha, ze złączonymi kolanami i stopami. Wskazówka: nogi powinny być całkowicie wyprostowane z lekkim ugięciem w kolanie. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, przyciągnij nogi w kierunku tułowia, podwijając miednicę do tyłu i unosząc biodra nad ławkę. Na końcu ruchu kolana dotkną klatki piersiowej.",
+   "Zatrzymaj skurcz na sekundę i wróć nogami do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Deficit_Deadlift": {
+  "name": "Martwy Ciąg z Deficytu",
+  "instructions": [
+   "Zacznij od przygotowania podestu lub talerzy, na których możesz stanąć, zwykle o wysokości 3-8 cm. Podejdź do sztangi tak, aby znalazła się nad środkiem stóp. Stopy ustaw na szerokość bioder. Zegnij biodra i chwyć gryf na szerokość barków, pozwalając łopatkom się rozsunąć. Zwykle stosuje się chwyt nachwytem, a przy cięższych seriach chwyt mieszany.",
+   "Mając ustawione stopy i chwyt, weź głęboki oddech, obniż biodra i ugnij kolana, aż golenie dotkną gryfu. Patrz przed siebie, trzymaj klatkę wysoko i plecy w łuku, po czym zacznij napierać piętami, unosząc ciężar. Gdy gryf minie kolana, zdecydowanie pociągnij go do tyłu, ściągając łopatki i wypychając biodra w kierunku gryfu.",
+   "Opuść gryf, zginając biodra i prowadząc go do podłogi."
+  ]
+ },
+ "Dip_Machine": {
+  "name": "Maszyna do Dipów",
+  "instructions": [
+   "Usiądź pewnie w maszynie do dipów, dobierz ciężar i mocno chwyć uchwyty.",
+   "Trzymaj łokcie przy bokach, aby położyć nacisk na tricepsy. Łokcie powinny być ugięte pod kątem 90 stopni.",
+   "Napinając tricepsy, wyprostuj ramiona w dół, wydychając powietrze. Wskazówka: w dolnej pozycji zostaw lekkie ugięcie w ramionach, aby utrzymać napięcie tricepsa.",
+   "Pozwól ramionom wrócić powoli do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Donkey_Calf_Raises": {
+  "name": "Wspięcia na Palce \"Osiołek\"",
+  "instructions": [
+   "Do tego ćwiczenia potrzebna jest maszyna do wspięć typu donkey. Zacznij od ustawienia dolnego odcinka pleców i bioder pod wyściełaną dźwignią. To okolica kości ogonowej powinna stykać się z poduszką.",
+   "Oprzyj obie ręce na bocznych uchwytach i ustaw śródstopie na podeście, tak aby pięty wystawały poza niego. Ustaw palce do przodu, do wewnątrz lub na zewnątrz, zależnie od tego, który obszar chcesz zaangażować, i wyprostuj kolana, nie blokując ich. To jest pozycja wyjściowa.",
+   "Unieś pięty, wydychając powietrze, prostując stawy skokowe najwyżej jak potrafisz i napinając łydki. Kolano musi pozostać nieruchome przez cały czas — nie może się uginać w żadnym momencie. Zatrzymaj skurcz na sekundę, zanim zaczniesz opuszczać.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze i opuszczając pięty aż do pełnego rozciągnięcia łydek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Drag_Curl": {
+  "name": "Drag Curl",
+  "instructions": [
+   "Chwyć sztangę podchwytem (dłonie zwrócone do przodu) i ustaw łokcie blisko tułowia oraz cofnięte. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, unieś sztangę, trzymając łokcie cofnięte i \"przeciągając\" gryf w górę wzdłuż tułowia, utrzymując z nim kontakt. Wskazówka: jak widzisz, łokcie nie pozostają przyklejone do boków, lecz cofają się. Nie unoś też barków.",
+   "Wróć powoli do pozycji wyjściowej, przez cały czas utrzymując kontakt gryfu z tułowiem.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Dumbbell_Bench_Press": {
+  "name": "Wyciskanie Hantli na Ławce Płaskiej",
+  "instructions": [
+   "Połóż się na ławce płaskiej z hantlami w obu dłoniach opartymi na udach. Dłonie powinny być zwrócone wnętrzem do siebie.",
+   "Następnie, pomagając sobie udami, unieś hantle pojedynczo, tak abyś mógł trzymać je przed sobą na szerokość barków.",
+   "Na szerokości barków obróć nadgarstki do przodu, tak aby dłonie były zwrócone wnętrzem od ciebie. Hantle powinny znaleźć się tuż przy bokach klatki piersiowej, a ramię i przedramię tworzyć kąt 90 stopni. Przez cały czas zachowuj pełną kontrolę nad hantlami. To jest pozycja wyjściowa.",
+   "Następnie, wydychając powietrze, wypchnij hantle w górę mięśniami klatki piersiowej. Wyprostuj ramiona u góry i spnij klatkę, zatrzymaj na sekundę, po czym zacznij powoli opuszczać. Wskazówka: opuszczanie ciężaru powinno trwać około dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch liczbę powtórzeń przewidzianą w twoim planie treningowym."
+  ]
+ },
+ "Dumbbell_Bench_Press_with_Neutral_Grip": {
+  "name": "Wyciskanie Hantli Chwytem Neutralnym",
+  "instructions": [
+   "Weź po hantlu w każdą dłoń i połóż się na ławce płaskiej. Stopy powinny stać płasko na podłodze, a łopatki być ściągnięte.",
+   "Utrzymując chwyt neutralny, z dłońmi zwróconymi wnętrzem do siebie, zacznij z ramionami wyprostowanymi bezpośrednio nad sobą, prostopadle do podłogi. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając łokcie i opuszczając ramiona na boki. Schodź, aż hantle znajdą się na wysokości tułowia.",
+   "Zatrzymaj się, po czym wyprostuj łokcie i wróć do pozycji wyjściowej."
+  ]
+ },
+ "Dumbbell_Bicep_Curl": {
+  "name": "Uginanie Ramion z Hantlami",
+  "instructions": [
+   "Stań prosto z hantlami w obu dłoniach na wyprostowanych ramionach. Trzymaj łokcie blisko tułowia i obróć dłonie tak, aby były zwrócone wnętrzem do przodu. To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, wydychaj powietrze i ugnij ręce, napinając bicepsy. Unoś ciężary, aż bicepsy będą w pełni napięte, a hantle znajdą się na wysokości barków. Zatrzymaj skurcz na krótką chwilę, spinając bicepsy.",
+   "Następnie wdychaj powietrze i zacznij powoli opuszczać hantle do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Dumbbell_Incline_Row": {
+  "name": "Wiosłowanie Hantlami na Ławce Skośnej",
+  "instructions": [
+   "Chwytem neutralnym oprzyj się o ławkę skośną.",
+   "Weź po hantlu w każdą dłoń chwytem neutralnym, zaczynając z wyprostowanymi ramionami. To jest pozycja wyjściowa.",
+   "Ściągnij łopatki i ugnij łokcie, przyciągając hantle do boków.",
+   "Zatrzymaj się w górnej pozycji, po czym wróć do pozycji wyjściowej."
+  ]
+ },
+ "Dumbbell_One-Arm_Upright_Row": {
+  "name": "Wiosłowanie Hantlem do Brody Jednorącz",
+  "instructions": [
+   "Weź hantel i stań prosto z ramieniem wyprostowanym przed sobą, z lekkim ugięciem w łokciu i prostymi plecami. To jest pozycja wyjściowa. Wskazówka: hantel powinien spoczywać na udzie, z dłonią zwróconą wnętrzem do uda.",
+   "Drugą rękę możesz trzymać wyprostowaną wzdłuż ciała, opartą na biodrze lub trzymającą się stabilnej powierzchni. To jest pozycja wyjściowa.",
+   "Unieś hantel bocznymi aktonami barków, wydychając powietrze. Podczas unoszenia hantel powinien iść blisko ciała. Kontynuuj, aż znajdzie się niemal na wysokości brody. Wskazówka: ruch prowadzi łokieć. Przy unoszeniu hantla łokieć powinien być zawsze wyżej niż przedramię. Trzymaj też tułów nieruchomo i zatrzymaj się na sekundę w górnej pozycji.",
+   "Opuść hantel powoli do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń i zmień rękę."
+  ]
+ },
+ "Dumbbell_Seated_One-Leg_Calf_Raise": {
+  "name": "Wspięcia na Palce Siedząc Jednonóż z Hantlem",
+  "instructions": [
+   "Ustaw podest na podłodze około 30 cm od ławki płaskiej.",
+   "Usiądź na ławce płaskiej i oprzyj hantel na lewym udzie, około 8 cm powyżej kolana.",
+   "Ustaw teraz śródstopie lewej nogi na podeście. To jest pozycja wyjściowa.",
+   "Unieś palce jak najwyżej, wydychając powietrze i napinając mięsień łydki. Zatrzymaj skurcz na sekundę.",
+   "Wróć powoli do pozycji wyjściowej, rozciągając łydkę najgłębiej jak potrafisz.",
+   "Powtórz zaleconą liczbę powtórzeń, a następnie powtórz na prawą nogę."
+  ]
+ },
+ "Dumbbell_Side_Bend": {
+  "name": "Skłony Boczne z Hantlem",
+  "instructions": [
+   "Stań prosto, trzymając hantel w lewej dłoni (wnętrzem do tułowia), a prawą rękę opierając na biodrze. Stopy powinny być rozstawione na szerokość barków. To jest pozycja wyjściowa.",
+   "Trzymając plecy prosto i głowę uniesioną, wykonaj skłon wyłącznie w talii, w prawo, tak głęboko, jak potrafisz. Wdychaj powietrze podczas skłonu. Zatrzymaj na sekundę i wróć do pozycji wyjściowej, wydychając powietrze. Wskazówka: reszta ciała pozostaje nieruchoma.",
+   "Powtórz teraz ruch, wykonując skłon w lewo. Zatrzymaj na sekundę i wróć do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń, a następnie zmień rękę."
+  ]
+ },
+ "Dumbbell_Squat": {
+  "name": "Przysiad z Hantlami",
+  "instructions": [
+   "Stań prosto z hantlami w obu dłoniach (wnętrzem dłoni do boków nóg).",
+   "Ustaw nogi w średnim rozstawie na szerokość barków, z palcami stóp skierowanymi lekko na zewnątrz. Przez cały czas trzymaj głowę uniesioną, ponieważ patrzenie w dół zaburza równowagę, i utrzymuj proste plecy. To jest pozycja wyjściowa. Uwaga: przyjmujemy tu opisany średni rozstaw, który rozwija mięśnie całościowo; możesz wybrać dowolny z trzech rozstawów opisanych w części o ustawieniu stóp.",
+   "Zacznij powoli opuszczać tułów, uginając kolana i zachowując prostą sylwetkę z uniesioną głową. Schodź, aż uda będą równoległe do podłogi. Wskazówka: przy poprawnym wykonaniu przód kolan powinien tworzyć z palcami stóp wyimaginowaną prostą linię, prostopadłą do kierunku patrzenia. Jeśli kolana wychodzą poza tę linię (poza palce stóp), obciążasz kolano nadmiernie i ćwiczenie jest wykonane błędnie.",
+   "Zacznij unosić tułów, wydychając powietrze i napierając głównie piętami na podłogę, prostując nogi i wracając do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Exercise_Ball_Crunch": {
+  "name": "Spięcia Brzucha na Piłce",
+  "instructions": [
+   "Połóż się na piłce gimnastycznej, opierając krzywiznę odcinka lędźwiowego o jej kulistą powierzchnię. Nogi powinny być ugięte w kolanach, a stopy pewnie oparte o podłogę. Górna część tułowia powinna wystawać poza piłkę. Ramiona trzymaj wzdłuż ciała albo skrzyżowane na klatce piersiowej — te pozycje chronią kark przed przeciążeniem (w odróżnieniu od układania dłoni za głową).",
+   "Opuść tułów do pozycji rozciągniętej, trzymając kark cały czas nieruchomo. To jest pozycja wyjściowa.",
+   "Trzymając biodra nieruchomo, zegnij tułów w talii, napinając mięśnie brzucha i zwijając barki oraz tułów w górę, aż poczujesz wyraźny skurcz brzucha. Ramiona po prostu przesuwają się wzdłuż boków nóg, jeśli trzymasz je przy ciele, albo pozostają na klatce, jeśli są skrzyżowane. Odcinek lędźwiowy powinien przez cały czas pozostawać w kontakcie z piłką. Wydychaj powietrze podczas ruchu i zatrzymaj skurcz na sekundę.",
+   "Wdychając powietrze, wróć do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Face_Pull": {
+  "name": "Face Pull",
+  "instructions": [
+   "Stojąc przodem do górnego wyciągu z podpiętą liną lub dwoma uchwytami, pociągnij ciężar prosto w kierunku twarzy, rozsuwając przy tym dłonie. Trzymaj ramiona równolegle do podłogi."
+  ]
+ },
+ "Farmers_Walk": {
+  "name": "Marsz Farmera",
+  "instructions": [
+   "Do marszu farmera można użyć różnych przyrządów. Ćwiczenie można też wykonać z ciężkimi hantlami lub krótkimi gryfami, jeśli nie ma się specjalistycznego sprzętu. Zacznij od stanięcia pomiędzy przyrządami.",
+   "Po chwyceniu uchwytów unieś je, napierając piętami, trzymając plecy prosto i głowę uniesioną.",
+   "Idź krótkimi, szybkimi krokami i nie zapominaj oddychać. Pokonaj wyznaczony dystans, zwykle 15-30 metrów, tak szybko, jak potrafisz."
+  ]
+ },
+ "Flutter_Kicks": {
+  "name": "Nożyce Pionowe",
+  "instructions": [
+   "Połóż się twarzą w dół na ławce płaskiej, z biodrami na jej krawędzi, nogami wyprostowanymi i stopami wysoko nad podłogą, opierając ramiona na ławce i trzymając jej przednią krawędź.",
+   "Spnij pośladki i mięśnie dwugłowe uda i wyprostuj nogi, aż znajdą się na wysokości bioder. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, unosząc lewą nogę wyżej niż prawą.",
+   "Następnie opuść lewą nogę, jednocześnie unosząc prawą.",
+   "Kontynuuj naprzemiennie (jakbyś wykonywał nożyce w wodzie), aż wykonasz zalecaną liczbę powtórzeń na każdą nogę. Przez cały czas utrzymuj kontrolowany ruch. Wskazówka: podczas tego ćwiczenia oddychaj normalnie."
+  ]
+ },
+ "Front_Raise_And_Pullover": {
+  "name": "Wznos Przodem i Pullover",
+  "instructions": [
+   "Połóż się na ławce płaskiej, trzymając sztangę nachwytem z dłońmi rozstawionymi na około 38 cm.",
+   "Oprzyj gryf na górnej części ud, wyprostuj ramiona i zablokuj je, zachowując lekkie ugięcie w łokciach. To jest pozycja wyjściowa.",
+   "Unieś ciężar półkolistym ruchem, trzymając ramiona wyprostowane i wdychając powietrze. Kontynuuj ten sam ruch, aż gryf znajdzie się po drugiej stronie, nad głową. (Wskazówka: gryf pokona około 180 stopni). W tym momencie ramiona powinny być równoległe do podłogi, a dłonie zwrócone wnętrzem do sufitu.",
+   "Sprowadź sztangę do pozycji wyjściowej, odwracając ruch i wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Glute_Kickback": {
+  "name": "Wykop Pośladkowy",
+  "instructions": [
+   "Uklęknij na podłodze lub macie i pochyl się w talii, wyprostowując ramiona przed sobą (prostopadle do tułowia), tak aby przyjąć pozycję pompki z kolan, ale z ramionami na szerokość barków. Głowa powinna być skierowana przed siebie, a ugięcie kolan tworzyć kąt 90 stopni między udem a łydką. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, unieś prawą nogę, aż udo znajdzie się w linii pleców, zachowując ugięcie 90 stopni. Napinaj pośladek przez cały ruch i zatrzymaj skurcz na sekundę w górnej pozycji. Wskazówka: na końcu ruchu udo powinno być równoległe do podłogi, a łydka prostopadła do niej.",
+   "Wróć do pozycji wyjściowej, wdychając powietrze, i powtórz teraz lewą nogą.",
+   "Kontynuuj naprzemiennie, aż wykonasz wszystkie zalecone powtórzenia."
+  ]
+ },
+ "Goblet_Squat": {
+  "name": "Przysiad Goblet",
+  "instructions": [
+   "Stań, trzymając lekki kettlebell za rogi blisko klatki piersiowej. To jest pozycja wyjściowa.",
+   "Zejdź w przysiad pomiędzy nogami, aż tylna część ud oprze się o łydki. Trzymaj klatkę i głowę wysoko, a plecy prosto.",
+   "W dolnej pozycji zatrzymaj się i łokciami wypchnij kolana na zewnątrz. Wróć do pozycji wyjściowej i powtórz 10-20 razy."
+  ]
+ },
+ "Good_Morning": {
+  "name": "Dzień Dobry ze Sztangą",
+  "instructions": [
+   "Zacznij ze sztangą na stojaku na wysokości barków. Oprzyj gryf z tyłu barków, tak jak przy przysiadzie w stylu power, a nie na samych barkach. Trzymaj plecy napięte, łopatki ściągnięte, a kolana lekko ugięte. Odejdź od stojaka.",
+   "Zacznij od zgięcia bioder, wypychając je do tyłu i pochylając się niemal do poziomu. Trzymaj plecy w łuku, a odcinek szyjny w prawidłowym ustawieniu.",
+   "Odwróć ruch, prostując biodra pośladkami i mięśniami dwugłowymi uda. Kontynuuj, aż wrócisz do pozycji wyjściowej."
+  ]
+ },
+ "Good_Morning_off_Pins": {
+  "name": "Dzień Dobry z Zaczepów",
+  "instructions": [
+   "Zacznij ze sztangą na stojaku mniej więcej na wysokości brzucha. Wejdź pod gryf i oprzyj go z tyłu barków, tak jak przy przysiadzie w stylu power, a nie na samych barkach. Przy właściwej wysokości powinieneś być niemal równolegle do podłogi w pozycji pochylonej. Trzymaj plecy napięte, łopatki ściągnięte, a kolana lekko ugięte. Trzymaj plecy w łuku, a odcinek szyjny w prawidłowym ustawieniu.",
+   "Rozpocznij ruch, prostując biodra pośladkami i mięśniami dwugłowymi uda, aż wyprostujesz się z ciężarem. Opuść powoli ciężar z powrotem na zaczepy, wracając do pozycji wyjściowej."
+  ]
+ },
+ "Hack_Squat": {
+  "name": "Przysiad Hack",
+  "instructions": [
+   "Oprzyj plecy o oparcie maszyny i wsuń barki pod poduszki naramienne.",
+   "Ustaw nogi na platformie w średnim rozstawie na szerokość barków, z palcami skierowanymi lekko na zewnątrz. Wskazówka: przez cały czas trzymaj głowę uniesioną, a plecy przylegające do oparcia.",
+   "Chwyć boczne uchwyty maszyny i zwolnij zabezpieczenia (w większości konstrukcji robi się to, przekręcając boczne uchwyty z pozycji przedniej do ukośnej).",
+   "Wyprostuj teraz nogi, nie blokując kolan. To jest pozycja wyjściowa. (Uwaga: przyjmujemy tu opisany średni rozstaw, który rozwija mięśnie całościowo; możesz wybrać dowolny z trzech rozstawów opisanych w części o ustawieniu stóp).",
+   "Zacznij powoli opuszczać wózek, uginając kolana i zachowując prostą sylwetkę z uniesioną głową (plecy stale przy oparciu). Schodź, aż kąt między udem a łydką będzie nieco mniejszy niż 90 stopni (to moment, w którym uda znajdują się poniżej równoległej do podłogi). Wdychaj powietrze podczas tej fazy ruchu. Wskazówka: przy poprawnym wykonaniu przód kolan powinien tworzyć z palcami stóp wyimaginowaną prostą linię, prostopadłą do kierunku patrzenia. Jeśli kolana wychodzą poza tę linię, obciążasz kolano nadmiernie i ćwiczenie jest wykonane błędnie.",
+   "Zacznij unosić wózek, wydychając powietrze i napierając głównie piętami na podłogę, prostując nogi i wracając do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Hammer_Grip_Incline_DB_Bench_Press": {
+  "name": "Wyciskanie Hantli na Skosie Chwytem Młotkowym",
+  "instructions": [
+   "Połóż się na ławce skośnej z hantlami w obu dłoniach opartymi na udach. Dłonie powinny być zwrócone wnętrzem do siebie.",
+   "Pomagając sobie udami, wyrzuć hantle pojedynczo w górę, tak abyś mógł trzymać je na szerokość barków.",
+   "Na szerokości barków zachowaj chwyt neutralny (dłonie zwrócone wnętrzem do siebie). Trzymaj łokcie rozłożone, z ramionami w linii barków (prostopadle do tułowia) i ugiętymi łokciami tworzącymi kąt 90 stopni między ramieniem a przedramieniem. To jest pozycja wyjściowa.",
+   "Opuszczaj teraz powoli ciężary do boków, wdychając powietrze. Przez cały czas zachowuj pełną kontrolę nad hantlami.",
+   "Wydychając powietrze, wypchnij hantle w górę mięśniami piersiowymi. Wyprostuj ramiona w górnej pozycji, zatrzymaj na sekundę, po czym zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż hantle na uda, a następnie na podłogę. To najbezpieczniejszy sposób ich odłożenia."
+  ]
+ },
+ "heel_walk": {
+  "name": "Marsz na Piętach",
+  "instructions": [
+   "Idź do przodu na piętach, trzymając palce stóp uniesione nad podłogą."
+  ]
+ },
+ "Hip_Lift_with_Band": {
+  "name": "Unoszenie Bioder z Gumą",
+  "instructions": [
+   "Po dobraniu odpowiedniej gumy połóż się na środku klatki, mocując gumę po obu stronach. Jeśli twoja klatka nie ma zaczepów, gumę można zamocować za pomocą ciężkich hantli lub podobnych przedmiotów — upewnij się tylko, że się nie przesuną.",
+   "Ustaw się tak, aby guma znalazła się dokładnie nad biodrami. Ugnij kolana i oprzyj stopy płasko na podłodze. Dłonie mogą leżeć na podłodze lub przytrzymywać gumę w miejscu.",
+   "Trzymając barki na podłodze, napieraj piętami i unieś biodra, wypychając gumę tak wysoko, jak potrafisz.",
+   "Zatrzymaj się w górnej pozycji i wróć do pozycji wyjściowej."
+  ]
+ },
+ "Hyperextensions_Back_Extensions": {
+  "name": "Hiperekstensje (Wyprosty Grzbietu)",
+  "instructions": [
+   "Połóż się twarzą w dół na ławce do hiperekstensji, pewnie blokując kostki pod wałkami.",
+   "Jeśli to możliwe, ustaw górną poduszkę tak, aby górna część ud spoczywała płasko na szerokim wałku, zostawiając dość miejsca na swobodny skłon w talii.",
+   "Z ciałem wyprostowanym skrzyżuj ramiona przed sobą (moja preferencja) lub za głową. To jest pozycja wyjściowa. Wskazówka: dla dodatkowego oporu możesz trzymać talerz przed sobą, pod skrzyżowanymi ramionami.",
+   "Zacznij powoli pochylać się w talii tak głęboko, jak potrafisz, utrzymując płaskie plecy. Wdychaj powietrze podczas tego ruchu. Schodź, aż poczujesz wyraźne rozciąganie mięśni dwugłowych uda i nie będziesz mógł kontynuować bez zaokrąglenia pleców. Wskazówka: nigdy nie zaokrąglaj pleców w tym ćwiczeniu. Poza tym jedni schodzą niżej niż inni — kluczowe jest, aby zejść tak głęboko, jak pozwala ciało, bez zaokrąglania pleców.",
+   "Unieś powoli tułów z powrotem do pozycji wyjściowej, wdychając powietrze. Wskazówka: unikaj pokusy wyginania pleców poza linię prostą. Nie bujaj też tułowiem w żadnym momencie, aby chronić plecy przed kontuzją.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Hyperextensions_With_No_Hyperextension_Bench": {
+  "name": "Hiperekstensje bez Ławki do Hiperekstensji",
+  "instructions": [
+   "Poproś kogoś o przytrzymanie nóg i zsuń się do krawędzi ławki płaskiej, aż biodra znajdą się poza jej końcem. Wskazówka: cała górna część ciała powinna zwisać w kierunku podłogi. Będziesz w tej samej pozycji co na ławce do hiperekstensji, ale zakres ruchu będzie krótszy ze względu na różnicę wysokości.",
+   "Z ciałem wyprostowanym skrzyżuj ramiona przed sobą (moja preferencja) lub za głową. To jest pozycja wyjściowa. Wskazówka: dla dodatkowego oporu możesz trzymać talerz przed sobą, pod skrzyżowanymi ramionami.",
+   "Zacznij powoli pochylać się w talii tak głęboko, jak potrafisz, utrzymując płaskie plecy. Wdychaj powietrze podczas tego ruchu. Schodź, aż niemal dotkniesz podłogi albo poczujesz wyraźne rozciąganie mięśni dwugłowych uda — w zależności od tego, co nastąpi wcześniej. Wskazówka: nigdy nie zaokrąglaj pleców w tym ćwiczeniu.",
+   "Unieś powoli tułów z powrotem do pozycji wyjściowej, wydychając powietrze. Wskazówka: unikaj pokusy wyginania pleców poza linię prostą. Nie bujaj też tułowiem w żadnym momencie, aby chronić plecy przed kontuzją.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Incline_Dumbbell_Curl": {
+  "name": "Uginanie Ramion z Hantlami na Skosie",
+  "instructions": [
+   "Usiądź na ławce skośnej z hantlami w obu dłoniach na wyprostowanych ramionach. Trzymaj łokcie blisko tułowia i obróć dłonie tak, aby były zwrócone wnętrzem do przodu. To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, ugnij ręce, napinając bicepsy i wydychając powietrze. Poruszać się powinny wyłącznie przedramiona. Kontynuuj, aż bicepsy będą w pełni napięte, a hantle znajdą się na wysokości barków. Zatrzymaj skurcz na sekundę.",
+   "Zacznij powoli opuszczać hantle do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Incline_Push-Up": {
+  "name": "Pompka w Podporze Wysokim",
+  "instructions": [
+   "Stań przodem do ławki lub stabilnego podwyższenia. Oprzyj dłonie o jego krawędź, nieco szerzej niż na szerokość barków.",
+   "Cofnij stopy od ławki lub podwyższenia, trzymając ramiona i ciało wyprostowane. Ramiona powinny być prostopadłe do ciała. Trzymając ciało prosto, opuść klatkę piersiową do krawędzi skrzyni lub podwyższenia, uginając ramiona.",
+   "Wypchnij ciało w górę, aż ramiona będą wyprostowane. Powtórz."
+  ]
+ },
+ "Incline_Push-Up_Close-Grip": {
+  "name": "Pompka w Podporze Wysokim Wąsko",
+  "instructions": [
+   "Stań przodem do gryfu maszyny Smitha lub stabilnego podwyższenia na odpowiedniej wysokości.",
+   "Ułóż dłonie obok siebie na gryfie.",
+   "Cofnij stopy od gryfu, trzymając ramiona i ciało wyprostowane. To jest pozycja wyjściowa.",
+   "Trzymając ciało prosto, opuść klatkę piersiową do gryfu, uginając ramiona.",
+   "Wróć do pozycji wyjściowej, prostując łokcie i wypychając się w górę."
+  ]
+ },
+ "Incline_Push-Up_Wide": {
+  "name": "Pompka w Podporze Wysokim Szeroko",
+  "instructions": [
+   "Stań przodem do gryfu maszyny Smitha lub stabilnego podwyższenia na odpowiedniej wysokości.",
+   "Ułóż dłonie na gryfie, szerzej niż na szerokość barków.",
+   "Cofnij stopy od gryfu, trzymając ramiona i ciało wyprostowane. Ramiona powinny być prostopadłe do ciała. To jest pozycja wyjściowa.",
+   "Trzymając ciało prosto, opuść klatkę piersiową do gryfu, uginając ramiona.",
+   "Wróć do pozycji wyjściowej, prostując łokcie i wypychając się w górę."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Front_And_Back": {
+  "name": "Izometryczne Ćwiczenie Szyi - Przód i Tył",
+  "instructions": [
+   "Z głową i szyją w pozycji neutralnej (normalna postawa, głowa wyprostowana, wzrok przed siebie) połóż obie dłonie na przedniej części głowy.",
+   "Napieraj delikatnie do przodu, napinając mięśnie szyi, ale nie pozwalając głowie się poruszyć. Zacznij od niewielkiego napięcia i zwiększaj je powoli. Podczas tego skurczu oddychaj normalnie.",
+   "Utrzymaj przez zalecaną liczbę sekund.",
+   "Następnie powoli rozluźnij napięcie.",
+   "Odpocznij przez zalecany czas i powtórz z dłońmi ułożonymi z tyłu głowy."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Sides": {
+  "name": "Izometryczne Ćwiczenie Szyi - Boki",
+  "instructions": [
+   "Z głową i szyją w pozycji neutralnej (normalna postawa, głowa wyprostowana, wzrok przed siebie) połóż lewą dłoń na lewej stronie głowy.",
+   "Napieraj delikatnie w lewo, napinając lewe mięśnie szyi, ale nie pozwalając głowie się poruszyć. Zacznij od niewielkiego napięcia i zwiększaj je powoli. Podczas tego skurczu oddychaj normalnie.",
+   "Utrzymaj przez zalecaną liczbę sekund.",
+   "Następnie powoli rozluźnij napięcie.",
+   "Odpocznij przez zalecany czas i powtórz z prawą dłonią ułożoną na prawej stronie głowy."
+  ]
+ },
+ "Jackknife_Sit-Up": {
+  "name": "Scyzoryk",
+  "instructions": [
+   "Połóż się płasko na plecach na podłodze (lub macie) z ramionami wyprostowanymi za głową i wyprostowanymi nogami. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, zegnij tułów w talii, jednocześnie unosząc nogi i ramiona tak, aby spotkały się w pozycji scyzoryka. Wskazówka: nogi powinny być wyprostowane i uniesione pod kątem około 35-45 stopni względem podłogi, a ramiona wyprostowane i równoległe do nóg. Górna część tułowia powinna być oderwana od podłogi.",
+   "Wdychając powietrze, opuść ramiona i nogi do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Keg_Load": {
+  "name": "Ładowanie Beczek",
+  "instructions": [
+   "Aby ładować beczki, ustaw żądaną ich liczbę w pewnej odległości od platformy załadunkowej, zwykle 9-15 metrów.",
+   "Zacznij od chwycenia bliższego uchwytu pierwszej beczki i przechyl ją na bok, aby chwycić przeciwległą krawędź jej dna. Unieś beczkę do klatki piersiowej.",
+   "Im wyżej ułożysz beczkę, tym szybciej dojdziesz do platformy. Opieranie na barku zwykle jest niedozwolone. Trzymaj beczkę pewnym chwytem. Przemieść się jak najszybciej do platformy i załaduj ją, prostując biodra, kolana i stawy skokowe, aby unieść beczkę jak najwyżej.",
+   "Wróć do pozycji wyjściowej po kolejną beczkę i powtarzaj aż do zakończenia konkurencji."
+  ]
+ },
+ "Kettlebell_Arnold_Press": {
+  "name": "Arnold Press z Kettlebellem",
+  "instructions": [
+   "Zarzuć kettlebell na bark. Wykonaj clean, prostując nogi i biodra i unosząc kettlebell w kierunku barku. Dłoń powinna być zwrócona wnętrzem do wewnątrz.",
+   "Patrząc prosto przed siebie, wypchnij kettlebell w górę nad głowę, obracając nadgarstek tak, aby w górnej pozycji dłoń była zwrócona wnętrzem do przodu.",
+   "Wróć kettlebellem do pozycji wyjściowej, z dłonią zwróconą do wewnątrz."
+  ]
+ },
+ "Kettlebell_One-Legged_Deadlift": {
+  "name": "Martwy Ciąg Jednonóż z Kettlebellem",
+  "instructions": [
+   "Trzymaj kettlebell za uchwyt w jednej ręce. Stań na jednej nodze, po tej samej stronie, po której trzymasz kettlebell.",
+   "Trzymając to kolano lekko ugięte, wykonaj martwy ciąg na prostych nogach, zginając się w biodrze i wyprostowując wolną nogę za siebie dla równowagi.",
+   "Opuszczaj kettlebell, aż znajdziesz się równolegle do podłoża, po czym wróć do pozycji wyprostowanej."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Lunge_style": {
+  "name": "Turkish Get-Up z Kettlebellem (w Wykroku)",
+  "instructions": [
+   "Połóż się na plecach na podłodze i wypchnij kettlebell do pozycji górnej, prostując łokieć. Ugnij kolano po tej samej stronie co kettlebell.",
+   "Trzymając kettlebell stale wyprostowany nad sobą, obróć się na przeciwną stronę i pomóż sobie wolnym ramieniem, przechodząc do pozycji wykrocznej. Wolną ręką podeprzyj się do siadu, a następnie przejdź do klęku na jednym kolanie.",
+   "Patrząc w górę na kettlebell, powoli wstań. Odwróć ruch, wracając do pozycji wyjściowej, i powtórz."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Squat_style": {
+  "name": "Turkish Get-Up z Kettlebellem (w Przysiadzie)",
+  "instructions": [
+   "Połóż się na plecach na podłodze i wypchnij kettlebell do pozycji górnej, prostując łokieć. Ugnij kolano po tej samej stronie co kettlebell.",
+   "Trzymając kettlebell stale wyprostowany nad sobą, obróć się na przeciwną stronę i pomóż sobie wolnym ramieniem, przechodząc do pozycji wykrocznej.",
+   "Wolną ręką podeprzyj się do siadu, a następnie przejdź na stopy. Patrząc w górę na kettlebell, powoli wstań. Odwróć ruch, wracając do pozycji wyjściowej, i powtórz."
+  ]
+ },
+ "Kettlebell_Windmill": {
+  "name": "Wiatrak z Kettlebellem",
+  "instructions": [
+   "Połóż kettlebell przed wykroczną stopą i wykonaj clean oraz wyciśnięcie nad głowę przeciwną ręką. Wykonaj clean, prostując nogi i biodra i przyciągając kettlebell w kierunku barków. Obróć przy tym nadgarstek tak, aby dłoń była zwrócona wnętrzem do przodu. Wypchnij kettlebell nad głowę, prostując łokieć.",
+   "Trzymając kettlebell stale wyprostowany nad sobą, wypchnij pośladki w kierunku uniesionego kettlebella. Ustaw stopy pod kątem czterdziestu pięciu stopni względem ramienia z kettlebellem. Zginając się w biodrze na jedną stronę i wypychając pośladki, pochylaj się powoli, aż dotkniesz podłogi wolną ręką. Przez cały czas patrz na kettlebell trzymany nad głową.",
+   "Zatrzymaj się na sekundę po dotknięciu podłoża i odwróć ruch, wracając do pozycji wyjściowej."
+  ]
+ },
+ "Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists": {
+  "name": "Spięcia Brzucha na Wyciągu w Klęku z Naprzemiennymi Skrętami",
+  "instructions": [
+   "Podepnij linę do górnego wyciągu i połóż przed nim matę.",
+   "Chwyć linę obiema rękami i uklęknij około 60 cm od wyciągu.",
+   "Ułóż linę za głową, z dłońmi przy uszach.",
+   "Trzymając dłonie w tym samym miejscu, napnij mięśnie brzucha i pociągnij linę w dół ruchem spięcia, aż łokcie dotrą do kolan.",
+   "Zatrzymaj się na chwilę w dolnej pozycji i unieś się powoli oraz w kontrolowany sposób do pozycji wyjściowej.",
+   "Powtórz ten sam ruch w dół do połowy zakresu, po czym zacznij kierować jeden z łokci do przeciwnego kolana.",
+   "Ponownie zatrzymaj się na chwilę w dolnej pozycji i unieś się powoli oraz w kontrolowany sposób do pozycji wyjściowej.",
+   "Powtórz ten sam ruch, tym razem kierując drugi łokieć do przeciwnego kolana.",
+   "Kontynuuj tę serię ruchów aż do odmowy."
+  ]
+ },
+ "Kneeling_High_Pulley_Row": {
+  "name": "Wiosłowanie z Górnego Wyciągu w Klęku",
+  "instructions": [
+   "Dobierz odpowiedni ciężar na wyciągu znajdującym się nad głową. Podepnij linę do linki i uklęknij w odległości niecałego metra, trzymając linę przed sobą na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając łokcie i całkowicie ściągając barki, przyciągając linę w kierunku górnej części klatki piersiowej z rozłożonymi łokciami.",
+   "Po krótkiej przerwie wróć powoli do pozycji wyjściowej."
+  ]
+ },
+ "Kneeling_Jump_Squat": {
+  "name": "Wyskok z Klęku do Przysiadu",
+  "instructions": [
+   "Uklęknij na podłodze ze sztangą opartą z tyłu barków lub wykonuj ćwiczenie z masą własnego ciała. Można je robić w klatce, aby ułatwić zdjęcie sztangi ze stojaka.",
+   "Usiądź biodrami do tyłu, aż pośladki dotkną stóp, trzymając głowę i klatkę wysoko.",
+   "Wybij się dynamicznie biodrami, generując dość siły, aby wylądować stopami płasko na podłodze.",
+   "Kontynuuj przysiadem, napierając piętami i prostując kolana aż do pozycji stojącej."
+  ]
+ },
+ "Kneeling_Squat": {
+  "name": "Przysiad w Klęku",
+  "instructions": [
+   "Ustaw gryf na właściwej wysokości w klatce. Uklęknij za gryfem; warto podłożyć matę, aby ochronić kolana. Wsuń się pod gryf i oprzyj go z tyłu barków. Łopatki powinny być ściągnięte, a gryf pewnie osadzony na plecach. Zdejmij ciężar ze stojaka.",
+   "Patrząc przed siebie, usiądź pośladkami do tyłu, aż dotkniesz łydek.",
+   "Odwróć ruch, prostując tułów do pozycji wyprostowanej."
+  ]
+ },
+ "Landmine_180s": {
+  "name": "Landmine 180",
+  "instructions": [
+   "Umieść gryf w gnieździe landmine lub zaklinuj go pewnie w rogu. Załaduj odpowiedni ciężar.",
+   "Unieś gryf z podłogi na wysokość barków, trzymając go obiema rękami z ramionami wyprostowanymi przed sobą. Przyjmij szeroki rozstaw stóp. To jest pozycja wyjściowa.",
+   "Wykonaj ruch, obracając tułów i biodra i prowadząc ciężar aż do dołu po jednej stronie. Przez cały czas trzymaj ramiona wyprostowane.",
+   "Odwróć ruch, prowadząc ciężar aż do dołu po przeciwnej stronie.",
+   "Kontynuuj naprzemiennie, aż ukończysz serię."
+  ]
+ },
+ "Lateral_Bound": {
+  "name": "Skok Boczny",
+  "instructions": [
+   "Przyjmij pozycję półprzysiadu, ustawiony pod kątem 90 stopni do kierunku ruchu. To jest pozycja wyjściowa.",
+   "Pozwól nodze wykrocznej wykonać kontrruch do wewnątrz, przenosząc ciężar ciała na nogę zewnętrzną.",
+   "Natychmiast odbij się i wyprostuj, starając się skoczyć w bok tak daleko, jak potrafisz.",
+   "Po wylądowaniu od razu odbij się w przeciwnym kierunku, wracając do pierwotnej pozycji wyjściowej.",
+   "Kontynuuj w obie strony przez kilka powtórzeń."
+  ]
+ },
+ "Lateral_Box_Jump": {
+  "name": "Wskok Boczny na Skrzynię",
+  "instructions": [
+   "Przyjmij wygodną pozycję stojącą, z niską skrzynią ustawioną obok ciebie. To jest pozycja wyjściowa.",
+   "Zejdź szybko do ćwierćprzysiadu, aby wywołać odruch na rozciąganie, i natychmiast odwróć kierunek, wyskakując w górę i w bok.",
+   "Podciągnij kolana na tyle wysoko, aby stopy pewnie minęły skrzynię.",
+   "Wyląduj na środku skrzyni, amortyzując uderzenie nogami.",
+   "Zeskocz ostrożnie na drugą stronę skrzyni i kontynuuj w obie strony przez kilka powtórzeń."
+  ]
+ },
+ "Lateral_Cone_Hops": {
+  "name": "Przeskoki Boczne przez Pachołki",
+  "instructions": [
+   "Ustaw kilka pachołków w rzędzie, w odstępach niecałego metra.",
+   "Stań przy końcu rzędu, ustawiony pod kątem 90 stopni do kierunku ruchu. To jest pozycja wyjściowa.",
+   "Rozpocznij skok, uginając kolana, aby wywołać odruch na rozciąganie, i natychmiast odwróć kierunek, odbijając się od podłoża i wyskakując w górę oraz w bok ponad pachołkiem.",
+   "Amortyzuj lądowanie nogami i od razu przejdź do kolejnego skoku, przesuwając się wzdłuż rzędu pachołków."
+  ]
+ },
+ "Leg_Press": {
+  "name": "Suwnica (Wyciskanie Nogami)",
+  "instructions": [
+   "Usiądź na suwnicy i oprzyj nogi o platformę na wprost siebie, w średnim rozstawie (na szerokość barków). (Uwaga: przyjmujemy tu opisany średni rozstaw, który rozwija mięśnie całościowo; możesz wybrać dowolny z trzech rozstawów opisanych w części o ustawieniu stóp).",
+   "Zwolnij zabezpieczenia trzymające obciążoną platformę i wypchnij ją do końca, aż nogi będą całkowicie wyprostowane. Wskazówka: nie blokuj kolan. Tułów i nogi powinny tworzyć idealny kąt 90 stopni. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli platformę, aż udo i podudzie utworzą kąt 90 stopni.",
+   "Napierając głównie piętami i pracując mięśniami czworogłowymi, wróć do pozycji wyjściowej, wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń i po zakończeniu pamiętaj o prawidłowym zablokowaniu zabezpieczeń. Nie chcesz, aby w pełni obciążona platforma spadła na ciebie."
+  ]
+ },
+ "Leverage_Deadlift": {
+  "name": "Martwy Ciąg na Maszynie Dźwigniowej",
+  "instructions": [
+   "Załaduj odpowiedni ciężar na trzpienie. Ustaw się dokładnie pomiędzy uchwytami. Chwyć dolne uchwyty wygodnym chwytem, po czym obniż biodra, biorąc oddech. Patrz przed siebie i trzymaj klatkę wysoko. To jest pozycja wyjściowa.",
+   "Wróć ciężarem do pozycji wyjściowej."
+  ]
+ },
+ "Leverage_High_Row": {
+  "name": "Wiosłowanie Górą na Maszynie Dźwigniowej",
+  "instructions": [
+   "Załaduj odpowiedni ciężar na trzpienie i ustaw wysokość siedziska tak, abyś ledwo sięgał uchwytów nad sobą. Ustaw wałek kolanowy, aby cię dociskał. Chwyć uchwyty nachwytem. To jest pozycja wyjściowa.",
+   "Przyciągnij uchwyty do tułowia, ściągając łopatki i uginając łokcie.",
+   "Zatrzymaj się na końcu ruchu, po czym powoli odprowadź uchwyty do pozycji wyjściowej.",
+   "Przy wielu powtórzeniach unikaj całkowitego odkładania ciężaru na stos, aby utrzymać napięcie pracujących mięśni."
+  ]
+ },
+ "Leverage_Iso_Row": {
+  "name": "Wiosłowanie Iso na Maszynie Dźwigniowej",
+  "instructions": [
+   "Załaduj odpowiedni ciężar na trzpienie i ustaw wysokość siedziska tak, aby uchwyty znalazły się na wysokości klatki piersiowej. Chwyć uchwyty chwytem neutralnym lub nachwytem. To jest pozycja wyjściowa.",
+   "Przyciągnij uchwyty do tułowia, ściągając łopatki i uginając łokcie.",
+   "Zatrzymaj się na końcu ruchu, po czym powoli odprowadź uchwyty do pozycji wyjściowej. Przy wielu powtórzeniach unikaj całkowitego odkładania ciężaru na stos, aby utrzymać napięcie pracujących mięśni."
+  ]
+ },
+ "Low_Pulley_Row_To_Neck": {
+  "name": "Wiosłowanie z Dolnego Wyciągu do Szyi",
+  "instructions": [
+   "Usiądź przy dolnym wyciągu z podpiętą liną.",
+   "Chwyć końce liny nachwytem i usiądź z prostymi plecami i lekko ugiętymi kolanami. Wskazówka: trzymaj plecy niemal całkowicie pionowo, a ramiona wyprostowane przed sobą. To jest pozycja wyjściowa.",
+   "Trzymając tułów nieruchomo, unieś łokcie i zacznij je uginać, przyciągając linę w kierunku szyi i wydychając powietrze. Przez cały ruch ramiona powinny pozostawać równoległe do podłogi. Wskazówka: kontynuuj ruch, aż dłonie znajdą się niemal przy uszach (przedramiona nie będą na końcu równoległe do podłogi, lecz lekko uniesione), a łokcie będą rozłożone na boki.",
+   "Po zatrzymaniu na sekundę w pozycji skurczu wróć powoli do pozycji wyjściowej, wdychając powietrze. Wskazówka: ponownie — w żadnej fazie ruchu tułów nie powinien się poruszać.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Lunge_Pass_Through": {
+  "name": "Wykrok z Przekładaniem Kettlebella",
+  "instructions": [
+   "Stań z wyprostowanym tułowiem, trzymając kettlebell w prawej ręce. To jest pozycja wyjściowa.",
+   "Zrób krok do przodu lewą stopą i opuść górną część ciała, uginając biodro i kolano, trzymając tułów wyprostowany. Opuszczaj tylne kolano, aż niemal dotknie podłoża.",
+   "W trakcie wykroku przełóż kettlebell pod przednią nogą do drugiej ręki.",
+   "Napierając piętą, wróć do pozycji wyjściowej.",
+   "Powtórz ruch zalecaną liczbę powtórzeń, zmieniając nogi."
+  ]
+ },
+ "Lying_Face_Up_Plate_Neck_Resistance": {
+  "name": "Opór Karku z Talerzem w Leżeniu Tyłem",
+  "instructions": [
+   "Połóż się twarzą do góry z całym ciałem wyprostowanym na ławce płaskiej, trzymając talerz na czole. Wskazówka: musisz ustawić się tak, aby barki znalazły się nieco poza końcem ławki, dzięki czemu czworoboczne, szyja i głowa będą poza nią. To jest pozycja wyjściowa.",
+   "Trzymając talerz pewnie na czole, opuszczaj powoli głowę do tyłu półkolistym ruchem, wdychając powietrze.",
+   "Unieś głowę z powrotem do pozycji wyjściowej półkolistym ruchem, wydychając powietrze. Zatrzymaj skurcz na sekundę.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Machine_Bicep_Curl": {
+  "name": "Uginanie Ramion na Maszynie",
+  "instructions": [
+   "Ustaw siedzisko na odpowiedniej wysokości i dobierz ciężar. Oprzyj ramiona o poduszki i chwyć uchwyty. To jest pozycja wyjściowa.",
+   "Wykonaj ruch, uginając łokieć i przyciągając przedramię do ramienia.",
+   "Zatrzymaj się w górnej pozycji, po czym powoli odprowadź ciężar do pozycji wyjściowej.",
+   "Unikaj całkowitego odkładania ciężaru na stos aż do końca serii, aby utrzymać napięcie pracujących mięśni."
+  ]
+ },
+ "Monster_Walk": {
+  "name": "Marsz Potwora",
+  "instructions": [
+   "Załóż gumę wokół obu kostek i drugą wokół obu kolan. Napięcie powinno być na tyle duże, aby gumy były napięte przy stopach rozstawionych na szerokość barków.",
+   "Zacznij od krótkich kroków do przodu, naprzemiennie lewą i prawą stopą.",
+   "Po kilku krokach zrób dokładnie odwrotnie i wróć tyłem do miejsca startu."
+  ]
+ },
+ "Muscle_Up": {
+  "name": "Muscle Up",
+  "instructions": [
+   "Chwyć kółka fałszywym chwytem, z nasadą dłoni na wierzchu kółek. Rozpocznij podciąganie, ściągając łokcie do boków i uginając je.",
+   "Gdy osiągniesz górną pozycję podciągnięcia, przyciągnij kółka do pach, wysuwając barki do przodu i pozwalając łokciom powędrować prosto do tyłu. To ustawia cię prawidłowo do przejścia w fazę dipu.",
+   "Zachowując kontrolę i stabilność, wyprostuj łokcie, aby dokończyć ruch.",
+   "Zachowaj ostrożność przy opuszczaniu się na ziemię."
+  ]
+ },
+ "One_Arm_Lat_Pulldown": {
+  "name": "Ściąganie Drążka Jednorącz",
+  "instructions": [
+   "Dobierz odpowiedni ciężar i ustaw wałek kolanowy, aby cię dociskał. Chwyć uchwyt nachwytem. To jest pozycja wyjściowa.",
+   "Pociągnij uchwyt w dół, prowadząc łokieć do boku i uginając go.",
+   "Zatrzymaj się na końcu ruchu, po czym powoli odprowadź uchwyt do pozycji wyjściowej.",
+   "Przy wielu powtórzeniach unikaj całkowitego odkładania ciężaru, aby utrzymać napięcie pracujących mięśni."
+  ]
+ },
+ "One-Arm_Dumbbell_Row": {
+  "name": "Wiosłowanie Hantlem Jednorącz",
+  "instructions": [
+   "Wybierz ławkę płaską i połóż po hantlu z każdej jej strony.",
+   "Oprzyj prawą nogę na końcu ławki, pochyl tułów w talii, aż górna część ciała będzie równoległa do podłogi, i oprzyj prawą dłoń o drugi koniec ławki dla podparcia.",
+   "Lewą ręką podnieś hantel z podłogi i trzymaj ciężar, utrzymując prosty odcinek lędźwiowy. Dłoń powinna być zwrócona wnętrzem do tułowia. To jest pozycja wyjściowa.",
+   "Pociągnij ciężar prosto w górę do boku klatki piersiowej, trzymając ramię blisko boku i tułów nieruchomo. Wydychaj powietrze podczas tej fazy. Wskazówka: skup się na spinaniu mięśni pleców po osiągnięciu pełnego skurczu. Zadbaj też, aby siłę generowały mięśnie pleców, a nie ramiona. Wreszcie górna część tułowia powinna pozostać nieruchoma, poruszać się mają wyłącznie ramiona. Przedramiona mają jedynie trzymać hantel — nie próbuj podciągać go przedramionami.",
+   "Opuść ciężar prosto w dół do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy.",
+   "Powtórz ruch wskazaną liczbę powtórzeń.",
+   "Zmień stronę i powtórz drugą ręką."
+  ]
+ },
+ "One-Arm_Long_Bar_Row": {
+  "name": "Wiosłowanie Długim Gryfem Jednorącz",
+  "instructions": [
+   "Umieść gryf w gnieździe landmine lub w rogu, aby się nie przesuwał. Załaduj odpowiedni ciężar na swoim końcu.",
+   "Stań obok gryfu i chwyć go jedną ręką blisko zacisku. Używając bioder i nóg, wyprostuj się do pozycji stojącej.",
+   "Przyjmij pozycję z ugiętymi kolanami, biodrami cofniętymi i klatką wysoko. Ramię powinno być wyprostowane. To jest pozycja wyjściowa.",
+   "Pociągnij ciężar do boku, ściągając bark i uginając łokieć. Nie szarpaj ciężarem ani nie oszukuj podczas ruchu.",
+   "Po krótkiej przerwie wróć do pozycji wyjściowej."
+  ]
+ },
+ "One-Legged_Cable_Kickback": {
+  "name": "Wykop Pośladkowy na Wyciągu Jednonóż",
+  "instructions": [
+   "Zaczep skórzaną opaskę do dolnego wyciągu, a następnie zapnij ją na kostce.",
+   "Stań przodem do stosu ciężarków w odległości około 60 cm, przytrzymując się stalowej ramy dla podparcia.",
+   "Trzymając kolana i biodra lekko ugięte, a brzuch napięty, napnij pośladki i powoli \"wykopnij\" pracującą nogę do tyłu półkolistym łukiem tak wysoko, jak jest to komfortowe, wydychając powietrze. Wskazówka: w pełnym wyproście spnij pośladki na sekundę, aby uzyskać szczytowy skurcz.",
+   "Przenieś teraz powoli pracującą nogę do przodu, opierając się ciągowi linki, aż wrócisz do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń.",
+   "Zmień nogę i powtórz ruch na drugą stronę."
+  ]
+ },
+ "Palms-Down_Wrist_Curl_Over_A_Bench": {
+  "name": "Uginanie Nadgarstków Nachwytem na Ławce",
+  "instructions": [
+   "Zacznij od położenia sztangi po jednej stronie ławki płaskiej.",
+   "Uklęknij na obu kolanach, ustawiając się przodem do ławki.",
+   "Chwyć sztangę nachwytem (dłonie w dół) i unieś ją tak, aby przedramiona spoczęły na ławce. Nadgarstki powinny wystawać poza jej krawędź.",
+   "Zacznij od uginania nadgarstków w górę, wydychając powietrze.",
+   "Opuść powoli nadgarstki do pozycji wyjściowej, wdychając powietrze.",
+   "Przedramiona powinny pozostać nieruchome — w tym ćwiczeniu porusza się wyłącznie nadgarstek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Uginanie Nadgarstków ze Sztangą Podchwytem na Ławce",
+  "instructions": [
+   "Zacznij od położenia sztangi po jednej stronie ławki płaskiej.",
+   "Uklęknij na obu kolanach, ustawiając się przodem do ławki.",
+   "Chwyć sztangę podchwytem (dłonie w górę) i unieś ją tak, aby przedramiona spoczęły na ławce. Nadgarstki powinny wystawać poza jej krawędź.",
+   "Zacznij od uginania nadgarstków w górę, wydychając powietrze.",
+   "Opuść powoli nadgarstki do pozycji wyjściowej, wdychając powietrze.",
+   "Przedramiona powinny pozostać nieruchome — w tym ćwiczeniu porusza się wyłącznie nadgarstek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Uginanie Nadgarstków z Hantlami Podchwytem na Ławce",
+  "instructions": [
+   "Zacznij od położenia dwóch hantli po jednej stronie ławki płaskiej.",
+   "Uklęknij na obu kolanach, ustawiając się przodem do ławki.",
+   "Chwyć oba hantle podchwytem (dłonie w górę) i unieś je tak, aby przedramiona spoczęły na ławce. Nadgarstki powinny wystawać poza jej krawędź.",
+   "Zacznij od uginania nadgarstków w górę, wydychając powietrze.",
+   "Opuść powoli nadgarstki do pozycji wyjściowej, wdychając powietrze. Pamiętaj, aby w tej fazie ćwiczenia wdychać powietrze.",
+   "Przedramiona powinny pozostać nieruchome — w tym ćwiczeniu porusza się wyłącznie nadgarstek.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Parallel_Bar_Dip": {
+  "name": "Dipy na Poręczach",
+  "instructions": [
+   "Stań pomiędzy poręczami. Oprzyj po dłoni na każdej z nich, po czym wykonaj mały wyskok, aby przejść do pozycji wyjściowej z wyprostowanymi ramionami.",
+   "Rozpocznij ruch, uginając łokcie i opuszczając ciało, aż ramiona przekroczą kąt 90 stopni. Unikaj bujania i przez cały zjazd utrzymuj prawidłową sylwetkę.",
+   "Odwróć ruch, prostując łokcie i wypychając się z powrotem do pozycji wyjściowej.",
+   "Powtórz zaplanowaną liczbę powtórzeń."
+  ]
+ },
+ "Plie_Dumbbell_Squat": {
+  "name": "Przysiad Plié z Hantlem",
+  "instructions": [
+   "Chwyć hantel obiema rękami za jego podstawę i stań prosto. Rozstaw nogi szerzej niż na szerokość barków, z lekko ugiętymi kolanami.",
+   "Palce stóp powinny być skierowane na zewnątrz. Uwaga: podczas ćwiczenia ramiona pozostają nieruchome. To jest pozycja wyjściowa.",
+   "Ugnij powoli kolana i opuść się, aż uda będą równoległe do podłogi. Pamiętaj o wdechu — to faza ekscentryczna ćwiczenia.",
+   "Napieraj głównie piętami, aby wrócić do pozycji wyjściowej, wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Preacher_Curl": {
+  "name": "Uginanie Ramion na Modlitewniku",
+  "instructions": [
+   "Do tego ćwiczenia potrzebny jest modlitewnik i gryf łamany. Chwyć gryf łamany za wewnętrzne, wąskie uchwyty (najlepiej poproś kogoś o podanie gryfu albo weź go ze stojaka z przodu, w który wyposażona jest większość modlitewników). Dłonie powinny być zwrócone wnętrzem do przodu i lekko przechylone do wewnątrz ze względu na kształt gryfu.",
+   "Z ramionami opartymi o poduszkę modlitewnika i klatką piersiową przy niej trzymaj gryf łamany na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli gryf, aż ramię będzie wyprostowane, a biceps w pełni rozciągnięty.",
+   "Wydychając powietrze, ugnij ramiona bicepsami, aż będą w pełni napięte, a gryf znajdzie się na wysokości barków. Mocno spnij bicepsy i zatrzymaj tę pozycję na sekundę.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Press_Sit-Up": {
+  "name": "Brzuszek z Wyciskaniem",
+  "instructions": [
+   "Na początek połóż się na ławce ze sztangą opartą na klatce piersiowej. Ustaw nogi tak, aby były pewnie zablokowane na przedłużeniu ławki do brzuszków. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, napnij mięśnie brzucha i pośladki. Jednocześnie zwiń tułów jak przy brzuszku i wypchnij sztangę nad głowę, wydychając powietrze. Wskazówka: wypychaj sztangę ramionami, ale przez cały czas skupiaj się na mięśniach brzucha.",
+   "Opuść górną część ciała z powrotem do pozycji wyjściowej, sprowadzając sztangę do tułowia. Pamiętaj o wdechu podczas opuszczania.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Pull_Through": {
+  "name": "Pull Through na Wyciągu",
+  "instructions": [
+   "Stań niecały metr przed dolnym wyciągiem z podpiętą liną lub uchwytem. Odwróć się tyłem do maszyny, z linką pomiędzy nogami i stopami rozstawionymi szeroko.",
+   "Rozpocznij ruch, sięgając rękami między nogami jak najdalej do tyłu i zginając biodra. Trzymaj kolana lekko ugięte. Z wyprostowanymi ramionami wyprostuj biodra do pełnej pozycji stojącej. Unikaj ciągnięcia barkami — cały ruch powinien pochodzić z bioder."
+  ]
+ },
+ "Pullups": {
+  "name": "Podciąganie na Drążku",
+  "instructions": [
+   "Chwyć drążek nachwytem, stosując wskazaną szerokość chwytu. Uwaga o chwytach: przy chwycie szerokim dłonie rozstawiasz szerzej niż barki, przy średnim na szerokość barków, a przy wąskim węziej niż barki.",
+   "Wisząc na wyprostowanych ramionach z wybraną szerokością chwytu, odchyl tułów do tyłu o około 30 stopni, wyginając odcinek lędźwiowy i wypychając klatkę piersiową. To jest pozycja wyjściowa.",
+   "Podciągnij tułów, aż drążek dotknie górnej części klatki piersiowej, prowadząc barki i ramiona w dół i do tyłu. Wydychaj powietrze podczas tej fazy ruchu. Wskazówka: skup się na spinaniu mięśni pleców po osiągnięciu pełnego skurczu. Górna część tułowia powinna pozostać nieruchoma, poruszać się mają wyłącznie ramiona. Przedramiona mają jedynie trzymać drążek.",
+   "Po sekundzie w pozycji skurczu zacznij wdychać powietrze i opuść powoli tułów do pozycji wyjściowej, aż ramiona będą całkowicie wyprostowane, a mięśnie najszersze w pełni rozciągnięte.",
+   "Powtórz ten ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Push_Up_to_Side_Plank": {
+  "name": "Pompka z Deską Bokiem",
+  "instructions": [
+   "Przyjmij pozycję pompki na palcach stóp, z dłońmi nieco szerzej niż na szerokość barków.",
+   "Wykonaj pompkę, pozwalając łokciom się ugiąć. Schodząc, trzymaj ciało prosto.",
+   "Zrób jedną pompkę i przy wychodzeniu w górę przenieś ciężar ciała na lewą stronę, skręć się w bok i unieś prawe ramię w kierunku sufitu w pozycji deski bokiem.",
+   "Opuść ramię z powrotem na podłogę do kolejnej pompki, po czym skręć się w drugą stronę.",
+   "Powtarzaj tę serię, zmieniając strony, przez 10 lub więcej powtórzeń."
+  ]
+ },
+ "Push-Up_Wide": {
+  "name": "Pompka Szeroko",
+  "instructions": [
+   "Z dłońmi szeroko rozstawionymi podeprzyj ciało na palcach stóp i dłoniach w pozycji deski. Łokcie powinny być wyprostowane, a ciało proste. Nie pozwól biodrom opadać. To jest pozycja wyjściowa.",
+   "Na początek pozwól łokciom się ugiąć, opuszczając klatkę piersiową do podłogi i wdychając powietrze.",
+   "Mięśniami piersiowymi wypchnij górną część ciała z powrotem do pozycji wyjściowej, prostując łokcie. Wydychaj powietrze podczas tej fazy.",
+   "Po przerwie w górnej pozycji powtórz ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Reverse_Band_Bench_Press": {
+  "name": "Wyciskanie Leżąc z Gumami od Góry",
+  "instructions": [
+   "Ustaw ławkę w klatce, z gryfem na właściwej wysokości. Zacznij od zakotwiczenia gum do zaczepów lub do górnej części klatki. Upewnij się, że ustawisz się prawidłowo pod gumami. Drugi koniec przypnij do sztangi.",
+   "Połóż się na ławce, podciągnij stopy pod siebie i wygnij plecy w łuk. Podpierając się gryfem, oderwij barki od ławki i ściągnij je, spinając łopatki. Napieraj stopami, wbijając czworoboczne w ławkę. Utrzymuj to napięcie przez cały ruch. Niezależnie od szerokości chwytu powinien on obejmować pierścień na gryfie.",
+   "Wyjmij gryf ze stojaka bez wysuwania barków do przodu. Skup się na mocnym ściskaniu gryfu i próbie jego rozerwania. Opuść gryf na dolną część klatki piersiowej lub górę brzucha. Gryf, nadgarstek i łokieć powinny być przez cały czas w jednej linii.",
+   "Zatrzymaj się, gdy sztanga dotknie tułowia, po czym wypchnij ją w górę z maksymalną siłą. Łokcie pozostają przyciągnięte aż do pełnego wyprostu."
+  ]
+ },
+ "Reverse_Barbell_Curl": {
+  "name": "Uginanie Ramion ze Sztangą Nachwytem",
+  "instructions": [
+   "Stań wyprostowany, trzymając sztangę na szerokość barków z łokciami blisko tułowia. Dłonie powinny być zwrócone wnętrzem w dół (chwyt nachwytem). To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, ugnij ręce, napinając bicepsy i wydychając powietrze. Poruszać się powinny wyłącznie przedramiona. Kontynuuj, aż bicepsy będą w pełni napięte, a gryf znajdzie się na wysokości barków. Zatrzymaj skurcz na sekundę, spinając mięsień.",
+   "Zacznij powoli opuszczać sztangę do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Reverse_Cable_Curl": {
+  "name": "Uginanie Ramion na Wyciągu Nachwytem",
+  "instructions": [
+   "Stań wyprostowany, trzymając drążek podpięty do dolnego wyciągu chwytem nachwytem (dłonie w dół) na szerokość barków. Pamiętaj też, aby trzymać łokcie blisko tułowia. To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, ugnij ręce, napinając bicepsy i wydychając powietrze. Poruszać się powinny wyłącznie przedramiona. Kontynuuj, aż bicepsy będą w pełni napięte, a drążek znajdzie się na wysokości barków. Zatrzymaj skurcz na sekundę, spinając mięsień.",
+   "Zacznij powoli opuszczać drążek do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "reverse_calf_raise_on_leg_press": {
+  "name": "Odwrotne Wspięcia na Suwnicy",
+  "instructions": [
+   "Oprzyj pięty o platformę i przyciągnij palce stóp do siebie, napierając na wózek."
+  ]
+ },
+ "Reverse_Triceps_Bench_Press": {
+  "name": "Odwrotne Wyciskanie na Triceps",
+  "instructions": [
+   "Połóż się na ławce płaskiej. Chwytem wąskim, podchwytem (mniej więcej na szerokość barków), zdejmij sztangę ze stojaka i trzymaj ją prosto nad sobą na wyprostowanych ramionach, prostopadle do podłogi. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli sztangę, aż poczujesz ją na środku klatki piersiowej. Wskazówka: w odróżnieniu od zwykłego wyciskania trzymaj łokcie stale blisko tułowia, aby zmaksymalizować pracę tricepsów.",
+   "Po sekundowej przerwie wypchnij sztangę z powrotem do pozycji wyjściowej, wydychając powietrze i napierając tricepsami. Wyprostuj ramiona w górnej pozycji, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak."
+  ]
+ },
+ "Rocking_Standing_Calf_Raise": {
+  "name": "Wspięcia na Palce Stojąc z Kołysaniem",
+  "instructions": [
+   "Ze względów bezpieczeństwa ćwiczenie najlepiej wykonywać w klatce do przysiadów. Na początek ustaw gryf na stojaku na wysokości najlepiej dopasowanej do twojego wzrostu. Po dobraniu właściwej wysokości i załadowaniu sztangi wejdź pod gryf i oprzyj go z tyłu barków (nieco poniżej karku).",
+   "Chwyć gryf obiema rękami po bokach i zdejmij go ze stojaka, najpierw napierając nogami i jednocześnie prostując tułów.",
+   "Odejdź od stojaka i ustaw nogi w średnim rozstawie na szerokość barków, z palcami stóp skierowanymi lekko na zewnątrz. Przez cały czas trzymaj głowę uniesioną, ponieważ patrzenie w dół zaburza równowagę. Utrzymuj też proste plecy i kolana lekko ugięte, nigdy zablokowane. To jest pozycja wyjściowa.",
+   "Unieś pięty, wydychając powietrze, prostując stawy skokowe najwyżej jak potrafisz i napinając łydki. Kolano musi pozostać nieruchome przez cały czas — poza lekkim ugięciem przyjętym na starcie nie powinno się zginać w żadnym momencie. Zatrzymaj skurcz na sekundę, zanim zaczniesz opuszczać.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze i opuszczając pięty aż do pełnego rozciągnięcia łydek.",
+   "Teraz unieś palce stóp, napinając mięsień piszczelowy z przodu podudzia, i wydychaj powietrze.",
+   "Zatrzymaj na sekundę i opuść je, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Romanian_Deadlift": {
+  "name": "Martwy Ciąg Rumuński",
+  "instructions": [
+   "Połóż sztangę na podłodze przed sobą i chwyć ją nachwytem (dłonie w dół) nieco szerzej niż na szerokość barków. Wskazówka: w zależności od użytego ciężaru możesz potrzebować pasków na nadgarstki, a także podestu, aby uzyskać większy zakres ruchu.",
+   "Ugnij lekko kolana, trzymając golenie pionowo, biodra cofnięte, a plecy proste. To jest pozycja wyjściowa.",
+   "Trzymając plecy i ramiona przez cały czas całkowicie proste, unieś sztangę pracą bioder, wydychając powietrze. Wskazówka: ruch nie powinien być szybki, lecz równomierny i kontrolowany.",
+   "Gdy wyprostujesz się całkowicie, opuść sztangę, wypychając biodra do tyłu i uginając kolana tylko nieznacznie, inaczej niż przy przysiadzie. Wskazówka: weź głęboki oddech na początku ruchu i trzymaj klatkę wysoko. Wstrzymaj oddech przy opuszczaniu i wypuść powietrze po zakończeniu ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Rope_Crunch": {
+  "name": "Spięcia Brzucha z Liną",
+  "instructions": [
+   "Uklęknij 30-60 cm przed wyciągiem z podpiętą liną.",
+   "Po dobraniu odpowiedniego ciężaru chwyć linę obiema rękami, sięgając nad głowę. W pozycji wyjściowej tułów powinien być wyprostowany.",
+   "Rozpocznij ruch, zginając kręgosłup i starając się przyciągnąć klatkę piersiową do nóg, ciągnąc jednocześnie linkę w dół.",
+   "Zatrzymaj się w dolnej pozycji, po czym powoli wróć do pozycji wyjściowej.",
+   "Ćwiczenie można wykonywać ze skrętami lub w bok, aby zaangażować mięśnie skośne."
+  ]
+ },
+ "Russian_Twist": {
+  "name": "Rosyjski Skręt",
+  "instructions": [
+   "Połóż się na podłodze, blokując stopy pod czymś nieruchomym albo prosząc partnera o ich przytrzymanie. Nogi powinny być ugięte w kolanach.",
+   "Unieś górną część ciała tak, aby tworzyła z udami wyimaginowaną literę V. Ramiona powinny być całkowicie wyprostowane przed tobą, prostopadle do tułowia, ze splecionymi dłońmi. To jest pozycja wyjściowa.",
+   "Skręć tułów w prawo, aż ramiona będą równoległe do podłogi, wydychając powietrze.",
+   "Zatrzymaj skurcz na sekundę i wróć do pozycji wyjściowej. Następnie wykonaj to samo w drugą stronę, stosując tę samą technikę.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Barbell_Military_Press": {
+  "name": "Wyciskanie Militarne Siedząc ze Sztangą",
+  "instructions": [
+   "Usiądź na ławce do wyciskania militarnego z gryfem za głową i poproś asekurującego o podanie sztangi (tak jest lepiej dla stożka rotatorów) albo ostrożnie zdejmij ją sam chwytem nachwytem (dłonie do przodu). Wskazówka: chwyt powinien być szerszy niż barki i tworzyć kąt 90 stopni między przedramieniem a ramieniem, gdy sztanga schodzi w dół.",
+   "Po chwyceniu sztangi z właściwą szerokością unieś ją nad głowę, prostując ramiona. Zatrzymaj mniej więcej na wysokości barków, lekko przed głową. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli sztangę do obojczyków, wdychając powietrze.",
+   "Unieś sztangę z powrotem do pozycji wyjściowej, wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Calf_Raise": {
+  "name": "Wspięcia na Palce Siedząc",
+  "instructions": [
+   "Usiądź na maszynie i oprzyj palce stóp o dolną część platformy, tak aby pięty wystawały poza nią. Wybierz ustawienie palców (do przodu, do wewnątrz lub na zewnątrz) zgodnie z opisem na początku rozdziału.",
+   "Umieść dolną część ud pod wałkiem, który trzeba ustawić odpowiednio do ich wysokości. Połóż dłonie na wałku, aby nie zsunął się do przodu.",
+   "Unieś lekko wałek, napierając piętami, i zwolnij zabezpieczenie. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli pięty, zginając stawy skokowe, aż łydki będą w pełni rozciągnięte. Wdychaj powietrze podczas tego ruchu.",
+   "Unieś pięty, prostując stawy skokowe najwyżej jak potrafisz, napinając łydki i wydychając powietrze. Zatrzymaj górny skurcz na sekundę.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Dumbbell_Curl": {
+  "name": "Uginanie Ramion z Hantlami Siedząc",
+  "instructions": [
+   "Usiądź na ławce płaskiej z hantlami w obu dłoniach na wyprostowanych ramionach. Łokcie powinny być blisko tułowia.",
+   "Obróć dłonie tak, aby były zwrócone wnętrzem do tułowia. To jest pozycja wyjściowa.",
+   "Trzymając ramię nieruchomo, ugnij ręce i zacznij obracać nadgarstki, gdy hantle miną uda, tak aby na końcu ruchu dłonie były zwrócone wnętrzem do przodu. Napinaj bicepsy, wydychając powietrze, i pilnuj, aby poruszały się wyłącznie przedramiona. Kontynuuj, aż bicepsy będą w pełni napięte, a hantle znajdą się na wysokości barków. Zatrzymaj skurcz na sekundę, spinając bicepsy.",
+   "Zacznij powoli opuszczać hantle do pozycji wyjściowej, wdychając powietrze i obracając nadgarstki z powrotem do chwytu neutralnego.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Dumbbell_Palms-Up_Wrist_Curl": {
+  "name": "Uginanie Nadgarstków z Hantlami Podchwytem Siedząc",
+  "instructions": [
+   "Zacznij od położenia dwóch hantli na podłodze przed ławką płaską.",
+   "Usiądź na krawędzi ławki płaskiej z nogami rozstawionymi mniej więcej na szerokość barków. Pamiętaj, aby trzymać stopy na podłodze.",
+   "Chwyć oba hantle i unieś je tak, aby przedramiona spoczęły na udach, z dłońmi zwróconymi wnętrzem do góry. Nadgarstki powinny wystawać poza krawędź ud.",
+   "Zacznij od uginania nadgarstków w górę, wydychając powietrze.",
+   "Opuść powoli nadgarstki do pozycji wyjściowej, wdychając powietrze. Pamiętaj, aby w tej fazie ćwiczenia wdychać powietrze. Wskazówka: przedramiona powinny pozostać nieruchome — porusza się wyłącznie nadgarstek.",
+   "Powtórz zalecaną liczbę powtórzeń.",
+   "Po zakończeniu po prostu odłóż hantle na podłogę."
+  ]
+ },
+ "Seated_Head_Harness_Neck_Resistance": {
+  "name": "Opór Karku z Uprzężą Siedząc",
+  "instructions": [
+   "Połóż uprząż na kark na podłodze przy końcu ławki płaskiej. Po dobraniu ciężaru usiądź na końcu ławki ze stopami rozstawionymi szerzej niż barki. Palce stóp powinny być skierowane na zewnątrz.",
+   "Pochyl powoli tułów do przodu, aż będzie niemal równoległy do podłogi. Obiema rękami pewnie załóż uprząż na głowę. Wskazówka: upewnij się, że obciążenie wciąż leży na podłodze, aby nie obciążać karku. Chwyć teraz ciężar obiema rękami, unosząc tułów, aż będzie niemal prostopadły do podłogi. Uwaga: do wykonania tego ćwiczenia głowa i tułów muszą być lekko pochylone do przodu.",
+   "Połóż teraz obie dłonie na kolanach. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli głowę, aż broda dotknie górnej części klatki piersiowej, wdychając powietrze.",
+   "Wydychając powietrze, wróć głową do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Leg_Curl": {
+  "name": "Uginanie Nóg Siedząc",
+  "instructions": [
+   "Dopasuj dźwignię maszyny do swojego wzrostu i usiądź, opierając plecy o oparcie.",
+   "Ułóż tylną część podudzi na wyściełanej dźwigni (kilka centymetrów poniżej łydek) i zablokuj wałek biodrowy na udach, tuż powyżej kolan. Następnie chwyć boczne uchwyty maszyny, kierując palce stóp prosto (możesz też użyć jednego z pozostałych dwóch ustawień) i upewnij się, że nogi są całkowicie wyprostowane przed tobą. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, przyciągnij dźwignię jak najdalej w kierunku tylnej części ud, uginając kolana. Przez cały czas trzymaj tułów nieruchomo. Zatrzymaj skurcz na sekundę.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Seated_Palm-Up_Barbell_Wrist_Curl": {
+  "name": "Uginanie Nadgarstków ze Sztangą Podchwytem Siedząc",
+  "instructions": [
+   "Trzymaj sztangę obiema rękami, dłońmi zwróconymi do góry, rozstawionymi mniej więcej na szerokość barków.",
+   "Oprzyj stopy płasko na podłodze, nieco szerzej niż na szerokość barków.",
+   "Pochyl się do przodu i ułóż przedramiona na udach, dłońmi do góry. Wskazówka: przednia część nadgarstków powinna leżeć na kolanach. To jest pozycja wyjściowa.",
+   "Opuść sztangę tak nisko, jak potrafisz, wdychając powietrze i utrzymując mocny chwyt.",
+   "Unieś teraz sztangę jak najwyżej, napinając przedramiona i wydychając powietrze. Zatrzymaj skurcz na sekundę w górze. Wskazówka: poruszać się powinien wyłącznie nadgarstek."
+  ]
+ },
+ "seated_toe_raise": {
+  "name": "Unoszenie Palców Stóp Siedząc",
+  "instructions": [
+   "Usiądź ze stopami płasko na podłodze, trzymaj pięty w dole i unieś palce stóp tak wysoko, jak potrafisz."
+  ]
+ },
+ "Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl": {
+  "name": "Uginanie Nadgarstków Oburącz Podchwytem z Dolnego Wyciągu Siedząc",
+  "instructions": [
+   "Ustaw ławkę przed dolnym wyciągiem z podpiętym prostym gryfem lub gryfem łamanym.",
+   "Odsuń ławkę na tyle daleko, aby po przyłożeniu uchwytu do górnej części ud powstało napięcie linki wynikające z uniesienia stosu ciężarków.",
+   "Chwyć teraz uchwyt obiema rękami, dłońmi do góry, chwytem na szerokość barków.",
+   "Cofnij się i usiądź na ławce ze stopami rozstawionymi mniej więcej na szerokość barków, pewnie opartymi o podłogę.",
+   "Pochyl się do przodu i ułóż przedramiona na udach, z grzbietami nadgarstków poza kolanami. To jest pozycja wyjściowa.",
+   "Opuść gryf tak nisko, jak potrafisz, wdychając powietrze i utrzymując mocny chwyt.",
+   "Unieś teraz gryf jak najwyżej, napinając przedramiona. Wskazówka: poruszać się powinien wyłącznie nadgarstek, nie przedramiona.",
+   "Po sekundowym skurczu w górze wróć do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Shotgun_Row": {
+  "name": "Wiosłowanie Shotgun",
+  "instructions": [
+   "Podepnij pojedynczy uchwyt do dolnego wyciągu.",
+   "Po dobraniu właściwego ciężaru stań niecały metr dalej w szerokim wykroku. Ramię powinno być wyprostowane, a bark wysunięty do przodu. To jest pozycja wyjściowa.",
+   "Wykonaj ruch, ściągając bark i uginając łokieć. Podczas ciągnięcia obracaj nadgarstek podchwytem, kierując dłoń wnętrzem do góry.",
+   "Po krótkiej przerwie wróć do pozycji wyjściowej."
+  ]
+ },
+ "Side_Jackknife": {
+  "name": "Scyzoryk Boczny",
+  "instructions": []
+ },
+ "Single_Leg_Glute_Bridge": {
+  "name": "Mostek Pośladkowy Jednonóż",
+  "instructions": [
+   "Połóż się na podłodze ze stopami płasko i ugiętymi kolanami.",
+   "Unieś jedną nogę nad podłogę, przyciągając kolano do klatki piersiowej. To jest pozycja wyjściowa.",
+   "Wykonaj ruch, napierając piętą, prostując biodro w górę i unosząc pośladki nad podłogę.",
+   "Wyprostuj się maksymalnie, zatrzymaj i wróć do pozycji wyjściowej."
+  ]
+ },
+ "Sled_Row": {
+  "name": "Wiosłowanie z Sankami",
+  "instructions": [
+   "Podepnij dwa uchwyty do sanek połączonych liną lub łańcuchem. Załaduj sanki odpowiednim ciężarem. Stań przodem do sanek i cofaj się, aż lina będzie lekko napięta.",
+   "Z uchwytem w każdej dłoni ugnij lekko kolana, trzymaj głowę i klatkę wysoko i zacznij z wyprostowanymi ramionami.",
+   "Aby rozpocząć ruch, ugnij łokcie, ściągając jednocześnie łopatki i przyciągając sanki do siebie.",
+   "Cofnij się o krok lub dwa, aby napiąć linę, i powtórz."
+  ]
+ },
+ "Smith_Machine_Bent_Over_Row": {
+  "name": "Wiosłowanie w Opadzie na Maszynie Smitha",
+  "instructions": [
+   "Ustaw gryf maszyny Smitha na wysokości około 5 cm poniżej kolan.",
+   "Ugnij lekko kolana i pochyl tułów w talii, zachowując proste plecy, aż będzie niemal równoległy do podłogi. Wskazówka: pamiętaj o uniesionej głowie.",
+   "Chwyć teraz gryf nachwytem i odblokuj go z maszyny Smitha. Pozwól mu zwisać dokładnie przed tobą, z ramionami wyprostowanymi prostopadle do podłogi i tułowia. To jest pozycja wyjściowa.",
+   "Trzymając tułów nieruchomo, unieś gryf, wydychając powietrze, z łokciami blisko ciała i bez angażowania przedramion poza samym trzymaniem ciężaru. W górnej pozycji spnij mięśnie pleców i zatrzymaj na sekundę.",
+   "Opuść powoli ciężar z powrotem do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Smith_Machine_Calf_Raise": {
+  "name": "Wspięcia na Palce na Maszynie Smitha",
+  "instructions": [
+   "Połóż podest lub talerz pod gryfem maszyny Smitha. Ustaw gryf na wysokości najlepiej dopasowanej do twojego wzrostu. Po dobraniu właściwej wysokości i załadowaniu sztangi wejdź śródstopiem na talerze i oprzyj gryf z tyłu barków.",
+   "Chwyć gryf obiema dłońmi skierowanymi do przodu. Przekręć gryf, aby go odblokować. To jest pozycja wyjściowa.",
+   "Unieś pięty jak najwyżej, odpychając się śródstopiem i napinając łydki w szczycie skurczu. Kolana powinny pozostać wyprostowane. Zatrzymaj skurcz na sekundę, zanim zaczniesz opuszczać.",
+   "Wróć powoli do pozycji wyjściowej, wdychając powietrze i opuszczając pięty.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Smith_Machine_Close-Grip_Bench_Press": {
+  "name": "Wyciskanie Wąsko na Maszynie Smitha",
+  "instructions": [
+   "Ustaw ławkę płaską pod maszyną Smitha. Ustaw gryf na wysokości, którą sięgniesz w leżeniu przy niemal całkowicie wyprostowanych ramionach. Po dobraniu potrzebnego ciężaru połóż się na ławce. Chwytem wąskim, nachwytem (dłonie do przodu), mniej więcej na szerokość barków, odblokuj gryf ze stojaka i trzymaj go prosto nad sobą na wyprostowanych ramionach. To jest pozycja wyjściowa.",
+   "Wdychając powietrze, opuszczaj powoli gryf, aż poczujesz go na środku klatki piersiowej. Wskazówka: w odróżnieniu od zwykłego wyciskania trzymaj łokcie stale blisko tułowia, aby zmaksymalizować pracę tricepsów.",
+   "Po sekundowej przerwie wypchnij gryf z powrotem do pozycji wyjściowej, wydychając powietrze i napierając tricepsami. Wyprostuj ramiona w górnej pozycji, zatrzymaj na sekundę, po czym znów zacznij powoli opuszczać. Wskazówka: opuszczanie powinno trwać co najmniej dwa razy dłużej niż wypychanie.",
+   "Powtórz ruch zaleconą liczbę powtórzeń.",
+   "Po zakończeniu zablokuj gryf z powrotem na stojaku."
+  ]
+ },
+ "Smith_Machine_One-Arm_Upright_Row": {
+  "name": "Wiosłowanie do Brody Jednorącz na Maszynie Smitha",
+  "instructions": [
+   "Z gryfem na wysokości ud załaduj odpowiedni ciężar.",
+   "Chwyć gryf szerokim chwytem i odblokuj ciężar, zdejmując z gryfu drugą rękę. Ramię powinno być wyprostowane, gdy stoisz prosto z uniesioną głową i klatką. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając łokieć i unosząc ramię z łokciem skierowanym na zewnątrz. Kontynuuj, aż ramię będzie równoległe do podłogi.",
+   "Po krótkiej przerwie odprowadź ciężar do pozycji wyjściowej.",
+   "Powtórz zaplanowaną liczbę powtórzeń, po czym zablokuj gryf na zaczepach."
+  ]
+ },
+ "Smith_Machine_Stiff-Legged_Deadlift": {
+  "name": "Martwy Ciąg na Prostych Nogach na Maszynie Smitha",
+  "instructions": [
+   "Na początek ustaw gryf maszyny Smitha mniej więcej na wysokości środka ud. Po dobraniu właściwej wysokości i załadowaniu sztangi chwyć gryf nachwytem (dłonie do przodu) na szerokość barków. Przy dużym ciężarze mogą przydać się paski na nadgarstki.",
+   "Unieś gryf, prostując całkowicie ramiona i utrzymując proste plecy. Stań z wyprostowanym tułowiem i nogami rozstawionymi na szerokość barków lub węziej. Kolana powinny być lekko ugięte. To jest pozycja wyjściowa.",
+   "Trzymając kolana nieruchomo, opuść sztangę nad stopy, zginając się w talii i utrzymując proste plecy. Schodź dalej, jakbyś chciał podnieść coś z podłogi, aż poczujesz rozciąganie mięśni dwugłowych uda. Wydychaj powietrze podczas tego ruchu.",
+   "Zacznij prostować tułów, gdy tylko poczujesz rozciąganie, prostując biodra i talię, aż wrócisz do pozycji wyjściowej. Wdychaj powietrze podczas tego ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Smith_Machine_Upright_Row": {
+  "name": "Wiosłowanie do Brody na Maszynie Smitha",
+  "instructions": [
+   "Na początek ustaw gryf maszyny Smitha mniej więcej na wysokości środka ud. Po dobraniu właściwej wysokości i załadowaniu sztangi chwyć gryf nachwytem (dłonie do przodu) na szerokość barków. Przy dużym ciężarze mogą przydać się paski na nadgarstki.",
+   "Unieś sztangę i wyprostuj całkowicie ramiona, trzymając plecy prosto. W łokciach powinno pozostać lekkie ugięcie. To jest pozycja wyjściowa.",
+   "Unieś gryf bocznymi aktonami barków, wydychając powietrze. Podczas unoszenia gryf powinien iść blisko ciała. Kontynuuj, aż niemal dotknie brody. Wskazówka: ruch prowadzą łokcie. Przy unoszeniu gryfu łokcie powinny być zawsze wyżej niż przedramiona. Trzymaj też tułów nieruchomo i zatrzymaj się na sekundę w górnej pozycji.",
+   "Opuść gryf powoli do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Spell_Caster": {
+  "name": "Spell Caster",
+  "instructions": [
+   "Trzymaj po hantlu w każdej dłoni chwytem nachwytem. Stopy powinny być szeroko rozstawione, a biodra i kolana wyprostowane. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, przyciągając oba hantle na jedną stronę, obok biodra, obracając tułów.",
+   "Trzymając ramiona wyprostowane, a hantle równolegle do podłoża, obróć tułów, przenosząc ciężary na przeciwną stronę.",
+   "Kontynuuj naprzemiennie, obracając się z jednej strony na drugą, aż ukończysz serię."
+  ]
+ },
+ "Split_Squat_with_Dumbbells": {
+  "name": "Przysiad Bułgarski z Hantlami",
+  "instructions": [
+   "Ustaw się w pozycji rozkrocznej z tylną stopą uniesioną i przednią wysuniętą do przodu.",
+   "Trzymaj po hantlu w każdej dłoni, pozwalając im zwisać wzdłuż ciała. To jest pozycja wyjściowa.",
+   "Zacznij od zejścia w dół, uginając kolano i biodro. Przez cały ruch zachowuj prawidłową sylwetkę. Utrzymuj przednie kolano w linii ze stopą.",
+   "W dolnej pozycji napieraj piętą, prostując kolano i biodro, aby wrócić do pozycji wyjściowej."
+  ]
+ },
+ "Standing_Biceps_Cable_Curl": {
+  "name": "Uginanie Ramion na Wyciągu Stojąc",
+  "instructions": [
+   "Stań wyprostowany, trzymając drążek podpięty do dolnego wyciągu. Chwyć go na szerokość barków i trzymaj łokcie blisko tułowia. Dłonie powinny być zwrócone wnętrzem do góry (chwyt podchwytem). To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, ugnij ręce, napinając bicepsy i wydychając powietrze. Poruszać się powinny wyłącznie przedramiona. Kontynuuj, aż bicepsy będą w pełni napięte, a drążek znajdzie się na wysokości barków. Zatrzymaj skurcz na sekundę, spinając mięsień.",
+   "Zacznij powoli opuszczać drążek do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Standing_Cable_Wood_Chop": {
+  "name": "Drwal na Wyciągu Stojąc",
+  "instructions": [
+   "Podepnij standardowy uchwyt do wyciągu i ustaw linkę w najwyższej pozycji.",
+   "Stojąc bokiem do wyciągu, chwyć uchwyt jedną ręką i odejdź od maszyny. Powinieneś znajdować się mniej więcej na odległość ramienia od wyciągu, z napiętą linką. Wyprostowane ramię powinno być w jednej linii z linką.",
+   "Ze stopami rozstawionymi na szerokość barków sięgnij w górę drugą ręką i chwyć uchwyt obiema dłońmi. Ramiona powinny nadal być całkowicie wyprostowane.",
+   "Jednym ruchem pociągnij uchwyt w dół i w poprzek ciała do przedniego kolana, obracając tułów.",
+   "Trzymaj plecy i ramiona proste, a brzuch napięty, obracając przy tym tylną stopę i uginając kolana, aby uzyskać pełen zakres ruchu.",
+   "Zachowaj postawę i wyprostowane ramiona. Wróć do pozycji neutralnej powoli i w kontrolowany sposób.",
+   "Powtarzaj aż do odmowy.",
+   "Następnie zmień ustawienie i powtórz tę samą serię ruchów na drugą stronę."
+  ]
+ },
+ "Standing_Dumbbell_Upright_Row": {
+  "name": "Wiosłowanie Hantlami do Brody Stojąc",
+  "instructions": [
+   "Chwyć po hantlu w każdą dłoń chwytem nachwytem (dłonie do przodu), nieco węziej niż na szerokość barków. Hantle powinny spoczywać na udach. Ramiona powinny być wyprostowane z lekkim ugięciem w łokciach, a plecy proste. To jest pozycja wyjściowa.",
+   "Unieś hantle bocznymi aktonami barków, wydychając powietrze. Podczas unoszenia hantle powinny iść blisko ciała, a ruch prowadzić łokcie. Kontynuuj, aż niemal dotkną brody. Wskazówka: przy unoszeniu hantli łokcie powinny być zawsze wyżej niż przedramiona. Trzymaj też tułów nieruchomo i zatrzymaj się na sekundę w górnej pozycji.",
+   "Opuść hantle powoli do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Standing_Military_Press": {
+  "name": "Wyciskanie Militarne Stojąc",
+  "instructions": [
+   "Zacznij od ustawienia sztangi na stojaku na wysokości klatki piersiowej. Po dobraniu ciężaru chwyć sztangę nachwytem (dłonie do przodu). Pamiętaj, aby chwycić gryf szerzej niż na szerokość barków.",
+   "Ugnij lekko kolana i oprzyj sztangę na obojczykach. Unieś sztangę, trzymając ją na klatce piersiowej. Cofnij się o krok i ustaw stopy na szerokość barków.",
+   "Po chwyceniu sztangi z właściwą szerokością unieś ją nad głowę, prostując ramiona. Zatrzymaj mniej więcej na wysokości barków, lekko przed głową. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli sztangę do obojczyków, wdychając powietrze.",
+   "Unieś sztangę z powrotem do pozycji wyjściowej, wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Standing_Olympic_Plate_Hand_Squeeze": {
+  "name": "Ściskanie Talerza Olimpijskiego Stojąc",
+  "instructions": [
+   "Na początek stań prosto, trzymając po talerzu za obrzeże w każdej dłoni na wyprostowanych ramionach, chwytem neutralnym (dłonie do wewnątrz). Stopy powinny być rozstawione na szerokość barków. To jest pozycja wyjściowa.",
+   "Opuszczaj talerze, aż palce będą niemal wyprostowane, ale wciąż zdolne utrzymać ciężar. Wdychaj powietrze podczas opuszczania.",
+   "Unieś teraz talerze z powrotem do pozycji wyjściowej, zaciskając dłonie i wydychając powietrze.",
+   "Powtórz liczbę powtórzeń zaleconą w twoim planie."
+  ]
+ },
+ "Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl": {
+  "name": "Uginanie Nadgarstków ze Sztangą za Plecami Stojąc",
+  "instructions": [
+   "Zacznij od stania prosto, trzymając sztangę za pośladkami na wyprostowanych ramionach chwytem nachwytem (dłonie zwrócone do tyłu, od pośladków), z dłońmi rozstawionymi na szerokość barków.",
+   "Patrz prosto przed siebie, ze stopami rozstawionymi na szerokość barków. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, unieś powoli sztangę, uginając nadgarstki półkolistym ruchem w kierunku sufitu. Uwaga: w tym ćwiczeniu powinien poruszać się wyłącznie nadgarstek.",
+   "Zatrzymaj skurcz na sekundę i opuść sztangę z powrotem do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń.",
+   "Po zakończeniu odłóż sztangę na stojak lub na podłogę, uginając kolana. Wskazówka: najwygodniej jest wziąć ją ze stojaka albo poprosić partnera o podanie."
+  ]
+ },
+ "Step-up_with_Knee_Raise": {
+  "name": "Wejście na Skrzynię z Uniesieniem Kolana",
+  "instructions": [
+   "Stań przodem do skrzyni lub ławki o odpowiedniej wysokości, ze złączonymi stopami. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, wchodząc na ławkę lewą stopą. Wyprostuj biodro i kolano przedniej nogi, aby stanąć na skrzyni. Stojąc na skrzyni na lewej nodze, ugnij prawe kolano i biodro, unosząc kolano tak wysoko, jak potrafisz.",
+   "Odwróć ten ruch, schodząc ze skrzyni, po czym powtórz sekwencję na drugą nogę."
+  ]
+ },
+ "Stiff_Leg_Barbell_Good_Morning": {
+  "name": "Dzień Dobry ze Sztangą na Prostych Nogach",
+  "instructions": [
+   "Ze względów bezpieczeństwa ćwiczenie najlepiej wykonywać w klatce do przysiadów. Na początek ustaw gryf na stojaku na wysokości najlepiej dopasowanej do twojego wzrostu. Po dobraniu właściwej wysokości i załadowaniu sztangi wejdź pod gryf i oprzyj go na barkach (nieco poniżej karku).",
+   "Chwyć gryf obiema rękami po bokach i zdejmij go ze stojaka, najpierw napierając nogami i jednocześnie prostując tułów.",
+   "Odejdź od stojaka i ustaw nogi w średnim rozstawie na szerokość barków. Przez cały czas trzymaj głowę uniesioną, ponieważ patrzenie w dół zaburza równowagę, i utrzymuj proste plecy. To jest pozycja wyjściowa.",
+   "Trzymając nogi nieruchomo, pochyl tułów do przodu, zginając się w biodrach i wdychając powietrze. Opuszczaj tułów, aż będzie równoległy do podłogi.",
+   "Zacznij unosić sztangę, wydychając powietrze i prostując tułów z powrotem do pozycji wyjściowej.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Stiff-Legged_Dumbbell_Deadlift": {
+  "name": "Martwy Ciąg na Prostych Nogach z Hantlami",
+  "instructions": [
+   "Chwyć parę hantli i trzymaj je wzdłuż ciała na wyprostowanych ramionach.",
+   "Stań z wyprostowanym tułowiem i nogami rozstawionymi na szerokość barków lub węziej. Kolana powinny być lekko ugięte. To jest pozycja wyjściowa.",
+   "Trzymając kolana nieruchomo, opuść hantle nad stopy, zginając się w talii i utrzymując proste plecy. Schodź dalej, jakbyś chciał podnieść coś z podłogi, aż poczujesz rozciąganie mięśni dwugłowych uda. Wydychaj powietrze podczas tego ruchu.",
+   "Zacznij prostować tułów, prostując biodra i talię, aż wrócisz do pozycji wyjściowej. Wdychaj powietrze podczas tego ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Sumo_Deadlift": {
+  "name": "Martwy Ciąg Sumo",
+  "instructions": [
+   "Zacznij z załadowaną sztangą na podłodze. Podejdź do gryfu tak, aby przecinał środek stóp. Stopy ustaw bardzo szeroko, blisko zacisków. Zegnij biodra i chwyć gryf. Ramiona powinny znaleźć się dokładnie pod barkami, wewnątrz nóg; możesz użyć chwytu nachwytem, mieszanego lub hakowego. Rozluźnij barki, co w praktyce wydłuża ramiona.",
+   "Weź oddech, po czym obniż biodra, patrząc przed siebie z uniesioną klatką. Napieraj na podłogę, rozpychając stopy na boki, z ciężarem na tylnej połowie stóp. Wyprostuj biodra i kolana.",
+   "Gdy gryf minie kolana, odchyl się do tyłu i wypchnij biodra w kierunku gryfu, ściągając łopatki.",
+   "Odłóż ciężar na ziemię, zginając biodra i kontrolując opuszczanie."
+  ]
+ },
+ "Suspended_Reverse_Crunch": {
+  "name": "Odwrotne Spięcia Brzucha w Podwieszeniu",
+  "instructions": [
+   "Zamocuj taśmy treningowe tak, aby uchwyty zwisały około 30 cm nad ziemią. Przejdź do pozycji deski jak przy pompce, tyłem do stelaża.",
+   "Włóż stopy w uchwyty. Utrzymuj prostą sylwetkę, nie pozwalając biodrom opadać. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając kolana i biodra i przyciągając kolana do tułowia. Jednocześnie podwiń miednicę do przodu, pozwalając kręgosłupowi się zgiąć.",
+   "W szczycie kontrolowanego ruchu wróć do pozycji wyjściowej."
+  ]
+ },
+ "Suspended_Row": {
+  "name": "Wiosłowanie w Podwieszeniu",
+  "instructions": [
+   "Zawieś taśmy mniej więcej na wysokości klatki piersiowej. Chwyć po uchwycie w każdą dłoń i odchyl się do tyłu. Trzymaj ciało wyprostowane, a głowę i klatkę wysoko. Ramiona powinny być całkowicie wyprostowane. To jest pozycja wyjściowa.",
+   "Rozpocznij ruch, uginając łokcie. Jednocześnie wysuń łopatki do przodu.",
+   "Po zakończeniu ruchu zatrzymaj się, a następnie wróć do pozycji wyjściowej."
+  ]
+ },
+ "T-Bar_Row_with_Handle": {
+  "name": "Wiosłowanie T-Bar z Uchwytem",
+  "instructions": [
+   "Umieść gryf w gnieździe landmine lub w rogu, aby się nie przesuwał. Załaduj odpowiedni ciężar na swoim końcu.",
+   "Stań okrakiem nad gryfem i załóż uchwyt wąski typu Double D wokół gryfu przy zacisku. Używając bioder i nóg, wyprostuj się do pozycji stojącej.",
+   "Przyjmij szeroki rozstaw stóp z biodrami cofniętymi i klatką wysoko. Ramiona powinny być wyprostowane. To jest pozycja wyjściowa.",
+   "Pociągnij ciężar do górnej części brzucha, ściągając łopatki i uginając łokcie. Nie szarpaj ciężarem ani nie oszukuj podczas ruchu.",
+   "Po krótkiej przerwie wróć do pozycji wyjściowej."
+  ]
+ },
+ "Thigh_Adductor": {
+  "name": "Przywodzenie Ud na Maszynie",
+  "instructions": [
+   "Na początek usiądź na maszynie do przywodzenia i dobierz komfortowy ciężar. Gdy nogi są prawidłowo ułożone na wałkach maszyny, chwyć uchwyty po obu stronach. Cała górna część ciała (od talii w górę) powinna pozostać nieruchoma. To jest pozycja wyjściowa.",
+   "Napieraj powoli nogami na maszynę, zbliżając je do siebie i wydychając powietrze.",
+   "Poczuj skurcz przez sekundę i zacznij odprowadzać nogi do pozycji wyjściowej, wdychając powietrze. Uwaga: pamiętaj, aby górna część ciała pozostawała nieruchoma, i unikaj szybkich, szarpanych ruchów, aby zapobiec kontuzjom.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "tibialis_raise": {
+  "name": "Unoszenie Palców przy Ścianie",
+  "instructions": [
+   "Stań plecami do ściany, z piętami odsuniętymi o krok, i unieś palce stóp w kierunku goleni."
+  ]
+ },
+ "Tricep_Dumbbell_Kickback": {
+  "name": "Prostowanie Ramion w Opadzie z Hantlami",
+  "instructions": [
+   "Zacznij z hantlami w obu dłoniach, zwróconymi wnętrzem do tułowia. Trzymaj plecy prosto, kolana lekko ugięte i pochyl się w talii do przodu. Tułów powinien być niemal równoległy do podłogi. Pamiętaj o uniesionej głowie. Ramiona powinny być blisko tułowia i równolegle do podłogi. Przedramiona podczas trzymania ciężarów powinny być skierowane w dół, tworząc kąt 90 stopni między przedramieniem a ramieniem. To jest pozycja wyjściowa.",
+   "Trzymając ramiona nieruchomo, wydychaj powietrze i wyprostuj ręce tricepsami, aż będą całkowicie wyprostowane. Skup się na ruchu przedramienia.",
+   "Po krótkiej przerwie w szczycie skurczu wdychaj powietrze i opuść powoli hantle do pozycji wyjściowej.",
+   "Powtórz ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Two-Arm_Kettlebell_Military_Press": {
+  "name": "Wyciskanie Militarne Dwoma Kettlebellami",
+  "instructions": [
+   "Zarzuć dwa kettlebelle na barki. Wykonaj clean, prostując nogi i biodra i wymachując kettlebelle w kierunku barków. Obróć przy tym nadgarstki tak, aby dłonie były zwrócone wnętrzem do przodu.",
+   "Wypchnij kettlebelle w górę i na zewnątrz. Gdy miną głowę, wsuń się pod ciężar tak, aby kettlebelle znalazły się za głową. Pamiętaj o napięciu mięśni najszerszych, pośladków i brzucha dla większej stabilności."
+  ]
+ },
+ "Upright_Barbell_Row": {
+  "name": "Wiosłowanie Sztangą do Brody",
+  "instructions": [
+   "Chwyć sztangę nachwytem, nieco węziej niż na szerokość barków. Gryf powinien spoczywać na udach, z ramionami wyprostowanymi i lekkim ugięciem w łokciach. Plecy również powinny być proste. To jest pozycja wyjściowa.",
+   "Wydychaj powietrze i unieś gryf bocznymi aktonami barków, prowadząc łokcie w górę i na boki. Podczas unoszenia trzymaj gryf blisko ciała. Kontynuuj, aż niemal dotknie brody. Wskazówka: ruch prowadzą łokcie i powinny być zawsze wyżej niż przedramiona. Pamiętaj, aby trzymać tułów nieruchomo i zatrzymać się na sekundę w górnej pozycji.",
+   "Opuść gryf powoli do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "Upright_Row_-_With_Bands": {
+  "name": "Wiosłowanie do Brody - z Gumami",
+  "instructions": [
+   "Na początek stań na gumie oporowej tak, aby napięcie zaczynało się przy wyprostowanych ramionach. Chwyć uchwyty nachwytem (dłonie zwrócone do ud), nieco węziej niż na szerokość barków. Uchwyty powinny spoczywać na udach. Ramiona powinny być wyprostowane z lekkim ugięciem w łokciach, a plecy proste. To jest pozycja wyjściowa.",
+   "Unieś uchwyty bocznymi aktonami barków, wydychając powietrze. Podczas unoszenia uchwyty powinny iść blisko ciała. Kontynuuj, aż niemal dotkną brody. Wskazówka: ruch prowadzą łokcie. Przy unoszeniu uchwytów łokcie powinny być zawsze wyżej niż przedramiona. Trzymaj też tułów nieruchomo i zatrzymaj się na sekundę w górnej pozycji.",
+   "Opuść uchwyty powoli do pozycji wyjściowej. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "V-Bar_Pullup": {
+  "name": "Podciąganie z Uchwytem V",
+  "instructions": [
+   "Zacznij od ułożenia środka uchwytu V na środku drążka (zakładając, że twoja stacja do podciągania nie ma uchwytów neutralnych). Rączki uchwytu V będą skierowane w dół, dzięki czemu możesz zawisnąć na drążku, trzymając się ich.",
+   "Po pewnym ułożeniu uchwytu V chwyć go z obu stron i zawiśnij. Wypnij klatkę piersiową i odchyl się lekko do tyłu, aby lepiej zaangażować mięśnie najszersze. To jest pozycja wyjściowa.",
+   "Mięśniami najszerszymi podciągnij tułów, odchylając lekko głowę do tyłu, aby nie uderzyć się o drążek. Kontynuuj, aż klatka piersiowa niemal dotknie uchwytu V. Wydychaj powietrze podczas tego ruchu.",
+   "Po sekundzie w pozycji skurczu opuść powoli ciało do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zaplanowaną liczbę powtórzeń."
+  ]
+ },
+ "Weighted_Ball_Hyperextension": {
+  "name": "Hiperekstensja na Piłce z Obciążeniem",
+  "instructions": [
+   "Na początek połóż się na piłce gimnastycznej, opierając o nią tułów równolegle do podłogi. Śródstopie powinno być oparte o podłogę, aby pomóc w utrzymaniu równowagi. Umieść talerz pod brodą lub za karkiem. To jest pozycja wyjściowa.",
+   "Unieś powoli tułów, prostując się w talii i odcinku lędźwiowym. Pamiętaj o wydechu podczas tego ruchu.",
+   "Zatrzymaj skurcz w odcinku lędźwiowym na sekundę i opuść tułów z powrotem do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz liczbę powtórzeń zaleconą w twoim planie."
+  ]
+ },
+ "Weighted_Ball_Side_Bend": {
+  "name": "Skłon Boczny na Piłce z Obciążeniem",
+  "instructions": [
+   "Na początek połóż się na piłce gimnastycznej, opierając o nią lewą stronę tułowia (talię, biodro i bark).",
+   "Stopy powinny stać na podłodze, a nogi być skrzyżowane i zwisać z piłki. Trzymaj talerz w prawej dłoni bezpośrednio przy prawej stronie głowy. Wskazówka: gładka strona talerza powinna przylegać do głowy.",
+   "Ułóż lewe ramię w poprzek tułowia tak, aby dłoń spoczywała na mięśniach skośnych. Między lewym przedramieniem a ramieniem powinien powstać kąt prosty. To jest pozycja wyjściowa.",
+   "Unieś bok tułowia, wykonując zgięcie boczne w talii i wydychając powietrze.",
+   "Zatrzymaj skurcz na sekundę i opuść się powoli do pozycji wyjściowej, wdychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń.",
+   "Zmień stronę i powtórz ćwiczenie."
+  ]
+ },
+ "Weighted_Bench_Dip": {
+  "name": "Dipy na Ławce z Obciążeniem",
+  "instructions": [
+   "Do tego ćwiczenia potrzebujesz ławki za plecami i drugiej przed sobą. Z ławkami ustawionymi prostopadle do ciała chwyć krawędź jednej z nich dłońmi blisko ciała, rozstawionymi na szerokość barków. Ramiona powinny być całkowicie wyprostowane.",
+   "Nogi będą wyprostowane do przodu, oparte na drugiej ławce, równolegle do podłogi, podczas gdy tułów pozostaje do niej prostopadły. Poproś partnera o ułożenie hantla na twoich udach. Uwaga: to ćwiczenie najlepiej wykonywać z partnerem, ponieważ samodzielne umieszczenie ciężaru na udach bywa trudne i może prowadzić do kontuzji. To jest pozycja wyjściowa.",
+   "Opuszczaj powoli ciało, wdychając powietrze i uginając łokcie, aż kąt między ramieniem a przedramieniem będzie nieco mniejszy niż 90 stopni. Wskazówka: przez cały ruch trzymaj łokcie jak najbliżej siebie. Przedramiona powinny być zawsze skierowane w dół.",
+   "Używając tricepsów do uniesienia tułowia, wypchnij się z powrotem do pozycji wyjściowej, wydychając powietrze.",
+   "Powtórz zalecaną liczbę powtórzeń."
+  ]
+ },
+ "weighted_toe_raise": {
+  "name": "Unoszenie Palców z Obciążeniem",
+  "instructions": [
+   "Usiądź z lekkim hantlem opartym na palcach stóp i unoś je, napierając na ciężar."
+  ]
+ },
+ "Wide-Grip_Lat_Pulldown": {
+  "name": "Ściąganie Drążka Szerokim Chwytem",
+  "instructions": [
+   "Usiądź przy maszynie do ściągania drążka z szerokim gryfem podpiętym do górnego wyciągu. Pamiętaj o dopasowaniu wałka kolanowego maszyny do swojego wzrostu. Wałki zapobiegają unoszeniu ciała przez ciężar podpięty do gryfu.",
+   "Chwyć drążek nachwytem, stosując wskazaną szerokość chwytu. Uwaga o chwytach: przy chwycie szerokim dłonie rozstawiasz szerzej niż barki, przy średnim na szerokość barków, a przy wąskim węziej niż barki.",
+   "Wisząc na wyprostowanych ramionach z wybraną szerokością chwytu, odchyl tułów do tyłu o około 30 stopni, wyginając odcinek lędźwiowy i wypychając klatkę piersiową. To jest pozycja wyjściowa.",
+   "Wydychając powietrze, ściągnij drążek, aż dotknie górnej części klatki piersiowej, prowadząc barki i ramiona w dół i do tyłu. Wskazówka: skup się na spinaniu mięśni pleców po osiągnięciu pełnego skurczu. Górna część tułowia powinna pozostać nieruchoma, poruszać się mają wyłącznie ramiona. Przedramiona mają jedynie trzymać drążek — nie próbuj ściągać go przedramionami.",
+   "Po sekundzie w pozycji skurczu, ze ściągniętymi łopatkami, unieś powoli drążek do pozycji wyjściowej, aż ramiona będą całkowicie wyprostowane, a mięśnie najszersze w pełni rozciągnięte. Wdychaj powietrze podczas tej fazy ruchu.",
+   "Powtórz ten ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Wide-Grip_Rear_Pull-Up": {
+  "name": "Podciąganie za Kark Szerokim Chwytem",
+  "instructions": [
+   "Chwyć drążek nachwytem, stosując szeroki chwyt.",
+   "Wisząc na wyprostowanych ramionach, pochyl tułów i głowę do przodu tak, aby powstała wyimaginowana linia od drążka do karku. To jest pozycja wyjściowa.",
+   "Podciągnij tułów, aż drążek znajdzie się blisko karku. W tym celu prowadź barki i ramiona w dół i do tyłu, lekko pochylając głowę do przodu. Wydychaj powietrze podczas tej fazy ruchu. Wskazówka: skup się na spinaniu mięśni pleców po osiągnięciu pełnego skurczu. Górna część tułowia powinna pozostać nieruchoma, poruszać się mają wyłącznie ramiona. Przedramiona mają jedynie trzymać drążek.",
+   "Po sekundzie w pozycji skurczu zacznij wdychać powietrze i opuść powoli tułów do pozycji wyjściowej, aż ramiona będą całkowicie wyprostowane, a mięśnie najszersze w pełni rozciągnięte.",
+   "Powtórz ten ruch zaleconą liczbę powtórzeń."
+  ]
+ },
+ "Wrist_Roller": {
+  "name": "Rolka do Nadgarstków",
+  "instructions": [
+   "Na początek stań prosto, chwytając rolkę do nadgarstków nachwytem (dłonie w dół). Stopy powinny być rozstawione na szerokość barków.",
+   "Unieś powoli oba ramiona, aż będą całkowicie wyprostowane i równoległe do podłogi przed tobą. Uwaga: upewnij się, że linka nie jest jeszcze nawinięta na rolkę. Całe ciało powinno pozostać nieruchome poza przedramionami. To jest pozycja wyjściowa.",
+   "Obracaj nadgarstki po kolei ruchem do góry, nawijając linkę na rolkę i podciągając ciężar do drążka.",
+   "Gdy ciężar dotrze do drążka, zacznij powoli opuszczać go z powrotem, obracając nadgarstki ruchem w dół, aż ciężar wróci do pozycji wyjściowej.",
+   "Powtórz liczbę powtórzeń zaleconą w twoim planie."
+  ]
+ }
+}
