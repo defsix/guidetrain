@@ -159,13 +159,13 @@ untranslated key renders English rather than a raw key.
 Translated everywhere: the whole interface, all 20 muscle names and
 descriptions, the region and equipment labels.
 
-Exercise names and instructions are a separate, much larger job — 180 names and
-815 steps, ~23,000 words per language — so they ship **one language at a time**
-in `src/i18n/exercises/<locale>.json`, lazy-loaded apart from the interface
-(~30 KB gzipped) and only when a muscle is opened. **Done: Spanish, Polish, Russian,
-Czech, German, French, Portuguese, Japanese.** A
-language without a file falls back per key to the English text, so it reads as
-English prose inside a translated app rather than as breakage.
+Exercise names and instructions are a much larger job — 180 names and 815 steps,
+~23,000 words per language — and **all nine are now done**, in
+`src/i18n/exercises/<locale>.json`. They are lazy-loaded apart from the
+interface (~27–31 KB gzipped each) and fetched only when a muscle is opened, so
+the chunk every visitor waits on stays ~4 KB. A key without a translation falls
+back to the English text, so a gap reads as English prose inside a translated
+app rather than as breakage.
 
     node tools/i18n/dump-exercises.mjs <from> <to>   # source text to translate
 
