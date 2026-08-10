@@ -4,7 +4,7 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Languages
 
-- **Exercise text: Spanish, Polish, Russian, Czech, German, French and Portuguese** — all 180 exercise names and 815
+- **Exercise text: Spanish, Polish, Russian, Czech, German, French, Portuguese and Japanese** — all 180 exercise names and 815
   instruction steps per language, ~23,000 words each. Lazy-loaded separately from the interface
   (~30 KB gzipped) and only once a muscle is opened, so the language chunk
   every visitor waits on stays ~4 KB. Languages arrive one at a time; those
