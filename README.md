@@ -163,7 +163,7 @@ Exercise names and instructions are a separate, much larger job — 180 names an
 815 steps, ~23,000 words per language — so they ship **one language at a time**
 in `src/i18n/exercises/<locale>.json`, lazy-loaded apart from the interface
 (~30 KB gzipped) and only when a muscle is opened. **Done: Spanish, Polish, Russian,
-Czech, German.** A
+Czech, German, French.** A
 language without a file falls back per key to the English text, so it reads as
 English prose inside a translated app rather than as breakage.
 

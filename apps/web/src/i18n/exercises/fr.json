@@ -1,0 +1,1716 @@
+{
+ "3_4_Sit-Up": {
+  "name": "Relevé de Buste aux Trois Quarts",
+  "instructions": [
+   "Allongez-vous au sol et bloquez vos pieds. Vos jambes doivent être fléchies aux genoux.",
+   "Placez les mains derrière la tête ou sur les côtés. Vous commencez le dos au sol. C'est la position de départ.",
+   "Fléchissez les hanches et la colonne pour relever le buste vers les genoux.",
+   "En fin de contraction, le buste doit être perpendiculaire au sol. Inversez le mouvement en ne redescendant qu'aux trois quarts.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Ab_Crunch_Machine": {
+  "name": "Machine à Abdominaux",
+  "instructions": [
+   "Choisissez une résistance légère et asseyez-vous à la machine, les pieds sous les cales et les mains sur les poignées hautes. Les bras sont fléchis à 90 degrés, les triceps posés sur les coussins. C'est la position de départ.",
+   "Relevez les jambes tout en enroulant le buste. Expirez pendant le mouvement. Astuce : restez lent et contrôlé. Concentrez-vous sur les abdominaux pour déplacer la charge, en relâchant les jambes et les pieds.",
+   "Après une pause d'une seconde, revenez lentement à la position de départ en inspirant.",
+   "Répétez le mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Alternate_Hammer_Curl": {
+  "name": "Curl Marteau en Alternance",
+  "instructions": [
+   "Tenez-vous debout, buste droit, un haltère dans chaque main, bras tendus. Les coudes restent près du buste.",
+   "Les paumes sont tournées vers le buste. C'est la position de départ.",
+   "En gardant le bras immobile, montez l'haltère droit en contractant le biceps et en expirant. Continuez jusqu'à contraction complète du biceps, l'haltère à hauteur d'épaule. Tenez une seconde en serrant le biceps. Astuce : seuls les avant-bras bougent.",
+   "Redescendez lentement l'haltère à la position de départ en inspirant.",
+   "Répétez le mouvement avec la main gauche. Cela fait une répétition.",
+   "Continuez à alterner ainsi jusqu'au nombre de répétitions recommandé."
+  ]
+ },
+ "Atlas_Stone_Trainer": {
+  "name": "Barre d'Entraînement aux Pierres d'Atlas",
+  "instructions": [
+   "Cet accessoire permet de développer la force des pierres d'Atlas quand on n'en a pas ; il est le plus souvent fabriqué à partir d'embouts de barre ou de tube épais.",
+   "Chargez la barre au poids voulu. Placez-vous à cheval au-dessus, entourez l'engin de vos bras et fléchissez les hanches.",
+   "Tirez la charge au-dessus des genoux en étendant les hanches. Une fois les genoux passés, vous pouvez la poser sur les cuisses en vous asseyant en arrière et la serrer contre la poitrine.",
+   "Terminez en étendant hanches et genoux pour monter la charge le plus haut possible. Vous pouvez la reposer sur les cuisses ou au sol pour les répétitions suivantes."
+  ]
+ },
+ "Axle_Deadlift": {
+  "name": "Soulevé de Terre à la Barre Épaisse",
+  "instructions": [
+   "Approchez-vous de la barre pour qu'elle soit centrée sur vos pieds, écartés de la largeur des hanches. Fléchissez les hanches et saisissez la barre à largeur d'épaules, en laissant les omoplates s'écarter. On utilise généralement une prise inversée.",
+   "Pieds et prise en place, inspirez profondément, abaissez les hanches et fléchissez les genoux jusqu'à ce que les tibias touchent la barre. Regardez devant vous, poitrine sortie et dos cambré, puis poussez dans les talons pour lancer la charge vers le haut.",
+   "Une fois la barre passée aux genoux, tirez-la franchement vers l'arrière en resserrant les omoplates et en poussant les hanches contre la barre.",
+   "Redescendez la barre en fléchissant les hanches et en la guidant jusqu'au sol."
+  ]
+ },
+ "Balance_Board": {
+  "name": "Planche d'Équilibre",
+  "instructions": [
+   "Placez une planche d'équilibre devant vous.",
+   "Montez dessus et cherchez votre équilibre.",
+   "Tenez l'équilibre aussi longtemps que souhaité."
+  ]
+ },
+ "Ball_Leg_Curl": {
+  "name": "Leg Curl sur Ballon",
+  "instructions": [
+   "Allongez-vous au sol sur le dos, les pieds posés sur le ballon.",
+   "Placez le ballon de façon à ce que, jambes tendues, vos chevilles reposent dessus. C'est la position de départ.",
+   "Décollez les hanches du sol, le poids reposant sur les omoplates et les pieds.",
+   "Fléchissez les genoux en tirant le ballon aussi près de vous que possible, en contractant les ischio-jambiers.",
+   "Après une brève pause, revenez à la position de départ."
+  ]
+ },
+ "Band_Assisted_Pull-Up": {
+  "name": "Traction Assistée à l'Élastique",
+  "instructions": [
+   "Passez l'élastique au milieu de la barre de traction et bloquez-le sur lui-même. Différents élastiques donnent différents niveaux d'assistance.",
+   "Tirez l'extrémité de l'élastique vers le bas et engagez-y un genou fléchi, en vous assurant qu'il ne glissera pas. Prenez une prise moyenne à large sur la barre. C'est la position de départ.",
+   "Tirez-vous vers le haut en contractant les dorsaux et en fléchissant les coudes. Les coudes descendent le long du corps. Tirez vers l'avant en cherchant à passer le menton au-dessus de la barre. Évitez tout balancement ou à-coup.",
+   "Après une brève pause, revenez à la position de départ."
+  ]
+ },
+ "Band_Good_Morning": {
+  "name": "Good Morning à l'Élastique",
+  "instructions": [
+   "Avec un élastique de 105 cm, tenez-vous debout sur une extrémité, pieds légèrement écartés. Fléchissez les hanches pour passer l'autre extrémité derrière la nuque. C'est la position de départ.",
+   "En gardant les jambes tendues, étendez les hanches jusqu'à une position presque verticale.",
+   "Veillez à ne pas arrondir le dos en redescendant à la position de départ."
+  ]
+ },
+ "Band_Good_Morning_Pull_Through": {
+  "name": "Good Morning à l'Élastique (Pull Through)",
+  "instructions": [
+   "Passez l'élastique autour d'un poteau. Placez-vous un peu plus loin et passez l'autre extrémité derrière la nuque. Vos mains peuvent aider à le maintenir en place.",
+   "Commencez par fléchir les hanches en reculant les fessiers le plus loin possible. Gardez le dos plat et penchez-vous jusqu'à environ 90 degrés. Les genoux ne sont que légèrement fléchis.",
+   "Revenez à la position de départ en poussant les hanches vers l'avant pour vous redresser."
+  ]
+ },
+ "Band_Hip_Adductions": {
+  "name": "Adduction de Hanche à l'Élastique",
+  "instructions": [
+   "Fixez un élastique autour d'un poteau solide ou d'un autre point d'ancrage.",
+   "Placez-vous côté gauche vers le poteau et passez le pied droit dans l'élastique, autour de la cheville.",
+   "Tenez-vous droit et appuyez-vous au poteau si nécessaire. C'est la position de départ.",
+   "En gardant le genou tendu, montez la jambe droite sur le côté aussi loin que possible.",
+   "Revenez à la position de départ et répétez le nombre de répétitions voulu.",
+   "Changez de côté."
+  ]
+ },
+ "Barbell_Bench_Press_-_Medium_Grip": {
+  "name": "Développé Couché à la Barre – Prise Moyenne",
+  "instructions": [
+   "Allongez-vous sur un banc plat. Avec une prise moyenne (une prise qui, à mi-mouvement, forme un angle de 90 degrés entre avant-bras et bras), sortez la barre du rack et tenez-la bras tendus à la verticale au-dessus de vous. C'est la position de départ.",
+   "Depuis la position de départ, inspirez et descendez lentement jusqu'à ce que la barre touche le milieu de la poitrine.",
+   "Après une brève pause, repoussez la barre à la position de départ en expirant. Concentrez-vous sur la poussée par les pectoraux. Tendez les bras et serrez la poitrine en position haute, tenez une seconde, puis redescendez lentement. Astuce : la descente doit durer environ deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez la barre sur le rack."
+  ]
+ },
+ "Barbell_Curl": {
+  "name": "Curl à la Barre",
+  "instructions": [
+   "Tenez-vous debout, buste droit, en tenant une barre à largeur d'épaules. Les paumes sont tournées vers l'avant et les coudes restent près du buste. C'est la position de départ.",
+   "En gardant les bras immobiles, montez la charge en contractant les biceps et en expirant. Astuce : seuls les avant-bras bougent.",
+   "Continuez jusqu'à contraction complète des biceps, la barre à hauteur d'épaules. Tenez une seconde en serrant fortement les biceps.",
+   "Redescendez lentement la barre à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Barbell_Deadlift": {
+  "name": "Soulevé de Terre à la Barre",
+  "instructions": [
+   "Placez-vous devant une barre chargée.",
+   "En gardant le dos aussi droit que possible, fléchissez les genoux, penchez-vous en avant et saisissez la barre en pronation à largeur d'épaules. C'est la position de départ. Astuce : si la prise est difficile à tenir, utilisez une prise inversée ou des sangles.",
+   "En tenant la barre, lancez le mouvement en poussant sur les jambes tout en redressant le buste, et expirez. En position haute, sortez la poitrine et contractez le dos en resserrant les omoplates. Pensez à la posture d'un militaire au garde-à-vous.",
+   "Revenez à la position de départ en fléchissant les genoux tout en penchant le buste vers l'avant à partir des hanches, dos droit. Quand les disques touchent le sol, vous êtes revenu à la position de départ, prêt pour une nouvelle répétition.",
+   "Effectuez le nombre de répétitions prévu par le programme."
+  ]
+ },
+ "Barbell_Glute_Bridge": {
+  "name": "Pont Fessier à la Barre",
+  "instructions": [
+   "Asseyez-vous au sol, une barre chargée au-dessus des jambes. Une barre épaisse ou une mousse sur la barre réduit nettement l'inconfort de cet exercice. Roulez la barre jusqu'à ce qu'elle soit juste au-dessus des hanches et allongez-vous à plat au sol.",
+   "Lancez le mouvement en poussant dans les talons et en étendant les hanches à la verticale à travers la barre. Votre poids repose sur le haut du dos et les talons.",
+   "Étendez au maximum, puis inversez le mouvement pour revenir à la position de départ."
+  ]
+ },
+ "Barbell_Hip_Thrust": {
+  "name": "Hip Thrust à la Barre",
+  "instructions": [
+   "Asseyez-vous au sol, un banc juste derrière vous et une barre chargée au-dessus des jambes. Une barre épaisse ou une mousse sur la barre réduit nettement l'inconfort de cet exercice.",
+   "Roulez la barre jusqu'à ce qu'elle soit juste au-dessus des hanches et appuyez-vous contre le banc, les omoplates près de son bord supérieur.",
+   "Lancez le mouvement en poussant dans les pieds et en étendant les hanches à la verticale à travers la barre. Votre poids repose sur les omoplates et les pieds. Étendez au maximum, puis inversez le mouvement pour revenir à la position de départ."
+  ]
+ },
+ "Barbell_Incline_Bench_Press_-_Medium_Grip": {
+  "name": "Développé Incliné à la Barre – Prise Moyenne",
+  "instructions": [
+   "Allongez-vous sur un banc incliné. Avec une prise moyenne (une prise qui, à mi-mouvement, forme un angle de 90 degrés entre avant-bras et bras), sortez la barre du rack et tenez-la bras tendus à la verticale au-dessus de vous. C'est la position de départ.",
+   "En inspirant, descendez lentement jusqu'à sentir la barre sur le haut de la poitrine.",
+   "Après une pause d'une seconde, repoussez la barre à la position de départ en expirant et en poussant avec les pectoraux. Tendez les bras en position haute, serrez la poitrine, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez la barre sur le rack."
+  ]
+ },
+ "Barbell_Rear_Delt_Row": {
+  "name": "Rowing Barre pour Deltoïdes Postérieurs",
+  "instructions": [
+   "Tenez-vous debout, buste droit, en tenant une barre en prise large (plus large que les épaules) et en pronation (paumes vers le corps).",
+   "Fléchissez légèrement les genoux et penchez-vous en avant en conservant la cambrure naturelle du dos. Laissez les bras pendre devant vous en tenant la barre. Une fois le buste parallèle au sol, écartez les coudes du corps. Astuce : buste et bras doivent former un \"T\". Vous êtes prêt à commencer.",
+   "En gardant les bras perpendiculaires au buste, tirez la barre vers le haut de la poitrine en serrant les deltoïdes postérieurs et en expirant. Astuce : bien exécuté, cet exercice ressemble à un développé couché inversé. Évitez également de travailler avec les biceps. Concentrez-vous sur les deltoïdes postérieurs ; les bras ne sont que des crochets.",
+   "Revenez lentement à la position initiale en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Barbell_Seated_Calf_Raise": {
+  "name": "Extension des Mollets Assis à la Barre",
+  "instructions": [
+   "Placez une cale à environ 30 cm devant un banc plat.",
+   "Asseyez-vous sur le banc et posez la plante des pieds sur la cale.",
+   "Demandez à quelqu'un de poser une barre sur le haut de vos cuisses, à environ 8 cm au-dessus des genoux, et de la maintenir. C'est la position de départ.",
+   "Montez sur les pointes de pieds aussi haut que possible en serrant les mollets et en expirant.",
+   "Après une seconde de contraction, revenez lentement à la position de départ. Astuce : pour un bénéfice maximal, étirez les mollets autant que possible.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Barbell_Side_Bend": {
+  "name": "Flexion Latérale à la Barre",
+  "instructions": [
+   "Tenez-vous debout, buste droit, une barre posée sur l'arrière des épaules (juste sous la nuque). Les pieds sont écartés de la largeur des épaules. C'est la position de départ.",
+   "En gardant le dos droit et la tête haute, penchez-vous uniquement à partir de la taille vers la droite, aussi loin que possible. Inspirez pendant la flexion. Tenez une seconde puis redressez-vous à la position de départ en expirant. Astuce : le reste du corps reste immobile.",
+   "Répétez maintenant le mouvement en vous penchant vers la gauche. Tenez une seconde et revenez à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Barbell_Side_Split_Squat": {
+  "name": "Fente Latérale à la Barre",
+  "instructions": [
+   "Tenez-vous debout, buste droit, une barre posée sur l'arrière des épaules (juste sous la nuque). Les pieds sont très écartés, celui de la jambe avant orienté vers l'extérieur. C'est la position de départ.",
+   "Descendez le corps du côté du pied orienté vers l'extérieur en fléchissant le genou et la hanche de la jambe avant, l'autre jambe restant à peine fléchie. Inspirez pendant la descente.",
+   "Revenez à la position de départ en étendant la hanche et le genou de la jambe avant. Expirez pendant le mouvement.",
+   "Après le nombre de répétitions recommandé, répétez le mouvement avec l'autre jambe."
+  ]
+ },
+ "Barbell_Squat": {
+  "name": "Squat à la Barre",
+  "instructions": [
+   "Pour des raisons de sécurité, réalisez cet exercice dans un rack à squat. Réglez d'abord la barre juste en dessous de la hauteur des épaules. Une fois la hauteur choisie et la barre chargée, passez dessous et posez-la sur l'arrière des épaules (juste sous la nuque).",
+   "Tenez la barre des deux mains de chaque côté et sortez-la du rack en poussant d'abord sur les jambes tout en redressant le buste.",
+   "Écartez-vous du rack et placez les jambes à largeur d'épaules, pointes de pieds légèrement vers l'extérieur. Gardez la tête haute en permanence et le dos droit. C'est la position de départ. (Remarque : on utilise ici l'écartement moyen décrit plus haut, qui développe l'ensemble des jambes ; vous pouvez choisir l'un des trois écartements présentés dans la section sur la position des pieds.)",
+   "Descendez lentement la barre en fléchissant les genoux et les hanches, en conservant une posture droite et la tête haute. Descendez jusqu'à ce que l'angle entre la cuisse et le mollet passe légèrement sous 90 degrés. Inspirez pendant cette phase. Astuce : bien exécuté, l'avant des genoux forme avec les orteils une ligne droite imaginaire perpendiculaire à l'avant. Si les genoux dépassent cette ligne (s'ils dépassent les orteils), vous imposez une contrainte inutile au genou et l'exercice est mal exécuté.",
+   "Remontez la barre en expirant, en poussant le sol avec les talons et en tendant à nouveau les jambes pour revenir à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Barbell_Walking_Lunge": {
+  "name": "Fentes Marchées à la Barre",
+  "instructions": [
+   "Tenez-vous debout, pieds à largeur d'épaules, une barre posée sur le haut du dos.",
+   "Avancez d'une jambe en fléchissant les genoux pour descendre les hanches. Descendez jusqu'à ce que le genou arrière frôle le sol. Le buste reste droit et le genou avant au-dessus du pied avant.",
+   "Poussez dans le talon du pied avant et étendez les deux genoux pour vous relever.",
+   "Avancez le pied arrière et répétez la fente sur l'autre jambe."
+  ]
+ },
+ "Bench_Press_-_Powerlifting": {
+  "name": "Développé Couché – Force Athlétique",
+  "instructions": [
+   "Allongez-vous sur le banc, si possible la tête au-delà de la barre. Ramenez les pieds sous vous et cambrez le dos. En vous aidant de la barre pour soutenir votre poids, décollez les épaules du banc et resserrez les omoplates. Poussez sur les pieds pour enfoncer les trapèzes dans le banc. Gardez cette tension du corps pendant tout le mouvement.",
+   "Quelle que soit sa largeur, votre prise doit couvrir l'anneau de la barre. Sortez la barre du rack sans laisser les épaules partir vers l'avant. Concentrez-vous sur le serrage de la barre en cherchant à l'écarter.",
+   "Descendez la barre vers le bas de la poitrine ou le haut du ventre. Barre, poignet et coude restent alignés en permanence.",
+   "Marquez un temps d'arrêt quand la barre touche le buste, puis poussez-la vers le haut avec le plus de force possible. Les coudes restent serrés jusqu'à l'extension complète."
+  ]
+ },
+ "Bent-Arm_Barbell_Pullover": {
+  "name": "Pullover à la Barre Bras Fléchis",
+  "instructions": [
+   "Allongez-vous sur un banc plat en tenant une barre à largeur d'épaules.",
+   "Tenez la barre à la verticale au-dessus de la poitrine, bras légèrement fléchis. C'est la position de départ.",
+   "En gardant les bras fléchis, descendez lentement la charge en arc de cercle derrière la tête en inspirant, jusqu'à sentir un étirement des pectoraux.",
+   "Ramenez alors la barre à la position de départ par le même arc de cercle, en expirant.",
+   "Tenez la charge une seconde en position initiale et répétez le mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Bent_Over_Barbell_Row": {
+  "name": "Rowing Barre Buste Penché",
+  "instructions": [
+   "En tenant une barre en pronation (paumes vers le bas), fléchissez légèrement les genoux et penchez le buste vers l'avant à partir de la taille, dos droit, jusqu'à ce qu'il soit presque parallèle au sol. Astuce : gardez la tête haute. La barre pend juste devant vous, les bras perpendiculaires au sol et au buste. C'est la position de départ.",
+   "En gardant le buste immobile, expirez et tirez la barre vers vous. Gardez les coudes près du corps et n'utilisez les avant-bras que pour tenir la charge. En position haute, contractez les muscles du dos et marquez une brève pause.",
+   "Inspirez ensuite et redescendez lentement la barre à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Bodyweight_Squat": {
+  "name": "Squat au Poids du Corps",
+  "instructions": [
+   "Tenez-vous debout, pieds à largeur d'épaules. Vous pouvez placer les mains derrière la tête. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant les genoux et les hanches, en reculant les fessiers.",
+   "Descendez complètement si vous le pouvez, puis inversez rapidement le mouvement jusqu'à revenir à la position de départ. Pendant le squat, gardez la tête et la poitrine hautes et poussez les genoux vers l'extérieur."
+  ]
+ },
+ "Bosu_Ball_Cable_Crunch_With_Side_Bends": {
+  "name": "Crunch à la Poulie sur Bosu avec Flexions Latérales",
+  "instructions": [
+   "Fixez une poignée standard à chaque bras d'une machine à poulies et réglez-les en position la plus basse.",
+   "Prenez un Bosu et placez-le devant la machine, au centre.",
+   "Allongez-vous sur le Bosu, le creux du dos épousant la coupole. Les fessiers sont proches du sol sans le toucher.",
+   "Des deux mains, tendez les bras en arrière et saisissez une poignée de chaque côté.",
+   "Pieds très écartés, tendez les bras droit devant vous entre les genoux. Vos mains sont à hauteur des genoux.",
+   "Gardez les bras tendus et alignés avec l'inclinaison du câble. Relevez le buste en enroulant, sans baisser ni fléchir les bras.",
+   "Gardez les bras rigides. Redescendez lentement à la position de départ, dos en extension autour du Bosu et abdominaux étirés.",
+   "Répétez la même série de mouvements jusqu'à l'échec.",
+   "Une fois à l'échec, gardez les abdominaux gainés et relevez le buste en position de planche, dos décollé du Bosu.",
+   "Descendez les bras le long du corps en les gardant tendus. Enchaînez des flexions latérales alternées en cherchant à toucher vos talons ! Ce mouvement final cible les obliques."
+  ]
+ },
+ "Bottoms-Up_Clean_From_The_Hang_Position": {
+  "name": "Épaulé Bottoms-Up depuis la Suspension",
+  "instructions": [
+   "Commencez debout, buste droit, une kettlebell dans une main.",
+   "Balancez la kettlebell vers l'arrière avec force, puis inversez le mouvement tout aussi vivement. Écrasez la poignée aussi fort que possible et montez la kettlebell à l'épaule."
+  ]
+ },
+ "Cable_Crunch": {
+  "name": "Crunch à la Poulie",
+  "instructions": [
+   "Mettez-vous à genoux sous une poulie haute équipée d'une corde.",
+   "Saisissez la corde et descendez-la jusqu'à ce que vos mains soient à hauteur du visage.",
+   "Fléchissez légèrement les hanches et laissez la charge mettre le bas du dos en hyperextension. C'est la position de départ.",
+   "Hanches immobiles, fléchissez le buste en contractant les abdominaux pour amener les coudes vers le milieu des cuisses. Expirez pendant cette phase et tenez la contraction une seconde.",
+   "Revenez lentement à la position de départ en inspirant. Astuce : maintenez une tension constante sur les abdominaux pendant tout le mouvement. Ne choisissez pas non plus une charge si lourde que le bas du dos fasse l'essentiel du travail.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Cable_Preacher_Curl": {
+  "name": "Curl au Pupitre à la Poulie",
+  "instructions": [
+   "Placez un banc Larry Scott à environ 60 cm d'une machine à poulies.",
+   "Fixez une barre droite à la poulie basse.",
+   "Asseyez-vous au banc, coudes et bras fermement posés sur le pupitre, et faites-vous passer la barre de la poulie basse.",
+   "Saisissez la barre et tendez complètement les bras sur le pupitre. C'est la position de départ.",
+   "Montez maintenant la charge vers les épaules en serrant fortement les biceps en position haute. Expirez pendant le mouvement et tenez une seconde en haut.",
+   "Redescendez ensuite lentement la charge à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Cable_Reverse_Crunch": {
+  "name": "Crunch Inversé à la Poulie",
+  "instructions": [
+   "Fixez des sangles de cheville à une poulie basse et posez un tapis au sol devant elle.",
+   "Asseyez-vous pieds vers la poulie et attachez les sangles à vos chevilles.",
+   "Allongez-vous, relevez les jambes et fléchissez les genoux à 90 degrés. Les jambes et le câble doivent être alignés ; sinon, montez ou descendez la poulie.",
+   "Mains derrière la tête, ramenez les genoux vers le buste et décollez les hanches du sol.",
+   "Marquez un temps d'arrêt, puis redescendez lentement et de façon contrôlée les hanches en ramenant les jambes à 90 degrés. La tension doit rester sur les abdominaux même en position de repos.",
+   "Répétez le même mouvement jusqu'à l'échec."
+  ]
+ },
+ "Cable_Russian_Twists": {
+  "name": "Russian Twists à la Poulie",
+  "instructions": [
+   "Fixez une poignée standard et réglez le câble sur une poulie à mi-hauteur.",
+   "Allongez-vous sur un ballon de stabilité perpendiculairement au câble et saisissez la poignée d'une main. Vous devez être à environ une longueur de bras de la poulie, avec la tension de la charge sur le câble.",
+   "Saisissez la poignée des deux mains et tendez complètement les bras au-dessus de la poitrine. Vos mains doivent être exactement alignées avec la poulie ; sinon, montez ou descendez celle-ci.",
+   "Gardez les hanches hautes et les abdominaux gainés. Tournez le buste à l'opposé de la poulie sur un quart de tour complet. Votre corps forme une ligne droite de la tête aux genoux.",
+   "Marquez un temps d'arrêt, puis revenez lentement et de façon contrôlée à la position de départ. La tension latérale doit rester sur le câble même en position de repos.",
+   "Répétez le même mouvement jusqu'à l'échec.",
+   "Repositionnez-vous ensuite et répétez la même série de mouvements de l'autre côté."
+  ]
+ },
+ "Cable_Wrist_Curl": {
+  "name": "Curl de Poignets à la Poulie",
+  "instructions": [
+   "Commencez par placer un banc plat devant une poulie basse équipée d'une barre droite.",
+   "Saisissez la barre en supination (paumes vers le haut), d'une prise serrée à largeur d'épaules, et remontez-la de façon à poser les avant-bras sur le haut des cuisses. Les poignets dépassent juste au-delà des genoux.",
+   "Enroulez les poignets vers le haut en expirant. Tenez la contraction une seconde.",
+   "Redescendez lentement les poignets à la position de départ en inspirant.",
+   "Les avant-bras restent immobiles : seul le poignet bouge dans cet exercice.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Calf_Press": {
+  "name": "Presse à Mollets",
+  "instructions": [
+   "Réglez le siège de façon à n'avoir que les jambes légèrement fléchies en position de départ. La plante des pieds est bien posée sur la plateforme.",
+   "Choisissez une charge adaptée et saisissez les poignées. C'est la position de départ.",
+   "Tendez les jambes en étendant les genoux, en soulevant tout juste la charge de la pile. La cheville est en flexion complète, orteils vers le haut. Exécutez le mouvement en poussant le plus loin possible avec la plante des pieds.",
+   "Après une brève pause, inversez le mouvement et répétez."
+  ]
+ },
+ "Calf_Press_On_The_Leg_Press_Machine": {
+  "name": "Presse à Mollets à la Presse à Cuisses",
+  "instructions": [
+   "Asseyez-vous à la presse à cuisses et placez les jambes sur la plateforme juste devant vous, pieds écartés de la largeur des épaules.",
+   "Abaissez les sécurités qui maintiennent la plateforme chargée et poussez celle-ci jusqu'à ce que vos jambes soient tendues devant vous, sans verrouiller les genoux. (Remarque : sur certaines presses, vous pouvez laisser les sécurités en place ; si la vôtre le permet, c'est la façon la plus sûre de faire l'exercice.) Buste et jambes forment un angle parfait de 90 degrés. Placez alors avec précaution les orteils et la plante des pieds sur le bas de la plateforme, talons dans le vide. Les orteils pointent vers l'avant, l'extérieur ou l'intérieur, comme décrit au début du chapitre. C'est la position de départ.",
+   "Poussez sur la plateforme en montant les talons, en expirant, en étendant les chevilles le plus haut possible et en contractant les mollets. Le genou doit rester immobile en permanence, sans jamais fléchir. Tenez la contraction une seconde avant de redescendre.",
+   "Revenez lentement à la position de départ en inspirant, en descendant les talons et en fléchissant les chevilles jusqu'à étirement des mollets.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Calf_Raises_-_With_Bands": {
+  "name": "Extensions des Mollets à l'Élastique",
+  "instructions": [
+   "Prenez un élastique et placez-vous dessus avec la pointe des pieds, en veillant à ce que la longueur d'élastique entre le pied et les bras soit la même des deux côtés.",
+   "En tenant les poignées, montez les bras de chaque côté de la tête comme si vous vous prépariez à un développé épaules. Les paumes sont vers l'avant, coudes fléchis et écartés. Cette position met l'élastique en tension. C'est la position de départ.",
+   "Mains aux épaules, montez sur la pointe des pieds en expirant et contractez fortement les mollets en position haute.",
+   "Après une seconde de contraction, redescendez lentement à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Carioca_Quick_Step": {
+  "name": "Pas Rapide Carioca",
+  "instructions": [
+   "Commencez pieds légèrement écartés, bras gauche levé, dans une position relâchée et athlétique.",
+   "Avec le pied droit, faites un pas rapide derrière et montez le genou.",
+   "Relancez les bras vers le haut au moment où vous montez le genou droit, en veillant à ce que le genou monte et descende bien à la verticale. Évitez de tourner les pieds pendant le déplacement et continuez à regarder devant vous en vous déplaçant latéralement."
+  ]
+ },
+ "Chair_Squat": {
+  "name": "Squat sur Chaise",
+  "instructions": [
+   "Réglez d'abord la barre à une hauteur adaptée à votre taille. Une fois la barre chargée, passez dessous et posez-la sur l'arrière des épaules.",
+   "Saisissez la barre mains vers l'avant, déverrouillez-la et sortez-la du rack en tendant les jambes.",
+   "Avancez les pieds d'environ 45 cm devant la barre. Placez les jambes à largeur d'épaules, pointes de pieds légèrement vers l'extérieur. Regardez devant vous en permanence et gardez la colonne neutre ou légèrement cambrée. C'est la position de départ.",
+   "Descendez lentement la barre en fléchissant les genoux, en conservant une posture droite et la tête haute. Descendez jusqu'à ce que l'angle entre la cuisse et la jambe passe sous 90 degrés.",
+   "Remontez la barre en expirant, en poussant le sol avec les talons, en étendant les genoux et en revenant à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Chin-Up": {
+  "name": "Traction en Supination",
+  "instructions": [
+   "Saisissez la barre de traction paumes vers le buste, avec une prise plus serrée que la largeur des épaules.",
+   "Bras tendus devant vous en tenant la barre à la largeur choisie, gardez le buste aussi droit que possible en creusant le bas du dos et en sortant la poitrine. C'est la position de départ. Astuce : garder le buste le plus droit possible maximise la sollicitation des biceps et minimise celle du dos.",
+   "En expirant, tirez le buste vers le haut jusqu'à amener la tête à hauteur de la barre. Concentrez-vous sur les biceps pour exécuter le mouvement. Gardez les coudes près du corps. Astuce : le buste doit rester figé pendant qu'il se déplace dans l'espace ; seuls les bras bougent. Les avant-bras n'ont d'autre rôle que de tenir la barre.",
+   "Après une seconde de contraction des biceps, redescendez lentement le buste à la position de départ, bras complètement tendus. Inspirez pendant cette phase.",
+   "Répétez ce mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Close-Grip_Barbell_Bench_Press": {
+  "name": "Développé Couché Prise Serrée",
+  "instructions": [
+   "Allongez-vous sur un banc plat. Avec une prise serrée (environ la largeur des épaules), sortez la barre du rack et tenez-la bras tendus à la verticale au-dessus de vous. C'est la position de départ.",
+   "En inspirant, descendez lentement jusqu'à sentir la barre sur le milieu de la poitrine. Astuce : contrairement au développé couché classique, gardez les coudes près du buste en permanence pour maximiser le travail des triceps.",
+   "Après une pause d'une seconde, repoussez la barre à la position de départ en expirant et en poussant avec les triceps. Tendez les bras en position haute, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez la barre sur le rack."
+  ]
+ },
+ "Close-Grip_Push-Up_off_of_a_Dumbbell": {
+  "name": "Pompe Prise Serrée sur Haltère",
+  "instructions": [
+   "Allongez-vous au sol et posez les mains sur un haltère dressé à la verticale. En appui sur les pointes de pieds et les mains, gardez le buste gainé, les coudes serrés et les bras tendus. C'est la position de départ.",
+   "Descendez le corps en laissant les coudes fléchir, tout en inspirant. Gardez le corps droit, sans laisser les hanches monter ni s'affaisser.",
+   "Repoussez-vous à la position de départ en tendant les coudes. Expirez pendant cette phase.",
+   "Après une pause en position haute, répétez le mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Cross-Body_Crunch": {
+  "name": "Crunch Croisé",
+  "instructions": [
+   "Allongez-vous à plat sur le dos et fléchissez les genoux à environ 60 degrés.",
+   "Gardez les pieds à plat au sol et posez les mains sans forcer derrière la tête. C'est la position de départ.",
+   "Enroulez-vous et amenez le coude et l'épaule droits en travers du corps tout en ramenant simultanément le genou gauche vers l'épaule gauche. Tendez le coude et cherchez à toucher le genou. Expirez pendant le mouvement. Astuce : cherchez à monter l'épaule vers le genou plutôt que le seul coude, et rappelez-vous que l'essentiel est de contracter les abdominaux, pas de bouger le coude.",
+   "Redescendez à la position de départ en inspirant et répétez avec le coude gauche et le genou droit.",
+   "Continuez à alterner ainsi jusqu'à avoir effectué toutes les répétitions prescrites."
+  ]
+ },
+ "Deadlift_with_Bands": {
+  "name": "Soulevé de Terre avec Élastiques",
+  "instructions": [
+   "Avec des élastiques courts, passez-les simplement sur la barre avant de commencer et montez dedans en vous installant. Les élastiques longs doivent être ancrés à une base solide, comme des haltères lourds ou un rack.",
+   "Pieds et prise en place, inspirez profondément, abaissez les hanches et fléchissez les genoux jusqu'à ce que les tibias touchent la barre. Regardez devant vous, poitrine sortie et dos cambré, puis poussez dans les talons pour lancer la charge vers le haut. Une fois la barre passée aux genoux, tirez-la franchement vers l'arrière en resserrant les omoplates et en poussant les hanches contre la barre.",
+   "Redescendez la barre en fléchissant les hanches et en la guidant jusqu'au sol."
+  ]
+ },
+ "Decline_Barbell_Bench_Press": {
+  "name": "Développé Décliné à la Barre",
+  "instructions": [
+   "Bloquez vos jambes à l'extrémité du banc décliné et allongez-vous lentement.",
+   "Avec une prise moyenne (une prise qui, à mi-mouvement, forme un angle de 90 degrés entre avant-bras et bras), sortez la barre du rack et tenez-la bras tendus à la verticale au-dessus de vous. Les bras sont perpendiculaires au sol. C'est la position de départ. Astuce : pour protéger votre coiffe des rotateurs, faites-vous aider par un partenaire pour sortir la barre du rack.",
+   "En inspirant, descendez lentement jusqu'à sentir la barre sur le bas de la poitrine.",
+   "Après une pause d'une seconde, repoussez la barre à la position de départ en expirant et en poussant avec les pectoraux. Tendez les bras et serrez la poitrine en position haute, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez la barre sur le rack."
+  ]
+ },
+ "Decline_Dumbbell_Bench_Press": {
+  "name": "Développé Décliné aux Haltères",
+  "instructions": [
+   "Bloquez vos jambes à l'extrémité du banc décliné et allongez-vous, un haltère posé sur chaque cuisse. Les paumes se font face.",
+   "Une fois allongé, amenez les haltères devant vous à largeur d'épaules.",
+   "À cette largeur, tournez les poignets vers l'avant de façon à ce que les paumes soient tournées à l'opposé de vous. C'est la position de départ.",
+   "Descendez lentement les charges sur les côtés en expirant. Gardez les haltères parfaitement sous contrôle en permanence. Astuce : pendant tout le mouvement, les avant-bras restent perpendiculaires au sol.",
+   "En expirant, poussez les haltères vers le haut avec les pectoraux. Tendez les bras en position haute, serrez la poitrine, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prévu par votre programme."
+  ]
+ },
+ "Decline_Dumbbell_Triceps_Extension": {
+  "name": "Extension Triceps aux Haltères sur Banc Décliné",
+  "instructions": [
+   "Bloquez vos jambes à l'extrémité du banc décliné et allongez-vous, un haltère posé sur chaque cuisse. Les paumes se font face.",
+   "Une fois allongé, amenez les haltères devant vous à largeur d'épaules. Les paumes se font face, les bras sont perpendiculaires au sol et complètement tendus. C'est la position de départ.",
+   "En gardant les bras immobiles (et les coudes serrés), descendez lentement les haltères en amenant les avant-bras vers vous en demi-cercle, jusqu'à ce que les pouces soient près des oreilles. Inspirez pendant cette phase.",
+   "Remontez les haltères à la position de départ en contractant les triceps et en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Decline_Oblique_Crunch": {
+  "name": "Crunch Oblique sur Banc Décliné",
+  "instructions": [
+   "Bloquez vos jambes à l'extrémité du banc décliné et allongez-vous lentement.",
+   "Relevez le haut du corps jusqu'à ce que le buste soit à environ 35-45 degrés par rapport au sol.",
+   "Placez une main près de la tête et l'autre sur la cuisse. C'est la position de départ.",
+   "Relevez lentement le buste depuis la position de départ en le tournant vers la gauche. Continuez à enrouler en expirant jusqu'à ce que le coude droit touche le genou gauche. Tenez cette contraction une seconde. Astuce : gardez les abdominaux gainés et le mouvement lent et contrôlé.",
+   "Redescendez lentement à la position de départ en inspirant.",
+   "Après une série à droite avec le nombre de répétitions recommandé, passez au côté gauche. Astuce : cherchez vraiment à faire tourner le buste et à sentir la contraction en position haute."
+  ]
+ },
+ "Decline_Reverse_Crunch": {
+  "name": "Crunch Inversé sur Banc Décliné",
+  "instructions": [
+   "Allongez-vous sur le dos sur un banc décliné et tenez-vous des deux mains à son extrémité haute. Ne vous laissez pas glisser vers le bas.",
+   "Tenez les jambes parallèles au sol grâce aux abdominaux, genoux et pieds serrés. Astuce : les jambes sont tendues avec une légère flexion du genou. C'est la position de départ.",
+   "En expirant, ramenez les jambes vers le buste en enroulant le bassin vers l'arrière et en décollant les hanches du banc. En fin de mouvement, vos genoux touchent la poitrine.",
+   "Tenez la contraction une seconde et ramenez les jambes à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Deficit_Deadlift": {
+  "name": "Soulevé de Terre en Déficit",
+  "instructions": [
+   "Commencez par vous placer sur une plateforme ou des disques, généralement de 3 à 8 cm de haut. Approchez-vous de la barre pour qu'elle soit centrée sur vos pieds, écartés de la largeur des hanches. Fléchissez les hanches et saisissez la barre à largeur d'épaules, en laissant les omoplates s'écarter. On utilise généralement une prise en pronation, ou une prise inversée sur les séries lourdes.",
+   "Pieds et prise en place, inspirez profondément, abaissez les hanches et fléchissez les genoux jusqu'à ce que les tibias touchent la barre. Regardez devant vous, poitrine sortie et dos cambré, puis poussez dans les talons pour lancer la charge vers le haut. Une fois la barre passée aux genoux, tirez-la franchement vers l'arrière en resserrant les omoplates et en poussant les hanches contre la barre.",
+   "Redescendez la barre en fléchissant les hanches et en la guidant jusqu'au sol."
+  ]
+ },
+ "Dip_Machine": {
+  "name": "Machine à Dips",
+  "instructions": [
+   "Installez-vous bien calé dans une machine à dips, choisissez la charge et saisissez fermement les poignées.",
+   "Gardez les coudes serrés le long du corps pour mettre l'accent sur les triceps. Les coudes sont fléchis à 90 degrés.",
+   "En contractant les triceps, tendez les bras vers le bas en expirant. Astuce : en bas du mouvement, gardez les bras légèrement fléchis pour conserver la tension sur les triceps.",
+   "Laissez ensuite les bras remonter lentement à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Donkey_Calf_Raises": {
+  "name": "Extensions des Mollets Buste Penché",
+  "instructions": [
+   "Cet exercice nécessite une machine à mollets buste penché. Commencez par placer le bas du dos et les hanches sous le bras rembourré. C'est la zone du coccyx qui doit être en contact avec le coussin.",
+   "Posez les deux bras sur les poignées latérales et placez la plante des pieds sur la cale, talons dans le vide. Orientez les orteils vers l'avant, l'intérieur ou l'extérieur selon la zone visée, et tendez les genoux sans les verrouiller. C'est la position de départ.",
+   "Montez les talons en expirant, en étendant les chevilles le plus haut possible et en contractant les mollets. Le genou doit rester immobile en permanence, sans jamais fléchir. Tenez la contraction une seconde avant de redescendre.",
+   "Revenez lentement à la position de départ en inspirant, en descendant les talons et en fléchissant les chevilles jusqu'à étirement des mollets.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Drag_Curl": {
+  "name": "Drag Curl",
+  "instructions": [
+   "Saisissez une barre en supination (paumes vers l'avant) et ramenez les coudes près du buste et vers l'arrière. C'est la position de départ.",
+   "En expirant, montez la barre en gardant les coudes en arrière et en la \"traînant\" le long du buste, avec lequel elle reste en contact. Astuce : vous ne gardez donc pas les coudes plaqués sur les côtés, vous les ramenez vers l'arrière. Ne haussez pas non plus les épaules.",
+   "Revenez lentement à la position de départ en gardant la barre en contact avec le buste en permanence.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Dumbbell_Bench_Press": {
+  "name": "Développé Couché aux Haltères",
+  "instructions": [
+   "Allongez-vous sur un banc plat, un haltère dans chaque main posé sur le haut des cuisses. Les paumes se font face.",
+   "En vous aidant des cuisses pour les lancer, montez les haltères l'un après l'autre de façon à les tenir devant vous à largeur d'épaules.",
+   "À cette largeur, tournez les poignets vers l'avant de façon à ce que les paumes soient tournées à l'opposé de vous. Les haltères sont juste sur les côtés de la poitrine, bras et avant-bras formant un angle de 90 degrés. Gardez les haltères parfaitement sous contrôle en permanence. C'est la position de départ.",
+   "En expirant, poussez les haltères vers le haut avec les pectoraux. Tendez les bras en haut du mouvement et serrez la poitrine, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer environ deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prévu par votre programme."
+  ]
+ },
+ "Dumbbell_Bench_Press_with_Neutral_Grip": {
+  "name": "Développé Couché aux Haltères en Prise Neutre",
+  "instructions": [
+   "Prenez un haltère dans chaque main et allongez-vous sur un banc plat. Les pieds sont à plat au sol et les omoplates resserrées.",
+   "En prise neutre, paumes face à face, commencez bras tendus juste au-dessus de vous, perpendiculaires au sol. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant les coudes et en descendant les bras sur les côtés. Descendez jusqu'à ce que les haltères arrivent au niveau du buste.",
+   "Marquez un temps d'arrêt, puis tendez les coudes et revenez à la position de départ."
+  ]
+ },
+ "Dumbbell_Bicep_Curl": {
+  "name": "Curl Biceps aux Haltères",
+  "instructions": [
+   "Tenez-vous debout, buste droit, un haltère dans chaque main, bras tendus. Gardez les coudes près du buste et tournez les paumes vers l'avant. C'est la position de départ.",
+   "En gardant les bras immobiles, expirez et montez les charges en contractant les biceps. Continuez jusqu'à contraction complète des biceps, les haltères à hauteur d'épaules. Marquez une brève pause en serrant les biceps.",
+   "Inspirez ensuite et redescendez lentement les haltères à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Dumbbell_Incline_Row": {
+  "name": "Rowing aux Haltères sur Banc Incliné",
+  "instructions": [
+   "En prise neutre, allongez-vous à plat ventre sur un banc incliné.",
+   "Prenez un haltère dans chaque main en prise neutre, bras tendus au départ. C'est la position de départ.",
+   "Resserrez les omoplates et fléchissez les coudes pour tirer les haltères le long du corps.",
+   "Marquez un temps d'arrêt en haut du mouvement, puis revenez à la position de départ."
+  ]
+ },
+ "Dumbbell_One-Arm_Upright_Row": {
+  "name": "Rowing Vertical à un Bras à l'Haltère",
+  "instructions": [
+   "Prenez un haltère et tenez-vous droit, bras tendu devant vous avec une légère flexion du coude et le dos droit. C'est la position de départ. Astuce : l'haltère repose sur le haut de la cuisse, paume tournée vers celle-ci.",
+   "L'autre main peut rester tendue sur le côté, à la hanche, ou tenir un appui fixe. C'est la position de départ.",
+   "Montez l'haltère avec le deltoïde latéral en expirant. Gardez l'haltère près du corps pendant la montée. Continuez jusqu'à ce qu'il arrive presque au niveau du menton. Astuce : ce sont les coudes qui mènent le mouvement. Pendant la montée, le coude doit toujours être plus haut que l'avant-bras. Gardez aussi le buste immobile et marquez une seconde d'arrêt en position haute.",
+   "Redescendez lentement l'haltère à la position de départ. Inspirez pendant cette phase.",
+   "Répétez le nombre de répétitions recommandé, puis changez de bras."
+  ]
+ },
+ "Dumbbell_Seated_One-Leg_Calf_Raise": {
+  "name": "Extension d'un Mollet Assis à l'Haltère",
+  "instructions": [
+   "Placez une cale au sol à environ 30 cm d'un banc plat.",
+   "Asseyez-vous sur le banc plat et posez un haltère sur le haut de la cuisse gauche, à environ 8 cm au-dessus du genou.",
+   "Posez maintenant la plante du pied gauche sur la cale. C'est la position de départ.",
+   "Montez sur la pointe du pied aussi haut que possible en expirant et en contractant le mollet. Tenez la contraction une seconde.",
+   "Revenez lentement à la position de départ en descendant le plus bas possible pour étirer.",
+   "Répétez le nombre de répétitions prescrit, puis passez à la jambe droite."
+  ]
+ },
+ "Dumbbell_Side_Bend": {
+  "name": "Flexion Latérale à l'Haltère",
+  "instructions": [
+   "Tenez-vous debout, buste droit, un haltère dans la main gauche (paume vers le buste), la main droite sur la hanche. Les pieds sont écartés de la largeur des épaules. C'est la position de départ.",
+   "En gardant le dos droit et la tête haute, penchez-vous uniquement à partir de la taille vers la droite, aussi loin que possible. Inspirez pendant la flexion. Tenez une seconde puis redressez-vous à la position de départ en expirant. Astuce : le reste du corps reste immobile.",
+   "Répétez maintenant le mouvement en vous penchant vers la gauche. Tenez une seconde et revenez à la position de départ.",
+   "Répétez le nombre de répétitions recommandé, puis changez de main."
+  ]
+ },
+ "Dumbbell_Squat": {
+  "name": "Squat aux Haltères",
+  "instructions": [
+   "Tenez-vous debout, buste droit, un haltère dans chaque main (paumes tournées vers les jambes).",
+   "Placez les jambes à largeur d'épaules, pointes de pieds légèrement vers l'extérieur. Gardez la tête haute en permanence — regarder vers le bas vous déséquilibre — et le dos droit. C'est la position de départ. Remarque : on utilise ici l'écartement moyen décrit plus haut, qui développe l'ensemble des jambes ; vous pouvez choisir l'un des trois écartements présentés dans la section sur la position des pieds.",
+   "Descendez lentement le buste en fléchissant les genoux, en conservant une posture droite et la tête haute. Descendez jusqu'à ce que les cuisses soient parallèles au sol. Astuce : bien exécuté, l'avant des genoux forme avec les orteils une ligne droite imaginaire perpendiculaire à l'avant. Si les genoux dépassent cette ligne (s'ils dépassent les orteils), vous imposez une contrainte inutile au genou et l'exercice est mal exécuté.",
+   "Remontez le buste en expirant, en poussant le sol principalement avec les talons et en tendant à nouveau les jambes pour revenir à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Exercise_Ball_Crunch": {
+  "name": "Crunch sur Ballon",
+  "instructions": [
+   "Allongez-vous sur un ballon de gym, le creux du bas du dos épousant sa surface. Les genoux sont fléchis et les pieds fermement posés au sol. Le haut du buste dépasse du ballon. Les bras restent soit le long du corps, soit croisés sur la poitrine : ces positions évitent les tensions dans la nuque (contrairement aux mains derrière la tête).",
+   "Descendez le buste en position d'étirement en gardant la nuque immobile en permanence. C'est la position de départ.",
+   "Hanches immobiles, fléchissez le buste en contractant les abdominaux et enroulez épaules et tronc vers le haut jusqu'à sentir une bonne contraction des abdominaux. Les bras glissent simplement le long des jambes s'ils sont sur les côtés, ou restent sur la poitrine s'ils sont croisés. Le bas du dos doit rester en contact avec le ballon en permanence. Expirez pendant le mouvement et tenez la contraction une seconde.",
+   "En inspirant, revenez à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Face_Pull": {
+  "name": "Face Pull",
+  "instructions": [
+   "Face à une poulie haute équipée d'une corde ou de deux poignées, tirez la charge droit vers votre visage en écartant les mains. Gardez les bras parallèles au sol."
+  ]
+ },
+ "Farmers_Walk": {
+  "name": "Marche du Fermier",
+  "instructions": [
+   "Différents engins conviennent à la marche du fermier. À défaut, vous pouvez la faire avec des haltères lourds ou des barres courtes. Commencez par vous placer entre les engins.",
+   "Après avoir saisi les poignées, soulevez-les en poussant dans les talons, dos droit et tête haute.",
+   "Marchez à pas courts et rapides, et n'oubliez pas de respirer. Parcourez une distance donnée, généralement 15 à 30 mètres, le plus vite possible."
+  ]
+ },
+ "Flutter_Kicks": {
+  "name": "Battements de Jambes",
+  "instructions": [
+   "Allongez-vous à plat ventre sur un banc plat, les hanches au bord du banc, les jambes tendues et les pointes de pieds bien au-dessus du sol, les bras sur le banc en tenant son bord avant.",
+   "Contractez les fessiers et les ischio-jambiers et tendez les jambes jusqu'à ce qu'elles soient au niveau des hanches. C'est la position de départ.",
+   "Lancez le mouvement en montant la jambe gauche plus haut que la droite.",
+   "Descendez ensuite la jambe gauche en montant la droite.",
+   "Continuez à alterner ainsi (comme un battement de jambes dans l'eau) jusqu'à avoir effectué le nombre de répétitions recommandé pour chaque jambe. Gardez un mouvement contrôlé en permanence. Astuce : respirez normalement pendant ce mouvement."
+  ]
+ },
+ "Front_Raise_And_Pullover": {
+  "name": "Élévation Frontale et Pullover",
+  "instructions": [
+   "Allongez-vous sur un banc plat en tenant une barre en pronation, mains écartées d'environ 38 cm.",
+   "Posez la barre sur le haut des cuisses, tendez les bras et verrouillez-les en gardant une légère flexion des coudes. C'est la position de départ.",
+   "Montez maintenant la charge en demi-cercle, bras tendus, en inspirant. Poursuivez le même mouvement jusqu'à ce que la barre soit de l'autre côté, au-dessus de la tête. (Astuce : la barre parcourt environ 180 degrés.) À ce moment, vos bras sont parallèles au sol, paumes vers le plafond.",
+   "Ramenez ensuite la barre à la position de départ en inversant le mouvement et en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Glute_Kickback": {
+  "name": "Extension de Hanche à Quatre Pattes",
+  "instructions": [
+   "Mettez-vous à genoux au sol ou sur un tapis et penchez-vous en avant, bras tendus devant vous (perpendiculaires au buste), comme pour une position de pompe à genoux mais bras écartés à largeur d'épaules. La tête regarde devant et la flexion des genoux forme un angle de 90 degrés entre cuisse et mollet. C'est la position de départ.",
+   "En expirant, montez la jambe droite jusqu'à ce que la cuisse soit dans l'alignement du dos, en conservant l'angle de 90 degrés. Contractez les fessiers pendant tout le mouvement et tenez la contraction une seconde en haut. Astuce : en fin de mouvement, la cuisse est parallèle au sol et le mollet perpendiculaire à celui-ci.",
+   "Revenez à la position initiale en inspirant, puis répétez avec la jambe gauche.",
+   "Continuez à alterner les jambes jusqu'à avoir effectué toutes les répétitions recommandées."
+  ]
+ },
+ "Goblet_Squat": {
+  "name": "Goblet Squat",
+  "instructions": [
+   "Tenez-vous debout, une kettlebell légère tenue par les cornes près de la poitrine. C'est la position de départ.",
+   "Descendez en squat entre les jambes jusqu'à ce que les ischio-jambiers touchent les mollets. Gardez la poitrine et la tête hautes et le dos droit.",
+   "En position basse, marquez un temps d'arrêt et servez-vous des coudes pour pousser les genoux vers l'extérieur. Revenez à la position de départ et répétez 10 à 20 fois."
+  ]
+ },
+ "Good_Morning": {
+  "name": "Good Morning",
+  "instructions": [
+   "Commencez avec une barre sur un rack à hauteur d'épaules. Posez-la sur l'arrière des épaules comme pour un squat barre basse, et non sur le dessus. Gardez le dos gainé, les omoplates resserrées et les genoux légèrement fléchis. Écartez-vous du rack.",
+   "Commencez par fléchir les hanches en les reculant tout en vous penchant jusqu'à une position proche de la parallèle. Gardez le dos cambré et la nuque bien alignée.",
+   "Inversez le mouvement en étendant les hanches avec les fessiers et les ischio-jambiers. Poursuivez jusqu'à revenir à la position de départ."
+  ]
+ },
+ "Good_Morning_off_Pins": {
+  "name": "Good Morning depuis les Barres de Sécurité",
+  "instructions": [
+   "Commencez avec une barre sur un rack, à peu près à hauteur de votre ventre. Penchez-vous sous la barre et posez-la sur l'arrière des épaules comme pour un squat barre basse, et non sur le dessus. À la bonne hauteur, vous devez être presque parallèle au sol une fois penché. Gardez le dos gainé, les omoplates resserrées et les genoux légèrement fléchis. Gardez le dos cambré et la nuque bien alignée.",
+   "Lancez le mouvement en étendant les hanches avec les fessiers et les ischio-jambiers jusqu'à vous tenir debout avec la charge. Redescendez lentement la charge sur les barres de sécurité pour revenir à la position de départ."
+  ]
+ },
+ "Hack_Squat": {
+  "name": "Hack Squat",
+  "instructions": [
+   "Placez le dos contre le dossier de la machine et engagez les épaules sous les coussins prévus.",
+   "Placez les jambes sur la plateforme à largeur d'épaules, pointes de pieds légèrement vers l'extérieur. Astuce : gardez la tête haute en permanence et le dos toujours plaqué contre le dossier.",
+   "Posez les bras sur les poignées latérales de la machine et déverrouillez les sécurités (sur la plupart des modèles, en faisant passer les poignées d'une position frontale à une position oblique).",
+   "Tendez maintenant les jambes sans verrouiller les genoux. C'est la position de départ. (Remarque : on utilise ici l'écartement moyen décrit plus haut, qui développe l'ensemble des jambes ; vous pouvez choisir l'un des trois écartements présentés dans la section sur la position des pieds.)",
+   "Descendez lentement le chariot en fléchissant les genoux, en conservant une posture droite et la tête haute (dos toujours plaqué au dossier). Descendez jusqu'à ce que l'angle entre la cuisse et le mollet passe légèrement sous 90 degrés, c'est-à-dire jusqu'à ce que les cuisses passent sous la parallèle au sol. Inspirez pendant cette phase. Astuce : bien exécuté, l'avant des genoux forme avec les orteils une ligne droite imaginaire perpendiculaire à l'avant. Si les genoux dépassent cette ligne (s'ils dépassent les orteils), vous imposez une contrainte inutile au genou et l'exercice est mal exécuté.",
+   "Remontez le chariot en expirant, en poussant le sol principalement avec les talons et en tendant à nouveau les jambes pour revenir à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Hammer_Grip_Incline_DB_Bench_Press": {
+  "name": "Développé Incliné aux Haltères en Prise Marteau",
+  "instructions": [
+   "Allongez-vous sur un banc incliné, un haltère posé sur chaque cuisse. Les paumes se font face.",
+   "En vous aidant des cuisses pour les lancer, montez les haltères un bras après l'autre de façon à les tenir à largeur d'épaules.",
+   "À cette largeur, gardez les paumes en prise neutre (face à face). Gardez les coudes écartés, les bras dans l'alignement des épaules (perpendiculaires au buste) et fléchis à 90 degrés entre bras et avant-bras. C'est la position de départ.",
+   "Descendez maintenant lentement les charges sur les côtés en inspirant. Gardez les haltères parfaitement sous contrôle en permanence.",
+   "En expirant, poussez les haltères vers le haut avec les pectoraux. Tendez les bras en position haute, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez les haltères sur vos cuisses puis au sol. C'est la façon la plus sûre de les reposer."
+  ]
+ },
+ "Hip_Lift_with_Band": {
+  "name": "Relevé de Bassin à l'Élastique",
+  "instructions": [
+   "Après avoir choisi un élastique adapté, fixez-le de chaque côté et allongez-vous au milieu du rack. Si votre rack n'a pas de goupilles, l'élastique peut être fixé avec des haltères lourds ou des objets similaires, à condition qu'ils ne bougent pas.",
+   "Ajustez votre position pour que l'élastique passe juste au-dessus des hanches. Fléchissez les genoux et posez les pieds à plat au sol. Vos mains peuvent rester au sol ou maintenir l'élastique en place.",
+   "En gardant les épaules au sol, poussez dans les talons pour monter les hanches, en poussant contre l'élastique aussi haut que possible.",
+   "Marquez un temps d'arrêt en haut du mouvement, puis revenez à la position de départ."
+  ]
+ },
+ "Hyperextensions_Back_Extensions": {
+  "name": "Hyperextensions (Extensions Lombaires)",
+  "instructions": [
+   "Allongez-vous à plat ventre sur un banc à lombaires, chevilles bien bloquées sous les coussins.",
+   "Réglez si possible le coussin supérieur pour que le haut des cuisses repose à plat sur le large appui, en laissant assez de place pour fléchir librement à partir de la taille.",
+   "Corps droit, croisez les bras devant vous (ma préférence) ou derrière la tête. C'est la position de départ. Astuce : vous pouvez aussi tenir un disque devant vous sous les bras croisés pour ajouter de la résistance.",
+   "Penchez-vous lentement vers l'avant à partir de la taille, aussi loin que possible en gardant le dos plat. Inspirez pendant le mouvement. Continuez jusqu'à sentir un bon étirement des ischio-jambiers et à ne plus pouvoir avancer sans arrondir le dos. Astuce : n'arrondissez jamais le dos dans cet exercice. Certains descendent plus bas que d'autres ; l'essentiel est d'aller aussi loin que votre corps le permet sans arrondir le dos.",
+   "Relevez lentement le buste à la position initiale en expirant. Astuce : évitez la tentation de cambrer au-delà de la ligne droite. Ne balancez jamais le buste, afin de protéger votre dos.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Hyperextensions_With_No_Hyperextension_Bench": {
+  "name": "Hyperextensions sans Banc à Lombaires",
+  "instructions": [
+   "Faites tenir vos jambes par quelqu'un et glissez-vous vers le bord d'un banc plat jusqu'à ce que vos hanches dépassent de son extrémité. Astuce : tout le haut du corps doit pendre vers le sol. Vous êtes dans la même position que sur un banc à lombaires, mais l'amplitude est plus réduite du fait de la moindre hauteur du banc plat.",
+   "Corps droit, croisez les bras devant vous (ma préférence) ou derrière la tête. C'est la position de départ. Astuce : vous pouvez aussi tenir un disque devant vous sous les bras croisés pour ajouter de la résistance.",
+   "Penchez-vous lentement vers l'avant à partir de la taille, aussi loin que possible en gardant le dos plat. Inspirez pendant le mouvement. Continuez jusqu'à presque toucher le sol ou jusqu'à sentir un bon étirement des ischio-jambiers, selon ce qui arrive en premier. Astuce : n'arrondissez jamais le dos dans cet exercice.",
+   "Relevez lentement le buste à la position initiale en expirant. Astuce : évitez la tentation de cambrer au-delà de la ligne droite. Ne balancez jamais le buste, afin de protéger votre dos.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Incline_Dumbbell_Curl": {
+  "name": "Curl Incliné aux Haltères",
+  "instructions": [
+   "Installez-vous en arrière sur un banc incliné, un haltère dans chaque main, bras tendus. Gardez les coudes près du buste et tournez les paumes vers l'avant. C'est la position de départ.",
+   "En gardant les bras immobiles, montez les charges en contractant les biceps et en expirant. Seuls les avant-bras bougent. Continuez jusqu'à contraction complète des biceps, les haltères à hauteur d'épaules. Tenez la contraction une seconde.",
+   "Redescendez lentement les haltères à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Incline_Push-Up": {
+  "name": "Pompe Inclinée",
+  "instructions": [
+   "Placez-vous face à un banc ou à une surface surélevée stable. Posez les mains sur son bord, un peu plus écartées que la largeur des épaules.",
+   "Reculez la pointe des pieds par rapport au banc, bras et corps tendus. Les bras sont perpendiculaires au corps. En gardant le corps droit, descendez la poitrine vers le bord en fléchissant les bras.",
+   "Repoussez le corps jusqu'à ce que les bras soient tendus. Répétez."
+  ]
+ },
+ "Incline_Push-Up_Close-Grip": {
+  "name": "Pompe Inclinée Prise Serrée",
+  "instructions": [
+   "Placez-vous face à la barre d'une machine Smith ou à une surface surélevée stable, à une hauteur adaptée.",
+   "Posez les mains l'une à côté de l'autre sur la barre.",
+   "Reculez les pieds par rapport à la barre, bras et corps tendus. C'est la position de départ.",
+   "En gardant le corps droit, descendez la poitrine vers la barre en fléchissant les bras.",
+   "Revenez à la position de départ en tendant les coudes pour vous repousser."
+  ]
+ },
+ "Incline_Push-Up_Wide": {
+  "name": "Pompe Inclinée Prise Large",
+  "instructions": [
+   "Placez-vous face à la barre d'une machine Smith ou à une surface surélevée stable, à une hauteur adaptée.",
+   "Posez les mains sur la barre, plus écartées que la largeur des épaules.",
+   "Reculez les pieds par rapport à la barre, bras et corps tendus. Les bras sont perpendiculaires au corps. C'est la position de départ.",
+   "En gardant le corps droit, descendez la poitrine vers la barre en fléchissant les bras.",
+   "Revenez à la position de départ en tendant les coudes pour vous repousser."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Front_And_Back": {
+  "name": "Exercice Isométrique du Cou – Avant et Arrière",
+  "instructions": [
+   "Tête et nuque en position neutre (droite, regard vers l'avant), placez les deux mains sur le front.",
+   "Poussez maintenant doucement vers l'avant en contractant les muscles du cou tout en empêchant tout mouvement de la tête. Installez la tension lentement et augmentez-la progressivement. Continuez à respirer normalement pendant la contraction.",
+   "Tenez le nombre de secondes recommandé.",
+   "Relâchez ensuite lentement la tension.",
+   "Reposez-vous le temps recommandé et répétez avec les mains placées derrière la tête."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Sides": {
+  "name": "Exercice Isométrique du Cou – Côtés",
+  "instructions": [
+   "Tête et nuque en position neutre (droite, regard vers l'avant), placez la main gauche sur le côté gauche de la tête.",
+   "Poussez maintenant doucement vers la gauche en contractant les muscles gauches du cou tout en empêchant tout mouvement de la tête. Installez la tension lentement et augmentez-la progressivement. Continuez à respirer normalement pendant la contraction.",
+   "Tenez le nombre de secondes recommandé.",
+   "Relâchez ensuite lentement la tension.",
+   "Reposez-vous le temps recommandé et répétez avec la main droite sur le côté droit de la tête."
+  ]
+ },
+ "Jackknife_Sit-Up": {
+  "name": "Crunch en Canif",
+  "instructions": [
+   "Allongez-vous à plat sur le dos au sol (ou sur un tapis), bras tendus derrière la tête et jambes tendues également. C'est la position de départ.",
+   "En expirant, fléchissez à partir de la taille en montant simultanément les jambes et les bras pour les rejoindre en position de canif. Astuce : les jambes sont tendues et montées à environ 35-45 degrés du sol, les bras tendus et parallèles aux jambes. Le haut du buste décolle du sol.",
+   "En inspirant, redescendez bras et jambes à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Keg_Load": {
+  "name": "Chargement de Fûts",
+  "instructions": [
+   "Pour charger des fûts, disposez-en le nombre voulu à une certaine distance de la plateforme de chargement, généralement 9 à 15 mètres.",
+   "Commencez par saisir la poignée proche du premier fût, basculez-le sur le côté pour attraper le bord opposé de son fond. Montez le fût jusqu'à la poitrine.",
+   "Plus vous montez le fût haut, plus vous pourrez rejoindre vite la plateforme. Le porter à l'épaule n'est généralement pas autorisé. Gardez une prise ferme sur le fût. Rejoignez la plateforme le plus vite possible et chargez-le en étendant hanches, genoux et chevilles pour le monter le plus haut possible.",
+   "Revenez à la position de départ pour récupérer le fût suivant, et répétez jusqu'à la fin de l'épreuve."
+  ]
+ },
+ "Kettlebell_Arnold_Press": {
+  "name": "Arnold Press à la Kettlebell",
+  "instructions": [
+   "Épaulez une kettlebell. Amenez-la à l'épaule en étendant les jambes et les hanches tout en la montant vers l'épaule. La paume est tournée vers l'intérieur.",
+   "Regard droit devant, poussez la kettlebell vers le haut au-dessus de la tête en tournant le poignet pour que la paume soit vers l'avant en fin de mouvement.",
+   "Ramenez la kettlebell à la position de départ, paume vers l'intérieur."
+  ]
+ },
+ "Kettlebell_One-Legged_Deadlift": {
+  "name": "Soulevé de Terre Unijambiste à la Kettlebell",
+  "instructions": [
+   "Tenez une kettlebell par la poignée dans une main. Tenez-vous sur la jambe du même côté que la kettlebell.",
+   "En gardant ce genou légèrement fléchi, effectuez un soulevé de terre jambes tendues en fléchissant la hanche et en tendant la jambe libre derrière vous pour l'équilibre.",
+   "Continuez à descendre la kettlebell jusqu'à être parallèle au sol, puis revenez en position debout."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Lunge_style": {
+  "name": "Relevé Turc à la Kettlebell (Version Fente)",
+  "instructions": [
+   "Allongez-vous sur le dos au sol et poussez une kettlebell en position haute en tendant le coude. Fléchissez le genou du même côté que la kettlebell.",
+   "En gardant la kettlebell verrouillée en permanence, pivotez du côté opposé et servez-vous du bras libre pour vous propulser vers l'avant en position de fente. Avec la main libre, poussez-vous en position assise, puis passez sur un genou.",
+   "En regardant la kettlebell, relevez-vous lentement. Inversez le mouvement jusqu'à la position de départ et répétez."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Squat_style": {
+  "name": "Relevé Turc à la Kettlebell (Version Squat)",
+  "instructions": [
+   "Allongez-vous sur le dos au sol et poussez une kettlebell en position haute en tendant le coude. Fléchissez le genou du même côté que la kettlebell.",
+   "En gardant la kettlebell verrouillée en permanence, pivotez du côté opposé et servez-vous du bras libre pour vous propulser vers l'avant en position de fente.",
+   "Avec la main libre, poussez-vous en position assise, puis remontez sur vos pieds. En regardant la kettlebell, relevez-vous lentement. Inversez le mouvement jusqu'à la position de départ et répétez."
+  ]
+ },
+ "Kettlebell_Windmill": {
+  "name": "Moulin à Vent à la Kettlebell",
+  "instructions": [
+   "Placez une kettlebell devant votre pied avant et épaulez-la puis poussez-la au-dessus de la tête avec le bras opposé. Amenez-la à l'épaule en étendant les jambes et les hanches tout en la tirant vers les épaules. Tournez le poignet au passage pour que la paume soit vers l'avant. Poussez-la au-dessus de la tête en tendant le coude.",
+   "En gardant la kettlebell verrouillée en permanence, poussez les fessiers dans la direction de la kettlebell verrouillée. Orientez les pieds à quarante-cinq degrés du bras qui tient la kettlebell. En fléchissant la hanche d'un côté et en sortant les fessiers, penchez-vous lentement jusqu'à pouvoir toucher le sol de la main libre. Gardez en permanence les yeux sur la kettlebell tenue au-dessus de la tête.",
+   "Marquez une seconde d'arrêt une fois le sol atteint et inversez le mouvement jusqu'à la position de départ."
+  ]
+ },
+ "Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists": {
+  "name": "Crunch à la Poulie à Genoux avec Rotations Alternées",
+  "instructions": [
+   "Fixez une corde à une poulie haute et posez un tapis au sol devant elle.",
+   "Saisissez la corde des deux mains et mettez-vous à genoux à environ 60 cm de la colonne.",
+   "Placez la corde derrière la tête, mains près des oreilles.",
+   "Sans bouger les mains, contractez les abdominaux et tirez la corde vers le bas en enroulant jusqu'à ce que les coudes atteignent les genoux.",
+   "Marquez une brève pause en bas et remontez lentement et de façon contrôlée jusqu'à la position de départ.",
+   "Répétez la même descente jusqu'à mi-course, puis commencez à amener un coude vers le genou opposé.",
+   "Là encore, marquez une brève pause en bas et remontez lentement et de façon contrôlée jusqu'à la position de départ.",
+   "Répétez le même mouvement, mais avec l'autre coude vers le genou opposé.",
+   "Poursuivez cette série de mouvements jusqu'à l'échec."
+  ]
+ },
+ "Kneeling_High_Pulley_Row": {
+  "name": "Rowing à la Poulie Haute à Genoux",
+  "instructions": [
+   "Choisissez la charge adaptée sur une poulie située au-dessus de votre tête. Fixez-y une corde et mettez-vous à genoux à un mètre environ, la corde tenue devant vous bras tendus. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant les coudes et en rétractant complètement les épaules, en tirant la corde vers le haut de la poitrine, coudes écartés.",
+   "Après une brève pause, revenez lentement à la position de départ."
+  ]
+ },
+ "Kneeling_Jump_Squat": {
+  "name": "Squat Sauté depuis les Genoux",
+  "instructions": [
+   "Mettez-vous à genoux au sol avec une barre posée sur le haut du dos, ou faites l'exercice au poids du corps. Un power rack facilite la sortie de la barre.",
+   "Asseyez-vous en arrière jusqu'à ce que les fessiers touchent les pieds, tête et poitrine hautes.",
+   "Explosez avec les hanches en produisant assez de puissance pour retomber pieds à plat au sol.",
+   "Terminez le squat en poussant dans les talons et en tendant les genoux pour arriver en position debout."
+  ]
+ },
+ "Kneeling_Squat": {
+  "name": "Squat à Genoux",
+  "instructions": [
+   "Réglez la barre à la bonne hauteur dans un power rack. Mettez-vous à genoux derrière la barre ; un tapis sous les genoux peut être utile. Glissez-vous sous la barre et posez-la sur l'arrière des épaules. Les omoplates sont resserrées et la barre bien plaquée sur le dos. Sortez la charge du rack.",
+   "Regard devant vous, asseyez-vous en arrière jusqu'à toucher vos mollets.",
+   "Inversez le mouvement en ramenant le buste en position verticale."
+  ]
+ },
+ "Landmine_180s": {
+  "name": "Landmine 180°",
+  "instructions": [
+   "Placez une barre dans un landmine ou calez-la solidement dans un coin. Chargez-la au poids voulu.",
+   "Montez la barre du sol jusqu'à hauteur d'épaules à deux mains, bras tendus devant vous. Adoptez un appui large. C'est la position de départ.",
+   "Exécutez le mouvement en faisant tourner le tronc et les hanches pour balancer la charge complètement d'un côté. Gardez les bras tendus pendant tout l'exercice.",
+   "Inversez le mouvement pour balancer la charge complètement de l'autre côté.",
+   "Continuez à alterner jusqu'à la fin de la série."
+  ]
+ },
+ "Lateral_Bound": {
+  "name": "Bond Latéral",
+  "instructions": [
+   "Placez-vous en demi-squat, orienté à 90 degrés de votre direction de déplacement. C'est la position de départ.",
+   "Laissez la jambe avant faire un contre-mouvement vers l'intérieur pendant que vous transférez le poids sur la jambe extérieure.",
+   "Poussez immédiatement et étendez-vous en cherchant à bondir le plus loin possible sur le côté.",
+   "À la réception, repoussez immédiatement dans la direction opposée pour revenir à votre position de départ.",
+   "Continuez ainsi d'avant en arrière sur plusieurs répétitions."
+  ]
+ },
+ "Lateral_Box_Jump": {
+  "name": "Saut Latéral sur Box",
+  "instructions": [
+   "Placez-vous debout de façon confortable, une box basse à côté de vous. C'est la position de départ.",
+   "Descendez brièvement en quart de squat pour déclencher le réflexe d'étirement et inversez immédiatement la direction pour sauter vers le haut et sur le côté.",
+   "Montez les genoux assez haut pour que vos pieds passent largement au-dessus de la box.",
+   "Réceptionnez au centre de la box en amortissant avec les jambes.",
+   "Sautez prudemment de l'autre côté de la box et continuez ainsi d'avant en arrière sur plusieurs répétitions."
+  ]
+ },
+ "Lateral_Cone_Hops": {
+  "name": "Sauts Latéraux par-dessus des Plots",
+  "instructions": [
+   "Alignez plusieurs plots espacés d'un mètre environ.",
+   "Placez-vous à l'extrémité de la rangée, orienté à 90 degrés de votre direction de déplacement. C'est la position de départ.",
+   "Amorcez le saut en fléchissant les genoux pour déclencher le réflexe d'étirement, puis inversez immédiatement la direction pour vous repousser du sol et sauter latéralement par-dessus le plot.",
+   "Amortissez la réception avec les jambes et enchaînez sur le saut suivant, tout le long de la rangée."
+  ]
+ },
+ "Leg_Press": {
+  "name": "Presse à Cuisses",
+  "instructions": [
+   "Asseyez-vous à la presse à cuisses et placez les jambes sur la plateforme juste devant vous, pieds écartés de la largeur des épaules. (Remarque : on utilise ici l'écartement moyen décrit plus haut, qui développe l'ensemble des jambes ; vous pouvez choisir l'un des trois écartements présentés dans la section sur la position des pieds.)",
+   "Abaissez les sécurités qui maintiennent la plateforme chargée et poussez celle-ci jusqu'à ce que vos jambes soient tendues devant vous. Astuce : ne verrouillez pas les genoux. Buste et jambes forment un angle parfait de 90 degrés. C'est la position de départ.",
+   "En inspirant, descendez lentement la plateforme jusqu'à ce que cuisse et jambe forment un angle de 90 degrés.",
+   "En poussant principalement avec les talons et en utilisant les quadriceps, revenez à la position de départ en expirant.",
+   "Répétez le nombre de répétitions recommandé et veillez à bien remettre les sécurités une fois terminé. Vous ne voulez pas que cette plateforme chargée vous tombe dessus."
+  ]
+ },
+ "Leverage_Deadlift": {
+  "name": "Soulevé de Terre à la Machine à Levier",
+  "instructions": [
+   "Chargez les broches au poids voulu. Placez-vous exactement entre les poignées. Saisissez les poignées basses d'une prise confortable, puis abaissez les hanches en inspirant. Regardez devant vous et gardez la poitrine haute. C'est la position de départ.",
+   "Ramenez la charge à la position de départ."
+  ]
+ },
+ "Leverage_High_Row": {
+  "name": "Rowing Haut à la Machine à Levier",
+  "instructions": [
+   "Chargez les broches au poids voulu et réglez la hauteur du siège pour atteindre tout juste les poignées au-dessus de vous. Réglez le coussin de cuisses pour rester bien plaqué. Saisissez les poignées en pronation. C'est la position de départ.",
+   "Tirez les poignées vers le buste en resserrant les omoplates et en fléchissant les coudes.",
+   "Marquez un temps d'arrêt en fin de mouvement, puis ramenez lentement les poignées à la position de départ.",
+   "Sur plusieurs répétitions, évitez de reposer complètement la charge sur les butées afin de conserver la tension sur les muscles travaillés."
+  ]
+ },
+ "Leverage_Iso_Row": {
+  "name": "Rowing Iso à la Machine à Levier",
+  "instructions": [
+   "Chargez les broches au poids voulu et réglez la hauteur du siège pour que les poignées soient à hauteur de poitrine. Saisissez les poignées en prise neutre ou en pronation. C'est la position de départ.",
+   "Tirez les poignées vers le buste en resserrant les omoplates et en fléchissant les coudes.",
+   "Marquez un temps d'arrêt en fin de mouvement, puis ramenez lentement les poignées à la position de départ. Sur plusieurs répétitions, évitez de reposer complètement la charge sur les butées afin de conserver la tension sur les muscles travaillés."
+  ]
+ },
+ "Low_Pulley_Row_To_Neck": {
+  "name": "Rowing à la Poulie Basse vers la Nuque",
+  "instructions": [
+   "Asseyez-vous à une machine de rowing à poulie basse équipée d'une corde.",
+   "Saisissez les extrémités de la corde en pronation et asseyez-vous dos droit, genoux légèrement fléchis. Astuce : gardez le dos presque totalement vertical et les bras complètement tendus devant vous. C'est la position de départ.",
+   "En gardant le buste immobile, levez les coudes et commencez à les fléchir en tirant la corde vers la nuque, tout en expirant. Pendant tout le mouvement, les bras restent parallèles au sol. Astuce : poursuivez le mouvement jusqu'à ce que vos mains soient presque au niveau des oreilles (les avant-bras ne seront pas parallèles au sol en fin de mouvement, mais légèrement orientés vers le haut) et que les coudes soient bien écartés.",
+   "Après environ une seconde de contraction, revenez lentement à la position de départ en inspirant. Astuce : là encore, le buste ne doit bouger à aucun moment.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Lunge_Pass_Through": {
+  "name": "Fente avec Passage de Kettlebell",
+  "instructions": [
+   "Tenez-vous debout, buste droit, une kettlebell dans la main droite. C'est la position de départ.",
+   "Avancez le pied gauche et descendez le buste en fléchissant la hanche et le genou, buste droit. Descendez le genou arrière jusqu'à frôler le sol.",
+   "Pendant la fente, faites passer la kettlebell sous la jambe avant vers l'autre main.",
+   "En poussant dans le talon, revenez à la position de départ.",
+   "Répétez le mouvement le nombre de répétitions recommandé, en alternant les jambes."
+  ]
+ },
+ "Lying_Face_Up_Plate_Neck_Resistance": {
+  "name": "Renforcement du Cou Allongé sur le Dos avec Disque",
+  "instructions": [
+   "Allongez-vous sur le dos, corps bien droit, sur un banc plat, en tenant un disque sur le front. Astuce : placez-vous de façon à ce que vos épaules dépassent légèrement l'extrémité du banc, pour que trapèzes, nuque et tête soient dans le vide. C'est la position de départ.",
+   "En maintenant le disque bien en place sur le front, descendez lentement la tête en arrière en demi-cercle, tout en inspirant.",
+   "Relevez la tête à la position de départ en demi-cercle, en expirant. Tenez la contraction une seconde.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Machine_Bicep_Curl": {
+  "name": "Curl Biceps à la Machine",
+  "instructions": [
+   "Réglez le siège à la bonne hauteur et choisissez votre charge. Placez les bras contre les coussins et saisissez les poignées. C'est la position de départ.",
+   "Exécutez le mouvement en fléchissant les coudes, en tirant les avant-bras vers les bras.",
+   "Marquez un temps d'arrêt en haut du mouvement, puis ramenez lentement la charge à la position de départ.",
+   "Évitez de reposer complètement la charge sur les butées avant la fin de la série, afin de conserver la tension sur les muscles travaillés."
+  ]
+ },
+ "Monster_Walk": {
+  "name": "Marche du Monstre",
+  "instructions": [
+   "Placez un élastique autour des deux chevilles et un autre autour des deux genoux. La tension doit être suffisante pour qu'ils soient tendus quand les pieds sont à largeur d'épaules.",
+   "Commencez par de petits pas vers l'avant, en alternant pied gauche et pied droit.",
+   "Après plusieurs pas, faites exactement l'inverse et marchez en arrière jusqu'à votre point de départ."
+  ]
+ },
+ "Muscle_Up": {
+  "name": "Muscle-Up",
+  "instructions": [
+   "Saisissez les anneaux en false grip, la base des paumes posée sur les anneaux. Amorcez une traction en tirant les coudes le long du corps et en les fléchissant.",
+   "Une fois en position haute de la traction, tirez les anneaux vers les aisselles en enroulant les épaules vers l'avant et en laissant les coudes partir droit derrière vous. Vous êtes ainsi bien placé pour enchaîner la partie dip du mouvement.",
+   "En gardant contrôle et stabilité, tendez les coudes pour terminer le mouvement.",
+   "Redescendez au sol avec précaution."
+  ]
+ },
+ "One-Arm_Dumbbell_Row": {
+  "name": "Rowing à un Bras à l'Haltère",
+  "instructions": [
+   "Prenez un banc plat et posez un haltère de chaque côté.",
+   "Posez la jambe droite sur l'extrémité du banc, penchez le buste vers l'avant à partir de la taille jusqu'à ce qu'il soit parallèle au sol, et posez la main droite sur l'autre extrémité du banc en appui.",
+   "De la main gauche, ramassez l'haltère au sol et tenez-le en gardant le bas du dos droit. La paume est tournée vers le buste. C'est la position de départ.",
+   "Tirez la charge droit vers le côté de la poitrine, en gardant le bras près du corps et le buste immobile. Expirez pendant cette phase. Astuce : concentrez-vous sur la contraction des muscles du dos une fois la position haute atteinte. Veillez aussi à ce que l'effort vienne du dos et non des bras. Enfin, le buste reste immobile : seuls les bras bougent. Les avant-bras n'ont d'autre rôle que de tenir l'haltère ; n'essayez donc pas de le monter avec les avant-bras.",
+   "Redescendez la charge droit vers la position de départ. Inspirez pendant cette phase.",
+   "Répétez le mouvement le nombre de répétitions indiqué.",
+   "Changez de côté et répétez avec l'autre bras."
+  ]
+ },
+ "One-Arm_Long_Bar_Row": {
+  "name": "Rowing à un Bras à la Barre Longue",
+  "instructions": [
+   "Placez une barre dans un landmine ou dans un coin pour qu'elle ne bouge pas. Chargez votre extrémité au poids voulu.",
+   "Placez-vous à côté de la barre et saisissez-la d'une main, près du collier. En vous servant des hanches et des jambes, redressez-vous en position debout.",
+   "Adoptez une position genoux fléchis, hanches en arrière et poitrine haute. Le bras est tendu. C'est la position de départ.",
+   "Tirez la charge le long du corps en rétractant l'épaule et en fléchissant le coude. N'arrachez pas la charge et ne trichez pas pendant le mouvement.",
+   "Après une brève pause, revenez à la position de départ."
+  ]
+ },
+ "One-Legged_Cable_Kickback": {
+  "name": "Extension de Hanche à la Poulie sur une Jambe",
+  "instructions": [
+   "Fixez une sangle de cheville à une poulie basse puis attachez-la à votre cheville.",
+   "Placez-vous face à la pile de charges à environ 60 cm, en vous tenant au bâti pour l'appui.",
+   "En gardant genoux et hanches légèrement fléchis et les abdominaux gainés, contractez les fessiers pour \"lancer\" lentement la jambe de travail vers l'arrière en arc de cercle, aussi haut que le confort le permet, tout en expirant. Astuce : en extension complète, serrez les fessiers une seconde pour atteindre la contraction maximale.",
+   "Ramenez ensuite lentement la jambe de travail vers l'avant en résistant à la traction du câble jusqu'à la position de départ.",
+   "Répétez le nombre de répétitions recommandé.",
+   "Changez de jambe et répétez le mouvement de l'autre côté."
+  ]
+ },
+ "One_Arm_Lat_Pulldown": {
+  "name": "Tirage Vertical à un Bras",
+  "instructions": [
+   "Choisissez une charge adaptée et réglez le coussin de cuisses pour rester bien plaqué. Saisissez la poignée en pronation. C'est la position de départ.",
+   "Tirez la poignée vers le bas en ramenant le coude le long du corps tout en le fléchissant.",
+   "Marquez un temps d'arrêt en fin de mouvement, puis ramenez lentement la poignée à la position de départ.",
+   "Sur plusieurs répétitions, évitez de reposer complètement la charge afin de conserver la tension sur les muscles travaillés."
+  ]
+ },
+ "Palms-Down_Wrist_Curl_Over_A_Bench": {
+  "name": "Curl de Poignets en Pronation sur un Banc",
+  "instructions": [
+   "Commencez par poser une barre d'un côté d'un banc plat.",
+   "Mettez-vous à genoux, corps face au banc plat.",
+   "Saisissez la barre en pronation (paumes vers le bas) et remontez-la de façon à poser les avant-bras sur le banc plat. Les poignets dépassent du bord.",
+   "Enroulez les poignets vers le haut en expirant.",
+   "Redescendez lentement les poignets à la position de départ en inspirant.",
+   "Les avant-bras restent immobiles : seul le poignet bouge dans cet exercice.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Curl de Poignets à la Barre en Supination sur un Banc",
+  "instructions": [
+   "Commencez par poser une barre d'un côté d'un banc plat.",
+   "Mettez-vous à genoux, corps face au banc plat.",
+   "Saisissez la barre en supination (paumes vers le haut) et remontez-la de façon à poser les avant-bras sur le banc plat. Les poignets dépassent du bord.",
+   "Enroulez les poignets vers le haut en expirant.",
+   "Redescendez lentement les poignets à la position de départ en inspirant.",
+   "Les avant-bras restent immobiles : seul le poignet bouge dans cet exercice.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Curl de Poignets aux Haltères en Supination sur un Banc",
+  "instructions": [
+   "Commencez par poser deux haltères d'un côté d'un banc plat.",
+   "Mettez-vous à genoux, corps face au banc plat.",
+   "Saisissez les deux haltères en supination (paumes vers le haut) et remontez-les de façon à poser les avant-bras sur le banc plat. Les poignets dépassent du bord.",
+   "Enroulez les poignets vers le haut en expirant.",
+   "Redescendez lentement les poignets à la position de départ en inspirant. Veillez à bien inspirer pendant cette phase.",
+   "Les avant-bras restent immobiles : seul le poignet bouge dans cet exercice.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Parallel_Bar_Dip": {
+  "name": "Dips aux Barres Parallèles",
+  "instructions": [
+   "Placez-vous entre deux barres parallèles. Posez une main sur chaque barre, puis donnez une petite impulsion pour arriver en position de départ, bras verrouillés.",
+   "Commencez par fléchir les coudes en descendant le corps jusqu'à passer sous 90 degrés. Évitez de vous balancer et gardez une bonne posture pendant toute la descente.",
+   "Inversez le mouvement en tendant les coudes pour vous repousser en position de départ.",
+   "Répétez le nombre de répétitions voulu."
+  ]
+ },
+ "Plie_Dumbbell_Squat": {
+  "name": "Squat Plié à l'Haltère",
+  "instructions": [
+   "Tenez un haltère par sa base à deux mains et tenez-vous bien droit. Écartez les jambes au-delà de la largeur des épaules, genoux légèrement fléchis.",
+   "Les pointes de pieds sont tournées vers l'extérieur. Remarque : les bras restent immobiles pendant l'exercice. C'est la position de départ.",
+   "Fléchissez lentement les genoux et descendez jusqu'à ce que les cuisses soient parallèles au sol. Veillez à inspirer, car c'est la phase excentrique de l'exercice.",
+   "Poussez principalement avec le talon pour ramener le corps à la position de départ, en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Preacher_Curl": {
+  "name": "Curl au Pupitre",
+  "instructions": [
+   "Cet exercice nécessite un banc Larry Scott et une barre EZ. Saisissez la barre EZ par les poignées intérieures rapprochées (faites-vous passer la barre, c'est préférable, ou prenez-la sur le repose-barre avant dont sont équipés la plupart des pupitres). Les paumes sont tournées vers l'avant et légèrement inclinées vers l'intérieur du fait de la forme de la barre.",
+   "Bras posés contre le pupitre et poitrine appuyée contre celui-ci, tenez la barre EZ bras tendus. C'est la position de départ.",
+   "En inspirant, descendez lentement la barre jusqu'à ce que le bras soit tendu et le biceps complètement étiré.",
+   "En expirant, montez la charge avec les biceps jusqu'à contraction complète, la barre à hauteur d'épaules. Serrez fortement les biceps et tenez cette position une seconde.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Press_Sit-Up": {
+  "name": "Relevé de Buste avec Développé",
+  "instructions": [
+   "Pour commencer, allongez-vous sur un banc avec une barre posée sur la poitrine. Placez les jambes de façon à ce qu'elles soient bien bloquées sur le prolongement du banc à abdominaux. C'est la position de départ.",
+   "En inspirant, contractez abdominaux et fessiers. Enroulez simultanément le buste comme pour un relevé de buste et poussez la barre au-dessus de la tête en expirant. Astuce : servez-vous des bras pour pousser la barre tout en gardant l'attention sur les abdominaux.",
+   "Redescendez le haut du corps à la position de départ en ramenant la barre sur le buste. Pensez à inspirer pendant la descente.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Pull_Through": {
+  "name": "Pull Through",
+  "instructions": [
+   "Placez-vous à un mètre environ devant une poulie basse équipée d'une corde ou d'une poignée. Tournez le dos à la machine, le câble entre vos jambes très écartées.",
+   "Lancez le mouvement en passant les mains entre vos jambes aussi loin que possible vers l'arrière, en fléchissant les hanches. Gardez les genoux légèrement fléchis. En gardant les bras tendus, étendez les hanches pour vous redresser complètement. Évitez de tirer vers le haut avec les épaules : tout le mouvement vient des hanches."
+  ]
+ },
+ "Pullups": {
+  "name": "Tractions",
+  "instructions": [
+   "Saisissez la barre de traction paumes vers l'avant, avec la prise indiquée. Remarque sur les prises : en prise large, les mains sont plus écartées que la largeur des épaules ; en prise moyenne, à la largeur des épaules ; en prise serrée, plus rapprochées.",
+   "Bras tendus devant vous en tenant la barre à la largeur choisie, ramenez le buste en arrière d'environ 30 degrés en creusant le bas du dos et en sortant la poitrine. C'est la position de départ.",
+   "Tirez le buste vers le haut jusqu'à ce que la barre touche le haut de la poitrine, en tirant les épaules et les bras vers le bas et l'arrière. Expirez pendant cette phase. Astuce : concentrez-vous sur la contraction des muscles du dos une fois la position haute atteinte. Le buste doit rester figé pendant qu'il se déplace dans l'espace ; seuls les bras bougent. Les avant-bras n'ont d'autre rôle que de tenir la barre.",
+   "Après une seconde en position contractée, inspirez et redescendez lentement le buste à la position de départ, bras complètement tendus et dorsaux complètement étirés.",
+   "Répétez ce mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Push-Up_Wide": {
+  "name": "Pompe Prise Large",
+  "instructions": [
+   "Mains très écartées, mettez-vous en appui sur les pointes de pieds et les mains, en position de planche. Les coudes sont tendus et le corps droit. Ne laissez pas les hanches s'affaisser. C'est la position de départ.",
+   "Commencez par laisser les coudes fléchir en descendant la poitrine vers le sol, tout en inspirant.",
+   "Avec les pectoraux, repoussez le haut du corps à la position de départ en tendant les coudes. Expirez pendant cette phase.",
+   "Après une pause en position haute, répétez le mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Push_Up_to_Side_Plank": {
+  "name": "Pompe avec Planche Latérale",
+  "instructions": [
+   "Mettez-vous en position de pompe sur les pointes de pieds, mains juste au-delà de la largeur des épaules.",
+   "Effectuez une pompe en laissant les coudes fléchir. Gardez le corps droit pendant la descente.",
+   "Faites une pompe et, en remontant, transférez le poids sur le côté gauche du corps, tournez sur le côté en montant le bras droit vers le plafond en planche latérale.",
+   "Reposez le bras au sol pour une nouvelle pompe, puis tournez de l'autre côté.",
+   "Répétez la série en alternant les côtés, sur 10 répétitions ou plus."
+  ]
+ },
+ "Reverse_Band_Bench_Press": {
+  "name": "Développé Couché avec Élastiques Inversés",
+  "instructions": [
+   "Placez un banc dans un power rack, barre réglée à la bonne hauteur. Commencez par ancrer les élastiques sur les goupilles prévues ou en haut du rack. Assurez-vous d'être correctement placé sous les élastiques. Fixez l'autre extrémité à la barre.",
+   "Allongez-vous sur le banc, ramenez les pieds sous vous et cambrez le dos. En vous aidant de la barre pour soutenir votre poids, décollez les épaules du banc et resserrez les omoplates. Poussez sur les pieds pour enfoncer les trapèzes dans le banc. Gardez cette tension du corps pendant tout le mouvement. Quelle que soit sa largeur, votre prise doit couvrir l'anneau de la barre.",
+   "Sortez la barre du rack sans laisser les épaules partir vers l'avant. Concentrez-vous sur le serrage de la barre en cherchant à l'écarter. Descendez la barre vers le bas de la poitrine ou le haut du ventre. Barre, poignet et coude restent alignés en permanence.",
+   "Marquez un temps d'arrêt quand la barre touche le buste, puis poussez-la vers le haut avec le plus de force possible. Les coudes restent serrés jusqu'à l'extension complète."
+  ]
+ },
+ "Reverse_Barbell_Curl": {
+  "name": "Curl Inversé à la Barre",
+  "instructions": [
+   "Tenez-vous debout, buste droit, en tenant une barre à largeur d'épaules, coudes près du buste. Les paumes sont tournées vers le bas (prise en pronation). C'est la position de départ.",
+   "En gardant les bras immobiles, montez la charge en contractant les biceps et en expirant. Seuls les avant-bras bougent. Continuez jusqu'à contraction complète des biceps, la barre à hauteur d'épaules. Tenez la position une seconde en serrant le muscle.",
+   "Redescendez lentement la barre à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Reverse_Cable_Curl": {
+  "name": "Curl Inversé à la Poulie",
+  "instructions": [
+   "Tenez-vous debout, buste droit, en tenant une barre fixée à une poulie basse en pronation (paumes vers le bas) et à largeur d'épaules. Veillez également à garder les coudes près du buste. C'est la position de départ.",
+   "En gardant les bras immobiles, montez la charge en contractant les biceps et en expirant. Seuls les avant-bras bougent. Continuez jusqu'à contraction complète des biceps, la barre à hauteur d'épaules. Tenez la position une seconde en serrant le muscle.",
+   "Redescendez lentement la barre à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Reverse_Triceps_Bench_Press": {
+  "name": "Développé Couché en Supination pour Triceps",
+  "instructions": [
+   "Allongez-vous sur un banc plat. Avec une prise serrée en supination (environ la largeur des épaules), sortez la barre du rack et tenez-la bras tendus devant vous, perpendiculaires au sol. C'est la position de départ.",
+   "En inspirant, descendez lentement jusqu'à sentir la barre sur le milieu de la poitrine. Astuce : contrairement au développé couché classique, gardez les coudes près du buste en permanence pour maximiser le travail des triceps.",
+   "Après une pause d'une seconde, repoussez la barre à la position de départ en expirant et en poussant avec les triceps. Tendez les bras en position haute, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reposez la barre sur le rack."
+  ]
+ },
+ "Rocking_Standing_Calf_Raise": {
+  "name": "Extension des Mollets Debout en Bascule",
+  "instructions": [
+   "Pour des raisons de sécurité, réalisez cet exercice dans un rack à squat. Réglez d'abord la barre à une hauteur adaptée à votre taille. Une fois la hauteur choisie et la barre chargée, passez dessous et posez-la sur l'arrière des épaules (juste sous la nuque).",
+   "Tenez la barre des deux mains de chaque côté et sortez-la du rack en poussant d'abord sur les jambes tout en redressant le buste.",
+   "Écartez-vous du rack et placez les jambes à largeur d'épaules, pointes de pieds légèrement vers l'extérieur. Gardez la tête haute en permanence, car regarder vers le bas vous déséquilibre. Gardez également le dos droit et les genoux légèrement fléchis, jamais verrouillés. C'est la position de départ.",
+   "Montez les talons en expirant, en étendant les chevilles le plus haut possible et en contractant les mollets. Le genou doit rester immobile en permanence. Il ne doit y avoir aucune flexion à aucun moment, hormis la légère flexion initiale prise à l'installation. Tenez la contraction une seconde avant de redescendre.",
+   "Revenez lentement à la position de départ en inspirant, en descendant les talons et en fléchissant les chevilles jusqu'à étirement des mollets.",
+   "Relevez maintenant les orteils en contractant le tibial antérieur, à l'avant de la jambe, tout en expirant.",
+   "Tenez une seconde et redescendez-les en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Romanian_Deadlift": {
+  "name": "Soulevé de Terre Roumain",
+  "instructions": [
+   "Posez une barre devant vous au sol et saisissez-la en pronation (paumes vers le bas), un peu plus large que les épaules. Astuce : selon la charge, vous aurez peut-être besoin de sangles et d'une plateforme surélevée pour une meilleure amplitude.",
+   "Fléchissez légèrement les genoux en gardant les tibias verticaux, les hanches en arrière et le dos droit. C'est la position de départ.",
+   "En gardant le dos et les bras parfaitement tendus en permanence, montez la barre à partir des hanches en expirant. Astuce : le mouvement ne doit pas être rapide, mais régulier et contrôlé.",
+   "Une fois complètement redressé, descendez la barre en reculant les hanches, avec seulement une légère flexion des genoux, contrairement au squat. Astuce : inspirez profondément au début du mouvement et gardez la poitrine haute. Bloquez la respiration pendant la descente et expirez à la fin du mouvement.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Rope_Crunch": {
+  "name": "Crunch à la Corde",
+  "instructions": [
+   "Mettez-vous à genoux à 30-60 cm devant une poulie équipée d'une corde.",
+   "Après avoir choisi une charge adaptée, saisissez la corde des deux mains, bras au-dessus de la tête. En position de départ, le buste est droit.",
+   "Commencez par fléchir la colonne en cherchant à amener la cage thoracique vers les jambes tout en tirant le câble vers le bas.",
+   "Marquez un temps d'arrêt en fin de mouvement, puis revenez lentement à la position de départ.",
+   "L'exercice peut se faire avec des rotations ou sur le côté pour solliciter les obliques."
+  ]
+ },
+ "Russian_Twist": {
+  "name": "Russian Twist",
+  "instructions": [
+   "Allongez-vous au sol en bloquant vos pieds sous un appui fixe ou en les faisant tenir par un partenaire. Vos jambes sont fléchies aux genoux.",
+   "Relevez le haut du corps de façon à former un V imaginaire avec vos cuisses. Les bras sont complètement tendus devant vous, perpendiculaires au buste, mains jointes. C'est la position de départ.",
+   "Tournez le buste vers la droite jusqu'à ce que les bras soient parallèles au sol, tout en expirant.",
+   "Tenez la contraction une seconde et revenez à la position de départ. Passez maintenant de l'autre côté en appliquant la même technique qu'à droite.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Barbell_Military_Press": {
+  "name": "Développé Militaire Assis à la Barre",
+  "instructions": [
+   "Asseyez-vous sur un banc de développé militaire, la barre derrière la tête, et faites-vous passer la barre par un partenaire (c'est plus sûr pour la coiffe des rotateurs) ou prenez-la vous-même avec précaution en pronation (paumes vers l'avant). Astuce : la prise doit être plus large que les épaules et former un angle de 90 degrés entre avant-bras et bras quand la barre descend.",
+   "Une fois la barre saisie à la bonne largeur, montez-la au-dessus de la tête en verrouillant les bras. Tenez-la à hauteur d'épaules environ et légèrement devant la tête. C'est la position de départ.",
+   "Descendez lentement la barre jusqu'à la clavicule en inspirant.",
+   "Remontez la barre à la position de départ en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Calf_Raise": {
+  "name": "Extension des Mollets Assis",
+  "instructions": [
+   "Asseyez-vous à la machine et posez les orteils sur la partie basse de la plateforme prévue, talons dans le vide. Choisissez l'orientation des pieds qui vous convient (vers l'avant, l'intérieur ou l'extérieur) comme indiqué au début de ce chapitre.",
+   "Placez le bas des cuisses sous le coussin du bras de levier, qu'il faudra régler selon leur épaisseur. Posez ensuite les mains sur le coussin pour l'empêcher de glisser vers l'avant.",
+   "Soulevez légèrement le bras de levier en poussant sur les talons et libérez la sécurité. C'est la position de départ.",
+   "Descendez lentement les talons en fléchissant les chevilles jusqu'à étirement complet des mollets. Inspirez pendant le mouvement.",
+   "Montez les talons en étendant les chevilles le plus haut possible, en contractant les mollets et en expirant. Tenez la contraction haute une seconde.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Dumbbell_Curl": {
+  "name": "Curl Assis aux Haltères",
+  "instructions": [
+   "Asseyez-vous sur un banc plat, un haltère dans chaque main, bras tendus. Les coudes restent près du buste.",
+   "Tournez les paumes de façon à ce qu'elles soient face au buste. C'est la position de départ.",
+   "En gardant les bras immobiles, montez les charges et commencez à tourner les poignets une fois les haltères passés au niveau des cuisses, de façon à ce que les paumes soient vers l'avant en fin de mouvement. Contractez bien les biceps en expirant et veillez à ce que seuls les avant-bras bougent. Continuez jusqu'à contraction complète des biceps, les haltères à hauteur d'épaules. Tenez la position une seconde en serrant les biceps.",
+   "Redescendez lentement les haltères à la position de départ en inspirant et en ramenant les poignets en prise neutre.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Dumbbell_Palms-Up_Wrist_Curl": {
+  "name": "Curl de Poignets Assis aux Haltères en Supination",
+  "instructions": [
+   "Commencez par poser deux haltères au sol devant un banc plat.",
+   "Asseyez-vous au bord du banc plat, jambes écartées d'environ la largeur des épaules. Gardez bien les pieds au sol.",
+   "Saisissez les deux haltères et remontez-les de façon à poser les avant-bras sur les cuisses, paumes vers le haut. Les poignets dépassent du bord des cuisses.",
+   "Enroulez les poignets vers le haut en expirant.",
+   "Redescendez lentement les poignets à la position de départ en inspirant. Veillez à bien inspirer pendant cette phase. Astuce : les avant-bras restent immobiles ; seul le poignet bouge dans cet exercice.",
+   "Répétez le nombre de répétitions recommandé.",
+   "Une fois terminé, reposez simplement les haltères au sol."
+  ]
+ },
+ "Seated_Head_Harness_Neck_Resistance": {
+  "name": "Renforcement du Cou Assis au Harnais de Tête",
+  "instructions": [
+   "Posez un harnais de tête au sol à l'extrémité d'un banc plat. Une fois les charges choisies, asseyez-vous au bout du banc, pieds plus écartés que la largeur des épaules. Les pointes de pieds sont tournées vers l'extérieur.",
+   "Penchez lentement le buste vers l'avant jusqu'à ce qu'il soit presque parallèle au sol. Des deux mains, mettez le harnais bien en place autour de votre tête. Astuce : vérifiez que les charges reposent encore au sol pour éviter toute tension dans la nuque. Saisissez ensuite la charge des deux mains en relevant le buste jusqu'à ce qu'il soit presque perpendiculaire au sol. Remarque : la tête et le buste doivent être légèrement inclinés vers l'avant pour cet exercice.",
+   "Posez maintenant les deux mains sur les genoux. C'est la position de départ.",
+   "Descendez lentement la nuque jusqu'à ce que le menton touche le haut de la poitrine, en inspirant.",
+   "En expirant, ramenez la nuque à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Leg_Curl": {
+  "name": "Leg Curl Assis",
+  "instructions": [
+   "Réglez le bras de la machine à votre taille et asseyez-vous, dos contre le dossier.",
+   "Posez l'arrière des jambes sur le bras rembourré (quelques centimètres sous les mollets) et bloquez le coussin sur les cuisses, juste au-dessus des genoux. Saisissez ensuite les poignées latérales de la machine en pointant les orteils droit devant (vous pouvez aussi choisir l'une des deux autres positions) et assurez-vous que les jambes sont bien tendues devant vous. C'est la position de départ.",
+   "En expirant, tirez le bras de la machine aussi loin que possible vers l'arrière des cuisses en fléchissant les genoux. Gardez le buste immobile en permanence. Tenez la contraction une seconde.",
+   "Revenez lentement à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Seated_Palm-Up_Barbell_Wrist_Curl": {
+  "name": "Curl de Poignets Assis à la Barre en Supination",
+  "instructions": [
+   "Tenez une barre à deux mains, paumes vers le haut, mains écartées d'environ la largeur des épaules.",
+   "Posez les pieds à plat au sol, un peu plus écartés que la largeur des épaules.",
+   "Penchez-vous en avant et posez les avant-bras sur le haut des cuisses, paumes vers le haut. Astuce : l'avant des poignets doit reposer sur les genoux. C'est la position de départ.",
+   "Descendez la barre aussi bas que possible en inspirant et en gardant une prise ferme.",
+   "Enroulez maintenant la barre aussi haut que possible en contractant les avant-bras et en expirant. Tenez la contraction une seconde en haut. Astuce : seul le poignet doit bouger."
+  ]
+ },
+ "Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl": {
+  "name": "Curl de Poignets Assis à Deux Bras à la Poulie Basse en Supination",
+  "instructions": [
+   "Placez un banc devant une poulie basse équipée d'une barre droite ou d'une barre EZ.",
+   "Éloignez suffisamment le banc pour que, une fois la barre amenée sur le haut des cuisses, la tension apparaisse sur le câble parce que la pile de charges est soulevée.",
+   "Tenez maintenant la barre à deux mains, paumes vers le haut, avec une prise à largeur d'épaules.",
+   "Reculez et asseyez-vous sur le banc, pieds écartés d'environ la largeur des épaules et bien posés au sol.",
+   "Penchez-vous en avant et posez les avant-bras sur les cuisses, le dos des poignets au-dessus des genoux. C'est la position de départ.",
+   "Descendez la barre aussi bas que possible en inspirant et en gardant une prise ferme.",
+   "Enroulez maintenant la barre aussi haut que possible en contractant les avant-bras. Astuce : seul le poignet doit bouger, pas les avant-bras.",
+   "Après une seconde de contraction en haut, revenez à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Shotgun_Row": {
+  "name": "Shotgun Row",
+  "instructions": [
+   "Fixez une poignée simple à une poulie basse.",
+   "Après avoir choisi la bonne charge, reculez d'un mètre environ en position de fente large. Le bras est tendu et l'épaule projetée vers l'avant. C'est la position de départ.",
+   "Exécutez le mouvement en rétractant l'épaule et en fléchissant le coude. Pendant la traction, tournez le poignet en supination, paume vers le haut.",
+   "Après une brève pause, revenez à la position de départ."
+  ]
+ },
+ "Side_Jackknife": {
+  "name": "Canif Latéral",
+  "instructions": []
+ },
+ "Single_Leg_Glute_Bridge": {
+  "name": "Pont Fessier Unijambiste",
+  "instructions": [
+   "Allongez-vous au sol, pieds à plat et genoux fléchis.",
+   "Décollez une jambe du sol en ramenant le genou vers la poitrine. C'est la position de départ.",
+   "Exécutez le mouvement en poussant dans le talon, en étendant la hanche vers le haut et en décollant les fessiers du sol.",
+   "Étendez au maximum, marquez un temps d'arrêt puis revenez à la position de départ."
+  ]
+ },
+ "Sled_Row": {
+  "name": "Rowing au Traîneau",
+  "instructions": [
+   "Fixez deux poignées à un traîneau relié par une corde ou une chaîne. Chargez le traîneau au poids voulu. Placez-vous face à lui et reculez jusqu'à mettre la corde en tension.",
+   "Une poignée dans chaque main, fléchissez légèrement les genoux, gardez la tête et la poitrine hautes et commencez bras tendus.",
+   "Lancez le mouvement en fléchissant les coudes tout en resserrant les omoplates, pour tirer le traîneau vers vous.",
+   "Reculez d'un ou deux pas pour remettre la corde en tension et répétez."
+  ]
+ },
+ "Smith_Machine_Bent_Over_Row": {
+  "name": "Rowing Buste Penché à la Machine Smith",
+  "instructions": [
+   "Réglez la barre de la machine Smith à une hauteur d'environ 5 cm sous vos genoux.",
+   "Fléchissez légèrement les genoux et penchez le buste vers l'avant à partir de la taille, dos droit, jusqu'à ce qu'il soit presque parallèle au sol. Astuce : gardez la tête haute.",
+   "Saisissez maintenant la barre en pronation et déverrouillez-la de la machine Smith. Laissez-la pendre juste devant vous, bras tendus perpendiculairement au sol et au buste. C'est la position de départ.",
+   "En gardant le buste immobile, montez la barre en expirant, coudes près du corps, les avant-bras ne servant qu'à tenir la charge. En position haute, contractez les muscles du dos et tenez une seconde.",
+   "Redescendez lentement la charge à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Smith_Machine_Calf_Raise": {
+  "name": "Extension des Mollets à la Machine Smith",
+  "instructions": [
+   "Placez une cale ou un disque sous la barre de la machine Smith. Réglez la barre à une hauteur adaptée à votre taille. Une fois la hauteur choisie et la barre chargée, montez sur les disques avec la plante des pieds et posez la barre sur l'arrière des épaules.",
+   "Saisissez la barre à deux mains, paumes vers l'avant. Faites tourner la barre pour la déverrouiller. C'est la position de départ.",
+   "Montez les talons aussi haut que possible en poussant sur la plante des pieds et en contractant les mollets en position haute. Les genoux restent tendus. Tenez la contraction une seconde avant de redescendre.",
+   "Revenez lentement à la position de départ en inspirant et en descendant les talons.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Smith_Machine_Close-Grip_Bench_Press": {
+  "name": "Développé Couché Prise Serrée à la Machine Smith",
+  "instructions": [
+   "Placez un banc plat sous la machine Smith. Réglez la barre à une hauteur que vous puissiez atteindre allongé, bras presque tendus. Une fois la charge choisie, allongez-vous sur le banc plat. Avec une prise serrée en pronation (paumes vers l'avant) d'environ la largeur des épaules, déverrouillez la barre du rack et tenez-la bras tendus à la verticale au-dessus de vous. C'est la position de départ.",
+   "En inspirant, descendez lentement jusqu'à sentir la barre sur le milieu de la poitrine. Astuce : contrairement au développé couché classique, gardez les coudes près du buste en permanence pour maximiser le travail des triceps.",
+   "Après une pause d'une seconde, repoussez la barre à la position de départ en expirant et en poussant avec les triceps. Tendez les bras en position haute, tenez une seconde puis redescendez lentement. Astuce : la descente doit durer au moins deux fois plus longtemps que la montée.",
+   "Répétez le mouvement le nombre de répétitions prescrit.",
+   "Une fois terminé, reverrouillez la barre sur le rack."
+  ]
+ },
+ "Smith_Machine_One-Arm_Upright_Row": {
+  "name": "Rowing Vertical à un Bras à la Machine Smith",
+  "instructions": [
+   "Barre réglée à hauteur de cuisses, chargez-la au poids voulu.",
+   "Prenez une prise large sur la barre, décrochez la charge et retirez la main libre de la barre. Le bras est tendu, vous vous tenez droit, tête et poitrine hautes. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant le coude et en montant le bras, coude orienté vers l'extérieur. Continuez jusqu'à ce que le bras soit parallèle au sol.",
+   "Après une brève pause, redescendez la charge à la position de départ.",
+   "Répétez le nombre de répétitions voulu avant de raccrocher la barre pour reposer la charge."
+  ]
+ },
+ "Smith_Machine_Stiff-Legged_Deadlift": {
+  "name": "Soulevé de Terre Jambes Tendues à la Machine Smith",
+  "instructions": [
+   "Pour commencer, réglez la barre de la machine Smith à mi-hauteur de vos cuisses environ. Une fois la hauteur choisie et la barre chargée, saisissez-la en pronation (paumes vers l'avant) à largeur d'épaules. Des sangles peuvent être utiles si la charge est importante.",
+   "Montez la barre en tendant complètement les bras, dos droit. Tenez-vous buste droit, jambes écartées de la largeur des épaules ou moins. Les genoux sont légèrement fléchis. C'est la position de départ.",
+   "En gardant les genoux immobiles, descendez la barre au-dessus de vos pieds en fléchissant à partir de la taille, dos droit. Continuez à avancer comme si vous alliez ramasser quelque chose au sol, jusqu'à sentir un étirement des ischio-jambiers. Expirez pendant ce mouvement.",
+   "Commencez à redresser le buste dès que vous sentez l'étirement des ischio-jambiers, en étendant hanches et taille jusqu'à revenir à la position de départ. Inspirez pendant ce mouvement.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Smith_Machine_Upright_Row": {
+  "name": "Rowing Vertical à la Machine Smith",
+  "instructions": [
+   "Pour commencer, réglez la barre de la machine Smith à mi-hauteur de vos cuisses environ. Une fois la hauteur choisie et la barre chargée, saisissez-la en pronation (paumes vers l'avant) à largeur d'épaules. Des sangles peuvent être utiles si la charge est importante.",
+   "Montez la barre et tendez complètement les bras, dos droit. Les coudes gardent une légère flexion. C'est la position de départ.",
+   "Montez la barre avec les deltoïdes latéraux en expirant. La barre doit rester près du corps pendant la montée. Continuez jusqu'à ce qu'elle touche presque le menton. Astuce : ce sont les coudes qui mènent le mouvement. Pendant la montée, les coudes doivent toujours être plus hauts que les avant-bras. Gardez aussi le buste immobile et marquez une seconde d'arrêt en position haute.",
+   "Redescendez lentement la barre à la position de départ. Inspirez pendant cette phase.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Spell_Caster": {
+  "name": "Spell Caster",
+  "instructions": [
+   "Tenez un haltère dans chaque main en pronation. Les pieds sont très écartés, hanches et genoux tendus. C'est la position de départ.",
+   "Lancez le mouvement en tirant les deux haltères d'un côté, près de la hanche, en faisant tourner le buste.",
+   "En gardant les bras tendus et les haltères parallèles au sol, faites tourner le buste pour balancer les charges de l'autre côté.",
+   "Continuez à alterner d'un côté à l'autre jusqu'à la fin de la série."
+  ]
+ },
+ "Split_Squat_with_Dumbbells": {
+  "name": "Fente Bulgare aux Haltères",
+  "instructions": [
+   "Placez-vous en position décalée, pied arrière surélevé et pied avant devant.",
+   "Tenez un haltère dans chaque main, bras le long du corps. C'est la position de départ.",
+   "Commencez par descendre en fléchissant le genou et la hanche. Gardez une bonne posture pendant tout le mouvement. Veillez à ce que le genou avant reste dans l'axe du pied.",
+   "En bas du mouvement, poussez dans le talon pour étendre le genou et la hanche et revenir à la position de départ."
+  ]
+ },
+ "Standing_Biceps_Cable_Curl": {
+  "name": "Curl Biceps Debout à la Poulie",
+  "instructions": [
+   "Tenez-vous debout, buste droit, en tenant une barre de curl fixée à une poulie basse. Saisissez la barre à largeur d'épaules et gardez les coudes près du buste. Les paumes sont tournées vers le haut (prise en supination). C'est la position de départ.",
+   "En gardant les bras immobiles, montez la charge en contractant les biceps et en expirant. Seuls les avant-bras bougent. Continuez jusqu'à contraction complète des biceps, la barre à hauteur d'épaules. Tenez la position une seconde en serrant le muscle.",
+   "Redescendez lentement la barre à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Standing_Cable_Wood_Chop": {
+  "name": "Rotation Debout à la Poulie (Coupe de Bois)",
+  "instructions": [
+   "Fixez une poignée standard à une colonne et réglez le câble sur la poulie la plus haute.",
+   "De côté par rapport au câble, saisissez la poignée d'une main et éloignez-vous de la colonne. Vous devez être à environ une longueur de bras de la poulie, avec la tension de la charge sur le câble. Votre bras tendu doit être aligné avec le câble.",
+   "Pieds écartés de la largeur des épaules, tendez l'autre main vers le haut et saisissez la poignée à deux mains. Vos bras restent complètement tendus.",
+   "En un seul mouvement, tirez la poignée vers le bas et en travers du corps jusqu'au genou avant en faisant tourner le buste.",
+   "Gardez le dos et les bras droits et le tronc gainé pendant que vous pivotez sur le pied arrière et fléchissez les genoux pour obtenir toute l'amplitude.",
+   "Conservez votre position et vos bras tendus. Revenez à la position neutre lentement et de façon contrôlée.",
+   "Répétez jusqu'à l'échec.",
+   "Repositionnez-vous ensuite et répétez la même série de mouvements de l'autre côté."
+  ]
+ },
+ "Standing_Dumbbell_Upright_Row": {
+  "name": "Rowing Vertical Debout aux Haltères",
+  "instructions": [
+   "Saisissez un haltère dans chaque main en pronation (paumes vers l'avant), un peu moins écartés que la largeur des épaules. Les haltères reposent sur le haut des cuisses. Les bras sont tendus avec une légère flexion des coudes et le dos est droit. C'est la position de départ.",
+   "Montez les haltères avec les deltoïdes latéraux en expirant. Ils doivent rester près du corps pendant la montée, et ce sont les coudes qui mènent le mouvement. Continuez jusqu'à ce qu'ils touchent presque le menton. Astuce : pendant la montée, les coudes doivent toujours être plus hauts que les avant-bras. Gardez aussi le buste immobile et marquez une seconde d'arrêt en position haute.",
+   "Redescendez lentement les haltères à la position de départ. Inspirez pendant cette phase.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Standing_Military_Press": {
+  "name": "Développé Militaire Debout",
+  "instructions": [
+   "Commencez par placer une barre à hauteur de poitrine environ sur un rack à squat. Une fois les charges choisies, saisissez la barre en pronation (paumes vers l'avant). Prenez soin de la saisir plus large que la largeur des épaules.",
+   "Fléchissez légèrement les genoux et posez la barre sur la clavicule. Montez la barre en la gardant posée sur la poitrine. Reculez d'un pas et placez les pieds à largeur d'épaules.",
+   "Une fois la barre saisie à la bonne largeur, montez-la au-dessus de la tête en verrouillant les bras. Tenez-la à hauteur d'épaules environ et légèrement devant la tête. C'est la position de départ.",
+   "Descendez lentement la barre jusqu'à la clavicule en inspirant.",
+   "Remontez la barre à la position de départ en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Standing_Olympic_Plate_Hand_Squeeze": {
+  "name": "Serrage de Disque Debout",
+  "instructions": [
+   "Pour commencer, tenez-vous droit en tenant un disque par sa tranche dans chaque main, bras tendus, en prise neutre (paumes vers l'intérieur). Vos pieds sont écartés de la largeur des épaules. C'est la position de départ.",
+   "Laissez descendre les disques jusqu'à ce que les doigts soient presque tendus tout en tenant encore la charge. Inspirez pendant la descente.",
+   "Remontez maintenant les disques à la position de départ en expirant et en refermant les mains.",
+   "Répétez le nombre de répétitions prévu par votre programme."
+  ]
+ },
+ "Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl": {
+  "name": "Curl de Poignets Debout à la Barre Derrière le Dos",
+  "instructions": [
+   "Commencez debout, bien droit, en tenant une barre derrière les fessiers, bras tendus, en pronation (les paumes sont tournées vers l'arrière, à l'opposé des fessiers), mains écartées de la largeur des épaules.",
+   "Regardez droit devant vous, pieds écartés de la largeur des épaules. C'est la position de départ.",
+   "En expirant, montez lentement la barre en enroulant les poignets en demi-cercle vers le plafond. Remarque : seul le poignet doit bouger dans cet exercice.",
+   "Tenez la contraction une seconde et redescendez la barre à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé.",
+   "Une fois terminé, reposez la barre sur le rack à squat ou au sol en fléchissant les genoux. Astuce : le plus simple est de la prendre sur un rack à squat ou de se la faire passer par un partenaire."
+  ]
+ },
+ "Step-up_with_Knee_Raise": {
+  "name": "Montée sur Banc avec Relevé de Genou",
+  "instructions": [
+   "Placez-vous face à une box ou un banc de hauteur adaptée, pieds joints. C'est la position de départ.",
+   "Lancez le mouvement en montant : posez le pied gauche sur le banc. Étendez la hanche et le genou de la jambe avant pour vous redresser sur la box. Une fois debout sur la box avec la jambe gauche, fléchissez le genou et la hanche droits en montant le genou aussi haut que possible.",
+   "Inversez ce mouvement pour redescendre de la box, puis répétez la séquence avec l'autre jambe."
+  ]
+ },
+ "Stiff-Legged_Dumbbell_Deadlift": {
+  "name": "Soulevé de Terre Jambes Tendues aux Haltères",
+  "instructions": [
+   "Saisissez deux haltères et tenez-les le long du corps, bras tendus.",
+   "Tenez-vous buste droit, jambes écartées de la largeur des épaules ou moins. Les genoux sont légèrement fléchis. C'est la position de départ.",
+   "En gardant les genoux immobiles, descendez les haltères au-dessus de vos pieds en fléchissant à partir de la taille, dos droit. Continuez à avancer comme si vous alliez ramasser quelque chose au sol, jusqu'à sentir un étirement des ischio-jambiers. Expirez pendant ce mouvement.",
+   "Commencez à redresser le buste en étendant hanches et taille jusqu'à revenir à la position de départ. Inspirez pendant ce mouvement.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Stiff_Leg_Barbell_Good_Morning": {
+  "name": "Good Morning Jambes Tendues à la Barre",
+  "instructions": [
+   "Pour des raisons de sécurité, réalisez cet exercice dans un rack à squat. Réglez d'abord la barre à une hauteur adaptée à votre taille. Une fois la hauteur choisie et la barre chargée, passez dessous et posez-la sur l'arrière des épaules (juste sous la nuque).",
+   "Tenez la barre des deux mains de chaque côté et sortez-la du rack en poussant d'abord sur les jambes tout en redressant le buste.",
+   "Écartez-vous du rack et placez les jambes à largeur d'épaules. Gardez la tête haute en permanence, car regarder vers le bas vous déséquilibre, et le dos droit. C'est la position de départ.",
+   "En gardant les jambes immobiles, penchez le buste vers l'avant en fléchissant les hanches, tout en inspirant. Descendez le buste jusqu'à ce qu'il soit parallèle au sol.",
+   "Remontez la barre en expirant, en relevant le buste jusqu'à la position de départ.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Sumo_Deadlift": {
+  "name": "Soulevé de Terre Sumo",
+  "instructions": [
+   "Commencez avec une barre chargée au sol. Approchez-vous de façon à ce que la barre coupe le milieu des pieds. Les pieds sont très écartés, près des colliers. Fléchissez les hanches pour saisir la barre. Les bras sont juste sous les épaules, à l'intérieur des jambes, et vous pouvez utiliser une prise en pronation, une prise inversée ou une prise crochetée. Relâchez les épaules, ce qui allonge de fait vos bras.",
+   "Inspirez, puis abaissez les hanches en regardant devant vous, poitrine haute. Poussez dans le sol en écartant les pieds, poids sur l'arrière des pieds. Étendez hanches et genoux.",
+   "Une fois la barre passée aux genoux, penchez-vous en arrière et poussez les hanches contre la barre en resserrant les omoplates.",
+   "Ramenez la charge au sol en fléchissant les hanches et en contrôlant la descente."
+  ]
+ },
+ "Suspended_Reverse_Crunch": {
+  "name": "Crunch Inversé en Suspension",
+  "instructions": [
+   "Fixez des sangles de suspension avec les poignées à environ 30 cm du sol. Mettez-vous en position de planche, dos au rack.",
+   "Placez les pieds dans les poignées. Gardez une posture droite, sans laisser les hanches s'affaisser. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant les genoux et les hanches, en ramenant les genoux vers le buste. Au passage, basculez le bassin vers l'avant pour laisser la colonne fléchir.",
+   "Au sommet du mouvement contrôlé, revenez à la position de départ."
+  ]
+ },
+ "Suspended_Row": {
+  "name": "Rowing en Suspension",
+  "instructions": [
+   "Suspendez vos sangles à hauteur de poitrine environ. Prenez une poignée dans chaque main et penchez-vous en arrière. Gardez le corps gainé, la tête et la poitrine hautes. Vos bras sont complètement tendus. C'est la position de départ.",
+   "Lancez le mouvement en fléchissant les coudes. Resserrez les omoplates au passage.",
+   "En fin de mouvement, marquez un temps d'arrêt puis revenez à la position de départ."
+  ]
+ },
+ "T-Bar_Row_with_Handle": {
+  "name": "Rowing T-Bar avec Poignée",
+  "instructions": [
+   "Placez une barre dans un landmine ou dans un coin pour qu'elle ne bouge pas. Chargez votre extrémité au poids voulu.",
+   "Placez-vous à cheval au-dessus de la barre et passez une poignée double autour de la barre, près du collier. En vous servant des hanches et des jambes, redressez-vous en position debout.",
+   "Adoptez un appui large, hanches en arrière et poitrine haute. Vos bras sont tendus. C'est la position de départ.",
+   "Tirez la charge vers le haut de l'abdomen en resserrant les omoplates et en fléchissant les coudes. N'arrachez pas la charge et ne trichez pas pendant le mouvement.",
+   "Après une brève pause, revenez à la position de départ."
+  ]
+ },
+ "Thigh_Adductor": {
+  "name": "Machine à Adducteurs",
+  "instructions": [
+   "Pour commencer, asseyez-vous à la machine à adducteurs et choisissez une charge qui vous convient. Une fois les jambes bien placées sur les coussins de la machine, saisissez les poignées de chaque côté. Tout le haut du corps (à partir de la taille) reste immobile. C'est la position de départ.",
+   "Poussez lentement contre la machine avec les jambes pour les rapprocher l'une de l'autre, en expirant.",
+   "Sentez la contraction une seconde et commencez à ramener les jambes à la position de départ en inspirant. Remarque : gardez le haut du corps immobile et évitez les mouvements brusques afin de prévenir toute blessure.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Tricep_Dumbbell_Kickback": {
+  "name": "Extension Triceps à l'Haltère Buste Penché",
+  "instructions": [
+   "Commencez avec un haltère dans chaque main, paumes tournées vers le buste. Gardez le dos droit avec une légère flexion des genoux et penchez-vous en avant à partir de la taille. Votre buste doit être presque parallèle au sol. Gardez bien la tête haute. Vos bras restent près du buste et parallèles au sol. Vos avant-bras pointent vers le sol en tenant les charges. Un angle de 90 degrés se forme entre avant-bras et bras. C'est la position de départ.",
+   "En gardant les bras immobiles, expirez et utilisez les triceps pour monter les charges jusqu'à extension complète du bras. Concentrez-vous sur le mouvement de l'avant-bras.",
+   "Après une brève pause en contraction haute, inspirez et redescendez lentement les haltères à la position de départ.",
+   "Répétez le mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Two-Arm_Kettlebell_Military_Press": {
+  "name": "Développé Militaire à Deux Kettlebells",
+  "instructions": [
+   "Épaulez deux kettlebells. Amenez-les aux épaules en étendant les jambes et les hanches tout en les balançant vers les épaules. Tournez les poignets au passage pour que les paumes soient vers l'avant.",
+   "Poussez les kettlebells vers le haut et l'extérieur. Une fois qu'elles passent votre tête, engagez-vous sous les charges pour qu'elles se placent derrière la tête. Pensez à contracter les dorsaux, les fessiers et les abdominaux pour plus de stabilité."
+  ]
+ },
+ "Upright_Barbell_Row": {
+  "name": "Rowing Vertical à la Barre",
+  "instructions": [
+   "Saisissez une barre en pronation, mains un peu moins écartées que la largeur des épaules. La barre repose sur le haut des cuisses, bras tendus avec une légère flexion des coudes. Votre dos est également droit. C'est la position de départ.",
+   "Expirez maintenant et montez la barre avec les deltoïdes latéraux, en levant les coudes vers le haut et l'extérieur. Gardez la barre près du corps pendant la montée. Continuez jusqu'à ce qu'elle touche presque le menton. Astuce : ce sont les coudes qui mènent le mouvement et ils doivent toujours être plus hauts que les avant-bras. Pensez à garder le buste immobile et à marquer une seconde d'arrêt en position haute.",
+   "Redescendez lentement la barre à la position de départ. Inspirez pendant cette phase.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Upright_Row_-_With_Bands": {
+  "name": "Rowing Vertical à l'Élastique",
+  "instructions": [
+   "Pour commencer, placez-vous sur un élastique de façon à ce que la tension apparaisse dès que les bras sont tendus. Saisissez les poignées en pronation (paumes vers les cuisses), un peu moins écartées que la largeur des épaules. Les poignées reposent sur le haut des cuisses. Vos bras sont tendus avec une légère flexion des coudes et votre dos est droit. C'est la position de départ.",
+   "Montez les poignées avec les deltoïdes latéraux en expirant. Gardez-les près du corps pendant la montée. Continuez jusqu'à ce qu'elles touchent presque le menton. Astuce : ce sont les coudes qui mènent le mouvement. Pendant la montée, les coudes doivent toujours être plus hauts que les avant-bras. Gardez aussi le buste immobile et marquez une seconde d'arrêt en position haute.",
+   "Redescendez lentement les poignées à la position de départ. Inspirez pendant cette phase.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "V-Bar_Pullup": {
+  "name": "Traction à la Poignée en V",
+  "instructions": [
+   "Commencez par placer le milieu de la poignée en V au milieu de la barre de traction (si votre station ne dispose pas de poignées en prise neutre). Les branches de la poignée en V sont tournées vers le bas, de façon à pouvoir vous suspendre à la barre par leur intermédiaire.",
+   "Une fois la poignée en V bien calée, saisissez-la de chaque côté et suspendez-vous. Sortez la poitrine et penchez-vous légèrement en arrière pour mieux engager les dorsaux. C'est la position de départ.",
+   "Avec les dorsaux, tirez le buste vers le haut en inclinant légèrement la tête en arrière pour ne pas heurter la barre de traction. Continuez jusqu'à ce que la poitrine touche presque la poignée en V. Expirez pendant ce mouvement.",
+   "Après une seconde en position contractée, redescendez lentement le corps à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions prescrit."
+  ]
+ },
+ "Weighted_Ball_Hyperextension": {
+  "name": "Hyperextension Lestée sur Ballon",
+  "instructions": [
+   "Pour commencer, allongez-vous sur un ballon de gym, buste appuyé contre le ballon et parallèle au sol. La plante des pieds appuie contre le sol pour vous stabiliser. Placez un disque sous le menton ou derrière la nuque. C'est la position de départ.",
+   "Relevez lentement le buste en étendant la taille et le bas du dos. Pensez à expirer pendant ce mouvement.",
+   "Tenez la contraction du bas du dos une seconde et redescendez le buste à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions prévu par votre programme."
+  ]
+ },
+ "Weighted_Ball_Side_Bend": {
+  "name": "Flexion Latérale Lestée sur Ballon",
+  "instructions": [
+   "Pour commencer, allongez-vous sur un ballon de gym, le côté gauche du buste (taille, hanche et épaule) appuyé contre le ballon.",
+   "Vos pieds sont au sol et vos jambes croisées pendent du ballon. Tenez un disque de la main droite, directement contre le côté droit de la tête. Astuce : la face lisse du disque doit reposer contre la tête.",
+   "Placez le bras gauche en travers du buste, paume sur les obliques. Il doit y avoir un angle droit entre votre avant-bras et votre bras gauches. C'est la position de départ.",
+   "Relevez le côté du buste en fléchissant latéralement à partir de la taille, tout en expirant.",
+   "Tenez la contraction une seconde et redescendez lentement à la position de départ en inspirant.",
+   "Répétez le nombre de répétitions recommandé.",
+   "Changez de côté et répétez l'exercice."
+  ]
+ },
+ "Weighted_Bench_Dip": {
+  "name": "Dips entre Bancs Lestés",
+  "instructions": [
+   "Pour cet exercice, placez un banc derrière vous et un autre devant. Les bancs étant perpendiculaires à votre corps, tenez le bord de l'un d'eux, mains près du corps et écartées de la largeur des épaules. Vos bras sont complètement tendus.",
+   "Les jambes sont tendues vers l'avant sur l'autre banc. Elles sont parallèles au sol tandis que votre buste est perpendiculaire à celui-ci. Faites poser l'haltère sur vos cuisses par votre partenaire. Remarque : cet exercice se fait de préférence à deux, car poser la charge sur les cuisses est délicat et peut causer une blessure sans aide. C'est la position de départ.",
+   "Descendez lentement le corps en inspirant, en fléchissant les coudes, jusqu'à ce que l'angle entre bras et avant-bras soit légèrement inférieur à 90 degrés. Astuce : gardez les coudes le plus serrés possible pendant tout le mouvement. Les avant-bras doivent toujours pointer vers le bas.",
+   "En utilisant les triceps pour relever le buste, repoussez-vous à la position de départ en expirant.",
+   "Répétez le nombre de répétitions recommandé."
+  ]
+ },
+ "Wide-Grip_Lat_Pulldown": {
+  "name": "Tirage Vertical Prise Large",
+  "instructions": [
+   "Asseyez-vous à une machine de tirage vertical équipée d'une barre large à la poulie haute. Réglez le coussin de cuisses de la machine à votre taille. Ces coussins empêchent la charge de vous soulever.",
+   "Saisissez la barre paumes vers l'avant, avec la prise indiquée. Remarque sur les prises : en prise large, les mains sont plus écartées que la largeur des épaules ; en prise moyenne, à la largeur des épaules ; en prise serrée, plus rapprochées.",
+   "Bras tendus devant vous en tenant la barre à la largeur choisie, ramenez le buste en arrière d'environ 30 degrés en creusant le bas du dos et en sortant la poitrine. C'est la position de départ.",
+   "En expirant, descendez la barre jusqu'à ce qu'elle touche le haut de la poitrine, en tirant les épaules et les bras vers le bas et l'arrière. Astuce : concentrez-vous sur la contraction des muscles du dos une fois la position basse atteinte. Le buste reste immobile, seuls les bras bougent. Les avant-bras n'ont d'autre rôle que de tenir la barre ; n'essayez donc pas de tirer la barre avec les avant-bras.",
+   "Après une seconde en position contractée, omoplates resserrées, remontez lentement la barre à la position de départ, bras complètement tendus et dorsaux complètement étirés. Inspirez pendant cette phase.",
+   "Répétez ce mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Wide-Grip_Rear_Pull-Up": {
+  "name": "Traction Nuque Prise Large",
+  "instructions": [
+   "Saisissez la barre de traction paumes vers l'avant, en prise large.",
+   "Bras tendus devant vous en tenant la barre, avancez le buste et la tête de façon à former une ligne imaginaire entre la barre de traction et votre nuque. C'est la position de départ.",
+   "Tirez le buste vers le haut jusqu'à ce que la barre arrive près de la nuque. Pour cela, tirez les épaules et les bras vers le bas et l'arrière en inclinant légèrement la tête vers l'avant. Expirez pendant cette phase. Astuce : concentrez-vous sur la contraction des muscles du dos une fois la position haute atteinte. Le buste doit rester figé pendant qu'il se déplace dans l'espace ; seuls les bras bougent. Les avant-bras n'ont d'autre rôle que de tenir la barre.",
+   "Après une seconde en position contractée, inspirez et redescendez lentement le buste à la position de départ, bras complètement tendus et dorsaux complètement étirés.",
+   "Répétez ce mouvement le nombre de répétitions prescrit."
+  ]
+ },
+ "Wrist_Roller": {
+  "name": "Enrouleur de Poignet",
+  "instructions": [
+   "Pour commencer, tenez-vous bien droit en saisissant un enrouleur de poignet en pronation (paumes vers le bas). Vos pieds sont écartés de la largeur des épaules.",
+   "Montez lentement les deux bras jusqu'à ce qu'ils soient complètement tendus et parallèles au sol devant vous. Remarque : vérifiez que la corde n'est pas déjà enroulée autour du rouleau. Tout votre corps reste immobile, hormis les avant-bras. C'est la position de départ.",
+   "Faites tourner un poignet après l'autre vers le haut pour remonter la charge jusqu'à la barre en enroulant la corde autour du rouleau.",
+   "Une fois la charge arrivée à la barre, redescendez-la lentement en faisant tourner le poignet vers le bas jusqu'à ce qu'elle atteigne la position de départ.",
+   "Répétez le nombre de répétitions prévu par votre programme."
+  ]
+ },
+ "banded_dorsiflexion": {
+  "name": "Flexion Dorsale à l'Élastique",
+  "instructions": [
+   "Fixez un élastique sur le dessus du pied, asseyez-vous jambe tendue et tirez les orteils vers vous."
+  ]
+ },
+ "heel_walk": {
+  "name": "Marche sur les Talons",
+  "instructions": [
+   "Marchez vers l'avant sur les talons en gardant les orteils décollés du sol."
+  ]
+ },
+ "reverse_calf_raise_on_leg_press": {
+  "name": "Extension Inversée des Mollets à la Presse",
+  "instructions": [
+   "Posez les talons sur la plateforme et tirez les orteils vers vous contre le chariot."
+  ]
+ },
+ "seated_toe_raise": {
+  "name": "Relevé d'Orteils Assis",
+  "instructions": [
+   "Asseyez-vous pieds à plat, gardez les talons au sol et relevez les orteils aussi haut que possible."
+  ]
+ },
+ "tibialis_raise": {
+  "name": "Relevé du Tibial",
+  "instructions": [
+   "Tenez-vous dos au mur, talons à un pas de celui-ci, et relevez les orteils vers les tibias."
+  ]
+ },
+ "weighted_toe_raise": {
+  "name": "Relevé d'Orteils Lesté",
+  "instructions": [
+   "Asseyez-vous avec un haltère léger posé en travers des orteils et relevez les orteils contre celui-ci."
+  ]
+ }
+}
