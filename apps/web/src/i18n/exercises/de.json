@@ -1,0 +1,1716 @@
+{
+ "3_4_Sit-Up": {
+  "name": "Dreiviertel-Sit-up",
+  "instructions": [
+   "Lege dich auf den Boden und fixiere deine Füße. Die Beine sind in den Knien gebeugt.",
+   "Lege die Hände hinter oder neben den Kopf. Der Rücken liegt am Boden auf. Das ist die Ausgangsposition.",
+   "Beuge Hüfte und Wirbelsäule und hebe den Oberkörper in Richtung Knie.",
+   "Am Ende der Kontraktion steht der Oberkörper senkrecht zum Boden. Kehre die Bewegung um und lasse dich nur zu drei Vierteln zurücksinken.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Ab_Crunch_Machine": {
+  "name": "Bauchmaschine",
+  "instructions": [
+   "Wähle einen leichten Widerstand und setze dich an die Bauchmaschine. Die Füße kommen unter die Polster, die Hände an die oberen Griffe. Die Arme sind im 90-Grad-Winkel gebeugt, die Trizepse liegen auf den Polstern auf. Das ist die Ausgangsposition.",
+   "Hebe die Beine an und krümme gleichzeitig den Oberkörper nach vorn. Atme dabei aus. Tipp: Bewege dich langsam und kontrolliert. Konzentriere dich darauf, das Gewicht mit der Bauchmuskulatur zu bewegen, und lasse Beine und Füße locker.",
+   "Halte eine Sekunde und kehre dann langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Alternate_Hammer_Curl": {
+  "name": "Hammercurls im Wechsel",
+  "instructions": [
+   "Stelle dich aufrecht hin, in jeder Hand eine Kurzhantel mit gestreckten Armen. Die Ellbogen bleiben nah am Oberkörper.",
+   "Die Handflächen zeigen zum Oberkörper. Das ist die Ausgangsposition.",
+   "Halte den Oberarm ruhig und curle die rechte Hantel nach oben, während du den Bizeps anspannst und ausatmest. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Hantel auf Schulterhöhe steht. Halte kurz und drücke den Bizeps zusammen. Tipp: Nur die Unterarme bewegen sich.",
+   "Senke die Hantel langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung mit der linken Hand. Das ergibt eine Wiederholung.",
+   "Wechsle so weiter ab, bis die empfohlene Anzahl an Wiederholungen erreicht ist."
+  ]
+ },
+ "Atlas_Stone_Trainer": {
+  "name": "Atlas-Stone-Trainer",
+  "instructions": [
+   "Dieser Trainer eignet sich, um Kraft für Atlas Stones aufzubauen, wenn keine Steine zur Verfügung stehen. Er besteht meist aus Hantelstangenenden oder schwerem Rohr.",
+   "Lade zunächst das gewünschte Gewicht auf die Stange. Stelle dich breitbeinig darüber, umfasse das Gerät mit den Armen und beuge dich aus der Hüfte.",
+   "Ziehe das Gewicht über die Knie und strecke dabei die Hüfte. Sobald es die Knie passiert hat, kannst du es auf den Oberschenkeln ablegen, dich zurücksetzen und es fest an die Brust drücken.",
+   "Beende die Bewegung, indem du Hüfte und Knie streckst und das Gewicht so hoch wie möglich hebst. Für weitere Wiederholungen kannst du es auf den Oberschenkeln ablegen oder auf den Boden zurückführen."
+  ]
+ },
+ "Axle_Deadlift": {
+  "name": "Kreuzheben mit der Axle-Stange",
+  "instructions": [
+   "Tritt so an die Stange heran, dass sie mittig über deinen Füßen liegt. Die Füße stehen etwa hüftbreit. Beuge dich aus der Hüfte und greife die Stange schulterbreit, sodass sich die Schulterblätter nach vorn ziehen lassen. Üblicherweise nimmst du dabei einen Kreuzgriff.",
+   "Wenn Stand und Griff sitzen, atme tief ein, senke die Hüfte und beuge die Knie, bis die Schienbeine die Stange berühren. Blicke nach vorn, halte die Brust raus und den Rücken im Hohlkreuz, und drücke über die Fersen, um das Gewicht nach oben zu bewegen.",
+   "Sobald die Stange die Knie passiert hat, ziehe sie kraftvoll nach hinten, führe die Schulterblätter zusammen und schiebe die Hüfte nach vorn gegen die Stange.",
+   "Senke die Stange, indem du dich aus der Hüfte beugst und sie zum Boden führst."
+  ]
+ },
+ "Balance_Board": {
+  "name": "Balance Board",
+  "instructions": [
+   "Lege ein Balance Board vor dich.",
+   "Stelle dich darauf und versuche, das Gleichgewicht zu halten.",
+   "Halte das Gleichgewicht so lange wie gewünscht."
+  ]
+ },
+ "Ball_Leg_Curl": {
+  "name": "Beincurls auf dem Gymnastikball",
+  "instructions": [
+   "Lege dich auf den Rücken auf den Boden und lege die Füße auf den Ball.",
+   "Platziere den Ball so, dass bei gestreckten Beinen die Knöchel oben auf dem Ball liegen. Das ist die Ausgangsposition.",
+   "Hebe die Hüfte vom Boden ab; das Gewicht ruht auf den Schulterblättern und den Füßen.",
+   "Beuge die Knie und ziehe den Ball so nah wie möglich an dich heran, während du den Beinbizeps anspannst.",
+   "Halte kurz und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Band_Assisted_Pull-Up": {
+  "name": "Klimmzug mit Bandunterstützung",
+  "instructions": [
+   "Schlinge das Band in der Mitte der Klimmzugstange fest. Mit verschiedenen Bändern lässt sich die Unterstützung abstufen.",
+   "Ziehe das untere Ende des Bandes nach unten und stelle ein gebeugtes Knie in die Schlaufe, sodass es nicht herausrutschen kann. Greife die Stange mittel- bis weitgriffig. Das ist die Ausgangsposition.",
+   "Ziehe dich nach oben, indem du den Latissimus anspannst und die Ellbogen beugst. Die Ellbogen werden zum Körper geführt. Ziehe nach vorn und versuche, das Kinn über die Stange zu bringen. Vermeide Schwung- und Ruckbewegungen.",
+   "Halte kurz und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Band_Good_Morning": {
+  "name": "Good Morning mit dem Band",
+  "instructions": [
+   "Stelle dich mit leicht gespreizten Füßen auf ein Ende eines 105 cm langen Bandes. Beuge dich aus der Hüfte und lege das andere Ende in den Nacken. Das ist die Ausgangsposition.",
+   "Halte die Beine gestreckt und strecke die Hüfte, bis du fast senkrecht stehst.",
+   "Achte darauf, den Rücken nicht rund zu machen, wenn du zurück in die Ausgangsposition gehst."
+  ]
+ },
+ "Band_Good_Morning_Pull_Through": {
+  "name": "Good Morning mit dem Band (Pull Through)",
+  "instructions": [
+   "Schlinge das Band um einen Pfosten. Stelle dich ein Stück entfernt hin und lege das andere Ende in den Nacken. Die Hände können das Band in Position halten.",
+   "Beuge dich aus der Hüfte und schiebe das Gesäß so weit wie möglich nach hinten. Halte den Rücken flach und beuge dich bis etwa 90 Grad nach vorn. Die Knie sind nur leicht gebeugt.",
+   "Kehre in die Ausgangsposition zurück, indem du die Hüfte nach vorn schiebst und dich wieder aufrichtest."
+  ]
+ },
+ "Band_Hip_Adductions": {
+  "name": "Hüftadduktion mit dem Band",
+  "instructions": [
+   "Befestige ein Band an einem festen Pfosten oder einem anderen Gegenstand.",
+   "Stelle dich mit der linken Seite zum Pfosten und führe den rechten Fuß so durch das Band, dass es um den Knöchel liegt.",
+   "Stelle dich aufrecht hin und halte dich bei Bedarf am Pfosten fest. Das ist die Ausgangsposition.",
+   "Halte das Knie gestreckt und hebe das rechte Bein so weit wie möglich zur Seite.",
+   "Kehre in die Ausgangsposition zurück und wiederhole für die gewünschte Anzahl an Wiederholungen.",
+   "Wechsle die Seite."
+  ]
+ },
+ "Barbell_Bench_Press_-_Medium_Grip": {
+  "name": "Bankdrücken mit der Langhantel – mittlerer Griff",
+  "instructions": [
+   "Lege dich auf eine Flachbank. Nimm einen mittelbreiten Griff (einen Griff, bei dem Unterarm und Oberarm in der Mitte der Bewegung einen 90-Grad-Winkel bilden), hebe die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Das ist die Ausgangsposition.",
+   "Atme ein und senke die Stange langsam ab, bis sie die Brustmitte berührt.",
+   "Halte kurz und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest. Konzentriere dich darauf, die Stange mit der Brustmuskulatur zu drücken. Strecke die Arme und spanne die Brust in der Endposition an, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte etwa doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Stange am Ende zurück in die Ablage."
+  ]
+ },
+ "Barbell_Curl": {
+  "name": "Langhantelcurls",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Langhantel schulterbreit. Die Handflächen zeigen nach vorn, die Ellbogen bleiben nah am Oberkörper. Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig und curle das Gewicht nach oben, während du den Bizeps anspannst und ausatmest. Tipp: Nur die Unterarme bewegen sich.",
+   "Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Stange auf Schulterhöhe steht. Halte die Position eine Sekunde und drücke den Bizeps fest zusammen.",
+   "Senke die Stange langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Barbell_Deadlift": {
+  "name": "Kreuzheben mit der Langhantel",
+  "instructions": [
+   "Stelle dich vor eine beladene Langhantel.",
+   "Halte den Rücken so gerade wie möglich, beuge die Knie, beuge dich nach vorn und greife die Stange schulterbreit im Obergriff. Das ist die Ausgangsposition. Tipp: Fällt dir das Halten in diesem Griff schwer, nimm einen Kreuzgriff oder Zughilfen.",
+   "Beginne die Bewegung, indem du mit den Beinen drückst und den Oberkörper gleichzeitig aufrichtest, während du ausatmest. Oben streckst du die Brust heraus und spannst den Rücken an, indem du die Schulterblätter zusammenführst. Denke an die Haltung eines Soldaten in Habachtstellung.",
+   "Kehre in die Ausgangsposition zurück, indem du die Knie beugst und den Oberkörper gleichzeitig aus der Hüfte nach vorn neigst, den Rücken dabei gerade. Sobald die Scheiben den Boden berühren, bist du zurück in der Ausgangsposition und bereit für die nächste Wiederholung.",
+   "Führe die im Programm vorgegebene Anzahl an Wiederholungen aus."
+  ]
+ },
+ "Barbell_Glute_Bridge": {
+  "name": "Glute Bridge mit der Langhantel",
+  "instructions": [
+   "Setze dich auf den Boden, die beladene Langhantel über den Beinen. Eine dicke Stange oder ein Polster auf der Stange verringert den Druckschmerz bei dieser Übung deutlich. Rolle die Stange so, dass sie direkt über der Hüfte liegt, und lege dich flach auf den Boden.",
+   "Beginne die Bewegung, indem du über die Fersen drückst und die Hüfte senkrecht durch die Stange streckst. Dein Gewicht ruht auf dem oberen Rücken und den Fersen.",
+   "Strecke so weit wie möglich und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Barbell_Hip_Thrust": {
+  "name": "Hip Thrust mit der Langhantel",
+  "instructions": [
+   "Setze dich auf den Boden, direkt hinter dir eine Bank, die beladene Langhantel über den Beinen. Eine dicke Stange oder ein Polster auf der Stange verringert den Druckschmerz bei dieser Übung deutlich.",
+   "Rolle die Stange so, dass sie direkt über der Hüfte liegt, und lehne dich so gegen die Bank, dass die Schulterblätter kurz unter ihrer Oberkante liegen.",
+   "Beginne die Bewegung, indem du über die Füße drückst und die Hüfte senkrecht durch die Stange streckst. Dein Gewicht ruht auf den Schulterblättern und den Füßen. Strecke so weit wie möglich und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Barbell_Incline_Bench_Press_-_Medium_Grip": {
+  "name": "Schrägbankdrücken mit der Langhantel – mittlerer Griff",
+  "instructions": [
+   "Lege dich auf eine Schrägbank. Nimm einen mittelbreiten Griff (einen Griff, bei dem Unterarm und Oberarm in der Mitte der Bewegung einen 90-Grad-Winkel bilden), hebe die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Das ist die Ausgangsposition.",
+   "Atme ein und senke die Stange langsam ab, bis du sie an der oberen Brust spürst.",
+   "Halte eine Sekunde und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest und mit der Brustmuskulatur drückst. Strecke die Arme in der Endposition, spanne die Brust an, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Stange am Ende zurück in die Ablage."
+  ]
+ },
+ "Barbell_Rear_Delt_Row": {
+  "name": "Langhantelrudern für die hintere Schulter",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Langhantel weit (breiter als schulterbreit) im Obergriff (Handflächen zeigen zum Körper).",
+   "Beuge die Knie leicht und neige den Oberkörper nach vorn, wobei der Rücken seine natürliche Krümmung behält. Lass die Arme mit der Stange vor dir hängen. Sobald der Oberkörper parallel zum Boden ist, führe die Ellbogen nach außen vom Körper weg. Tipp: Oberkörper und Arme bilden dabei ein \"T\". Jetzt kannst du mit der Übung beginnen.",
+   "Halte die Oberarme senkrecht zum Oberkörper und ziehe die Langhantel zur oberen Brust, während du die hintere Schulter anspannst und ausatmest. Tipp: Richtig ausgeführt sieht diese Übung aus wie umgekehrtes Bankdrücken. Vermeide außerdem, die Arbeit mit dem Bizeps zu machen. Konzentriere dich auf die hintere Schulter; die Arme sind nur Haken.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Barbell_Seated_Calf_Raise": {
+  "name": "Sitzendes Wadenheben mit der Langhantel",
+  "instructions": [
+   "Lege einen Block etwa 30 cm vor eine Flachbank.",
+   "Setze dich auf die Bank und stelle die Fußballen auf den Block.",
+   "Lass dir von jemandem eine Langhantel auf die Oberschenkel legen, etwa 8 cm oberhalb der Knie, und dort halten. Das ist die Ausgangsposition.",
+   "Drücke dich so hoch wie möglich auf die Zehen, während du die Waden anspannst und ausatmest.",
+   "Halte die Spannung eine Sekunde und kehre dann langsam in die Ausgangsposition zurück. Tipp: Für den vollen Effekt dehnst du die Waden so weit wie möglich.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Barbell_Side_Bend": {
+  "name": "Seitbeuge mit der Langhantel",
+  "instructions": [
+   "Stelle dich aufrecht hin, eine Langhantel liegt auf dem Nacken (etwas unterhalb des Halses). Die Füße stehen schulterbreit. Das ist die Ausgangsposition.",
+   "Halte den Rücken gerade und den Kopf oben und beuge dich nur aus der Taille so weit wie möglich nach rechts. Atme dabei ein. Halte eine Sekunde und richte dich wieder auf, während du ausatmest. Tipp: Der Rest des Körpers bleibt ruhig.",
+   "Wiederhole die Bewegung nun zur linken Seite. Halte eine Sekunde und kehre in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Barbell_Side_Split_Squat": {
+  "name": "Seitliche Ausfallkniebeuge mit der Langhantel",
+  "instructions": [
+   "Stelle dich aufrecht hin, eine Langhantel liegt auf dem Nacken (etwas unterhalb des Halses). Die Füße stehen weit auseinander, der Fuß des führenden Beins zeigt nach außen. Das ist die Ausgangsposition.",
+   "Senke den Körper in Richtung des ausgedrehten Fußes, indem du Knie und Hüfte des führenden Beins beugst, während das andere Bein nur leicht gebeugt bleibt. Atme beim Absenken ein.",
+   "Kehre in die Ausgangsposition zurück, indem du Hüfte und Knie des führenden Beins streckst. Atme dabei aus.",
+   "Wiederhole die Bewegung nach der empfohlenen Anzahl an Wiederholungen mit dem anderen Bein."
+  ]
+ },
+ "Barbell_Squat": {
+  "name": "Kniebeuge mit der Langhantel",
+  "instructions": [
+   "Diese Übung führst du aus Sicherheitsgründen am besten im Squat-Rack aus. Lege die Stange zunächst knapp unter Schulterhöhe ein. Wenn die Höhe stimmt und die Stange beladen ist, tritt darunter und lege sie auf den Nacken (etwas unterhalb des Halses).",
+   "Halte die Stange mit beiden Armen seitlich fest und hebe sie aus der Ablage, indem du mit den Beinen drückst und den Oberkörper gleichzeitig aufrichtest.",
+   "Tritt aus dem Rack heraus und stelle die Beine schulterbreit auf, die Fußspitzen leicht nach außen gedreht. Halte den Kopf durchgehend oben und den Rücken gerade. Das ist die Ausgangsposition. (Hinweis: Hier ist der beschriebene mittlere Stand gemeint, der die Beine insgesamt entwickelt; du kannst aber jeden der drei Stände aus dem Abschnitt zur Fußstellung wählen.)",
+   "Senke die Stange langsam ab, indem du Knie und Hüfte beugst und dabei aufrecht bleibst und den Kopf oben hältst. Gehe so weit hinunter, bis der Winkel zwischen Oberschenkel und Wade etwas kleiner als 90 Grad ist. Atme dabei ein. Tipp: Bei korrekter Ausführung bilden die Knievorderseiten eine gedachte gerade Linie mit den Zehen. Sind die Knie über dieser Linie (also vor den Zehen), belastest du das Knie unnötig und hast die Übung falsch ausgeführt.",
+   "Drücke die Stange wieder nach oben, während du ausatmest, indem du mit den Fersen in den Boden drückst, die Beine streckst und in die Ausgangsposition zurückkehrst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Barbell_Walking_Lunge": {
+  "name": "Gehende Ausfallschritte mit der Langhantel",
+  "instructions": [
+   "Stelle dich schulterbreit hin, die Langhantel liegt auf dem oberen Rücken.",
+   "Mache einen Schritt nach vorn und beuge die Knie, um die Hüfte abzusenken. Gehe so tief, bis das hintere Knie fast den Boden berührt. Der Oberkörper bleibt aufrecht, das vordere Knie über dem vorderen Fuß.",
+   "Drücke über die Ferse des vorderen Fußes und strecke beide Knie, um dich wieder aufzurichten.",
+   "Setze den hinteren Fuß nach vorn und wiederhole den Ausfallschritt mit dem anderen Bein."
+  ]
+ },
+ "Bench_Press_-_Powerlifting": {
+  "name": "Bankdrücken – Powerlifting",
+  "instructions": [
+   "Lege dich auf die Bank und bringe den Kopf möglichst hinter die Stange. Ziehe die Füße unter dich und mache ein Hohlkreuz. Nutze die Stange als Stütze, hebe die Schultern von der Bank ab und ziehe sie zurück, indem du die Schulterblätter zusammendrückst. Drücke über die Füße den Trapezmuskel in die Bank. Halte diese feste Körperspannung während der gesamten Bewegung.",
+   "Wie breit du auch greifst, der Griff sollte den Ring auf der Stange abdecken. Hebe die Stange aus der Ablage, ohne die Schultern nach vorn kommen zu lassen. Konzentriere dich darauf, die Stange fest zu drücken und sie auseinanderziehen zu wollen.",
+   "Senke die Stange zur unteren Brust oder zum oberen Bauch. Stange, Handgelenk und Ellbogen bleiben dabei stets in einer Linie.",
+   "Halte kurz inne, wenn die Stange den Oberkörper berührt, und drücke sie dann mit so viel Kraft wie möglich nach oben. Die Ellbogen bleiben bis zum Durchstrecken eng am Körper."
+  ]
+ },
+ "Bent-Arm_Barbell_Pullover": {
+  "name": "Überzüge mit der Langhantel bei gebeugten Armen",
+  "instructions": [
+   "Lege dich mit einer Langhantel im schulterbreiten Griff auf eine Flachbank.",
+   "Halte die Stange mit leicht gebeugten Armen senkrecht über der Brust. Das ist die Ausgangsposition.",
+   "Halte die Arme gebeugt und senke das Gewicht langsam im Bogen hinter den Kopf, während du einatmest, bis du eine Dehnung in der Brust spürst.",
+   "Führe die Langhantel dann auf demselben Bogen zurück in die Ausgangsposition und atme dabei aus.",
+   "Halte das Gewicht eine Sekunde in der Ausgangsposition und wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Bent_Over_Barbell_Row": {
+  "name": "Vorgebeugtes Langhantelrudern",
+  "instructions": [
+   "Halte eine Langhantel im Obergriff (Handflächen zeigen nach unten), beuge die Knie leicht und neige den Oberkörper aus der Hüfte nach vorn, den Rücken gerade, bis er fast parallel zum Boden ist. Tipp: Achte darauf, den Kopf oben zu halten. Die Langhantel hängt direkt vor dir, die Arme senkrecht zum Boden und zum Oberkörper. Das ist die Ausgangsposition.",
+   "Halte nun den Oberkörper ruhig, atme aus und ziehe die Langhantel zu dir. Die Ellbogen bleiben nah am Körper, und nur die Unterarme halten das Gewicht. Spanne in der oberen Position die Rückenmuskulatur an und halte kurz.",
+   "Atme dann ein und senke die Langhantel langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Bodyweight_Squat": {
+  "name": "Kniebeuge mit dem eigenen Körpergewicht",
+  "instructions": [
+   "Stelle dich schulterbreit hin. Die Hände kannst du hinter den Kopf legen. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du Knie und Hüfte beugst und dich mit dem Gesäß nach hinten setzt.",
+   "Gehe so tief hinunter, wie es dir möglich ist, und kehre die Bewegung dann zügig um, bis du wieder in der Ausgangsposition bist. Halte Kopf und Brust dabei oben und drücke die Knie nach außen."
+  ]
+ },
+ "Bosu_Ball_Cable_Crunch_With_Side_Bends": {
+  "name": "Kabelcrunch auf dem Bosu-Ball mit Seitbeugen",
+  "instructions": [
+   "Befestige an jedem Arm des Kabelzugs einen normalen Griff und stelle die Züge auf die unterste Position.",
+   "Nimm einen Bosu-Ball und lege ihn mittig vor den Kabelzug.",
+   "Lege dich so auf den Bosu-Ball, dass sich das Kreuz um den Ball wölbt. Dein Gesäß ist nah am Boden, berührt ihn aber nicht.",
+   "Greife mit beiden Händen nach hinten und nimm je einen Griff.",
+   "Stelle die Füße weit auseinander und strecke die Arme gerade nach vorn zwischen die Knie. Deine Hände sind auf Kniehöhe.",
+   "Halte die Arme gestreckt und in einer Linie mit dem aufsteigenden Kabel. Hebe den Oberkörper in einer Crunch-Bewegung an, ohne die Arme abzusenken oder zu beugen.",
+   "Halte die Arme starr. Senke dich langsam in die Ausgangsposition zurück, mit dem Rücken um den Bosu-Ball gewölbt und der Bauchmuskulatur gedehnt.",
+   "Wiederhole die Bewegung bis zum Muskelversagen.",
+   "Sobald du dort angekommen bist, halte den Bauch fest angespannt und hebe den Oberkörper in eine Plank-Position, sodass der Rücken den Bosu-Ball nicht mehr berührt.",
+   "Senke die gestreckten Arme an die Seiten. Beginne mit abwechselnden Seitbeugen und greife nach deinen Fersen! Diese Abschlussbewegung trifft die schrägen Bauchmuskeln."
+  ]
+ },
+ "Bottoms-Up_Clean_From_The_Hang_Position": {
+  "name": "Bottoms-up-Clean aus dem Hang",
+  "instructions": [
+   "Beginne aufrecht stehend mit einer Kettlebell in einer Hand.",
+   "Schwinge die Kettlebell kraftvoll nach hinten und kehre die Bewegung dann ebenso kraftvoll um. Drücke den Griff so fest wie möglich zusammen und bringe die Kettlebell zur Schulter."
+  ]
+ },
+ "Cable_Crunch": {
+  "name": "Crunch am Kabelzug",
+  "instructions": [
+   "Knie dich unter einen hohen Zug, an dem ein Seil eingehängt ist.",
+   "Greife das Seil und ziehe es so weit herunter, dass deine Hände neben dem Gesicht sind.",
+   "Beuge die Hüfte leicht und lass das Gewicht den unteren Rücken überstrecken. Das ist die Ausgangsposition.",
+   "Halte die Hüfte ruhig und beuge den Rumpf, während du die Bauchmuskeln anspannst, sodass die Ellbogen zur Mitte der Oberschenkel wandern. Atme dabei aus und halte die Spannung eine Sekunde.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest. Tipp: Achte darauf, die Spannung auf dem Bauch über die ganze Bewegung zu halten. Wähle außerdem kein so schweres Gewicht, dass der untere Rücken die Hauptarbeit übernimmt.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Cable_Preacher_Curl": {
+  "name": "Scottcurls am Kabelzug",
+  "instructions": [
+   "Stelle eine Scottbank etwa 60 cm vor einen Kabelzug.",
+   "Hänge eine gerade Stange in den unteren Zug ein.",
+   "Setze dich an die Scottbank, lege Ellbogen und Oberarme fest auf das Polster und lass dir die Stange vom unteren Zug anreichen.",
+   "Greife die Stange und strecke die Arme auf dem Polster der Scottbank vollständig. Das ist die Ausgangsposition.",
+   "Ziehe das Gewicht nun zu den Schultern hoch und drücke den Bizeps am obersten Punkt fest zusammen. Atme dabei aus und halte oben eine Sekunde.",
+   "Senke das Gewicht dann langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Cable_Reverse_Crunch": {
+  "name": "Umgekehrter Crunch am Kabelzug",
+  "instructions": [
+   "Hänge Fußschlaufen in einen unteren Kabelzug und lege eine Matte davor auf den Boden.",
+   "Setze dich mit den Füßen in Richtung Zug hin und befestige die Schlaufen an den Knöcheln.",
+   "Lege dich hin, hebe die Beine an und beuge die Knie im 90-Grad-Winkel. Beine und Kabel sollten in einer Linie liegen; ist das nicht der Fall, verstelle den Zug nach oben oder unten.",
+   "Die Hände liegen hinter dem Kopf. Ziehe die Knie zum Oberkörper und hebe die Hüfte vom Boden ab.",
+   "Halte kurz inne und senke die Hüfte dann langsam und kontrolliert ab, bis die Beine wieder im 90-Grad-Winkel stehen. Auch in dieser Ruhestellung bleibt Spannung auf dem Bauch.",
+   "Wiederhole die Bewegung bis zum Muskelversagen."
+  ]
+ },
+ "Cable_Russian_Twists": {
+  "name": "Russian Twists am Kabelzug",
+  "instructions": [
+   "Hänge einen normalen Griff ein und stelle den Zug auf mittlere Höhe.",
+   "Lege dich quer zum Kabel auf einen Gymnastikball und greife den Griff mit einer Hand. Du solltest etwa eine Armlänge vom Zug entfernt sein, mit Zug auf dem Kabel.",
+   "Fasse den Griff mit beiden Händen und strecke die Arme über der Brust ganz aus. Deine Hände sollten genau in einer Linie mit dem Zug sein; ist das nicht der Fall, verstelle ihn nach oben oder unten.",
+   "Halte die Hüfte oben und den Bauch angespannt. Drehe den Oberkörper um eine Vierteldrehung vom Zug weg. Dein Körper bildet von Kopf bis Knie eine gerade Linie.",
+   "Halte kurz inne und kehre dann langsam und kontrolliert in die Ausgangsposition zurück. Auch in dieser Ruhestellung bleibt seitlicher Zug auf dem Kabel.",
+   "Wiederhole die Bewegung bis zum Muskelversagen.",
+   "Wechsle dann die Position und wiederhole die Bewegungsfolge auf der anderen Seite."
+  ]
+ },
+ "Cable_Wrist_Curl": {
+  "name": "Handgelenkcurls am Kabelzug",
+  "instructions": [
+   "Stelle zunächst eine Flachbank vor einen unteren Kabelzug, in den eine gerade Stange eingehängt ist.",
+   "Greife die Stange eng bis schulterbreit im Untergriff (Handflächen nach oben) und lege die Unterarme auf den Oberschenkeln ab. Die Handgelenke ragen knapp über die Knie hinaus.",
+   "Curle die Handgelenke nach oben und atme dabei aus. Halte die Spannung eine Sekunde.",
+   "Senke die Handgelenke langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Die Unterarme bleiben ruhig; nur das Handgelenk bewegt sich bei dieser Übung.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Calf_Press": {
+  "name": "Wadendrücken",
+  "instructions": [
+   "Stelle den Sitz so ein, dass die Beine in der Ausgangsposition nur leicht gebeugt sind. Die Fußballen stehen fest auf der Platte.",
+   "Wähle ein passendes Gewicht und greife die Haltegriffe. Das ist die Ausgangsposition.",
+   "Strecke die Beine, indem du die Knie durchdrückst, und hebe das Gewicht dabei gerade so vom Stapel ab. Der Knöchel ist ganz angezogen, die Zehen zeigen nach oben. Führe die Bewegung aus, indem du so weit wie möglich über die Fußballen wegdrückst.",
+   "Halte kurz inne, kehre die Bewegung um und wiederhole."
+  ]
+ },
+ "Calf_Press_On_The_Leg_Press_Machine": {
+  "name": "Wadendrücken an der Beinpresse",
+  "instructions": [
+   "Setze dich an eine Beinpresse und stelle die Beine direkt vor dir schulterbreit auf die Platte.",
+   "Löse die Sicherungshebel, die die beladene Platte halten, und drücke die Platte ganz nach oben, bis die Beine vor dir gestreckt sind, ohne die Knie durchzudrücken. (Hinweis: An manchen Beinpressen kannst du die Sicherungen eingelegt lassen; wenn deine das erlaubt, ist das die sicherere Variante.) Oberkörper und Beine bilden dabei genau einen 90-Grad-Winkel. Setze nun vorsichtig Zehen und Fußballen auf den unteren Teil der Platte, sodass die Fersen frei überstehen. Die Zehen zeigen je nach gewünschtem Bereich nach vorn, nach außen oder nach innen. Das ist die Ausgangsposition.",
+   "Drücke gegen die Platte, indem du die Fersen hebst, die Sprunggelenke so weit wie möglich streckst und die Waden anspannst; atme dabei aus. Achte darauf, dass das Knie durchgehend ruhig bleibt und sich zu keinem Zeitpunkt beugt. Halte die Spannung eine Sekunde, bevor du wieder absenkst.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest, indem du die Fersen senkst und die Sprunggelenke beugst, bis die Waden gedehnt sind.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Calf_Raises_-_With_Bands": {
+  "name": "Wadenheben mit Bändern",
+  "instructions": [
+   "Nimm ein Trainingsband und stelle dich mit den Fußballen darauf; achte darauf, dass die Bandlänge zwischen Fuß und Armen auf beiden Seiten gleich ist.",
+   "Halte die Griffe des Bandes und hebe die Arme neben den Kopf, als würdest du gleich Schulterdrücken machen. Die Handflächen zeigen nach vorn, die Ellbogen sind gebeugt und zeigen zur Seite. Dadurch entsteht Spannung auf dem Band. Das ist die Ausgangsposition.",
+   "Halte die Hände an den Schultern, drücke dich auf die Zehen, atme dabei aus und spanne die Waden am obersten Punkt fest an.",
+   "Halte die Spannung eine Sekunde und senke dich dann langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Carioca_Quick_Step": {
+  "name": "Carioca Quick Step",
+  "instructions": [
+   "Beginne mit wenigen Zentimetern Abstand zwischen den Füßen und dem linken Arm oben, in einer lockeren, sportlichen Haltung.",
+   "Setze den rechten Fuß in einem schnellen Schritt nach hinten und ziehe das Knie hoch.",
+   "Reiße die Arme wieder nach oben, wenn du das rechte Knie hochziehst, und achte darauf, dass das Knie gerade auf und ab geht. Vermeide es, die Füße einzudrehen, und schaue weiter nach vorn, während du dich seitwärts bewegst."
+  ]
+ },
+ "Chair_Squat": {
+  "name": "Stuhlkniebeuge",
+  "instructions": [
+   "Stelle die Stange zunächst auf eine zu deiner Körpergröße passende Höhe. Wenn sie beladen ist, tritt darunter und lege sie auf den oberen Rücken.",
+   "Greife die Stange mit nach vorn zeigenden Händen, hebe sie aus der Ablage, indem du die Beine streckst.",
+   "Gehe mit den Füßen etwa 45 cm vor die Stange. Stelle die Beine schulterbreit auf, die Fußspitzen leicht nach außen. Schaue durchgehend nach vorn und halte die Wirbelsäule neutral oder leicht gestreckt. Das ist die Ausgangsposition.",
+   "Senke die Stange langsam ab, indem du die Knie beugst und dabei aufrecht bleibst und den Kopf oben hältst. Gehe so weit hinunter, bis der Winkel zwischen Ober- und Unterschenkel 90 Grad unterschreitet.",
+   "Drücke die Stange wieder nach oben, während du ausatmest, indem du mit den Fersen in den Boden drückst, die Knie streckst und in die Ausgangsposition zurückkehrst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Chin-Up": {
+  "name": "Klimmzug im Untergriff",
+  "instructions": [
+   "Greife die Klimmzugstange mit den Handflächen zum Körper und enger als schulterbreit.",
+   "Mit beiden Armen gestreckt an der Stange hältst du den Oberkörper so gerade wie möglich, machst dabei ein leichtes Hohlkreuz und streckst die Brust heraus. Das ist die Ausgangsposition. Tipp: Ein möglichst gerader Oberkörper reizt den Bizeps maximal und hält den Rücken heraus.",
+   "Ziehe dich beim Ausatmen hoch, bis der Kopf etwa auf Höhe der Stange ist. Konzentriere dich darauf, die Bewegung mit dem Bizeps auszuführen. Halte die Ellbogen nah am Körper. Tipp: Der Oberkörper bleibt in sich ruhig und bewegt sich nur im Raum; nur die Arme arbeiten. Die Unterarme haben keine andere Aufgabe, als die Stange zu halten.",
+   "Drücke den Bizeps oben eine Sekunde zusammen und senke den Oberkörper dann langsam in die Ausgangsposition mit gestreckten Armen zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Close-Grip_Barbell_Bench_Press": {
+  "name": "Enges Bankdrücken mit der Langhantel",
+  "instructions": [
+   "Lege dich auf eine Flachbank. Nimm einen engen Griff (etwa schulterbreit), hebe die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Das ist die Ausgangsposition.",
+   "Atme ein und senke die Stange langsam ab, bis du sie an der Brustmitte spürst. Tipp: Anders als beim normalen Bankdrücken bleiben die Ellbogen durchgehend nah am Oberkörper, damit der Trizeps maximal arbeitet.",
+   "Halte eine Sekunde und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest und mit dem Trizeps drückst. Strecke die Arme in der Endposition, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Stange am Ende zurück in die Ablage."
+  ]
+ },
+ "Close-Grip_Push-Up_off_of_a_Dumbbell": {
+  "name": "Enger Liegestütz an einer Kurzhantel",
+  "instructions": [
+   "Lege dich auf den Boden und stütze die Hände auf eine aufrecht stehende Kurzhantel. Trage dein Gewicht auf Zehen und Händen, halte den Rumpf fest, die Ellbogen am Körper und die Arme gestreckt. Das ist die Ausgangsposition.",
+   "Senke den Körper ab, indem du die Ellbogen beugst, und atme dabei ein. Halte den Körper gerade und lass die Hüfte weder steigen noch durchhängen.",
+   "Drücke dich in die Ausgangsposition zurück, indem du die Ellbogen streckst. Atme dabei aus.",
+   "Halte in der oberen Position kurz inne und wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Cross-Body_Crunch": {
+  "name": "Diagonaler Crunch",
+  "instructions": [
+   "Lege dich flach auf den Rücken und beuge die Knie um etwa 60 Grad.",
+   "Die Füße stehen flach auf dem Boden, die Hände liegen locker hinter dem Kopf. Das ist die Ausgangsposition.",
+   "Rolle dich nun auf und führe rechten Ellbogen und rechte Schulter quer über den Körper, während du gleichzeitig das linke Knie zur linken Schulter ziehst. Strecke den Ellbogen aus und versuche, das Knie zu berühren. Atme dabei aus. Tipp: Bringe eher die Schulter als nur den Ellbogen zum Knie, und denke daran, dass es darauf ankommt, den Bauch anzuspannen – nicht darauf, den Ellbogen zu bewegen.",
+   "Senke dich einatmend in die Ausgangsposition zurück und wiederhole mit linkem Ellbogen und rechtem Knie.",
+   "Wechsle so weiter ab, bis alle vorgegebenen Wiederholungen erledigt sind."
+  ]
+ },
+ "Deadlift_with_Bands": {
+  "name": "Kreuzheben mit Bändern",
+  "instructions": [
+   "Für kurze Bänder legst du sie vor dem Start einfach über die Stange und stellst dich beim Aufbau hinein. Lange Bänder müssen an einem festen Punkt verankert werden, etwa an schweren Kurzhanteln oder einem Rack.",
+   "Wenn Stand und Griff sitzen, atme tief ein, senke die Hüfte und beuge die Knie, bis die Schienbeine die Stange berühren. Blicke nach vorn, halte die Brust raus und den Rücken im Hohlkreuz, und drücke über die Fersen, um das Gewicht nach oben zu bewegen. Sobald die Stange die Knie passiert hat, ziehe sie kraftvoll nach hinten, führe die Schulterblätter zusammen und schiebe die Hüfte nach vorn gegen die Stange.",
+   "Senke die Stange, indem du dich aus der Hüfte beugst und sie zum Boden führst."
+  ]
+ },
+ "Decline_Barbell_Bench_Press": {
+  "name": "Negativbankdrücken mit der Langhantel",
+  "instructions": [
+   "Fixiere die Beine am Ende der Negativbank und lege dich langsam darauf.",
+   "Nimm einen mittelbreiten Griff (einen Griff, bei dem Unterarm und Oberarm in der Mitte der Bewegung einen 90-Grad-Winkel bilden), hebe die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Die Arme stehen senkrecht zum Boden. Das ist die Ausgangsposition. Tipp: Um die Rotatorenmanschette zu schonen, lässt du dir die Stange am besten von einem Partner aus der Ablage reichen.",
+   "Atme ein und senke die Stange langsam ab, bis du sie an der unteren Brust spürst.",
+   "Halte eine Sekunde und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest und mit der Brustmuskulatur drückst. Strecke die Arme und spanne die Brust in der Endposition an, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Stange am Ende zurück in die Ablage."
+  ]
+ },
+ "Decline_Dumbbell_Bench_Press": {
+  "name": "Negativbankdrücken mit Kurzhanteln",
+  "instructions": [
+   "Fixiere die Beine am Ende der Negativbank und lege dich mit je einer Kurzhantel auf den Oberschenkeln hin. Die Handflächen zeigen zueinander.",
+   "Sobald du liegst, bringe die Kurzhanteln schulterbreit vor dich.",
+   "Drehe dort die Handgelenke nach vorn, sodass die Handflächen von dir weg zeigen. Das ist die Ausgangsposition.",
+   "Senke die Gewichte langsam zur Seite ab, während du ausatmest. Behalte die Kurzhanteln durchgehend unter Kontrolle. Tipp: Die Unterarme stehen während der ganzen Bewegung senkrecht zum Boden.",
+   "Drücke die Kurzhanteln beim Ausatmen mit der Brustmuskulatur nach oben. Strecke die Arme in der Endposition, spanne die Brust an, halte eine Sekunde und senke sie dann langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die in deinem Trainingsplan vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Decline_Dumbbell_Triceps_Extension": {
+  "name": "Trizepsstrecken mit Kurzhanteln auf der Negativbank",
+  "instructions": [
+   "Fixiere die Beine am Ende der Negativbank und lege dich mit je einer Kurzhantel auf den Oberschenkeln hin. Die Handflächen zeigen zueinander.",
+   "Sobald du liegst, bringe die Kurzhanteln schulterbreit vor dich. Die Handflächen zeigen zueinander, die Arme stehen senkrecht zum Boden und sind ganz gestreckt. Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig (und die Ellbogen am Körper) und senke die Kurzhanteln langsam ab, indem du die Unterarme im Halbkreis zu dir führst, bis die Daumen neben den Ohren sind. Atme bei diesem Teil der Bewegung ein.",
+   "Hebe die Kurzhanteln in die Ausgangsposition zurück, indem du den Trizeps anspannst und ausatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Decline_Oblique_Crunch": {
+  "name": "Schräger Crunch auf der Negativbank",
+  "instructions": [
+   "Fixiere die Beine am Ende der Negativbank und lege dich langsam darauf.",
+   "Hebe den Oberkörper von der Bank ab, bis er etwa 35 bis 45 Grad zum Boden steht.",
+   "Lege eine Hand neben den Kopf und die andere auf den Oberschenkel. Das ist die Ausgangsposition.",
+   "Hebe den Oberkörper langsam aus der Ausgangsposition und drehe ihn dabei nach links. Rolle dich beim Ausatmen weiter auf, bis der rechte Ellbogen das linke Knie berührt. Halte diese Spannung eine Sekunde. Tipp: Halte den Bauch fest angespannt und bewege dich langsam und kontrolliert.",
+   "Senke den Körper langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wenn du einen Satz auf der rechten Seite mit der empfohlenen Anzahl an Wiederholungen beendet hast, wechsle auf die linke. Tipp: Drehe den Oberkörper wirklich ein und spüre die Spannung in der oberen Position."
+  ]
+ },
+ "Decline_Reverse_Crunch": {
+  "name": "Umgekehrter Crunch auf der Negativbank",
+  "instructions": [
+   "Lege dich mit dem Rücken auf eine Negativbank und halte dich mit beiden Händen an deren oberem Ende fest. Lass dich nicht nach unten rutschen.",
+   "Halte die Beine mit der Bauchmuskulatur parallel zum Boden, Knie und Füße bleiben zusammen. Tipp: Die Beine sind ganz gestreckt, mit einer leichten Beugung im Knie. Das ist die Ausgangsposition.",
+   "Führe die Beine beim Ausatmen zum Oberkörper, rolle dabei das Becken nach hinten ein und hebe die Hüfte von der Bank ab. Am Ende dieser Bewegung berühren die Knie die Brust.",
+   "Halte die Spannung eine Sekunde und führe die Beine einatmend in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Deficit_Deadlift": {
+  "name": "Kreuzheben aus der Erhöhung",
+  "instructions": [
+   "Stelle dich zunächst auf eine Plattform oder auf Hantelscheiben, üblicherweise 3 bis 8 cm hoch. Tritt so an die Stange heran, dass sie mittig über deinen Füßen liegt. Die Füße stehen etwa hüftbreit. Beuge dich aus der Hüfte und greife die Stange schulterbreit, sodass sich die Schulterblätter nach vorn ziehen lassen. Üblicherweise nimmst du den Obergriff, bei schweren Sätzen den Kreuzgriff.",
+   "Wenn Stand und Griff sitzen, atme tief ein, senke die Hüfte und beuge die Knie, bis die Schienbeine die Stange berühren. Blicke nach vorn, halte die Brust raus und den Rücken im Hohlkreuz, und drücke über die Fersen, um das Gewicht nach oben zu bewegen. Sobald die Stange die Knie passiert hat, ziehe sie kraftvoll nach hinten, führe die Schulterblätter zusammen und schiebe die Hüfte nach vorn gegen die Stange.",
+   "Senke die Stange, indem du dich aus der Hüfte beugst und sie zum Boden führst."
+  ]
+ },
+ "Dip_Machine": {
+  "name": "Dip-Maschine",
+  "instructions": [
+   "Setze dich fest in eine Dip-Maschine, wähle das Gewicht und greife die Griffe sicher.",
+   "Halte die Ellbogen an den Seiten, damit die Arbeit auf den Trizeps geht. Die Ellbogen sind im 90-Grad-Winkel gebeugt.",
+   "Spanne den Trizeps an und strecke die Arme nach unten, während du ausatmest. Tipp: Lass die Arme unten leicht gebeugt, damit die Spannung auf dem Trizeps bleibt.",
+   "Lass die Arme dann langsam in die Ausgangsposition zurückkommen, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Donkey_Calf_Raises": {
+  "name": "Donkey Calf Raises",
+  "instructions": [
+   "Für diese Übung brauchst du eine Donkey-Calf-Raise-Maschine. Bringe zunächst unteren Rücken und Hüfte unter das gepolsterte Widerlager. Der Bereich um das Steißbein sollte am Polster anliegen.",
+   "Lege beide Arme auf die seitlichen Griffe und stelle die Fußballen auf den Wadenblock, sodass die Fersen frei überstehen. Richte die Zehen je nach gewünschtem Bereich nach vorn, nach innen oder nach außen und strecke die Knie, ohne sie durchzudrücken. Das ist die Ausgangsposition.",
+   "Hebe die Fersen beim Ausatmen, indem du die Sprunggelenke so weit wie möglich streckst und die Waden anspannst. Achte darauf, dass das Knie durchgehend ruhig bleibt und sich zu keinem Zeitpunkt beugt. Halte die Spannung eine Sekunde, bevor du wieder absenkst.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest, indem du die Fersen senkst und die Sprunggelenke beugst, bis die Waden gedehnt sind.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Drag_Curl": {
+  "name": "Drag Curl",
+  "instructions": [
+   "Greife eine Langhantel im Untergriff (Handflächen nach vorn) und bringe die Ellbogen nah an den Oberkörper und nach hinten. Das ist die Ausgangsposition.",
+   "Curle die Stange beim Ausatmen nach oben, halte die Ellbogen dabei hinten und \"ziehe\" die Stange am Oberkörper entlang, mit dem sie in Kontakt bleibt. Tipp: Die Ellbogen bleiben also nicht an den Seiten fixiert, sondern wandern nach hinten. Hebe außerdem nicht die Schultern.",
+   "Kehre langsam in die Ausgangsposition zurück und halte die Stange dabei durchgehend am Oberkörper.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Dumbbell_Bench_Press": {
+  "name": "Bankdrücken mit Kurzhanteln",
+  "instructions": [
+   "Lege dich auf eine Flachbank, in jeder Hand eine Kurzhantel, die auf den Oberschenkeln ruht. Die Handflächen zeigen zueinander.",
+   "Hilf dir dann mit den Oberschenkeln und hebe die Kurzhanteln nacheinander an, sodass du sie schulterbreit vor dir hältst.",
+   "Drehe dort die Handgelenke nach vorn, sodass die Handflächen von dir weg zeigen. Die Kurzhanteln sind seitlich neben der Brust, Oberarm und Unterarm bilden einen 90-Grad-Winkel. Behalte die Kurzhanteln durchgehend unter Kontrolle. Das ist die Ausgangsposition.",
+   "Drücke die Kurzhanteln beim Ausatmen mit der Brust nach oben. Strecke die Arme am obersten Punkt, spanne die Brust an, halte eine Sekunde und senke sie dann langsam ab. Tipp: Das Absenken sollte etwa doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die in deinem Trainingsplan vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Dumbbell_Bench_Press_with_Neutral_Grip": {
+  "name": "Bankdrücken mit Kurzhanteln im neutralen Griff",
+  "instructions": [
+   "Nimm in jede Hand eine Kurzhantel und lege dich auf eine Flachbank. Die Füße stehen flach auf dem Boden, die Schulterblätter sind zusammengezogen.",
+   "Halte einen neutralen Griff, die Handflächen zeigen zueinander, und beginne mit senkrecht über dir gestreckten Armen. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du die Ellbogen beugst und die Oberarme zur Seite absenkst. Gehe hinunter, bis die Kurzhanteln am Oberkörper sind.",
+   "Halte kurz inne, strecke dann die Ellbogen und kehre in die Ausgangsposition zurück."
+  ]
+ },
+ "Dumbbell_Bicep_Curl": {
+  "name": "Bizepscurls mit Kurzhanteln",
+  "instructions": [
+   "Stelle dich aufrecht hin, in jeder Hand eine Kurzhantel mit gestreckten Armen. Halte die Ellbogen nah am Oberkörper und drehe die Handflächen nach vorn. Das ist die Ausgangsposition.",
+   "Halte nun die Oberarme ruhig, atme aus und curle die Gewichte nach oben, während du den Bizeps anspannst. Hebe weiter, bis der Bizeps voll kontrahiert ist und die Kurzhanteln auf Schulterhöhe stehen. Halte die Position kurz und drücke den Bizeps zusammen.",
+   "Atme dann ein und senke die Kurzhanteln langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Dumbbell_Incline_Row": {
+  "name": "Rudern mit Kurzhanteln auf der Schrägbank",
+  "instructions": [
+   "Lege dich mit neutralem Griff bäuchlings auf eine Schrägbank.",
+   "Nimm in jede Hand eine Kurzhantel im neutralen Griff und beginne mit gestreckten Armen. Das ist die Ausgangsposition.",
+   "Ziehe die Schulterblätter zusammen und beuge die Ellbogen, um die Kurzhanteln an die Seite zu rudern.",
+   "Halte am obersten Punkt kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Dumbbell_One-Arm_Upright_Row": {
+  "name": "Einarmiges Aufrechtes Rudern mit der Kurzhantel",
+  "instructions": [
+   "Nimm eine Kurzhantel und stelle dich aufrecht hin, der Arm hängt vor dir mit leicht gebeugtem Ellbogen, der Rücken ist gerade. Das ist die Ausgangsposition. Tipp: Die Kurzhantel liegt auf dem Oberschenkel auf, die Handfläche zeigt zum Oberschenkel.",
+   "Die andere Hand kann seitlich ausgestreckt bleiben, an der Hüfte liegen oder sich an etwas Festem halten. Das ist die Ausgangsposition.",
+   "Hebe die Kurzhantel beim Ausatmen mit der seitlichen Schulter. Führe sie dabei nah am Körper nach oben. Hebe weiter, bis die Kurzhantel fast auf Höhe des Kinns ist. Tipp: Die Ellbogen führen die Bewegung. Beim Heben soll der Ellbogen stets höher sein als der Unterarm. Halte außerdem den Oberkörper ruhig und pausiere am obersten Punkt eine Sekunde.",
+   "Senke die Kurzhantel langsam in die Ausgangsposition zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen und wechsle dann den Arm."
+  ]
+ },
+ "Dumbbell_Seated_One-Leg_Calf_Raise": {
+  "name": "Sitzendes einbeiniges Wadenheben mit der Kurzhantel",
+  "instructions": [
+   "Lege einen Block etwa 30 cm vor eine Flachbank auf den Boden.",
+   "Setze dich auf die Flachbank und lege eine Kurzhantel auf den linken Oberschenkel, etwa 8 cm oberhalb des Knies.",
+   "Stelle nun den linken Fußballen auf den Block. Das ist die Ausgangsposition.",
+   "Drücke dich beim Ausatmen so hoch wie möglich auf die Zehen und spanne die Wade an. Halte die Spannung eine Sekunde.",
+   "Kehre langsam in die Ausgangsposition zurück und dehne dabei so weit wie möglich nach unten.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen und wechsle dann auf das rechte Bein."
+  ]
+ },
+ "Dumbbell_Side_Bend": {
+  "name": "Seitbeuge mit der Kurzhantel",
+  "instructions": [
+   "Stelle dich aufrecht hin, eine Kurzhantel in der linken Hand (Handfläche zum Oberkörper), die rechte Hand an der Hüfte. Die Füße stehen schulterbreit. Das ist die Ausgangsposition.",
+   "Halte den Rücken gerade und den Kopf oben und beuge dich nur aus der Taille so weit wie möglich nach rechts. Atme dabei ein. Halte eine Sekunde und richte dich wieder auf, während du ausatmest. Tipp: Der Rest des Körpers bleibt ruhig.",
+   "Wiederhole die Bewegung nun zur linken Seite. Halte eine Sekunde und kehre in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen und wechsle dann die Hand."
+  ]
+ },
+ "Dumbbell_Squat": {
+  "name": "Kniebeuge mit Kurzhanteln",
+  "instructions": [
+   "Stelle dich aufrecht hin, in jeder Hand eine Kurzhantel (die Handflächen zeigen zu den Beinen).",
+   "Stelle die Beine schulterbreit auf, die Fußspitzen leicht nach außen. Halte den Kopf durchgehend oben – nach unten zu schauen bringt dich aus dem Gleichgewicht – und den Rücken gerade. Das ist die Ausgangsposition. Hinweis: Hier ist der beschriebene mittlere Stand gemeint, der die Beine insgesamt entwickelt; du kannst aber jeden der drei Stände aus dem Abschnitt zur Fußstellung wählen.",
+   "Senke den Oberkörper langsam ab, indem du die Knie beugst und dabei aufrecht bleibst und den Kopf oben hältst. Gehe so weit hinunter, bis die Oberschenkel parallel zum Boden sind. Tipp: Bei korrekter Ausführung bilden die Knievorderseiten eine gedachte gerade Linie mit den Zehen. Sind die Knie über dieser Linie (also vor den Zehen), belastest du das Knie unnötig und hast die Übung falsch ausgeführt.",
+   "Richte den Oberkörper beim Ausatmen wieder auf, indem du vor allem mit den Fersen in den Boden drückst, die Beine streckst und in die Ausgangsposition zurückkehrst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Exercise_Ball_Crunch": {
+  "name": "Crunch auf dem Gymnastikball",
+  "instructions": [
+   "Lege dich so auf einen Gymnastikball, dass sich das Kreuz an die runde Oberfläche schmiegt. Die Knie sind gebeugt, die Füße stehen fest auf dem Boden. Der obere Rumpf ragt über den Ball hinaus. Die Arme bleiben entweder seitlich am Körper oder verschränkt auf der Brust; beides vermeidet Nackenbelastung (anders als die Hände hinter dem Kopf).",
+   "Senke den Oberkörper in eine gedehnte Position ab und halte den Nacken durchgehend ruhig. Das ist die Ausgangsposition.",
+   "Halte die Hüfte ruhig und beuge den Rumpf, indem du die Bauchmuskeln anspannst und Schultern und Oberkörper aufrollst, bis du eine deutliche Spannung im Bauch spürst. Die Arme gleiten dabei einfach an den Beinen entlang nach oben, wenn sie seitlich liegen, oder bleiben auf der Brust, wenn sie verschränkt sind. Der untere Rücken bleibt stets in Kontakt mit dem Ball. Atme dabei aus und halte die Spannung eine Sekunde.",
+   "Kehre einatmend in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Face_Pull": {
+  "name": "Face Pull",
+  "instructions": [
+   "Stelle dich mit Blick zu einem hohen Zug, in den ein Seil oder zwei Griffe eingehängt sind, und ziehe das Gewicht direkt zum Gesicht, während du die Hände dabei auseinanderführst. Halte die Oberarme parallel zum Boden."
+  ]
+ },
+ "Farmers_Walk": {
+  "name": "Farmer's Walk",
+  "instructions": [
+   "Für den Farmer's Walk gibt es verschiedene Geräte. Stehen sie nicht zur Verfügung, geht es auch mit schweren Kurzhanteln oder kurzen Stangen. Stelle dich zunächst zwischen die Geräte.",
+   "Greife die Griffe und hebe sie an, indem du über die Fersen drückst, den Rücken gerade hältst und den Kopf oben.",
+   "Gehe in kurzen, schnellen Schritten und vergiss das Atmen nicht. Lege eine festgelegte Strecke zurück, üblicherweise 15 bis 30 Meter, so schnell wie möglich."
+  ]
+ },
+ "Flutter_Kicks": {
+  "name": "Flutter Kicks",
+  "instructions": [
+   "Lege dich bäuchlings auf eine Flachbank, die Hüften an der Bankkante, die Beine gestreckt mit den Zehen weit über dem Boden, und halte dich mit den Armen auf der Bank an deren Vorderkante fest.",
+   "Spanne Gesäß und Beinbizeps an und strecke die Beine, bis sie auf Hüfthöhe sind. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du das linke Bein höher hebst als das rechte.",
+   "Senke dann das linke Bein, während du das rechte hebst.",
+   "Wechsle so weiter ab (wie beim Beinschlag im Wasser), bis du die empfohlene Anzahl an Wiederholungen pro Bein erreicht hast. Bleibe dabei durchgehend kontrolliert. Tipp: Bei dieser Bewegung atmest du normal weiter."
+  ]
+ },
+ "Front_Raise_And_Pullover": {
+  "name": "Frontheben mit Überzug",
+  "instructions": [
+   "Lege dich auf eine Flachbank und halte eine Langhantel im Obergriff mit etwa 38 cm Griffabstand.",
+   "Lege die Stange auf die Oberschenkel und strecke die Arme mit einer leichten Beugung im Ellbogen. Das ist die Ausgangsposition.",
+   "Hebe das Gewicht nun im Halbkreis mit gestreckten Armen an, während du einatmest. Führe die Bewegung fort, bis die Stange auf der anderen Seite über deinem Kopf ist. (Tipp: Die Stange legt dabei etwa 180 Grad zurück.) An diesem Punkt sind die Arme parallel zum Boden, die Handflächen zeigen zur Decke.",
+   "Führe die Langhantel dann auf demselben Weg zurück in die Ausgangsposition, während du ausatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Glute_Kickback": {
+  "name": "Beinheben rückwärts im Vierfüßlerstand",
+  "instructions": [
+   "Knie dich auf den Boden oder eine Matte und beuge dich aus der Hüfte nach vorn, die Arme senkrecht zum Oberkörper vor dir aufgestützt, also in einer knienden Liegestützposition mit schulterbreiten Armen. Der Kopf schaut nach vorn, und die Beugung der Knie bildet einen 90-Grad-Winkel zwischen Oberschenkel und Wade. Das ist die Ausgangsposition.",
+   "Hebe beim Ausatmen das rechte Bein an, bis der Oberschenkel in einer Linie mit dem Rücken ist, und halte dabei den 90-Grad-Winkel. Spanne das Gesäß über die ganze Bewegung an und halte die Spannung oben eine Sekunde. Tipp: Am Ende der Bewegung ist der Oberschenkel parallel zum Boden und die Wade senkrecht dazu.",
+   "Kehre einatmend in die Ausgangsposition zurück und wiederhole nun mit dem linken Bein.",
+   "Wechsle die Beine weiter ab, bis alle empfohlenen Wiederholungen erledigt sind."
+  ]
+ },
+ "Goblet_Squat": {
+  "name": "Goblet Squat",
+  "instructions": [
+   "Stelle dich hin und halte eine leichte Kettlebell an den Hörnern nah an der Brust. Das ist die Ausgangsposition.",
+   "Gehe zwischen den Beinen in die Hocke, bis die Oberschenkelrückseiten auf den Waden liegen. Halte Brust und Kopf oben und den Rücken gerade.",
+   "Halte unten kurz inne und drücke mit den Ellbogen die Knie nach außen. Kehre in die Ausgangsposition zurück und wiederhole 10 bis 20 Mal."
+  ]
+ },
+ "Good_Morning": {
+  "name": "Good Morning",
+  "instructions": [
+   "Lege eine Stange auf Schulterhöhe in ein Rack. Lege sie wie bei einer Low-Bar-Kniebeuge auf den hinteren Teil der Schultern, nicht obenauf. Halte den Rücken fest, die Schulterblätter zusammengezogen und die Knie leicht gebeugt. Tritt aus dem Rack heraus.",
+   "Beginne, indem du dich aus der Hüfte beugst und diese nach hinten schiebst, bis du fast parallel zum Boden bist. Halte den Rücken im Hohlkreuz und die Halswirbelsäule in Verlängerung.",
+   "Kehre die Bewegung um, indem du die Hüfte mit Gesäß und Beinbizeps streckst. Fahre fort, bis du wieder in der Ausgangsposition bist."
+  ]
+ },
+ "Good_Morning_off_Pins": {
+  "name": "Good Morning von den Ablagen",
+  "instructions": [
+   "Lege eine Stange etwa auf Bauchhöhe in ein Rack. Beuge dich unter die Stange und lege sie wie bei einer Low-Bar-Kniebeuge auf den hinteren Teil der Schultern, nicht obenauf. Bei richtiger Höhe bist du im vorgebeugten Zustand nahezu parallel zum Boden. Halte den Rücken fest, die Schulterblätter zusammengezogen und die Knie leicht gebeugt. Halte den Rücken im Hohlkreuz und die Halswirbelsäule in Verlängerung.",
+   "Beginne die Bewegung, indem du die Hüfte mit Gesäß und Beinbizeps streckst, bis du mit dem Gewicht aufrecht stehst. Senke das Gewicht dann langsam auf die Ablagen zurück in die Ausgangsposition."
+  ]
+ },
+ "Hack_Squat": {
+  "name": "Hackenschmidt-Kniebeuge",
+  "instructions": [
+   "Lege den Rücken an das Rückenpolster der Maschine und bringe die Schultern unter die Schulterpolster.",
+   "Stelle die Beine schulterbreit auf die Platte, die Fußspitzen leicht nach außen. Tipp: Halte den Kopf durchgehend oben und den Rücken stets am Polster.",
+   "Greife die seitlichen Griffe der Maschine und löse die Sicherungen (bei den meisten Modellen, indem du die Griffe aus der nach vorn zeigenden in eine schräge Position drehst).",
+   "Strecke nun die Beine, ohne die Knie durchzudrücken. Das ist die Ausgangsposition. (Hinweis: Hier ist der beschriebene mittlere Stand gemeint, der die Beine insgesamt entwickelt; du kannst aber jeden der drei Stände aus dem Abschnitt zur Fußstellung wählen.)",
+   "Senke den Schlitten langsam ab, indem du die Knie beugst und dabei aufrecht bleibst und den Kopf oben hältst (der Rücken bleibt stets am Polster). Gehe so weit hinunter, bis der Winkel zwischen Oberschenkel und Wade etwas kleiner als 90 Grad ist – also die Oberschenkel unter die Parallele zum Boden kommen. Atme dabei ein. Tipp: Bei korrekter Ausführung bilden die Knievorderseiten eine gedachte gerade Linie mit den Zehen. Sind die Knie über dieser Linie (also vor den Zehen), belastest du das Knie unnötig und hast die Übung falsch ausgeführt.",
+   "Drücke den Schlitten beim Ausatmen wieder nach oben, indem du vor allem mit den Fersen in den Boden drückst, die Beine streckst und in die Ausgangsposition zurückkehrst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Hammer_Grip_Incline_DB_Bench_Press": {
+  "name": "Schrägbankdrücken mit Kurzhanteln im Hammergriff",
+  "instructions": [
+   "Lege dich auf eine Schrägbank, in jeder Hand eine Kurzhantel auf den Oberschenkeln. Die Handflächen zeigen zueinander.",
+   "Hilf dir mit den Oberschenkeln und bringe die Kurzhanteln nacheinander nach oben, sodass du sie schulterbreit hältst.",
+   "Behalte dort den neutralen Griff bei (Handflächen zueinander). Die Ellbogen zeigen nach außen, die Oberarme sind in einer Linie mit den Schultern (senkrecht zum Oberkörper) und die Ellbogen bilden einen 90-Grad-Winkel zwischen Oberarm und Unterarm. Das ist die Ausgangsposition.",
+   "Senke die Gewichte nun langsam zur Seite ab, während du einatmest. Behalte die Kurzhanteln durchgehend unter Kontrolle.",
+   "Drücke die Kurzhanteln beim Ausatmen mit der Brustmuskulatur nach oben. Strecke die Arme in der Endposition, halte eine Sekunde und senke sie dann langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Kurzhanteln am Ende zurück auf die Oberschenkel und dann auf den Boden. So legst du sie am sichersten ab."
+  ]
+ },
+ "Hip_Lift_with_Band": {
+  "name": "Hüftheben mit dem Band",
+  "instructions": [
+   "Wähle ein passendes Band, befestige es auf beiden Seiten und lege dich in die Mitte des Racks. Hat dein Rack keine Zapfen, kannst du das Band mit schweren Kurzhanteln oder ähnlichen Gegenständen fixieren – achte nur darauf, dass sie nicht verrutschen.",
+   "Bringe dich so in Position, dass das Band direkt über deiner Hüfte liegt. Beuge die Knie und stelle die Füße flach auf den Boden. Die Hände können auf dem Boden liegen oder das Band in Position halten.",
+   "Halte die Schultern am Boden und drücke über die Fersen, um die Hüfte zu heben und so weit wie möglich gegen das Band zu schieben.",
+   "Halte am obersten Punkt kurz inne und kehre in die Ausgangsposition zurück."
+  ]
+ },
+ "Hyperextensions_Back_Extensions": {
+  "name": "Hyperextensionen (Rückenstrecken)",
+  "instructions": [
+   "Lege dich bäuchlings auf eine Hyperextensionsbank und fixiere die Knöchel sicher unter den Fußpolstern.",
+   "Stelle das obere Polster nach Möglichkeit so ein, dass die Oberschenkel flach auf dem breiten Polster liegen und genug Platz bleibt, um dich ungehindert aus der Hüfte zu beugen.",
+   "Halte den Körper gerade und verschränke die Arme vor der Brust (meine Empfehlung) oder hinter dem Kopf. Das ist die Ausgangsposition. Tipp: Für mehr Widerstand kannst du auch eine Hantelscheibe unter den verschränkten Armen vor dir halten.",
+   "Beuge dich langsam aus der Hüfte so weit nach vorn, wie es mit flachem Rücken möglich ist. Atme dabei ein. Gehe weiter, bis du eine deutliche Dehnung im Beinbizeps spürst und nicht weiterkommst, ohne den Rücken rund zu machen. Tipp: Mache bei dieser Übung niemals einen runden Rücken. Manche kommen weiter als andere; entscheidend ist, dass du so weit gehst, wie es dein Körper ohne runden Rücken zulässt.",
+   "Richte den Oberkörper langsam wieder in die Ausgangsposition auf, während du ausatmest. Tipp: Widerstehe der Versuchung, über die gerade Linie hinaus ins Hohlkreuz zu gehen. Schwinge den Oberkörper außerdem zu keinem Zeitpunkt, um den Rücken zu schützen.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Hyperextensions_With_No_Hyperextension_Bench": {
+  "name": "Hyperextensionen ohne Hyperextensionsbank",
+  "instructions": [
+   "Lass dir von jemandem die Beine halten und rutsche auf einer Flachbank so weit nach hinten, bis die Hüfte über die Kante hinausragt. Tipp: Der gesamte Oberkörper hängt Richtung Boden. Du bist damit in derselben Position wie auf einer Hyperextensionsbank, nur ist der Bewegungsumfang wegen der geringeren Höhe der Flachbank kleiner.",
+   "Halte den Körper gerade und verschränke die Arme vor der Brust (meine Empfehlung) oder hinter dem Kopf. Das ist die Ausgangsposition. Tipp: Für mehr Widerstand kannst du auch eine Hantelscheibe unter den verschränkten Armen vor dir halten.",
+   "Beuge dich langsam aus der Hüfte so weit nach vorn, wie es mit flachem Rücken möglich ist. Atme dabei ein. Gehe weiter, bis du fast den Boden berührst oder eine deutliche Dehnung im Beinbizeps spürst – je nachdem, was zuerst eintritt. Tipp: Mache bei dieser Übung niemals einen runden Rücken.",
+   "Richte den Oberkörper langsam wieder in die Ausgangsposition auf, während du ausatmest. Tipp: Widerstehe der Versuchung, über die gerade Linie hinaus ins Hohlkreuz zu gehen. Schwinge den Oberkörper außerdem zu keinem Zeitpunkt, um den Rücken zu schützen.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Incline_Dumbbell_Curl": {
+  "name": "Schrägbankcurls mit Kurzhanteln",
+  "instructions": [
+   "Lehne dich auf einer Schrägbank zurück, in jeder Hand eine Kurzhantel mit gestreckten Armen. Halte die Ellbogen nah am Oberkörper und drehe die Handflächen nach vorn. Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig und curle die Gewichte nach oben, während du den Bizeps anspannst und ausatmest. Nur die Unterarme bewegen sich. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Kurzhanteln auf Schulterhöhe stehen. Halte die Position eine Sekunde.",
+   "Senke die Kurzhanteln langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Incline_Push-Up": {
+  "name": "Liegestütz erhöht",
+  "instructions": [
+   "Stelle dich vor eine Bank oder eine stabile erhöhte Fläche. Setze die Hände etwas weiter als schulterbreit auf die Kante.",
+   "Gehe mit den Fußballen so weit zurück, dass Arme und Körper gestreckt sind. Die Arme stehen senkrecht zum Körper. Halte den Körper gerade und senke die Brust durch Beugen der Arme zur Kante ab.",
+   "Drücke dich wieder hoch, bis die Arme gestreckt sind. Wiederhole."
+  ]
+ },
+ "Incline_Push-Up_Close-Grip": {
+  "name": "Enger Liegestütz erhöht",
+  "instructions": [
+   "Stelle dich vor die Stange einer Multipresse oder eine stabile erhöhte Fläche in passender Höhe.",
+   "Setze die Hände direkt nebeneinander auf die Stange.",
+   "Gehe mit den Füßen so weit von der Stange zurück, dass Arme und Körper gestreckt sind. Das ist die Ausgangsposition.",
+   "Halte den Körper gerade und senke die Brust durch Beugen der Arme zur Stange ab.",
+   "Kehre in die Ausgangsposition zurück, indem du die Ellbogen streckst und dich wieder hochdrückst."
+  ]
+ },
+ "Incline_Push-Up_Wide": {
+  "name": "Breiter Liegestütz erhöht",
+  "instructions": [
+   "Stelle dich vor die Stange einer Multipresse oder eine stabile erhöhte Fläche in passender Höhe.",
+   "Setze die Hände weiter als schulterbreit auf die Stange.",
+   "Gehe mit den Füßen so weit von der Stange zurück, dass Arme und Körper gestreckt sind. Die Arme stehen senkrecht zum Körper. Das ist die Ausgangsposition.",
+   "Halte den Körper gerade und senke die Brust durch Beugen der Arme zur Stange ab.",
+   "Kehre in die Ausgangsposition zurück, indem du die Ellbogen streckst und dich wieder hochdrückst."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Front_And_Back": {
+  "name": "Isometrische Nackenübung – vorn und hinten",
+  "instructions": [
+   "Halte Kopf und Nacken in neutraler Stellung (aufrecht, Blick nach vorn) und lege beide Hände an die Stirn.",
+   "Drücke nun sanft nach vorn, während du die Nackenmuskulatur anspannst und jede Bewegung des Kopfes verhinderst. Beginne mit langsam aufgebauter Spannung und steigere sie behutsam. Atme während der Anspannung normal weiter.",
+   "Halte für die empfohlene Anzahl an Sekunden.",
+   "Löse die Spannung dann langsam.",
+   "Pausiere für die empfohlene Zeit und wiederhole mit den Händen am Hinterkopf."
+  ]
+ },
+ "Isometric_Neck_Exercise_-_Sides": {
+  "name": "Isometrische Nackenübung – Seiten",
+  "instructions": [
+   "Halte Kopf und Nacken in neutraler Stellung (aufrecht, Blick nach vorn) und lege die linke Hand an die linke Kopfseite.",
+   "Drücke nun sanft nach links, während du die linke Nackenmuskulatur anspannst und jede Bewegung des Kopfes verhinderst. Beginne mit langsam aufgebauter Spannung und steigere sie behutsam. Atme während der Anspannung normal weiter.",
+   "Halte für die empfohlene Anzahl an Sekunden.",
+   "Löse die Spannung dann langsam.",
+   "Pausiere für die empfohlene Zeit und wiederhole mit der rechten Hand an der rechten Kopfseite."
+  ]
+ },
+ "Jackknife_Sit-Up": {
+  "name": "Klappmesser",
+  "instructions": [
+   "Lege dich flach auf den Rücken auf den Boden (oder eine Matte), die Arme über dem Kopf nach hinten gestreckt, die Beine ebenfalls gestreckt. Das ist die Ausgangsposition.",
+   "Beuge dich beim Ausatmen aus der Taille und hebe gleichzeitig Beine und Arme, bis sie sich in der Klappmesser-Position treffen. Tipp: Die Beine sind gestreckt und stehen etwa 35 bis 45 Grad zum Boden, die Arme sind gestreckt und parallel zu den Beinen. Der obere Rumpf hebt vom Boden ab.",
+   "Senke Arme und Beine einatmend in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Keg_Load": {
+  "name": "Keg Load",
+  "instructions": [
+   "Zum Laden der Fässer stellst du die gewünschte Anzahl in einiger Entfernung von der Ladeplattform auf, üblicherweise 9 bis 15 Meter.",
+   "Greife zunächst den nahen Griff des ersten Fasses und kippe es auf die Seite, um die gegenüberliegende Kante des Fassbodens zu fassen. Hebe das Fass an die Brust.",
+   "Je höher du das Fass bringst, desto schneller kommst du zur Plattform. Auf die Schulter zu nehmen ist meist nicht erlaubt. Halte das Fass fest im Griff. Bewege dich so schnell wie möglich zur Plattform und lade es ab, indem du Hüfte, Knie und Sprunggelenke streckst, um es so hoch wie möglich zu bringen.",
+   "Kehre in die Ausgangsposition zurück, um das nächste Fass zu holen, und wiederhole, bis der Durchgang beendet ist."
+  ]
+ },
+ "Kettlebell_Arnold_Press": {
+  "name": "Arnold Press mit der Kettlebell",
+  "instructions": [
+   "Bringe eine Kettlebell im Clean zur Schulter, indem du Beine und Hüfte streckst und die Kettlebell dabei zur Schulter hochziehst. Die Handfläche zeigt nach innen.",
+   "Blicke geradeaus und drücke die Kettlebell nach oben über den Kopf, während du das Handgelenk so drehst, dass die Handfläche am obersten Punkt nach vorn zeigt.",
+   "Führe die Kettlebell in die Ausgangsposition zurück, mit der Handfläche nach innen."
+  ]
+ },
+ "Kettlebell_One-Legged_Deadlift": {
+  "name": "Einbeiniges Kreuzheben mit der Kettlebell",
+  "instructions": [
+   "Halte eine Kettlebell am Griff in einer Hand. Stelle dich auf das Bein derselben Seite, auf der du die Kettlebell hältst.",
+   "Halte dieses Knie leicht gebeugt und führe ein gestrecktes Kreuzheben aus, indem du dich aus der Hüfte beugst und das freie Bein zum Ausgleich nach hinten streckst.",
+   "Senke die Kettlebell weiter ab, bis du parallel zum Boden bist, und richte dich dann wieder auf."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Lunge_style": {
+  "name": "Türkisches Aufstehen mit der Kettlebell (Ausfallschritt-Variante)",
+  "instructions": [
+   "Lege dich auf den Rücken auf den Boden und drücke eine Kettlebell mit gestrecktem Ellbogen nach oben. Beuge das Knie auf derselben Seite wie die Kettlebell.",
+   "Halte die Kettlebell durchgehend gestreckt oben, drehe dich zur Gegenseite und hilf dir mit dem freien Arm, dich nach vorn in die Ausfallschrittposition zu bringen. Stütze dich mit der freien Hand in den Sitz hoch und komme dann auf ein Knie.",
+   "Blicke zur Kettlebell hinauf und stehe langsam auf. Kehre die Bewegung bis in die Ausgangsposition um und wiederhole."
+  ]
+ },
+ "Kettlebell_Turkish_Get-Up_Squat_style": {
+  "name": "Türkisches Aufstehen mit der Kettlebell (Kniebeugen-Variante)",
+  "instructions": [
+   "Lege dich auf den Rücken auf den Boden und drücke eine Kettlebell mit gestrecktem Ellbogen nach oben. Beuge das Knie auf derselben Seite wie die Kettlebell.",
+   "Halte die Kettlebell durchgehend gestreckt oben, drehe dich zur Gegenseite und hilf dir mit dem freien Arm, dich nach vorn in die Ausfallschrittposition zu bringen.",
+   "Stütze dich mit der freien Hand in den Sitz hoch und komme dann auf die Füße. Blicke zur Kettlebell hinauf und stehe langsam auf. Kehre die Bewegung bis in die Ausgangsposition um und wiederhole."
+  ]
+ },
+ "Kettlebell_Windmill": {
+  "name": "Windmühle mit der Kettlebell",
+  "instructions": [
+   "Stelle eine Kettlebell vor deinen vorderen Fuß und bringe sie mit dem Gegenarm im Clean und Press über den Kopf. Bringe die Kettlebell zur Schulter, indem du Beine und Hüfte streckst und sie dabei zu den Schultern ziehst. Drehe dabei das Handgelenk, sodass die Handfläche nach vorn zeigt. Drücke sie dann mit gestrecktem Ellbogen über den Kopf.",
+   "Halte die Kettlebell durchgehend gestreckt oben und schiebe das Gesäß in Richtung der gestreckten Kettlebell. Drehe die Füße 45 Grad von dem Arm weg, der die Kettlebell hält. Beuge dich aus der Hüfte zur Seite, schiebe das Gesäß heraus und neige dich langsam, bis du mit der freien Hand den Boden berührst. Behalte die Kettlebell über deinem Kopf durchgehend im Blick.",
+   "Halte nach dem Bodenkontakt eine Sekunde inne und kehre die Bewegung bis in die Ausgangsposition um."
+  ]
+ },
+ "Kneeling_Cable_Crunch_With_Alternating_Oblique_Twists": {
+  "name": "Kniender Kabelcrunch mit abwechselnden Drehungen",
+  "instructions": [
+   "Hänge ein Seil in einen hohen Kabelzug ein und lege eine Matte davor auf den Boden.",
+   "Greife das Seil mit beiden Händen und knie dich etwa 60 cm vom Turm entfernt hin.",
+   "Führe das Seil hinter den Kopf, die Hände neben die Ohren.",
+   "Lass die Hände an derselben Stelle, spanne den Bauch an und ziehe das Seil in einer Crunch-Bewegung nach unten, bis die Ellbogen die Knie erreichen.",
+   "Halte unten kurz inne und richte dich langsam und kontrolliert wieder in die Ausgangsposition auf.",
+   "Wiederhole dieselbe Abwärtsbewegung, und drehe auf halbem Weg einen Ellbogen zum gegenüberliegenden Knie.",
+   "Halte auch hier unten kurz inne und richte dich langsam und kontrolliert wieder in die Ausgangsposition auf.",
+   "Wiederhole die Bewegung, nun mit dem anderen Ellbogen zum gegenüberliegenden Knie.",
+   "Führe diese Abfolge bis zum Muskelversagen fort."
+  ]
+ },
+ "Kneeling_High_Pulley_Row": {
+  "name": "Kniendes Rudern am hohen Zug",
+  "instructions": [
+   "Wähle am hohen Zug über deinem Kopf ein passendes Gewicht. Hänge ein Seil ein und knie dich einen knappen Meter entfernt hin, das Seil mit beiden gestreckten Armen vor dir. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du die Ellbogen beugst und die Schultern ganz zurückziehst, und ziehe das Seil mit nach außen zeigenden Ellbogen zur oberen Brust.",
+   "Halte kurz inne und kehre dann langsam in die Ausgangsposition zurück."
+  ]
+ },
+ "Kneeling_Jump_Squat": {
+  "name": "Kniender Sprung in die Kniebeuge",
+  "instructions": [
+   "Knie dich auf den Boden, eine Langhantel auf dem oberen Rücken – oder nutze für diese Übung nur dein Körpergewicht. Im Power Rack lässt sich die Stange leichter aus der Ablage nehmen.",
+   "Setze dich mit der Hüfte zurück, bis das Gesäß die Füße berührt, und halte Kopf und Brust oben.",
+   "Explodiere aus der Hüfte nach oben und erzeuge genug Kraft, um mit flachen Füßen auf dem Boden zu landen.",
+   "Führe die Kniebeuge zu Ende, indem du über die Fersen drückst und die Knie streckst, bis du aufrecht stehst."
+  ]
+ },
+ "Kneeling_Squat": {
+  "name": "Kniende Kniebeuge",
+  "instructions": [
+   "Lege die Stange auf die passende Höhe in ein Power Rack. Knie dich hinter die Stange; eine Matte unter den Knien kann helfen. Rutsche unter die Stange und lege sie auf den hinteren Teil der Schultern. Die Schulterblätter sind zusammengezogen und die Stange liegt fest am Rücken an. Hebe das Gewicht aus der Ablage.",
+   "Blicke nach vorn und setze dich mit dem Gesäß zurück, bis du die Waden berührst.",
+   "Kehre die Bewegung um und richte den Oberkörper wieder auf."
+  ]
+ },
+ "Landmine_180s": {
+  "name": "Landmine 180°",
+  "instructions": [
+   "Setze eine Stange in eine Landmine ein oder verankere sie sicher in einer Ecke. Belade sie mit einem passenden Gewicht.",
+   "Hebe die Stange vom Boden auf Schulterhöhe, mit beiden Händen und vor dir gestreckten Armen. Nimm einen weiten Stand ein. Das ist die Ausgangsposition.",
+   "Führe die Bewegung aus, indem du Rumpf und Hüfte drehst und das Gewicht ganz auf eine Seite schwingst. Die Arme bleiben während der ganzen Übung gestreckt.",
+   "Kehre die Bewegung um und schwinge das Gewicht ganz auf die andere Seite.",
+   "Wechsle so weiter ab, bis der Satz beendet ist."
+  ]
+ },
+ "Lateral_Bound": {
+  "name": "Seitlicher Sprung",
+  "instructions": [
+   "Nimm eine halbe Kniebeugeposition ein, 90 Grad zur Bewegungsrichtung gedreht. Das ist die Ausgangsposition.",
+   "Lass das führende Bein eine kurze Gegenbewegung nach innen machen, während du das Gewicht auf das äußere Bein verlagerst.",
+   "Drücke dich sofort ab und strecke dich, um so weit wie möglich zur Seite zu springen.",
+   "Drücke dich bei der Landung sofort in die Gegenrichtung ab und kehre in die Ausgangsposition zurück.",
+   "Springe für mehrere Wiederholungen so hin und her."
+  ]
+ },
+ "Lateral_Box_Jump": {
+  "name": "Seitlicher Sprung auf die Box",
+  "instructions": [
+   "Nimm einen bequemen Stand ein, mit einer niedrigen Box neben dir. Das ist die Ausgangsposition.",
+   "Gehe kurz in eine Viertelkniebeuge, um den Dehnungsreflex auszulösen, und kehre die Richtung sofort um, um nach oben und zur Seite zu springen.",
+   "Ziehe die Knie hoch genug, damit die Füße sicher über die Box kommen.",
+   "Lande mittig auf der Box und fange den Aufprall mit den Beinen ab.",
+   "Springe vorsichtig auf der anderen Seite der Box herunter und setze das Hin und Her über mehrere Wiederholungen fort."
+  ]
+ },
+ "Lateral_Cone_Hops": {
+  "name": "Seitliche Sprünge über Hütchen",
+  "instructions": [
+   "Stelle mehrere Hütchen mit etwa einem Meter Abstand in einer Reihe auf.",
+   "Stelle dich neben das Ende der Reihe, 90 Grad zur Bewegungsrichtung gedreht. Das ist die Ausgangsposition.",
+   "Beginne den Sprung, indem du kurz in die Knie gehst, um den Dehnungsreflex auszulösen, und kehre die Richtung sofort um, um dich vom Boden abzudrücken und seitlich über das Hütchen zu springen.",
+   "Fange den Aufprall mit den Beinen ab und springe direkt weiter in den nächsten Sprung, die Hütchenreihe entlang."
+  ]
+ },
+ "Leg_Press": {
+  "name": "Beinpresse",
+  "instructions": [
+   "Setze dich an eine Beinpresse und stelle die Beine direkt vor dir schulterbreit auf die Platte. (Hinweis: Hier ist der beschriebene mittlere Stand gemeint, der die Beine insgesamt entwickelt; du kannst aber jeden der drei Stände aus dem Abschnitt zur Fußstellung wählen.)",
+   "Löse die Sicherungshebel, die die beladene Platte halten, und drücke die Platte ganz nach oben, bis die Beine vor dir gestreckt sind. Tipp: Achte darauf, die Knie nicht durchzudrücken. Oberkörper und Beine bilden dabei genau einen 90-Grad-Winkel. Das ist die Ausgangsposition.",
+   "Senke die Platte beim Einatmen langsam ab, bis Ober- und Unterschenkel einen 90-Grad-Winkel bilden.",
+   "Drücke vor allem über die Fersen und mit dem Quadrizeps beim Ausatmen zurück in die Ausgangsposition.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen und lege die Sicherungen danach unbedingt wieder ein. Du willst die voll beladene Platte nicht auf dir haben."
+  ]
+ },
+ "Leverage_Deadlift": {
+  "name": "Kreuzheben an der Hebelmaschine",
+  "instructions": [
+   "Belade die Aufnahmen mit einem passenden Gewicht. Stelle dich genau zwischen die Griffe. Greife die unteren Griffe bequem, senke dann die Hüfte und atme ein. Blicke nach vorn und halte die Brust oben. Das ist die Ausgangsposition.",
+   "Führe das Gewicht in die Ausgangsposition zurück."
+  ]
+ },
+ "Leverage_High_Row": {
+  "name": "Hohes Rudern an der Hebelmaschine",
+  "instructions": [
+   "Belade die Aufnahmen mit einem passenden Gewicht und stelle die Sitzhöhe so ein, dass du die Griffe über dir gerade erreichst. Stelle das Kniepolster so ein, dass es dich unten hält. Greife die Griffe im Obergriff. Das ist die Ausgangsposition.",
+   "Ziehe die Griffe zum Oberkörper und führe dabei die Schulterblätter zusammen, während du die Ellbogen beugst.",
+   "Halte am Ende der Bewegung kurz inne und führe die Griffe dann langsam in die Ausgangsposition zurück.",
+   "Führe das Gewicht bei mehreren Wiederholungen nicht ganz auf die Anschläge zurück, damit die Spannung auf der Muskulatur bleibt."
+  ]
+ },
+ "Leverage_Iso_Row": {
+  "name": "Iso-Rudern an der Hebelmaschine",
+  "instructions": [
+   "Belade die Aufnahmen mit einem passenden Gewicht und stelle die Sitzhöhe so ein, dass die Griffe auf Brusthöhe sind. Greife die Griffe im neutralen Griff oder im Obergriff. Das ist die Ausgangsposition.",
+   "Ziehe die Griffe zum Oberkörper und führe dabei die Schulterblätter zusammen, während du die Ellbogen beugst.",
+   "Halte am Ende der Bewegung kurz inne und führe die Griffe dann langsam in die Ausgangsposition zurück. Führe das Gewicht bei mehreren Wiederholungen nicht ganz auf die Anschläge zurück, damit die Spannung auf der Muskulatur bleibt."
+  ]
+ },
+ "Low_Pulley_Row_To_Neck": {
+  "name": "Rudern am unteren Zug zum Hals",
+  "instructions": [
+   "Setze dich an eine Rudermaschine mit unterem Zug und eingehängtem Seil.",
+   "Greife die Seilenden im Obergriff und setze dich mit geradem Rücken und leicht gebeugten Knien hin. Tipp: Halte den Rücken nahezu senkrecht und die Arme vor dir ganz gestreckt. Das ist die Ausgangsposition.",
+   "Halte den Oberkörper ruhig, hebe die Ellbogen an und beuge sie, während du das Seil beim Ausatmen zum Hals ziehst. Die Oberarme bleiben während der ganzen Bewegung parallel zum Boden. Tipp: Ziehe weiter, bis die Hände fast neben den Ohren sind (die Unterarme sind am Ende nicht parallel zum Boden, sondern leicht nach oben geneigt) und die Ellbogen weit außen stehen.",
+   "Halte die Spannung etwa eine Sekunde und kehre dann langsam in die Ausgangsposition zurück, während du einatmest. Tipp: Auch hier gilt: Der Oberkörper bewegt sich zu keinem Zeitpunkt.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Lunge_Pass_Through": {
+  "name": "Ausfallschritt mit Durchreichen",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Kettlebell in der rechten Hand. Das ist die Ausgangsposition.",
+   "Mache einen Schritt nach vorn mit dem linken Fuß und senke den Oberkörper ab, indem du Hüfte und Knie beugst; der Oberkörper bleibt aufrecht. Senke das hintere Knie ab, bis es fast den Boden berührt.",
+   "Reiche die Kettlebell im Ausfallschritt unter dem vorderen Bein hindurch in die andere Hand.",
+   "Drücke über die Ferse und kehre in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen und wechsle dabei die Beine ab."
+  ]
+ },
+ "Lying_Face_Up_Plate_Neck_Resistance": {
+  "name": "Nackenheben in Rückenlage mit Hantelscheibe",
+  "instructions": [
+   "Lege dich mit gestrecktem Körper auf den Rücken auf eine Flachbank und halte eine Hantelscheibe auf der Stirn. Tipp: Rutsche so weit nach oben, dass die Schultern knapp über dem Ende der Bank sind, damit Trapezmuskel, Nacken und Kopf frei liegen. Das ist die Ausgangsposition.",
+   "Halte die Scheibe sicher auf der Stirn und senke den Kopf beim Einatmen langsam im Halbkreis nach hinten ab.",
+   "Hebe den Kopf beim Ausatmen im Halbkreis wieder in die Ausgangsposition. Halte die Spannung eine Sekunde.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Machine_Bicep_Curl": {
+  "name": "Bizepscurls an der Maschine",
+  "instructions": [
+   "Stelle den Sitz auf die passende Höhe ein und wähle das Gewicht. Lege die Oberarme an die Polster und greife die Griffe. Das ist die Ausgangsposition.",
+   "Führe die Bewegung aus, indem du die Ellbogen beugst und die Unterarme zu den Oberarmen ziehst.",
+   "Halte am obersten Punkt kurz inne und führe das Gewicht dann langsam in die Ausgangsposition zurück.",
+   "Führe das Gewicht bis zum Ende des Satzes nicht ganz auf die Anschläge zurück, damit die Spannung auf der Muskulatur bleibt."
+  ]
+ },
+ "Monster_Walk": {
+  "name": "Monster Walk",
+  "instructions": [
+   "Lege ein Band um beide Knöchel und ein zweites um beide Knie. Die Spannung sollte so groß sein, dass die Bänder bei schulterbreitem Stand straff sind.",
+   "Mache zunächst kurze Schritte nach vorn, abwechselnd mit dem linken und dem rechten Fuß.",
+   "Gehe nach einigen Schritten genau umgekehrt rückwärts zurück zum Ausgangspunkt."
+  ]
+ },
+ "Muscle_Up": {
+  "name": "Muscle-up",
+  "instructions": [
+   "Greife die Ringe im False Grip, die Handballen liegen oben auf den Ringen. Beginne einen Klimmzug, indem du die Ellbogen zur Seite nach unten ziehst und beugst.",
+   "Wenn du oben im Klimmzug angekommen bist, ziehe die Ringe zu den Achseln, rolle die Schultern nach vorn und lasse die Ellbogen gerade nach hinten wandern. Damit bist du richtig positioniert, um in den Dip-Teil der Bewegung überzugehen.",
+   "Bleibe kontrolliert und stabil und strecke die Ellbogen, um die Bewegung abzuschließen.",
+   "Lass dich vorsichtig wieder zum Boden ab."
+  ]
+ },
+ "One-Arm_Dumbbell_Row": {
+  "name": "Einarmiges Kurzhantelrudern",
+  "instructions": [
+   "Nimm eine Flachbank und lege auf jeder Seite eine Kurzhantel ab.",
+   "Stelle das rechte Bein auf das Ende der Bank, beuge den Oberkörper aus der Hüfte nach vorn, bis er parallel zum Boden ist, und stütze die rechte Hand am anderen Ende der Bank ab.",
+   "Nimm mit der linken Hand die Kurzhantel vom Boden auf und halte sie, während der untere Rücken gerade bleibt. Die Handfläche zeigt zum Oberkörper. Das ist die Ausgangsposition.",
+   "Ziehe das Gewicht gerade nach oben an die Seite der Brust, halte den Oberarm nah am Körper und den Oberkörper ruhig. Atme dabei aus. Tipp: Konzentriere dich darauf, die Rückenmuskulatur in der Endposition zusammenzudrücken. Achte außerdem darauf, dass die Kraft aus dem Rücken kommt und nicht aus den Armen. Der Oberkörper bleibt ruhig, nur die Arme bewegen sich. Die Unterarme haben keine andere Aufgabe, als die Kurzhantel zu halten – ziehe sie also nicht mit den Unterarmen hoch.",
+   "Senke das Gewicht gerade in die Ausgangsposition zurück. Atme dabei ein.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Wechsle die Seite und wiederhole mit dem anderen Arm."
+  ]
+ },
+ "One-Arm_Long_Bar_Row": {
+  "name": "Einarmiges Rudern an der Langhantel",
+  "instructions": [
+   "Setze eine Stange in eine Landmine ein oder stelle sie in eine Ecke, damit sie sich nicht bewegt. Belade dein Ende mit einem passenden Gewicht.",
+   "Stelle dich neben die Stange und greife sie mit einer Hand nah am Verschluss. Richte dich mit Hüfte und Beinen auf.",
+   "Nimm einen Stand mit gebeugten Knien ein, die Hüfte nach hinten, die Brust oben. Der Arm ist gestreckt. Das ist die Ausgangsposition.",
+   "Ziehe das Gewicht an deine Seite, indem du die Schulter zurückziehst und den Ellbogen beugst. Reiße das Gewicht nicht hoch und arbeite nicht mit Schwung.",
+   "Halte kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "One-Legged_Cable_Kickback": {
+  "name": "Einbeiniges Beinheben rückwärts am Kabelzug",
+  "instructions": [
+   "Hänge eine Fußschlaufe in einen unteren Kabelzug ein und lege sie um deinen Knöchel.",
+   "Stelle dich mit etwa 60 cm Abstand vor den Gewichtsstapel und halte dich zur Stabilisierung am Rahmen fest.",
+   "Halte Knie und Hüfte leicht gebeugt und den Bauch angespannt, spanne das Gesäß an und \"kicke\" das Arbeitsbein langsam im Halbkreis so weit nach hinten, wie es angenehm geht, während du ausatmest. Tipp: Drücke in der Endposition das Gesäß eine Sekunde fest zusammen.",
+   "Führe das Arbeitsbein dann langsam nach vorn und arbeite gegen den Zug des Kabels, bis du die Ausgangsposition erreichst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen.",
+   "Wechsle das Bein und wiederhole die Bewegung auf der anderen Seite."
+  ]
+ },
+ "One_Arm_Lat_Pulldown": {
+  "name": "Einarmiger Latzug",
+  "instructions": [
+   "Wähle ein passendes Gewicht und stelle das Kniepolster so ein, dass es dich unten hält. Greife den Griff im Obergriff. Das ist die Ausgangsposition.",
+   "Ziehe den Griff nach unten und führe den Ellbogen dabei eng an die Seite, während du ihn beugst.",
+   "Halte am Ende der Bewegung kurz inne und führe den Griff dann langsam in die Ausgangsposition zurück.",
+   "Führe das Gewicht bei mehreren Wiederholungen nicht ganz zurück, damit die Spannung auf der Muskulatur bleibt."
+  ]
+ },
+ "Palms-Down_Wrist_Curl_Over_A_Bench": {
+  "name": "Handgelenkcurls im Obergriff über der Bank",
+  "instructions": [
+   "Lege zunächst eine Langhantel auf eine Seite einer Flachbank.",
+   "Knie dich mit beiden Knien so hin, dass dein Körper zur Flachbank zeigt.",
+   "Greife die Langhantel im Obergriff (Handflächen nach unten) und lege die Unterarme auf der Flachbank ab. Die Handgelenke ragen über die Kante hinaus.",
+   "Curle die Handgelenke nach oben und atme dabei aus.",
+   "Senke die Handgelenke langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Die Unterarme bleiben ruhig; nur das Handgelenk bewegt sich bei dieser Übung.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Palms-Up_Barbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Handgelenkcurls mit der Langhantel im Untergriff über der Bank",
+  "instructions": [
+   "Lege zunächst eine Langhantel auf eine Seite einer Flachbank.",
+   "Knie dich mit beiden Knien so hin, dass dein Körper zur Flachbank zeigt.",
+   "Greife die Langhantel im Untergriff (Handflächen nach oben) und lege die Unterarme auf der Flachbank ab. Die Handgelenke ragen über die Kante hinaus.",
+   "Curle die Handgelenke nach oben und atme dabei aus.",
+   "Senke die Handgelenke langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Die Unterarme bleiben ruhig; nur das Handgelenk bewegt sich bei dieser Übung.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Palms-Up_Dumbbell_Wrist_Curl_Over_A_Bench": {
+  "name": "Handgelenkcurls mit Kurzhanteln im Untergriff über der Bank",
+  "instructions": [
+   "Lege zunächst zwei Kurzhanteln auf eine Seite einer Flachbank.",
+   "Knie dich mit beiden Knien so hin, dass dein Körper zur Flachbank zeigt.",
+   "Greife beide Kurzhanteln im Untergriff (Handflächen nach oben) und lege die Unterarme auf der Flachbank ab. Die Handgelenke ragen über die Kante hinaus.",
+   "Curle die Handgelenke nach oben und atme dabei aus.",
+   "Senke die Handgelenke langsam in die Ausgangsposition zurück. Achte darauf, bei diesem Teil der Übung einzuatmen.",
+   "Die Unterarme bleiben ruhig; nur das Handgelenk bewegt sich bei dieser Übung.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Parallel_Bar_Dip": {
+  "name": "Dips am Barren",
+  "instructions": [
+   "Stelle dich zwischen einen Barren. Setze auf jede Holmseite eine Hand und hilf dir mit einem kleinen Sprung in die Ausgangsposition mit gestreckten Armen.",
+   "Beuge zunächst die Ellbogen und senke den Körper ab, bis die Arme 90 Grad unterschreiten. Vermeide Schwung und halte während des Absenkens eine gute Haltung.",
+   "Kehre die Bewegung um, indem du die Ellbogen streckst und dich zurück in die Ausgangsposition drückst.",
+   "Wiederhole die Bewegung für die gewünschte Anzahl an Wiederholungen."
+  ]
+ },
+ "Plie_Dumbbell_Squat": {
+  "name": "Plié-Kniebeuge mit der Kurzhantel",
+  "instructions": [
+   "Halte eine Kurzhantel mit beiden Händen an der unteren Scheibe und stelle dich aufrecht hin. Stelle die Beine weiter als schulterbreit auf, die Knie leicht gebeugt.",
+   "Die Fußspitzen zeigen nach außen. Hinweis: Die Arme bleiben während der Übung ruhig. Das ist die Ausgangsposition.",
+   "Beuge die Knie langsam und senke dich ab, bis die Oberschenkel parallel zum Boden sind. Atme dabei ein, denn das ist der exzentrische Teil der Übung.",
+   "Drücke vor allem über die Ferse, um den Körper beim Ausatmen zurück in die Ausgangsposition zu bringen.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Preacher_Curl": {
+  "name": "Scottcurls",
+  "instructions": [
+   "Für diese Übung brauchst du eine Scottbank und eine SZ-Stange. Greife die SZ-Stange an den engen inneren Griffen (lass sie dir am besten anreichen oder nimm sie von der Ablage, die die meisten Scottbänke vorn haben). Die Handflächen zeigen nach vorn und sind durch die Form der Stange leicht nach innen geneigt.",
+   "Lege die Oberarme auf das Polster der Scottbank und die Brust dagegen und halte die SZ-Stange mit gestreckten Armen. Das ist die Ausgangsposition.",
+   "Senke die Stange beim Einatmen langsam ab, bis der Oberarm gestreckt und der Bizeps voll gedehnt ist.",
+   "Curle das Gewicht beim Ausatmen mit dem Bizeps nach oben, bis dieser voll kontrahiert ist und die Stange auf Schulterhöhe steht. Drücke den Bizeps fest zusammen und halte die Position eine Sekunde.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Press_Sit-Up": {
+  "name": "Sit-up mit Drücken",
+  "instructions": [
+   "Lege dich zunächst auf eine Bank, die Langhantel liegt auf deiner Brust. Bringe die Beine so in Position, dass sie sicher an der Verlängerung der Bauchbank fixiert sind. Das ist die Ausgangsposition.",
+   "Spanne beim Einatmen Bauch und Gesäß an. Rolle den Oberkörper wie bei einem Sit-up auf und drücke die Langhantel gleichzeitig über den Kopf, während du ausatmest. Tipp: Drücke die Langhantel mit den Armen heraus, konzentriere dich dabei aber weiter auf die Bauchmuskulatur.",
+   "Senke den Oberkörper in die Ausgangsposition zurück und führe die Langhantel dabei wieder zum Oberkörper. Denke daran, beim Absenken einzuatmen.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Pull_Through": {
+  "name": "Pull Through",
+  "instructions": [
+   "Stelle dich knapp einen Meter vor einen unteren Kabelzug, in den ein Seil oder ein Griff eingehängt ist. Drehe dich von der Maschine weg, das Kabel zwischen den weit auseinanderstehenden Füßen.",
+   "Beginne die Bewegung, indem du so weit wie möglich zwischen den Beinen nach hinten greifst und dich dabei aus der Hüfte beugst. Halte die Knie leicht gebeugt. Halte die Arme gestreckt und strecke die Hüfte, bis du aufrecht stehst. Ziehe nicht mit den Schultern nach oben; die gesamte Bewegung kommt aus der Hüfte."
+  ]
+ },
+ "Pullups": {
+  "name": "Klimmzüge",
+  "instructions": [
+   "Greife die Klimmzugstange mit den Handflächen nach vorn im vorgegebenen Griff. Hinweis zu den Griffen: Beim Weitgriff stehen die Hände weiter als schulterbreit, beim mittleren Griff genau schulterbreit und beim Enggriff enger als schulterbreit.",
+   "Mit beiden Armen gestreckt an der Stange neigst du den Oberkörper etwa 30 Grad nach hinten, machst dabei ein leichtes Hohlkreuz und streckst die Brust heraus. Das ist die Ausgangsposition.",
+   "Ziehe den Oberkörper nach oben, bis die Stange die obere Brust berührt, indem du Schultern und Oberarme nach unten und hinten führst. Atme bei diesem Teil der Bewegung aus. Tipp: Konzentriere dich darauf, die Rückenmuskulatur in der Endposition zusammenzudrücken. Der Oberkörper bleibt in sich ruhig und bewegt sich nur im Raum; nur die Arme arbeiten. Die Unterarme haben keine andere Aufgabe, als die Stange zu halten.",
+   "Halte die Position eine Sekunde, atme dann ein und senke den Oberkörper langsam in die Ausgangsposition zurück, bis die Arme ganz gestreckt und die Latissimusmuskeln voll gedehnt sind.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Push-Up_Wide": {
+  "name": "Breiter Liegestütz",
+  "instructions": [
+   "Stütze dich mit weit auseinanderstehenden Händen auf Zehen und Händen in der Plank-Position ab. Die Ellbogen sind gestreckt und der Körper gerade. Lass die Hüfte nicht durchhängen. Das ist die Ausgangsposition.",
+   "Beuge zunächst die Ellbogen und senke die Brust beim Einatmen zum Boden ab.",
+   "Drücke den Oberkörper mit der Brustmuskulatur zurück in die Ausgangsposition, indem du die Ellbogen streckst. Atme dabei aus.",
+   "Halte in der oberen Position kurz inne und wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Push_Up_to_Side_Plank": {
+  "name": "Liegestütz mit seitlichem Unterarmstütz",
+  "instructions": [
+   "Gehe in die Liegestützposition auf den Zehen, die Hände etwas weiter als schulterbreit.",
+   "Führe einen Liegestütz aus, indem du die Ellbogen beugst. Halte den Körper beim Absenken gerade.",
+   "Mache einen Liegestütz und verlagere beim Hochkommen das Gewicht auf die linke Körperseite, drehe dich zur Seite und führe den rechten Arm im seitlichen Stütz zur Decke.",
+   "Setze den Arm für den nächsten Liegestütz wieder auf dem Boden ab und drehe dich dann zur anderen Seite.",
+   "Wiederhole die Abfolge im Wechsel für 10 oder mehr Wiederholungen."
+  ]
+ },
+ "Reverse_Band_Bench_Press": {
+  "name": "Bankdrücken mit umgekehrtem Bandzug",
+  "instructions": [
+   "Stelle eine Bank in ein Power Rack und lege die Stange auf die richtige Höhe. Verankere die Bänder zunächst an den Bandzapfen oder oben am Rack. Achte darauf, dass du richtig unter den Bändern liegst. Befestige das andere Ende an der Langhantel.",
+   "Lege dich auf die Bank, ziehe die Füße unter dich und mache ein Hohlkreuz. Nutze die Stange als Stütze, hebe die Schultern von der Bank ab und ziehe sie zurück, indem du die Schulterblätter zusammendrückst. Drücke über die Füße den Trapezmuskel in die Bank. Halte diese feste Körperspannung während der gesamten Bewegung. Wie breit du auch greifst, der Griff sollte den Ring auf der Stange abdecken.",
+   "Hebe die Stange aus der Ablage, ohne die Schultern nach vorn kommen zu lassen. Konzentriere dich darauf, die Stange fest zu drücken und sie auseinanderziehen zu wollen. Senke die Stange zur unteren Brust oder zum oberen Bauch. Stange, Handgelenk und Ellbogen bleiben dabei stets in einer Linie.",
+   "Halte kurz inne, wenn die Stange den Oberkörper berührt, und drücke sie dann mit so viel Kraft wie möglich nach oben. Die Ellbogen bleiben bis zum Durchstrecken eng am Körper."
+  ]
+ },
+ "Reverse_Barbell_Curl": {
+  "name": "Langhantelcurls im Obergriff",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Langhantel schulterbreit, die Ellbogen nah am Oberkörper. Die Handflächen zeigen nach unten (Obergriff). Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig und curle das Gewicht nach oben, während du den Bizeps anspannst und ausatmest. Nur die Unterarme bewegen sich. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Stange auf Schulterhöhe steht. Halte die Position eine Sekunde und drücke den Muskel zusammen.",
+   "Senke die Stange langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Reverse_Cable_Curl": {
+  "name": "Curls am Kabelzug im Obergriff",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Stange, die in einen unteren Zug eingehängt ist, schulterbreit im Obergriff (Handflächen nach unten). Achte darauf, die Ellbogen nah am Oberkörper zu halten. Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig und curle das Gewicht nach oben, während du den Bizeps anspannst und ausatmest. Nur die Unterarme bewegen sich. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Stange auf Schulterhöhe steht. Halte die Position eine Sekunde und drücke den Muskel zusammen.",
+   "Senke die Stange langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Reverse_Triceps_Bench_Press": {
+  "name": "Bankdrücken im Untergriff für den Trizeps",
+  "instructions": [
+   "Lege dich auf eine Flachbank. Nimm einen engen Untergriff (etwa schulterbreit), hebe die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Das ist die Ausgangsposition.",
+   "Atme ein und senke die Stange langsam ab, bis du sie an der Brustmitte spürst. Tipp: Anders als beim normalen Bankdrücken bleiben die Ellbogen durchgehend nah am Oberkörper, damit der Trizeps maximal arbeitet.",
+   "Halte eine Sekunde und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest und mit dem Trizeps drückst. Strecke die Arme in der Endposition, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Lege die Stange am Ende zurück in die Ablage."
+  ]
+ },
+ "Rocking_Standing_Calf_Raise": {
+  "name": "Wippendes stehendes Wadenheben",
+  "instructions": [
+   "Diese Übung führst du aus Sicherheitsgründen am besten im Squat-Rack aus. Lege die Stange zunächst auf eine zu deiner Körpergröße passende Höhe. Wenn die Höhe stimmt und die Stange beladen ist, tritt darunter und lege sie auf den Nacken (etwas unterhalb des Halses).",
+   "Halte die Stange mit beiden Armen seitlich fest und hebe sie aus der Ablage, indem du mit den Beinen drückst und den Oberkörper gleichzeitig aufrichtest.",
+   "Tritt aus dem Rack heraus und stelle die Beine schulterbreit auf, die Fußspitzen leicht nach außen. Halte den Kopf durchgehend oben – nach unten zu schauen bringt dich aus dem Gleichgewicht. Halte außerdem den Rücken gerade und die Knie leicht gebeugt, nie durchgedrückt. Das ist die Ausgangsposition.",
+   "Hebe die Fersen beim Ausatmen, indem du die Sprunggelenke so weit wie möglich streckst und die Waden anspannst. Achte darauf, dass das Knie durchgehend ruhig bleibt. Außer der leichten Beugung aus dem Aufbau darf sich zu keinem Zeitpunkt etwas beugen. Halte die Spannung eine Sekunde, bevor du wieder absenkst.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest, indem du die Fersen senkst und die Sprunggelenke beugst, bis die Waden gedehnt sind.",
+   "Hebe nun beim Ausatmen die Zehen, indem du den Schienbeinmuskel an der Vorderseite des Unterschenkels anspannst.",
+   "Halte eine Sekunde und senke sie beim Einatmen wieder ab.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Romanian_Deadlift": {
+  "name": "Rumänisches Kreuzheben",
+  "instructions": [
+   "Lege eine Langhantel vor dir auf den Boden und greife sie im Obergriff (Handflächen nach unten) etwas weiter als schulterbreit. Tipp: Je nach Gewicht brauchst du Zughilfen und eventuell eine Erhöhung, um einen größeren Bewegungsumfang zu erhalten.",
+   "Beuge die Knie leicht, halte die Schienbeine senkrecht, die Hüfte hinten und den Rücken gerade. Das ist die Ausgangsposition.",
+   "Halte Rücken und Arme durchgehend ganz gestreckt und hebe die Stange aus der Hüfte, während du ausatmest. Tipp: Die Bewegung soll nicht schnell, sondern gleichmäßig und kontrolliert sein.",
+   "Sobald du ganz aufrecht stehst, senke die Stange, indem du die Hüfte nach hinten schiebst und die Knie nur leicht beugst – anders als bei der Kniebeuge. Tipp: Atme zu Beginn der Bewegung tief ein und halte die Brust oben. Halte beim Absenken die Luft an und atme am Ende der Bewegung aus.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Rope_Crunch": {
+  "name": "Crunch am Seil",
+  "instructions": [
+   "Knie dich 30 bis 60 cm vor einen Kabelzug mit eingehängtem Seil.",
+   "Wähle ein passendes Gewicht und greife das Seil mit beiden Händen über dem Kopf. In der Ausgangsposition ist der Oberkörper aufrecht.",
+   "Beuge zunächst die Wirbelsäule und versuche, den Brustkorb zu den Beinen zu bringen, während du das Kabel nach unten ziehst.",
+   "Halte am Ende der Bewegung kurz inne und kehre dann langsam in die Ausgangsposition zurück.",
+   "Die Übung lässt sich mit Drehungen oder zur Seite ausführen, um die schrägen Bauchmuskeln zu treffen."
+  ]
+ },
+ "Russian_Twist": {
+  "name": "Russian Twist",
+  "instructions": [
+   "Lege dich auf den Boden und fixiere die Füße unter etwas Unbeweglichem oder lass sie von einem Partner halten. Die Beine sind in den Knien gebeugt.",
+   "Hebe den Oberkörper an, sodass er mit den Oberschenkeln ein gedachtes V bildet. Die Arme sind vor dir senkrecht zum Oberkörper gestreckt, die Hände ineinander gefaltet. Das ist die Ausgangsposition.",
+   "Drehe den Oberkörper beim Ausatmen nach rechts, bis die Arme parallel zum Boden sind.",
+   "Halte die Spannung eine Sekunde und kehre in die Ausgangsposition zurück. Drehe dich dann zur Gegenseite und führe dieselbe Bewegung wie nach rechts aus.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Barbell_Military_Press": {
+  "name": "Sitzendes Nackendrücken mit der Langhantel",
+  "instructions": [
+   "Setze dich an eine Schulterdrückbank, die Stange hinter deinem Kopf, und lass sie dir von einem Partner reichen (das schont die Rotatorenmanschette) oder nimm sie vorsichtig selbst im Obergriff (Handflächen nach vorn). Tipp: Der Griff sollte weiter als schulterbreit sein und beim Absenken der Stange einen 90-Grad-Winkel zwischen Unterarm und Oberarm ergeben.",
+   "Sobald du die Stange im richtigen Griff hast, hebe sie über den Kopf und strecke die Arme. Halte sie etwa auf Schulterhöhe und leicht vor dem Kopf. Das ist die Ausgangsposition.",
+   "Senke die Stange beim Einatmen langsam bis zum Schlüsselbein ab.",
+   "Drücke die Stange beim Ausatmen wieder in die Ausgangsposition.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Calf_Raise": {
+  "name": "Sitzendes Wadenheben",
+  "instructions": [
+   "Setze dich an die Maschine und stelle die Zehen auf den unteren Teil der Platte, sodass die Fersen frei überstehen. Wähle die Fußstellung deiner Wahl (nach vorn, nach innen oder nach außen) wie zu Beginn dieses Abschnitts beschrieben.",
+   "Bringe die unteren Oberschenkel unter das Hebelpolster, das du auf die Höhe deiner Oberschenkel einstellen musst. Lege die Hände oben auf das Polster, damit es nicht nach vorn rutscht.",
+   "Hebe den Hebel leicht an, indem du die Fersen nach oben drückst, und löse die Sicherung. Das ist die Ausgangsposition.",
+   "Senke die Fersen langsam ab, indem du die Sprunggelenke beugst, bis die Waden voll gedehnt sind. Atme dabei ein.",
+   "Hebe die Fersen, indem du die Sprunggelenke so weit wie möglich streckst, spanne die Waden an und atme aus. Halte die Spannung oben eine Sekunde.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Dumbbell_Curl": {
+  "name": "Sitzende Curls mit Kurzhanteln",
+  "instructions": [
+   "Setze dich auf eine Flachbank, in jeder Hand eine Kurzhantel mit gestreckten Armen. Die Ellbogen bleiben nah am Oberkörper.",
+   "Drehe die Handflächen so, dass sie zum Oberkörper zeigen. Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig, curle die Gewichte nach oben und drehe die Handgelenke, sobald die Kurzhanteln die Oberschenkel passiert haben, so ein, dass die Handflächen am Ende der Bewegung nach vorn zeigen. Spanne dabei den Bizeps an, atme aus und achte darauf, dass sich nur die Unterarme bewegen. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Kurzhanteln auf Schulterhöhe stehen. Halte die Position eine Sekunde und drücke den Bizeps zusammen.",
+   "Senke die Kurzhanteln langsam in die Ausgangsposition zurück, während du einatmest und die Handgelenke wieder in den neutralen Griff drehst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Dumbbell_Palms-Up_Wrist_Curl": {
+  "name": "Sitzende Handgelenkcurls mit Kurzhanteln im Untergriff",
+  "instructions": [
+   "Lege zunächst zwei Kurzhanteln vor einer Flachbank auf den Boden.",
+   "Setze dich auf die Kante der Flachbank, die Beine etwa schulterbreit. Achte darauf, die Füße auf dem Boden zu lassen.",
+   "Nimm beide Kurzhanteln auf und lege die Unterarme so auf den Oberschenkeln ab, dass die Handflächen nach oben zeigen. Die Handgelenke ragen über die Oberschenkel hinaus.",
+   "Curle die Handgelenke nach oben und atme dabei aus.",
+   "Senke die Handgelenke langsam in die Ausgangsposition zurück. Achte darauf, bei diesem Teil der Übung einzuatmen. Tipp: Die Unterarme bleiben ruhig; nur das Handgelenk bewegt sich bei dieser Übung.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen.",
+   "Lege die Kurzhanteln am Ende einfach auf dem Boden ab."
+  ]
+ },
+ "Seated_Head_Harness_Neck_Resistance": {
+  "name": "Sitzendes Nackentraining mit Kopfgeschirr",
+  "instructions": [
+   "Lege ein Kopfgeschirr am Ende einer Flachbank auf den Boden. Wenn du die Gewichte gewählt hast, setze dich ans Ende der Flachbank, die Füße weiter als schulterbreit auseinander. Die Fußspitzen zeigen nach außen.",
+   "Neige den Oberkörper langsam nach vorn, bis er fast parallel zum Boden ist. Lege dir das Geschirr mit beiden Händen sicher um den Kopf. Tipp: Achte darauf, dass die Gewichte noch auf dem Boden liegen, damit der Nacken nicht belastet wird. Greife nun das Gewicht mit beiden Händen und richte den Oberkörper wieder auf, bis er fast senkrecht zum Boden steht. Hinweis: Kopf und Oberkörper müssen für diese Übung leicht nach vorn geneigt sein.",
+   "Lege nun beide Hände auf die Knie. Das ist die Ausgangsposition.",
+   "Senke den Nacken beim Einatmen langsam ab, bis das Kinn den oberen Teil der Brust berührt.",
+   "Bringe den Nacken beim Ausatmen zurück in die Ausgangsposition.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Leg_Curl": {
+  "name": "Sitzender Beinbeuger",
+  "instructions": [
+   "Stelle den Hebel der Maschine auf deine Körpergröße ein und setze dich mit dem Rücken an das Rückenpolster.",
+   "Lege die Unterschenkelrückseiten auf das gepolsterte Widerlager (ein paar Zentimeter unterhalb der Waden) und fixiere das Beckenpolster über den Oberschenkeln, knapp oberhalb der Knie. Greife dann die seitlichen Griffe der Maschine, strecke die Zehen gerade (oder wähle eine der beiden anderen Stellungen) und achte darauf, dass die Beine vor dir ganz gestreckt sind. Das ist die Ausgangsposition.",
+   "Ziehe den Hebel beim Ausatmen so weit wie möglich zur Rückseite der Oberschenkel, indem du die Knie beugst. Der Oberkörper bleibt durchgehend ruhig. Halte die Spannung eine Sekunde.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Seated_Palm-Up_Barbell_Wrist_Curl": {
+  "name": "Sitzende Handgelenkcurls mit der Langhantel im Untergriff",
+  "instructions": [
+   "Halte eine Langhantel mit beiden Händen im Untergriff, die Hände etwa schulterbreit.",
+   "Stelle die Füße flach auf den Boden, etwas weiter als schulterbreit auseinander.",
+   "Beuge dich nach vorn und lege die Unterarme mit den Handflächen nach oben auf den Oberschenkeln ab. Tipp: Achte darauf, dass die Innenseiten der Handgelenke auf den Knien aufliegen. Das ist die Ausgangsposition.",
+   "Senke die Stange beim Einatmen so weit wie möglich ab und halte sie dabei fest im Griff.",
+   "Curle die Stange nun beim Ausatmen so hoch wie möglich, indem du die Unterarme anspannst. Halte die Spannung oben eine Sekunde. Tipp: Nur das Handgelenk bewegt sich."
+  ]
+ },
+ "Seated_Two-Arm_Palms-Up_Low-Pulley_Wrist_Curl": {
+  "name": "Sitzende beidarmige Handgelenkcurls am unteren Zug im Untergriff",
+  "instructions": [
+   "Stelle eine Bank vor einen unteren Kabelzug, in den eine Langhantel- oder SZ-Stange eingehängt ist.",
+   "Stelle die Bank weit genug weg, damit auf dem Kabel Spannung entsteht, sobald du die Stange auf die Oberschenkel bringst und der Gewichtsstapel angehoben wird.",
+   "Halte die Stange nun mit beiden Händen im Untergriff, schulterbreit gegriffen.",
+   "Tritt zurück und setze dich auf die Bank, die Füße etwa schulterbreit und fest auf dem Boden.",
+   "Beuge dich nach vorn und lege die Unterarme auf den Oberschenkeln ab, die Handgelenkrückseiten über den Knien. Das ist die Ausgangsposition.",
+   "Senke die Stange beim Einatmen so weit wie möglich ab und halte sie dabei fest im Griff.",
+   "Curle die Stange nun so hoch wie möglich, indem du die Unterarme anspannst. Tipp: Nur das Handgelenk bewegt sich, nicht die Unterarme.",
+   "Halte die Spannung oben eine Sekunde und kehre beim Einatmen in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Shotgun_Row": {
+  "name": "Shotgun Row",
+  "instructions": [
+   "Hänge einen einzelnen Griff in einen unteren Zug ein.",
+   "Wähle das passende Gewicht und stelle dich einen knappen Meter entfernt in einen weiten Schrittstand. Der Arm ist gestreckt und die Schulter nach vorn geschoben. Das ist die Ausgangsposition.",
+   "Führe die Bewegung aus, indem du die Schulter zurückziehst und den Ellbogen beugst. Drehe das Handgelenk beim Ziehen nach außen, sodass die Handfläche nach oben zeigt.",
+   "Halte kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Side_Jackknife": {
+  "name": "Seitliches Klappmesser",
+  "instructions": []
+ },
+ "Single_Leg_Glute_Bridge": {
+  "name": "Einbeinige Glute Bridge",
+  "instructions": [
+   "Lege dich mit flach aufgestellten Füßen und gebeugten Knien auf den Boden.",
+   "Hebe ein Bein vom Boden ab und ziehe das Knie zur Brust. Das ist die Ausgangsposition.",
+   "Führe die Bewegung aus, indem du über die Ferse drückst, die Hüfte nach oben streckst und das Gesäß vom Boden hebst.",
+   "Strecke so weit wie möglich, halte kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Sled_Row": {
+  "name": "Rudern am Schlitten",
+  "instructions": [
+   "Befestige zwei Griffe an einem Schlitten, der über ein Seil oder eine Kette verbunden ist. Belade den Schlitten mit einem passenden Gewicht. Stelle dich mit Blick zum Schlitten hin und gehe so weit zurück, bis Spannung auf der Leine ist.",
+   "Mit je einem Griff in jeder Hand beugst du die Knie leicht, hältst Kopf und Brust oben und beginnst mit gestreckten Armen.",
+   "Beginne die Bewegung, indem du die Ellbogen beugst und die Schulterblätter zusammenziehst, und ziehe den Schlitten zu dir.",
+   "Gehe ein oder zwei Schritte zurück, bis wieder Spannung auf der Leine ist, und wiederhole."
+  ]
+ },
+ "Smith_Machine_Bent_Over_Row": {
+  "name": "Vorgebeugtes Rudern an der Multipresse",
+  "instructions": [
+   "Stelle die Stange der Multipresse auf eine Höhe etwa 5 cm unterhalb deiner Knie.",
+   "Beuge die Knie leicht und neige den Oberkörper aus der Hüfte nach vorn, den Rücken gerade, bis er fast parallel zum Boden ist. Tipp: Achte darauf, den Kopf oben zu halten.",
+   "Greife die Stange nun im Obergriff und löse sie aus der Multipresse. Lass sie direkt vor dir hängen, die Arme gestreckt und senkrecht zu Boden und Oberkörper. Das ist die Ausgangsposition.",
+   "Halte den Oberkörper ruhig und hebe die Stange beim Ausatmen an; die Ellbogen bleiben nah am Körper und die Unterarme halten das Gewicht nur, ohne zu ziehen. Spanne in der oberen Position die Rückenmuskulatur an und halte eine Sekunde.",
+   "Senke das Gewicht langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Smith_Machine_Calf_Raise": {
+  "name": "Wadenheben an der Multipresse",
+  "instructions": [
+   "Lege einen Block oder eine Hantelscheibe unter die Stange der Multipresse. Stelle die Stange auf eine zu deiner Körpergröße passende Höhe. Wenn die Höhe stimmt und die Stange beladen ist, stelle dich mit den Fußballen auf die Scheiben und lege die Stange auf den oberen Rücken.",
+   "Greife die Stange mit beiden Händen nach vorn. Drehe die Stange, um sie aus der Ablage zu lösen. Das ist die Ausgangsposition.",
+   "Hebe die Fersen so hoch wie möglich, indem du dich über die Fußballen abdrückst, und spanne die Waden am obersten Punkt an. Die Knie bleiben gestreckt. Halte die Spannung eine Sekunde, bevor du wieder absenkst.",
+   "Kehre langsam in die Ausgangsposition zurück, während du einatmest und die Fersen absenkst.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Smith_Machine_Close-Grip_Bench_Press": {
+  "name": "Enges Bankdrücken an der Multipresse",
+  "instructions": [
+   "Stelle eine Flachbank unter die Multipresse. Bringe die Stange auf eine Höhe, die du im Liegen mit fast gestreckten Armen erreichst. Wenn das Gewicht gewählt ist, lege dich auf die Flachbank. Nimm einen engen Obergriff (Handflächen nach vorn) von etwa Schulterbreite, löse die Stange aus der Ablage und halte sie mit gestreckten Armen senkrecht über dir. Das ist die Ausgangsposition.",
+   "Atme ein und senke die Stange langsam ab, bis du sie an der Brustmitte spürst. Tipp: Anders als beim normalen Bankdrücken bleiben die Ellbogen durchgehend nah am Oberkörper, damit der Trizeps maximal arbeitet.",
+   "Halte eine Sekunde und drücke die Stange dann in die Ausgangsposition zurück, während du ausatmest und mit dem Trizeps drückst. Strecke die Arme in der Endposition, halte eine Sekunde und senke die Stange dann wieder langsam ab. Tipp: Das Absenken sollte mindestens doppelt so lange dauern wie das Drücken.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen.",
+   "Hänge die Stange am Ende wieder in der Ablage ein."
+  ]
+ },
+ "Smith_Machine_One-Arm_Upright_Row": {
+  "name": "Einarmiges Aufrechtes Rudern an der Multipresse",
+  "instructions": [
+   "Stelle die Stange auf Oberschenkelhöhe und belade sie passend.",
+   "Greife die Stange weit, hake das Gewicht aus und nimm die zweite Hand von der Stange. Der Arm ist gestreckt, während du aufrecht mit Kopf und Brust oben stehst. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du den Ellbogen beugst und den Oberarm mit nach außen zeigendem Ellbogen hebst. Hebe weiter, bis der Oberarm parallel zum Boden ist.",
+   "Halte kurz inne und senke das Gewicht dann in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die gewünschte Anzahl an Wiederholungen und hänge die Stange danach wieder ein."
+  ]
+ },
+ "Smith_Machine_Stiff-Legged_Deadlift": {
+  "name": "Gestrecktes Kreuzheben an der Multipresse",
+  "instructions": [
+   "Stelle die Stange der Multipresse zunächst etwa auf die Mitte deiner Oberschenkel. Wenn die Höhe stimmt und die Stange beladen ist, greife sie schulterbreit im Obergriff (Handflächen nach vorn). Bei größeren Gewichten brauchst du eventuell Zughilfen.",
+   "Hebe die Stange an, indem du die Arme ganz streckst und den Rücken gerade hältst. Stehe mit geradem Oberkörper, die Beine schulterbreit oder enger. Die Knie sind leicht gebeugt. Das ist die Ausgangsposition.",
+   "Halte die Knie ruhig und senke die Langhantel über deine Füße ab, indem du dich aus der Hüfte beugst und den Rücken gerade hältst. Gehe weiter nach vorn, als wolltest du etwas vom Boden aufheben, bis du eine Dehnung im Beinbizeps spürst. Atme dabei aus.",
+   "Richte den Oberkörper wieder auf, sobald du die Dehnung im Beinbizeps spürst, indem du Hüfte und Rumpf streckst, bis du in der Ausgangsposition bist. Atme dabei ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Smith_Machine_Upright_Row": {
+  "name": "Aufrechtes Rudern an der Multipresse",
+  "instructions": [
+   "Stelle die Stange der Multipresse zunächst etwa auf die Mitte deiner Oberschenkel. Wenn die Höhe stimmt und die Stange beladen ist, greife sie schulterbreit im Obergriff (Handflächen nach vorn). Bei größeren Gewichten brauchst du eventuell Zughilfen.",
+   "Hebe die Stange an und strecke die Arme ganz aus, den Rücken gerade. Die Ellbogen bleiben leicht gebeugt. Das ist die Ausgangsposition.",
+   "Hebe die Stange beim Ausatmen mit den seitlichen Schultern. Führe sie dabei nah am Körper nach oben. Hebe weiter, bis sie fast das Kinn berührt. Tipp: Die Ellbogen führen die Bewegung. Beim Heben sollen die Ellbogen stets höher sein als die Unterarme. Halte außerdem den Oberkörper ruhig und pausiere am obersten Punkt eine Sekunde.",
+   "Senke die Stange langsam in die Ausgangsposition zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Spell_Caster": {
+  "name": "Spell Caster",
+  "instructions": [
+   "Halte in jeder Hand eine Kurzhantel im Obergriff. Die Füße stehen weit auseinander, Hüfte und Knie sind gestreckt. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du beide Kurzhanteln neben die Hüfte auf eine Seite ziehst und dabei den Oberkörper drehst.",
+   "Halte die Arme gestreckt und die Kurzhanteln parallel zum Boden und drehe den Oberkörper, um die Gewichte auf die andere Seite zu schwingen.",
+   "Wechsle so weiter von einer Seite zur anderen, bis der Satz beendet ist."
+  ]
+ },
+ "Split_Squat_with_Dumbbells": {
+  "name": "Bulgarische Kniebeuge mit Kurzhanteln",
+  "instructions": [
+   "Nimm einen Schrittstand ein, der hintere Fuß erhöht, der vordere Fuß vorn.",
+   "Halte in jeder Hand eine Kurzhantel und lass sie seitlich hängen. Das ist die Ausgangsposition.",
+   "Senke dich zunächst ab, indem du Knie und Hüfte beugst. Halte während der ganzen Bewegung eine gute Haltung. Achte darauf, dass das vordere Knie in einer Linie mit dem Fuß bleibt.",
+   "Drücke am tiefsten Punkt über die Ferse, strecke Knie und Hüfte und kehre in die Ausgangsposition zurück."
+  ]
+ },
+ "Standing_Biceps_Cable_Curl": {
+  "name": "Stehende Bizepscurls am Kabelzug",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Curlstange, die in einen unteren Zug eingehängt ist. Greife die Stange schulterbreit und halte die Ellbogen nah am Oberkörper. Die Handflächen zeigen nach oben (Untergriff). Das ist die Ausgangsposition.",
+   "Halte die Oberarme ruhig und curle das Gewicht nach oben, während du den Bizeps anspannst und ausatmest. Nur die Unterarme bewegen sich. Führe die Bewegung fort, bis der Bizeps voll kontrahiert ist und die Stange auf Schulterhöhe steht. Halte die Position eine Sekunde und drücke den Muskel zusammen.",
+   "Senke die Curlstange langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Standing_Cable_Wood_Chop": {
+  "name": "Stehender Holzhacker am Kabelzug",
+  "instructions": [
+   "Hänge einen normalen Griff in einen Turm ein und stelle das Kabel auf die höchste Zugposition.",
+   "Stelle dich seitlich zum Kabel, greife den Griff mit einer Hand und tritt vom Turm weg. Du solltest etwa eine Armlänge vom Zug entfernt sein, mit Zug auf dem Kabel. Der ausgestreckte Arm ist in einer Linie mit dem Kabel.",
+   "Stelle die Füße schulterbreit auf, greife mit der anderen Hand nach oben und fasse den Griff mit beiden Händen. Die Arme bleiben ganz gestreckt.",
+   "Ziehe den Griff in einer Bewegung nach unten und quer über den Körper zum vorderen Knie, während du den Oberkörper drehst.",
+   "Halte Rücken und Arme gerade und die Rumpfmuskulatur fest, während du den hinteren Fuß eindrehst und die Knie beugst, um den vollen Bewegungsumfang zu nutzen.",
+   "Behalte Stand und gestreckte Arme bei. Kehre langsam und kontrolliert in die neutrale Position zurück.",
+   "Wiederhole bis zum Muskelversagen.",
+   "Wechsle dann die Position und wiederhole die Bewegungsfolge auf der anderen Seite."
+  ]
+ },
+ "Standing_Dumbbell_Upright_Row": {
+  "name": "Stehendes Aufrechtes Rudern mit Kurzhanteln",
+  "instructions": [
+   "Greife in jede Hand eine Kurzhantel im Obergriff (Handflächen nach vorn), etwas enger als schulterbreit. Die Kurzhanteln liegen auf den Oberschenkeln. Die Arme sind mit leicht gebeugten Ellbogen gestreckt und der Rücken ist gerade. Das ist die Ausgangsposition.",
+   "Hebe die Kurzhanteln beim Ausatmen mit den seitlichen Schultern. Führe sie dabei nah am Körper nach oben; die Ellbogen führen die Bewegung. Hebe weiter, bis sie fast das Kinn berühren. Tipp: Beim Heben sollen die Ellbogen stets höher sein als die Unterarme. Halte außerdem den Oberkörper ruhig und pausiere am obersten Punkt eine Sekunde.",
+   "Senke die Kurzhanteln langsam in die Ausgangsposition zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Standing_Military_Press": {
+  "name": "Stehendes Schulterdrücken",
+  "instructions": [
+   "Lege zunächst eine Langhantel etwa auf Brusthöhe in ein Squat-Rack. Wenn die Gewichte gewählt sind, greife die Stange im Obergriff (Handflächen nach vorn). Greife dabei weiter als schulterbreit.",
+   "Beuge die Knie leicht und lege die Stange auf das Schlüsselbein. Hebe sie an und lass sie dabei auf der Brust liegen. Tritt einen Schritt zurück und stelle die Füße schulterbreit auf.",
+   "Sobald du die Stange im richtigen Griff hast, hebe sie über den Kopf und strecke die Arme. Halte sie etwa auf Schulterhöhe und leicht vor dem Kopf. Das ist die Ausgangsposition.",
+   "Senke die Stange beim Einatmen langsam bis zum Schlüsselbein ab.",
+   "Drücke die Stange beim Ausatmen wieder in die Ausgangsposition.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Standing_Olympic_Plate_Hand_Squeeze": {
+  "name": "Stehendes Zusammendrücken der Hantelscheibe",
+  "instructions": [
+   "Stelle dich zunächst aufrecht hin und halte in jeder Hand eine Hantelscheibe am Rand, mit gestreckten Armen und neutralem Griff (Handflächen nach innen). Die Füße stehen schulterbreit. Das ist die Ausgangsposition.",
+   "Lass die Scheiben so weit ab, bis die Finger fast gestreckt sind, das Gewicht aber noch halten. Atme dabei ein.",
+   "Ziehe die Scheiben nun beim Ausatmen zurück in die Ausgangsposition, indem du die Hände schließt.",
+   "Wiederhole die Bewegung für die in deinem Programm vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Standing_Palms-Up_Barbell_Behind_The_Back_Wrist_Curl": {
+  "name": "Stehende Handgelenkcurls mit der Langhantel hinter dem Rücken",
+  "instructions": [
+   "Stelle dich aufrecht hin und halte eine Langhantel mit gestreckten Armen hinter dem Gesäß im Obergriff (die Handflächen zeigen vom Gesäß weg nach hinten), die Hände schulterbreit auseinander.",
+   "Blicke geradeaus, die Füße stehen schulterbreit. Das ist die Ausgangsposition.",
+   "Hebe die Langhantel beim Ausatmen langsam an, indem du die Handgelenke im Halbkreis Richtung Decke curlst. Hinweis: Bei dieser Übung bewegt sich nur das Handgelenk.",
+   "Halte die Spannung eine Sekunde und senke die Langhantel beim Einatmen in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen.",
+   "Setze die Langhantel am Ende im Squat-Rack ab oder lege sie durch Beugen der Knie auf dem Boden ab. Tipp: Am einfachsten ist es, sie aus einem Squat-Rack zu nehmen oder sie sich von einem Partner reichen zu lassen."
+  ]
+ },
+ "Step-up_with_Knee_Raise": {
+  "name": "Step-up mit Knieheben",
+  "instructions": [
+   "Stelle dich mit geschlossenen Füßen vor eine Box oder Bank passender Höhe. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung mit einem Aufstieg: Setze den linken Fuß oben auf die Bank. Strecke Hüfte und Knie des vorderen Beins, um auf die Box zu steigen. Während du mit dem linken Bein auf der Box stehst, beugst du das rechte Knie und die rechte Hüfte und ziehst das Knie so hoch wie möglich.",
+   "Kehre die Bewegung um, um von der Box herunterzusteigen, und wiederhole die Abfolge dann mit dem anderen Bein."
+  ]
+ },
+ "Stiff-Legged_Dumbbell_Deadlift": {
+  "name": "Gestrecktes Kreuzheben mit Kurzhanteln",
+  "instructions": [
+   "Greife zwei Kurzhanteln und halte sie mit gestreckten Armen seitlich am Körper.",
+   "Stehe mit geradem Oberkörper, die Beine schulterbreit oder enger. Die Knie sind leicht gebeugt. Das ist die Ausgangsposition.",
+   "Halte die Knie ruhig und senke die Kurzhanteln über deine Füße ab, indem du dich aus der Hüfte beugst und den Rücken gerade hältst. Gehe weiter nach vorn, als wolltest du etwas vom Boden aufheben, bis du eine Dehnung im Beinbizeps spürst. Atme dabei aus.",
+   "Richte den Oberkörper wieder auf, indem du Hüfte und Rumpf streckst, bis du in der Ausgangsposition bist. Atme dabei ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Stiff_Leg_Barbell_Good_Morning": {
+  "name": "Good Morning mit gestreckten Beinen",
+  "instructions": [
+   "Diese Übung führst du aus Sicherheitsgründen am besten im Squat-Rack aus. Lege die Stange zunächst auf eine zu deiner Körpergröße passende Höhe. Wenn die Höhe stimmt und die Stange beladen ist, tritt darunter und lege sie auf den Nacken (etwas unterhalb des Halses).",
+   "Halte die Stange mit beiden Armen seitlich fest und hebe sie aus der Ablage, indem du mit den Beinen drückst und den Oberkörper gleichzeitig aufrichtest.",
+   "Tritt aus dem Rack heraus und stelle die Beine schulterbreit auf. Halte den Kopf durchgehend oben – nach unten zu schauen bringt dich aus dem Gleichgewicht – und den Rücken gerade. Das ist die Ausgangsposition.",
+   "Halte die Beine ruhig und neige den Oberkörper beim Einatmen aus der Hüfte nach vorn. Senke ihn ab, bis er parallel zum Boden ist.",
+   "Hebe die Stange beim Ausatmen wieder an, indem du den Oberkörper in die Ausgangsposition aufrichtest.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Sumo_Deadlift": {
+  "name": "Sumo-Kreuzheben",
+  "instructions": [
+   "Beginne mit einer beladenen Stange am Boden. Tritt so an die Stange heran, dass sie die Mitte der Füße schneidet. Die Füße stehen sehr weit auseinander, nahe an den Verschlüssen. Beuge dich aus der Hüfte, um die Stange zu greifen. Die Arme sind direkt unter den Schultern, innerhalb der Beine; du kannst den Obergriff, den Kreuzgriff oder den Hakengriff nehmen. Entspanne die Schultern, was die Arme praktisch verlängert.",
+   "Atme ein, senke dann die Hüfte, blicke nach vorn und halte die Brust oben. Drücke in den Boden, indem du die Füße auseinanderschiebst, mit dem Gewicht auf der hinteren Fußhälfte. Strecke Hüfte und Knie.",
+   "Sobald die Stange die Knie passiert, lehne dich zurück und schiebe die Hüfte gegen die Stange, während du die Schulterblätter zusammenführst.",
+   "Führe das Gewicht zum Boden zurück, indem du dich aus der Hüfte beugst und es kontrolliert absenkst."
+  ]
+ },
+ "Suspended_Reverse_Crunch": {
+  "name": "Umgekehrter Crunch im Schlingentrainer",
+  "instructions": [
+   "Befestige einen Schlingentrainer so, dass die Griffe etwa 30 cm über dem Boden hängen. Gehe mit dem Rücken zum Rack in eine Liegestützposition.",
+   "Setze die Füße in die Schlaufen. Halte den Körper gerade und lass die Hüfte nicht durchhängen. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du Knie und Hüfte beugst und die Knie zum Oberkörper ziehst. Kippe dabei das Becken nach vorn, sodass sich die Wirbelsäule beugt.",
+   "Kehre am Ende der kontrollierten Bewegung in die Ausgangsposition zurück."
+  ]
+ },
+ "Suspended_Row": {
+  "name": "Rudern im Schlingentrainer",
+  "instructions": [
+   "Hänge die Schlingen etwa auf Brusthöhe. Nimm in jede Hand einen Griff und lehne dich zurück. Halte den Körper gestreckt und Kopf und Brust oben. Die Arme sind ganz gestreckt. Das ist die Ausgangsposition.",
+   "Beginne die Bewegung, indem du die Ellbogen beugst. Führe die Schulterblätter dabei zusammen.",
+   "Halte am Ende der Bewegung kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "T-Bar_Row_with_Handle": {
+  "name": "T-Bar-Rudern mit Griff",
+  "instructions": [
+   "Setze eine Stange in eine Landmine ein oder stelle sie in eine Ecke, damit sie sich nicht bewegt. Belade dein Ende mit einem passenden Gewicht.",
+   "Stelle dich über die Stange und lege einen Doppel-D-Rudergriff um die Stange, nah am Verschluss. Richte dich mit Hüfte und Beinen auf.",
+   "Nimm einen weiten Stand ein, die Hüfte nach hinten, die Brust oben. Die Arme sind gestreckt. Das ist die Ausgangsposition.",
+   "Ziehe das Gewicht zum Oberbauch, indem du die Schulterblätter zusammenführst und die Ellbogen beugst. Reiße das Gewicht nicht hoch und arbeite nicht mit Schwung.",
+   "Halte kurz inne und kehre dann in die Ausgangsposition zurück."
+  ]
+ },
+ "Thigh_Adductor": {
+  "name": "Adduktorenmaschine",
+  "instructions": [
+   "Setze dich zunächst an die Adduktorenmaschine und wähle ein Gewicht, mit dem du dich wohlfühlst. Wenn die Beine richtig an den Polstern liegen, greife die Griffe an beiden Seiten. Der gesamte Oberkörper (ab der Taille aufwärts) bleibt ruhig. Das ist die Ausgangsposition.",
+   "Drücke mit den Beinen langsam gegen die Maschine, um sie beim Ausatmen zusammenzuführen.",
+   "Halte die Spannung eine Sekunde und führe die Beine beim Einatmen wieder in die Ausgangsposition zurück. Hinweis: Halte den Oberkörper ruhig und vermeide schnelle, ruckartige Bewegungen, um Verletzungen vorzubeugen.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Tricep_Dumbbell_Kickback": {
+  "name": "Trizepskickback mit der Kurzhantel",
+  "instructions": [
+   "Beginne mit einer Kurzhantel in jeder Hand, die Handflächen zeigen zum Oberkörper. Halte den Rücken gerade, die Knie leicht gebeugt, und neige dich aus der Hüfte nach vorn. Der Oberkörper ist fast parallel zum Boden. Achte darauf, den Kopf oben zu halten. Die Oberarme bleiben nah am Oberkörper und parallel zum Boden. Die Unterarme zeigen mit den Gewichten zum Boden. Zwischen Unterarm und Oberarm entsteht ein 90-Grad-Winkel. Das ist die Ausgangsposition.",
+   "Halte nun die Oberarme ruhig, atme aus und hebe die Gewichte mit dem Trizeps, bis der Arm ganz gestreckt ist. Konzentriere dich darauf, den Unterarm zu bewegen.",
+   "Halte in der Endposition kurz inne, atme ein und senke die Kurzhanteln langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Two-Arm_Kettlebell_Military_Press": {
+  "name": "Beidarmiges Schulterdrücken mit Kettlebells",
+  "instructions": [
+   "Bringe zwei Kettlebells im Clean zu den Schultern, indem du Beine und Hüfte streckst und die Kettlebells dabei zu den Schultern schwingst. Drehe dabei die Handgelenke, sodass die Handflächen nach vorn zeigen.",
+   "Drücke die Kettlebells nach oben und außen. Sobald sie deinen Kopf passieren, lehne dich in die Gewichte, sodass die Kettlebells hinter dem Kopf abgelegt sind. Spanne Latissimus, Gesäß und Bauch für zusätzliche Stabilität an."
+  ]
+ },
+ "Upright_Barbell_Row": {
+  "name": "Aufrechtes Rudern mit der Langhantel",
+  "instructions": [
+   "Greife eine Langhantel im Obergriff, etwas enger als schulterbreit. Die Stange liegt auf den Oberschenkeln, die Arme sind gestreckt mit leicht gebeugten Ellbogen. Auch der Rücken ist gerade. Das ist die Ausgangsposition.",
+   "Atme nun aus und hebe die Stange mit den seitlichen Schultern, indem du die Ellbogen nach oben und außen führst. Halte die Stange beim Heben nah am Körper. Hebe weiter, bis sie fast das Kinn berührt. Tipp: Die Ellbogen führen die Bewegung und sollen stets höher sein als die Unterarme. Denke daran, den Oberkörper ruhig zu halten und am obersten Punkt eine Sekunde zu pausieren.",
+   "Senke die Stange langsam in die Ausgangsposition zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Upright_Row_-_With_Bands": {
+  "name": "Aufrechtes Rudern mit Bändern",
+  "instructions": [
+   "Stelle dich zunächst so auf ein Trainingsband, dass bei gestreckten Armen bereits Spannung entsteht. Greife die Griffe im Obergriff (Handflächen zu den Oberschenkeln), etwas enger als schulterbreit. Die Griffe liegen auf den Oberschenkeln. Die Arme sind gestreckt mit leicht gebeugten Ellbogen und der Rücken ist gerade. Das ist die Ausgangsposition.",
+   "Hebe die Griffe beim Ausatmen mit den seitlichen Schultern. Führe sie dabei nah am Körper nach oben. Hebe weiter, bis sie fast das Kinn berühren. Tipp: Die Ellbogen führen die Bewegung. Beim Heben sollen die Ellbogen stets höher sein als die Unterarme. Halte außerdem den Oberkörper ruhig und pausiere am obersten Punkt eine Sekunde.",
+   "Senke die Griffe langsam in die Ausgangsposition zurück. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "V-Bar_Pullup": {
+  "name": "Klimmzug mit dem V-Griff",
+  "instructions": [
+   "Lege zunächst die Mitte des V-Griffs auf die Mitte der Klimmzugstange (sofern deine Klimmzugstation keine neutralen Griffe hat). Die Griffe des V-Bars zeigen nach unten, sodass du dich über sie an die Klimmzugstange hängen kannst.",
+   "Wenn der V-Griff sicher liegt, fasse ihn auf beiden Seiten und hänge dich hinein. Strecke die Brust heraus und lehne dich leicht zurück, damit der Latissimus besser arbeitet. Das ist die Ausgangsposition.",
+   "Ziehe den Oberkörper mit dem Latissimus nach oben und neige den Kopf dabei leicht zurück, damit du nicht an die Klimmzugstange stößt. Ziehe weiter, bis die Brust fast den V-Griff berührt. Atme dabei aus.",
+   "Halte die Position eine Sekunde und senke den Körper dann langsam in die Ausgangsposition zurück, während du einatmest.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Weighted_Ball_Hyperextension": {
+  "name": "Hyperextensionen auf dem Gymnastikball mit Zusatzgewicht",
+  "instructions": [
+   "Lege dich zunächst mit dem Oberkörper auf einen Gymnastikball, parallel zum Boden. Die Fußballen drücken gegen den Boden, damit du im Gleichgewicht bleibst. Nimm eine Hantelscheibe unters Kinn oder in den Nacken. Das ist die Ausgangsposition.",
+   "Hebe den Oberkörper langsam an, indem du Rumpf und unteren Rücken streckst. Denke daran, bei dieser Bewegung auszuatmen.",
+   "Halte die Spannung im unteren Rücken eine Sekunde und senke den Oberkörper beim Einatmen in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die in deinem Programm vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Weighted_Ball_Side_Bend": {
+  "name": "Seitbeuge auf dem Gymnastikball mit Zusatzgewicht",
+  "instructions": [
+   "Lege dich zunächst so auf einen Gymnastikball, dass die linke Körperseite (Taille, Hüfte und Schulter) am Ball anliegt.",
+   "Die Füße stehen auf dem Boden, während die Beine überkreuzt vom Ball hängen. Halte eine Hantelscheibe mit der rechten Hand direkt an die rechte Kopfseite. Tipp: Achte darauf, dass die glatte Seite der Scheibe am Kopf anliegt.",
+   "Lege den linken Arm quer über den Oberkörper, sodass die Handfläche auf den schrägen Bauchmuskeln liegt. Zwischen linkem Unterarm und Oberarm entsteht ein rechter Winkel. Das ist die Ausgangsposition.",
+   "Hebe die Körperseite beim Ausatmen an, indem du dich seitlich aus der Taille aufrichtest.",
+   "Halte die Spannung eine Sekunde und senke dich beim Einatmen langsam in die Ausgangsposition zurück.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen.",
+   "Wechsle die Seite und wiederhole die Übung."
+  ]
+ },
+ "Weighted_Bench_Dip": {
+  "name": "Bankdips mit Zusatzgewicht",
+  "instructions": [
+   "Für diese Übung stellst du eine Bank hinter dich und eine weitere vor dich. Die Bänke stehen senkrecht zu deinem Körper. Halte dich an der Kante der hinteren Bank fest, die Hände nah am Körper und schulterbreit auseinander. Die Arme sind ganz gestreckt.",
+   "Die Beine liegen nach vorn gestreckt auf der anderen Bank. Sie sind parallel zum Boden, während der Oberkörper senkrecht dazu steht. Lass dir von einem Partner die Kurzhantel auf den Schoß legen. Hinweis: Diese Übung führst du am besten mit einem Partner aus, da das Auflegen des Gewichts allein schwierig ist und zu Verletzungen führen kann. Das ist die Ausgangsposition.",
+   "Senke den Körper beim Einatmen langsam ab, indem du die Ellbogen beugst, bis der Winkel zwischen Oberarm und Unterarm etwas kleiner als 90 Grad ist. Tipp: Halte die Ellbogen während der ganzen Bewegung so eng wie möglich. Die Unterarme zeigen stets nach unten.",
+   "Drücke dich mit dem Trizeps beim Ausatmen wieder in die Ausgangsposition hoch.",
+   "Wiederhole die Bewegung für die empfohlene Anzahl an Wiederholungen."
+  ]
+ },
+ "Wide-Grip_Lat_Pulldown": {
+  "name": "Latzug im Weitgriff",
+  "instructions": [
+   "Setze dich an einen Latzug mit einer breiten Stange am oberen Zug. Stelle das Kniepolster der Maschine auf deine Körpergröße ein. Es verhindert, dass dich das Gewicht an der Stange hochzieht.",
+   "Greife die Stange mit den Handflächen nach vorn im vorgegebenen Griff. Hinweis zu den Griffen: Beim Weitgriff stehen die Hände weiter als schulterbreit, beim mittleren Griff genau schulterbreit und beim Enggriff enger als schulterbreit.",
+   "Mit beiden Armen vor dir gestreckt an der Stange neigst du den Oberkörper etwa 30 Grad nach hinten, machst dabei ein leichtes Hohlkreuz und streckst die Brust heraus. Das ist die Ausgangsposition.",
+   "Ziehe die Stange beim Ausatmen nach unten, bis sie die obere Brust berührt, indem du Schultern und Oberarme nach unten und hinten führst. Tipp: Konzentriere dich darauf, die Rückenmuskulatur in der Endposition zusammenzudrücken. Der Oberkörper bleibt ruhig, nur die Arme bewegen sich. Die Unterarme haben keine andere Aufgabe, als die Stange zu halten – ziehe sie also nicht mit den Unterarmen nach unten.",
+   "Halte die Position eine Sekunde und drücke die Schulterblätter zusammen, und führe die Stange dann langsam in die Ausgangsposition zurück, bis die Arme ganz gestreckt und die Latissimusmuskeln voll gedehnt sind. Atme bei diesem Teil der Bewegung ein.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Wide-Grip_Rear_Pull-Up": {
+  "name": "Nackenklimmzug im Weitgriff",
+  "instructions": [
+   "Greife die Klimmzugstange im Weitgriff mit den Handflächen nach vorn.",
+   "Mit beiden Armen gestreckt an der Stange neigst du Oberkörper und Kopf so nach vorn, dass eine gedachte Linie von der Klimmzugstange zu deinem Nacken verläuft. Das ist die Ausgangsposition.",
+   "Ziehe den Oberkörper nach oben, bis die Stange nahe an deinem Nacken ist. Führe dazu Schultern und Oberarme nach unten und hinten, während du den Kopf leicht nach vorn neigst. Atme bei diesem Teil der Bewegung aus. Tipp: Konzentriere dich darauf, die Rückenmuskulatur in der Endposition zusammenzudrücken. Der Oberkörper bleibt in sich ruhig und bewegt sich nur im Raum; nur die Arme arbeiten. Die Unterarme haben keine andere Aufgabe, als die Stange zu halten.",
+   "Halte die Position eine Sekunde, atme dann ein und senke den Oberkörper langsam in die Ausgangsposition zurück, bis die Arme ganz gestreckt und die Latissimusmuskeln voll gedehnt sind.",
+   "Wiederhole die Bewegung für die vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "Wrist_Roller": {
+  "name": "Unterarmroller",
+  "instructions": [
+   "Stelle dich zunächst aufrecht hin und greife einen Unterarmroller im Obergriff (Handflächen nach unten). Die Füße stehen schulterbreit.",
+   "Hebe beide Arme langsam an, bis sie vor dir ganz gestreckt und parallel zum Boden sind. Hinweis: Achte darauf, dass die Schnur nicht bereits um den Roller gewickelt ist. Der gesamte Körper bleibt bis auf die Unterarme ruhig. Das ist die Ausgangsposition.",
+   "Drehe die Handgelenke abwechselnd nach oben, um das Gewicht zur Stange hochzuziehen, indem du die Schnur um den Roller wickelst.",
+   "Sobald das Gewicht die Stange erreicht hat, lass es langsam wieder ab, indem du die Handgelenke nach unten drehst, bis das Gewicht die Ausgangsposition erreicht.",
+   "Wiederhole die Bewegung für die in deinem Programm vorgegebene Anzahl an Wiederholungen."
+  ]
+ },
+ "banded_dorsiflexion": {
+  "name": "Dorsalextension mit dem Band",
+  "instructions": [
+   "Befestige ein Band um deinen Fußrücken, setze dich mit gestrecktem Bein hin und ziehe die Zehen zu dir heran."
+  ]
+ },
+ "heel_walk": {
+  "name": "Fersengang",
+  "instructions": [
+   "Gehe auf den Fersen vorwärts und halte die Zehen dabei vom Boden ab."
+  ]
+ },
+ "reverse_calf_raise_on_leg_press": {
+  "name": "Umgekehrtes Wadenheben an der Beinpresse",
+  "instructions": [
+   "Stelle die Fersen auf die Platte und ziehe die Zehen gegen den Schlitten zu dir heran."
+  ]
+ },
+ "seated_toe_raise": {
+  "name": "Sitzendes Zehenheben",
+  "instructions": [
+   "Setze dich mit flach aufgestellten Füßen hin, lass die Fersen am Boden und hebe die Zehen so hoch wie möglich."
+  ]
+ },
+ "tibialis_raise": {
+  "name": "Schienbeinheben",
+  "instructions": [
+   "Stelle dich mit dem Rücken an eine Wand, die Fersen einen Schritt davor, und ziehe die Zehen zu den Schienbeinen hoch."
+  ]
+ },
+ "weighted_toe_raise": {
+  "name": "Zehenheben mit Gewicht",
+  "instructions": [
+   "Setze dich mit einer leichten Kurzhantel auf den Zehen hin und hebe die Zehen dagegen an."
+  ]
+ }
+}
