@@ -184,6 +184,23 @@ forms (`5 ćwiczeń`, not `5 ćwiczenia`) rather than an English two-form guess.
 `node tools/i18n/check-locales.mjs` checks every locale against English for
 missing keys, dropped `{placeholders}` and missing plural forms.
 
+## On a phone
+
+The muscle picker and display panel float over the canvas. That is fine when
+there is room beside the model and useless when there isn't: at 390px they
+covered 44% of the width, and at 320px the body was reduced to one arm and a
+pair of legs behind them. Below 720px they start closed and open one at a time
+from a toolbar, and choosing a muscle closes the picker again — otherwise it
+would hide the muscle you just picked. Tapping outside dismisses them.
+
+Exercise names wrap instead of truncating. "Standing Palms-Up Barbell Behind
+The Back Wrist Curl" has no useful prefix, so an ellipsis told you nothing, and
+the translations run longer than the English.
+
+The model is 1.1 MB, so the canvas now says it is loading rather than sitting
+empty. The overlay clears when the body is painted, which is the honest moment
+— the environment map may still be arriving, but there is something to look at.
+
 ## Theming
 
 Light, dark, or follow the device — one button in the header cycles the three

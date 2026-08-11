@@ -1,153 +1,167 @@
 {
-  "language": {
-    "label": "Langue",
-    "auto": "Langue de l'appareil",
-    "aria": "Langue"
+ "language": {
+  "label": "Langue",
+  "auto": "Langue de l'appareil",
+  "aria": "Langue"
+ },
+ "theme": {
+  "light": "Clair",
+  "dark": "Sombre",
+  "auto": "Appareil",
+  "lightTitle": "Clair — appuyez pour le sombre",
+  "darkTitle": "Sombre — appuyez pour suivre l'appareil",
+  "autoTitle": "Suit l'appareil — appuyez pour le clair",
+  "aria": "Thème de couleur : {current}. Appuyez pour passer à {next}."
+ },
+ "onboarding": {
+  "title": "Bienvenue sur GuideTrain",
+  "subtitle": "Quelques informations pour adapter votre entraînement.",
+  "username": "Nom d'utilisateur",
+  "usernamePlaceholder": "p. ex. iron_ada",
+  "gender": "Genre",
+  "ageGroup": "Tranche d'âge",
+  "continue": "Continuer vers l'explorateur corporel"
+ },
+ "gender": {
+  "female": "Femme",
+  "male": "Homme",
+  "other": "Autre / Je préfère ne pas répondre"
+ },
+ "age": {
+  "teen": "Moins de 18 ans",
+  "60plus": "60+"
+ },
+ "explorer": {
+  "greeting": "Bonjour {name} — faites pivoter le modèle, filtrez par région et touchez un muscle.",
+  "greetingAnon": "Faites pivoter le modèle, filtrez par région et touchez un muscle."
+ },
+ "viewer": {
+  "muscleGroups": "Groupes musculaires",
+  "allMuscles": "Tous les muscles",
+  "display": "Affichage",
+  "autoRotate": "Rotation automatique",
+  "trainThis": "Entraîner ce muscle",
+  "exercises": {
+   "one": "{count} exercice",
+   "other": "{count} exercices"
   },
-  "theme": {
-    "light": "Clair",
-    "dark": "Sombre",
-    "auto": "Appareil",
-    "lightTitle": "Clair — appuyez pour le sombre",
-    "darkTitle": "Sombre — appuyez pour suivre l'appareil",
-    "autoTitle": "Suit l'appareil — appuyez pour le clair",
-    "aria": "Thème de couleur : {current}. Appuyez pour passer à {next}."
+  "watch": "Voir la démonstration",
+  "searchYouTube": "Rechercher sur YouTube →",
+  "loading": "Chargement du modèle…",
+  "closePanel": "Fermer le panneau"
+ },
+ "video": {
+  "close": "Fermer la vidéo",
+  "demonstration": "Démonstration : {name}",
+  "searchYouTube": "Rechercher sur YouTube →"
+ },
+ "regions": {
+  "Neck": "Cou",
+  "Shoulders": "Épaules",
+  "Chest": "Poitrine",
+  "Back": "Dos",
+  "Arms": "Bras",
+  "Core": "Sangle abdominale",
+  "Legs": "Jambes",
+  "Head": "Tête"
+ },
+ "equipment": {
+  "None": "aucun",
+  "bands": "élastiques",
+  "barbell": "barre",
+  "body only": "poids du corps",
+  "cable": "poulie",
+  "dumbbell": "haltères",
+  "exercise ball": "ballon de gym",
+  "kettlebells": "kettlebells",
+  "machine": "machine",
+  "other": "autre"
+ },
+ "level": {
+  "beginner": "débutant",
+  "intermediate": "intermédiaire",
+  "expert": "expert"
+ },
+ "muscles": {
+  "abs": {
+   "name": "Grand Droit de l'Abdomen",
+   "desc": "Les 'tablettes' ; fléchit la colonne, résiste à l'extension. Crunchs, relevés de jambes, gainage."
   },
-  "onboarding": {
-    "title": "Bienvenue sur GuideTrain",
-    "subtitle": "Quelques informations pour adapter votre entraînement.",
-    "username": "Nom d'utilisateur",
-    "usernamePlaceholder": "p. ex. iron_ada",
-    "gender": "Genre",
-    "ageGroup": "Tranche d'âge",
-    "continue": "Continuer vers l'explorateur corporel"
+  "add": {
+   "name": "Adducteurs",
+   "desc": "Face interne de la cuisse ; rapproche les jambes, stabilise les hanches. Adductions, squat sumo."
   },
-  "gender": {
-    "female": "Femme",
-    "male": "Homme",
-    "other": "Autre / Je préfère ne pas répondre"
+  "bic": {
+   "name": "Biceps Brachial",
+   "desc": "Face avant du bras ; fléchit le coude, supine l'avant-bras. Curls."
   },
-  "age": {
-    "teen": "Moins de 18 ans",
-    "60plus": "60+"
+  "calf": {
+   "name": "Gastrocnémien / Mollet",
+   "desc": "Relief du mollet à deux chefs ; pousse sur la pointe des pieds (flexion plantaire). Extensions des mollets debout."
   },
-  "explorer": {
-    "greeting": "Bonjour {name} — faites pivoter le modèle, filtrez par région et touchez un muscle.",
-    "greetingAnon": "Faites pivoter le modèle, filtrez par région et touchez un muscle."
+  "delt": {
+   "name": "Deltoïde",
+   "desc": "Coiffe de l'épaule en trois faisceaux ; lève le bras dans toutes les directions. Développés, élévations latérales."
   },
-  "viewer": {
-    "muscleGroups": "Groupes musculaires",
-    "allMuscles": "Tous les muscles",
-    "display": "Affichage",
-    "autoRotate": "Rotation automatique",
-    "trainThis": "Entraîner ce muscle",
-    "exercises": { "one": "{count} exercice", "other": "{count} exercices" },
-    "watch": "Voir la démonstration",
-    "searchYouTube": "Rechercher sur YouTube →"
+  "erector": {
+   "name": "Érecteurs du Rachis",
+   "desc": "Colonnes le long de la colonne vertébrale ; étendent et stabilisent le dos. Soulevés de terre, extensions du dos."
   },
-  "video": {
-    "close": "Fermer la vidéo",
-    "demonstration": "Démonstration : {name}",
-    "searchYouTube": "Rechercher sur YouTube →"
+  "foot": {
+   "name": "Pied",
+   "desc": ""
   },
-  "regions": {
-    "Neck": "Cou",
-    "Shoulders": "Épaules",
-    "Chest": "Poitrine",
-    "Back": "Dos",
-    "Arms": "Bras",
-    "Core": "Sangle abdominale",
-    "Legs": "Jambes",
-    "Head": "Tête"
+  "fore": {
+   "name": "Avant-Bras",
+   "desc": "Moteurs de la prise, du poignet et des doigts. Curls de poignet, travail de grip, portés."
   },
-  "equipment": {
-    "None": "aucun",
-    "bands": "élastiques",
-    "barbell": "barre",
-    "body only": "poids du corps",
-    "cable": "poulie",
-    "dumbbell": "haltères",
-    "exercise ball": "ballon de gym",
-    "kettlebells": "kettlebells",
-    "machine": "machine",
-    "other": "autre"
+  "glute": {
+   "name": "Grand Fessier",
+   "desc": "Le plus gros muscle ; étend la hanche, produit la puissance. Squats, hip thrusts, ponts."
   },
-  "level": {
-    "beginner": "débutant",
-    "intermediate": "intermédiaire",
-    "expert": "expert"
+  "ham": {
+   "name": "Ischio-Jambiers",
+   "desc": "Groupe arrière de la cuisse ; fléchit le genou, étend la hanche. Soulevé de terre roumain, leg curls, soulevés de terre."
   },
-  "muscles": {
-    "abs": {
-      "name": "Grand Droit de l'Abdomen",
-      "desc": "Les 'tablettes' ; fléchit la colonne, résiste à l'extension. Crunchs, relevés de jambes, gainage."
-    },
-    "add": {
-      "name": "Adducteurs",
-      "desc": "Face interne de la cuisse ; rapproche les jambes, stabilise les hanches. Adductions, squat sumo."
-    },
-    "bic": {
-      "name": "Biceps Brachial",
-      "desc": "Face avant du bras ; fléchit le coude, supine l'avant-bras. Curls."
-    },
-    "calf": {
-      "name": "Gastrocnémien / Mollet",
-      "desc": "Relief du mollet à deux chefs ; pousse sur la pointe des pieds (flexion plantaire). Extensions des mollets debout."
-    },
-    "delt": {
-      "name": "Deltoïde",
-      "desc": "Coiffe de l'épaule en trois faisceaux ; lève le bras dans toutes les directions. Développés, élévations latérales."
-    },
-    "erector": {
-      "name": "Érecteurs du Rachis",
-      "desc": "Colonnes le long de la colonne vertébrale ; étendent et stabilisent le dos. Soulevés de terre, extensions du dos."
-    },
-    "foot": { "name": "Pied", "desc": "" },
-    "fore": {
-      "name": "Avant-Bras",
-      "desc": "Moteurs de la prise, du poignet et des doigts. Curls de poignet, travail de grip, portés."
-    },
-    "glute": {
-      "name": "Grand Fessier",
-      "desc": "Le plus gros muscle ; étend la hanche, produit la puissance. Squats, hip thrusts, ponts."
-    },
-    "ham": {
-      "name": "Ischio-Jambiers",
-      "desc": "Groupe arrière de la cuisse ; fléchit le genou, étend la hanche. Soulevé de terre roumain, leg curls, soulevés de terre."
-    },
-    "hand": { "name": "Main", "desc": "" },
-    "head": { "name": "Tête", "desc": "" },
-    "lat": {
-      "name": "Grand Dorsal",
-      "desc": "Les 'ailes' du dos ; tire les bras vers le bas et l'arrière. Tractions, rowings, tirages verticaux."
-    },
-    "neck": {
-      "name": "Cou",
-      "desc": "Sterno-cléido-mastoïdien et extenseurs du cou ; tourne et stabilise la tête. Flexions du cou, shrugs, travail au harnais."
-    },
-    "obl": {
-      "name": "Oblique Externe",
-      "desc": "Flancs de l'abdomen ; font pivoter et incliner le tronc. Rotations, gainage latéral."
-    },
-    "pec": {
-      "name": "Grand Pectoral",
-      "desc": "Éventail de la poitrine ; pousse et ramène le bras devant le corps. Développé couché, écartés, pompes."
-    },
-    "quad": {
-      "name": "Quadriceps",
-      "desc": "Groupe de quatre à l'avant de la cuisse ; étend le genou. Squats, fentes, leg extensions."
-    },
-    "shin": {
-      "name": "Tibial Antérieur",
-      "desc": "Avant du tibia ; relève le pied (flexion dorsale). Relevés de pointes, marches sur les talons."
-    },
-    "traps": {
-      "name": "Trapèze",
-      "desc": "Joug du haut du dos et du cou ; hausse et stabilise les omoplates. Shrugs, face pulls."
-    },
-    "tri": {
-      "name": "Triceps Brachial",
-      "desc": "Face arrière du bras ; étend le coude. Dips, extensions à la poulie, extensions au-dessus de la tête."
-    }
+  "hand": {
+   "name": "Main",
+   "desc": ""
+  },
+  "head": {
+   "name": "Tête",
+   "desc": ""
+  },
+  "lat": {
+   "name": "Grand Dorsal",
+   "desc": "Les 'ailes' du dos ; tire les bras vers le bas et l'arrière. Tractions, rowings, tirages verticaux."
+  },
+  "neck": {
+   "name": "Cou",
+   "desc": "Sterno-cléido-mastoïdien et extenseurs du cou ; tourne et stabilise la tête. Flexions du cou, shrugs, travail au harnais."
+  },
+  "obl": {
+   "name": "Oblique Externe",
+   "desc": "Flancs de l'abdomen ; font pivoter et incliner le tronc. Rotations, gainage latéral."
+  },
+  "pec": {
+   "name": "Grand Pectoral",
+   "desc": "Éventail de la poitrine ; pousse et ramène le bras devant le corps. Développé couché, écartés, pompes."
+  },
+  "quad": {
+   "name": "Quadriceps",
+   "desc": "Groupe de quatre à l'avant de la cuisse ; étend le genou. Squats, fentes, leg extensions."
+  },
+  "shin": {
+   "name": "Tibial Antérieur",
+   "desc": "Avant du tibia ; relève le pied (flexion dorsale). Relevés de pointes, marches sur les talons."
+  },
+  "traps": {
+   "name": "Trapèze",
+   "desc": "Joug du haut du dos et du cou ; hausse et stabilise les omoplates. Shrugs, face pulls."
+  },
+  "tri": {
+   "name": "Triceps Brachial",
+   "desc": "Face arrière du bras ; étend le coude. Dips, extensions à la poulie, extensions au-dessus de la tête."
   }
+ }
 }

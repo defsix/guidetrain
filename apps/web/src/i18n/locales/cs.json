@@ -1,158 +1,169 @@
 {
-  "language": {
-    "label": "Jazyk",
-    "auto": "Jazyk zařízení",
-    "aria": "Jazyk"
+ "language": {
+  "label": "Jazyk",
+  "auto": "Jazyk zařízení",
+  "aria": "Jazyk"
+ },
+ "theme": {
+  "light": "Světlý",
+  "dark": "Tmavý",
+  "auto": "Zařízení",
+  "lightTitle": "Světlý — klepnutím přepnete na tmavý",
+  "darkTitle": "Tmavý — klepnutím se přizpůsobí zařízení",
+  "autoTitle": "Řídí se zařízením — klepnutím přepnete na světlý",
+  "aria": "Barevné téma: {current}. Klepnutím přepnete na {next}."
+ },
+ "onboarding": {
+  "title": "Vítejte v GuideTrain",
+  "subtitle": "Několik rychlých údajů, abychom vám mohli přizpůsobit trénink.",
+  "username": "Uživatelské jméno",
+  "usernamePlaceholder": "např. iron_ada",
+  "gender": "Pohlaví",
+  "ageGroup": "Věková skupina",
+  "continue": "Pokračovat do průzkumníka těla"
+ },
+ "gender": {
+  "female": "Žena",
+  "male": "Muž",
+  "other": "Jiné / Nechci uvádět"
+ },
+ "age": {
+  "teen": "Do 18 let",
+  "60plus": "60+"
+ },
+ "explorer": {
+  "greeting": "Ahoj {name} — otáčej modelem, filtruj podle partie a klepni na sval.",
+  "greetingAnon": "Otáčej modelem, filtruj podle partie a klepni na sval."
+ },
+ "viewer": {
+  "muscleGroups": "Svalové skupiny",
+  "allMuscles": "Všechny svaly",
+  "display": "Zobrazení",
+  "autoRotate": "Automatické otáčení",
+  "trainThis": "Trénovat tento",
+  "exercises": {
+   "one": "{count} cvik",
+   "few": "{count} cviky",
+   "many": "{count} cviku",
+   "other": "{count} cviků"
   },
-  "theme": {
-    "light": "Světlý",
-    "dark": "Tmavý",
-    "auto": "Zařízení",
-    "lightTitle": "Světlý — klepnutím přepnete na tmavý",
-    "darkTitle": "Tmavý — klepnutím se přizpůsobí zařízení",
-    "autoTitle": "Řídí se zařízením — klepnutím přepnete na světlý",
-    "aria": "Barevné téma: {current}. Klepnutím přepnete na {next}."
+  "watch": "Zobrazit ukázku",
+  "searchYouTube": "Hledat na YouTube →",
+  "loading": "Načítání modelu…",
+  "closePanel": "Zavřít panel"
+ },
+ "video": {
+  "close": "Zavřít video",
+  "demonstration": "Ukázka: {name}",
+  "searchYouTube": "Hledat na YouTube →"
+ },
+ "regions": {
+  "Neck": "Krk",
+  "Shoulders": "Ramena",
+  "Chest": "Hrudník",
+  "Back": "Záda",
+  "Arms": "Paže",
+  "Core": "Střed těla",
+  "Legs": "Nohy",
+  "Head": "Hlava"
+ },
+ "equipment": {
+  "None": "žádné",
+  "bands": "gumy",
+  "barbell": "činka",
+  "body only": "váha těla",
+  "cable": "kladka",
+  "dumbbell": "jednoručky",
+  "exercise ball": "gymnastický míč",
+  "kettlebells": "kettlebell",
+  "machine": "stroj",
+  "other": "jiné"
+ },
+ "level": {
+  "beginner": "začátečník",
+  "intermediate": "pokročilý",
+  "expert": "expert"
+ },
+ "muscles": {
+  "abs": {
+   "name": "Přímý Sval Břišní",
+   "desc": "'Pekáč buchet'; ohýbá páteř, brání jejímu prohnutí. Zkracovačky, zvedání nohou, prkna."
   },
-  "onboarding": {
-    "title": "Vítejte v GuideTrain",
-    "subtitle": "Několik rychlých údajů, abychom vám mohli přizpůsobit trénink.",
-    "username": "Uživatelské jméno",
-    "usernamePlaceholder": "např. iron_ada",
-    "gender": "Pohlaví",
-    "ageGroup": "Věková skupina",
-    "continue": "Pokračovat do průzkumníka těla"
+  "add": {
+   "name": "Adduktory",
+   "desc": "Vnitřní strana stehna; přitahuje nohy k sobě, stabilizuje kyčle. Přitahování, sumo dřepy."
   },
-  "gender": {
-    "female": "Žena",
-    "male": "Muž",
-    "other": "Jiné / Nechci uvádět"
+  "bic": {
+   "name": "Dvojhlavý Sval Pažní",
+   "desc": "Přední strana paže; ohýbá loket, supinuje předloktí. Bicepsové zdvihy."
   },
-  "age": {
-    "teen": "Do 18 let",
-    "60plus": "60+"
+  "calf": {
+   "name": "Dvojhlavý Sval Lýtkový",
+   "desc": "Dvojhlavé vyklenutí lýtka; propíná chodidlo (plantární flexe). Výpony ve stoje."
   },
-  "explorer": {
-    "greeting": "Ahoj {name} — otáčej modelem, filtruj podle partie a klepni na sval.",
-    "greetingAnon": "Otáčej modelem, filtruj podle partie a klepni na sval."
+  "delt": {
+   "name": "Deltový Sval",
+   "desc": "Čepička ramene ze tří hlav; zvedá paži do všech směrů. Tlaky, upažování."
   },
-  "viewer": {
-    "muscleGroups": "Svalové skupiny",
-    "allMuscles": "Všechny svaly",
-    "display": "Zobrazení",
-    "autoRotate": "Automatické otáčení",
-    "trainThis": "Trénovat tento",
-    "exercises": {
-      "one": "{count} cvik",
-      "few": "{count} cviky",
-      "many": "{count} cviku",
-      "other": "{count} cviků"
-    },
-    "watch": "Zobrazit ukázku",
-    "searchYouTube": "Hledat na YouTube →"
+  "erector": {
+   "name": "Vzpřimovače Páteře",
+   "desc": "Sloupce podél páteře; napřimují a stabilizují záda. Mrtvé tahy, hyperextenze."
   },
-  "video": {
-    "close": "Zavřít video",
-    "demonstration": "Ukázka: {name}",
-    "searchYouTube": "Hledat na YouTube →"
+  "foot": {
+   "name": "Chodidlo",
+   "desc": ""
   },
-  "regions": {
-    "Neck": "Krk",
-    "Shoulders": "Ramena",
-    "Chest": "Hrudník",
-    "Back": "Záda",
-    "Arms": "Paže",
-    "Core": "Střed těla",
-    "Legs": "Nohy",
-    "Head": "Hlava"
+  "fore": {
+   "name": "Předloktí",
+   "desc": "Motor úchopu, zápěstí a prstů. Zdvihy zápěstí, trénink úchopu, nošení zátěže."
   },
-  "equipment": {
-    "None": "žádné",
-    "bands": "gumy",
-    "barbell": "činka",
-    "body only": "váha těla",
-    "cable": "kladka",
-    "dumbbell": "jednoručky",
-    "exercise ball": "gymnastický míč",
-    "kettlebells": "kettlebell",
-    "machine": "stroj",
-    "other": "jiné"
+  "glute": {
+   "name": "Velký Sval Hýžďový",
+   "desc": "Největší sval těla; natahuje kyčel, dodává sílu. Dřepy, hip thrusty, mosty."
   },
-  "level": {
-    "beginner": "začátečník",
-    "intermediate": "pokročilý",
-    "expert": "expert"
+  "ham": {
+   "name": "Hamstringy",
+   "desc": "Zadní skupina stehna; ohýbá koleno, natahuje kyčel. Rumunský mrtvý tah, zakopávání, mrtvé tahy."
   },
-  "muscles": {
-    "abs": {
-      "name": "Přímý Sval Břišní",
-      "desc": "'Pekáč buchet'; ohýbá páteř, brání jejímu prohnutí. Zkracovačky, zvedání nohou, prkna."
-    },
-    "add": {
-      "name": "Adduktory",
-      "desc": "Vnitřní strana stehna; přitahuje nohy k sobě, stabilizuje kyčle. Přitahování, sumo dřepy."
-    },
-    "bic": {
-      "name": "Dvojhlavý Sval Pažní",
-      "desc": "Přední strana paže; ohýbá loket, supinuje předloktí. Bicepsové zdvihy."
-    },
-    "calf": {
-      "name": "Dvojhlavý Sval Lýtkový",
-      "desc": "Dvojhlavé vyklenutí lýtka; propíná chodidlo (plantární flexe). Výpony ve stoje."
-    },
-    "delt": {
-      "name": "Deltový Sval",
-      "desc": "Čepička ramene ze tří hlav; zvedá paži do všech směrů. Tlaky, upažování."
-    },
-    "erector": {
-      "name": "Vzpřimovače Páteře",
-      "desc": "Sloupce podél páteře; napřimují a stabilizují záda. Mrtvé tahy, hyperextenze."
-    },
-    "foot": { "name": "Chodidlo", "desc": "" },
-    "fore": {
-      "name": "Předloktí",
-      "desc": "Motor úchopu, zápěstí a prstů. Zdvihy zápěstí, trénink úchopu, nošení zátěže."
-    },
-    "glute": {
-      "name": "Velký Sval Hýžďový",
-      "desc": "Největší sval těla; natahuje kyčel, dodává sílu. Dřepy, hip thrusty, mosty."
-    },
-    "ham": {
-      "name": "Hamstringy",
-      "desc": "Zadní skupina stehna; ohýbá koleno, natahuje kyčel. Rumunský mrtvý tah, zakopávání, mrtvé tahy."
-    },
-    "hand": { "name": "Ruka", "desc": "" },
-    "head": { "name": "Hlava", "desc": "" },
-    "lat": {
-      "name": "Široký Sval Zádový",
-      "desc": "'Křídla' zad; táhne paže dolů a dozadu. Shyby, veslování, stahování kladky."
-    },
-    "neck": {
-      "name": "Krk",
-      "desc": "Kývač hlavy a natahovače krku; otáčí a zpevňuje hlavu. Zdvihy krku, shrugy, práce s postrojem."
-    },
-    "obl": {
-      "name": "Zevní Šikmý Sval Břišní",
-      "desc": "Boky břicha; rotují a uklánějí trup. Rotace, boční prkna."
-    },
-    "pec": {
-      "name": "Velký Sval Prsní",
-      "desc": "Vějíř hrudníku; tlačí a přitahuje paži přes tělo. Bench press, rozpažování, kliky."
-    },
-    "quad": {
-      "name": "Čtyřhlavý Sval Stehenní",
-      "desc": "Čtyřhlavá skupina na přední straně stehna; napíná koleno. Dřepy, výpady, předkopávání."
-    },
-    "shin": {
-      "name": "Přední Sval Holenní",
-      "desc": "Přední strana holeně; zvedá chodidlo (dorzální flexe). Zdvihy špiček, chůze po patách."
-    },
-    "traps": {
-      "name": "Trapézový Sval",
-      "desc": "Jho horních zad a krku; krčí rameny a stabilizuje lopatky. Shrugy, face pull."
-    },
-    "tri": {
-      "name": "Trojhlavý Sval Pažní",
-      "desc": "Zadní strana paže; napíná loket. Dipy, stahování kladky, tlaky za hlavou."
-    }
+  "hand": {
+   "name": "Ruka",
+   "desc": ""
+  },
+  "head": {
+   "name": "Hlava",
+   "desc": ""
+  },
+  "lat": {
+   "name": "Široký Sval Zádový",
+   "desc": "'Křídla' zad; táhne paže dolů a dozadu. Shyby, veslování, stahování kladky."
+  },
+  "neck": {
+   "name": "Krk",
+   "desc": "Kývač hlavy a natahovače krku; otáčí a zpevňuje hlavu. Zdvihy krku, shrugy, práce s postrojem."
+  },
+  "obl": {
+   "name": "Zevní Šikmý Sval Břišní",
+   "desc": "Boky břicha; rotují a uklánějí trup. Rotace, boční prkna."
+  },
+  "pec": {
+   "name": "Velký Sval Prsní",
+   "desc": "Vějíř hrudníku; tlačí a přitahuje paži přes tělo. Bench press, rozpažování, kliky."
+  },
+  "quad": {
+   "name": "Čtyřhlavý Sval Stehenní",
+   "desc": "Čtyřhlavá skupina na přední straně stehna; napíná koleno. Dřepy, výpady, předkopávání."
+  },
+  "shin": {
+   "name": "Přední Sval Holenní",
+   "desc": "Přední strana holeně; zvedá chodidlo (dorzální flexe). Zdvihy špiček, chůze po patách."
+  },
+  "traps": {
+   "name": "Trapézový Sval",
+   "desc": "Jho horních zad a krku; krčí rameny a stabilizuje lopatky. Shrugy, face pull."
+  },
+  "tri": {
+   "name": "Trojhlavý Sval Pažní",
+   "desc": "Zadní strana paže; napíná loket. Dipy, stahování kladky, tlaky za hlavou."
   }
+ }
 }

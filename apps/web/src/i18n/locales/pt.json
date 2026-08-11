@@ -1,153 +1,167 @@
 {
-  "language": {
-    "label": "Idioma",
-    "auto": "Idioma do dispositivo",
-    "aria": "Idioma"
+ "language": {
+  "label": "Idioma",
+  "auto": "Idioma do dispositivo",
+  "aria": "Idioma"
+ },
+ "theme": {
+  "light": "Claro",
+  "dark": "Escuro",
+  "auto": "Dispositivo",
+  "lightTitle": "Claro — toque para escuro",
+  "darkTitle": "Escuro — toque para seguir o dispositivo",
+  "autoTitle": "Seguindo o dispositivo — toque para claro",
+  "aria": "Tema de cor: {current}. Toque para mudar para {next}."
+ },
+ "onboarding": {
+  "title": "Bem-vindo ao GuideTrain",
+  "subtitle": "Alguns dados rápidos para adaptarmos o seu treino.",
+  "username": "Nome de usuário",
+  "usernamePlaceholder": "ex.: iron_ada",
+  "gender": "Gênero",
+  "ageGroup": "Faixa etária",
+  "continue": "Continuar para o explorador corporal"
+ },
+ "gender": {
+  "female": "Feminino",
+  "male": "Masculino",
+  "other": "Outro / Prefiro não dizer"
+ },
+ "age": {
+  "teen": "Menos de 18",
+  "60plus": "60+"
+ },
+ "explorer": {
+  "greeting": "Olá {name} — gire o modelo, filtre por região e toque em um músculo.",
+  "greetingAnon": "Gire o modelo, filtre por região e toque em um músculo."
+ },
+ "viewer": {
+  "muscleGroups": "Grupos musculares",
+  "allMuscles": "Todos os músculos",
+  "display": "Exibição",
+  "autoRotate": "Rotação automática",
+  "trainThis": "Treinar este",
+  "exercises": {
+   "one": "{count} exercício",
+   "other": "{count} exercícios"
   },
-  "theme": {
-    "light": "Claro",
-    "dark": "Escuro",
-    "auto": "Dispositivo",
-    "lightTitle": "Claro — toque para escuro",
-    "darkTitle": "Escuro — toque para seguir o dispositivo",
-    "autoTitle": "Seguindo o dispositivo — toque para claro",
-    "aria": "Tema de cor: {current}. Toque para mudar para {next}."
+  "watch": "Ver demonstração",
+  "searchYouTube": "Pesquisar no YouTube →",
+  "loading": "Carregando o modelo…",
+  "closePanel": "Fechar painel"
+ },
+ "video": {
+  "close": "Fechar vídeo",
+  "demonstration": "Demonstração: {name}",
+  "searchYouTube": "Pesquisar no YouTube →"
+ },
+ "regions": {
+  "Neck": "Pescoço",
+  "Shoulders": "Ombros",
+  "Chest": "Peito",
+  "Back": "Costas",
+  "Arms": "Braços",
+  "Core": "Core",
+  "Legs": "Pernas",
+  "Head": "Cabeça"
+ },
+ "equipment": {
+  "None": "nenhum",
+  "bands": "elásticos",
+  "barbell": "barra",
+  "body only": "peso corporal",
+  "cable": "polia",
+  "dumbbell": "halteres",
+  "exercise ball": "bola de exercício",
+  "kettlebells": "kettlebells",
+  "machine": "máquina",
+  "other": "outro"
+ },
+ "level": {
+  "beginner": "iniciante",
+  "intermediate": "intermediário",
+  "expert": "avançado"
+ },
+ "muscles": {
+  "abs": {
+   "name": "Reto Abdominal",
+   "desc": "O 'tanquinho'; flexiona a coluna e resiste à extensão. Abdominais, elevação de pernas, pranchas."
   },
-  "onboarding": {
-    "title": "Bem-vindo ao GuideTrain",
-    "subtitle": "Alguns dados rápidos para adaptarmos o seu treino.",
-    "username": "Nome de usuário",
-    "usernamePlaceholder": "ex.: iron_ada",
-    "gender": "Gênero",
-    "ageGroup": "Faixa etária",
-    "continue": "Continuar para o explorador corporal"
+  "add": {
+   "name": "Adutores",
+   "desc": "Face interna da coxa; junta as pernas e estabiliza o quadril. Adução, agachamento sumô."
   },
-  "gender": {
-    "female": "Feminino",
-    "male": "Masculino",
-    "other": "Outro / Prefiro não dizer"
+  "bic": {
+   "name": "Bíceps Braquial",
+   "desc": "Frente do braço; flexiona o cotovelo e supina o antebraço. Rosca direta."
   },
-  "age": {
-    "teen": "Menos de 18",
-    "60plus": "60+"
+  "calf": {
+   "name": "Gastrocnêmio / Panturrilha",
+   "desc": "Volume de duas cabeças da panturrilha; estende o pé (flexão plantar). Elevação de panturrilha em pé."
   },
-  "explorer": {
-    "greeting": "Olá {name} — gire o modelo, filtre por região e toque em um músculo.",
-    "greetingAnon": "Gire o modelo, filtre por região e toque em um músculo."
+  "delt": {
+   "name": "Deltoide",
+   "desc": "Capa do ombro com três porções; eleva o braço em todas as direções. Desenvolvimentos, elevações laterais."
   },
-  "viewer": {
-    "muscleGroups": "Grupos musculares",
-    "allMuscles": "Todos os músculos",
-    "display": "Exibição",
-    "autoRotate": "Rotação automática",
-    "trainThis": "Treinar este",
-    "exercises": { "one": "{count} exercício", "other": "{count} exercícios" },
-    "watch": "Ver demonstração",
-    "searchYouTube": "Pesquisar no YouTube →"
+  "erector": {
+   "name": "Eretores da Espinha",
+   "desc": "Colunas ao lado da coluna vertebral; estendem e estabilizam as costas. Levantamento terra, extensões lombares."
   },
-  "video": {
-    "close": "Fechar vídeo",
-    "demonstration": "Demonstração: {name}",
-    "searchYouTube": "Pesquisar no YouTube →"
+  "foot": {
+   "name": "Pé",
+   "desc": ""
   },
-  "regions": {
-    "Neck": "Pescoço",
-    "Shoulders": "Ombros",
-    "Chest": "Peito",
-    "Back": "Costas",
-    "Arms": "Braços",
-    "Core": "Core",
-    "Legs": "Pernas",
-    "Head": "Cabeça"
+  "fore": {
+   "name": "Antebraço",
+   "desc": "Motores da pegada, do punho e dos dedos. Rosca de punho, treino de pegada, caminhadas com carga."
   },
-  "equipment": {
-    "None": "nenhum",
-    "bands": "elásticos",
-    "barbell": "barra",
-    "body only": "peso corporal",
-    "cable": "polia",
-    "dumbbell": "halteres",
-    "exercise ball": "bola de exercício",
-    "kettlebells": "kettlebells",
-    "machine": "máquina",
-    "other": "outro"
+  "glute": {
+   "name": "Glúteo Máximo",
+   "desc": "Maior músculo do corpo; estende o quadril e gera potência. Agachamentos, elevação pélvica, pontes."
   },
-  "level": {
-    "beginner": "iniciante",
-    "intermediate": "intermediário",
-    "expert": "avançado"
+  "ham": {
+   "name": "Isquiotibiais",
+   "desc": "Grupo posterior da coxa; flexiona o joelho e estende o quadril. Terra romeno, mesa flexora, levantamento terra."
   },
-  "muscles": {
-    "abs": {
-      "name": "Reto Abdominal",
-      "desc": "O 'tanquinho'; flexiona a coluna e resiste à extensão. Abdominais, elevação de pernas, pranchas."
-    },
-    "add": {
-      "name": "Adutores",
-      "desc": "Face interna da coxa; junta as pernas e estabiliza o quadril. Adução, agachamento sumô."
-    },
-    "bic": {
-      "name": "Bíceps Braquial",
-      "desc": "Frente do braço; flexiona o cotovelo e supina o antebraço. Rosca direta."
-    },
-    "calf": {
-      "name": "Gastrocnêmio / Panturrilha",
-      "desc": "Volume de duas cabeças da panturrilha; estende o pé (flexão plantar). Elevação de panturrilha em pé."
-    },
-    "delt": {
-      "name": "Deltoide",
-      "desc": "Capa do ombro com três porções; eleva o braço em todas as direções. Desenvolvimentos, elevações laterais."
-    },
-    "erector": {
-      "name": "Eretores da Espinha",
-      "desc": "Colunas ao lado da coluna vertebral; estendem e estabilizam as costas. Levantamento terra, extensões lombares."
-    },
-    "foot": { "name": "Pé", "desc": "" },
-    "fore": {
-      "name": "Antebraço",
-      "desc": "Motores da pegada, do punho e dos dedos. Rosca de punho, treino de pegada, caminhadas com carga."
-    },
-    "glute": {
-      "name": "Glúteo Máximo",
-      "desc": "Maior músculo do corpo; estende o quadril e gera potência. Agachamentos, elevação pélvica, pontes."
-    },
-    "ham": {
-      "name": "Isquiotibiais",
-      "desc": "Grupo posterior da coxa; flexiona o joelho e estende o quadril. Terra romeno, mesa flexora, levantamento terra."
-    },
-    "hand": { "name": "Mão", "desc": "" },
-    "head": { "name": "Cabeça", "desc": "" },
-    "lat": {
-      "name": "Grande Dorsal",
-      "desc": "As 'asas' das costas; puxa os braços para baixo e para trás. Barras fixas, remadas, puxadas."
-    },
-    "neck": {
-      "name": "Pescoço",
-      "desc": "Esternocleidomastóideo e extensores cervicais; gira e estabiliza a cabeça. Flexões de pescoço, encolhimentos, trabalho com arnês."
-    },
-    "obl": {
-      "name": "Oblíquo Externo",
-      "desc": "Flancos do abdômen; giram e inclinam o tronco para o lado. Rotações, pranchas laterais."
-    },
-    "pec": {
-      "name": "Peitoral Maior",
-      "desc": "Leque do peito; empurra e leva o braço à frente do corpo. Supino, crucifixo, flexões."
-    },
-    "quad": {
-      "name": "Quadríceps",
-      "desc": "Grupo de quatro na frente da coxa; estende o joelho. Agachamentos, afundos, cadeira extensora."
-    },
-    "shin": {
-      "name": "Tibial Anterior",
-      "desc": "Frente da canela; levanta o pé (dorsiflexão). Elevações de ponta, caminhada nos calcanhares."
-    },
-    "traps": {
-      "name": "Trapézio",
-      "desc": "Canga das costas altas e do pescoço; encolhe e estabiliza as escápulas. Encolhimentos, face pull."
-    },
-    "tri": {
-      "name": "Tríceps Braquial",
-      "desc": "Parte de trás do braço; estende o cotovelo. Paralelas, tríceps na polia, extensões acima da cabeça."
-    }
+  "hand": {
+   "name": "Mão",
+   "desc": ""
+  },
+  "head": {
+   "name": "Cabeça",
+   "desc": ""
+  },
+  "lat": {
+   "name": "Grande Dorsal",
+   "desc": "As 'asas' das costas; puxa os braços para baixo e para trás. Barras fixas, remadas, puxadas."
+  },
+  "neck": {
+   "name": "Pescoço",
+   "desc": "Esternocleidomastóideo e extensores cervicais; gira e estabiliza a cabeça. Flexões de pescoço, encolhimentos, trabalho com arnês."
+  },
+  "obl": {
+   "name": "Oblíquo Externo",
+   "desc": "Flancos do abdômen; giram e inclinam o tronco para o lado. Rotações, pranchas laterais."
+  },
+  "pec": {
+   "name": "Peitoral Maior",
+   "desc": "Leque do peito; empurra e leva o braço à frente do corpo. Supino, crucifixo, flexões."
+  },
+  "quad": {
+   "name": "Quadríceps",
+   "desc": "Grupo de quatro na frente da coxa; estende o joelho. Agachamentos, afundos, cadeira extensora."
+  },
+  "shin": {
+   "name": "Tibial Anterior",
+   "desc": "Frente da canela; levanta o pé (dorsiflexão). Elevações de ponta, caminhada nos calcanhares."
+  },
+  "traps": {
+   "name": "Trapézio",
+   "desc": "Canga das costas altas e do pescoço; encolhe e estabiliza as escápulas. Encolhimentos, face pull."
+  },
+  "tri": {
+   "name": "Tríceps Braquial",
+   "desc": "Parte de trás do braço; estende o cotovelo. Paralelas, tríceps na polia, extensões acima da cabeça."
   }
+ }
 }

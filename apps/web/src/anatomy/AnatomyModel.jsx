@@ -30,7 +30,7 @@ const OUTLINE_LIFT = 0.0015;
  *  onSelect(zone|null)
  *  onHover(zone|null)
  */
-export default function AnatomyModel({ url, map, theme = 'dark', selectedId, region = 'all', exercise = null, onSelect, onHover }) {
+export default function AnatomyModel({ url, map, theme = 'dark', selectedId, region = 'all', exercise = null, onSelect, onHover, onReady }) {
   const { scene } = useGLTF(url);
   const meshRef = useRef();
   const hoverRef = useRef(null);
@@ -133,6 +133,11 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
   const handleOut = () => { hoverRef.current = null; onHover && onHover(null); };
 
   useEffect(() => () => useGLTF.clear?.(url), [url]);
+
+  // useGLTF suspends, so reaching this point means the model is decoded and
+  // painted. That is the honest moment to drop the loading overlay — the
+  // environment map may still be in flight, but the body is already there.
+  useEffect(() => { onReady && onReady(); }, [onReady]);
 
   const groupPosition = [-offset.x, -offset.y, -offset.z];
 

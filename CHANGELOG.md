@@ -98,6 +98,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The model is visible on a phone again** — the picker and display panels
+  floated over the canvas at every width, which at 390px covered 44% of the
+  screen and at 320px left one arm and a pair of legs showing. Below 720px they
+  now start closed and open one at a time from a toolbar; choosing a muscle
+  closes the picker, since it otherwise hid the muscle just chosen. Tapping
+  outside dismisses. Desktop is unchanged.
+- **Exercise names wrap instead of truncating** — at every width, desktop
+  included, "Isometric Neck Exercise - Sides" was cut to *Isometric Neck
+  Exerci…*; names have no useful prefix and the translations run longer still.
+- **The canvas says it is loading** — the 1.1 MB model left an empty stage with
+  no indication anything was happening (`Suspense fallback={null}`). The
+  overlay clears the moment the body is painted.
+- **Header fits a narrow screen** — the greeting wrapped to nine lines and took
+  nearly half a 320px viewport before the model got any; it keeps one line now.
+  That also settled a 1px sideways scroll at that width.
+- **Screenshots regenerated**, and `docs/screenshots/capture.mjs` now waits on
+  structural selectors — "Muscle Groups" labels the phone toolbar button too,
+  so the old text selector matched a hidden element and hung.
 - **Light / dark / device** [#6, #9] — one button cycling the three, remembered
   across visits, with the 3D scene colours following the resolved theme.
 - **Distinct muscle colours** [#6] — a colour per muscle rather than per region,
