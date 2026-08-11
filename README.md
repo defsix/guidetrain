@@ -193,6 +193,13 @@ pair of legs behind them. Below 720px they start closed and open one at a time
 from a toolbar, and choosing a muscle closes the picker again — otherwise it
 would hide the muscle you just picked. Tapping outside dismisses them.
 
+Opening a muscle raises the sheet over the lower half of the canvas, so the
+body moves out from behind it: it lifts by half of what is covered and scales
+down to fit the band that's left, then settles back when the sheet closes. How
+much is covered is *measured* rather than assumed — the sheet is shorter for a
+muscle with four exercises than for one with twelve. The model moves, not the
+camera, so orbiting and zooming still belong entirely to you.
+
 Exercise names wrap instead of truncating. "Standing Palms-Up Barbell Behind
 The Back Wrist Curl" has no useful prefix, so an ellipsis told you nothing, and
 the translations run longer than the English.
@@ -243,8 +250,16 @@ Two things apply only to the Pages build:
 ## Roadmap
 
 1. ✅ 3D anatomical body model with selectable muscle groups
-2. Training exercises per muscle group (illustrations, animations, YouTube search)
+2. ✅ Training exercises per muscle group — instructions, equipment, the muscles
+   lit on the model, and a real demonstration video for all 180
 3. Personal training programs (build your own, save/bookmark)
 4. Accounts (username, sex, approximate age) and public program library
+
+Asked for, not yet built:
+
+- **Autoplay on selection** — open an exercise and its video starts, rather than
+  waiting for a second click on the player.
+- **Training pairs** — while you train one muscle, suggest a second exercise to
+  do between sets (supersets), so the rest period does something.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).
