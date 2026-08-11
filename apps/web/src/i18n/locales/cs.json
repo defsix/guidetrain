@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "Jazyk",
-  "auto": "Jazyk zařízení",
-  "aria": "Jazyk"
- },
  "theme": {
   "light": "Světlý",
   "dark": "Tmavý",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "Svalové skupiny",
   "allMuscles": "Všechny svaly",
-  "display": "Zobrazení",
-  "autoRotate": "Automatické otáčení",
   "trainThis": "Trénovat tento",
   "exercises": {
    "one": "{count} cvik",

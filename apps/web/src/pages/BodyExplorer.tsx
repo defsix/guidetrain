@@ -4,7 +4,6 @@ import { AnatomyViewer } from "../anatomy";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
-import LanguageToggle from "../components/LanguageToggle";
 import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
@@ -33,19 +32,15 @@ export default function BodyExplorer() {
             : t("explorer.greetingAnon")}
         </p>
         <div className="header-controls">
-          <LanguageToggle />
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>
       <div className="explorer-canvas">
-        <AnatomyViewer
-          modelUrl={MODEL_URL}
-          theme={resolved}
-          onTrain={(muscle: { id: string; name: string; region: string }) =>
-            console.log("muscle:train ->", muscle)
-          }
-          onSelect={() => {}}
-        />
+        {/* The viewer handles Train This itself — it opens one of the muscle's
+            exercises. The onTrain/onSelect props and the muscle:train window
+            event are still there for a host that wants to record the choice;
+            nothing here needs to yet. */}
+        <AnatomyViewer modelUrl={MODEL_URL} theme={resolved} />
       </div>
     </div>
   );

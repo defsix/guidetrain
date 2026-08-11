@@ -29,7 +29,6 @@
   border-radius: 50%;
 }
 .anatomy-root .regions { top: 16px; right: 16px; width: 212px; max-height: calc(100% - 32px); display: flex; flex-direction: column; }
-.anatomy-root .controls { top: 16px; left: 16px; width: 172px; }
 
 /* The whole list can be taller than the canvas, so it scrolls inside the panel
    rather than pushing the panel off-screen. */
@@ -81,9 +80,6 @@
    Brzucha" — and clipping them to "Двуглавая Мыш…" makes half the list
    unreadable. Two short lines cost less than a lost name. */
 .anatomy-root .muscle .mlabel { overflow-wrap: anywhere; line-height: 1.28; }
-
-.anatomy-root .toggle-row { display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; cursor: pointer; }
-.anatomy-root .toggle-row input { accent-color: var(--accent); width: 16px; height: 16px; }
 
 .anatomy-hover {
   position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 9;
@@ -257,13 +253,7 @@
     top: 58px; right: 12px; left: auto; width: 172px;
     max-height: calc(100% - 82px);
   }
-  .anatomy-root .controls {
-    display: none;
-    top: 58px; left: 12px; right: 12px; width: auto;
-    max-height: calc(100% - 82px);
-  }
-  .anatomy-root .regions.open,
-  .anatomy-root .controls.open { display: flex; flex-direction: column; }
+  .anatomy-root .regions.open { display: flex; flex-direction: column; }
 
   /* No room beside the model on a phone, so it goes back to a bottom sheet —
      capped at half the height so the body stays visible above it. */

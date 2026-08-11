@@ -57,6 +57,14 @@ folded onto itself so left and right always agree (0.73% mirror disagreement,
 decimated mesh. All of it, with the numbers, is in the
 [pipeline README](tools/muscle-segmentation/README.md).
 
+**The body turns on its own.** There used to be a checkbox for it, which meant
+the back of the model was reachable only by someone who had opened a panel and
+found the switch — most people saw a front view and assumed that was all there
+was. Rotating by default shows there is a back without anyone being told, and
+dragging still overrides it mid-turn. Under `prefers-reduced-motion` it is held
+still and stays that way, watched live rather than read once: a body that never
+stops moving is precisely what that setting is asking about.
+
 ## Colour
 
 `MUSCLE_COLORS` (`apps/web/src/anatomy/zoneMapping.js`) is the single source of
@@ -75,7 +83,12 @@ the dark canvas alike**. Built by `tools/muscle-segmentation/palette-design.py`.
 
 Selecting a muscle lists the exercises that train it — step-by-step
 instructions, equipment, difficulty, and a YouTube search link (a search rather
-than a fixed video id, so it can't rot and needs no API key). 180 exercises
+than a fixed video id, so it can't rot and needs no API key). **Train This**
+opens one of them at random, for anyone who wants to train the muscle and
+doesn't want to choose which way; the list underneath is still there for anyone
+who does. It only draws from exercises that have a video — every one does
+today, but ids rot and `--revalidate` drops the bad ones, and that guard is
+what keeps the button from opening an empty player. 180 exercises
 across all 17 zones, built by `tools/exercises/build-exercises.py` from the
 [Free Exercise DB](https://github.com/yuhonas/free-exercise-db), which is public
 domain under the Unlicense.
@@ -156,9 +169,16 @@ only a third of its exercises carry an image.
 ## Languages
 
 Ten: English, Czech, German, Spanish, French, Polish, Portuguese, Russian,
-Simplified Chinese, Japanese. **The device decides** — `navigator.languages` is
-negotiated against that list on load — and a picker in the header overrides it
-if you want something other than what the machine is set to.
+Simplified Chinese, Japanese. **The device decides, and only the device** —
+`navigator.languages` is negotiated against that list on load, and a
+`languagechange` event re-runs the negotiation without a reload. There is no
+picker: the phone already knows what language you read, and a control that
+duplicates a setting you have made once is a control that can disagree with it.
+
+The trade is real and worth naming: someone whose device is set to a language
+they would rather not read the app in has no way to say so here. That is a
+setting on the device, one screen away, and it is the one that will still be
+right tomorrow.
 
 Regional tags collapse (`pt-BR` and `pt-PT` both get `pt`, `es-419` gets `es`),
 any `zh` lands on Simplified, and anything unsupported falls back to English.
@@ -186,12 +206,12 @@ missing keys, dropped `{placeholders}` and missing plural forms.
 
 ## On a phone
 
-The muscle picker and display panel float over the canvas. That is fine when
-there is room beside the model and useless when there isn't: at 390px they
-covered 44% of the width, and at 320px the body was reduced to one arm and a
-pair of legs behind them. Below 720px they start closed and open one at a time
-from a toolbar, and choosing a muscle closes the picker again — otherwise it
-would hide the muscle you just picked. Tapping outside dismisses them.
+The muscle picker floats over the canvas. That is fine when there is room
+beside the model and useless when there isn't: at 390px it covered 44% of the
+width, and at 320px the body was reduced to one arm and a pair of legs behind
+it. Below 720px choosing a muscle closes the picker — otherwise it would hide
+the muscle you just picked — and the toolbar button brings it back. Tapping
+outside dismisses it.
 
 The muscle list stays docked on the right, because it is the point of the
 screen — an empty canvas with the list behind a button reads as nothing to do.
@@ -216,8 +236,12 @@ empty. The overlay clears when the body is painted, which is the honest moment
 
 ## Theming
 
-Light, dark, or follow the device — one button in the header cycles the three
-and remembers the choice. Everything reads from CSS custom properties keyed off
+Light, dark, or follow the device — one icon button in the header cycles the
+three and remembers the choice. The icon carries it alone: which of three
+states you are in is a glance, not a sentence, and the words it used to show
+were the longest thing in the header in half the languages. What the button
+does and what it will do next are still spoken, through `aria-label`, and shown
+on hover through `title`. Everything reads from CSS custom properties keyed off
 `data-theme` on `<html>` (`apps/web/src/index.css`), so switching is one
 attribute swap; on "device" the app tracks the OS setting live. The 3D canvas
 can't read CSS variables, so `AnatomyViewer` maps the resolved theme to real

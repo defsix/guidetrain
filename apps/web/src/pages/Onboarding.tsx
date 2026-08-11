@@ -4,7 +4,6 @@ import type { AgeGroup, Gender, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
-import LanguageToggle from "../components/LanguageToggle";
 import { useT } from "../i18n/I18nProvider";
 
 // The numeric bands read the same in every language, so only the two worded
@@ -45,7 +44,6 @@ export default function Onboarding() {
           <p className="subtitle">{t("onboarding.subtitle")}</p>
         </div>
         <div className="header-controls">
-          <LanguageToggle />
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>

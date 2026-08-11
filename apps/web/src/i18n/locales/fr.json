@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "Langue",
-  "auto": "Langue de l'appareil",
-  "aria": "Langue"
- },
  "theme": {
   "light": "Clair",
   "dark": "Sombre",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "Groupes musculaires",
   "allMuscles": "Tous les muscles",
-  "display": "Affichage",
-  "autoRotate": "Rotation automatique",
   "trainThis": "Entraîner ce muscle",
   "exercises": {
    "one": "{count} exercice",

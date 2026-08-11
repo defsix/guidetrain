@@ -3,17 +3,14 @@ import {
 } from 'react';
 import en from './locales/en.json';
 import {
-  applyDocumentLocale, deviceLocale, loadMessages, makeT, readLocalePref, resolveLocale,
-  writeLocalePref, type LocaleCode, type LocalePref, type Messages, type TFn,
+  applyDocumentLocale, deviceLocale, loadMessages, makeT,
+  type LocaleCode, type Messages, type TFn,
 } from './index';
 import { loadExerciseText, localize, type ExerciseText } from './exerciseText';
 
 type Ctx = {
-  /** What the user chose: a language, or "auto" to follow the device. */
-  pref: LocalePref;
-  /** What that resolves to right now. */
+  /** Whatever the device is set to, negotiated against the languages we have. */
   locale: LocaleCode;
-  setPref: (next: LocalePref) => void;
   t: TFn;
   /**
    * Swap one exercise's name and steps for the translated ones, where they
@@ -25,8 +22,7 @@ type Ctx = {
 const I18nContext = createContext<Ctx | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [pref, setPrefState] = useState<LocalePref>(() => readLocalePref());
-  const [locale, setLocale] = useState<LocaleCode>(() => resolveLocale(readLocalePref()));
+  const [locale, setLocale] = useState<LocaleCode>(deviceLocale);
   const [msgs, setMsgs] = useState<Messages>(en as Messages);
   const [exText, setExText] = useState<ExerciseText>({});
 
@@ -46,18 +42,12 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     return () => { live = false; };
   }, [locale]);
 
-  // On "device", follow the browser if its language changes mid-session.
+  // Follow the browser if its language changes mid-session — with no picker,
+  // this is the only way the language can ever change.
   useEffect(() => {
-    if (pref !== 'auto') return;
     const onChange = () => setLocale(deviceLocale());
     window.addEventListener('languagechange', onChange);
     return () => window.removeEventListener('languagechange', onChange);
-  }, [pref]);
-
-  const setPref = useCallback((next: LocalePref) => {
-    writeLocalePref(next);
-    setPrefState(next);
-    setLocale(resolveLocale(next));
   }, []);
 
   const localizeExercise = useCallback(
@@ -66,8 +56,8 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   );
 
   const value = useMemo<Ctx>(
-    () => ({ pref, locale, setPref, t: makeT(msgs, locale), localizeExercise }),
-    [pref, locale, setPref, msgs, localizeExercise],
+    () => ({ locale, t: makeT(msgs, locale), localizeExercise }),
+    [locale, msgs, localizeExercise],
   );
 
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;

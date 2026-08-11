@@ -17,8 +17,14 @@ const browser = await chromium.launch({
   args: ["--no-sandbox"],
 });
 
+// The model turns on its own, which makes a screenshot a lottery and a click at
+// fixed canvas coordinates hit whatever has rotated under it. Asking for
+// reduced motion holds it at the front view through the app's own code path,
+// rather than needing a test-only switch.
+const STILL = { reducedMotion: "reduce" };
+
 async function desktopFlow() {
-  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 }, ...STILL });
   await page.goto(WEB_URL, { waitUntil: "networkidle" });
   await page.waitForSelector("text=Welcome to GuideTrain");
   await page.screenshot({ path: path.join(OUT, "01-onboarding.png") });
@@ -53,7 +59,7 @@ async function desktopFlow() {
 }
 
 async function mobileFlow() {
-  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, ...STILL });
   await page.goto(WEB_URL, { waitUntil: "networkidle" });
   await page.evaluate(() =>
     localStorage.setItem(
@@ -63,9 +69,11 @@ async function mobileFlow() {
   );
   // HashRouter: the route lives in the hash, not the path.
   await page.goto(`${WEB_URL}/#/explore`, { waitUntil: "networkidle" });
-  // At this width the panels start closed so the body is unobstructed; the
-  // toolbar is what's on screen, and it is what the shot should show.
+  // At this width the muscle list is docked on the right and the body steps
+  // aside for it. Both, plus the toolbar that reopens the list once a muscle
+  // has closed it, are what the shot should show.
   await page.waitForSelector(".anatomy-toolbar", { state: "visible" });
+  await page.waitForSelector(".anatomy-panel.regions", { state: "visible" });
   await page.waitForTimeout(3500);
   await page.screenshot({ path: path.join(OUT, "04-mobile.png") });
   await page.close();

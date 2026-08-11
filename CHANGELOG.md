@@ -13,7 +13,7 @@ Newest first. Numbers in brackets are pull requests.
   as English prose rather than as breakage.
 - **Ten languages, chosen by the device** — English, Czech, German, Spanish,
   French, Polish, Portuguese, Russian, Simplified Chinese and Japanese, matched
-  from `navigator.languages` with a header picker to override. Regional tags
+  from `navigator.languages`. Regional tags
   collapse (`pt-BR`/`pt-PT` → `pt`), any `zh` lands on Simplified, anything
   unsupported falls back to English. Each language is its own ~4 KB chunk, so
   only the active one is downloaded.
@@ -108,12 +108,34 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
-- **The model is visible on a phone again** — the picker and display panels
-  floated over the canvas at every width, which at 390px covered 44% of the
-  screen and at 320px left one arm and a pair of legs showing. Below 720px they
-  now start closed and open one at a time from a toolbar; choosing a muscle
-  closes the picker, since it otherwise hid the muscle just chosen. Tapping
-  outside dismisses. Desktop is unchanged.
+- **Train This picks an exercise** — the button named an intention and then did
+  nothing you could see. It now opens one of that muscle's exercises at random
+  in the player, for anyone who wants to train the muscle and doesn't want to
+  choose which way; the list underneath still belongs to anyone who does. Only
+  exercises with a video are drawn from — all 180 have one today, but ids rot
+  and `--revalidate` drops the bad ones. The `onTrain` prop and the
+  `muscle:train` event still fire, so a host app can record the choice.
+- **The body turns on its own, and the Display panel is gone** — auto-rotate
+  was a checkbox behind a panel, so the back of the model was reachable only by
+  someone who went looking for the switch. Turning by default shows there is a
+  back without anyone being told; dragging still overrides it mid-turn. Held
+  still under `prefers-reduced-motion`, watched live rather than read once. The
+  panel held nothing else, so it and its toolbar button went with it.
+- **No language picker** — the device decides, and only the device.
+  `navigator.languages` is negotiated on load and a `languagechange` event
+  re-runs it without a reload. A saved preference from the old picker is
+  cleared on next load rather than silently outvoting the phone. The trade,
+  stated plainly: someone whose device language isn't the one they'd rather
+  read has no override here, and changes it on the device instead.
+- **The theme button is an icon** — which of three states you're in is a
+  glance, and the label beside it was the longest thing in the header in half
+  the languages. `aria-label` and `title` still say what it does and what it
+  will do next, so nothing is lost to a screen reader or a mouse — only width.
+- **The model is visible on a phone again** — the picker floated over the
+  canvas at every width, which at 390px covered 44% of the screen and at 320px
+  left one arm and a pair of legs showing. Below 720px choosing a muscle closes
+  it, since it otherwise hid the muscle just chosen, and the toolbar button
+  brings it back. Tapping outside dismisses. Desktop is unchanged.
 - **The muscle list stays on screen on a phone** — closing it by default left
   the canvas looking empty with nothing obviously to do. It is docked on the
   right again, and the body steps aside and scales to fit the space that

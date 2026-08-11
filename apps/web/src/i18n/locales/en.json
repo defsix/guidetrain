@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "Language",
-  "auto": "Device language",
-  "aria": "Language"
- },
  "theme": {
   "light": "Light",
   "dark": "Dark",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "Muscle Groups",
   "allMuscles": "All muscles",
-  "display": "Display",
-  "autoRotate": "Auto-rotate",
   "trainThis": "Train this",
   "exercises": {
    "one": "{count} exercise",

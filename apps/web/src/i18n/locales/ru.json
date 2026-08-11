@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "Язык",
-  "auto": "Язык устройства",
-  "aria": "Язык"
- },
  "theme": {
   "light": "Светлая",
   "dark": "Тёмная",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "Группы мышц",
   "allMuscles": "Все мышцы",
-  "display": "Отображение",
-  "autoRotate": "Автовращение",
   "trainThis": "Тренировать",
   "exercises": {
    "one": "{count} упражнение",

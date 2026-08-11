@@ -26,8 +26,10 @@ export default function ThemeToggle({
       aria-label={t("theme.aria", { current: label, next: t(`theme.${next}`) })}
       onClick={() => onChange(next)}
     >
+      {/* Icon only. The label it used to carry is still announced through
+          aria-label and shown on hover via title, so nothing is lost to a
+          screen reader or to a mouse — only the width. */}
       <span className="theme-toggle-icon" aria-hidden="true">{ICON[pref]}</span>
-      <span className="theme-toggle-label">{label}</span>
     </button>
   );
 }

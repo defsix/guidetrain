@@ -66,31 +66,21 @@ export function deviceLocale(): LocaleCode {
   return negotiate(tags);
 }
 
-export type LocalePref = 'auto' | LocaleCode;
+/**
+ * The device decides the language, with no in-app override.
+ *
+ * An earlier build had a picker, so a returning visitor may still carry the
+ * choice it saved. Left in place that would silently pin them to a language
+ * nothing on screen can now change, so it is cleared on the way past.
+ */
+const LEGACY_KEY = 'guidetrain.locale';
 
-const STORAGE_KEY = 'guidetrain.locale';
-
-export function readLocalePref(): LocalePref {
+export function forgetLocalePref() {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw === 'auto') return 'auto';
-    if (raw && (CODES as string[]).includes(raw)) return raw as LocaleCode;
+    localStorage.removeItem(LEGACY_KEY);
   } catch {
-    // Private mode and blocked storage both throw; the device default is fine.
+    // Private mode and blocked storage both throw; nothing here needs to work.
   }
-  return 'auto';
-}
-
-export function writeLocalePref(pref: LocalePref) {
-  try {
-    localStorage.setItem(STORAGE_KEY, pref);
-  } catch {
-    // Not being able to remember the choice is not a reason to refuse it.
-  }
-}
-
-export function resolveLocale(pref: LocalePref): LocaleCode {
-  return pref === 'auto' ? deviceLocale() : pref;
 }
 
 export type Messages = typeof en;

@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "语言",
-  "auto": "设备语言",
-  "aria": "语言"
- },
  "theme": {
   "light": "浅色",
   "dark": "深色",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "肌肉群",
   "allMuscles": "所有肌肉",
-  "display": "显示",
-  "autoRotate": "自动旋转",
   "trainThis": "训练这块",
   "exercises": {
    "other": "{count} 个动作"

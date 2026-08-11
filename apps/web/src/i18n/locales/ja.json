@@ -1,9 +1,4 @@
 {
- "language": {
-  "label": "言語",
-  "auto": "デバイスの言語",
-  "aria": "言語"
- },
  "theme": {
   "light": "ライト",
   "dark": "ダーク",
@@ -38,8 +33,6 @@
  "viewer": {
   "muscleGroups": "筋肉グループ",
   "allMuscles": "すべての筋肉",
-  "display": "表示",
-  "autoRotate": "自動回転",
   "trainThis": "これを鍛える",
   "exercises": {
    "other": "{count} 種目"

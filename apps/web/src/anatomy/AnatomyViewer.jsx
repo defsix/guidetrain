@@ -120,15 +120,18 @@ export default function AnatomyViewer({
   modelUrl = '/models/anatomy_mobile.glb',
   map = defaultMap,
   theme = 'dark',
-  onTrain,
-  onSelect,
+  // Optional hooks for a host app that wants to record what was picked. The
+  // viewer is fully usable without them, and the defaults are what say so —
+  // TypeScript infers this component's props from the source, and a bare
+  // `onTrain,` reads as required.
+  onTrain = null,
+  onSelect = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
   const [selected, setSelected] = useState(null);
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
-  const [autoRotate, setAutoRotate] = useState(false);
   const [openDrill, setOpenDrill] = useState(null);
   const [video, setVideo] = useState(null);
   // Which floating panel is open on a phone. Both are always on screen at
@@ -139,6 +142,19 @@ export default function AnatomyViewer({
   // noticeable stretch. Say so rather than showing an empty stage.
   const [ready, setReady] = useState(false);
   const handleReady = useCallback(() => setReady(true), []);
+
+  // Whether the reader has asked the system for less motion. Watched rather
+  // than read once, since it can be toggled while the page is open.
+  const [stillness, setStillness] = useState(
+    () => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+    if (!mq) return;
+    const onChange = (e) => setStillness(e.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   // How much of the canvas the exercise sheet is covering, 0 when it isn't.
   // Only the phone layout puts it over the body; on a wide screen it sits in a
@@ -230,6 +246,13 @@ export default function AnatomyViewer({
 
   const train = () => {
     if (!selected) return;
+    // Pick one of this muscle's exercises at random and play it. Every one has
+    // a demonstration today, but ids rot and --revalidate drops the bad ones,
+    // so the filter is what keeps this from opening an empty player.
+    const playable = drills.filter((x) => x.videoId);
+    if (playable.length) {
+      setVideo(playable[Math.floor(Math.random() * playable.length)]);
+    }
     // `name`/`region` stay English so a host app has a stable value to key on;
     // `label` is the same thing in the user's language, for display.
     const detail = {
@@ -272,7 +295,11 @@ export default function AnatomyViewer({
           enablePan={false}
           minDistance={1.6}
           maxDistance={7}
-          autoRotate={autoRotate}
+          // Always turning, so the back of the model is reachable without
+          // anyone having to discover that it can be dragged. Held still for a
+          // reader who has asked for less motion — a body that never stops
+          // moving is exactly what that setting is about.
+          autoRotate={!stillness}
           autoRotateSpeed={0.8}
           target={[0, 0, 0]}
         />
@@ -296,14 +323,6 @@ export default function AnatomyViewer({
           onClick={() => setPanel(panel === 'regions' ? null : 'regions')}
         >
           {t('viewer.muscleGroups')}
-        </button>
-        <button
-          className={`tool ${panel === 'controls' ? 'active' : ''}`}
-          aria-expanded={panel === 'controls'}
-          aria-controls="anatomy-controls"
-          onClick={() => setPanel(panel === 'controls' ? null : 'controls')}
-        >
-          {t('viewer.display')}
         </button>
       </div>
 
@@ -352,15 +371,6 @@ export default function AnatomyViewer({
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Display controls */}
-      <div id="anatomy-controls" className={`anatomy-panel controls ${panel === 'controls' ? 'open' : ''}`}>
-        <h2>{t('viewer.display')}</h2>
-        <label className="toggle-row">
-          <span>{t('viewer.autoRotate')}</span>
-          <input type="checkbox" checked={autoRotate} onChange={(e) => setAutoRotate(e.target.checked)} />
-        </label>
       </div>
 
       {video && <VideoModal exercise={video} onClose={() => setVideo(null)} />}
