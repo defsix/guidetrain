@@ -84,11 +84,17 @@ the dark canvas alike**. Built by `tools/muscle-segmentation/palette-design.py`.
 Selecting a muscle lists the exercises that train it — step-by-step
 instructions, equipment, difficulty, and a YouTube search link (a search rather
 than a fixed video id, so it can't rot and needs no API key). **Train This**
-opens one of them at random, for anyone who wants to train the muscle and
-doesn't want to choose which way; the list underneath is still there for anyone
-who does. It only draws from exercises that have a video — every one does
-today, but ids rot and `--revalidate` drops the bad ones, and that guard is
-what keeps the button from opening an empty player. 180 exercises
+opens one of them, for anyone who wants to train the muscle and doesn't want to
+choose which way; the list underneath is still there for anyone who does.
+
+It deals from a shuffled bag rather than rolling a die: every exercise comes up
+once before any comes up twice, and a refill that would start on what just
+played steps aside one place, so the seam between two bags can't repeat either.
+Rolling a die looked broken — eight presses on a four-exercise muscle returned
+three distinct videos. Changing muscle deals a fresh bag. Only exercises with a
+video are drawn from; every one has one today, but ids rot and `--revalidate`
+drops the bad ones, and that guard is what keeps the button from opening an
+empty player. 180 exercises
 across all 17 zones, built by `tools/exercises/build-exercises.py` from the
 [Free Exercise DB](https://github.com/yuhonas/free-exercise-db), which is public
 domain under the Unlicense.

@@ -109,12 +109,20 @@ Newest first. Numbers in brackets are pull requests.
 ## App
 
 - **Train This picks an exercise** — the button named an intention and then did
-  nothing you could see. It now opens one of that muscle's exercises at random
-  in the player, for anyone who wants to train the muscle and doesn't want to
-  choose which way; the list underneath still belongs to anyone who does. Only
+  nothing you could see. It now opens one of that muscle's exercises in the
+  player, for anyone who wants to train the muscle and doesn't want to choose
+  which way; the list underneath still belongs to anyone who does. Only
   exercises with a video are drawn from — all 180 have one today, but ids rot
   and `--revalidate` drops the bad ones. The `onTrain` prop and the
   `muscle:train` event still fire, so a host app can record the choice.
+- **Shuffled, not random** — a die roll repeats, and a button that hands you
+  the same exercise twice running reads as broken: eight presses on a
+  four-exercise muscle returned three distinct videos. It deals from a bag
+  instead, so every exercise comes up once before any comes up twice, and a
+  refill that would open on what just played steps aside one place so the seam
+  between bags can't repeat either. Changing muscle deals fresh. Verified in a
+  browser: 12/12 distinct across each of two cycles on biceps, 4/4 across each
+  of three on neck, no back-to-back repeat anywhere in 40 presses.
 - **The body turns on its own, and the Display panel is gone** — auto-rotate
   was a checkbox behind a panel, so the back of the model was reachable only by
   someone who went looking for the switch. Turning by default shows there is a

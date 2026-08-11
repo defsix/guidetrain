@@ -244,14 +244,41 @@ export default function AnatomyViewer({
     onSelect && onSelect(z);
   }, [onSelect, region]);
 
+  // Train This deals from a shuffled bag, not a die roll: every exercise for
+  // this muscle comes up once before any comes up twice. Rolling a die repeats
+  // — eight presses on a four-exercise muscle returned three distinct videos —
+  // and a button that hands you the same thing twice running reads as broken
+  // rather than as chance. Ids rather than objects, so a language change
+  // mid-bag doesn't leave stale translations queued up.
+  const bag = useRef({ key: null, queue: [], last: null });
+
   const train = () => {
     if (!selected) return;
-    // Pick one of this muscle's exercises at random and play it. Every one has
-    // a demonstration today, but ids rot and --revalidate drops the bad ones,
-    // so the filter is what keeps this from opening an empty player.
+    // Every exercise has a demonstration today, but ids rot and --revalidate
+    // drops the bad ones, so this filter is what keeps the button from opening
+    // an empty player.
     const playable = drills.filter((x) => x.videoId);
     if (playable.length) {
-      setVideo(playable[Math.floor(Math.random() * playable.length)]);
+      const b = bag.current;
+      if (b.key !== selected.id || !b.queue.length) {
+        const ids = playable.map((x) => x.id);
+        for (let i = ids.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [ids[i], ids[j]] = [ids[j], ids[i]];
+        }
+        // The seam between two bags is the one place a repeat can still land,
+        // so a refill that starts on what just played steps aside one place.
+        if (ids.length > 1 && b.key === selected.id && ids[0] === b.last) {
+          [ids[0], ids[1]] = [ids[1], ids[0]];
+        }
+        b.key = selected.id;
+        b.queue = ids;
+      }
+      const id = b.queue.shift();
+      b.last = id;
+      // Falls back if an id went away under us — the list is rebuilt whenever
+      // the muscle or the language changes, and the bag outlives one of those.
+      setVideo(playable.find((x) => x.id === id) || playable[0]);
     }
     // `name`/`region` stay English so a host app has a stable value to key on;
     // `label` is the same thing in the user's language, for display.
