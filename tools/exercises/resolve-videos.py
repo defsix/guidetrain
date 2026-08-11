@@ -62,12 +62,30 @@ def get(path, **params):
 STOP = {"the", "a", "an", "with", "and", "on", "to", "in", "of", "for", "your", "you",
         "exercise", "how", "best", "form", "proper", "do", "tutorial", "is", "it",
         "this", "my", "at", "home", "gym", "workout", "tips", "guide", "perfect",
-        "technique", "mistakes", "variations"}
+        "technique", "mistakes", "variations",
+        # Posture and setup qualifiers. Half the catalogue is "standing" or
+        # "seated" something, so agreeing on one is no evidence at all: it is
+        # how "Standing Olympic Plate Hand Squeeze" matched "How to do Standing
+        # Military Press". "bar" is the same — shared by pullup bars, barbells
+        # and T-bars alike, it let "V-Bar Pullup" match "V Bar Pulldown".
+        "standing", "seated", "lying", "kneeling", "bar", "machine",
+        "alternate", "alternating"}
 # Short forms a title may use where the exercise name spells it out.
 ALIAS = {"rdl": {"romanian", "stiff", "legged", "deadlift"}, "db": {"dumbbell"},
          "bb": {"barbell"}, "ohp": {"overhead", "press"},
          "facepull": {"face", "pull"}, "pullup": {"pull", "up"},
          "pushup": {"push", "up"}, "chinup": {"chin", "up"}, "situp": {"sit", "up"}}
+
+
+def singular(w):
+    """Fold a trailing plural s, so "rows" and "row" are the same word.
+
+    Titles pluralise what exercise names don't ("T-Bar Row" vs "T-Bar Rows"),
+    which without this would leave that pair agreeing on nothing. Words of
+    three letters or fewer are left alone so "abs" survives, and a double s is
+    never stripped so "press" doesn't become "pres".
+    """
+    return w[:-1] if len(w) > 3 and w.endswith("s") and not w.endswith("ss") else w
 
 
 def words(s):
@@ -82,7 +100,7 @@ def words(s):
     out = set()
     for w in re.sub(r"[^a-z0-9 ]", " ", s.lower()).split():
         out |= ALIAS.get(w, {w})
-    return {w for w in out - STOP if len(w) > 1 and not w.isdigit()}
+    return {singular(w) for w in out - STOP if len(w) > 1 and not w.isdigit()}
 
 
 def relevant(name, title):
