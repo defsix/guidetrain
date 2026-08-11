@@ -104,6 +104,14 @@ Newest first. Numbers in brackets are pull requests.
   now start closed and open one at a time from a toolbar; choosing a muscle
   closes the picker, since it otherwise hid the muscle just chosen. Tapping
   outside dismisses. Desktop is unchanged.
+- **The body moves out from behind the exercise sheet** — opening a muscle on a
+  phone put the sheet over the lower half of the canvas, hiding the legs. The
+  model now lifts by half of what is covered and scales to fit the band that's
+  left, settling back when the sheet closes. Coverage is measured, not assumed,
+  since the sheet is shorter for a muscle with four exercises than for one with
+  twelve. Moving the model rather than the camera keeps orbit and zoom entirely
+  the reader's. Before, the legs and feet were behind the sheet; after, the
+  whole body clears it with 22px to spare above the head at 390px.
 - **Exercise names wrap instead of truncating** — at every width, desktop
   included, "Isometric Neck Exercise - Sides" was cut to *Isometric Neck
   Exerci…*; names have no useful prefix and the translations run longer still.

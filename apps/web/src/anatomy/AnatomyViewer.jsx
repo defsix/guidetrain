@@ -1,5 +1,5 @@
-import React, { useState, useCallback, useMemo, Suspense } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useState, useCallback, useMemo, useRef, useEffect, Suspense } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
 import AnatomyModel from './AnatomyModel';
 import EnvironmentBoundary from './EnvironmentBoundary';
@@ -46,6 +46,53 @@ const SCENE = {
   },
 };
 
+/**
+ * Keeps the body inside the part of the canvas nothing is covering.
+ *
+ * On a phone the exercise sheet is a bottom sheet over the canvas, so half the
+ * model ends up behind it. Rather than shrink the sheet, the body moves: it
+ * lifts by half of what is covered and scales down to fit the band that is
+ * left. Moving the model instead of the camera means orbiting and zooming
+ * still belong entirely to the reader — nothing fights their input.
+ *
+ * `cover` is the fraction of canvas height the sheet occupies, measured rather
+ * than assumed, because the sheet is shorter for a muscle with few exercises.
+ */
+function FrameToVisible({ cover, children }) {
+  const group = useRef();
+  const { camera } = useThree();
+  const snap = useRef(true);
+
+  useFrame((_, delta) => {
+    const g = group.current;
+    if (!g) return;
+
+    // World height the camera sees at the model's distance. Taken live, so a
+    // reader who has zoomed in still gets a correct lift.
+    const dist = camera.position.length() || 3.4;
+    const viewH = 2 * dist * Math.tan((camera.fov * Math.PI) / 360);
+
+    // Centre of the free band sits cover/2 above the centre of the canvas.
+    const wantY = (cover / 2) * viewH;
+    // The body fills roughly three quarters of the frame, so it only needs
+    // shrinking once the free band is narrower than that. PAD keeps a margin
+    // top and bottom: fitting the band exactly left 1px of headroom above the
+    // head, which any longer sheet would have turned into a clipped skull.
+    const PAD = 0.025;
+    const wantS = Math.min(1, Math.max(0.5, (1 - cover - 2 * PAD) / 0.78));
+
+    // First frame lands where it belongs rather than sliding in from nowhere;
+    // so does every frame for a reader who has asked for less motion.
+    const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const k = snap.current || still ? 1 : 1 - Math.pow(0.002, delta);
+    g.position.y += (wantY - g.position.y) * k;
+    g.scale.setScalar(g.scale.x + (wantS - g.scale.x) * k);
+    snap.current = false;
+  });
+
+  return <group ref={group}>{children}</group>;
+}
+
 export default function AnatomyViewer({
   modelUrl = '/models/anatomy_mobile.glb',
   map = defaultMap,
@@ -69,6 +116,35 @@ export default function AnatomyViewer({
   // noticeable stretch. Say so rather than showing an empty stage.
   const [ready, setReady] = useState(false);
   const handleReady = useCallback(() => setReady(true), []);
+
+  // How much of the canvas the exercise sheet is covering, 0 when it isn't.
+  // Only the phone layout puts it over the body; on a wide screen it sits in a
+  // corner the model never reaches.
+  const rootRef = useRef(null);
+  const readoutRef = useRef(null);
+  const [cover, setCover] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      const root = rootRef.current;
+      const sheet = readoutRef.current;
+      const overlaps = window.matchMedia('(max-width: 720px)').matches;
+      if (!root || !sheet || !overlaps) return setCover(0);
+      const rootH = root.getBoundingClientRect().height;
+      const sheetH = sheet.getBoundingClientRect().height;
+      if (!rootH) return setCover(0);
+      // A little breathing room above the sheet, and a ceiling so the body
+      // never shrinks to nothing if the sheet grows unexpectedly.
+      setCover(Math.min(0.62, (sheetH + 12) / rootH));
+    };
+    measure();
+
+    const ro = new ResizeObserver(measure);
+    if (readoutRef.current) ro.observe(readoutRef.current);
+    if (rootRef.current) ro.observe(rootRef.current);
+    window.addEventListener('resize', measure);
+    return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
+  }, [selected, openDrill]);
 
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
@@ -130,7 +206,7 @@ export default function AnatomyViewer({
   };
 
   return (
-    <div className="anatomy-root">
+    <div className="anatomy-root" ref={rootRef}>
       <Canvas camera={{ position: [0, 0.2, 3.4], fov: 42 }} dpr={[1, 2]}>
         <color attach="background" args={[scene.bg]} />
         <fog attach="fog" args={scene.fog} />
@@ -138,6 +214,7 @@ export default function AnatomyViewer({
         <directionalLight position={[4, 6, 8]} intensity={scene.key[1]} color={scene.key[0]} />
         <directionalLight position={[-6, 3, -5]} intensity={scene.fill[1]} color={scene.fill[0]} />
         <Suspense fallback={null}>
+          <FrameToVisible cover={cover}>
           <AnatomyModel
             url={modelUrl}
             map={map}
@@ -149,6 +226,7 @@ export default function AnatomyViewer({
             onHover={setHover}
             onReady={handleReady}
           />
+          </FrameToVisible>
           <EnvironmentBoundary>
             <Suspense fallback={null}>
               <Environment preset="city" />
@@ -257,7 +335,7 @@ export default function AnatomyViewer({
 
       {/* Selection readout, with the exercises that train this muscle */}
       {selected && (
-        <div className="anatomy-readout">
+        <div className="anatomy-readout" ref={readoutRef}>
           <div className="head">
             <div className="body">
               <div className="mname">{zoneName(selected)}</div>
