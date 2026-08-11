@@ -304,5 +304,29 @@ Asked for, not yet built:
   video rather than waiting for a click. Worth noting when it comes back: the
   player deliberately fetches nothing from YouTube until you click, so autoplay
   spends that, and it may want to be opt-in.
+- **Get me to my next max** — *needs accounts first (roadmap 4).* You record
+  your best lift, name the number you want, and the app plans the way there:
+  100 kg today, 110 kg wanted, so you back off and build up rather than trying
+  110 on Monday.
+
+  The maths is well established and needs sourcing properly before any of it
+  ships, but the shape of it is known. Estimating a one-rep max from a set you
+  actually did is Epley (`1RM = w × (1 + reps/30)`) or Brzycki
+  (`1RM = w × 36 / (37 − reps)`); they agree closely under about 10 reps and
+  drift apart above it. Working back down is a percentage table off a *training
+  max* set below the true one — Wendler's 5/3/1 uses 90% and adds a fixed
+  2.5 kg upper / 5 kg lower per four-week cycle, which puts 100 → 110 kg at two
+  cycles. Whether that specific programme, a linear progression or something
+  else is what GuideTrain should teach is a decision, not a lookup.
+
+  Three things to settle when it is built, none of them arithmetic:
+  - **Where the number comes from.** A typed-in "my max is 100" is a claim, an
+    estimate from a recorded set is a calculation. They should not look alike.
+  - **What happens when a cycle fails**, because it will. A plan that only
+    describes success is the part that gets someone hurt.
+  - **How it is framed.** This is the first feature that would tell a person
+    what load to put on a bar. Novice, injured and returning lifters are the
+    ones a percentage table serves worst, and the app knows an age band but
+    nothing about training history.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).
