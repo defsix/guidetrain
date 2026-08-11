@@ -113,10 +113,13 @@ named in the build script and marked `"source": "curated"`.
 
 ### Video
 
-Every one of the 180 exercises plays a real demonstration in the app, in a
+174 of the 180 exercises play a real demonstration in the app, in a
 click-to-load `youtube-nocookie` player — nothing is fetched from YouTube until
-you open one. A *search* cannot be embedded (YouTube removed `listType=search`
-in November 2020), so this needs real video ids:
+you open one. The other six keep the search link, because nothing that
+demonstrably showed *that* movement could be found; see the gate below for why
+that is the right answer rather than a gap. A *search* cannot be embedded
+(YouTube removed `listType=search` in November 2020), so this needs real video
+ids:
 
 ```bash
 YOUTUBE_API_KEY=... python3 tools/exercises/resolve-videos.py
@@ -144,6 +147,36 @@ Standing Military Press*. "bar" is shared by pullup bars, barbells and T-bars
 alike, and it paired "V-Bar Pullup" with a *V Bar Pulldown*. A trailing plural
 is folded, so *T-Bar Rows* still meets "T-Bar Row".
 
+Sharing a word is necessary and not sufficient. "Seated Dumbbell Curl" and
+*Incline Dumbbell Curl* share two and are done on different benches; "Band Hip
+Adductions" was showing a *Banded Hip Abduction*, which is the opposite
+movement on a different muscle. So a title is also rejected when it
+**contradicts** the name. Two ways it can:
+
+- **Mutually exclusive qualifiers.** Nothing is both seated and incline, and a
+  barbell is not a Smith machine. Several of these words are in the stop list
+  above — they carry no weight as agreement, because half the catalogue is
+  "seated" something, but they are decisive as disagreement. *A word can be
+  worthless as evidence of a match and conclusive as evidence of a mismatch.*
+- **A qualifier the title is missing.** A "Cable Reverse Crunch" video titled
+  *Cable Crunch* is not a differently worded match, it is the other exercise.
+  Checked one way only: the name is the specification, and a title carrying an
+  extra qualifier is usually just being more precise.
+
+Synonyms have to be taught, or the test reads them as conflicts — "leverage" in
+this catalogue means a plate-loaded machine, which titles call Hammer Strength,
+isolateral, or just the machine; a rope is what hangs off a cable. Without those
+the rule threw away two correct videos.
+
+Separately, **no two exercises share a video**. Each was resolved knowing
+nothing about the others, so one cable crunch video had been handed to four of
+them, and Train This — dealing a different exercise each press — opened the same
+video twice running and looked broken. `--dedupe` leaves it with whichever name
+the title matches best and re-searches the rest, and a search now passes over
+anything already taken while another candidate remains. A shared video is still
+accepted as a last resort: two exercises on one demonstration beats one exercise
+on none.
+
 The top hit for a less common movement is often a general muscle video:
 "Reverse Barbell Curl" came back with *BIGGER Forearms Workout*. The gate
 rejects those and keeps differently worded good matches — "Romanian Deadlift"
@@ -157,9 +190,17 @@ touch a YouTube account, and it isn't used at runtime, so it can be deleted once
 the ids are baked in.
 
 Anything without an id keeps the YouTube search link, and the player always
-offers that way out too — video ids rot, and every exercise having one today is
-not a promise it still will, which is why the search link exists in the first
-place.
+offers that way out too — video ids rot, and 174 exercises having one today is
+not a promise they still will, which is why the search link exists in the first
+place. **Train This only deals from exercises that have a video**, so it never
+opens an empty player; every muscle has at least four, the neck fewest.
+
+Coverage went from 180 to 174 when the contradiction rules landed, and that is
+the rule working rather than a regression. Six exercises — mostly suspended and
+decline variants of crunches, and the reverse calf raise on a leg press — had
+been showing the plain version of the movement. A reader told a video shows
+their exercise has no reason to doubt it, so the search link, which makes them
+choose, is the more honest answer.
 
 ### wger, and why it isn't used
 

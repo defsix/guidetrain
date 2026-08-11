@@ -29,6 +29,33 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Exercises
 
+- **A video has to match the variant, not just the movement** — sharing a word
+  was necessary and not sufficient. "Seated Dumbbell Curl" opened *Incline
+  Dumbbell Curl*, and "Band Hip Adductions" opened a *Banded Hip Abduction*,
+  which is the opposite movement on a different muscle. A title is now also
+  rejected when it contradicts the name: mutually exclusive qualifiers (nothing
+  is both seated and incline; a barbell is not a Smith machine), or a
+  qualifier the title lacks (*Cable Crunch* is not a "Cable Reverse Crunch").
+  Several of those words are in the stop list, where they carry no weight as
+  agreement — half the catalogue is "seated" something — and that is the point:
+  a word can be worthless as evidence of a match and conclusive as evidence of
+  a mismatch. Synonyms had to be taught alongside it ("leverage" is a machine,
+  a rope hangs off a cable), or the rule discarded two correct videos. 17 wrong
+  ids caught.
+- **No two exercises share a video** — each was resolved knowing nothing about
+  the others, so one cable crunch video served four of them, and Train This
+  opened the same video two presses running and looked broken. `--dedupe`
+  leaves it with whichever name the title matches best and re-searches the
+  rest; a search now passes over anything already taken while another candidate
+  remains, falling back to a shared video only when nothing else matches. 11
+  freed, 0 duplicates left.
+- **174 of 180 have a video, down from 180** — and that is the rule working,
+  not a regression. Six suspended, decline and reverse variants had been
+  showing the plain version of the movement, and nothing found demonstrates the
+  real one. They keep the YouTube search link. A reader told a video shows
+  their exercise has no reason to doubt it; a search link makes them choose,
+  which is the honest answer. Every muscle still has at least four playable
+  exercises, so Train This works everywhere.
 - **Relevance gate on resolved videos** — a video is kept only if its title
   shares a meaningful word with the exercise name, so "Reverse Barbell Curl" no
   longer opens *BIGGER Forearms Workout*; an alias table keeps differently
