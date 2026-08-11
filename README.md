@@ -94,10 +94,10 @@ named in the build script and marked `"source": "curated"`.
 
 ### Video
 
-An exercise with a known video plays it in the app, in a click-to-load
-`youtube-nocookie` player — nothing is fetched from YouTube until you open one.
-A *search* cannot be embedded (YouTube removed `listType=search` in November
-2020), so this needs real video ids:
+Every one of the 180 exercises plays a real demonstration in the app, in a
+click-to-load `youtube-nocookie` player — nothing is fetched from YouTube until
+you open one. A *search* cannot be embedded (YouTube removed `listType=search`
+in November 2020), so this needs real video ids:
 
 ```bash
 YOUTUBE_API_KEY=... python3 tools/exercises/resolve-videos.py
@@ -115,22 +115,32 @@ broken.) It also checks each video is actually embeddable, since an owner can
 forbid it and such a video would open an empty player.
 
 **A wrong video is worse than none**, so a result is kept only if its title
-shares a meaningful word with the exercise name — a single letter or a bare
-number does not count, since neither identifies a movement. The top hit for a less common
-movement is often a general muscle video: "Reverse Barbell Curl" came back with
-*BIGGER Forearms Workout*, "Standing Olympic Plate Hand Squeeze" with *The
-Perfect Lying Triceps Extension*. The gate rejects those and keeps differently
-worded good matches — "Romanian Deadlift" still meets *RDL Tutorial* through a
-small alias table. `--revalidate` re-checks ids already in the file and drops
-any that fail. Rejects fall back to the search link, which always works.
+shares a meaningful word with the exercise name. What counts as meaningful is
+the whole trick. A single letter or a bare number does not — neither identifies
+a movement, and letting them count is how "V-Bar Pullup" matched *Top 9 Lats
+Exercises for a V-Shape Body*. Nor do posture and setup qualifiers: half the
+catalogue is "standing" or "seated" something, so agreeing on one is no
+evidence, which is how "Standing Olympic Plate Hand Squeeze" reached *How to do
+Standing Military Press*. "bar" is shared by pullup bars, barbells and T-bars
+alike, and it paired "V-Bar Pullup" with a *V Bar Pulldown*. A trailing plural
+is folded, so *T-Bar Rows* still meets "T-Bar Row".
+
+The top hit for a less common movement is often a general muscle video:
+"Reverse Barbell Curl" came back with *BIGGER Forearms Workout*. The gate
+rejects those and keeps differently worded good matches — "Romanian Deadlift"
+still meets *RDL Tutorial* through a small alias table, and "Standing Olympic
+Plate Hand Squeeze" now opens *How to - Plate Pinch*. `--revalidate` re-checks
+ids already in the file and drops any that fail, which is how the two above were
+caught. Rejects fall back to the search link, which always works.
 
 An API key is free and needs no billing. It reads public data only: it cannot
 touch a YouTube account, and it isn't used at runtime, so it can be deleted once
 the ids are baked in.
 
 Anything without an id keeps the YouTube search link, and the player always
-offers that way out too — video ids rot, which is why the search link exists in
-the first place.
+offers that way out too — video ids rot, and every exercise having one today is
+not a promise it still will, which is why the search link exists in the first
+place.
 
 ### wger, and why it isn't used
 

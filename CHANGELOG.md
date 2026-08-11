@@ -37,11 +37,17 @@ Newest first. Numbers in brackets are pull requests.
   The resolver also now recognises an exhausted daily quota, which arrives as
   429 in the response body rather than the documented 403, and stops instead of
   reporting every remaining exercise as broken.
-- **Video ids resolved** [#17, #22] — 136 of 180 exercises now open a real
-  demonstration; the rest keep the search link until the next quota day.
-- **Gate tightened** — a single letter or a bare number no longer counts as a
-  shared word, which is how "V-Bar Pullup" had matched *Top 9 Lats Exercises
-  for a V-Shape Body* on the lone "v". Real three-letter words still count.
+- **Every exercise now opens a real demonstration** [#17, #22] — all 180 have a
+  resolved video id, finished across four quota days.
+- **Gate tightened twice** — a single letter or a bare number no longer counts
+  as a shared word, which is how "V-Bar Pullup" had matched *Top 9 Lats
+  Exercises for a V-Shape Body* on the lone "v". Nor do posture and setup
+  qualifiers ("standing", "seated", "bar", "machine"): half the catalogue is
+  "standing" something, so agreeing on one is no evidence, and that let
+  "Standing Olympic Plate Hand Squeeze" reach *How to do Standing Military
+  Press* and "V-Bar Pullup" a *V Bar Pulldown*. Both were caught by
+  `--revalidate` and re-resolved correctly. A trailing plural is now folded, so
+  *T-Bar Rows* still meets "T-Bar Row". Real three-letter words still count.
 - **Video in the app** — an exercise with a known video plays it in a
   click-to-load `youtube-nocookie` player rather than sending you to a new tab;
   nothing is fetched from YouTube until you open one. Ids are resolved at build
