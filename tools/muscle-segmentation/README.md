@@ -20,7 +20,13 @@ python3 1-segment.py           # painted colours -> ~110 muscle regions
 python3 2-name-muscles.py      # regions -> the app's muscle groups
 python3 3-prepare-export.py    # per-vertex zone ids, normalised to viewer scale
 node    4-build-glb.mjs        # decimate + write anatomy_mobile/full.glb
+python3 5-despeckle-zones.py apps/web/public/models/anatomy_mobile.glb
+python3 5-despeckle-zones.py apps/web/public/models/anatomy_full.glb
 ```
+
+Step 5 removes labels that landed away from the muscle they name — see
+"Strays" below. It edits the built `.glb` in place and is a no-op on a clean
+one, so it is safe to re-run.
 
 Then, once the result is copied into the app:
 
@@ -233,7 +239,7 @@ separately lets them drift apart: doing that cost most of the symmetry the
 previous pass had won (0.6% → 5.4% disagreement). Each triangle is therefore
 paired with the one nearest its own mirrored position and the two are smoothed
 as one. That also repairs the asymmetry decimation introduces on its own —
-which is why the shipped model now measures 0.8% rather than the 3.3% that was
+which is why the shipped model now measures 0.73% rather than the 3.3% that was
 previously written off as an unavoidable cost of decimating.
 
 ### The palette
@@ -300,3 +306,42 @@ thigh as its own region; trapezius comes out large (11%) because it absorbs the
 rhomboids and the whole upper back, which the model does not separate. Both are
 the artwork's doing, and forcing either would mean overriding it — which is what
 produced the bleed in the first place.
+
+## Strays
+
+Region growing works on the painted texture, and the arms hang beside the
+thighs. Where the two surfaces nearly touch, growth crossed the gap. The
+shipped model carried two of these:
+
+- **127 faces on the upper thighs labelled "forearm"** — selecting Forearm lit
+  part of the leg.
+- **an 87-face "hand" patch on the thighs**, while the real hands ended up
+  labelled forearm, leaving the zone with no hand geometry at all.
+
+`5-despeckle-zones.py` finds both from geometry alone, without re-running the
+segmentation. Two rules, each measured against the shipped model:
+
+| rule | test | what it caught |
+| --- | --- | --- |
+| detached island | smaller than a fifth of its zone, and more than 0.10 from the zone's main mass | the forearm patches, sitting 0.202 away |
+| speck zone | under 0.5% of the surface, in pieces more than 0.10 apart | "hand", 0.15% in two scraps 0.359 apart |
+
+The size test is what spares a paired muscle: the real left and right halves
+are comparable in size, so neither is ever the small one. Every legitimately
+separate island in the model is within 0.066 of its zone — well under the
+threshold.
+
+Each patch takes **one** zone, the majority vote of the kept surface around it
+counted on the folded body. Voting per face instead paints a mosaic — these
+patches straddle quadriceps, glutes and hamstrings — and the internal borders
+never quite mirror, which took mirror disagreement from 0.76% to 0.93%. One
+label per patch has none, and lands at **0.73%**: better than before the
+repair, because the strays were themselves a source of asymmetry.
+
+Only `_ZONE` bytes change, so the file keeps its length and layout and a second
+run is a no-op.
+
+**Known, not fixed:** the hands are still labelled forearm and so render in the
+forearm's colour rather than as an untrainable part like the head and feet.
+Separating them needs a wrist landmark, which is a segmentation change rather
+than a cleanup.

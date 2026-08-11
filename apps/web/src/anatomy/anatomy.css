@@ -248,9 +248,15 @@
     background: none; border: 0; padding: 0; cursor: pointer;
   }
 
-  /* The panels would cover the body they describe, so on a phone they are
-     closed until asked for, and open as sheets under the toolbar. */
-  .anatomy-root .regions,
+  /* The muscle list is the point of the screen, so it stays docked open on the
+     right rather than hiding behind a button — the body steps left to make
+     room (see FrameToVisible) instead of sitting behind it. Display is a
+     rarely-needed panel, so that one is opened on demand. */
+  .anatomy-root .regions {
+    display: none;
+    top: 58px; right: 12px; left: auto; width: 172px;
+    max-height: calc(100% - 82px);
+  }
   .anatomy-root .controls {
     display: none;
     top: 58px; left: 12px; right: 12px; width: auto;

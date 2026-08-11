@@ -52,7 +52,7 @@ carries only geometry and the zone attribute: 1.1 MB (60k faces) for mobile,
 
 **How the labelling is kept honest** — measured landmarks instead of assumed
 heights, front/back decided by which way a region's surface faces, the model
-folded onto itself so left and right always agree (0.8% mirror disagreement,
+folded onto itself so left and right always agree (0.73% mirror disagreement,
 `tools/muscle-segmentation/check-symmetry.py`), and borders smoothed on the
 decimated mesh. All of it, with the numbers, is in the
 [pipeline README](tools/muscle-segmentation/README.md).
@@ -193,12 +193,18 @@ pair of legs behind them. Below 720px they start closed and open one at a time
 from a toolbar, and choosing a muscle closes the picker again — otherwise it
 would hide the muscle you just picked. Tapping outside dismisses them.
 
-Opening a muscle raises the sheet over the lower half of the canvas, so the
-body moves out from behind it: it lifts by half of what is covered and scales
-down to fit the band that's left, then settles back when the sheet closes. How
-much is covered is *measured* rather than assumed — the sheet is shorter for a
-muscle with four exercises than for one with twelve. The model moves, not the
-camera, so orbiting and zooming still belong entirely to you.
+The muscle list stays docked on the right, because it is the point of the
+screen — an empty canvas with the list behind a button reads as nothing to do.
+The body steps aside for it rather than hiding behind it, and does the same
+when opening a muscle raises the exercise sheet over the lower half: it shifts
+by half of whatever is covered and scales to fit what's left, then settles back
+when the sheet closes.
+
+How much is covered is *measured*, not assumed — the sheet is shorter for a
+muscle with four exercises than for one with twelve — and the fit comes from
+the body's own bounding box, since the same model fills a quarter of a
+desktop's width and four fifths of a phone's. The model moves, not the camera,
+so orbiting and zooming still belong entirely to you.
 
 Exercise names wrap instead of truncating. "Standing Palms-Up Barbell Behind
 The Back Wrist Curl" has no useful prefix, so an ellipsis told you nothing, and
