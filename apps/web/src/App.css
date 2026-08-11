@@ -168,6 +168,27 @@
   margin: 0;
 }
 
+/* On a narrow screen the greeting wrapped to nine lines and took nearly half
+   the viewport before the model got any. It keeps one line and elides, and the
+   header stops trying to sit side by side. */
+@media (max-width: 560px) {
+  .explorer-bar {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+  .explorer .greeting {
+    font-size: 13px;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .explorer .header-controls {
+    flex: none;
+    gap: 6px;
+  }
+}
+
 .explorer-canvas {
   flex: 1;
   position: relative;

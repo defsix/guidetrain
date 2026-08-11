@@ -61,6 +61,14 @@ export default function AnatomyViewer({
   const [autoRotate, setAutoRotate] = useState(false);
   const [openDrill, setOpenDrill] = useState(null);
   const [video, setVideo] = useState(null);
+  // Which floating panel is open on a phone. Both are always on screen at
+  // desktop widths; below 720px they would cover the model, so they start
+  // closed and open one at a time from the toolbar.
+  const [panel, setPanel] = useState(null);
+  // The model is 1.1 MB, so on a cold connection the canvas is empty for a
+  // noticeable stretch. Say so rather than showing an empty stage.
+  const [ready, setReady] = useState(false);
+  const handleReady = useCallback(() => setReady(true), []);
 
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
@@ -103,6 +111,9 @@ export default function AnatomyViewer({
     // something the model is showing greyed out, so the filter steps aside.
     if (z && region !== 'all' && z.region !== region) setRegion('all');
     setOpenDrill(null);
+    // On a phone the picker sits over the model, so leaving it open would hide
+    // the very muscle that was just chosen.
+    if (z) setPanel(null);
     onSelect && onSelect(z);
   }, [onSelect, region]);
 
@@ -136,6 +147,7 @@ export default function AnatomyViewer({
             exercise={shownDrill}
             onSelect={handleSelect}
             onHover={setHover}
+            onReady={handleReady}
           />
           <EnvironmentBoundary>
             <Suspense fallback={null}>
@@ -153,9 +165,47 @@ export default function AnatomyViewer({
         />
       </Canvas>
 
+      {!ready && (
+        <div className="anatomy-loading" role="status">
+          <span className="spinner" aria-hidden="true" />
+          {t('viewer.loading')}
+        </div>
+      )}
+
+      {/* Phone-only toolbar. The panels below overlay the model, which at this
+          width leaves nothing to look at, so they are opened deliberately and
+          only one at a time. Hidden at desktop widths, where both simply fit. */}
+      <div className="anatomy-toolbar">
+        <button
+          className={`tool ${panel === 'regions' ? 'active' : ''}`}
+          aria-expanded={panel === 'regions'}
+          aria-controls="anatomy-regions"
+          onClick={() => setPanel(panel === 'regions' ? null : 'regions')}
+        >
+          {t('viewer.muscleGroups')}
+        </button>
+        <button
+          className={`tool ${panel === 'controls' ? 'active' : ''}`}
+          aria-expanded={panel === 'controls'}
+          aria-controls="anatomy-controls"
+          onClick={() => setPanel(panel === 'controls' ? null : 'controls')}
+        >
+          {t('viewer.display')}
+        </button>
+      </div>
+
+      {/* Tapping the model itself is the other way to dismiss an open panel. */}
+      {panel && (
+        <button
+          className="anatomy-scrim"
+          aria-label={t('viewer.closePanel')}
+          onClick={() => setPanel(null)}
+        />
+      )}
+
       {/* Every muscle on the model, grouped by region. The swatches are the
           model's own colours, so the list doubles as the legend. */}
-      <div className="anatomy-panel regions">
+      <div id="anatomy-regions" className={`anatomy-panel regions ${panel === 'regions' ? 'open' : ''}`}>
         <h2>{t('viewer.muscleGroups')}</h2>
         <div className="muscle-list">
           <button
@@ -192,7 +242,7 @@ export default function AnatomyViewer({
       </div>
 
       {/* Display controls */}
-      <div className="anatomy-panel controls">
+      <div id="anatomy-controls" className={`anatomy-panel controls ${panel === 'controls' ? 'open' : ''}`}>
         <h2>{t('viewer.display')}</h2>
         <label className="toggle-row">
           <span>{t('viewer.autoRotate')}</span>

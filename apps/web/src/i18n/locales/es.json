@@ -1,153 +1,167 @@
 {
-  "language": {
-    "label": "Idioma",
-    "auto": "Idioma del dispositivo",
-    "aria": "Idioma"
+ "language": {
+  "label": "Idioma",
+  "auto": "Idioma del dispositivo",
+  "aria": "Idioma"
+ },
+ "theme": {
+  "light": "Claro",
+  "dark": "Oscuro",
+  "auto": "Dispositivo",
+  "lightTitle": "Claro — toca para oscuro",
+  "darkTitle": "Oscuro — toca para seguir al dispositivo",
+  "autoTitle": "Siguiendo al dispositivo — toca para claro",
+  "aria": "Tema de color: {current}. Toca para cambiar a {next}."
+ },
+ "onboarding": {
+  "title": "Bienvenido a GuideTrain",
+  "subtitle": "Unos pocos datos para adaptar tu entrenamiento.",
+  "username": "Nombre de usuario",
+  "usernamePlaceholder": "p. ej. iron_ada",
+  "gender": "Género",
+  "ageGroup": "Grupo de edad",
+  "continue": "Continuar al explorador corporal"
+ },
+ "gender": {
+  "female": "Mujer",
+  "male": "Hombre",
+  "other": "Otro / Prefiero no decirlo"
+ },
+ "age": {
+  "teen": "Menos de 18",
+  "60plus": "60+"
+ },
+ "explorer": {
+  "greeting": "Hola {name}: gira el modelo, filtra por región y toca un músculo.",
+  "greetingAnon": "Gira el modelo, filtra por región y toca un músculo."
+ },
+ "viewer": {
+  "muscleGroups": "Grupos musculares",
+  "allMuscles": "Todos los músculos",
+  "display": "Visualización",
+  "autoRotate": "Rotación automática",
+  "trainThis": "Entrenar esto",
+  "exercises": {
+   "one": "{count} ejercicio",
+   "other": "{count} ejercicios"
   },
-  "theme": {
-    "light": "Claro",
-    "dark": "Oscuro",
-    "auto": "Dispositivo",
-    "lightTitle": "Claro — toca para oscuro",
-    "darkTitle": "Oscuro — toca para seguir al dispositivo",
-    "autoTitle": "Siguiendo al dispositivo — toca para claro",
-    "aria": "Tema de color: {current}. Toca para cambiar a {next}."
+  "watch": "Ver demostración",
+  "searchYouTube": "Buscar en YouTube →",
+  "loading": "Cargando el modelo…",
+  "closePanel": "Cerrar panel"
+ },
+ "video": {
+  "close": "Cerrar vídeo",
+  "demonstration": "Demostración de {name}",
+  "searchYouTube": "Buscar en YouTube →"
+ },
+ "regions": {
+  "Neck": "Cuello",
+  "Shoulders": "Hombros",
+  "Chest": "Pecho",
+  "Back": "Espalda",
+  "Arms": "Brazos",
+  "Core": "Core",
+  "Legs": "Piernas",
+  "Head": "Cabeza"
+ },
+ "equipment": {
+  "None": "ninguno",
+  "bands": "bandas",
+  "barbell": "barra",
+  "body only": "peso corporal",
+  "cable": "polea",
+  "dumbbell": "mancuernas",
+  "exercise ball": "pelota de ejercicio",
+  "kettlebells": "pesas rusas",
+  "machine": "máquina",
+  "other": "otro"
+ },
+ "level": {
+  "beginner": "principiante",
+  "intermediate": "intermedio",
+  "expert": "experto"
+ },
+ "muscles": {
+  "abs": {
+   "name": "Recto Abdominal",
+   "desc": "El 'six-pack'; flexiona la columna y resiste la extensión. Crunches, elevaciones de piernas, planchas."
   },
-  "onboarding": {
-    "title": "Bienvenido a GuideTrain",
-    "subtitle": "Unos pocos datos para adaptar tu entrenamiento.",
-    "username": "Nombre de usuario",
-    "usernamePlaceholder": "p. ej. iron_ada",
-    "gender": "Género",
-    "ageGroup": "Grupo de edad",
-    "continue": "Continuar al explorador corporal"
+  "add": {
+   "name": "Aductores",
+   "desc": "Cara interna del muslo; junta las piernas y estabiliza la cadera. Aducciones, sentadilla sumo."
   },
-  "gender": {
-    "female": "Mujer",
-    "male": "Hombre",
-    "other": "Otro / Prefiero no decirlo"
+  "bic": {
+   "name": "Bíceps Braquial",
+   "desc": "Parte frontal del brazo; flexiona el codo y supina el antebrazo. Curls."
   },
-  "age": {
-    "teen": "Menos de 18",
-    "60plus": "60+"
+  "calf": {
+   "name": "Gastrocnemio / Gemelos",
+   "desc": "Relieve de dos cabezas de la pantorrilla; extiende el pie (flexión plantar). Elevaciones de talón de pie."
   },
-  "explorer": {
-    "greeting": "Hola {name}: gira el modelo, filtra por región y toca un músculo.",
-    "greetingAnon": "Gira el modelo, filtra por región y toca un músculo."
+  "delt": {
+   "name": "Deltoides",
+   "desc": "Casquete del hombro con tres cabezas; eleva el brazo en todas las direcciones. Press, elevaciones laterales."
   },
-  "viewer": {
-    "muscleGroups": "Grupos musculares",
-    "allMuscles": "Todos los músculos",
-    "display": "Visualización",
-    "autoRotate": "Rotación automática",
-    "trainThis": "Entrenar esto",
-    "exercises": { "one": "{count} ejercicio", "other": "{count} ejercicios" },
-    "watch": "Ver demostración",
-    "searchYouTube": "Buscar en YouTube →"
+  "erector": {
+   "name": "Erector de la Columna",
+   "desc": "Columnas a ambos lados de la columna vertebral; extienden y estabilizan la espalda. Peso muerto, hiperextensiones."
   },
-  "video": {
-    "close": "Cerrar vídeo",
-    "demonstration": "Demostración de {name}",
-    "searchYouTube": "Buscar en YouTube →"
+  "foot": {
+   "name": "Pie",
+   "desc": ""
   },
-  "regions": {
-    "Neck": "Cuello",
-    "Shoulders": "Hombros",
-    "Chest": "Pecho",
-    "Back": "Espalda",
-    "Arms": "Brazos",
-    "Core": "Core",
-    "Legs": "Piernas",
-    "Head": "Cabeza"
+  "fore": {
+   "name": "Antebrazo",
+   "desc": "Motores del agarre, la muñeca y los dedos. Curls de muñeca, trabajo de agarre, transportes."
   },
-  "equipment": {
-    "None": "ninguno",
-    "bands": "bandas",
-    "barbell": "barra",
-    "body only": "peso corporal",
-    "cable": "polea",
-    "dumbbell": "mancuernas",
-    "exercise ball": "pelota de ejercicio",
-    "kettlebells": "pesas rusas",
-    "machine": "máquina",
-    "other": "otro"
+  "glute": {
+   "name": "Glúteo Mayor",
+   "desc": "El músculo más grande; extiende la cadera y genera potencia. Sentadillas, hip thrust, puentes."
   },
-  "level": {
-    "beginner": "principiante",
-    "intermediate": "intermedio",
-    "expert": "experto"
+  "ham": {
+   "name": "Isquiotibiales",
+   "desc": "Grupo posterior del muslo; flexiona la rodilla y extiende la cadera. Peso muerto rumano, curl femoral, peso muerto."
   },
-  "muscles": {
-    "abs": {
-      "name": "Recto Abdominal",
-      "desc": "El 'six-pack'; flexiona la columna y resiste la extensión. Crunches, elevaciones de piernas, planchas."
-    },
-    "add": {
-      "name": "Aductores",
-      "desc": "Cara interna del muslo; junta las piernas y estabiliza la cadera. Aducciones, sentadilla sumo."
-    },
-    "bic": {
-      "name": "Bíceps Braquial",
-      "desc": "Parte frontal del brazo; flexiona el codo y supina el antebrazo. Curls."
-    },
-    "calf": {
-      "name": "Gastrocnemio / Gemelos",
-      "desc": "Relieve de dos cabezas de la pantorrilla; extiende el pie (flexión plantar). Elevaciones de talón de pie."
-    },
-    "delt": {
-      "name": "Deltoides",
-      "desc": "Casquete del hombro con tres cabezas; eleva el brazo en todas las direcciones. Press, elevaciones laterales."
-    },
-    "erector": {
-      "name": "Erector de la Columna",
-      "desc": "Columnas a ambos lados de la columna vertebral; extienden y estabilizan la espalda. Peso muerto, hiperextensiones."
-    },
-    "foot": { "name": "Pie", "desc": "" },
-    "fore": {
-      "name": "Antebrazo",
-      "desc": "Motores del agarre, la muñeca y los dedos. Curls de muñeca, trabajo de agarre, transportes."
-    },
-    "glute": {
-      "name": "Glúteo Mayor",
-      "desc": "El músculo más grande; extiende la cadera y genera potencia. Sentadillas, hip thrust, puentes."
-    },
-    "ham": {
-      "name": "Isquiotibiales",
-      "desc": "Grupo posterior del muslo; flexiona la rodilla y extiende la cadera. Peso muerto rumano, curl femoral, peso muerto."
-    },
-    "hand": { "name": "Mano", "desc": "" },
-    "head": { "name": "Cabeza", "desc": "" },
-    "lat": {
-      "name": "Dorsal Ancho",
-      "desc": "Las 'alas' de la espalda; lleva los brazos hacia abajo y atrás. Dominadas, remos, jalones."
-    },
-    "neck": {
-      "name": "Cuello",
-      "desc": "Esternocleidomastoideo y extensores cervicales; gira y estabiliza la cabeza. Curls de cuello, encogimientos, trabajo con arnés."
-    },
-    "obl": {
-      "name": "Oblicuo Externo",
-      "desc": "Flancos del abdomen; rotan e inclinan el tronco. Giros, planchas laterales."
-    },
-    "pec": {
-      "name": "Pectoral Mayor",
-      "desc": "Abanico del pecho; empuja y cruza el brazo por delante del cuerpo. Press de banca, aperturas, flexiones."
-    },
-    "quad": {
-      "name": "Cuádriceps",
-      "desc": "Grupo de cuatro en la cara anterior del muslo; extiende la rodilla. Sentadillas, zancadas, extensiones de pierna."
-    },
-    "shin": {
-      "name": "Tibial Anterior",
-      "desc": "Parte frontal de la espinilla; eleva el pie (flexión dorsal). Elevaciones de punta, caminatas de talón."
-    },
-    "traps": {
-      "name": "Trapecio",
-      "desc": "Yugo de la espalda alta y el cuello; encoge y estabiliza las escápulas. Encogimientos, face pull."
-    },
-    "tri": {
-      "name": "Tríceps Braquial",
-      "desc": "Parte posterior del brazo; extiende el codo. Fondos, extensiones en polea, extensiones sobre la cabeza."
-    }
+  "hand": {
+   "name": "Mano",
+   "desc": ""
+  },
+  "head": {
+   "name": "Cabeza",
+   "desc": ""
+  },
+  "lat": {
+   "name": "Dorsal Ancho",
+   "desc": "Las 'alas' de la espalda; lleva los brazos hacia abajo y atrás. Dominadas, remos, jalones."
+  },
+  "neck": {
+   "name": "Cuello",
+   "desc": "Esternocleidomastoideo y extensores cervicales; gira y estabiliza la cabeza. Curls de cuello, encogimientos, trabajo con arnés."
+  },
+  "obl": {
+   "name": "Oblicuo Externo",
+   "desc": "Flancos del abdomen; rotan e inclinan el tronco. Giros, planchas laterales."
+  },
+  "pec": {
+   "name": "Pectoral Mayor",
+   "desc": "Abanico del pecho; empuja y cruza el brazo por delante del cuerpo. Press de banca, aperturas, flexiones."
+  },
+  "quad": {
+   "name": "Cuádriceps",
+   "desc": "Grupo de cuatro en la cara anterior del muslo; extiende la rodilla. Sentadillas, zancadas, extensiones de pierna."
+  },
+  "shin": {
+   "name": "Tibial Anterior",
+   "desc": "Parte frontal de la espinilla; eleva el pie (flexión dorsal). Elevaciones de punta, caminatas de talón."
+  },
+  "traps": {
+   "name": "Trapecio",
+   "desc": "Yugo de la espalda alta y el cuello; encoge y estabiliza las escápulas. Encogimientos, face pull."
+  },
+  "tri": {
+   "name": "Tríceps Braquial",
+   "desc": "Parte posterior del brazo; extiende el codo. Fondos, extensiones en polea, extensiones sobre la cabeza."
   }
+ }
 }

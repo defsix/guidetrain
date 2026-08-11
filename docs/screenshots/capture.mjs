@@ -28,7 +28,10 @@ async function desktopFlow() {
   await page.click('button:has-text("18 - 29")');
   await page.click('button:has-text("Continue to body explorer")');
   await page.waitForURL("**/explore");
-  await page.waitForSelector("text=Muscle Groups"); // AnatomyViewer's region panel
+  // Structural rather than by text: "Muscle Groups" also labels the phone
+  // toolbar button, which is display:none here, and a text selector would
+  // match that first and wait forever for it to appear.
+  await page.waitForSelector(".anatomy-panel.regions", { state: "visible" });
   await page.waitForTimeout(3500); // let the GLB load + zone bake settle
   await page.screenshot({ path: path.join(OUT, "02-explorer.png") });
 
@@ -60,7 +63,9 @@ async function mobileFlow() {
   );
   // HashRouter: the route lives in the hash, not the path.
   await page.goto(`${WEB_URL}/#/explore`, { waitUntil: "networkidle" });
-  await page.waitForSelector("text=Muscle Groups");
+  // At this width the panels start closed so the body is unobstructed; the
+  // toolbar is what's on screen, and it is what the shot should show.
+  await page.waitForSelector(".anatomy-toolbar", { state: "visible" });
   await page.waitForTimeout(3500);
   await page.screenshot({ path: path.join(OUT, "04-mobile.png") });
   await page.close();
