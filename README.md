@@ -257,9 +257,16 @@ Two things apply only to the Pages build:
 
 Asked for, not yet built:
 
-- **Autoplay on selection** — open an exercise and its video starts, rather than
-  waiting for a second click on the player.
 - **Training pairs** — while you train one muscle, suggest a second exercise to
-  do between sets (supersets), so the rest period does something.
+  do between sets (supersets), so the rest period does something. Pairing is by
+  **non-competing region**, and region alone won't do it: a lat pulldown and a
+  biceps curl sit in different regions but both load the biceps, and 23% of
+  cross-region pairs in the catalogue overlap that way. So the rule is a
+  different region *and* no shared muscle across `primary` + `secondary` —
+  both of which the exercise data already carries, on 70% of entries.
+- **Autoplay on selection** — *on hold.* Opening an exercise would start its
+  video rather than waiting for a click. Worth noting when it comes back: the
+  player deliberately fetches nothing from YouTube until you click, so autoplay
+  spends that, and it may want to be opt-in.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).
