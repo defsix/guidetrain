@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useMemo, useRef, useEffect, Suspense } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Environment } from '@react-three/drei';
+import * as THREE from 'three';
 import AnatomyModel from './AnatomyModel';
 import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
@@ -58,33 +59,55 @@ const SCENE = {
  * `cover` is the fraction of canvas height the sheet occupies, measured rather
  * than assumed, because the sheet is shorter for a muscle with few exercises.
  */
-function FrameToVisible({ cover, children }) {
+function FrameToVisible({ cover, sideCover, children }) {
   const group = useRef();
   const { camera } = useThree();
   const snap = useRef(true);
+  const size = useRef(null);
 
   useFrame((_, delta) => {
     const g = group.current;
     if (!g) return;
 
-    // World height the camera sees at the model's distance. Taken live, so a
+    // The body's own size in world units, read once from the loaded geometry
+    // rather than assumed. What fraction of the frame it fills depends on the
+    // aspect ratio — the same model is a quarter of a desktop's width and four
+    // fifths of a phone's — so a constant would only ever suit one of them.
+    if (!size.current && g.children.length) {
+      const box = new THREE.Box3().setFromObject(g);
+      const v = new THREE.Vector3();
+      box.getSize(v);
+      if (v.x > 0 && v.y > 0) size.current = { w: v.x / g.scale.x, h: v.y / g.scale.y };
+    }
+
+    // World size the camera sees at the model's distance. Taken live, so a
     // reader who has zoomed in still gets a correct lift.
     const dist = camera.position.length() || 3.4;
     const viewH = 2 * dist * Math.tan((camera.fov * Math.PI) / 360);
+    const viewW = viewH * (camera.aspect || 1);
 
+    // The muscle picker is docked to the right, so the body steps left by half
+    // of what it takes — the same idea as the lift, along the other axis.
+    const wantX = -(sideCover / 2) * viewW;
     // Centre of the free band sits cover/2 above the centre of the canvas.
     const wantY = (cover / 2) * viewH;
-    // The body fills roughly three quarters of the frame, so it only needs
-    // shrinking once the free band is narrower than that. PAD keeps a margin
-    // top and bottom: fitting the band exactly left 1px of headroom above the
-    // head, which any longer sheet would have turned into a clipped skull.
+
+    // Fit whichever axis is tighter. PAD keeps a margin all round: fitting
+    // exactly left 1px of headroom above the head, which any longer sheet
+    // would have turned into a clipped skull.
     const PAD = 0.025;
-    const wantS = Math.min(1, Math.max(0.5, (1 - cover - 2 * PAD) / 0.78));
+    const availH = (1 - cover - 2 * PAD) * viewH;
+    const availW = (1 - sideCover - 2 * PAD) * viewW;
+    const m = size.current;
+    const wantS = m
+      ? Math.min(1, Math.max(0.4, Math.min(availH / m.h, availW / m.w)))
+      : 1;
 
     // First frame lands where it belongs rather than sliding in from nowhere;
     // so does every frame for a reader who has asked for less motion.
     const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     const k = snap.current || still ? 1 : 1 - Math.pow(0.002, delta);
+    g.position.x += (wantX - g.position.x) * k;
     g.position.y += (wantY - g.position.y) * k;
     g.scale.setScalar(g.scale.x + (wantS - g.scale.x) * k);
     snap.current = false;
@@ -111,7 +134,7 @@ export default function AnatomyViewer({
   // Which floating panel is open on a phone. Both are always on screen at
   // desktop widths; below 720px they would cover the model, so they start
   // closed and open one at a time from the toolbar.
-  const [panel, setPanel] = useState(null);
+  const [panel, setPanel] = useState('regions');
   // The model is 1.1 MB, so on a cold connection the canvas is empty for a
   // noticeable stretch. Say so rather than showing an empty stage.
   const [ready, setReady] = useState(false);
@@ -122,13 +145,24 @@ export default function AnatomyViewer({
   // corner the model never reaches.
   const rootRef = useRef(null);
   const readoutRef = useRef(null);
+  const regionsRef = useRef(null);
   const [cover, setCover] = useState(0);
+  const [sideCover, setSideCover] = useState(0);
 
   useEffect(() => {
     const measure = () => {
       const root = rootRef.current;
       const sheet = readoutRef.current;
       const overlaps = window.matchMedia('(max-width: 720px)').matches;
+      const list = regionsRef.current;
+      const rootW = root ? root.getBoundingClientRect().width : 0;
+      // The docked picker takes a strip off the right; the body steps aside
+      // rather than hiding behind it.
+      setSideCover(
+        overlaps && list && rootW && getComputedStyle(list).display !== 'none'
+          ? Math.min(0.5, (list.getBoundingClientRect().width + 12) / rootW)
+          : 0,
+      );
       if (!root || !sheet || !overlaps) return setCover(0);
       const rootH = root.getBoundingClientRect().height;
       const sheetH = sheet.getBoundingClientRect().height;
@@ -141,10 +175,11 @@ export default function AnatomyViewer({
 
     const ro = new ResizeObserver(measure);
     if (readoutRef.current) ro.observe(readoutRef.current);
+    if (regionsRef.current) ro.observe(regionsRef.current);
     if (rootRef.current) ro.observe(rootRef.current);
     window.addEventListener('resize', measure);
     return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
-  }, [selected, openDrill]);
+  }, [selected, openDrill, panel]);
 
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
@@ -214,7 +249,7 @@ export default function AnatomyViewer({
         <directionalLight position={[4, 6, 8]} intensity={scene.key[1]} color={scene.key[0]} />
         <directionalLight position={[-6, 3, -5]} intensity={scene.fill[1]} color={scene.fill[0]} />
         <Suspense fallback={null}>
-          <FrameToVisible cover={cover}>
+          <FrameToVisible cover={cover} sideCover={sideCover}>
           <AnatomyModel
             url={modelUrl}
             map={map}
@@ -283,7 +318,7 @@ export default function AnatomyViewer({
 
       {/* Every muscle on the model, grouped by region. The swatches are the
           model's own colours, so the list doubles as the legend. */}
-      <div id="anatomy-regions" className={`anatomy-panel regions ${panel === 'regions' ? 'open' : ''}`}>
+      <div id="anatomy-regions" ref={regionsRef} className={`anatomy-panel regions ${panel === 'regions' ? 'open' : ''}`}>
         <h2>{t('viewer.muscleGroups')}</h2>
         <div className="muscle-list">
           <button

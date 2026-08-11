@@ -69,6 +69,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Muscle model
 
+- **Forearm no longer lights part of the thigh** — the arms hang beside the
+  legs, and region growing crossed the gap: 127 faces on the upper thighs were
+  labelled "forearm", and a further 87 were labelled "hand" while the real
+  hands ended up as forearm. `5-despeckle-zones.py` finds both from geometry —
+  an island far from the muscle it names, or a zone too small to be a muscle
+  and in scattered pieces — and folds each patch into the surface around it.
+  Mirror disagreement **improves from 0.76% to 0.73%**, since the strays were
+  themselves a source of it. Known and not fixed: the hands still carry the
+  forearm's colour rather than rendering as an untrainable part.
+
 - **Hip crease, smooth borders, full picker** [#13] — the trunk-to-leg line
   follows the hip crease instead of a horizontal plane, so obliques no longer
   cover the top of the quadriceps. Borders are smoothed on the decimated mesh
@@ -104,6 +114,12 @@ Newest first. Numbers in brackets are pull requests.
   now start closed and open one at a time from a toolbar; choosing a muscle
   closes the picker, since it otherwise hid the muscle just chosen. Tapping
   outside dismisses. Desktop is unchanged.
+- **The muscle list stays on screen on a phone** — closing it by default left
+  the canvas looking empty with nothing obviously to do. It is docked on the
+  right again, and the body steps aside and scales to fit the space that
+  remains rather than hiding behind it. The fit now comes from the model's own
+  bounding box, because the same body fills a quarter of a desktop's width and
+  four fifths of a phone's, so no single constant suits both.
 - **The body moves out from behind the exercise sheet** — opening a muscle on a
   phone put the sheet over the lower half of the canvas, hiding the legs. The
   model now lifts by half of what is covered and scales to fit the band that's
