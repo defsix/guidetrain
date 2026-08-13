@@ -707,6 +707,46 @@ Two things apply only to the Pages build:
 5. Accounts (username, sex, approximate age) and public program library —
    the next thing, and the one several items below are waiting on
 
+### The intended shape
+
+**GitHub Pages for the app, Supabase for accounts and data, on a custom
+domain.** Decided rather than merely considered, so the reasoning is written
+down:
+
+- Pages cannot run a server — it serves static files, so `apps/api` could never
+  live there. Supabase supplies the two things accounts actually need, a
+  database and an identity, without a server of ours to run or patch.
+- The browser talks to Supabase directly with a bearer token, so the app can
+  stay on Pages: no cross-origin cookie problem, which is what a
+  Pages-plus-own-API split would have run into (Safari and Firefox block
+  third-party cookies by default).
+- `apps/api` — Express, Prisma, 30 lines, serving muscle groups the web app
+  does not read because that data is bundled — is a blank slate rather than a
+  migration.
+
+Two things to get right, both of which bite quietly:
+
+- **Row-level security is the whole of the protection.** The anon key ships in
+  the bundle and is meant to; it identifies the project, not the person. If RLS
+  is off or a policy is wrong, every row is readable by anyone who opens
+  devtools. Policies come first, tables second.
+- **A domain change wipes local data.** `localStorage` is per origin, so moving
+  from `defsix.github.io` to a domain of our own leaves every existing
+  program, log, skip and training max behind on the old address. That argues
+  for doing accounts *before* the move: sign in, let it sync, and the domain
+  becomes a DNS change nobody notices.
+
+Free-tier terms worth knowing before relying on it: projects pause after seven
+days of inactivity, two active projects, 500 MB of database and 50k monthly
+active users
+([pricing](https://uibakery.io/blog/supabase-pricing)).
+
+A custom domain on Pages is free, HTTPS included, and buys more than vanity: it
+takes the app off `defsix.github.io/guidetrain/`, so moving hosts later is a
+DNS change rather than a broken bookmark, and it gives OAuth consent screens
+and confirmation emails a sender that does not look like somebody's personal
+GitHub account.
+
 ### Waiting on accounts
 
 Everything the app stores is `localStorage`: per device, per browser, gone with
