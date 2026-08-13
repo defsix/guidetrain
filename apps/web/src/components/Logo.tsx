@@ -6,36 +6,26 @@ type Props = {
 };
 
 /**
- * The mark: three loaded bars, each shorter than the last.
+ * The mark: a bolt, drawn on the app's own grid.
  *
- * The same drawing as the favicon, rebuilt as a component rather than an
- * `<img>` so it can take the theme's ink and accent from CSS. A favicon is
- * rendered outside the page and has to hard-code its colours; this one should
- * not, or it would be the only thing on screen that ignores the theme.
+ * Not the one the Vite template ships with. That bolt is VoidZero's brand
+ * asset — the MIT licence covers Vite's code rather than its logo, and its
+ * guidelines rule out both recolouring it and using it to stand for another
+ * product. Nobody owns the idea of a lightning bolt, so this is one of ours.
  *
- * It draws the programme the app teaches. 5/3/1 ramps weight up and reps down,
- * and the last bar is the single the whole cycle was building to — so that is
- * the bar wearing the accent, and it is the same accent the muscle you picked
- * wears on the model.
+ * The same drawing as the favicon, rebuilt as a component so it can take the
+ * theme's accent from CSS rather than hard-coding it. A favicon renders outside
+ * the page and has no choice; this one should not be the single element on
+ * screen ignoring the theme.
  */
 export default function Logo({ size = 28, withName = false }: Props) {
   return (
     <span className="logo" style={{ ["--logo-size" as string]: `${size}px` }}>
       <svg viewBox="0 0 32 32" width={size} height={size} aria-hidden="true" focusable="false">
-        <g className="logo-ink">
-          <rect x="5" y="5.5" width="22" height="3.4" rx="1.7" />
-          <rect x="3.4" y="3.6" width="2.6" height="7.2" rx="1.1" />
-          <rect x="26" y="3.6" width="2.6" height="7.2" rx="1.1" />
-
-          <rect x="8.5" y="14.3" width="15" height="3.4" rx="1.7" />
-          <rect x="6.9" y="12.4" width="2.6" height="7.2" rx="1.1" />
-          <rect x="22.5" y="12.4" width="2.6" height="7.2" rx="1.1" />
-        </g>
-        <g className="logo-accent">
-          <rect x="12" y="23.1" width="8" height="3.4" rx="1.7" />
-          <rect x="10.4" y="21.2" width="2.6" height="7.2" rx="1.1" />
-          <rect x="19" y="21.2" width="2.6" height="7.2" rx="1.1" />
-        </g>
+        <path
+          className="logo-accent"
+          d="M19.2 2.2 6.4 17.4a.9.9 0 0 0 .69 1.48h5.03l-1.3 10.02a.9.9 0 0 0 1.6.66l12.8-15.2a.9.9 0 0 0-.69-1.48h-5.03l1.3-10.02a.9.9 0 0 0-1.6-.66Z"
+        />
       </svg>
       {/* The name is one word and set as one word — "Guide" in the body weight,
           "Train" in the accent, so the mark and the name say the same thing. */}
