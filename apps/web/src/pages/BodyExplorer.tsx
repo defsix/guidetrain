@@ -76,6 +76,7 @@ export default function BodyExplorer() {
         best={log.best}
         onAddSet={log.add}
         onRemoveSet={log.remove}
+        allSets={log.entries}
       />
     </div>
   );

@@ -149,6 +149,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Getting to the next max** — an exercise with a usable logged set now shows
+  a plan: an estimated one-rep max, a target you set, and how many four-week
+  cycles it takes with the loads for every week. There is deliberately no field
+  for typing in a max — an estimate from a set you performed is a calculation, a
+  number you typed is a claim, and the set the estimate came from is shown so
+  the figure is checkable. Epley for the estimate, capped at 12 reps; Wendler
+  5/3/1 for the plan, training max at 90%, weeks at 65/75/85, 70/80/90,
+  75/85/95 and a 40/50/60 deload, +5 kg lower body and +2.5 kg upper per cycle.
+  Percentages checked against sources rather than recalled. Loads round to
+  2.5 kg, since plates come in pairs. Working the example caught a real error
+  before it shipped: Epley at 1 rep returns `w × 1.033`, so a 100 kg single
+  would have been reported as a 103.3 kg max — a single is now returned as
+  itself.
 - **Log what you lifted** — each exercise in the workout takes sets, a weight
   and a rep count, kept with the date; today's sets show as pills and the
   heaviest set ever recorded shows underneath. The weight field keeps its value

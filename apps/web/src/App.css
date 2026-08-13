@@ -623,3 +623,125 @@
   letter-spacing: 0.04em;
   color: var(--text-muted);
 }
+
+/* --- getting to the next max ------------------------------------------- */
+.plan-link {
+  margin-left: 8px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.plan-link:hover { text-decoration: underline; }
+
+/* Sits over the workout panel it was opened from, on the same side, so going
+   back is where you expect it. */
+.plan-panel {
+  position: fixed;
+  z-index: 32;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(400px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .plan-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    max-height: 88svh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+.plan-panel h2 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.plan-name { margin: 0; font-size: 15px; font-weight: 600; }
+
+/* The number, then what it is, then where it came from — in that order, so the
+   caveat arrives with the figure rather than after it. */
+.plan-max { display: flex; flex-direction: column; gap: 2px; }
+.plan-max .figure { font-size: 26px; font-weight: 600; letter-spacing: -0.01em; }
+.plan-max .from { font-size: 11.5px; color: var(--text-muted); }
+
+.cap {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.plan-target {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.plan-target input {
+  width: 7ch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 7px 8px;
+  color: var(--text);
+  font-size: 16px;
+  text-align: center;
+}
+
+.plan-target input:focus { border-color: var(--accent); outline: none; }
+
+.plan-answer { margin: 0; font-size: 14px; line-height: 1.45; color: var(--accent); }
+.plan-tm { margin: 0; font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+
+.plan-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.plan-table th {
+  text-align: left;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 7px 8px 7px 0;
+  white-space: nowrap;
+}
+.plan-table td { padding: 7px 4px; white-space: nowrap; }
+.plan-table tr + tr { border-top: 1px solid var(--border); }
+/* The light week reads lighter. */
+.plan-table tr.deload td, .plan-table tr.deload th { color: var(--text-muted); }
+.plan-table sup { color: var(--accent); font-weight: 600; }
+
+.plan-note {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}

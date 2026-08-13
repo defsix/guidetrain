@@ -207,5 +207,30 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plán →",
+  "title": "Zesílit",
+  "close": "Zavřít plán",
+  "estimated": "odhadované maximum",
+  "from": "z {weight} {unit} × {reps}",
+  "target": "Cíl",
+  "trainingMax": "Vychází z tréninkového maxima {tm} {unit} — {percent} % odhadu, záměrně.",
+  "answer": {
+   "one": "{count} cyklus, přibližně {weeks} týdnů, pokaždé o {increment} {unit} více.",
+   "few": "{count} cykly, přibližně {weeks} týdnů, pokaždé o {increment} {unit} více.",
+   "many": "{count} cyklu, přibližně {weeks} týdnů, pokaždé o {increment} {unit} více.",
+   "other": "{count} cyklů, přibližně {weeks} týdnů, pokaždé o {increment} {unit} více."
+  },
+  "already": "Už jste tam. Nastavte vyšší cíl.",
+  "needSet": "Zaznamenejte sérii s {count} nebo méně opakováními a plán se objeví zde.",
+  "w1": "1. týden",
+  "w2": "2. týden",
+  "w3": "3. týden",
+  "w4": "Odlehčení",
+  "amrapNote": "+ znamená poslední sérii na co nejvíce čistých opakování, ne do selhání.",
+  "amrapHelp": "co nejvíce opakování",
+  "barbellNote": "5/3/1 vzniklo pro hlavní cviky s činkou. Procenta platí i tady, ale přírůstky počítají s cvikem, který lze těžce zatížit.",
+  "estimateNote": "Odhad z jedné série, ne měření. Pokud týden nesedí, chyba je v plánu."
  }
 }

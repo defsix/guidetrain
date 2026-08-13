@@ -197,5 +197,28 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plan →",
+  "title": "Getting stronger",
+  "close": "Close the plan",
+  "estimated": "estimated max",
+  "from": "from {weight} {unit} × {reps}",
+  "target": "Target",
+  "trainingMax": "Working from a training max of {tm} {unit} — {percent}% of the estimate, on purpose.",
+  "answer": {
+   "one": "{count} cycle, about {weeks} weeks, adding {increment} {unit} each time.",
+   "other": "{count} cycles, about {weeks} weeks, adding {increment} {unit} each time."
+  },
+  "already": "You are already there. Set a higher target.",
+  "needSet": "Log a set of {count} reps or fewer for this exercise and a plan appears here.",
+  "w1": "Week 1",
+  "w2": "Week 2",
+  "w3": "Week 3",
+  "w4": "Deload",
+  "amrapNote": "+ means take the last set for as many good reps as you can, not to failure.",
+  "amrapHelp": "as many reps as possible",
+  "barbellNote": "5/3/1 was written for the main barbell lifts. The percentages still work here, but the jumps assume something you can load heavily.",
+  "estimateNote": "An estimate from one set, not a measurement. If a week feels wrong, it is the plan that is wrong."
  }
 }

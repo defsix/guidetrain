@@ -197,5 +197,28 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plan →",
+  "title": "Stärker werden",
+  "close": "Plan schließen",
+  "estimated": "geschätztes Maximum",
+  "from": "aus {weight} {unit} × {reps}",
+  "target": "Ziel",
+  "trainingMax": "Rechnet mit einem Trainingsmaximum von {tm} {unit} — bewusst {percent} % der Schätzung.",
+  "answer": {
+   "one": "{count} Zyklus, etwa {weeks} Wochen, jeweils {increment} {unit} mehr.",
+   "other": "{count} Zyklen, etwa {weeks} Wochen, jeweils {increment} {unit} mehr."
+  },
+  "already": "Schon erreicht. Setze ein höheres Ziel.",
+  "needSet": "Trage einen Satz mit höchstens {count} Wiederholungen ein, dann erscheint hier ein Plan.",
+  "w1": "Woche 1",
+  "w2": "Woche 2",
+  "w3": "Woche 3",
+  "w4": "Entlastung",
+  "amrapNote": "+ heißt: letzter Satz auf so viele saubere Wiederholungen wie möglich, nicht bis zum Versagen.",
+  "amrapHelp": "so viele Wiederholungen wie möglich",
+  "barbellNote": "5/3/1 wurde für die großen Langhantelübungen geschrieben. Die Prozente gelten auch hier, die Sprünge setzen aber schwer belastbare Übungen voraus.",
+  "estimateNote": "Eine Schätzung aus einem Satz, keine Messung. Fühlt sich eine Woche falsch an, liegt es am Plan."
  }
 }

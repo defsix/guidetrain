@@ -197,5 +197,28 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plano →",
+  "title": "Ficar mais forte",
+  "close": "Fechar o plano",
+  "estimated": "máximo estimado",
+  "from": "a partir de {weight} {unit} × {reps}",
+  "target": "Objetivo",
+  "trainingMax": "Parte de um máximo de treino de {tm} {unit} — {percent} % da estimativa, de propósito.",
+  "answer": {
+   "one": "{count} ciclo, cerca de {weeks} semanas, somando {increment} {unit} de cada vez.",
+   "other": "{count} ciclos, cerca de {weeks} semanas, somando {increment} {unit} de cada vez."
+  },
+  "already": "Já lá chegou. Defina um objetivo mais alto.",
+  "needSet": "Registe uma série de {count} repetições ou menos e um plano aparece aqui.",
+  "w1": "Semana 1",
+  "w2": "Semana 2",
+  "w3": "Semana 3",
+  "w4": "Descarga",
+  "amrapNote": "+ significa fazer a última série com as repetições limpas que conseguir, sem ir à falha.",
+  "amrapHelp": "tantas repetições quanto possível",
+  "barbellNote": "O 5/3/1 foi escrito para os grandes exercícios com barra. As percentagens continuam a servir, mas os saltos pressupõem algo que se possa carregar muito.",
+  "estimateNote": "Uma estimativa a partir de uma série, não uma medição. Se uma semana parecer errada, o errado é o plano."
  }
 }

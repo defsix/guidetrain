@@ -1,6 +1,8 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
+import muscleMap from "../anatomy/muscle-map.json";
 import SetLogger from "./SetLogger";
+import ProgressionPanel from "./ProgressionPanel";
 import type { SetEntry, Unit } from "../state/useLog";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -9,7 +11,18 @@ type Entry = {
   name: string;
   equipment?: string;
   instructions: string[];
+  primary: string[];
+  secondary: string[];
 };
+
+// Which region each muscle sits in, so a lift can be told apart as upper or
+// lower body — 5/3/1 moves the two at different speeds, and this is how the
+// increment is chosen without hard-coding four exercise names.
+const REGION: Record<string, string> = Object.fromEntries(
+  muscleMap.zones.filter((z) => z.key).map((z) => [z.key, z.region]),
+);
+const usesLegs = (x: Entry) =>
+  [...x.primary, ...x.secondary].some((m) => REGION[m] === "Legs");
 
 // Every exercise, one entry each — the same exercise is listed under every
 // muscle it trains, and the workout stores ids, so this is the lookup back.
@@ -31,13 +44,16 @@ type Props = {
   best: Map<string, SetEntry>;
   onAddSet: (id: string, weight: number, reps: number) => void;
   onRemoveSet: (uid: string) => void;
+  /** Every set ever recorded — the plan works from history, not just today. */
+  allSets: SetEntry[];
 };
 
 export default function WorkoutPanel({
   ids, open, onClose, onRemove, onMove, onClear,
-  unit, onUnit, today, best, onAddSet, onRemoveSet,
+  unit, onUnit, today, best, onAddSet, onRemoveSet, allSets,
 }: Props) {
   const { t, localizeExercise } = useI18n();
+  const [planning, setPlanning] = useState<string | null>(null);
 
   // Looked up and translated at render, not at save: a workout saved in English
   // and opened in Polish should be in Polish, and an exercise whose text was
@@ -130,6 +146,7 @@ export default function WorkoutPanel({
                     best={best.get(x.id)}
                     onAdd={onAddSet}
                     onRemove={onRemoveSet}
+                    onPlan={() => setPlanning(x.id)}
                   />
                 </li>
               ))}
@@ -140,6 +157,21 @@ export default function WorkoutPanel({
           </>
         )}
       </aside>
+      {planning && (() => {
+        const x = items.find((i) => i.id === planning);
+        const raw = BY_ID.get(planning);
+        if (!x || !raw) return null;
+        return (
+          <ProgressionPanel
+            name={x.name}
+            sets={allSets.filter((s) => s.id === planning)}
+            usesLegs={usesLegs(raw)}
+            barbell={raw.equipment === "barbell"}
+            unit={unit}
+            onClose={() => setPlanning(null)}
+          />
+        );
+      })()}
     </>
   );
 }

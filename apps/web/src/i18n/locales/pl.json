@@ -207,5 +207,30 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plan →",
+  "title": "Większa siła",
+  "close": "Zamknij plan",
+  "estimated": "szacowane maksimum",
+  "from": "z {weight} {unit} × {reps}",
+  "target": "Cel",
+  "trainingMax": "Liczone od maksimum treningowego {tm} {unit} — celowo {percent} % szacunku.",
+  "answer": {
+   "one": "{count} cykl, około {weeks} tygodni, za każdym razem o {increment} {unit} więcej.",
+   "few": "{count} cykle, około {weeks} tygodni, za każdym razem o {increment} {unit} więcej.",
+   "many": "{count} cykli, około {weeks} tygodni, za każdym razem o {increment} {unit} więcej.",
+   "other": "{count} cyklu, około {weeks} tygodni, za każdym razem o {increment} {unit} więcej."
+  },
+  "already": "Już to masz. Ustaw wyższy cel.",
+  "needSet": "Zapisz serię na {count} powtórzeń lub mniej, a plan pojawi się tutaj.",
+  "w1": "Tydzień 1",
+  "w2": "Tydzień 2",
+  "w3": "Tydzień 3",
+  "w4": "Odciążenie",
+  "amrapNote": "+ oznacza ostatnią serię na tyle czystych powtórzeń, ile dasz radę — nie do upadku.",
+  "amrapHelp": "jak najwięcej powtórzeń",
+  "barbellNote": "5/3/1 powstało dla głównych bojów ze sztangą. Procenty nadal działają, ale przyrosty zakładają ćwiczenie, które można mocno obciążyć.",
+  "estimateNote": "Szacunek z jednej serii, nie pomiar. Jeśli tydzień wydaje się zły, to plan jest zły."
  }
 }

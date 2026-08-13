@@ -197,5 +197,28 @@
  "unit": {
   "kg": "kg",
   "lb": "lb"
+ },
+ "plan": {
+  "open": "Plan →",
+  "title": "Devenir plus fort",
+  "close": "Fermer le plan",
+  "estimated": "maximum estimé",
+  "from": "d'après {weight} {unit} × {reps}",
+  "target": "Objectif",
+  "trainingMax": "Basé sur un maximum d'entraînement de {tm} {unit} — {percent} % de l'estimation, volontairement.",
+  "answer": {
+   "one": "{count} cycle, environ {weeks} semaines, en ajoutant {increment} {unit} à chaque fois.",
+   "other": "{count} cycles, environ {weeks} semaines, en ajoutant {increment} {unit} à chaque fois."
+  },
+  "already": "C'est déjà atteint. Visez plus haut.",
+  "needSet": "Enregistrez une série de {count} répétitions ou moins et un plan apparaîtra ici.",
+  "w1": "Semaine 1",
+  "w2": "Semaine 2",
+  "w3": "Semaine 3",
+  "w4": "Décharge",
+  "amrapNote": "+ signifie faire la dernière série en autant de répétitions propres que possible, sans aller à l'échec.",
+  "amrapHelp": "autant de répétitions que possible",
+  "barbellNote": "5/3/1 a été écrit pour les grands mouvements à la barre. Les pourcentages restent valables, mais les paliers supposent un exercice lourdement chargeable.",
+  "estimateNote": "Une estimation à partir d'une série, pas une mesure. Si une semaine semble fausse, c'est le plan qui l'est."
  }
 }

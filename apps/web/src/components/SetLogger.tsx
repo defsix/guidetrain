@@ -9,6 +9,7 @@ type Props = {
   best?: SetEntry;
   onAdd: (id: string, weight: number, reps: number) => void;
   onRemove: (uid: string) => void;
+  onPlan: () => void;
 };
 
 /**
@@ -20,7 +21,7 @@ type Props = {
  * these languages use.
  */
 export default function SetLogger({
-  exerciseId, unit, todaysSets, best, onAdd, onRemove,
+  exerciseId, unit, todaysSets, best, onAdd, onRemove, onPlan,
 }: Props) {
   const { t } = useI18n();
   const [weight, setWeight] = useState("");
@@ -85,6 +86,11 @@ export default function SetLogger({
       {best && (
         <p className="best">
           {t("log.best")} {best.weight} {t(`unit.${best.unit}`, undefined, best.unit)} × {best.reps}
+          {/* Only offered once there is a set to work from, since the plan is
+              built from recorded lifts and has nothing to say without one. */}
+          <button className="plan-link" onClick={onPlan}>
+            {t("plan.open")}
+          </button>
         </p>
       )}
     </div>

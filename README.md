@@ -416,6 +416,43 @@ formula to be right. That is also the point of recording sets at all — an
 estimate from a set you performed is a calculation, and a typed-in "my max is
 100" is a claim, and the two should never share a field.
 
+### Getting to the next max
+
+Once an exercise has a usable logged set, **Plan** shows the way from the max
+you have to the max you want: an estimated one-rep max, a target you set, and
+how many four-week cycles it takes, with the loads for each week.
+
+**There is no field for typing in your max.** That is the point. An estimate
+from a set you performed is a calculation; a number you typed is a claim; and a
+plan that cannot tell them apart will happily build eight weeks on a guess. The
+set the estimate came from is shown beside it, so the figure is checkable
+rather than asserted.
+
+The maths, checked against sources rather than recalled:
+
+- **Epley**, `1RM = w × (1 + reps/30)`, for the estimate. A single rep is
+  returned as itself instead of run through the formula — Epley at 1 rep gives
+  `w × 1.033`, so a 100 kg single would be reported as a 103.3 kg max, and a
+  set of one *is* a one-rep max. Only offered up to 12 reps: past that the
+  formula extrapolates well beyond what the set showed, and a confident wrong
+  number is worse than none.
+- **Wendler 5/3/1** for the plan. Training max at 90% of the estimate; week 1
+  65/75/85, week 2 70/80/90, week 3 75/85/95, week 4 deload 40/50/60; the last
+  working set taken for as many good reps as you can. Cycles add 5 kg to
+  lower-body lifts and 2.5 kg to upper-body ones — which is Wendler's split by
+  lift, applied by asking whether the movement loads the legs at all, since the
+  exercise data already knows. A deadlift names the erectors first and the legs
+  second, so looking at both is what puts it on the right side.
+  ([BarBend](https://barbend.com/5-3-1-program/),
+  [ExRx](https://exrx.net/WeightTraining/Powerlifting/531))
+
+Loads round to 2.5 kg (5 lb), because plates come in pairs and a plan asking
+for 87.3 kg is a plan nobody can follow. Worked example, the one this was built
+against: a 100 kg × 5 squat estimates a 117.5 kg max, giving a 105 kg training
+max and a first week starting at 67.5 kg — the backing off — and reaching a
+127.5 kg target takes **2 cycles, about 8 weeks**. The same target on a
+bench press takes 4, since upper-body lifts move at half the rate.
+
 ## Theming
 
 Light, dark, or follow the device — one icon button in the header cycles the

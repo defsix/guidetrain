@@ -192,5 +192,27 @@
  "unit": {
   "kg": "公斤",
   "lb": "磅"
+ },
+ "plan": {
+  "open": "计划 →",
+  "title": "变得更强",
+  "close": "关闭计划",
+  "estimated": "估算最大重量",
+  "from": "根据 {weight} {unit} × {reps} 得出",
+  "target": "目标",
+  "trainingMax": "以训练最大重量 {tm} {unit} 为基准——刻意取估算值的 {percent}%。",
+  "answer": {
+   "other": "{count} 个周期，约 {weeks} 周，每次增加 {increment} {unit}。"
+  },
+  "already": "已经达到了，设一个更高的目标吧。",
+  "needSet": "记录一组 {count} 次以内的动作，这里就会出现计划。",
+  "w1": "第 1 周",
+  "w2": "第 2 周",
+  "w3": "第 3 周",
+  "w4": "减量周",
+  "amrapNote": "+ 表示最后一组尽量多做标准动作，但不必力竭。",
+  "amrapHelp": "尽可能多的次数",
+  "barbellNote": "5/3/1 是为主要杠铃动作设计的。百分比同样适用，但每次的加重幅度假设动作可以上大重量。",
+  "estimateNote": "这是根据一组动作的估算，不是实测。如果某周感觉不对，那是计划不对。"
  }
 }
