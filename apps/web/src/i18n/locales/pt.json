@@ -222,5 +222,14 @@
   "amrapHelp": "tantas repetições quanto possível",
   "barbellNote": "O 5/3/1 foi escrito para os grandes exercícios com barra. As percentagens continuam a servir, mas os saltos pressupõem algo que se possa carregar muito.",
   "estimateNote": "Uma estimativa a partir de uma série, não uma medição. Se uma semana parecer errada, o errado é o plano."
+ },
+ "program": {
+  "untitled": "Treino {n}",
+  "tabs": "Os seus treinos",
+  "add": "Novo treino",
+  "name": "Nome do treino",
+  "rename": "Mudar o nome",
+  "delete": "Eliminar",
+  "save": "Guardar"
  }
 }

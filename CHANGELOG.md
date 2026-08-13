@@ -149,6 +149,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Named workouts** — several rather than one, switched with a row of tabs:
+  new, rename, delete, with delete offered only once there is a second one to
+  fall back to. An unnamed workout shows as "Workout 1", numbered by position
+  and translated at render, so it reads as *Training 1* in German; storing that
+  label would freeze it into whichever language was on when it was made. The
+  old single list migrates into the first workout on load and its key is
+  removed, so nothing built is lost, and saving an exercise with no workout
+  open creates one instead of quietly doing nothing. Caught in verification:
+  wiring `create` straight to `onClick` handed it the click event as the name,
+  which reached every `name.trim()` downstream — fixed at the call site and
+  guarded in the hook.
 - **Kilos, everywhere** — the pound option is gone, and with it a whole
   dimension: "best", the estimate and the plan no longer have to ask whether
   two numbers are comparable before comparing them. A log written in pounds is

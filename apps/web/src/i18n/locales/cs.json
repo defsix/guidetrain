@@ -234,5 +234,14 @@
   "amrapHelp": "co nejvíce opakování",
   "barbellNote": "5/3/1 vzniklo pro hlavní cviky s činkou. Procenta platí i tady, ale přírůstky počítají s cvikem, který lze těžce zatížit.",
   "estimateNote": "Odhad z jedné série, ne měření. Pokud týden nesedí, chyba je v plánu."
+ },
+ "program": {
+  "untitled": "Trénink {n}",
+  "tabs": "Vaše tréninky",
+  "add": "Nový trénink",
+  "name": "Název tréninku",
+  "rename": "Přejmenovat",
+  "delete": "Smazat",
+  "save": "Uložit"
  }
 }

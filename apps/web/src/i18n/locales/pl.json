@@ -234,5 +234,14 @@
   "amrapHelp": "jak najwięcej powtórzeń",
   "barbellNote": "5/3/1 powstało dla głównych bojów ze sztangą. Procenty nadal działają, ale przyrosty zakładają ćwiczenie, które można mocno obciążyć.",
   "estimateNote": "Szacunek z jednej serii, nie pomiar. Jeśli tydzień wydaje się zły, to plan jest zły."
+ },
+ "program": {
+  "untitled": "Trening {n}",
+  "tabs": "Twoje treningi",
+  "add": "Nowy trening",
+  "name": "Nazwa treningu",
+  "rename": "Zmień nazwę",
+  "delete": "Usuń",
+  "save": "Zapisz"
  }
 }

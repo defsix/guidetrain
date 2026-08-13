@@ -4,6 +4,7 @@ import muscleMap from "../anatomy/muscle-map.json";
 import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
 import type { SetEntry } from "../state/useLog";
+import type { Program } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -33,6 +34,12 @@ for (const list of Object.values(exercises.muscles as Record<string, Entry[]>)) 
 
 type Props = {
   ids: string[];
+  programs: Program[];
+  active: Program | null;
+  onSelect: (id: string) => void;
+  onCreate: () => void;
+  onRename: (id: string, name: string) => void;
+  onRemoveProgram: (id: string) => void;
   open: boolean;
   onClose: () => void;
   onRemove: (id: string) => void;
@@ -48,12 +55,20 @@ type Props = {
   bodyLoad?: number;
 };
 
+/** "Workout 1", "Workout 2" — numbered by position, translated at render. */
+function label(p: Program, programs: Program[], t: (k: string, v?: any) => string) {
+  return p.name.trim() || t("program.untitled", { n: programs.indexOf(p) + 1 });
+}
+
 export default function WorkoutPanel({
-  ids, open, onClose, onRemove, onMove, onClear,
+  ids, programs, active, onSelect, onCreate, onRename, onRemoveProgram,
+  open, onClose, onRemove, onMove, onClear,
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
+  const [renaming, setRenaming] = useState(false);
+  const [draft, setDraft] = useState("");
 
   // Looked up and translated at render, not at save: a workout saved in English
   // and opened in Polish should be in Polish, and an exercise whose text was
@@ -79,6 +94,71 @@ export default function WorkoutPanel({
             ✕
           </button>
         </div>
+
+        {/* One row of programs. Tabs rather than a dropdown: with a handful of
+            workouts they are all worth seeing at once, and switching between
+            two of them is the common move. */}
+        <div className="program-tabs" role="tablist" aria-label={t("program.tabs")}>
+          {programs.map((p) => (
+            <button
+              key={p.id}
+              role="tab"
+              aria-selected={active?.id === p.id}
+              className={`program-tab ${active?.id === p.id ? "on" : ""}`}
+              onClick={() => { onSelect(p.id); setRenaming(false); }}
+            >
+              {label(p, programs, t)}
+              <span className="pcount">{p.exerciseIds.length}</span>
+            </button>
+          ))}
+          <button className="program-add" onClick={onCreate} aria-label={t("program.add")}>
+            +
+          </button>
+        </div>
+
+        {active && (
+          <div className="program-bar">
+            {renaming ? (
+              <form
+                className="program-rename"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  onRename(active.id, draft.trim());
+                  setRenaming(false);
+                }}
+              >
+                <input
+                  value={draft}
+                  onChange={(e) => setDraft(e.target.value)}
+                  placeholder={label(active, programs, t)}
+                  aria-label={t("program.name")}
+                  maxLength={40}
+                  autoFocus
+                />
+                <button type="submit">{t("program.save")}</button>
+              </form>
+            ) : (
+              <>
+                <button
+                  className="program-action"
+                  onClick={() => { setDraft(active.name); setRenaming(true); }}
+                >
+                  {t("program.rename")}
+                </button>
+                {/* Deleting takes the exercises with it, so it is only offered
+                    once there is a second program to fall back to. */}
+                {programs.length > 1 && (
+                  <button
+                    className="program-action"
+                    onClick={() => onRemoveProgram(active.id)}
+                  >
+                    {t("program.delete")}
+                  </button>
+                )}
+              </>
+            )}
+          </div>
+        )}
 
         {items.length === 0 ? (
           <p className="workout-empty">{t("workout.empty")}</p>

@@ -222,5 +222,14 @@
   "amrapHelp": "so viele Wiederholungen wie möglich",
   "barbellNote": "5/3/1 wurde für die großen Langhantelübungen geschrieben. Die Prozente gelten auch hier, die Sprünge setzen aber schwer belastbare Übungen voraus.",
   "estimateNote": "Eine Schätzung aus einem Satz, keine Messung. Fühlt sich eine Woche falsch an, liegt es am Plan."
+ },
+ "program": {
+  "untitled": "Training {n}",
+  "tabs": "Deine Trainings",
+  "add": "Neues Training",
+  "name": "Name des Trainings",
+  "rename": "Umbenennen",
+  "delete": "Löschen",
+  "save": "Sichern"
  }
 }

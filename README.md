@@ -390,9 +390,28 @@ field existed, and a body weight recorded in the other unit — converting
 silently would put a number on screen nobody entered. Like everything else
 here, it stays on the device.
 
-## The saved workout
+## Named workouts
 
-A single list you build from the explorer: **+** beside any exercise adds it,
+Several workouts rather than one, switched with a row of tabs at the top of the
+panel: a push day and a leg day are different lists, and keeping them apart is
+most of what a program is. New, rename and delete are all there; delete is only
+offered once there is a second one to fall back to, since it takes the
+exercises with it.
+
+**Names are stored as typed, or not at all.** An unnamed workout displays as
+"Workout 1", "Workout 2" — numbered by position and translated at render, so it
+reads as *Training 1* in German. Storing that generated label would freeze it
+into whichever language happened to be on when it was made, which is the same
+mistake as storing exercise names instead of ids.
+
+The single list this replaces is migrated into the first workout on the first
+load and its old key removed, so nothing anyone built is lost. Saving an
+exercise with no workout open creates one rather than quietly doing nothing —
+the **+** is the first thing anyone presses.
+
+## Inside a workout
+
+A list you build from the explorer: **+** beside any exercise adds it,
 the header button shows the count, and opening it gives you reorder, remove and
 clear. Reordering is buttons rather than drag — a drag target is hard to hit on
 a phone, impossible from a keyboard, and the list is short enough that two taps

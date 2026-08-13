@@ -222,5 +222,14 @@
   "amrapHelp": "autant de répétitions que possible",
   "barbellNote": "5/3/1 a été écrit pour les grands mouvements à la barre. Les pourcentages restent valables, mais les paliers supposent un exercice lourdement chargeable.",
   "estimateNote": "Une estimation à partir d'une série, pas une mesure. Si une semaine semble fausse, c'est le plan qui l'est."
+ },
+ "program": {
+  "untitled": "Séance {n}",
+  "tabs": "Vos séances",
+  "add": "Nouvelle séance",
+  "name": "Nom de la séance",
+  "rename": "Renommer",
+  "delete": "Supprimer",
+  "save": "Enregistrer"
  }
 }

@@ -5,7 +5,7 @@ import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import WorkoutPanel from "../components/WorkoutPanel";
-import { useWorkout } from "../state/useWorkout";
+import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useT } from "../i18n/I18nProvider";
 
@@ -15,7 +15,7 @@ export default function BodyExplorer() {
   const navigate = useNavigate();
   const { profile } = useProfile();
   const { pref, resolved, setPref } = useTheme();
-  const { ids, toggle, remove, move, clear } = useWorkout();
+  const programs = usePrograms();
   const log = useLog();
   const [showWorkout, setShowWorkout] = useState(false);
   const t = useT();
@@ -41,12 +41,12 @@ export default function BodyExplorer() {
           {/* The count is the whole point of the button: it is how you know
               anything was saved without opening it. */}
           <button
-            className={`workout-button ${ids.length ? "has" : ""}`}
+            className={`workout-button ${programs.ids.length ? "has" : ""}`}
             onClick={() => setShowWorkout(true)}
             aria-expanded={showWorkout}
           >
             {t("workout.title")}
-            <span className="wcount">{ids.length}</span>
+            <span className="wcount">{programs.ids.length}</span>
           </button>
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
@@ -59,17 +59,23 @@ export default function BodyExplorer() {
         <AnatomyViewer
           modelUrl={MODEL_URL}
           theme={resolved}
-          savedIds={ids}
-          onToggleSave={toggle}
+          savedIds={programs.ids}
+          onToggleSave={programs.toggle}
         />
       </div>
       <WorkoutPanel
-        ids={ids}
+        ids={programs.ids}
+        programs={programs.programs}
+        active={programs.active}
+        onSelect={programs.select}
+        onCreate={() => programs.create()}
+        onRename={programs.rename}
+        onRemoveProgram={programs.removeProgram}
         open={showWorkout}
         onClose={() => setShowWorkout(false)}
-        onRemove={remove}
-        onMove={move}
-        onClear={clear}
+        onRemove={programs.removeExercise}
+        onMove={programs.move}
+        onClear={programs.clear}
         today={log.today}
         best={log.best}
         onAddSet={log.add}

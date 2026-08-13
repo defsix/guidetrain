@@ -743,3 +743,97 @@
   line-height: 1.4;
   color: var(--text-muted);
 }
+
+/* --- named programs ----------------------------------------------------- */
+/* One row of tabs, scrolling sideways rather than wrapping: a workout named in
+   German runs long, and a row that grows taller pushes the exercises down. */
+.program-tabs {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding-bottom: 2px;
+}
+
+.program-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  max-width: 62%;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 11px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: 0.13s;
+}
+
+.program-tab:hover { border-color: var(--border-strong); color: var(--text); }
+.program-tab.on { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+.pcount {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.program-tab.on .pcount { color: var(--accent); }
+
+.program-add {
+  flex: 0 0 auto;
+  width: 30px;
+  background: transparent;
+  border: 1px dashed var(--border-strong);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+}
+.program-add:hover { border-color: var(--accent); color: var(--accent); }
+
+.program-bar { display: flex; gap: 10px; align-items: center; }
+
+.program-action {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.program-action:hover { color: var(--accent); }
+
+.program-rename { display: flex; gap: 6px; width: 100%; }
+
+.program-rename input {
+  flex: 1;
+  min-width: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 9px;
+  color: var(--text);
+  font-size: 16px;
+}
+.program-rename input:focus { border-color: var(--accent); outline: none; }
+
+.program-rename button {
+  flex: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 11px;
+  color: var(--text-muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+.program-rename button:hover { border-color: var(--accent); color: var(--accent); }
