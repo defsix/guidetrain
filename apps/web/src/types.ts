@@ -6,6 +6,16 @@ export interface Profile {
   username: string;
   gender: Gender;
   ageGroup: AgeGroup;
+  /**
+   * Body weight, to the nearest whole unit. An exact figure rather than a band,
+   * because unlike age it is arithmetic input: it is the load on every push-up
+   * and chin-up in the catalogue, and a band could not be added to a bar.
+   *
+   * Optional in the type because a profile saved before this field existed is
+   * still a valid profile and must not be read as zero.
+   */
+  bodyWeight?: number;
+  bodyWeightUnit?: "kg" | "lb";
 }
 
 export interface MuscleGroup {

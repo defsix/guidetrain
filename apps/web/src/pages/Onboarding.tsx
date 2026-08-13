@@ -37,17 +37,32 @@ export default function Onboarding() {
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
+  const [bodyWeight, setBodyWeight] = useState("");
+  const [unit, setUnit] = useState<"kg" | "lb">("kg");
 
-  const canContinue = username.trim().length > 0 && gender !== null && ageGroup !== null;
+  // A comma is the decimal separator in most of the ten languages, so take
+  // either — though this is asked to the nearest whole unit and most people
+  // will type one.
+  const weightNum = Math.round(parseFloat(bodyWeight.replace(",", ".")));
+  const weightOk = Number.isFinite(weightNum) && weightNum > 0;
+
+  const canContinue =
+    username.trim().length > 0 && gender !== null && ageGroup !== null && weightOk;
 
   function handleContinue() {
     if (!canContinue) return;
-    const profile: Profile = { username: username.trim(), gender: gender!, ageGroup: ageGroup! };
+    const profile: Profile = {
+      username: username.trim(),
+      gender: gender!,
+      ageGroup: ageGroup!,
+      bodyWeight: weightNum,
+      bodyWeightUnit: unit,
+    };
     setProfile(profile);
     navigate("/explore");
   }
 
-  const done = [username.trim().length > 0, gender !== null, ageGroup !== null]
+  const done = [username.trim().length > 0, gender !== null, ageGroup !== null, weightOk]
     .filter(Boolean).length;
 
   return (
@@ -96,6 +111,37 @@ export default function Onboarding() {
         </div>
       </fieldset>
 
+      {/* An exact figure, not a band. Age is context; this is arithmetic — it is
+          the load on every bodyweight exercise in the catalogue, and you cannot
+          put a band on a bar. */}
+      <div className="field">
+        <span>{t("onboarding.bodyWeight")}</span>
+        <div className="weight-row">
+          <input
+            value={bodyWeight}
+            onChange={(e) => setBodyWeight(e.target.value)}
+            inputMode="numeric"
+            placeholder={t("onboarding.bodyWeightPlaceholder")}
+            aria-label={t("onboarding.bodyWeight")}
+            maxLength={5}
+          />
+          <div className="unit-switch" role="group" aria-label={t("log.unit")}>
+            {(["kg", "lb"] as const).map((u) => (
+              <button
+                key={u}
+                type="button"
+                className={unit === u ? "on" : ""}
+                aria-pressed={unit === u}
+                onClick={() => setUnit(u)}
+              >
+                {t(`unit.${u}`, undefined, u)}
+              </button>
+            ))}
+          </div>
+        </div>
+        <p className="field-note">{t("onboarding.bodyWeightWhy")}</p>
+      </div>
+
       <fieldset className="field">
         <legend>{t("onboarding.ageGroup")}</legend>
         <div className="chip-row">
@@ -115,11 +161,11 @@ export default function Onboarding() {
       <button className="primary-button" disabled={!canContinue} onClick={handleContinue}>
         {t("onboarding.continue")}
       </button>
-      {/* The button greys out until all three are answered and never said why.
+      {/* The button greys out until all four are answered and never said why.
           Announced politely so it reaches a screen reader when it changes,
           rather than interrupting whatever is being read. */}
       <p className="form-progress" aria-live="polite">
-        {canContinue ? ' ' : t("onboarding.progress", { count: 3 - done })}
+        {canContinue ? '' : t("onboarding.progress", { count: 4 - done })}
       </p>
     </div>
   );

@@ -46,11 +46,13 @@ type Props = {
   onRemoveSet: (uid: string) => void;
   /** Every set ever recorded — the plan works from history, not just today. */
   allSets: SetEntry[];
+  /** Body weight in the logging unit, or undefined if it isn't known. */
+  bodyLoad?: number;
 };
 
 export default function WorkoutPanel({
   ids, open, onClose, onRemove, onMove, onClear,
-  unit, onUnit, today, best, onAddSet, onRemoveSet, allSets,
+  unit, onUnit, today, best, onAddSet, onRemoveSet, allSets, bodyLoad,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -147,6 +149,7 @@ export default function WorkoutPanel({
                     onAdd={onAddSet}
                     onRemove={onRemoveSet}
                     onPlan={() => setPlanning(x.id)}
+                    bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
                   />
                 </li>
               ))}

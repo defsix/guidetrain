@@ -77,6 +77,13 @@ export default function BodyExplorer() {
         onAddSet={log.add}
         onRemoveSet={log.remove}
         allSets={log.entries}
+        bodyLoad={
+          // Only when the recorded unit matches the one being logged in;
+          // converting silently would put a number on screen nobody entered.
+          profile?.bodyWeight && profile.bodyWeightUnit === log.unit
+            ? profile.bodyWeight
+            : undefined
+        }
       />
     </div>
   );

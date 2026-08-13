@@ -32,6 +32,9 @@
   "username": "Имя пользователя",
   "usernamePlaceholder": "напр. iron_ada",
   "gender": "Пол",
+  "bodyWeight": "Вес тела",
+  "bodyWeightPlaceholder": "напр. 82",
+  "bodyWeightWhy": "Используется как нагрузка в отжиманиях, подтягиваниях и других упражнениях с весом тела.",
   "ageGroup": "Возрастная группа",
   "continue": "Перейти к обзору тела",
   "progress": {

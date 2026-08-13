@@ -26,6 +26,9 @@
   "username": "Nombre de usuario",
   "usernamePlaceholder": "p. ej. iron_ada",
   "gender": "Género",
+  "bodyWeight": "Peso corporal",
+  "bodyWeightPlaceholder": "p. ej. 82",
+  "bodyWeightWhy": "Se usa como carga en flexiones, dominadas y demás ejercicios con peso corporal.",
   "ageGroup": "Grupo de edad",
   "continue": "Continuar al explorador corporal",
   "progress": {

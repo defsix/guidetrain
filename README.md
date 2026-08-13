@@ -221,7 +221,11 @@ choose, is the more honest answer.
 Selecting a muscle also suggests three exercises to superset with — something
 to do in the rest between sets, so the pause trains something instead of
 nothing. They sit directly under **Train This**, above the exercise list.
-Tapping one plays its demonstration.
+
+Tapping one opens **the written instructions**, with the demonstration offered
+at the bottom of them. It used to open the video straight away, which answered
+"show me" before anyone had asked "what is it" — and between sets, reading four
+lines costs a moment where a video costs the whole rest.
 
 The suggestion sharpens as the question does. Before an exercise is chosen it
 can only answer for the muscle's own region; open one and it answers for that
@@ -367,6 +371,19 @@ text input on the site rendered in Arial while everything around it didn't.
 
     python3 tools/fonts/fetch-fonts.py   # re-download and regenerate fonts.css
 
+## Body weight
+
+Asked for on the first screen, as an exact figure to the nearest whole unit
+rather than a band. Age is context and a band is fine for it; body weight is
+arithmetic — it is the load on all **29 bodyweight exercises** in the
+catalogue, and you cannot put a band on a bar. Logging a push-up starts at that
+figure instead of at zero or blank, and stays editable, since a weighted
+chin-up is not the same load as an unassisted one.
+
+It is stored with its unit and only used to prefill when that unit matches the
+one being logged in — converting silently would put a number on screen nobody
+entered. Like everything else here it stays on the device.
+
 ## The saved workout
 
 A single list you build from the explorer: **+** beside any exercise adds it,
@@ -446,12 +463,19 @@ The maths, checked against sources rather than recalled:
   ([BarBend](https://barbend.com/5-3-1-program/),
   [ExRx](https://exrx.net/WeightTraining/Powerlifting/531))
 
-Loads round to 2.5 kg (5 lb), because plates come in pairs and a plan asking
-for 87.3 kg is a plan nobody can follow. Worked example, the one this was built
-against: a 100 kg × 5 squat estimates a 117.5 kg max, giving a 105 kg training
-max and a first week starting at 67.5 kg — the backing off — and reaching a
-127.5 kg target takes **2 cycles, about 8 weeks**. The same target on a
-bench press takes 4, since upper-body lifts move at half the rate.
+**The gym's smallest plate is assumed to be 2.5 kg (5 lb), so the bar moves in
+5 kg steps** — plates go on in pairs, and 87.5 kg is not a weight you can
+build. Every working load rounds to that step. The *training max* deliberately
+does not: it is a number to calculate from rather than a weight to load, and
+rounding it would drag every percentage below it with the same error and make
+the 2.5 kg upper-body increment impossible to apply at all — two cycles would
+come out identical.
+
+Worked example, the one this was built against: a 100 kg × 5 squat estimates a
+117.5 kg max, giving a 105 kg training max and a first week opening at 70 kg —
+the backing off — and reaching a 127.5 kg target takes **2 cycles, about 8
+weeks**. The same target on a bench press takes 4, since upper-body lifts move
+at half the rate.
 
 ## Theming
 

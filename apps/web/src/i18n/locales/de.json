@@ -26,6 +26,9 @@
   "username": "Benutzername",
   "usernamePlaceholder": "z. B. iron_ada",
   "gender": "Geschlecht",
+  "bodyWeight": "Körpergewicht",
+  "bodyWeightPlaceholder": "z. B. 82",
+  "bodyWeightWhy": "Dient als Last für Liegestütze, Klimmzüge und die übrigen Körpergewichtsübungen.",
   "ageGroup": "Altersgruppe",
   "continue": "Weiter zum Körper-Explorer",
   "progress": {

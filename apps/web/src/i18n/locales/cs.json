@@ -32,6 +32,9 @@
   "username": "Uživatelské jméno",
   "usernamePlaceholder": "např. iron_ada",
   "gender": "Pohlaví",
+  "bodyWeight": "Tělesná hmotnost",
+  "bodyWeightPlaceholder": "např. 82",
+  "bodyWeightWhy": "Slouží jako zátěž u kliků, shybů a dalších cviků s vlastní vahou.",
   "ageGroup": "Věková skupina",
   "continue": "Pokračovat do průzkumníka těla",
   "progress": {

@@ -66,22 +66,40 @@ export function bestEstimate(sets: SetEntry[]): { set: SetEntry; oneRM: number }
 }
 
 /**
- * Round to something you can actually load.
+ * The smallest plate the gym is assumed to have, per side.
  *
- * Plates come in pairs, so a barbell moves in 2.5 kg steps with 1.25s a side,
- * and 5 lb steps with 2.5s. A plan that asks for 87.3 kg is a plan nobody can
- * follow.
+ * The loadable step is *twice* this, because plates go on in pairs: with 2.5 kg
+ * as the smallest plate, a barbell moves 5 kg at a time and 87.5 kg is not a
+ * weight you can build. Getting this wrong is the difference between a plan you
+ * follow and a plan you round in your head every set.
  */
+export const SMALLEST_PLATE = { kg: 2.5, lb: 5 } as const;
+
+/** What the bar can actually change by: a plate on each side. */
+export function loadStep(unit: Unit): number {
+  return SMALLEST_PLATE[unit] * 2;
+}
+
+/** Round to something you can actually load. */
 export function roundLoad(value: number, unit: Unit): number {
-  const step = unit === "kg" ? 2.5 : 5;
+  const step = loadStep(unit);
   return Math.round(value / step) * step;
 }
 
 /** 5/3/1 works off a training max deliberately set below the real one. */
 export const TRAINING_MAX_FRACTION = 0.9;
 
+/**
+ * The training max is a number to calculate from, not a weight to load, so it
+ * is *not* rounded to the bar's step. Forcing it to a loadable 5 kg would drag
+ * every percentage below it with the same error, and would make the 2.5 kg
+ * upper-body increment impossible to apply at all — two cycles would look
+ * identical. Only the working sets get rounded, and they are the only numbers
+ * anyone puts on a bar.
+ */
 export function trainingMax(oneRM: number, unit: Unit): number {
-  return roundLoad(oneRM * TRAINING_MAX_FRACTION, unit);
+  const step = SMALLEST_PLATE[unit];
+  return Math.round((oneRM * TRAINING_MAX_FRACTION) / step) * step;
 }
 
 export type PlannedSet = { percent: number; reps: number; amrap: boolean; load: number };
@@ -110,6 +128,11 @@ export function cycle(tm: number, unit: Unit): PlannedWeek[] {
 
 /**
  * How much the training max goes up after each four-week cycle.
+ *
+ * These are Wendler's numbers and they are deliberately not rounded to the
+ * bar's 5 kg step. The training max is arithmetic; rounding the increment would
+ * double the upper-body rate and stall people early, which is the failure the
+ * whole method is arranged to avoid.
  *
  * Wendler's split is by lift: squat and deadlift move twice as fast as bench
  * and press. Rather than hard-coding four exercise names, this asks whether the

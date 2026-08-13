@@ -10,6 +10,8 @@ type Props = {
   onAdd: (id: string, weight: number, reps: number) => void;
   onRemove: (uid: string) => void;
   onPlan: () => void;
+  /** Body weight in the logging unit, when the exercise's load *is* the person. */
+  bodyLoad?: number;
 };
 
 /**
@@ -21,10 +23,13 @@ type Props = {
  * these languages use.
  */
 export default function SetLogger({
-  exerciseId, unit, todaysSets, best, onAdd, onRemove, onPlan,
+  exerciseId, unit, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad,
 }: Props) {
   const { t } = useI18n();
-  const [weight, setWeight] = useState("");
+  // A push-up is loaded by the person doing it, so the field starts at their
+  // body weight rather than empty or at zero. Still editable: a weighted
+  // chin-up or a band-assisted one is not the same load.
+  const [weight, setWeight] = useState(bodyLoad ? String(bodyLoad) : "");
   const [reps, setReps] = useState("");
 
   // A comma is the decimal separator in most of the ten languages, and

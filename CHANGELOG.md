@@ -149,6 +149,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Body weight, exact, on the first screen** — a figure to the nearest whole
+  unit rather than a band, because unlike age it is arithmetic: it is the load
+  on all 29 bodyweight exercises in the catalogue. Logging a push-up now starts
+  at that number instead of zero or blank, and stays editable for a weighted or
+  assisted variant. Used to prefill only when its unit matches the logging unit,
+  since a silent conversion would show a number nobody entered.
+- **Loads assume a 2.5 kg smallest plate, so the bar moves in 5 kg steps** —
+  plates go on in pairs, and 87.5 kg is not a weight anyone can build. The
+  training max deliberately keeps finer resolution: it is a number to calculate
+  from, not a weight to load, and rounding it would drag every percentage below
+  it and make the 2.5 kg upper-body increment impossible to apply at all.
+- **A training pair opens its instructions, not its video** — first tap shows
+  the written steps with the demonstration offered underneath them. It used to
+  open the player straight away, answering "show me" before anyone had asked
+  "what is it"; between sets, four lines of text cost a moment where a video
+  costs the whole rest.
 - **Getting to the next max** — an exercise with a usable logged set now shows
   a plan: an estimated one-rep max, a target you set, and how many four-week
   cycles it takes with the loads for every week. There is deliberately no field

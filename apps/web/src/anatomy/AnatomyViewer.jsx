@@ -154,6 +154,9 @@ export default function AnatomyViewer({
   const [region, setRegion] = useState('all');
   const [openDrill, setOpenDrill] = useState(null);
   const [video, setVideo] = useState(null);
+  // Which suggested partner is expanded. A pair used to open its video on the
+  // first tap, which answered "show me" before anyone had asked "what is it".
+  const [openPair, setOpenPair] = useState(null);
   // Which floating panel is open on a phone. Both are always on screen at
   // desktop widths; below 720px they would cover the model, so they start
   // closed and open one at a time from the toolbar.
@@ -270,6 +273,7 @@ export default function AnatomyViewer({
     // something the model is showing greyed out, so the filter steps aside.
     if (z && region !== 'all' && z.region !== region) setRegion('all');
     setOpenDrill(null);
+    setOpenPair(null);
     // On a phone the picker sits over the model, so leaving it open would hide
     // the very muscle that was just chosen.
     if (z) setPanel(null);
@@ -457,20 +461,44 @@ export default function AnatomyViewer({
             <div className="pairs">
               <h4>{t('viewer.pairTitle')}</h4>
               <p className="pair-why">{t('viewer.pairWhy')}</p>
-              {partners.map((p) => (
-                <button
-                  key={p.id}
-                  className="pair"
-                  onClick={() => setVideo(p)}
-                  disabled={!p.videoId}
-                  title={p.videoId ? t('viewer.watch') : undefined}
-                >
-                  <span className="pname">{p.name}</span>
-                  <span className="tags">
-                    <em>{t(`equipment.${p.equipment}`, undefined, p.equipment)}</em>
-                  </span>
-                </button>
-              ))}
+              {partners.map((p) => {
+                const shown = openPair === p.id;
+                return (
+                  <div key={p.id} className={`pair-item ${shown ? 'open' : ''}`}>
+                    <button
+                      className="pair"
+                      onClick={() => setOpenPair(shown ? null : p.id)}
+                      aria-expanded={shown}
+                    >
+                      <span className="pname">{p.name}</span>
+                      <span className="tags">
+                        <em>{t(`equipment.${p.equipment}`, undefined, p.equipment)}</em>
+                      </span>
+                    </button>
+                    {/* How to do it first, then the demonstration underneath —
+                        reading takes a moment between sets, a video takes the
+                        whole rest. */}
+                    {shown && (
+                      <div className="pair-body">
+                        {p.instructions.length > 0 && (
+                          <ol className="steps">
+                            {p.instructions.map((line, i) => <li key={i}>{line}</li>)}
+                          </ol>
+                        )}
+                        {p.videoId ? (
+                          <button className="watch" onClick={() => setVideo(p)}>
+                            ▶ {t('viewer.watch')}
+                          </button>
+                        ) : (
+                          <a className="watch" href={p.youtube} target="_blank" rel="noreferrer noopener">
+                            {t('viewer.searchYouTube')}
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
 

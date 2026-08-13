@@ -745,3 +745,25 @@
   line-height: 1.5;
   color: var(--text-muted);
 }
+
+/* Body weight: a number and its unit, on one line. */
+.weight-row { display: flex; align-items: center; gap: 9px; }
+
+.weight-row input {
+  width: 7ch;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--text);
+  font-size: 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.field-note {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--text-muted);
+}
