@@ -184,5 +184,15 @@
    "name": "Mięsień Trójgłowy Ramienia",
    "desc": "Tył ramienia; prostuje łokieć. Dipy, prostowanie na wyciągu, wyprosty zza głowy."
   }
+ },
+ "workout": {
+  "title": "Trening",
+  "add": "Dodaj do treningu",
+  "remove": "Usuń z treningu",
+  "close": "Zamknij trening",
+  "clear": "Wyczyść listę",
+  "moveUp": "W górę",
+  "moveDown": "W dół",
+  "empty": "Nic jeszcze nie zapisano. Otwórz mięsień i naciśnij + obok ćwiczenia."
  }
 }

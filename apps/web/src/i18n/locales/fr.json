@@ -174,5 +174,15 @@
    "name": "Triceps Brachial",
    "desc": "Face arrière du bras ; étend le coude. Dips, extensions à la poulie, extensions au-dessus de la tête."
   }
+ },
+ "workout": {
+  "title": "Séance",
+  "add": "Ajouter à la séance",
+  "remove": "Retirer de la séance",
+  "close": "Fermer la séance",
+  "clear": "Vider la liste",
+  "moveUp": "Monter",
+  "moveDown": "Descendre",
+  "empty": "Rien d'enregistré pour l'instant. Ouvrez un muscle et appuyez sur + à côté d'un exercice."
  }
 }

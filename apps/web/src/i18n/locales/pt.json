@@ -174,5 +174,15 @@
    "name": "Tríceps Braquial",
    "desc": "Parte de trás do braço; estende o cotovelo. Paralelas, tríceps na polia, extensões acima da cabeça."
   }
+ },
+ "workout": {
+  "title": "Treino",
+  "add": "Adicionar ao treino",
+  "remove": "Remover do treino",
+  "close": "Fechar treino",
+  "clear": "Limpar a lista",
+  "moveUp": "Mover para cima",
+  "moveDown": "Mover para baixo",
+  "empty": "Nada guardado ainda. Abra um músculo e toque em + ao lado de um exercício."
  }
 }

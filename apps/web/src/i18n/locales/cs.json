@@ -184,5 +184,15 @@
    "name": "Trojhlavý Sval Pažní",
    "desc": "Zadní strana paže; napíná loket. Dipy, stahování kladky, tlaky za hlavou."
   }
+ },
+ "workout": {
+  "title": "Trénink",
+  "add": "Přidat do tréninku",
+  "remove": "Odebrat z tréninku",
+  "close": "Zavřít trénink",
+  "clear": "Vymazat seznam",
+  "moveUp": "Posunout nahoru",
+  "moveDown": "Posunout dolů",
+  "empty": "Zatím nic uloženo. Otevřete sval a stiskněte + vedle cviku."
  }
 }

@@ -367,6 +367,31 @@ text input on the site rendered in Arial while everything around it didn't.
 
     python3 tools/fonts/fetch-fonts.py   # re-download and regenerate fonts.css
 
+## The saved workout
+
+A single list you build from the explorer: **+** beside any exercise adds it,
+the header button shows the count, and opening it gives you reorder, remove and
+clear. Reordering is buttons rather than drag — a drag target is hard to hit on
+a phone, impossible from a keyboard, and the list is short enough that two taps
+beat a gesture.
+
+**It stores ids, not exercises.** The text is 23,000 words per language and
+already in the bundle, so saving a copy would be saving a *stale* copy: it would
+keep whatever names were current when you saved, in the language you saved them
+in. Looking each id up at render means a workout saved in English opens in
+Polish, and a corrected instruction shows the correction. Verified: saving
+`Barbell Bench Press - Medium Grip` and reopening under `pl-PL` gives
+*Wyciskanie Sztangi na Ławce Płaskiej - Chwyt Średni*.
+
+It lives in `localStorage` beside the profile, because the site is static on
+GitHub Pages and there is nothing to sync to. So it is **per-device and per
+browser**, which is the honest limit of a static app and precisely what accounts
+would change.
+
+`AnatomyViewer` stays a drop-in: it takes optional `savedIds` and `onToggleSave`
+and renders the control only when both are given. It knows how to offer an
+exercise and nothing about where it goes.
+
 ## Theming
 
 Light, dark, or follow the device — one icon button in the header cycles the
@@ -415,7 +440,9 @@ Two things apply only to the Pages build:
 1. ✅ 3D anatomical body model with selectable muscle groups
 2. ✅ Training exercises per muscle group — instructions, equipment, the muscles
    lit on the model, and a real demonstration video for all 180
-3. Personal training programs (build your own, save/bookmark)
+3. Personal training programs (build your own, save/bookmark) — **a single
+   saved workout is built**: add from the explorer, reorder, remove, kept in
+   `localStorage`. Named programs with sets and reps are the rest of it.
 4. Accounts (username, sex, approximate age) and public program library
 
 Asked for, not yet built:

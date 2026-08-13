@@ -149,6 +149,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A saved workout** — **+** beside any exercise adds it to a list, the header
+  button carries the count, and the panel reorders, removes and clears. It
+  stores ids rather than exercises, so a workout saved in one language opens in
+  another and a corrected instruction shows the correction; saving *Barbell
+  Bench Press - Medium Grip* and reopening under `pl-PL` gives *Wyciskanie
+  Sztangi na Ławce Płaskiej - Chwyt Średni*. Reordering is buttons, not drag —
+  hard to hit on a phone, impossible from a keyboard, and two taps beat a
+  gesture on a list this short. Persisted to `localStorage` beside the profile,
+  so it is per-device: there is no backend to sync to, which is what accounts
+  would change. `AnatomyViewer` takes optional `savedIds`/`onToggleSave` and
+  renders the control only when both are passed, so it stays a drop-in.
 - **Training pairs moved under Train This**, above the exercise list, after
   being reported as missing — they had been inside an expanded exercise, below
   eight steps of instructions, findable only by someone who already knew to

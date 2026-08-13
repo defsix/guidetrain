@@ -116,6 +116,21 @@ function FrameToVisible({ cover, sideCover, children }) {
   return <group ref={group}>{children}</group>;
 }
 
+/**
+ * The viewer's public surface, written out because TypeScript infers a JS
+ * component's props from its defaults — `savedIds = null` would otherwise mean
+ * the prop's type *is* null, and passing a real array would be the error.
+ *
+ * @param {{
+ *   modelUrl?: string,
+ *   map?: any,
+ *   theme?: string,
+ *   onTrain?: ((detail: {id: string, name: string, region: string, label: string}) => void) | null,
+ *   onSelect?: ((zone: any) => void) | null,
+ *   savedIds?: string[] | null,
+ *   onToggleSave?: ((id: string) => void) | null,
+ * }} props
+ */
 export default function AnatomyViewer({
   modelUrl = '/models/anatomy_mobile.glb',
   map = defaultMap,
@@ -126,6 +141,11 @@ export default function AnatomyViewer({
   // `onTrain,` reads as required.
   onTrain = null,
   onSelect = null,
+  // The saved workout belongs to the app, not to a drop-in viewer: this
+  // component knows how to offer an exercise and nothing about where it goes.
+  // Pass both to get the control, neither to leave it out entirely.
+  savedIds = null,
+  onToggleSave = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -203,6 +223,8 @@ export default function AnatomyViewer({
     () => (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise),
     [selected, localizeExercise],
   );
+  const saved = useMemo(() => new Set(savedIds || []), [savedIds]);
+
   const shownDrill = useMemo(
     () => drills.find((x) => x.id === openDrill) || null,
     [drills, openDrill],
@@ -460,6 +482,7 @@ export default function AnatomyViewer({
                   const open = openDrill === x.id;
                   return (
                     <li key={x.id} className={open ? 'open' : ''}>
+                      <div className="drill-row">
                       <button
                         className="drill-head"
                         onClick={() => setOpenDrill(open ? null : x.id)}
@@ -471,6 +494,21 @@ export default function AnatomyViewer({
                           {x.level && <em>{t(`level.${x.level}`, undefined, x.level)}</em>}
                         </span>
                       </button>
+                      {/* Outside the expander button, because a button inside a
+                          button is not markup a browser or a screen reader can
+                          make sense of. */}
+                      {onToggleSave && (
+                        <button
+                          className={`save ${saved.has(x.id) ? 'on' : ''}`}
+                          onClick={() => onToggleSave(x.id)}
+                          aria-pressed={saved.has(x.id)}
+                          aria-label={`${saved.has(x.id) ? t('workout.remove') : t('workout.add')} — ${x.name}`}
+                          title={saved.has(x.id) ? t('workout.remove') : t('workout.add')}
+                        >
+                          {saved.has(x.id) ? '✓' : '+'}
+                        </button>
+                      )}
+                      </div>
                       {open && (
                         <div className="drill-body">
                           {/* The muscles it trains, shown on the model above:

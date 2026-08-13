@@ -130,12 +130,26 @@
 .anatomy-readout .drills li { border-radius: 9px; margin-bottom: 3px; }
 .anatomy-readout .drills li.open { background: var(--panel); }
 
+/* The expander and the save control sit side by side; the body opens beneath
+   them both. A save button nested inside the expander button would be markup
+   no browser or screen reader can resolve. */
+.drill-row { display: flex; align-items: stretch; }
+
 .drill-head {
-  width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px;
   background: none; border: 0; padding: 8px 10px; border-radius: 9px; cursor: pointer;
   font-family: inherit; font-size: 12.5px; color: var(--text); text-align: left;
 }
 .drill-head:hover { background: var(--panel); }
+
+.drill-body .save,
+.anatomy-readout .save {
+  flex: none; width: 30px; border: 0; background: none; cursor: pointer;
+  color: var(--text-muted); font-family: inherit; font-size: 15px; line-height: 1;
+  border-radius: 9px; transition: 0.13s;
+}
+.anatomy-readout .save:hover { background: var(--panel); color: var(--accent); }
+.anatomy-readout .save.on { color: var(--accent); }
 /* Exercise names wrap rather than truncate. "Standing Palms-Up Barbell Behind
    The Back Wrist Curl" has no useful prefix, so an ellipsis at 25 characters
    hid which exercise it was — and the translations run longer still. */

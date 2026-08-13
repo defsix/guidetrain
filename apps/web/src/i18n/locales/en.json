@@ -174,5 +174,15 @@
    "name": "Triceps Brachii",
    "desc": "Back of the upper arm; straightens the elbow. Dips, pushdowns, overhead extensions."
   }
+ },
+ "workout": {
+  "title": "Workout",
+  "add": "Add to workout",
+  "remove": "Remove from workout",
+  "close": "Close workout",
+  "clear": "Clear the list",
+  "moveUp": "Move up",
+  "moveDown": "Move down",
+  "empty": "Nothing saved yet. Open a muscle and press + beside an exercise to build a workout."
  }
 }

@@ -281,3 +281,215 @@
   margin-left: auto;
   flex-wrap: wrap;
 }
+
+/* --- saved workout ----------------------------------------------------- */
+/* Shaped like the theme toggle so the two read as one control group. The count
+   is always shown, zero included: "0" is information, and a badge that appears
+   only once something is saved is a badge nobody learns to look for. */
+.workout-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 999px;
+  padding: 7px 9px 7px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 0 0 auto;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.workout-button:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.workout-button.has {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.wcount {
+  font-family: var(--mono);
+  font-size: 11px;
+  min-width: 20px;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text-muted);
+}
+
+.workout-button.has .wcount {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+/* A sheet from the right on a wide screen, from the bottom on a phone, over a
+   scrim that dismisses it. */
+.workout-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  border: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.workout-panel {
+  position: fixed;
+  z-index: 31;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(380px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .workout-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    max-height: 76svh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+.workout-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.workout-panel h2 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.workout-close {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.workout-close:hover {
+  color: var(--text);
+  background: var(--bg);
+}
+
+.workout-empty {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.workout-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.workout-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 6px 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.wnum {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.wname {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  line-height: 1.3;
+}
+
+.wname em {
+  display: block;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.wmove {
+  flex: none;
+  display: flex;
+  gap: 1px;
+}
+
+.wmove button {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1;
+  padding: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.wmove button:hover:not(:disabled) {
+  color: var(--accent);
+  background: var(--bg);
+}
+
+.wmove button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.workout-clear {
+  align-self: flex-start;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 9px;
+  padding: 7px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.workout-clear:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

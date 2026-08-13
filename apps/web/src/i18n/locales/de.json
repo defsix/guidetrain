@@ -174,5 +174,15 @@
    "name": "Trizeps",
    "desc": "Rückseite des Oberarms; streckt den Ellenbogen. Dips, Pushdowns, Überkopf-Strecken."
   }
+ },
+ "workout": {
+  "title": "Training",
+  "add": "Zum Training hinzufügen",
+  "remove": "Aus dem Training entfernen",
+  "close": "Training schließen",
+  "clear": "Liste leeren",
+  "moveUp": "Nach oben",
+  "moveDown": "Nach unten",
+  "empty": "Noch nichts gespeichert. Öffne einen Muskel und tippe auf + neben einer Übung."
  }
 }
