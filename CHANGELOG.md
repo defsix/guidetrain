@@ -176,12 +176,16 @@ Newest first. Numbers in brackets are pull requests.
   through, and two notes answer what the table provoked: the weekly jumps are
   small because every load is a share of the *training* max rather than the
   real one, and the increase comes per cycle.
-- **Repeated cycles are labelled as repeated** — with a 2.5 kg smallest plate
-  the bar moves in 5 kg steps, and 5 kg of training max is 4.75 kg at 95%, so a
-  cycle's increase can round away completely: at a 197.5 kg training max, cycles
-  1 and 2 call for identical weights. Arithmetic rather than a bug, but two
-  identical tables look like a broken one, so the panel now says which cycle
-  repeats and why.
+- **The smallest plate is 1.25 kg, so the bar moves in 2.5 kg steps** — and
+  every cycle now moves with it. At 2.5 kg plates the bar stepped 5 kg, which is
+  larger than a cycle's increase at the top percentages (5 kg of training max is
+  4.75 kg at 95%), so cycles 1 and 2 called for identical weights and the plan
+  looked stalled. The training max keeps its own 2.5 kg rounding rather than
+  following the plate rack, which would have put it on 1.25 kg boundaries and
+  produced figures like 198.75.
+- **Repeated cycles are still labelled as repeated** — a heavier plate rack or a
+  smaller increment can bring the situation back, and two identical tables look
+  like a broken one, so the panel says which cycle repeats and why.
 - **Targets you tick off by lifting** — an exercise can carry `3 × 5`, drawn as
   pips beside it, with a line counting finished exercises. The pips fill from
   the log and nothing is tappable to tick: a tick set by hand would be a second

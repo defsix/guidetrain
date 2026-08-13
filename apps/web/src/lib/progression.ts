@@ -59,17 +59,29 @@ export function bestEstimate(sets: SetEntry[]): { set: SetEntry; oneRM: number }
 }
 
 /**
- * The smallest plate the gym is assumed to have, per side, in kilos.
+ * The smallest plate the gym has, per side, in kilos.
  *
- * The loadable step is *twice* this, because plates go on in pairs: with 2.5 kg
- * as the smallest plate, a barbell moves 5 kg at a time and 87.5 kg is not a
- * weight you can build. Getting this wrong is the difference between a plan you
- * follow and a plan you round in your head every set.
+ * The loadable step is *twice* this, because plates go on in pairs: 1.25 kg
+ * plates move a barbell 2.5 kg at a time. Getting it wrong is the difference
+ * between a plan you follow and a plan you round in your head every set — and
+ * at 2.5 kg plates it was worse than untidy, because a 5 kg bar step is larger
+ * than one cycle's increase at the top percentages, so consecutive cycles came
+ * out identical and the plan appeared to stall.
  */
-export const SMALLEST_PLATE = 2.5;
+export const SMALLEST_PLATE = 1.25;
 
 /** What the bar can actually change by: a plate on each side. */
 export const LOAD_STEP = SMALLEST_PLATE * 2;
+
+/**
+ * What the training max is rounded to — deliberately not the bar's step.
+ *
+ * It is a number to calculate from rather than a weight to load, so it wants a
+ * tidy quantum of its own that does not follow the plate rack. Tying it to the
+ * smallest plate would put training maxes on 1.25 kg boundaries, giving figures
+ * like 198.75 that nobody would write down.
+ */
+const TRAINING_MAX_STEP = 2.5;
 
 /** Round to something you can actually load. */
 export function roundLoad(value: number): number {
@@ -81,14 +93,13 @@ export const TRAINING_MAX_FRACTION = 0.9;
 
 /**
  * The training max is a number to calculate from, not a weight to load, so it
- * is *not* rounded to the bar's step. Forcing it to a loadable 5 kg would drag
- * every percentage below it with the same error, and would make the 2.5 kg
- * upper-body increment impossible to apply at all — two cycles would look
- * identical. Only the working sets get rounded, and they are the only numbers
- * anyone puts on a bar.
+ * is rounded to its own tidy step rather than to the bar's. Forcing it onto a
+ * loadable boundary would drag every percentage below it with the same error.
+ * Only the working sets are rounded to what a bar can hold, and they are the
+ * only numbers anyone loads.
  */
 export function trainingMax(oneRM: number): number {
-  return Math.round((oneRM * TRAINING_MAX_FRACTION) / SMALLEST_PLATE) * SMALLEST_PLATE;
+  return Math.round((oneRM * TRAINING_MAX_FRACTION) / TRAINING_MAX_STEP) * TRAINING_MAX_STEP;
 }
 
 export type PlannedSet = { percent: number; reps: number; amrap: boolean; load: number };
@@ -118,9 +129,9 @@ export function cycle(tm: number): PlannedWeek[] {
 /**
  * How much the training max goes up after each four-week cycle.
  *
- * These are Wendler's numbers and they are deliberately not rounded to the
- * bar's 5 kg step. The training max is arithmetic; rounding the increment would
- * double the upper-body rate and stall people early, which is the failure the
+ * These are Wendler's numbers, applied to the training max rather than to a
+ * loaded bar, so they are not rounded to anything. Rounding the upper-body one
+ * up would double its rate and stall people early, which is the failure the
  * whole method is arranged to avoid.
  *
  * Wendler's split is by lift: squat and deadlift move twice as fast as bench
