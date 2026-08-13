@@ -184,5 +184,18 @@
   "moveUp": "Move up",
   "moveDown": "Move down",
   "empty": "Nothing saved yet. Open a muscle and press + beside an exercise to build a workout."
+ },
+ "log": {
+  "addSet": "Add set",
+  "weight": "Weight",
+  "reps": "Repetitions",
+  "repsShort": "reps",
+  "removeSet": "Remove set",
+  "best": "Best",
+  "unit": "Weight unit"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

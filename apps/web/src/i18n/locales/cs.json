@@ -194,5 +194,18 @@
   "moveUp": "Posunout nahoru",
   "moveDown": "Posunout dolů",
   "empty": "Zatím nic uloženo. Otevřete sval a stiskněte + vedle cviku."
+ },
+ "log": {
+  "addSet": "Přidat sérii",
+  "weight": "Váha",
+  "reps": "Opakování",
+  "repsShort": "opak.",
+  "removeSet": "Odebrat sérii",
+  "best": "Nejlepší",
+  "unit": "Jednotka váhy"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

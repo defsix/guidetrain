@@ -184,5 +184,18 @@
   "moveUp": "Subir",
   "moveDown": "Bajar",
   "empty": "Aún no hay nada guardado. Abre un músculo y pulsa + junto a un ejercicio."
+ },
+ "log": {
+  "addSet": "Añadir serie",
+  "weight": "Peso",
+  "reps": "Repeticiones",
+  "repsShort": "reps",
+  "removeSet": "Quitar serie",
+  "best": "Mejor",
+  "unit": "Unidad de peso"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

@@ -184,5 +184,18 @@
   "moveUp": "Mover para cima",
   "moveDown": "Mover para baixo",
   "empty": "Nada guardado ainda. Abra um músculo e toque em + ao lado de um exercício."
+ },
+ "log": {
+  "addSet": "Adicionar série",
+  "weight": "Peso",
+  "reps": "Repetições",
+  "repsShort": "reps",
+  "removeSet": "Remover série",
+  "best": "Melhor",
+  "unit": "Unidade de peso"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

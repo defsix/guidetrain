@@ -392,6 +392,30 @@ would change.
 and renders the control only when both are given. It knows how to offer an
 exercise and nothing about where it goes.
 
+### Logging what you lifted
+
+Each exercise in the workout takes sets: a weight and a rep count, recorded
+against it with today's date. Today's sets show as pills, the heaviest set ever
+recorded shows underneath, and a mis-tap is removable.
+
+The weight field keeps its value between sets and the reps field clears, because
+the weight usually repeats across a set and the reps usually don't. A comma is
+accepted as the decimal separator — it is the separator in most of the ten
+languages, and `parseFloat("62,5")` silently returns `62`.
+
+Units are **kg or lb, stored per entry rather than per user.** Switching the
+preference changes what happens next and never what already happened: 60
+recorded in kilos stays 60 kilos. For the same reason the "best" figure only
+compares within a unit — 60 kg and 135 lb are the same lift and 135 is the
+bigger number, so comparing across them would name the wrong set.
+
+The best figure is a set that actually happened, not an estimated one-rep max.
+Estimating is the progression feature's job, and its formulas want checking
+against sources before anything is shown as a number; a real set needs no
+formula to be right. That is also the point of recording sets at all — an
+estimate from a set you performed is a calculation, and a typed-in "my max is
+100" is a claim, and the two should never share a field.
+
 ## Theming
 
 Light, dark, or follow the device — one icon button in the header cycles the

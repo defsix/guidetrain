@@ -1,5 +1,7 @@
 import { useMemo } from "react";
 import exercises from "../anatomy/exercises.json";
+import SetLogger from "./SetLogger";
+import type { SetEntry, Unit } from "../state/useLog";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -23,9 +25,18 @@ type Props = {
   onRemove: (id: string) => void;
   onMove: (id: string, delta: number) => void;
   onClear: () => void;
+  unit: Unit;
+  onUnit: (u: Unit) => void;
+  today: Map<string, SetEntry[]>;
+  best: Map<string, SetEntry>;
+  onAddSet: (id: string, weight: number, reps: number) => void;
+  onRemoveSet: (uid: string) => void;
 };
 
-export default function WorkoutPanel({ ids, open, onClose, onRemove, onMove, onClear }: Props) {
+export default function WorkoutPanel({
+  ids, open, onClose, onRemove, onMove, onClear,
+  unit, onUnit, today, best, onAddSet, onRemoveSet,
+}: Props) {
   const { t, localizeExercise } = useI18n();
 
   // Looked up and translated at render, not at save: a workout saved in English
@@ -48,9 +59,26 @@ export default function WorkoutPanel({ ids, open, onClose, onRemove, onMove, onC
       <aside className="workout-panel" aria-label={t("workout.title")}>
         <div className="workout-head">
           <h2>{t("workout.title")}</h2>
-          <button className="workout-close" onClick={onClose} aria-label={t("workout.close")}>
-            ✕
-          </button>
+          <div className="workout-head-right">
+            {/* Which unit new sets are recorded in. Entries already written
+                keep the unit they were written in, so this changes what
+                happens next and never what already happened. */}
+            <div className="unit-switch" role="group" aria-label={t("log.unit")}>
+              {(["kg", "lb"] as Unit[]).map((u) => (
+                <button
+                  key={u}
+                  className={unit === u ? "on" : ""}
+                  aria-pressed={unit === u}
+                  onClick={() => onUnit(u)}
+                >
+                  {t(`unit.${u}`, undefined, u)}
+                </button>
+              ))}
+            </div>
+            <button className="workout-close" onClick={onClose} aria-label={t("workout.close")}>
+              ✕
+            </button>
+          </div>
         </div>
 
         {items.length === 0 ? (
@@ -60,6 +88,7 @@ export default function WorkoutPanel({ ids, open, onClose, onRemove, onMove, onC
             <ol className="workout-list">
               {items.map((x, i) => (
                 <li key={x.id}>
+                  <div className="wrow">
                   <span className="wnum">{i + 1}</span>
                   <span className="wname">
                     {x.name}
@@ -93,6 +122,15 @@ export default function WorkoutPanel({ ids, open, onClose, onRemove, onMove, onC
                       ✕
                     </button>
                   </span>
+                  </div>
+                  <SetLogger
+                    exerciseId={x.id}
+                    unit={unit}
+                    todaysSets={today.get(x.id) ?? []}
+                    best={best.get(x.id)}
+                    onAdd={onAddSet}
+                    onRemove={onRemoveSet}
+                  />
                 </li>
               ))}
             </ol>

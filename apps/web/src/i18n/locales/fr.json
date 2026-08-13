@@ -184,5 +184,18 @@
   "moveUp": "Monter",
   "moveDown": "Descendre",
   "empty": "Rien d'enregistré pour l'instant. Ouvrez un muscle et appuyez sur + à côté d'un exercice."
+ },
+ "log": {
+  "addSet": "Ajouter une série",
+  "weight": "Charge",
+  "reps": "Répétitions",
+  "repsShort": "réps",
+  "removeSet": "Supprimer la série",
+  "best": "Record",
+  "unit": "Unité de charge"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

@@ -184,5 +184,18 @@
   "moveUp": "Nach oben",
   "moveDown": "Nach unten",
   "empty": "Noch nichts gespeichert. Öffne einen Muskel und tippe auf + neben einer Übung."
+ },
+ "log": {
+  "addSet": "Satz hinzufügen",
+  "weight": "Gewicht",
+  "reps": "Wiederholungen",
+  "repsShort": "Wdh.",
+  "removeSet": "Satz entfernen",
+  "best": "Bestwert",
+  "unit": "Gewichtseinheit"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

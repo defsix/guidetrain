@@ -416,7 +416,10 @@
   gap: 5px;
 }
 
-.workout-list li {
+/* Direct children only. The set pills are `li`s too, nested inside these, and
+   a descendant selector handed them this row's layout — which stacked their
+   own contents into little towers. */
+.workout-list > li {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -492,4 +495,131 @@
 .workout-clear:hover {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+/* --- logging what was lifted ------------------------------------------- */
+/* The name row and its sets stack; the row itself stays horizontal. */
+.workout-list > li { flex-direction: column; align-items: stretch; gap: 7px; }
+.wrow { display: flex; align-items: center; gap: 9px; }
+
+.workout-head-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Two halves of one control, so it reads as a choice rather than two buttons. */
+.unit-switch {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.unit-switch button {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.unit-switch button.on {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.logger {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 22px;
+}
+
+.sets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.sets li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 4px 3px 7px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 11.5px;
+  color: var(--text);
+}
+
+.sets .sn {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.sets li button {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1;
+  padding: 3px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.sets li button:hover { color: var(--accent); }
+
+.log-form {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 16px keeps iOS Safari from zooming the page when a field takes focus, so the
+   width is set in ch rather than by shrinking the type. */
+.log-form input {
+  /* 6ch, not 5: "повт." and "opak." are five characters and Cyrillic glyphs
+     are wider, so a 5ch field clipped its own placeholder. */
+  width: 6ch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 7px;
+  color: var(--text);
+  font-size: 16px;
+  text-align: center;
+}
+
+.log-form input:focus { border-color: var(--accent); outline: none; }
+.log-form .by { color: var(--text-muted); font-size: 12px; }
+
+.log-form button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.log-form button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.log-form button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.best {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
 }

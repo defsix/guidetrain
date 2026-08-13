@@ -194,5 +194,18 @@
   "moveUp": "W górę",
   "moveDown": "W dół",
   "empty": "Nic jeszcze nie zapisano. Otwórz mięsień i naciśnij + obok ćwiczenia."
+ },
+ "log": {
+  "addSet": "Dodaj serię",
+  "weight": "Ciężar",
+  "reps": "Powtórzenia",
+  "repsShort": "powt.",
+  "removeSet": "Usuń serię",
+  "best": "Najlepszy",
+  "unit": "Jednostka ciężaru"
+ },
+ "unit": {
+  "kg": "kg",
+  "lb": "lb"
  }
 }

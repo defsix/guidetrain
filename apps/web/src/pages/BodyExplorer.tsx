@@ -6,6 +6,7 @@ import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import WorkoutPanel from "../components/WorkoutPanel";
 import { useWorkout } from "../state/useWorkout";
+import { useLog } from "../state/useLog";
 import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
@@ -15,6 +16,7 @@ export default function BodyExplorer() {
   const { profile } = useProfile();
   const { pref, resolved, setPref } = useTheme();
   const { ids, toggle, remove, move, clear } = useWorkout();
+  const log = useLog();
   const [showWorkout, setShowWorkout] = useState(false);
   const t = useT();
 
@@ -68,6 +70,12 @@ export default function BodyExplorer() {
         onRemove={remove}
         onMove={move}
         onClear={clear}
+        unit={log.unit}
+        onUnit={log.setUnit}
+        today={log.today}
+        best={log.best}
+        onAddSet={log.add}
+        onRemoveSet={log.remove}
       />
     </div>
   );

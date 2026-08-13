@@ -149,6 +149,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Log what you lifted** — each exercise in the workout takes sets, a weight
+  and a rep count, kept with the date; today's sets show as pills and the
+  heaviest set ever recorded shows underneath. The weight field keeps its value
+  between sets and the reps field clears, since the weight repeats and the reps
+  don't, and a comma is accepted as the decimal separator because it is the
+  separator in most of the ten languages and `parseFloat("62,5")` silently
+  returns 62. Units are kg or lb stored **per entry**, so switching the
+  preference changes what happens next and never what already happened; "best"
+  compares only within a unit, since 135 lb and 60 kg are the same lift and 135
+  is the bigger number. The best figure is deliberately a set that happened
+  rather than an estimated one-rep max — estimating belongs to the progression
+  feature and wants its formulas checked against sources first.
 - **A saved workout** — **+** beside any exercise adds it to a list, the header
   button carries the count, and the panel reorders, removes and clears. It
   stores ids rather than exercises, so a workout saved in one language opens in
