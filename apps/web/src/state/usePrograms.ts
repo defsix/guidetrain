@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 
 const KEY = "guidetrain.programs";
 const ACTIVE_KEY = "guidetrain.programs.active";
@@ -18,9 +18,33 @@ export type Program = {
   name: string;
   /** Exercise ids, in the order they will be done. */
   exerciseIds: string[];
+  /**
+   * Optional target per exercise: three sets of five, and so on.
+   *
+   * A *target*, not a tally. Nothing here records what happened — the log does
+   * that, and it is the only thing that does. A tick you tap yourself would be
+   * a second account of the same session, free to disagree with the first, and
+   * then one of the two is a lie. This is a line drawn on the log: sets counted
+   * today against sets intended.
+   */
+  targets?: Record<string, { sets: number; reps: number }>;
 };
 
 const uid = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+
+/** Storage is not a trusted input; keep only whole, positive, sane pairs. */
+function cleanTargets(raw: unknown): Record<string, { sets: number; reps: number }> {
+  const out: Record<string, { sets: number; reps: number }> = {};
+  if (!raw || typeof raw !== "object") return out;
+  for (const [id, v] of Object.entries(raw as Record<string, any>)) {
+    const sets = Math.round(Number(v?.sets));
+    const reps = Math.round(Number(v?.reps));
+    // Capped rather than merely positive: a target of 900 sets is a typo, and
+    // it would render 900 pips.
+    if (sets > 0 && sets <= 20 && reps > 0 && reps <= 100) out[id] = { sets, reps };
+  }
+  return out;
+}
 
 function persist(key: string, value: unknown) {
   try {
@@ -50,6 +74,7 @@ function read(): Program[] {
             id: p.id,
             name: typeof p.name === "string" ? p.name : "",
             exerciseIds: p.exerciseIds.filter((x: unknown) => typeof x === "string"),
+            targets: cleanTargets(p.targets),
           }));
       }
     }
@@ -74,6 +99,9 @@ function read(): Program[] {
 
 export function usePrograms() {
   const [programs, setPrograms] = useState<Program[]>(read);
+  // Removing an exercise also clears its target, and the two are declared in
+  // the other order; a ref keeps that from forcing either one to move.
+  const setTargetRef = useRef<((id: string, t: null) => void) | null>(null);
   const [activeId, setActiveId] = useState<string | null>(() => {
     const saved = localStorage.getItem(ACTIVE_KEY);
     return saved || null;
@@ -167,7 +195,11 @@ export function usePrograms() {
   );
 
   const removeExercise = useCallback(
-    (exId: string) => editActive((ids) => ids.filter((x) => x !== exId)),
+    (exId: string) => {
+      editActive((ids) => ids.filter((x) => x !== exId));
+      // Otherwise the target outlives the exercise and comes back with it.
+      setTargetRef.current?.(exId, null);
+    },
     [editActive],
   );
 
@@ -186,6 +218,28 @@ export function usePrograms() {
 
   const clear = useCallback(() => editActive(() => []), [editActive]);
 
+  /** Set or clear one exercise's target in the active program. */
+  const setTarget = useCallback(
+    (exId: string, target: { sets: number; reps: number } | null) => {
+      setPrograms((prev) => {
+        const id = activeId && prev.some((p) => p.id === activeId) ? activeId : prev[0]?.id;
+        if (!id) return prev;
+        const next = prev.map((p) => {
+          if (p.id !== id) return p;
+          const targets = { ...(p.targets ?? {}) };
+          if (target) targets[exId] = target;
+          else delete targets[exId];
+          return { ...p, targets };
+        });
+        persist(KEY, next);
+        return next;
+      });
+    },
+    [activeId],
+  );
+
+  setTargetRef.current = (id, t) => setTarget(id, t);
+
   return {
     programs,
     active,
@@ -198,6 +252,8 @@ export function usePrograms() {
     removeExercise,
     move,
     clear,
+    setTarget,
+    targets: active?.targets ?? {},
     save,
   };
 }

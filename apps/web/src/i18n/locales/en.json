@@ -231,5 +231,21 @@
   "rename": "Rename",
   "delete": "Delete",
   "save": "Save"
+ },
+ "target": {
+  "add": "+ target",
+  "sets": "Sets",
+  "reps": "Reps per set",
+  "save": "Set",
+  "clear": "Clear",
+  "edit": "Target: {sets} sets of {reps}. Change it.",
+  "progress": {
+   "one": "{done} of {count} set done",
+   "other": "{done} of {count} sets done"
+  },
+  "overall": {
+   "one": "{done} of {count} exercise done",
+   "other": "{done} of {count} exercises done"
+  }
  }
 }

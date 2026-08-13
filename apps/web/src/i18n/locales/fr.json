@@ -231,5 +231,21 @@
   "rename": "Renommer",
   "delete": "Supprimer",
   "save": "Enregistrer"
+ },
+ "target": {
+  "add": "+ objectif",
+  "sets": "Séries",
+  "reps": "Répétitions par série",
+  "save": "Définir",
+  "clear": "Retirer",
+  "edit": "Objectif : {sets} séries de {reps}. Modifier.",
+  "progress": {
+   "one": "{done} série sur {count} faite",
+   "other": "{done} séries sur {count} faites"
+  },
+  "overall": {
+   "one": "{done} exercice sur {count} fait",
+   "other": "{done} exercices sur {count} faits"
+  }
  }
 }

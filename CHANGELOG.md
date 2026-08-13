@@ -149,6 +149,14 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Targets you tick off by lifting** — an exercise can carry `3 × 5`, drawn as
+  pips beside it, with a line counting finished exercises. The pips fill from
+  the log and nothing is tappable to tick: a tick set by hand would be a second
+  account of the same session, free to disagree with the sets recorded, and
+  then one of the two is wrong and the app cannot say which. Deleting a logged
+  set empties a pip again. A fourth set against a target of three draws a
+  fourth outlined pip rather than being clamped — it happened, and hiding it
+  would put the log and the pips back into disagreement.
 - **Named workouts** — several rather than one, switched with a row of tabs:
   new, rename, delete, with delete offered only once there is a second one to
   fall back to. An unnamed workout shows as "Workout 1", numbered by position

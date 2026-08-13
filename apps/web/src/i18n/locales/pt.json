@@ -231,5 +231,21 @@
   "rename": "Mudar o nome",
   "delete": "Eliminar",
   "save": "Guardar"
+ },
+ "target": {
+  "add": "+ objetivo",
+  "sets": "Séries",
+  "reps": "Repetições por série",
+  "save": "Definir",
+  "clear": "Remover",
+  "edit": "Objetivo: {sets} séries de {reps}. Alterar.",
+  "progress": {
+   "one": "{done} de {count} série feita",
+   "other": "{done} de {count} séries feitas"
+  },
+  "overall": {
+   "one": "{done} de {count} exercício feito",
+   "other": "{done} de {count} exercícios feitos"
+  }
  }
 }

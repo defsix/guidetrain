@@ -837,3 +837,86 @@
   cursor: pointer;
 }
 .program-rename button:hover { border-color: var(--accent); color: var(--accent); }
+
+/* --- targets ------------------------------------------------------------ */
+/* Pips fill from the log rather than from tapping, so nothing here is a
+   control except the label, which edits the target. */
+.target { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; flex: none; }
+
+.target-label {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.target-label:hover { color: var(--accent); }
+.target.done .target-label { color: var(--accent); }
+
+.pips { display: inline-flex; gap: 3px; }
+
+.pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  transition: background 0.15s, border-color 0.15s;
+}
+.pip.on { background: var(--accent); border-color: var(--accent); }
+/* Past the target: filled, but outlined so it reads as "and one more". */
+.pip.extra { background: var(--accent-soft); border-color: var(--accent); }
+
+.target-add {
+  flex: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.target-add:hover { color: var(--accent); }
+
+.target-edit { display: flex; align-items: center; gap: 5px; flex: none; }
+
+.target-edit input {
+  width: 4ch;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 4px;
+  color: var(--text);
+  font-size: 16px;
+  text-align: center;
+}
+.target-edit input:focus { border-color: var(--accent); outline: none; }
+
+.target-edit button {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 5px 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  cursor: pointer;
+}
+.target-edit button:hover { border-color: var(--accent); color: var(--accent); }
+.target-edit .target-clear { border-color: transparent; }
+
+.workout-progress {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.workout-progress.done { color: var(--accent); }

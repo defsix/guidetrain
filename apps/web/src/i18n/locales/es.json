@@ -231,5 +231,21 @@
   "rename": "Renombrar",
   "delete": "Eliminar",
   "save": "Guardar"
+ },
+ "target": {
+  "add": "+ objetivo",
+  "sets": "Series",
+  "reps": "Repeticiones por serie",
+  "save": "Fijar",
+  "clear": "Quitar",
+  "edit": "Objetivo: {sets} series de {reps}. Cambiar.",
+  "progress": {
+   "one": "{done} de {count} serie hecha",
+   "other": "{done} de {count} series hechas"
+  },
+  "overall": {
+   "one": "{done} de {count} ejercicio hecho",
+   "other": "{done} de {count} ejercicios hechos"
+  }
  }
 }

@@ -409,6 +409,26 @@ load and its old key removed, so nothing anyone built is lost. Saving an
 exercise with no workout open creates one rather than quietly doing nothing —
 the **+** is the first thing anyone presses.
 
+### Targets
+
+Each exercise can carry a target — `3 × 5` — shown as a row of pips beside it,
+and a line at the top counts how many exercises are finished.
+
+**The pips fill from the log. Nothing is tappable to tick.** That is the whole
+design: a tick you set yourself would be a second account of the same session,
+free to disagree with the sets you recorded, and then one of the two is wrong
+and the app cannot say which. Logging a set *is* the tick — delete a logged set
+and the pip empties again.
+
+Overshooting is shown rather than clamped. A fourth set against a target of
+three draws a fourth, outlined pip: it happened, and hiding it would put the
+log and the pips back into disagreement, which is the one thing this shape
+exists to prevent.
+
+A target is a plan, so it lives on the workout; the sets are a record, so they
+live in the log. Removing an exercise takes its target with it, or the target
+outlives the exercise and comes back with it later.
+
 ## Inside a workout
 
 A list you build from the explorer: **+** beside any exercise adds it,

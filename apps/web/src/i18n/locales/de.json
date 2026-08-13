@@ -231,5 +231,21 @@
   "rename": "Umbenennen",
   "delete": "Löschen",
   "save": "Sichern"
+ },
+ "target": {
+  "add": "+ Ziel",
+  "sets": "Sätze",
+  "reps": "Wiederholungen pro Satz",
+  "save": "Setzen",
+  "clear": "Löschen",
+  "edit": "Ziel: {sets} Sätze à {reps}. Ändern.",
+  "progress": {
+   "one": "{done} von {count} Satz geschafft",
+   "other": "{done} von {count} Sätzen geschafft"
+  },
+  "overall": {
+   "one": "{done} von {count} Übung geschafft",
+   "other": "{done} von {count} Übungen geschafft"
+  }
  }
 }

@@ -225,5 +225,19 @@
   "rename": "名前を変更",
   "delete": "削除",
   "save": "保存"
+ },
+ "target": {
+  "add": "+ 目標",
+  "sets": "セット数",
+  "reps": "1セットの回数",
+  "save": "設定",
+  "clear": "解除",
+  "edit": "目標: {reps} 回 × {sets} セット。変更します。",
+  "progress": {
+   "other": "{count} セット中 {done} セット完了"
+  },
+  "overall": {
+   "other": "{count} 種目中 {done} 種目完了"
+  }
  }
 }

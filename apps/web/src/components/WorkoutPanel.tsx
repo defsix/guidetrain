@@ -3,6 +3,7 @@ import exercises from "../anatomy/exercises.json";
 import muscleMap from "../anatomy/muscle-map.json";
 import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
+import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
 import type { Program } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
@@ -49,6 +50,8 @@ type Props = {
   best: Map<string, SetEntry>;
   onAddSet: (id: string, weight: number, reps: number) => void;
   onRemoveSet: (uid: string) => void;
+  targets: Record<string, { sets: number; reps: number }>;
+  onTarget: (id: string, t: { sets: number; reps: number } | null) => void;
   /** Every set ever recorded — the plan works from history, not just today. */
   allSets: SetEntry[];
   /** Body weight in the logging unit, or undefined if it isn't known. */
@@ -63,7 +66,7 @@ function label(p: Program, programs: Program[], t: (k: string, v?: any) => strin
 export default function WorkoutPanel({
   ids, programs, active, onSelect, onCreate, onRename, onRemoveProgram,
   open, onClose, onRemove, onMove, onClear,
-  today, best, onAddSet, onRemoveSet, allSets, bodyLoad,
+  today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -164,6 +167,20 @@ export default function WorkoutPanel({
           <p className="workout-empty">{t("workout.empty")}</p>
         ) : (
           <>
+            {(() => {
+              // Only worth saying once something has a target; before that the
+              // honest count is zero of zero, which is noise.
+              const withTarget = items.filter((x) => targets[x.id]);
+              if (!withTarget.length) return null;
+              const done = withTarget.filter(
+                (x) => (today.get(x.id) ?? []).length >= targets[x.id].sets,
+              ).length;
+              return (
+                <p className={`workout-progress ${done === withTarget.length ? "done" : ""}`}>
+                  {t("target.overall", { done, count: withTarget.length })}
+                </p>
+              );
+            })()}
             <ol className="workout-list">
               {items.map((x, i) => (
                 <li key={x.id}>
@@ -201,6 +218,11 @@ export default function WorkoutPanel({
                       ✕
                     </button>
                   </span>
+                    <TargetPips
+                      target={targets[x.id]}
+                      done={(today.get(x.id) ?? []).length}
+                      onChange={(target) => onTarget(x.id, target)}
+                    />
                   </div>
                   <SetLogger
                     exerciseId={x.id}

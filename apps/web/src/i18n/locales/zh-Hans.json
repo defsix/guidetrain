@@ -225,5 +225,19 @@
   "rename": "重命名",
   "delete": "删除",
   "save": "保存"
+ },
+ "target": {
+  "add": "+ 目标",
+  "sets": "组数",
+  "reps": "每组次数",
+  "save": "设定",
+  "clear": "清除",
+  "edit": "目标：{sets} 组 × {reps} 次。点击修改。",
+  "progress": {
+   "other": "已完成 {done}/{count} 组"
+  },
+  "overall": {
+   "other": "已完成 {done}/{count} 个动作"
+  }
  }
 }

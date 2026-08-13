@@ -243,5 +243,25 @@
   "rename": "Zmień nazwę",
   "delete": "Usuń",
   "save": "Zapisz"
+ },
+ "target": {
+  "add": "+ cel",
+  "sets": "Serie",
+  "reps": "Powtórzenia w serii",
+  "save": "Ustaw",
+  "clear": "Usuń",
+  "edit": "Cel: {sets} serii po {reps}. Zmień.",
+  "progress": {
+   "one": "{done} z {count} serii zrobiona",
+   "few": "{done} z {count} serii zrobione",
+   "many": "{done} z {count} serii zrobionych",
+   "other": "{done} z {count} serii zrobione"
+  },
+  "overall": {
+   "one": "{done} z {count} ćwiczenia zrobione",
+   "few": "{done} z {count} ćwiczeń zrobione",
+   "many": "{done} z {count} ćwiczeń zrobionych",
+   "other": "{done} z {count} ćwiczeń zrobione"
+  }
  }
 }

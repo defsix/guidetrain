@@ -243,5 +243,25 @@
   "rename": "Přejmenovat",
   "delete": "Smazat",
   "save": "Uložit"
+ },
+ "target": {
+  "add": "+ cíl",
+  "sets": "Série",
+  "reps": "Opakování v sérii",
+  "save": "Nastavit",
+  "clear": "Zrušit",
+  "edit": "Cíl: {sets} sérií po {reps}. Změnit.",
+  "progress": {
+   "one": "{done} z {count} série hotová",
+   "few": "{done} ze {count} sérií hotovo",
+   "many": "{done} z {count} série hotovo",
+   "other": "{done} z {count} sérií hotovo"
+  },
+  "overall": {
+   "one": "{done} z {count} cviku hotový",
+   "few": "{done} ze {count} cviků hotovo",
+   "many": "{done} z {count} cviku hotovo",
+   "other": "{done} z {count} cviků hotovo"
+  }
  }
 }

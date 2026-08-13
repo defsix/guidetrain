@@ -81,6 +81,8 @@ export default function BodyExplorer() {
         onAddSet={log.add}
         onRemoveSet={log.remove}
         allSets={log.entries}
+        targets={programs.targets}
+        onTarget={programs.setTarget}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
