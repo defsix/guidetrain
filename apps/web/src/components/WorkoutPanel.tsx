@@ -57,6 +57,10 @@ type Props = {
   allSets: SetEntry[];
   /** Body weight in the logging unit, or undefined if it isn't known. */
   bodyLoad?: number;
+  /** Sets skipped today, per exercise. Never part of the log. */
+  skips: Record<string, number>;
+  onSkip: (id: string, n?: number) => void;
+  onUnskip: (id: string) => void;
 };
 
 /**
@@ -74,12 +78,29 @@ export default function WorkoutPanel({
   ids, programs, active, onSelect, onCreate, onRename, onRemoveProgram,
   open, onClose, onRemove, onMove, onClear,
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
-  onBrowsePlans,
+  onBrowsePlans, skips, onSkip, onUnskip,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
   const [renaming, setRenaming] = useState(false);
   const [draft, setDraft] = useState("");
+
+  /** Sets dealt with today: logged plus skipped. */
+  const dealtWith = (id: string) => (today.get(id) ?? []).length + (skips[id] ?? 0);
+
+  /**
+   * The workout after this one, if the reader has one.
+   *
+   * Position in the list, which is the order the days of a plan were added in,
+   * so finishing Workout A offers Workout B. Nothing cycles back to the start:
+   * reaching the end of the week is worth noticing, and a list that quietly
+   * wraps would hide it.
+   */
+  const nextProgram = useMemo(() => {
+    if (!active) return null;
+    const i = programs.indexOf(active);
+    return i >= 0 && i + 1 < programs.length ? programs[i + 1] : null;
+  }, [active, programs]);
 
   // Looked up and translated at render, not at save: a workout saved in English
   // and opened in Polish should be in Polish, and an exercise whose text was
@@ -187,13 +208,37 @@ export default function WorkoutPanel({
               // honest count is zero of zero, which is noise.
               const withTarget = items.filter((x) => targets[x.id]);
               if (!withTarget.length) return null;
-              const done = withTarget.filter(
-                (x) => (today.get(x.id) ?? []).length >= targets[x.id].sets,
-              ).length;
+              const done = withTarget.filter((x) => dealtWith(x.id) >= targets[x.id].sets).length;
+              const complete = done === withTarget.length;
               return (
-                <p className={`workout-progress ${done === withTarget.length ? "done" : ""}`}>
-                  {t("target.overall", { done, count: withTarget.length })}
-                </p>
+                <>
+                  <p className={`workout-progress ${complete ? "done" : ""}`}>
+                    {t("target.overall", { done, count: withTarget.length })}
+                  </p>
+                  {/* Finishing a workout is the one moment the app knows what
+                      you probably want next, so it says so rather than leaving
+                      you to find the tab. Only when there is a next one: at the
+                      end of the week the right message is that you finished. */}
+                  {complete && (
+                    <div className="workout-next">
+                      {nextProgram ? (
+                        <>
+                          <p>{t("workout.finished")}</p>
+                          <button
+                            className="primary-button"
+                            onClick={() => { onSelect(nextProgram.id); setRenaming(false); }}
+                          >
+                            {t("workout.goNext", {
+                              name: label(nextProgram, programs, t),
+                            })}
+                          </button>
+                        </>
+                      ) : (
+                        <p>{t("workout.finishedLast")}</p>
+                      )}
+                    </div>
+                  )}
+                </>
               );
             })()}
             <ol className="workout-list">
@@ -236,6 +281,7 @@ export default function WorkoutPanel({
                     <TargetPips
                       target={targets[x.id]}
                       done={(today.get(x.id) ?? []).length}
+                      skipped={skips[x.id] ?? 0}
                       onChange={(target) => onTarget(x.id, target)}
                     />
                   </div>
@@ -248,6 +294,15 @@ export default function WorkoutPanel({
                     onPlan={() => setPlanning(x.id)}
                     bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
                     target={targets[x.id]}
+                    instructions={x.instructions}
+                    skipped={skips[x.id] ?? 0}
+                    onSkipSet={targets[x.id] ? () => onSkip(x.id) : undefined}
+                    onSkipRest={
+                      targets[x.id]
+                        ? () => onSkip(x.id, targets[x.id].sets - dealtWith(x.id))
+                        : undefined
+                    }
+                    onUnskip={() => onUnskip(x.id)}
                   />
                 </li>
               ))}

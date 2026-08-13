@@ -186,7 +186,10 @@
   "clear": "Vider la liste",
   "moveUp": "Monter",
   "moveDown": "Descendre",
-  "empty": "Rien d'enregistré pour l'instant. Ouvrez un muscle et appuyez sur + à côté d'un exercice."
+  "empty": "Rien d'enregistré pour l'instant. Ouvrez un muscle et appuyez sur + à côté d'un exercice.",
+  "finished": "Cette séance est terminée.",
+  "goNext": "Passer à {name}",
+  "finishedLast": "C’était la dernière séance du plan. Recommencez-le quand vous voulez."
  },
  "log": {
   "addSet": "Ajouter une série",
@@ -195,7 +198,8 @@
   "repsShort": "réps",
   "removeSet": "Supprimer la série",
   "best": "Record",
-  "atBodyWeight": "Chargé à votre poids de corps, {weight} {unit}."
+  "atBodyWeight": "Chargé à votre poids de corps, {weight} {unit}.",
+  "howTo": "Comment faire"
  },
  "unit": {
   "kg": "kg"
@@ -309,5 +313,14 @@
    "desc": "Groupe par mouvement plutôt que par muscle. Plus d'exercices par séance."
   },
   "carryNote": "Ces charges passent dans votre séance et vous sont proposées série par série à la saisie."
+ },
+ "skip": {
+  "set": "Passer cette série",
+  "rest": "Passer le reste",
+  "done": {
+   "one": "{count} série passée — non enregistrée.",
+   "other": "{count} séries passées — non enregistrées."
+  },
+  "undo": "Annuler"
  }
 }

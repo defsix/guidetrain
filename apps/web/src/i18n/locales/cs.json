@@ -196,7 +196,10 @@
   "clear": "Vymazat seznam",
   "moveUp": "Posunout nahoru",
   "moveDown": "Posunout dolů",
-  "empty": "Zatím nic uloženo. Otevřete sval a stiskněte + vedle cviku."
+  "empty": "Zatím nic uloženo. Otevřete sval a stiskněte + vedle cviku.",
+  "finished": "Tento trénink je hotový.",
+  "goNext": "Přejít na {name}",
+  "finishedLast": "Poslední trénink plánu je hotový. Až budete chtít, začněte plán znovu."
  },
  "log": {
   "addSet": "Přidat sérii",
@@ -205,7 +208,8 @@
   "repsShort": "opak.",
   "removeSet": "Odebrat sérii",
   "best": "Nejlepší",
-  "atBodyWeight": "Zátěž odpovídá vaší hmotnosti, {weight} {unit}."
+  "atBodyWeight": "Zátěž odpovídá vaší hmotnosti, {weight} {unit}.",
+  "howTo": "Jak na to"
  },
  "unit": {
   "kg": "kg"
@@ -331,5 +335,16 @@
    "desc": "Řadí podle pohybu, ne podle části těla. Více cviků v jednotce, méně svalů."
   },
   "carryNote": "Tyto váhy se přenesou do tréninku a při zapisování je dostanete zpět sérii po sérii."
+ },
+ "skip": {
+  "set": "Přeskočit sérii",
+  "rest": "Přeskočit zbytek",
+  "done": {
+   "one": "{count} série přeskočena — nezapsána.",
+   "few": "{count} série přeskočeny — nezapsány.",
+   "many": "{count} série přeskočeno — nezapsáno.",
+   "other": "{count} sérií přeskočeno — nezapsáno."
+  },
+  "undo": "Zpět"
  }
 }

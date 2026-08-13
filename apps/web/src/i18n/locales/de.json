@@ -186,7 +186,10 @@
   "clear": "Liste leeren",
   "moveUp": "Nach oben",
   "moveDown": "Nach unten",
-  "empty": "Noch nichts gespeichert. Öffne einen Muskel und tippe auf + neben einer Übung."
+  "empty": "Noch nichts gespeichert. Öffne einen Muskel und tippe auf + neben einer Übung.",
+  "finished": "Dieses Training ist geschafft.",
+  "goNext": "Weiter zu {name}",
+  "finishedLast": "Das war das letzte Training des Plans. Fang den Plan neu an, wenn du so weit bist."
  },
  "log": {
   "addSet": "Satz hinzufügen",
@@ -195,7 +198,8 @@
   "repsShort": "Wdh.",
   "removeSet": "Satz entfernen",
   "best": "Bestwert",
-  "atBodyWeight": "Belastet mit deinem Körpergewicht, {weight} {unit}."
+  "atBodyWeight": "Belastet mit deinem Körpergewicht, {weight} {unit}.",
+  "howTo": "So geht’s"
  },
  "unit": {
   "kg": "kg"
@@ -309,5 +313,14 @@
    "desc": "Gruppiert nach Bewegung statt nach Körperteil. Mehr Übungen je Einheit, weniger Muskeln."
   },
   "carryNote": "Diese Gewichte wandern in dein Training und werden beim Eintragen Satz für Satz zurückgegeben."
+ },
+ "skip": {
+  "set": "Satz überspringen",
+  "rest": "Rest überspringen",
+  "done": {
+   "one": "{count} Satz übersprungen — nicht eingetragen.",
+   "other": "{count} Sätze übersprungen — nicht eingetragen."
+  },
+  "undo": "Rückgängig"
  }
 }

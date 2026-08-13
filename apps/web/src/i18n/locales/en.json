@@ -186,7 +186,10 @@
   "clear": "Clear the list",
   "moveUp": "Move up",
   "moveDown": "Move down",
-  "empty": "Nothing saved yet. Open a muscle and press + beside an exercise to build a workout."
+  "empty": "Nothing saved yet. Open a muscle and press + beside an exercise to build a workout.",
+  "finished": "That is this workout done.",
+  "goNext": "Go to {name}",
+  "finishedLast": "That is the last workout in this plan done. Start the plan again when you are ready."
  },
  "log": {
   "addSet": "Add set",
@@ -195,7 +198,8 @@
   "repsShort": "reps",
   "removeSet": "Remove set",
   "best": "Best",
-  "atBodyWeight": "Loaded at your body weight, {weight} {unit}."
+  "atBodyWeight": "Loaded at your body weight, {weight} {unit}.",
+  "howTo": "How to do it"
  },
  "unit": {
   "kg": "kg"
@@ -309,5 +313,14 @@
    "desc": "Groups by movement rather than body part. More exercises per session, fewer muscles."
   },
   "carryNote": "These weights go into your workout, offered back one set at a time as you log."
+ },
+ "skip": {
+  "set": "Skip this set",
+  "rest": "Skip the rest",
+  "done": {
+   "one": "{count} set skipped — not logged.",
+   "other": "{count} sets skipped — not logged."
+  },
+  "undo": "Undo"
  }
 }

@@ -15,6 +15,13 @@ type Props = {
    * ready-made plan or from a week of the 5/3/1 cycle.
    */
   target?: Target;
+  /** Sets skipped today. They advance the prescription and log nothing. */
+  skipped?: number;
+  onSkipSet?: () => void;
+  onSkipRest?: () => void;
+  onUnskip?: () => void;
+  /** The written instructions, shown on request rather than by default. */
+  instructions?: string[];
   /**
    * Body weight in the logging unit, passed only for exercises whose load *is*
    * the person. Its presence is what puts this in reps-only mode: there is no
@@ -44,19 +51,24 @@ type Props = {
  */
 export default function SetLogger({
   exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad, target,
+  skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions,
 }: Props) {
   const { t } = useI18n();
   const repsOnly = bodyLoad != null;
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
+  const [showHow, setShowHow] = useState(false);
 
-  // Which prescribed set is next: the sets already logged today are the ones
-  // already done, so position in the log is position in the prescription.
-  // Undefined once the prescription runs out, which is not an error — a fourth
-  // set on a target of three is a thing people do, and it logs as normal.
+  // Which prescribed set is next: the sets already logged today plus any
+  // skipped are the ones dealt with, so position in the prescription is
+  // position in the log offset by the skips. Undefined once the prescription
+  // runs out, which is not an error — a fourth set on a target of three is a
+  // thing people do, and it logs as normal.
   const steps = target?.steps;
-  const done = todaysSets.length;
+  const logged = todaysSets.length;
+  const done = logged + skipped;
   const next = steps?.[done];
+  const remaining = target ? Math.max(0, target.sets - done) : 0;
   const nextLoad = next?.load;
   const nextReps = next?.reps;
 
@@ -121,7 +133,15 @@ export default function SetLogger({
         <p className="prescribed">
           <span className="steps">
             {steps.map((s, i) => (
-              <span key={i} className={i < done ? "was" : i === done ? "now" : ""}>
+              // Done, skipped, doing, still to come. Skipped is its own state
+              // rather than a shade of done, because it is the opposite claim:
+              // nothing was lifted for it. Skips are taken from the set you are
+              // on, so they always sit between the logged sets and the current
+              // one.
+              <span
+                key={i}
+                className={i < logged ? "was" : i < done ? "skipped" : i === done ? "now" : ""}
+              >
                 {s.load != null && `${s.load} ${t("unit.kg")} × `}
                 {s.reps}
                 {s.amrap && <sup title={t("plan.amrapHelp")}>+</sup>}
@@ -159,6 +179,37 @@ export default function SetLogger({
         </button>
       </form>
 
+      {/* Skipping, which records nothing. A set you did not do is not a set,
+          so this moves the prescription on and says so — it never reaches the
+          log. Only offered while there is something left to skip. */}
+      {remaining > 0 && (onSkipSet || onSkipRest) && (
+        <p className="skip-row">
+          {onSkipSet && (
+            <button className="skip" onClick={onSkipSet}>
+              {t("skip.set")}
+            </button>
+          )}
+          {/* Only once there is more than one left, since "skip the rest" and
+              "skip this set" would otherwise be two buttons doing one thing. */}
+          {onSkipRest && remaining > 1 && (
+            <button className="skip" onClick={onSkipRest}>
+              {t("skip.rest")}
+            </button>
+          )}
+        </p>
+      )}
+
+      {skipped > 0 && (
+        <p className="skipped-note">
+          {t("skip.done", { count: skipped })}
+          {onUnskip && (
+            <button className="skip-undo" onClick={onUnskip}>
+              {t("skip.undo")}
+            </button>
+          )}
+        </p>
+      )}
+
       {/* Says where the load came from, so a set that appears as "82 kg × 10"
           after typing only "10" is explained rather than surprising. */}
       {repsOnly && (
@@ -176,6 +227,29 @@ export default function SetLogger({
             {t("plan.open")}
           </button>
         </p>
+      )}
+
+      {/* How to do it, in the workout rather than only on the muscle screen.
+          Collapsed by default: it is reference, wanted on the first session
+          with a lift and never again, and eight steps open on every exercise
+          would bury the sets under prose. */}
+      {instructions && instructions.length > 0 && (
+        <div className="how">
+          <button
+            className="how-toggle"
+            onClick={() => setShowHow((v) => !v)}
+            aria-expanded={showHow}
+          >
+            {showHow ? "▾" : "▸"} {t("log.howTo")}
+          </button>
+          {showHow && (
+            <ol className="how-steps">
+              {instructions.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+          )}
+        </div>
       )}
     </div>
   );

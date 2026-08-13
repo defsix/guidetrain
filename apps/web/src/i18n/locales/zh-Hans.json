@@ -181,7 +181,10 @@
   "clear": "清空列表",
   "moveUp": "上移",
   "moveDown": "下移",
-  "empty": "还没有保存任何内容。打开一个肌肉群，点击动作旁边的 + 即可添加。"
+  "empty": "还没有保存任何内容。打开一个肌肉群，点击动作旁边的 + 即可添加。",
+  "finished": "这次训练完成了。",
+  "goNext": "前往{name}",
+  "finishedLast": "这是计划里的最后一次训练。想再来时可以从头开始。"
  },
  "log": {
   "addSet": "添加一组",
@@ -190,7 +193,8 @@
   "repsShort": "次",
   "removeSet": "删除该组",
   "best": "最佳",
-  "atBodyWeight": "以体重 {weight} {unit} 作为负荷。"
+  "atBodyWeight": "以体重 {weight} {unit} 作为负荷。",
+  "howTo": "怎么做"
  },
  "unit": {
   "kg": "公斤"
@@ -298,5 +302,13 @@
    "desc": "按动作分组而不是按部位。每次动作更多。"
   },
   "carryNote": "这些重量会进入你的训练，记录时逐组提示。"
+ },
+ "skip": {
+  "set": "跳过这一组",
+  "rest": "跳过剩下的",
+  "done": {
+   "other": "已跳过 {count} 组 — 未记录。"
+  },
+  "undo": "撤销"
  }
 }

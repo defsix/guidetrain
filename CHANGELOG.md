@@ -170,6 +170,32 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The weights follow you to the bar** — both planners worked out what to lift
+  and then let the number die on the screen that computed it: a plan previewed
+  "Barbell Squat 40 kg" and applied as a bare "3 × 5", and the 5/3/1 table left
+  you to carry three numbers to a rack from memory. Each now writes its
+  prescription into the workout target, and the logger offers it back one set at
+  a time with the field already filled. Targets therefore gained per-set steps,
+  since sets and reps alone cannot describe a 5/3/1 week — 5, 3 and 1 at three
+  loads. Hand-editing a target drops the weights rather than keeping them
+  against new rep counts, and says so first. Nothing here records anything:
+  prescribing 75 kg is not a claim that 75 kg was lifted.
+- **A bigger panel, instructions, skipping, and the next workout** — four
+  things the workout screen was missing. It now runs nearly full height on a
+  phone and 720px on a desktop instead of 380; the tab row had been silently
+  crushed to a few pixels of blank pills, because flex children shrink by
+  default and the panel is a scrolling column, so its children now hold their
+  height. Each exercise carries its written instructions, collapsed. A set or
+  the rest of an exercise can be skipped, which advances the prescription and
+  writes nothing to the log — a skipped set is shown hollow and dashed, never as
+  a filled pip, because it is the opposite claim from a set you did. Finishing
+  every target offers the next workout by name, and says so plainly when that
+  was the last one in the plan.
+- **`check-plans` actually checks the floor now** — it had said the
+  starting-weight rule "cannot be checked from here", which was simply wrong:
+  `tsx` was in the tree the whole time. It imports the real module, checks 60
+  profiles, and fails on the empty-bar bug when that is reintroduced.
+  `npm run check` runs all four gates.
 - **Ready-made plans, with the weights to actually use** — three well-worn
   shapes (full body, upper/lower, push/pull/legs), previewed with real loads and
   added as named workouts with their targets already set. Where a lift has been

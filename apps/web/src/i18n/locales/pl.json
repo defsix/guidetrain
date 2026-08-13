@@ -196,7 +196,10 @@
   "clear": "Wyczyść listę",
   "moveUp": "W górę",
   "moveDown": "W dół",
-  "empty": "Nic jeszcze nie zapisano. Otwórz mięsień i naciśnij + obok ćwiczenia."
+  "empty": "Nic jeszcze nie zapisano. Otwórz mięsień i naciśnij + obok ćwiczenia.",
+  "finished": "Ten trening jest skończony.",
+  "goNext": "Przejdź do {name}",
+  "finishedLast": "To był ostatni trening planu. Zacznij plan od nowa, kiedy zechcesz."
  },
  "log": {
   "addSet": "Dodaj serię",
@@ -205,7 +208,8 @@
   "repsShort": "powt.",
   "removeSet": "Usuń serię",
   "best": "Najlepszy",
-  "atBodyWeight": "Obciążenie równe masie ciała, {weight} {unit}."
+  "atBodyWeight": "Obciążenie równe masie ciała, {weight} {unit}.",
+  "howTo": "Jak to zrobić"
  },
  "unit": {
   "kg": "kg"
@@ -331,5 +335,16 @@
    "desc": "Grupuje według ruchu, nie części ciała. Więcej ćwiczeń na jednostkę."
   },
   "carryNote": "Te ciężary trafiają do treningu i przy zapisie są podpowiadane seria po serii."
+ },
+ "skip": {
+  "set": "Pomiń tę serię",
+  "rest": "Pomiń resztę",
+  "done": {
+   "one": "{count} seria pominięta — niezapisana.",
+   "few": "{count} serie pominięte — niezapisane.",
+   "many": "{count} serii pominiętych — niezapisanych.",
+   "other": "{count} serii pominiętych — niezapisanych."
+  },
+  "undo": "Cofnij"
  }
 }

@@ -345,7 +345,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(380px, 100%);
+  width: min(520px, 100%);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -356,12 +356,33 @@
   border-left: 1px solid var(--border);
 }
 
+/* Nothing in a scrolling column may be squeezed to make room.
+   Flex items shrink by default, and the panel is a column with its own
+   scrollbar, so the tab row — which has its own sideways scroller and no
+   intrinsic minimum — was crushed to a few pixels of white pills with the
+   names clipped out of existence. The panel scrolls; its children keep their
+   height. */
+.workout-panel > *,
+.plans-panel > *,
+.plan-panel > * { flex: none; }
+
+/* Wider where there is room. These panels hold a table of weights per set and
+   a list of instruction steps, and at 380px both were reading as a column of
+   fragments on a monitor with half the screen empty beside them. */
+@media (min-width: 1100px) {
+  .workout-panel { width: min(720px, 52vw); padding: 26px 30px; }
+}
+
 @media (max-width: 560px) {
   .workout-panel {
     top: auto;
     left: 0;
     width: auto;
-    max-height: 76svh;
+    /* Nearly the whole screen. This is the screen you stand and read between
+       sets: a sheet over a model you are not looking at spent 24% of a phone
+       on the thing behind it. */
+    height: 94svh;
+    max-height: 94svh;
     border-left: 0;
     border-top: 1px solid var(--border);
     border-radius: 16px 16px 0 0;
@@ -632,6 +653,89 @@
   color: var(--text-muted);
 }
 
+.prescribed .steps > span.skipped {
+  opacity: 0.5;
+  border-style: dashed;
+  text-decoration: line-through;
+}
+
+/* --- skipping, and how to do it ----------------------------------------- */
+.skip-row { margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+
+.skip {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}
+.skip:hover { color: var(--accent); }
+
+.skipped-note {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.skip-undo {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+.skip-undo:hover { text-decoration: underline; }
+
+.how-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.how-toggle:hover { color: var(--accent); }
+
+.how-steps {
+  margin: 7px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.how-steps li::marker { font-family: var(--mono); font-size: 10px; color: var(--accent); }
+
+/* --- finishing a workout ------------------------------------------------ */
+.workout-next {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+.workout-next p { margin: 0; font-size: 13px; line-height: 1.45; }
+.workout-next .primary-button { width: 100%; }
+
 /* Shown only while editing a target that carries weights, where it is a
    consequence of pressing Set rather than a general warning. */
 .target-warn {
@@ -664,7 +768,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(400px, 100%);
+  width: min(560px, 100%);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -675,12 +779,17 @@
   border-left: 1px solid var(--border);
 }
 
+@media (min-width: 1100px) {
+  .plan-panel, .plans-panel { width: min(760px, 54vw); padding: 26px 30px; }
+}
+
 @media (max-width: 560px) {
   .plan-panel {
     top: auto;
     left: 0;
     width: auto;
-    max-height: 88svh;
+    height: 94svh;
+    max-height: 94svh;
     border-left: 0;
     border-top: 1px solid var(--border);
     border-radius: 16px 16px 0 0;
@@ -946,6 +1055,9 @@
 .pip.on { background: var(--accent); border-color: var(--accent); }
 /* Past the target: filled, but outlined so it reads as "and one more". */
 .pip.extra { background: var(--accent-soft); border-color: var(--accent); }
+/* Skipped: accounted for, but hollow. Filling it would claim a set that was
+   never lifted, which is the one thing the pips must not do. */
+.pip.skipped { background: none; border-style: dashed; border-color: var(--border-strong); }
 
 .target-add {
   flex: none;
@@ -1047,7 +1159,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(420px, 100%);
+  width: min(560px, 100%);
   display: flex;
   flex-direction: column;
   gap: 11px;
@@ -1063,7 +1175,8 @@
     top: auto;
     left: 0;
     width: auto;
-    max-height: 88svh;
+    height: 94svh;
+    max-height: 94svh;
     border-left: 0;
     border-top: 1px solid var(--border);
     border-radius: 16px 16px 0 0;

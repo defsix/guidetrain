@@ -6,6 +6,8 @@ type Props = {
   target?: Target;
   /** How many sets were logged for this exercise today. */
   done: number;
+  /** How many were skipped. Shown, but never as done — see useSkips. */
+  skipped?: number;
   onChange: (t: Target | null) => void;
 };
 
@@ -21,7 +23,7 @@ type Props = {
  * is a thing that happened, and hiding it would make the log and the pips
  * disagree, which is the failure this design exists to avoid.
  */
-export default function TargetPips({ target, done, onChange }: Props) {
+export default function TargetPips({ target, done, skipped = 0, onChange }: Props) {
   const { t } = useI18n();
   const [editing, setEditing] = useState(false);
   const [sets, setSets] = useState(String(target?.sets ?? 3));
@@ -76,7 +78,11 @@ export default function TargetPips({ target, done, onChange }: Props) {
     );
   }
 
-  const complete = done >= target.sets;
+  // Complete means dealt with, which is not the same as done: an exercise you
+  // skipped your way through has no filled pips and still stops asking. The
+  // pips keep the distinction visible.
+  const dealtWith = done + skipped;
+  const complete = dealtWith >= target.sets;
   // A 5/3/1 week is 5, 3 and 1 — one rep count in the label would be wrong for
   // two of the three sets, so the sequence is shown when the sets disagree.
   const varied = target.steps && new Set(target.steps.map((s) => s.reps)).size > 1;
@@ -96,7 +102,7 @@ export default function TargetPips({ target, done, onChange }: Props) {
         aria-label={t("target.progress", { done, count: target.sets })}
       >
         {Array.from({ length: target.sets }, (_, i) => (
-          <span key={i} className={`pip ${i < done ? "on" : ""}`} />
+          <span key={i} className={`pip ${i < done ? "on" : i < dealtWith ? "skipped" : ""}`} />
         ))}
         {/* Anything past the target still shows. It happened. */}
         {done > target.sets &&

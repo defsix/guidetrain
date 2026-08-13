@@ -186,7 +186,10 @@
   "clear": "Limpar a lista",
   "moveUp": "Mover para cima",
   "moveDown": "Mover para baixo",
-  "empty": "Nada guardado ainda. Abra um músculo e toque em + ao lado de um exercício."
+  "empty": "Nada guardado ainda. Abra um músculo e toque em + ao lado de um exercício.",
+  "finished": "Este treino está feito.",
+  "goNext": "Ir para {name}",
+  "finishedLast": "Era o último treino do plano. Recomece-o quando quiser."
  },
  "log": {
   "addSet": "Adicionar série",
@@ -195,7 +198,8 @@
   "repsShort": "reps",
   "removeSet": "Remover série",
   "best": "Melhor",
-  "atBodyWeight": "Com o seu peso corporal como carga, {weight} {unit}."
+  "atBodyWeight": "Com o seu peso corporal como carga, {weight} {unit}.",
+  "howTo": "Como se faz"
  },
  "unit": {
   "kg": "kg"
@@ -309,5 +313,14 @@
    "desc": "Agrupa por movimento e não por músculo. Mais exercícios por sessão."
   },
   "carryNote": "Estas cargas vão para o seu treino e são devolvidas série a série ao registar."
+ },
+ "skip": {
+  "set": "Saltar esta série",
+  "rest": "Saltar o resto",
+  "done": {
+   "one": "{count} série saltada — não registada.",
+   "other": "{count} séries saltadas — não registadas."
+  },
+  "undo": "Anular"
  }
 }

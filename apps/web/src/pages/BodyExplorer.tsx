@@ -8,6 +8,7 @@ import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
+import { useSkips } from "../state/useSkips";
 import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
@@ -18,6 +19,7 @@ export default function BodyExplorer() {
   const { pref, resolved, setPref } = useTheme();
   const programs = usePrograms();
   const log = useLog();
+  const skips = useSkips();
   const [showWorkout, setShowWorkout] = useState(false);
   const [showPlans, setShowPlans] = useState(false);
   const t = useT();
@@ -86,6 +88,9 @@ export default function BodyExplorer() {
         targets={programs.targets}
         onTarget={programs.setTarget}
         onBrowsePlans={() => { setShowWorkout(false); setShowPlans(true); }}
+        skips={skips.skips}
+        onSkip={skips.skip}
+        onUnskip={skips.unskip}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
