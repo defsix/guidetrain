@@ -741,12 +741,21 @@ days of inactivity, two active projects, 500 MB of database and 50k monthly
 active users
 ([pricing](https://uibakery.io/blog/supabase-pricing)).
 
-**The domain is `guidetrain.me`**, already registered and deliberately not yet
-pointed at anything. Switching Pages over is the *last* step for the reason
-above: everything the app currently holds is stranded the moment the origin
-changes. Holding it costs nothing and lets email sending be set up in advance.
+**The app is served from `guidetrain.me`.** `defsix.github.io/guidetrain/`
+301-redirects to it, so old links keep working — but stored data does not
+follow a redirect, and anything logged against the old origin stayed there.
+That was the known cost of moving before accounts; it is why accounts come
+first for everyone else.
 
-When the time comes, the DNS is
+Two pieces make it work, and both are needed. `apps/web/public/CNAME` is copied
+into `dist/`, which is what keeps the domain attached: with an Actions deploy
+the Pages configuration is re-applied from the artifact, so an artifact without
+that file silently drops the custom domain on the next push. And the build no
+longer passes `--base`, since the site is at a domain root rather than a repo
+subpath — leaving it would leave every asset requesting `/guidetrain/assets/…`
+and the page would load blank.
+
+The DNS is
 ([GitHub's docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)):
 
 | Record | Name | Value |

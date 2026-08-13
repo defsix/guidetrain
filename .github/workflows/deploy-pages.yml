@@ -33,7 +33,12 @@ jobs:
 
       - name: Build web app
         working-directory: apps/web
-        run: npx vite build --base=/${{ github.event.repository.name }}/
+        # Served at the root of guidetrain.me rather than under a repo
+        # subpath, so the default base is correct. apps/web/public/CNAME is
+        # what keeps the domain attached: with an Actions deploy the setting in
+        # Pages is re-applied from the artifact, and an artifact without that
+        # file silently drops the custom domain on the next push.
+        run: npx vite build
 
       - uses: actions/configure-pages@v5
 
