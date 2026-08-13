@@ -52,10 +52,14 @@ export default function ProgressionPanel({
   /**
    * Whether this cycle asks for exactly the weights the last one did.
    *
-   * It can, and it is not a bug in the plan: with 2.5 kg as the smallest plate
-   * the bar moves in 5 kg steps, and 5 kg of training max is 4.75 kg at 95% —
-   * less than one plate a side. Two identical tables in a row look broken
-   * unless the panel says why, so it says why.
+   * It can, and it is not a bug in the plan. A cycle's increase is applied to
+   * the training max, and what reaches the bar is a percentage of that: 5 kg of
+   * training max is only 4.75 kg at 95%. Whenever the bar's step is coarser
+   * than that, the increase rounds away and two cycles come out identical —
+   * which is exactly what 2.5 kg plates did before the rack was corrected to
+   * 1.25 kg. Two identical tables in a row look broken unless the panel says
+   * why, and a coarser rack or a smaller increment can bring it back, so the
+   * check stays.
    */
   const repeatsPrevious = useMemo(() => {
     if (at <= 1) return false;
