@@ -227,7 +227,10 @@
   "nextCycle": "Nächster Zyklus",
   "repeatNote": "Dieselben vier Wochen wiederholen sich jeden Zyklus, mit {increment} {unit} mehr auf dem Trainingsmaximum — daher kommt die Steigerung.",
   "lightNote": "Die kleinen Wochensprünge sind Absicht. Jede Last ist ein Anteil des Trainingsmaximums, nicht des echten, also verlangt ein Zyklus nie eine Maximalleistung; die Arbeit leisten die +-Sätze.",
-  "sameLoads": "Dieselben Gewichte wie im Zyklus davor. {increment} {unit} mehr Trainingsmaximum sind weniger als der kleinste Sprung, den eine Stange mit {plate}-{unit}-Scheiben machen kann — es fällt hier der Rundung zum Opfer und zeigt sich im nächsten Zyklus."
+  "sameLoads": "Dieselben Gewichte wie im Zyklus davor. {increment} {unit} mehr Trainingsmaximum sind weniger als der kleinste Sprung, den eine Stange mit {plate}-{unit}-Scheiben machen kann — es fällt hier der Rundung zum Opfer und zeigt sich im nächsten Zyklus.",
+  "useWeek": "Übernehmen",
+  "usingWeek": "In Gebrauch",
+  "useWeekNote": "Übernimm eine Woche, und ihre Gewichte wandern in dein Training — beim Eintragen Satz für Satz zurückgegeben."
  },
  "program": {
   "untitled": "Training {n}",
@@ -252,7 +255,12 @@
   "overall": {
    "one": "{done} von {count} Übung geschafft",
    "other": "{done} von {count} Übungen geschafft"
-  }
+  },
+  "from": {
+   "plan": "aus deinem Plan",
+   "cycle": "aus deinem Zyklus"
+  },
+  "editClears": "Eigene Sätze und Wiederholungen ersetzen die Gewichte oben."
  },
  "plans": {
   "title": "Fertige Pläne",
@@ -299,6 +307,7 @@
   "ppl": {
    "name": "Drücken / Ziehen / Beine",
    "desc": "Gruppiert nach Bewegung statt nach Körperteil. Mehr Übungen je Einheit, weniger Muskeln."
-  }
+  },
+  "carryNote": "Diese Gewichte wandern in dein Training und werden beim Eintragen Satz für Satz zurückgegeben."
  }
 }

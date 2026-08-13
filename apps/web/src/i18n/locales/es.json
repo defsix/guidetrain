@@ -227,7 +227,10 @@
   "nextCycle": "Ciclo siguiente",
   "repeatNote": "Las mismas cuatro semanas se repiten cada ciclo, sumando {increment} {unit} al máximo de entrenamiento: de ahí viene el aumento.",
   "lightNote": "Los saltos semanales son pequeños a propósito. Cada carga es una parte del máximo de entrenamiento, no del real, así que un ciclo nunca pide un levantamiento máximo; el trabajo lo hacen las series con +.",
-  "sameLoads": "Los mismos pesos que el ciclo anterior. {increment} {unit} en el máximo de entrenamiento es menos que el salto más pequeño posible con discos de {plate} {unit}, así que aquí se redondea y aparece en el ciclo siguiente."
+  "sameLoads": "Los mismos pesos que el ciclo anterior. {increment} {unit} en el máximo de entrenamiento es menos que el salto más pequeño posible con discos de {plate} {unit}, así que aquí se redondea y aparece en el ciclo siguiente.",
+  "useWeek": "Usar",
+  "usingWeek": "En uso",
+  "useWeekNote": "Toma una semana y sus pesos pasan a tu entrenamiento, devueltos serie a serie al registrar."
  },
  "program": {
   "untitled": "Entrenamiento {n}",
@@ -252,7 +255,12 @@
   "overall": {
    "one": "{done} de {count} ejercicio hecho",
    "other": "{done} de {count} ejercicios hechos"
-  }
+  },
+  "from": {
+   "plan": "de tu plan",
+   "cycle": "de tu ciclo"
+  },
+  "editClears": "Tus propias series y repeticiones sustituyen los pesos de arriba."
  },
  "plans": {
   "title": "Planes listos",
@@ -299,6 +307,7 @@
   "ppl": {
    "name": "Empuje / tirón / piernas",
    "desc": "Agrupa por movimiento y no por músculo. Más ejercicios por sesión."
-  }
+  },
+  "carryNote": "Estos pesos pasan a tu entrenamiento y se te devuelven serie a serie al registrar."
  }
 }

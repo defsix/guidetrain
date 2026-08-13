@@ -4,6 +4,8 @@ import {
   bestEstimate, cycle, cyclesTo, incrementFor, roundLoad, trainingMax,
   MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION, SMALLEST_PLATE,
 } from "../lib/progression";
+import type { PlannedWeek } from "../lib/progression";
+import type { Target } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -12,7 +14,45 @@ type Props = {
   usesLegs: boolean;
   barbell: boolean;
   onClose: () => void;
+  /**
+   * This exercise's current workout target, so a week already taken is shown
+   * as taken. Named for the workout rather than just `target`, which in this
+   * panel is the max you are training towards.
+   */
+  workoutTarget?: Target;
+  /** Puts one week's loads into the workout as the target for this exercise. */
+  onUseWeek: (t: Target) => void;
+  /** Bodyweight work: the reps are the prescription, the loads mean nothing. */
+  repsOnly?: boolean;
 };
+
+/**
+ * One week of the cycle, as a target the workout can carry.
+ *
+ * `reps` is the largest of the three rather than the first, because it is what
+ * the plain "3 × 5" label falls back to when there is nothing more specific to
+ * say. A 5/3/1 week is 5, 3 and 1, and the pips render per set regardless.
+ */
+function weekTarget(w: PlannedWeek, repsOnly: boolean): Target {
+  return {
+    sets: w.sets.length,
+    reps: Math.max(...w.sets.map((s) => s.reps)),
+    steps: w.sets.map((s) => ({
+      ...(repsOnly ? {} : { load: s.load }),
+      reps: s.reps,
+      ...(s.amrap ? { amrap: true as const } : {}),
+    })),
+    source: "cycle",
+  };
+}
+
+/** Whether the workout is already carrying exactly this week. */
+function isApplied(target: Target | undefined, w: Target): boolean {
+  if (target?.source !== "cycle" || target.steps?.length !== w.steps?.length) return false;
+  return (target.steps ?? []).every(
+    (s, i) => s.load === w.steps![i].load && s.reps === w.steps![i].reps,
+  );
+}
 
 /**
  * The way from the max you have to the max you want, in weeks and kilos.
@@ -23,7 +63,7 @@ type Props = {
  * cannot tell them apart will happily build eight weeks on top of a guess.
  */
 export default function ProgressionPanel({
-  name, sets, usesLegs, barbell, onClose,
+  name, sets, usesLegs, barbell, onClose, workoutTarget, onUseWeek, repsOnly = false,
 }: Props) {
   const { t } = useI18n();
   const best = useMemo(() => bestEstimate(sets), [sets]);
@@ -159,19 +199,39 @@ export default function ProgressionPanel({
 
             <table className="plan-table">
               <tbody>
-                {weeks.map((w) => (
-                  <tr key={w.label} className={w.deload ? "deload" : ""}>
-                    <th scope="row">{t(`plan.${w.label}`)}</th>
-                    {w.sets.map((s, i) => (
-                      <td key={i}>
-                        {s.load} <span className="cap">{u}</span> × {s.reps}
-                        {s.amrap && <sup title={t("plan.amrapHelp")}>+</sup>}
+                {weeks.map((w) => {
+                  // The table used to end here, and this is where the plan
+                  // stopped being a plan: it showed you 65, 75 and 85 kg and
+                  // then left you to remember them at the rack. Taking a week
+                  // writes it into the workout as the target, where the logger
+                  // offers each set back in turn.
+                  const asTarget = weekTarget(w, repsOnly);
+                  const on = isApplied(workoutTarget, asTarget);
+                  return (
+                    <tr key={w.label} className={`${w.deload ? "deload" : ""} ${on ? "using" : ""}`}>
+                      <th scope="row">{t(`plan.${w.label}`)}</th>
+                      {w.sets.map((s, i) => (
+                        <td key={i}>
+                          {s.load} <span className="cap">{u}</span> × {s.reps}
+                          {s.amrap && <sup title={t("plan.amrapHelp")}>+</sup>}
+                        </td>
+                      ))}
+                      <td className="use-cell">
+                        <button
+                          className={`use-week ${on ? "on" : ""}`}
+                          onClick={() => onUseWeek(asTarget)}
+                          aria-label={`${t(on ? "plan.usingWeek" : "plan.useWeek")} — ${t(`plan.${w.label}`)}`}
+                        >
+                          {t(on ? "plan.usingWeek" : "plan.useWeek")}
+                        </button>
                       </td>
-                    ))}
-                  </tr>
-                ))}
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
+
+            <p className="plan-note">{t("plan.useWeekNote")}</p>
 
             {repeatsPrevious && (
               <p className="plan-note flag">

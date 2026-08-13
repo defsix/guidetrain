@@ -239,7 +239,10 @@
   "nextCycle": "Další cyklus",
   "repeatNote": "Stejné čtyři týdny se opakují každý cyklus, vždy s {increment} {unit} navíc k tréninkovému maximu — odtud plyne nárůst.",
   "lightNote": "Malé týdenní přírůstky jsou záměrné. Každá zátěž je podílem tréninkového maxima, ne toho skutečného, takže cyklus nikdy nežádá maximální zvedání; práci odvedou série s +.",
-  "sameLoads": "Stejné váhy jako v předchozím cyklu. {increment} {unit} na tréninkovém maximu je méně než nejmenší skok, který lze s kotouči {plate} {unit} udělat, takže se zde zaokrouhlí pryč a projeví se až v dalším cyklu."
+  "sameLoads": "Stejné váhy jako v předchozím cyklu. {increment} {unit} na tréninkovém maximu je méně než nejmenší skok, který lze s kotouči {plate} {unit} udělat, takže se zde zaokrouhlí pryč a projeví se až v dalším cyklu.",
+  "useWeek": "Použít",
+  "usingWeek": "Používá se",
+  "useWeekNote": "Vyberte týden a jeho váhy se přenesou do tréninku — při zapisování je dostanete zpět sérii po sérii."
  },
  "program": {
   "untitled": "Trénink {n}",
@@ -268,7 +271,12 @@
    "few": "{done} ze {count} cviků hotovo",
    "many": "{done} z {count} cviku hotovo",
    "other": "{done} z {count} cviků hotovo"
-  }
+  },
+  "from": {
+   "plan": "z vašeho plánu",
+   "cycle": "z vašeho cyklu"
+  },
+  "editClears": "Vlastní série a opakování nahradí váhy výše."
  },
  "plans": {
   "title": "Hotové plány",
@@ -321,6 +329,7 @@
   "ppl": {
    "name": "Tlak / tah / nohy",
    "desc": "Řadí podle pohybu, ne podle části těla. Více cviků v jednotce, méně svalů."
-  }
+  },
+  "carryNote": "Tyto váhy se přenesou do tréninku a při zapisování je dostanete zpět sérii po sérii."
  }
 }

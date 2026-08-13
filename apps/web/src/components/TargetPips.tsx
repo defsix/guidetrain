@@ -1,7 +1,6 @@
 import { useState } from "react";
+import type { Target } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
-
-type Target = { sets: number; reps: number };
 
 type Props = {
   target?: Target;
@@ -32,6 +31,10 @@ export default function TargetPips({ target, done, onChange }: Props) {
     e.preventDefault();
     const s = Math.round(Number(sets));
     const r = Math.round(Number(reps));
+    // Deliberately no `steps`: typing your own sets and reps overrides whatever
+    // a planner prescribed, and keeping the old weights against new rep counts
+    // would leave the logger offering 85 kg for a set of twelve. The edit form
+    // says so before you commit to it.
     if (s > 0 && s <= 20 && r > 0 && r <= 100) onChange({ sets: s, reps: r });
     setEditing(false);
   }
@@ -39,6 +42,7 @@ export default function TargetPips({ target, done, onChange }: Props) {
   if (editing) {
     return (
       <form className="target-edit" onSubmit={save}>
+        {target?.steps && <span className="target-warn">{t("target.editClears")}</span>}
         <input
           value={sets}
           onChange={(e) => setSets(e.target.value)}
@@ -73,14 +77,18 @@ export default function TargetPips({ target, done, onChange }: Props) {
   }
 
   const complete = done >= target.sets;
+  // A 5/3/1 week is 5, 3 and 1 — one rep count in the label would be wrong for
+  // two of the three sets, so the sequence is shown when the sets disagree.
+  const varied = target.steps && new Set(target.steps.map((s) => s.reps)).size > 1;
+  const repLabel = varied ? target.steps!.map((s) => s.reps).join("·") : String(target.reps);
   return (
-    <div className={`target ${complete ? "done" : ""}`}>
+    <div className={`target ${complete ? "done" : ""} ${target.steps ? "loaded" : ""}`}>
       <button
         className="target-label"
         onClick={() => setEditing(true)}
         aria-label={t("target.edit", { sets: target.sets, reps: target.reps })}
       >
-        {target.sets} × {target.reps}
+        {target.sets} × {repLabel}
       </button>
       <span
         className="pips"

@@ -227,7 +227,10 @@
   "nextCycle": "Cycle suivant",
   "repeatNote": "Les mêmes quatre semaines se répètent à chaque cycle, avec {increment} {unit} de plus sur le maximum d'entraînement : c'est de là que vient la progression.",
   "lightNote": "Les paliers hebdomadaires sont volontairement petits. Chaque charge est une part du maximum d'entraînement, pas du vrai, donc un cycle ne demande jamais un effort maximal ; le travail vient des séries marquées +.",
-  "sameLoads": "Les mêmes charges que le cycle précédent. {increment} {unit} sur le maximum d'entraînement, c'est moins que le plus petit palier possible avec des disques de {plate} {unit} : l'écart disparaît à l'arrondi et se voit au cycle suivant."
+  "sameLoads": "Les mêmes charges que le cycle précédent. {increment} {unit} sur le maximum d'entraînement, c'est moins que le plus petit palier possible avec des disques de {plate} {unit} : l'écart disparaît à l'arrondi et se voit au cycle suivant.",
+  "useWeek": "Utiliser",
+  "usingWeek": "En cours",
+  "useWeekNote": "Prenez une semaine et ses charges passent dans votre séance, proposées série par série à la saisie."
  },
  "program": {
   "untitled": "Séance {n}",
@@ -252,7 +255,12 @@
   "overall": {
    "one": "{done} exercice sur {count} fait",
    "other": "{done} exercices sur {count} faits"
-  }
+  },
+  "from": {
+   "plan": "de votre plan",
+   "cycle": "de votre cycle"
+  },
+  "editClears": "Vos propres séries et répétitions remplacent les charges ci-dessus."
  },
  "plans": {
   "title": "Séances prêtes",
@@ -299,6 +307,7 @@
   "ppl": {
    "name": "Poussée / tirage / jambes",
    "desc": "Groupe par mouvement plutôt que par muscle. Plus d'exercices par séance."
-  }
+  },
+  "carryNote": "Ces charges passent dans votre séance et vous sont proposées série par série à la saisie."
  }
 }

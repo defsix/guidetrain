@@ -239,7 +239,10 @@
   "nextCycle": "Następny cykl",
   "repeatNote": "Te same cztery tygodnie powtarzają się w każdym cyklu, z {increment} {unit} więcej na maksimum treningowym — stąd bierze się przyrost.",
   "lightNote": "Małe tygodniowe skoki są zamierzone. Każde obciążenie to część maksimum treningowego, a nie prawdziwego, więc cykl nigdy nie wymaga maksymalnego boju; pracę wykonują serie z +.",
-  "sameLoads": "Te same ciężary co w poprzednim cyklu. {increment} {unit} na maksimum treningowym to mniej niż najmniejszy skok możliwy z talerzami {plate} {unit}, więc zaokrągla się tutaj i pojawi się w kolejnym cyklu."
+  "sameLoads": "Te same ciężary co w poprzednim cyklu. {increment} {unit} na maksimum treningowym to mniej niż najmniejszy skok możliwy z talerzami {plate} {unit}, więc zaokrągla się tutaj i pojawi się w kolejnym cyklu.",
+  "useWeek": "Użyj",
+  "usingWeek": "W użyciu",
+  "useWeekNote": "Wybierz tydzień, a jego ciężary trafią do treningu — przy zapisie podpowiadane seria po serii."
  },
  "program": {
   "untitled": "Trening {n}",
@@ -268,7 +271,12 @@
    "few": "{done} z {count} ćwiczeń zrobione",
    "many": "{done} z {count} ćwiczeń zrobionych",
    "other": "{done} z {count} ćwiczeń zrobione"
-  }
+  },
+  "from": {
+   "plan": "z twojego planu",
+   "cycle": "z twojego cyklu"
+  },
+  "editClears": "Własne serie i powtórzenia zastąpią ciężary powyżej."
  },
  "plans": {
   "title": "Gotowe plany",
@@ -321,6 +329,7 @@
   "ppl": {
    "name": "Pchanie / ciągnięcie / nogi",
    "desc": "Grupuje według ruchu, nie części ciała. Więcej ćwiczeń na jednostkę."
-  }
+  },
+  "carryNote": "Te ciężary trafiają do treningu i przy zapisie są podpowiadane seria po serii."
  }
 }

@@ -3,6 +3,7 @@ import exercises from "../anatomy/exercises.json";
 import { PLANS, prescribe } from "../lib/plans";
 import type { PlanTemplate } from "../lib/plans";
 import type { SetEntry } from "../state/useLog";
+import type { AppliedDay } from "../state/usePrograms";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -18,8 +19,8 @@ type Props = {
   onClose: () => void;
   allSets: SetEntry[];
   profile: Profile | null;
-  /** Creates a named workout and returns its id, so days can be filled in. */
-  onApply: (days: { name: string; exercises: { id: string; sets: number; reps: number }[] }[]) => void;
+  /** Applies the plan as named workouts, carrying the weights just previewed. */
+  onApply: (days: AppliedDay[]) => void;
 };
 
 /**
@@ -43,6 +44,29 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
     }
     return m;
   }, [allSets]);
+
+  /**
+   * The chosen plan with every weight worked out — computed once, then both
+   * shown and applied.
+   *
+   * Prescribing separately at each of those two moments would let the workout
+   * hold a different number from the preview it came from, and the reader would
+   * have no way to know which one to believe.
+   */
+  const resolved = useMemo(() => {
+    if (!chosen) return null;
+    return chosen.days.map((day) => ({
+      name: day.name,
+      exercises: day.exercises.map((e) => {
+        const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile);
+        return {
+          ...e,
+          load: p.source === "unknown" ? undefined : p.load,
+          source: p.source,
+        };
+      }),
+    }));
+  }, [chosen, byExercise, profile]);
 
   const u = t("unit.kg");
   if (!open) return null;
@@ -78,7 +102,7 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
             </button>
             <p className="plan-name">{t(`plans.${chosen.id}.name`)}</p>
 
-            {chosen.days.map((day) => (
+            {resolved?.map((day) => (
               <div className="plan-day" key={day.name}>
                 <h3>{t(`plans.day.${day.name}`)}</h3>
                 <ul>
@@ -86,19 +110,18 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
                     const raw = BY_ID.get(e.id);
                     if (!raw) return null;
                     const x = localizeExercise(raw);
-                    const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile);
                     return (
                       <li key={e.id}>
                         <span className="dname">{x.name}</span>
                         <span className="dload">
-                          {p.source === "unknown" ? (
+                          {e.source === "unknown" ? (
                             <em className="unknown">{t("plans.pickYourOwn")}</em>
                           ) : (
                             <>
                               <strong>
-                                {p.load} {u}
+                                {e.load} {u}
                               </strong>
-                              <em className={p.source}>{t(`plans.from.${p.source}`)}</em>
+                              <em className={e.source}>{t(`plans.from.${e.source}`)}</em>
                             </>
                           )}
                         </span>
@@ -115,11 +138,14 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
             {/* Said once, plainly, above the button that commits to it. */}
             <p className="plan-note flag">{t("plans.startingNote")}</p>
             <p className="plan-note">{t("plans.loggedNote")}</p>
+            {/* The weights above are not just a preview any more — they go into
+                the workout, where the logger offers them back set by set. */}
+            <p className="plan-note">{t("plans.carryNote")}</p>
 
             <button
               className="primary-button"
               onClick={() => {
-                onApply(chosen.days);
+                if (resolved) onApply(resolved);
                 setChosen(null);
                 onClose();
               }}

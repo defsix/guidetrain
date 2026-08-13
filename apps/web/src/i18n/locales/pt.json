@@ -227,7 +227,10 @@
   "nextCycle": "Ciclo seguinte",
   "repeatNote": "As mesmas quatro semanas repetem-se em cada ciclo, somando {increment} {unit} ao máximo de treino — é daí que vem o aumento.",
   "lightNote": "Os saltos semanais são pequenos de propósito. Cada carga é uma parte do máximo de treino e não do real, por isso um ciclo nunca pede um levantamento máximo; o trabalho vem das séries com +.",
-  "sameLoads": "Os mesmos pesos do ciclo anterior. {increment} {unit} no máximo de treino é menos do que o menor salto possível com discos de {plate} {unit}, por isso arredonda aqui e aparece no ciclo seguinte."
+  "sameLoads": "Os mesmos pesos do ciclo anterior. {increment} {unit} no máximo de treino é menos do que o menor salto possível com discos de {plate} {unit}, por isso arredonda aqui e aparece no ciclo seguinte.",
+  "useWeek": "Usar",
+  "usingWeek": "Em uso",
+  "useWeekNote": "Escolha uma semana e as cargas vão para o seu treino, devolvidas série a série ao registar."
  },
  "program": {
   "untitled": "Treino {n}",
@@ -252,7 +255,12 @@
   "overall": {
    "one": "{done} de {count} exercício feito",
    "other": "{done} de {count} exercícios feitos"
-  }
+  },
+  "from": {
+   "plan": "do seu plano",
+   "cycle": "do seu ciclo"
+  },
+  "editClears": "As suas próprias séries e repetições substituem as cargas acima."
  },
  "plans": {
   "title": "Planos prontos",
@@ -299,6 +307,7 @@
   "ppl": {
    "name": "Empurrar / puxar / pernas",
    "desc": "Agrupa por movimento e não por músculo. Mais exercícios por sessão."
-  }
+  },
+  "carryNote": "Estas cargas vão para o seu treino e são devolvidas série a série ao registar."
  }
 }

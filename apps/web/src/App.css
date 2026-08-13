@@ -593,6 +593,54 @@
   color: var(--text-muted);
 }
 
+/* What a planner prescribed for this exercise, set by set. Wraps rather than
+   scrolls: five sets of "77.5 kg × 5" does not fit a phone on one line, and a
+   sideways scroller hides the sets you have not done yet — which are the ones
+   you are reading it for. */
+.prescribed {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+
+.prescribed .steps { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.prescribed .steps > span {
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+}
+/* Done, doing, still to come — three states, because "which set am I on" is
+   the question you are holding a phone mid-session to answer. */
+.prescribed .steps > span.was { opacity: 0.45; text-decoration: line-through; }
+.prescribed .steps > span.now {
+  border-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+.prescribed .steps sup { font-weight: 600; }
+.prescribed em {
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Shown only while editing a target that carries weights, where it is a
+   consequence of pressing Set rather than a general warning. */
+.target-warn {
+  flex-basis: 100%;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
 /* --- getting to the next max ------------------------------------------- */
 .plan-link {
   margin-left: 8px;
@@ -707,6 +755,31 @@
 /* The light week reads lighter. */
 .plan-table tr.deload td, .plan-table tr.deload th { color: var(--text-muted); }
 .plan-table sup { color: var(--accent); font-weight: 600; }
+
+/* The week that is currently in the workout, marked on the row rather than
+   only on its button — the whole line is the thing that is in use. */
+.plan-table tr.using { background: color-mix(in srgb, var(--accent) 9%, transparent); }
+.plan-table td.use-cell { width: 1%; padding-right: 0; text-align: right; }
+
+.use-week {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.use-week:hover { border-color: var(--accent); color: var(--accent); }
+.use-week.on {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
 
 .plan-note {
   margin: 0;
@@ -856,6 +929,10 @@
 }
 .target-label:hover { color: var(--accent); }
 .target.done .target-label { color: var(--accent); }
+/* A target carrying prescribed weights is underlined, so "3 × 5" is
+   distinguishable from "3 × 5 at 77.5 kg" without spending a second line on
+   it — the weights themselves are already shown below, by the logger. */
+.target.loaded .target-label { text-decoration: underline dotted; text-underline-offset: 3px; }
 
 .pips { display: inline-flex; gap: 3px; }
 
@@ -885,7 +962,7 @@
 }
 .target-add:hover { color: var(--accent); }
 
-.target-edit { display: flex; align-items: center; gap: 5px; flex: none; }
+.target-edit { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 5px; flex: none; }
 
 .target-edit input {
   width: 4ch;

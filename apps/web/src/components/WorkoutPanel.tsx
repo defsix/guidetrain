@@ -5,7 +5,7 @@ import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
 import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
-import type { Program } from "../state/usePrograms";
+import type { Program, Target } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -50,8 +50,8 @@ type Props = {
   best: Map<string, SetEntry>;
   onAddSet: (id: string, weight: number, reps: number) => void;
   onRemoveSet: (uid: string) => void;
-  targets: Record<string, { sets: number; reps: number }>;
-  onTarget: (id: string, t: { sets: number; reps: number } | null) => void;
+  targets: Record<string, Target>;
+  onTarget: (id: string, t: Target | null) => void;
   onBrowsePlans: () => void;
   /** Every set ever recorded — the plan works from history, not just today. */
   allSets: SetEntry[];
@@ -247,6 +247,7 @@ export default function WorkoutPanel({
                     onRemove={onRemoveSet}
                     onPlan={() => setPlanning(x.id)}
                     bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
+                    target={targets[x.id]}
                   />
                 </li>
               ))}
@@ -272,6 +273,9 @@ export default function WorkoutPanel({
             sets={allSets.filter((s) => s.id === planning)}
             usesLegs={usesLegs(raw)}
             barbell={raw.equipment === "barbell"}
+            repsOnly={raw.equipment === "body only"}
+            workoutTarget={targets[planning]}
+            onUseWeek={(target) => onTarget(planning, target)}
             onClose={() => setPlanning(null)}
           />
         );
