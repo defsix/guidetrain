@@ -7,8 +7,17 @@ policies, applied and proved before any code depends on it.
 
 ## Applying it
 
-1. Create a project at [supabase.com](https://supabase.com). Note the project
-   URL and the **anon** key from Settings → API.
+1. Create a project at [supabase.com](https://supabase.com). Take the project
+   URL and the **publishable** key from Settings → API Keys.
+
+   Supabase is midway through changing key formats: the current pair is
+   `sb_publishable_…` and `sb_secret_…`, replacing the older `anon` and
+   `service_role` JWTs, with legacy keys deprecated through 2026
+   ([migration guide](https://supabase.com/docs/guides/getting-started/migrating-to-new-api-keys)).
+   Either generation works here. The publishable key is the one that goes in
+   the app; the secret key bypasses row-level security and must never reach a
+   browser, a `VITE_` variable or a commit — both `lib/supabase.ts` and
+   `check-rls.mjs` refuse to run if handed one.
 2. Paste `migrations/0001_accounts.sql` into the SQL editor and run it. It is
    guarded throughout, so re-running is safe.
 3. Prove the policies hold, against the real project:
@@ -16,7 +25,7 @@ policies, applied and proved before any code depends on it.
    ```bash
    npm i -D @supabase/supabase-js -w apps/web
    SUPABASE_URL=https://xxx.supabase.co \
-   SUPABASE_ANON_KEY=eyJ... \
+   SUPABASE_ANON_KEY=sb_publishable_... \
    node tools/supabase/check-rls.mjs
    ```
 

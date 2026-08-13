@@ -22,11 +22,19 @@ const url = import.meta.env.VITE_SUPABASE_URL;
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 /**
- * A service-role key here would be a serious mistake shipped to every visitor,
- * so it is worth one cheap check rather than trusting the variable name. The
- * role is a claim inside the JWT; anon keys carry `"role":"anon"`.
+ * A secret key here would be a serious mistake shipped to every visitor, so it
+ * is worth one cheap check rather than trusting the variable name.
+ *
+ * Two formats, because Supabase is midway through changing them. The current
+ * keys are opaque strings prefixed `sb_publishable_` and `sb_secret_`; the
+ * legacy ones are JWTs carrying `"role":"anon"` or `"role":"service_role"`.
+ * Both are accepted, and the check has to know both — a guard that only
+ * understood JWTs would wave a modern `sb_secret_` key straight through, which
+ * is exactly the kind of silent gap this exists to close.
  */
-function looksLikeServiceRole(key: string): boolean {
+function isSecretKey(key: string): boolean {
+  if (key.startsWith("sb_secret_")) return true;
+  if (key.startsWith("sb_publishable_")) return false;
   try {
     const payload = JSON.parse(atob(key.split(".")[1]));
     return payload?.role === "service_role";
@@ -38,12 +46,13 @@ function looksLikeServiceRole(key: string): boolean {
 let client: SupabaseClient | null = null;
 
 if (url && anonKey) {
-  if (looksLikeServiceRole(anonKey)) {
+  if (isSecretKey(anonKey)) {
     // Refusing is the only safe response. Connecting would hand every visitor
     // a key that reads and writes every row of every account.
     console.error(
-      "VITE_SUPABASE_ANON_KEY is a service-role key. Refusing to connect — " +
-        "that key bypasses row-level security and must never reach a browser.",
+      "VITE_SUPABASE_ANON_KEY is a secret key (sb_secret_… or service_role). " +
+        "Refusing to connect — that key bypasses row-level security and must " +
+        "never reach a browser. Use the publishable key.",
     );
   } else {
     client = createClient(url, anonKey, {

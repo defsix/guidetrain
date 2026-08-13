@@ -1,7 +1,7 @@
 // Proves the row-level security policies actually hold, against a real project.
 //
 //   SUPABASE_URL=https://xxx.supabase.co \
-//   SUPABASE_ANON_KEY=eyJ... \
+//   SUPABASE_ANON_KEY=sb_publishable_... \
 //   node tools/supabase/check-rls.mjs
 //
 // Not part of `npm run check`: it needs network and a live project, and it
@@ -19,10 +19,11 @@ if (!URL || !KEY) {
   console.error("Set SUPABASE_URL and SUPABASE_ANON_KEY.");
   process.exit(2);
 }
-if (/service_role/.test(KEY) || KEY.length > 500) {
-  // The service-role key bypasses RLS entirely, so running this with it would
-  // report success no matter how broken the policies are.
-  console.error("That looks like a service-role key. Use the anon key.");
+// A secret key bypasses RLS entirely, so running this with one would report
+// success no matter how broken the policies are. Both key formats are checked:
+// the current `sb_secret_` prefix and the legacy service_role JWT.
+if (KEY.startsWith("sb_secret_") || (!KEY.startsWith("sb_publishable_") && /service_role/.test(KEY))) {
+  console.error("That is a secret key. Use the publishable (or anon) key.");
   process.exit(2);
 }
 
