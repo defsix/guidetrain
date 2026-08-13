@@ -741,6 +741,24 @@ days of inactivity, two active projects, 500 MB of database and 50k monthly
 active users
 ([pricing](https://uibakery.io/blog/supabase-pricing)).
 
+**The domain is `guidetrain.me`**, already registered and deliberately not yet
+pointed at anything. Switching Pages over is the *last* step for the reason
+above: everything the app currently holds is stranded the moment the origin
+changes. Holding it costs nothing and lets email sending be set up in advance.
+
+When the time comes, the DNS is
+([GitHub's docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)):
+
+| Record | Name | Value |
+| --- | --- | --- |
+| `A` | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| `AAAA` | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| `CNAME` | `www` | `defsix.github.io` |
+
+Then a `CNAME` file in the repo containing `guidetrain.me`, *Enforce HTTPS* in
+Settings → Pages once the certificate issues, Vite's `base` from `/guidetrain/`
+to `/`, and Supabase's Site URL and redirect allow-list moved across.
+
 A custom domain on Pages is free, HTTPS included, and buys more than vanity: it
 takes the app off `defsix.github.io/guidetrain/`, so moving hosts later is a
 DNS change rather than a broken bookmark, and it gives OAuth consent screens
