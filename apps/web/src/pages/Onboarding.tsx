@@ -4,6 +4,7 @@ import type { AgeGroup, Gender, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
+import Logo from "../components/Logo";
 import { useT } from "../i18n/I18nProvider";
 import { LOCALES } from "../i18n";
 import muscleMap from "../anatomy/muscle-map.json";
@@ -67,7 +68,10 @@ export default function Onboarding() {
     <div className="onboarding">
       <div className="onboarding-hero">
         <div className="onboarding-head">
-          <p className="eyebrow">GuideTrain</p>
+          {/* The mark carries the name here rather than an all-caps label:
+              this is the one screen with room for it, and the first thing
+              anybody sees of the app. */}
+          <Logo size={38} withName />
           <div className="header-controls">
             <ThemeToggle pref={pref} onChange={setPref} />
           </div>

@@ -4,6 +4,7 @@ import { AnatomyViewer } from "../anatomy";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
+import Logo from "../components/Logo";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
@@ -37,6 +38,10 @@ export default function BodyExplorer() {
   return (
     <div className="explorer">
       <div className="explorer-bar">
+        {/* Mark only, and small. The header already carries a greeting, a
+            workout count, history and the theme, and on a phone that row is
+            full — the name would be the first thing to push something off it. */}
+        <Logo size={22} />
         {/* Two whole sentences rather than a name slot with "there" in it:
             languages put the name in different places, and some have no
             natural stand-in for an unknown one. */}

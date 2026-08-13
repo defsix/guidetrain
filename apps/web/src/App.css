@@ -659,6 +659,24 @@
   text-decoration: line-through;
 }
 
+/* --- the mark ----------------------------------------------------------- */
+.logo { display: inline-flex; align-items: center; gap: 9px; flex: none; }
+.logo svg { display: block; }
+/* Both groups take their colour from the theme, which is the reason this is a
+   component rather than an <img> of the favicon. */
+.logo-ink { fill: var(--text); }
+.logo-accent { fill: var(--accent); }
+
+.logo-name {
+  font-family: var(--sans);
+  font-size: calc(var(--logo-size) * 0.62);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.logo-name b { font-weight: 700; color: var(--text); }
+
 /* --- history ------------------------------------------------------------ */
 .history-button {
   background: transparent;
