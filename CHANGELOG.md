@@ -63,7 +63,18 @@ Newest first. Numbers in brackets are pull requests.
   rest; a search now passes over anything already taken while another candidate
   remains, falling back to a shared video only when nothing else matches. 11
   freed, 0 duplicates left.
-- **174 of 180 have a video, down from 180** — and that is the rule working,
+- **179 of 180 have a video** — five of the six that the contradiction rules
+  had left on a search link came back once the resolver was taught what those
+  movements are actually called. The catalogue says "Suspended Row" and the
+  world says *TRX row*, so a literal search returned barbell rows; `SEARCH_AS`
+  changes the question only, and the answer is still judged against the real
+  name by the same gate, so it cannot admit a worse video. "alternating" also
+  left the strong-word list — reverse changes a movement, alternating only says
+  which side goes first. The last one, "One-Legged Cable Kickback", stays on the
+  search link and should: it needs a title saying *one* or *single* and nobody
+  writes it, because the movement is one-legged by nature, and bending the gate
+  for it would cost more than the video is worth.
+- **174 of 180 had a video, down from 180** — and that is the rule working,
   not a regression. Six suspended, decline and reverse variants had been
   showing the plain version of the movement, and nothing found demonstrates the
   real one. They keep the YouTube search link. A reader told a video shows

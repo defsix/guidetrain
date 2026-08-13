@@ -88,7 +88,27 @@ ALIAS = {"rdl": {"romanian", "stiff", "legged", "deadlift"}, "db": {"dumbbell"},
          # throws away the right video.
          "leverage": {"machine"}, "lever": {"machine"}, "hammer": {"machine"},
          "isolateral": {"machine"}, "rope": {"cable"},
-         "single": {"one"}, "unilateral": {"one"}, "banded": {"band"}}
+         "single": {"one"}, "unilateral": {"one"}, "banded": {"band"},
+         # Straps. The catalogue says "suspended"; the world says TRX, which is
+         # a brand that became the name of the movement.
+         "trx": {"suspended"}, "strap": {"suspended"}, "suspension": {"suspended"}}
+
+# What the movement is actually called, where that differs from the catalogue.
+#
+# Only the *question* changes. The answer is still judged against the real
+# exercise name by the same gate, so this cannot let a wrong video through — it
+# can only stop the search returning ten videos of a movement nobody asked
+# about. "Suspended Row" searched literally returns barbell rows; searched as
+# "TRX row" it returns the exercise.
+SEARCH_AS = {
+    "Decline Reverse Crunch": "reverse crunch on a decline bench",
+    "Suspended Reverse Crunch": "TRX suspended reverse crunch knee tuck",
+    "One-Legged Cable Kickback": "single leg cable glute kickback",
+    "Kneeling Cable Crunch With Alternating Oblique Twists":
+        "kneeling cable oblique crunch with a twist",
+    "Reverse Calf Raise on Leg Press": "reverse calf raise on the leg press tibialis",
+    "Suspended Row": "TRX suspended row on a suspension trainer",
+}
 
 # Qualifiers that separate one variant of a movement from another.
 #
@@ -112,8 +132,12 @@ FAMILIES = [
 # Crunch" video titled "Cable Crunch" is not a differently worded match, it is
 # the other exercise. Checked one way only — the name is the specification, and
 # a title carrying an extra qualifier is usually just being more precise.
-STRONG = {"reverse", "suspended", "one", "alternating", "oblique",
-          "decline", "incline"}
+STRONG = {"reverse", "suspended", "one", "oblique", "decline", "incline"}
+# "alternating" was here and has been taken out. Reverse changes the movement;
+# alternating only describes which side goes first, so a video of a kneeling
+# cable oblique crunch demonstrates the alternating version perfectly well. It
+# stays in STOP, where it counts for nothing as agreement — the point of the
+# two lists is that they answer different questions.
 
 
 def singular(w):
@@ -206,7 +230,7 @@ def resolve(name, taken=()):
     shared video is still allowed once the alternatives run out: two exercises
     on one demonstration beats one exercise on none.
     """
-    q = f"{name} exercise proper form"
+    q = f"{SEARCH_AS.get(name, name)} exercise proper form"
     found = get("search", part="snippet", q=q, type="video", maxResults=10,
                 videoEmbeddable="true", safeSearch="strict", relevanceLanguage="en")
     ids = [i["id"]["videoId"] for i in found.get("items", [])]
