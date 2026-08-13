@@ -170,6 +170,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Live at guidetrain.me** — off `defsix.github.io/guidetrain/`, which now
+  301-redirects, so old links keep working. Two pieces make it hold:
+  `apps/web/public/CNAME` ships inside `dist/`, because an Actions deploy
+  re-applies the Pages configuration from the artifact and one without that
+  file silently drops the custom domain on a later push; and the build stopped
+  passing `--base=/guidetrain/`, which at a domain root would have every asset
+  requesting `/guidetrain/assets/…` and load a blank page rather than a 404.
+  Local data did not survive the origin change — `localStorage` does not follow
+  a redirect — which was the known cost of moving before accounts.
+- **The Supabase schema and its policies** — `supabase/migrations/0001_accounts.sql`
+  plus `tools/supabase/check-rls.mjs`, which proves the row-level security holds
+  by attacking it with a second account rather than asserting it. Not wired into
+  the app yet.
 - **What to do when the cycle doesn't go up** — the plan described success and
   nothing else, which the README had already named as the part that gets
   somebody hurt. It now marks each week's top set hit or missed against the log,

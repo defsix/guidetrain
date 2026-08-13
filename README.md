@@ -680,19 +680,32 @@ prescriptions. Their expected values are worked by hand from the sources cited
 in the code rather than captured from a passing run: a fixture recorded from
 the implementation agrees with whatever the implementation does, bugs included.
 
-## Hosting on GitHub Pages
+## Hosting
 
+**Live at [guidetrain.me](https://guidetrain.me)**, on GitHub Pages.
 `.github/workflows/deploy-pages.yml` builds and publishes `apps/web` on every
 push to `main`. **One-time setup:** in **Settings → Pages**, set **Source** to
 **GitHub Actions**.
 
-Two things apply only to the Pages build:
+Three things apply only to the deployed build:
 
+- **`apps/web/public/CNAME` is what keeps the domain attached.** Vite copies it
+  into `dist/`, and with an Actions deploy the Pages configuration is
+  re-applied from the artifact — so an artifact without that file silently
+  drops the custom domain on the next push. The site would work today and break
+  on some unrelated commit later.
+- **No `--base`.** The site is at a domain root rather than a repo subpath. It
+  used to build with `--base=/guidetrain/` for `defsix.github.io/guidetrain/`;
+  leaving that in place after the move would have every asset requesting
+  `/guidetrain/assets/…`, and the page would load blank rather than 404 — the
+  more confusing of the two failures.
+- **Hash routes.** Pages cannot rewrite unknown paths to `index.html`, so the
+  deployed app uses `guidetrain.me/#/explore`. Local dev is unaffected. (A
+  `404.html` copy of `index.html` would lift this, if the URLs ever matter
+  enough.)
 - **No backend.** Muscle data is bundled (`src/anatomy/muscle-map.json`), not
-  fetched. `apps/api` exists for later phases; once those need real writes,
-  Pages will need a backend deployed alongside (e.g. Render/Fly.io).
-- **Hash routes.** Pages can't rewrite unknown paths to `index.html`, so the
-  deployed app uses `.../guidetrain/#/explore`. Local dev is unaffected.
+  fetched. Accounts and sync are going to Supabase — see
+  [the intended shape](#the-intended-shape) and `supabase/`.
 
 ## Roadmap
 
