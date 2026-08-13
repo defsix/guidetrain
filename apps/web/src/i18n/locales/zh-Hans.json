@@ -310,5 +310,10 @@
    "other": "已跳过 {count} 组 — 未记录。"
   },
   "undo": "撤销"
+ },
+ "load": {
+  "perSide": "每边 {weight} {unit}",
+  "barOnly": "只有杠铃杆 — 不加片。",
+  "perHand": "每只手"
  }
 }

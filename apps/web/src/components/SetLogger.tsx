@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import type { Target } from "../state/usePrograms";
+import { platesPerSide, BAR_WEIGHT } from "../lib/progression";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -22,6 +23,14 @@ type Props = {
   onUnskip?: () => void;
   /** The written instructions, shown on request rather than by default. */
   instructions?: string[];
+  /**
+   * What the exercise is done with, from the catalogue.
+   *
+   * Drives what the weight on screen *means*, which differs by kit and was
+   * being left to the reader to assume: a barbell number is the whole bar and
+   * has to be halved and made from plates, a dumbbell number is one hand.
+   */
+  equipment?: string;
   /**
    * Body weight in the logging unit, passed only for exercises whose load *is*
    * the person. Its presence is what puts this in reps-only mode: there is no
@@ -51,7 +60,7 @@ type Props = {
  */
 export default function SetLogger({
   exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad, target,
-  skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions,
+  skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions, equipment,
 }: Props) {
   const { t } = useI18n();
   const repsOnly = bodyLoad != null;
@@ -97,6 +106,20 @@ export default function SetLogger({
   const num = (s: string) => parseFloat(s.replace(",", "."));
   const load = repsOnly ? bodyLoad : num(weight);
   const ready = Number.isFinite(load) && num(reps) > 0;
+
+  /**
+   * How to make the weight in the field, for kit where the number is not the
+   * thing you pick up.
+   *
+   * Driven by the field rather than by the prescription, so it answers the
+   * question for a weight you typed as well as one you were handed — the
+   * arithmetic is the same either way and it is the arithmetic people get
+   * wrong at the rack.
+   */
+  const loading = equipment === "barbell" && Number.isFinite(load)
+    ? platesPerSide(load as number)
+    : null;
+  const barOnly = equipment === "barbell" && load === BAR_WEIGHT;
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -178,6 +201,25 @@ export default function SetLogger({
           {t("log.addSet")}
         </button>
       </form>
+
+      {/* What the number on screen actually means, which is not the same
+          question for every piece of kit. A barbell's 100 kg is the whole
+          loaded bar and nobody hands you one — you build it from a 20 kg bar
+          and pairs of plates, and the halving is where people slip. A
+          dumbbell's 12.5 kg is one hand; taken as the pair it would be half
+          the weight it should be. Neither was said anywhere. */}
+      {loading && (
+        <p className="loading-note">
+          {t("load.perSide", { weight: loading.side, unit: t("unit.kg") })}
+          <span className="plates">
+            {loading.plates.map((p, i) => (
+              <span key={i}>{p}</span>
+            ))}
+          </span>
+        </p>
+      )}
+      {barOnly && <p className="loading-note">{t("load.barOnly")}</p>}
+      {equipment === "dumbbell" && <p className="loading-note">{t("load.perHand")}</p>}
 
       {/* Skipping, which records nothing. A set you did not do is not a set,
           so this moves the prescription on and says so — it never reaches the

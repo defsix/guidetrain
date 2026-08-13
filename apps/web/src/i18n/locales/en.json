@@ -322,5 +322,10 @@
    "other": "{count} sets skipped — not logged."
   },
   "undo": "Undo"
+ },
+ "load": {
+  "perSide": "{weight} {unit} a side",
+  "barOnly": "Just the bar — nothing on it.",
+  "perHand": "per hand"
  }
 }

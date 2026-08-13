@@ -120,6 +120,13 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
                             <>
                               <strong>
                                 {e.load} {u}
+                                {/* Same ambiguity as in the logger, and the
+                                    preview is where the number is first seen:
+                                    a dumbbell figure read as the pair would
+                                    halve the work. */}
+                                {raw.equipment === "dumbbell" && (
+                                  <span className="per-hand"> {t("load.perHand")}</span>
+                                )}
                               </strong>
                               <em className={e.source}>{t(`plans.from.${e.source}`)}</em>
                             </>

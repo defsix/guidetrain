@@ -322,5 +322,10 @@
    "other": "{count} séries saltadas — não registadas."
   },
   "undo": "Anular"
+ },
+ "load": {
+  "perSide": "{weight} {unit} de cada lado",
+  "barOnly": "Só a barra — sem discos.",
+  "perHand": "por mão"
  }
 }

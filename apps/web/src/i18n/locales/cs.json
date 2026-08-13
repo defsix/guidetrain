@@ -346,5 +346,10 @@
    "other": "{count} sérií přeskočeno — nezapsáno."
   },
   "undo": "Zpět"
+ },
+ "load": {
+  "perSide": "{weight} {unit} na každé straně",
+  "barOnly": "Jen osa — bez kotoučů.",
+  "perHand": "na ruku"
  }
 }

@@ -322,5 +322,10 @@
    "other": "{count} series saltadas — no registradas."
   },
   "undo": "Deshacer"
+ },
+ "load": {
+  "perSide": "{weight} {unit} por lado",
+  "barOnly": "Solo la barra — sin discos.",
+  "perHand": "por mano"
  }
 }

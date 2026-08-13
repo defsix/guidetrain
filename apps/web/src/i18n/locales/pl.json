@@ -346,5 +346,10 @@
    "other": "{count} serii pominiętych — niezapisanych."
   },
   "undo": "Cofnij"
+ },
+ "load": {
+  "perSide": "{weight} {unit} na stronę",
+  "barOnly": "Sam gryf — bez talerzy.",
+  "perHand": "na rękę"
  }
 }

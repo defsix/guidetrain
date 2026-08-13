@@ -295,6 +295,7 @@ export default function WorkoutPanel({
                     bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
                     target={targets[x.id]}
                     instructions={x.instructions}
+                    equipment={x.equipment}
                     skipped={skips[x.id] ?? 0}
                     onSkipSet={targets[x.id] ? () => onSkip(x.id) : undefined}
                     onSkipRest={

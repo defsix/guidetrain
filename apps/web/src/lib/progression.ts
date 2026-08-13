@@ -88,6 +88,50 @@ export function roundLoad(value: number): number {
   return Math.round(value / LOAD_STEP) * LOAD_STEP;
 }
 
+/** An Olympic bar, in kilos. What a barbell weighs before anything goes on it. */
+export const BAR_WEIGHT = 20;
+
+/**
+ * The plates a kilo gym stocks, heaviest first.
+ *
+ * 1.25 is the smallest, which is where SMALLEST_PLATE above comes from; the
+ * rest are the standard rack. Ordered for the greedy walk in platesPerSide,
+ * which is correct here because every plate divides all the larger ones — the
+ * case where greedy change-making goes wrong cannot arise on this set.
+ */
+const PLATES = [25, 20, 15, 10, 5, 2.5, SMALLEST_PLATE];
+
+/**
+ * What to hang on each end of the bar to reach `total`.
+ *
+ * Returns the weight a side and the plates to get there, or null when the
+ * question does not apply — a total at or below the bar has nothing to load,
+ * and one that cannot be made from the rack is worth saying nothing about
+ * rather than approximating, since a number you cannot load is not help.
+ *
+ * Both sides, always. Plates go on in pairs and a barbell loaded on one end is
+ * a hospital visit, so the figure quoted is per side and the caller says so.
+ */
+export function platesPerSide(
+  total: number,
+  bar = BAR_WEIGHT,
+): { side: number; plates: number[] } | null {
+  const side = (total - bar) / 2;
+  if (!Number.isFinite(side) || side <= 0) return null;
+  const plates: number[] = [];
+  let left = side;
+  for (const p of PLATES) {
+    // Rounded at each step because 47.5 - 25 - 20 lands on 2.4999999999999996
+    // in binary floating point, and a residue that small would then fail the
+    // exactness test below and throw away a perfectly loadable bar.
+    while (Math.round((left - p) * 100) / 100 >= 0) {
+      plates.push(p);
+      left = Math.round((left - p) * 100) / 100;
+    }
+  }
+  return left === 0 ? { side, plates } : null;
+}
+
 /** 5/3/1 works off a training max deliberately set below the real one. */
 export const TRAINING_MAX_FRACTION = 0.9;
 

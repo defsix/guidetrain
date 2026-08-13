@@ -322,5 +322,10 @@
    "other": "{count} séries passées — non enregistrées."
   },
   "undo": "Annuler"
+ },
+ "load": {
+  "perSide": "{weight} {unit} par côté",
+  "barOnly": "La barre seule — sans disques.",
+  "perHand": "par main"
  }
 }

@@ -659,6 +659,36 @@
   text-decoration: line-through;
 }
 
+/* --- what the number means ---------------------------------------------- */
+.loading-note {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 7px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+/* The plates themselves, as things rather than as a sentence — this gets read
+   at arm's length while picking them off a rack. */
+.loading-note .plates { display: flex; flex-wrap: wrap; gap: 4px; }
+.loading-note .plates > span {
+  padding: 1px 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 3px;
+  color: var(--text);
+}
+
+.per-hand {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
 /* --- skipping, and how to do it ----------------------------------------- */
 .skip-row { margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 

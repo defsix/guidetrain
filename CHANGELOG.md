@@ -170,6 +170,15 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **What the number on screen actually means** — it differed by equipment and
+  the app never said which. A barbell's 100 kg is the whole loaded bar, so it
+  now shows the 40 kg a side and the plates to build it from — the halving is
+  where people slip, and 20 kg reads "just the bar" rather than an empty plate
+  list. A dumbbell's 12.5 kg is one hand, which read as the pair would halve
+  the work, so dumbbell rows say "per hand" in both the logger and the plan
+  preview. The plates follow the weight in the field, so it answers for a
+  number you typed as well as one you were handed, and says nothing at all for
+  a total that cannot be made from the rack.
 - **The weights follow you to the bar** — both planners worked out what to lift
   and then let the number die on the screen that computed it: a plan previewed
   "Barbell Squat 40 kg" and applied as a bare "3 × 5", and the 5/3/1 table left

@@ -310,5 +310,10 @@
    "other": "{count}セットを飛ばしました — 記録されていません。"
   },
   "undo": "取り消す"
+ },
+ "load": {
+  "perSide": "片側 {weight} {unit}",
+  "barOnly": "バーのみ — プレートなし。",
+  "perHand": "片手あたり"
  }
 }
