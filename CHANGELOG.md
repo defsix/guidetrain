@@ -149,6 +149,21 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Training pairs moved under Train This**, above the exercise list, after
+  being reported as missing — they had been inside an expanded exercise, below
+  eight steps of instructions, findable only by someone who already knew to
+  scroll. They now answer the muscle until an exercise is open and that
+  exercise once it is, which is the sharper question: a bench press loads the
+  triceps and a chest fly barely does, so before you say which, the weaker
+  claim is the only honest one.
+- **One font stack, and controls that use it** — `--sans` and `--mono` are
+  declared once and inherited everywhere, instead of being written out at
+  thirteen call sites where the canvas and the page disagreed about the
+  fallback chain. The username input had been rendering in Arial, since form
+  controls take a UA font unless told to inherit and only `button` had been
+  told. Worth stating plainly: neither `Space Grotesk` nor `JetBrains Mono` is
+  bundled — no `@font-face`, no font file — so both have always fallen back,
+  and what everyone has been reading is the fallback.
 - **The body is one colour until you ask it a question** — grey, dark or light
   to suit the theme, with the muscle you pick in the theme's own orange and
   nothing else wearing anything. Opening an exercise puts that orange on what

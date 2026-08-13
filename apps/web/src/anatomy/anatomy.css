@@ -4,7 +4,7 @@
   height: 100%;
   min-height: 480px;
   background: var(--canvas-bg);
-  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-family: var(--sans);
   color: var(--text);
   overflow: hidden;
 }
@@ -20,7 +20,7 @@
   padding: 15px;
 }
 .anatomy-panel h2 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--mono);
   font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--text-muted); margin: 0 0 10px; display: flex; align-items: center; gap: 7px;
 }
@@ -45,13 +45,13 @@
 .anatomy-root .chip:hover { border-color: var(--border-strong); color: var(--text); }
 .anatomy-root .chip.active { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
 .anatomy-root .chip .count {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--text-muted);
+  font-family: var(--mono); font-size: 10px; color: var(--text-muted);
 }
 
 .anatomy-root .region-group { margin-top: 10px; }
 .anatomy-root .region-head {
   width: 100%; text-align: left; background: none; border: 0; padding: 2px 2px 5px;
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--text-muted); cursor: pointer; transition: 0.15s;
 }
 .anatomy-root .region-head:hover { color: var(--text); }
@@ -104,7 +104,7 @@
 .anatomy-readout .body { flex: 1; }
 .anatomy-readout .mname { font-size: 16px; font-weight: 600; }
 .anatomy-readout .mmeta {
-  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.13em;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.13em;
   text-transform: uppercase; color: var(--text-muted); margin: 3px 0 6px;
 }
 .anatomy-readout .mdesc { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
@@ -123,7 +123,7 @@
   overflow-y: auto; overscroll-behavior: contain;
 }
 .anatomy-readout .drills h3 {
-  font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.22em;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--text-muted); margin: 0 0 8px;
 }
 .anatomy-readout .drills ul { list-style: none; margin: 0; padding: 0; }
@@ -142,7 +142,7 @@
 .drill-head .dname { overflow-wrap: anywhere; line-height: 1.3; }
 .drill-head .tags { display: flex; gap: 5px; flex: none; }
 .drill-head .tags em {
-  font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 9px;
+  font-style: normal; font-family: var(--mono); font-size: 9px;
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted);
   border: 1px solid var(--border); border-radius: 5px; padding: 2px 5px; white-space: nowrap;
 }
@@ -177,29 +177,33 @@
 }
 .drill-body .watch:hover { text-decoration: underline; }
 
-/* Training pairs. Set apart by a rule rather than a box: this is a second
-   thought about the same exercise, not a second exercise. */
-.drill-body .pairs { margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--border); }
-.drill-body .pairs h4 {
-  margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 9px;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-muted);
+/* Training pairs, between the muscle's own readout and its exercise list. Set
+   apart by a rule rather than a box: it is a second thought about the muscle
+   above it, not a second panel. flex:none so it keeps its height when the
+   exercise list below is long enough to want all the room. */
+.anatomy-readout .pairs {
+  flex: none; margin-top: 13px; padding-top: 12px; border-top: 1px solid var(--border);
+}
+.anatomy-readout .pairs h4 {
+  margin: 0; font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-muted);
   font-weight: 500;
 }
-.drill-body .pair-why { margin: 3px 0 7px; font-size: 11px; color: var(--text-muted); line-height: 1.4; }
-.drill-body .pair {
+.anatomy-readout .pair-why { margin: 3px 0 7px; font-size: 11px; color: var(--text-muted); line-height: 1.4; }
+.anatomy-readout .pair {
   width: 100%; display: flex; align-items: center; justify-content: space-between;
   gap: 8px; background: transparent; border: 1px solid var(--border);
   border-radius: 8px; padding: 6px 9px; margin-bottom: 5px; cursor: pointer;
   font-family: inherit; font-size: 11.5px; color: var(--text); text-align: left;
   transition: 0.13s;
 }
-.drill-body .pair:last-child { margin-bottom: 0; }
-.drill-body .pair:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.anatomy-readout .pair:last-child { margin-bottom: 0; }
+.anatomy-readout .pair:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
 /* Nothing to play, so nothing to press — but it still names the exercise,
    which is the part that matters between sets. */
-.drill-body .pair:disabled { cursor: default; color: var(--text-muted); }
-.drill-body .pair .pname { overflow-wrap: anywhere; line-height: 1.3; }
-.drill-body .pair .tags { flex: none; }
+.anatomy-readout .pair:disabled { cursor: default; color: var(--text-muted); }
+.anatomy-readout .pair .pname { overflow-wrap: anywhere; line-height: 1.3; }
+.anatomy-readout .pair .tags { flex: none; }
 
 /* The demonstration player. Nothing is fetched from YouTube until this opens. */
 .video-backdrop {

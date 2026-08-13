@@ -7,7 +7,19 @@
  * single attribute swap with no per-component logic.
  */
 :root {
-  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  /* Two stacks, declared once, inherited everywhere. They used to be written
+     out at each call site — the canvas asked for 'Space Grotesk', system-ui,
+     sans-serif while the page asked for system-ui, "Segoe UI", Roboto — which
+     agreed only as long as system-ui resolved, and diverged silently where it
+     didn't.
+
+     Neither named face is bundled: there is no @font-face and no font file in
+     the repo, so 'Space Grotesk' and 'JetBrains Mono' have never once rendered
+     and every visitor has been reading the fallback. The names stay at the
+     front so self-hosting them later is a two-line change, and they are here
+     rather than in thirteen places so it stays a two-line change. */
+  --sans: 'Space Grotesk', system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   /* light */
   --bg: #f2f4f7;
@@ -94,7 +106,14 @@ p {
   color: var(--text-muted);
 }
 
-button {
+/* Form controls don't inherit type from the page — they take a UA font unless
+   told otherwise, which is how the one text input on the site was rendering in
+   Arial while everything around it used the site stack. `button` was already
+   covered; the rest were not. */
+button,
+input,
+select,
+textarea {
   font: inherit;
 }
 

@@ -72,26 +72,23 @@ function score(anchor, x) {
   let s = 0;
   if (x.videoId) s += 8;
   if (x.equipment === 'body only') s += 4;
-  else if (x.equipment === anchor.equipment) s += 3;
-  if (x.level === anchor.level) s += 1;
+  else if (anchor && x.equipment === anchor.equipment) s += 3;
+  if (anchor && x.level === anchor.level) s += 1;
   return s;
 }
 
 /**
- * Up to `limit` exercises to superset with this one, best first.
+ * Best partners for anything that occupies a set of regions.
  *
- * Partners are spread across different primary muscles where possible: three
- * legal partners that are all calf raises is a correct answer to the wrong
- * question, since the point of the rest period is to train something else.
+ * `anchor` is the exercise being paired with, when there is one — it only
+ * sharpens the ranking (same kit, same difficulty), never the legality, so a
+ * muscle with no exercise chosen yet gets the same rule applied to less
+ * information rather than a different rule.
  */
-export function pairsFor(exercise, limit = 3) {
-  if (!exercise) return [];
-  const mine = REGIONS_OF.get(exercise.id);
-  if (!mine) return [];
-
+function pick(regions, anchor, limit, excludeId) {
   const legal = ALL.filter(
-    (x) => x.id !== exercise.id && disjoint(mine, REGIONS_OF.get(x.id)),
-  ).sort((a, b) => score(exercise, b) - score(exercise, a) || a.id.localeCompare(b.id));
+    (x) => x.id !== excludeId && disjoint(regions, REGIONS_OF.get(x.id)),
+  ).sort((a, b) => score(anchor, b) - score(anchor, a) || a.id.localeCompare(b.id));
 
   const out = [];
   const taken = new Set();
@@ -109,6 +106,34 @@ export function pairsFor(exercise, limit = 3) {
     if (!out.includes(x)) out.push(x);
   }
   return out;
+}
+
+/**
+ * Up to `limit` exercises to superset with this one, best first.
+ *
+ * Partners are spread across different primary muscles where possible: three
+ * legal partners that are all calf raises is a correct answer to the wrong
+ * question, since the point of the rest period is to train something else.
+ */
+export function pairsFor(exercise, limit = 3) {
+  if (!exercise) return [];
+  const mine = REGIONS_OF.get(exercise.id);
+  return mine ? pick(mine, exercise, limit, exercise.id) : [];
+}
+
+/**
+ * Up to `limit` exercises to superset with a muscle, before any particular
+ * exercise for it has been chosen.
+ *
+ * Deliberately weaker than the exercise-level answer, and it has to be: a
+ * bench press loads the triceps and a chest fly barely does, so until you say
+ * which one you are doing, the only honest claim is about the region the
+ * muscle sits in. Opening an exercise replaces these with partners that know
+ * about its secondary muscles too.
+ */
+export function pairsForRegion(region, limit = 3) {
+  if (!region) return [];
+  return pick(new Set([region]), null, limit, null);
 }
 
 /** Every exercise, one entry each — exported for the checker. */

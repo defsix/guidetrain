@@ -218,9 +218,16 @@ choose, is the more honest answer.
 
 ### Training pairs
 
-Opening an exercise also suggests three to superset it with — something to do
-in the rest between sets, so the pause trains something instead of nothing.
+Selecting a muscle also suggests three exercises to superset with — something
+to do in the rest between sets, so the pause trains something instead of
+nothing. They sit directly under **Train This**, above the exercise list.
 Tapping one plays its demonstration.
+
+The suggestion sharpens as the question does. Before an exercise is chosen it
+can only answer for the muscle's own region; open one and it answers for that
+exercise, which knows its secondary muscles too. A bench press loads the
+triceps and a chest fly barely does, so until you say which you are doing, the
+weaker claim is the only honest one.
 
 A partner has to be **non-competing**, and the whole question is what that means
 against real data. Region of the *primary* muscle alone is not enough: a lat
@@ -329,6 +336,25 @@ the translations run longer than the English.
 The model is 1.1 MB, so the canvas now says it is loading rather than sitting
 empty. The overlay clears when the body is painted, which is the honest moment
 — the environment map may still be arriving, but there is something to look at.
+
+## Type
+
+Two stacks, `--sans` and `--mono`, declared once in `index.css` and inherited
+everywhere. They used to be written out at each call site, and the two didn't
+agree: the canvas asked for `'Space Grotesk', system-ui, sans-serif` while the
+page asked for `system-ui, "Segoe UI", Roboto` — the same result wherever
+`system-ui` resolves, and different where it doesn't.
+
+**Neither named face is bundled.** There is no `@font-face` and no font file in
+the repo, so `Space Grotesk` and `JetBrains Mono` have never rendered and every
+visitor has been reading the fallback. The names stay at the front of each
+stack so self-hosting them is a two-line change — and they now live in one
+place rather than thirteen, so it stays a two-line change.
+
+Form controls don't inherit type from the page; they take a UA font unless told
+otherwise. `button` was already handled, `input` was not, which is why the one
+text input on the site rendered in Arial while everything around it didn't.
+`button, input, select, textarea { font: inherit }` covers the rest.
 
 ## Theming
 
