@@ -895,6 +895,40 @@
 .plan-table tr.deload td, .plan-table tr.deload th { color: var(--text-muted); }
 .plan-table sup { color: var(--accent); font-weight: 600; }
 
+/* How a week actually went. The tick and cross sit on the top set, which is
+   the only set the programme judges you on. */
+.week-mark { margin-left: 5px; font-weight: 700; }
+.week-mark.hit { color: var(--accent); }
+.week-mark.missed { color: #c2410c; }
+.plan-table tr.missed th { color: #c2410c; }
+
+/* The stall block. Deliberately the loudest thing in the panel: everything
+   above it describes going up, and this is the only part that describes what
+   to do when you do not. */
+.stall {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 14px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+.stall-head { margin: 0; font-size: 13.5px; line-height: 1.45; font-weight: 600; }
+.stall-why { margin: 0; font-size: 12.5px; line-height: 1.55; }
+.stall .primary-button { width: 100%; }
+
+.tm-clear {
+  margin-left: 8px;
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* The week that is currently in the workout, marked on the row rather than
    only on its button — the whole line is the thing that is in use. */
 .plan-table tr.using { background: color-mix(in srgb, var(--accent) 9%, transparent); }

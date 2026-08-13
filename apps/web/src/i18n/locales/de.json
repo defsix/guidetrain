@@ -234,7 +234,15 @@
   "sameLoads": "Dieselben Gewichte wie im Zyklus davor. {increment} {unit} mehr Trainingsmaximum sind weniger als der kleinste Sprung, den eine Stange mit {plate}-{unit}-Scheiben machen kann — es fällt hier der Rundung zum Opfer und zeigt sich im nächsten Zyklus.",
   "useWeek": "Übernehmen",
   "usingWeek": "In Gebrauch",
-  "useWeekNote": "Übernimm eine Woche, und ihre Gewichte wandern in dein Training — beim Eintragen Satz für Satz zurückgegeben."
+  "useWeekNote": "Übernimm eine Woche, und ihre Gewichte wandern in dein Training — beim Eintragen Satz für Satz zurückgegeben.",
+  "stalled": "{week} nicht geschafft: {reps} Wiederholungen bei {load} {unit}, verlangt sind {required}.",
+  "stallWhy": "Das ist dein Trainingsmax, das dir sagt, dass es zu hoch ist. Die Lösung ist nicht, es schwerer zu versuchen — nimm {percent}% zurück und bau neu auf. Zwei Schritte vor, einer zurück hält das System über Jahre am Laufen.",
+  "resetTo": "Trainingsmax auf {tm} {unit} zurücksetzen",
+  "tmReset": "Trainingsmax von Hand gesetzt: {tm} {unit} statt der {from} {unit}, die deine Sätze ergeben.",
+  "tmRestore": "Wieder {tm} {unit} verwenden",
+  "hitTitle": "{reps} Wiederholungen — die verlangten {required} oder mehr.",
+  "missedTitle": "{reps} Wiederholungen, unter den verlangten {required}.",
+  "ambiguous": "Zwei Wochen dieses Zyklus verlangen dasselbe Topgewicht, ein eingetragener Satz lässt sich also nicht zuordnen. Keine der beiden wird markiert."
  },
  "program": {
   "untitled": "Training {n}",

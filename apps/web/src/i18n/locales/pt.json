@@ -234,7 +234,15 @@
   "sameLoads": "Os mesmos pesos do ciclo anterior. {increment} {unit} no máximo de treino é menos do que o menor salto possível com discos de {plate} {unit}, por isso arredonda aqui e aparece no ciclo seguinte.",
   "useWeek": "Usar",
   "usingWeek": "Em uso",
-  "useWeekNote": "Escolha uma semana e as cargas vão para o seu treino, devolvidas série a série ao registar."
+  "useWeekNote": "Escolha uma semana e as cargas vão para o seu treino, devolvidas série a série ao registar.",
+  "stalled": "Falhou {week}: {reps} repetições com {load} {unit}, e são precisas {required}.",
+  "stallWhy": "É o máximo de treino a dizer-lhe que está alto demais. A solução não é tentar mais pesado — recue {percent}% e reconstrua. Dois passos à frente, um atrás é o que faz isto durar anos.",
+  "resetTo": "Baixar o máximo de treino para {tm} {unit}",
+  "tmReset": "Máximo de treino definido à mão: {tm} {unit}, em vez dos {from} {unit} que as suas séries implicam.",
+  "tmRestore": "Voltar a {tm} {unit}",
+  "hitTitle": "{reps} repetições — as {required} pedidas, ou mais.",
+  "missedTitle": "{reps} repetições, abaixo das {required} pedidas.",
+  "ambiguous": "Duas semanas deste ciclo pedem o mesmo peso de topo, por isso uma série registada não pode ser atribuída. Nenhuma é marcada."
  },
  "program": {
   "untitled": "Treino {n}",

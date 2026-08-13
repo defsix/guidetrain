@@ -6,6 +6,7 @@ import ProgressionPanel from "./ProgressionPanel";
 import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
 import type { Program, Target } from "../state/usePrograms";
+import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -61,6 +62,10 @@ type Props = {
   skips: Record<string, number>;
   onSkip: (id: string, n?: number) => void;
   onUnskip: (id: string) => void;
+  /** Training maxes set by hand, which beat the ones derived from the log. */
+  trainingMaxes: Record<string, TrainingMaxOverride>;
+  onSetTrainingMax: (id: string, tm: number, from: number) => void;
+  onClearTrainingMax: (id: string) => void;
 };
 
 /**
@@ -79,6 +84,7 @@ export default function WorkoutPanel({
   open, onClose, onRemove, onMove, onClear,
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
+  trainingMaxes, onSetTrainingMax, onClearTrainingMax,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -332,6 +338,9 @@ export default function WorkoutPanel({
             repsOnly={raw.equipment === "body only"}
             workoutTarget={targets[planning]}
             onUseWeek={(target) => onTarget(planning, target)}
+            override={trainingMaxes[planning]}
+            onSetTrainingMax={(tm, from) => onSetTrainingMax(planning, tm, from)}
+            onClearTrainingMax={() => onClearTrainingMax(planning)}
             onClose={() => setPlanning(null)}
           />
         );

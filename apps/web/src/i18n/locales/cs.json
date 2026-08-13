@@ -246,7 +246,15 @@
   "sameLoads": "Stejné váhy jako v předchozím cyklu. {increment} {unit} na tréninkovém maximu je méně než nejmenší skok, který lze s kotouči {plate} {unit} udělat, takže se zde zaokrouhlí pryč a projeví se až v dalším cyklu.",
   "useWeek": "Použít",
   "usingWeek": "Používá se",
-  "useWeekNote": "Vyberte týden a jeho váhy se přenesou do tréninku — při zapisování je dostanete zpět sérii po sérii."
+  "useWeekNote": "Vyberte týden a jeho váhy se přenesou do tréninku — při zapisování je dostanete zpět sérii po sérii.",
+  "stalled": "{week} nevyšel: {reps} opakování s {load} {unit}, požaduje se {required}.",
+  "stallWhy": "Tréninkové maximum je příliš vysoké. Řešením není zkoušet to znovu s větší vahou — snižte ho o {percent} % a budujte znovu. Dva kroky vpřed, jeden zpět je to, co udrží tento systém funkční roky.",
+  "resetTo": "Snížit tréninkové maximum na {tm} {unit}",
+  "tmReset": "Tréninkové maximum nastaveno ručně: {tm} {unit} místo {from} {unit}, které plyne z vašich sérií.",
+  "tmRestore": "Použít znovu {tm} {unit}",
+  "hitTitle": "{reps} opakování — požadovaných {required}, nebo více.",
+  "missedTitle": "{reps} opakování, méně než požadovaných {required}.",
+  "ambiguous": "Dva týdny tohoto cyklu mají stejnou vrcholovou váhu, zapsanou sérii tedy nelze mezi ně rozlišit. Ani jeden není označen."
  },
  "program": {
   "untitled": "Trénink {n}",

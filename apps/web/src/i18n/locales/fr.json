@@ -234,7 +234,15 @@
   "sameLoads": "Les mêmes charges que le cycle précédent. {increment} {unit} sur le maximum d'entraînement, c'est moins que le plus petit palier possible avec des disques de {plate} {unit} : l'écart disparaît à l'arrondi et se voit au cycle suivant.",
   "useWeek": "Utiliser",
   "usingWeek": "En cours",
-  "useWeekNote": "Prenez une semaine et ses charges passent dans votre séance, proposées série par série à la saisie."
+  "useWeekNote": "Prenez une semaine et ses charges passent dans votre séance, proposées série par série à la saisie.",
+  "stalled": "{week} manquée : {reps} répétitions à {load} {unit}, alors qu'il en faut {required}.",
+  "stallWhy": "C'est votre max d'entraînement qui vous dit qu'il est trop haut. La solution n'est pas de réessayer plus lourd — reculez de {percent}% et reconstruisez. Deux pas en avant, un en arrière : c'est ce qui fait tenir la méthode des années.",
+  "resetTo": "Ramener le max d'entraînement à {tm} {unit}",
+  "tmReset": "Max d'entraînement défini à la main : {tm} {unit}, au lieu des {from} {unit} qu'impliquent vos séries.",
+  "tmRestore": "Revenir à {tm} {unit}",
+  "hitTitle": "{reps} répétitions — les {required} demandées, ou plus.",
+  "missedTitle": "{reps} répétitions, en dessous des {required} demandées.",
+  "ambiguous": "Deux semaines de ce cycle demandent la même charge maximale ; une série enregistrée ne peut donc pas être attribuée. Aucune n'est marquée."
  },
  "program": {
   "untitled": "Séance {n}",

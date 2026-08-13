@@ -246,7 +246,15 @@
   "sameLoads": "Te same ciężary co w poprzednim cyklu. {increment} {unit} na maksimum treningowym to mniej niż najmniejszy skok możliwy z talerzami {plate} {unit}, więc zaokrągla się tutaj i pojawi się w kolejnym cyklu.",
   "useWeek": "Użyj",
   "usingWeek": "W użyciu",
-  "useWeekNote": "Wybierz tydzień, a jego ciężary trafią do treningu — przy zapisie podpowiadane seria po serii."
+  "useWeekNote": "Wybierz tydzień, a jego ciężary trafią do treningu — przy zapisie podpowiadane seria po serii.",
+  "stalled": "{week} nieudany: {reps} powtórzeń przy {load} {unit}, a wymagane jest {required}.",
+  "stallWhy": "To znak, że maksimum treningowe jest za wysokie. Rozwiązaniem nie jest próba z większym ciężarem — cofnij je o {percent}% i buduj od nowa. Dwa kroki w przód, jeden w tył — to dzięki temu system działa latami.",
+  "resetTo": "Obniż maksimum treningowe do {tm} {unit}",
+  "tmReset": "Maksimum treningowe ustawione ręcznie: {tm} {unit} zamiast {from} {unit} wynikających z twoich serii.",
+  "tmRestore": "Wróć do {tm} {unit}",
+  "hitTitle": "{reps} powtórzeń — wymagane {required} lub więcej.",
+  "missedTitle": "{reps} powtórzeń, poniżej wymaganych {required}.",
+  "ambiguous": "Dwa tygodnie tego cyklu mają ten sam ciężar szczytowy, więc zapisanej serii nie da się przypisać. Żaden nie jest oznaczony."
  },
  "program": {
   "untitled": "Trening {n}",

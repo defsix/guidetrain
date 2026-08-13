@@ -2,8 +2,10 @@ import { useMemo, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import {
   bestEstimate, cycle, cyclesTo, incrementFor, roundLoad, trainingMax,
+  reviewCycle, resetTrainingMax, RESET_FRACTION,
   MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION, SMALLEST_PLATE,
 } from "../lib/progression";
+import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { PlannedWeek } from "../lib/progression";
 import type { Target } from "../state/usePrograms";
 import { useI18n } from "../i18n/I18nProvider";
@@ -24,6 +26,10 @@ type Props = {
   onUseWeek: (t: Target) => void;
   /** Bodyweight work: the reps are the prescription, the loads mean nothing. */
   repsOnly?: boolean;
+  /** A training max set by hand, which beats the one derived from the log. */
+  override?: TrainingMaxOverride;
+  onSetTrainingMax: (tm: number, from: number) => void;
+  onClearTrainingMax: () => void;
 };
 
 /**
@@ -64,6 +70,7 @@ function isApplied(target: Target | undefined, w: Target): boolean {
  */
 export default function ProgressionPanel({
   name, sets, usesLegs, barbell, onClose, workoutTarget, onUseWeek, repsOnly = false,
+  override, onSetTrainingMax, onClearTrainingMax,
 }: Props) {
   const { t } = useI18n();
   const best = useMemo(() => bestEstimate(sets), [sets]);
@@ -75,7 +82,11 @@ export default function ProgressionPanel({
   );
 
   const targetNum = parseFloat(target.replace(",", "."));
-  const tm = best ? trainingMax(best.oneRM) : 0;
+  // A training max set by hand wins over the derived one. It only exists
+  // because someone stalled and chose to back off, and recomputing it from the
+  // log would immediately undo that decision.
+  const derivedTM = best ? trainingMax(best.oneRM) : 0;
+  const tm = override ? override.tm : derivedTM;
   const targetTM = Number.isFinite(targetNum) ? trainingMax(targetNum) : 0;
   const cycles = cyclesTo(tm, targetTM, increment);
 
@@ -107,6 +118,24 @@ export default function ProgressionPanel({
       ws.map((w) => w.sets.map((x) => x.load).join()).join("|");
     return loads(cycle(cycleTM - increment)) === loads(weeks);
   }, [at, cycleTM, increment, weeks]);
+
+  /**
+   * How the cycle on screen actually went, read off the log.
+   *
+   * Only for the cycle being shown: its loads are what the log is matched
+   * against, so stepping to cycle 3 asks about cycle 3's weights.
+   */
+  // Only work done since the training max was fixed can be an attempt at it:
+  // the set the estimate came from must not be allowed to mark the cycle it
+  // produced, and after a reset only the rebuild counts.
+  const since = override ? override.at : (best?.set.at ?? -Infinity);
+  const outcomes = useMemo(() => reviewCycle(weeks, sets, since), [weeks, sets, since]);
+  // Narrowed to the shape the stall block needs: `missed` is only ever true
+  // for a set that happened, so its rep count is a number, but that is a fact
+  // about reviewCycle rather than something the type can carry.
+  const stalled = outcomes.find(
+    (o): o is typeof o & { achieved: number } => o.missed && o.achieved !== null,
+  ) ?? null;
 
   const u = t("unit.kg");
 
@@ -165,13 +194,30 @@ export default function ProgressionPanel({
               <p className="plan-answer">{t("plan.already")}</p>
             )}
 
-            <p className="plan-tm">
-              {t("plan.trainingMax", {
-                tm,
-                unit: u,
-                percent: Math.round(TRAINING_MAX_FRACTION * 100),
-              })}
-            </p>
+            {/* Only while the training max really is 90% of the estimate. Once
+                it has been reset by hand it is not, and leaving this line up
+                would have the panel assert something false one line above the
+                note explaining the truth. */}
+            {!override && (
+              <p className="plan-tm">
+                {t("plan.trainingMax", {
+                  tm,
+                  unit: u,
+                  percent: Math.round(TRAINING_MAX_FRACTION * 100),
+                })}
+              </p>
+            )}
+
+            {/* A training max that differs from what your lifts imply has to
+                say so, or the number looks arbitrary. */}
+            {override && (
+              <p className="plan-note flag">
+                {t("plan.tmReset", { from: override.from, tm: override.tm, unit: u })}
+                <button className="tm-clear" onClick={onClearTrainingMax}>
+                  {t("plan.tmRestore", { tm: derivedTM, unit: u })}
+                </button>
+              </p>
+            )}
 
             {/* Step through the cycles rather than showing only the first. The
                 same four weeks, run at a training max that is `increment`
@@ -207,13 +253,38 @@ export default function ProgressionPanel({
                   // offers each set back in turn.
                   const asTarget = weekTarget(w, repsOnly);
                   const on = isApplied(workoutTarget, asTarget);
+                  // What the log says about this week's top set. Weeks you have
+                  // not reached carry no mark at all — an absent set is not a
+                  // failed one.
+                  const o = outcomes.find((x) => x.label === w.label);
+                  const mark = !o || o.achieved === null || o.ambiguous
+                    ? ""
+                    : o.missed
+                      ? "missed"
+                      : "hit";
                   return (
-                    <tr key={w.label} className={`${w.deload ? "deload" : ""} ${on ? "using" : ""}`}>
+                    <tr
+                      key={w.label}
+                      className={`${w.deload ? "deload" : ""} ${on ? "using" : ""} ${mark}`}
+                    >
                       <th scope="row">{t(`plan.${w.label}`)}</th>
                       {w.sets.map((s, i) => (
                         <td key={i}>
                           {s.load} <span className="cap">{u}</span> × {s.reps}
                           {s.amrap && <sup title={t("plan.amrapHelp")}>+</sup>}
+                          {/* The mark goes on the top set, which is the only
+                              one the programme judges you on. */}
+                          {i === w.sets.length - 1 && mark && o?.achieved != null && (
+                            <span
+                              className={`week-mark ${mark}`}
+                              title={t(mark === "hit" ? "plan.hitTitle" : "plan.missedTitle", {
+                                reps: o.achieved,
+                                required: o.required,
+                              })}
+                            >
+                              {mark === "hit" ? "✓" : "✕"}
+                            </span>
+                          )}
                         </td>
                       ))}
                       <td className="use-cell">
@@ -232,6 +303,36 @@ export default function ProgressionPanel({
             </table>
 
             <p className="plan-note">{t("plan.useWeekNote")}</p>
+
+            {/* The part the plan was missing. Everything above describes going
+                up; this is the only thing on screen that describes what to do
+                when it does not, and a plan that only describes success is the
+                one that gets somebody hurt. */}
+            {stalled && (
+              <div className="stall">
+                <p className="stall-head">
+                  {t("plan.stalled", {
+                    week: t(`plan.${stalled.label}`),
+                    reps: stalled.achieved,
+                    required: stalled.required,
+                    load: stalled.load,
+                    unit: u,
+                  })}
+                </p>
+                <p className="stall-why">
+                  {t("plan.stallWhy", { percent: Math.round((1 - RESET_FRACTION) * 100) })}
+                </p>
+                <button
+                  className="primary-button"
+                  onClick={() => onSetTrainingMax(resetTrainingMax(tm), tm)}
+                >
+                  {t("plan.resetTo", { tm: resetTrainingMax(tm), unit: u })}
+                </button>
+              </div>
+            )}
+            {outcomes.some((o) => o.ambiguous) && (
+              <p className="plan-note">{t("plan.ambiguous")}</p>
+            )}
 
             {repeatsPrevious && (
               <p className="plan-note flag">

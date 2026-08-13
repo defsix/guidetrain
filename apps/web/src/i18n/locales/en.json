@@ -234,7 +234,15 @@
   "sameLoads": "Same weights as the cycle before. {increment} {unit} on the training max is less than the smallest jump a bar can make with {plate} {unit} plates, so it rounds away here and shows up in the next cycle.",
   "useWeek": "Use",
   "usingWeek": "In use",
-  "useWeekNote": "Take a week and its weights go into your workout, offered back one set at a time as you log."
+  "useWeekNote": "Take a week and its weights go into your workout, offered back one set at a time as you log.",
+  "stalled": "You missed {week}: {reps} reps at {load} {unit}, and it asks for {required}.",
+  "stallWhy": "That is the training max telling you it is too high. The fix is not to try again heavier — back it off {percent}% and rebuild. Two steps forward, one step back is what keeps this running for years.",
+  "resetTo": "Reset the training max to {tm} {unit}",
+  "tmReset": "Training max set by hand: {tm} {unit}, down from the {from} {unit} your lifts imply.",
+  "tmRestore": "Use {tm} {unit} again",
+  "hitTitle": "{reps} reps — the {required} it asks for, or better.",
+  "missedTitle": "{reps} reps, short of the {required} it asks for.",
+  "ambiguous": "Two weeks of this cycle call for the same top weight, so a logged set cannot be told apart between them. Neither is marked."
  },
  "program": {
   "untitled": "Workout {n}",

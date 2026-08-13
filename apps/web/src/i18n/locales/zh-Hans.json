@@ -228,7 +228,15 @@
   "sameLoads": "与上一个周期的重量相同。训练最大重量增加 {increment} {unit}，小于用 {plate} {unit} 杠铃片所能做出的最小增幅，因此在这里被四舍五入掉，会在下一个周期体现。",
   "useWeek": "采用",
   "usingWeek": "使用中",
-  "useWeekNote": "选中一周，它的重量就会进入你的训练，记录时逐组提示。"
+  "useWeekNote": "选中一周，它的重量就会进入你的训练，记录时逐组提示。",
+  "stalled": "{week}没完成：{load} {unit}做了 {reps} 次，要求 {required} 次。",
+  "stallWhy": "这是训练最大重量偏高的信号。办法不是加重再试，而是回退 {percent}% 重新往上走。进两步退一步，才能坚持多年。",
+  "resetTo": "把训练最大重量降到 {tm} {unit}",
+  "tmReset": "训练最大重量为手动设定：{tm} {unit}，而不是记录推算出的 {from} {unit}。",
+  "tmRestore": "改回 {tm} {unit}",
+  "hitTitle": "{reps} 次 — 达到或超过要求的 {required} 次。",
+  "missedTitle": "{reps} 次，未达要求的 {required} 次。",
+  "ambiguous": "本周期有两周的顶组重量相同，无法区分记录属于哪一周，因此都不做标记。"
  },
  "program": {
   "untitled": "训练 {n}",

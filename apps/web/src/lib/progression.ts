@@ -199,6 +199,114 @@ export function incrementFor(usesLegs: boolean): number {
   return usesLegs ? 5 : 2.5;
 }
 
+/**
+ * The reps the top set of each week has to reach.
+ *
+ * These are the numbers the programme is named after: five in week one, three
+ * in week two, one in week three, each on the last and heaviest set. The "+"
+ * means go past them; the number itself is the floor, and falling under it is
+ * the signal that the training max has drifted above what you can actually
+ * lift. Week four is a deload and has nothing to prove.
+ */
+const TOP_SET_MINIMUM: Record<string, number> = { w1: 5, w2: 3, w3: 1 };
+
+/**
+ * How far the training max drops when a lift stalls.
+ *
+ * Ten percent off *the training max*, not off the estimate it came from, and
+ * only for the lift that stalled — the other lifts are progressing fine and
+ * have no reason to move. Wendler's "two steps forward, one step back": the
+ * programme is arranged so you almost never miss, and the response to missing
+ * is to back up and rebuild rather than to try again heavier.
+ *
+ * Sources checked rather than recalled:
+ *   - https://www.norma-athletics.at/guides/wendler-531/ — "a common reset is
+ *     to reduce only the affected lift's TM by about 10 percent and build
+ *     forward again"; "if you barely hit minimums across more than one cycle,
+ *     reset the lift".
+ *   - https://www.marathon-crossfit.com/blog/how-to-reset-jim-wendler-531-when-you-stall
+ *   - https://exrx.net/WeightTraining/Powerlifting/531
+ */
+export const RESET_FRACTION = 0.9;
+
+/** The training max to rebuild from after a stall. */
+export function resetTrainingMax(tm: number): number {
+  return Math.round((tm * RESET_FRACTION) / TRAINING_MAX_STEP) * TRAINING_MAX_STEP;
+}
+
+export type WeekOutcome = {
+  label: string;
+  /** The load of the top set, which is how logged sets are matched to a week. */
+  load: number;
+  required: number;
+  /** Reps on the most recent set at that load, or null if there is none yet. */
+  achieved: number | null;
+  /** True only when a set happened and fell short, so `achieved` is a number. */
+  missed: boolean;
+  /**
+   * Another week of this cycle calls for the same top-set load, so a logged set
+   * cannot be attributed to one of them. No claim is made either way.
+   */
+  ambiguous: boolean;
+};
+
+/**
+ * How the cycle actually went, read off the log.
+ *
+ * Sets are matched to weeks by the weight on the bar, because that is all the
+ * log records — it stores what was lifted, not which row of which plan it was
+ * meant to satisfy. The most recent set at a week's top-set load is taken as
+ * the attempt at it.
+ *
+ * `since` is what keeps that from being circular, and it is not optional in
+ * spirit. The cycle is *derived from* your best set, and 95% of a training max
+ * that is 90% of an estimate lands back near the weight the estimate came from
+ * — a 140 kg five estimates a 163 kg max, a 147.5 kg training max, and a week
+ * three top set of 140 kg. Without a cutoff the seed set marks week three as
+ * passed before the cycle has begun. So only work done after the training max
+ * was fixed counts as an attempt at it, which after a reset means only the
+ * rebuild counts. That is the same rule stated twice.
+ *
+ * The matching can also collide. At low training maxes the top sets of two
+ * weeks round to the same loadable weight (a 20 kg TM puts both 85% and 90% at
+ * 17.5 kg), and then a single logged set belongs equally to both. Rather than
+ * pick one and possibly tell someone to reset a lift they did not fail, those
+ * weeks come back flagged and the caller must not read a verdict into them.
+ */
+export function reviewCycle(
+  weeks: PlannedWeek[],
+  sets: SetEntry[],
+  since = -Infinity,
+): WeekOutcome[] {
+  const tops = weeks
+    .filter((w) => !w.deload)
+    .map((w) => ({ label: w.label, load: w.sets[w.sets.length - 1].load }));
+
+  const seen = new Map<number, number>();
+  for (const t of tops) seen.set(t.load, (seen.get(t.load) ?? 0) + 1);
+
+  return tops.map(({ label, load }) => {
+    const required = TOP_SET_MINIMUM[label] ?? 1;
+    const ambiguous = (seen.get(load) ?? 0) > 1;
+    let latest: SetEntry | null = null;
+    for (const s of sets) {
+      if (s.weight !== load || s.at <= since) continue;
+      if (!latest || s.at > latest.at) latest = s;
+    }
+    const achieved = latest ? latest.reps : null;
+    return {
+      label,
+      load,
+      required,
+      achieved,
+      // Only a set that happened and fell short is a miss. A week you have not
+      // reached yet is not a failure, and neither is an ambiguous match.
+      missed: achieved !== null && achieved < required && !ambiguous,
+      ambiguous,
+    };
+  });
+}
+
 /** Whole cycles needed to lift the training max from here to there. */
 export function cyclesTo(currentTM: number, targetTM: number, increment: number): number {
   if (targetTM <= currentTM) return 0;
