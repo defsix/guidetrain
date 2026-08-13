@@ -179,6 +179,14 @@ Newest first. Numbers in brackets are pull requests.
   preview. The plates follow the weight in the field, so it answers for a
   number you typed as well as one you were handed, and says nothing at all for
   a total that cannot be made from the rack.
+- **The plate walk needs no rounding, and rounding it was a bug** — the first
+  version guarded each subtraction against a floating-point residue, on the
+  claim that `47.5 - 25 - 20` drifts off 2.5. It does not: every plate and every
+  total the app produces is a dyadic rational, so the arithmetic is exact. The
+  guard was not merely idle — rounding to two decimals rounded a real miss away
+  too, and a typed 100.001 kg came back loadable with plates adding to 100.
+  Removed, with the exactness checked over every reachable total rather than
+  asserted.
 - **The weights follow you to the bar** — both planners worked out what to lift
   and then let the number die on the screen that computed it: a plan previewed
   "Barbell Squat 40 kg" and applied as a bare "3 × 5", and the 5/3/1 table left

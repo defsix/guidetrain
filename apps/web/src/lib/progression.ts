@@ -111,6 +111,19 @@ const PLATES = [25, 20, 15, 10, 5, 2.5, SMALLEST_PLATE];
  *
  * Both sides, always. Plates go on in pairs and a barbell loaded on one end is
  * a hospital visit, so the figure quoted is per side and the caller says so.
+ *
+ * The subtraction is exact and needs no rounding, which is worth stating
+ * because it looks like it should. Every plate above is a dyadic rational —
+ * 1.25 is 1.01 in binary, 2.5 is 10.1, the rest are integers — and so is every
+ * total the app produces, roundLoad having put it on a 2.5 boundary. Sums and
+ * differences of dyadic rationals at these magnitudes are represented exactly
+ * in binary floating point, so `left` either reaches zero or genuinely misses.
+ *
+ * An earlier version rounded each step to two decimals against a residue that
+ * does not occur, and that guard was not merely idle: it rounded a real miss
+ * away too, so a typed 100.001 kg came back as loadable with plates adding to
+ * 100. Checked over every reachable total — the rounding changed no answer —
+ * and the exactness verified rather than assumed.
  */
 export function platesPerSide(
   total: number,
@@ -121,12 +134,9 @@ export function platesPerSide(
   const plates: number[] = [];
   let left = side;
   for (const p of PLATES) {
-    // Rounded at each step because 47.5 - 25 - 20 lands on 2.4999999999999996
-    // in binary floating point, and a residue that small would then fail the
-    // exactness test below and throw away a perfectly loadable bar.
-    while (Math.round((left - p) * 100) / 100 >= 0) {
+    while (left - p >= 0) {
       plates.push(p);
-      left = Math.round((left - p) * 100) / 100;
+      left -= p;
     }
   }
   return left === 0 ? { side, plates } : null;
