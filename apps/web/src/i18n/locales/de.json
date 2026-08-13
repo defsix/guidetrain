@@ -195,7 +195,8 @@
   "repsShort": "Wdh.",
   "removeSet": "Satz entfernen",
   "best": "Bestwert",
-  "unit": "Gewichtseinheit"
+  "unit": "Gewichtseinheit",
+  "atBodyWeight": "Belastet mit deinem Körpergewicht, {weight} {unit}."
  },
  "unit": {
   "kg": "kg",

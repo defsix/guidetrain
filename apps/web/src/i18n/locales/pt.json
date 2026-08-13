@@ -195,7 +195,8 @@
   "repsShort": "reps",
   "removeSet": "Remover série",
   "best": "Melhor",
-  "unit": "Unidade de peso"
+  "unit": "Unidade de peso",
+  "atBodyWeight": "Com o seu peso corporal como carga, {weight} {unit}."
  },
  "unit": {
   "kg": "kg",

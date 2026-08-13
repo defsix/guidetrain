@@ -151,10 +151,14 @@ Newest first. Numbers in brackets are pull requests.
 
 - **Body weight, exact, on the first screen** — a figure to the nearest whole
   unit rather than a band, because unlike age it is arithmetic: it is the load
-  on all 29 bodyweight exercises in the catalogue. Logging a push-up now starts
-  at that number instead of zero or blank, and stays editable for a weighted or
-  assisted variant. Used to prefill only when its unit matches the logging unit,
-  since a silent conversion would show a number nobody entered.
+  on all 29 bodyweight exercises in the catalogue.
+- **A push-up asks for reps alone** — its load is the person doing it, so a
+  weight field there was a question with one honest answer and one more thing
+  to type mid-set. The weight is still recorded, so the set reads `82 kg × 10`
+  and counts towards a plan; a line under the field says where the number came
+  from. Falls back to asking in the two cases where it cannot know: a profile
+  saved before body weight existed, and a body weight held in the other unit,
+  since converting silently would show a number nobody entered.
 - **Loads assume a 2.5 kg smallest plate, so the bar moves in 5 kg steps** —
   plates go on in pairs, and 87.5 kg is not a weight anyone can build. The
   training max deliberately keeps finer resolution: it is a number to calculate

@@ -10,37 +10,47 @@ type Props = {
   onAdd: (id: string, weight: number, reps: number) => void;
   onRemove: (uid: string) => void;
   onPlan: () => void;
-  /** Body weight in the logging unit, when the exercise's load *is* the person. */
+  /**
+   * Body weight in the logging unit, passed only for exercises whose load *is*
+   * the person. Its presence is what puts this in reps-only mode: there is no
+   * separate flag, because a bodyweight exercise with no known body weight has
+   * nothing to record as a load and has to ask for one.
+   */
   bodyLoad?: number;
 };
 
 /**
- * Record one set: a weight and a rep count, against one exercise.
+ * Record one set against one exercise.
  *
  * Two number fields and a button, because that is the whole interaction and it
  * happens between sets with one hand. `inputMode="decimal"` puts a phone on the
  * number pad without the field rejecting the comma decimal separator that half
  * these languages use.
+ *
+ * A push-up asks for reps alone. Its load is the person doing it, which the app
+ * already knows, so a weight field there is a question with only one honest
+ * answer — and one more thing to type while holding a phone mid-set. The weight
+ * is still *recorded*, so the set reads "82 kg × 10" like any other and counts
+ * towards a plan; it just isn't asked for.
  */
 export default function SetLogger({
   exerciseId, unit, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad,
 }: Props) {
   const { t } = useI18n();
-  // A push-up is loaded by the person doing it, so the field starts at their
-  // body weight rather than empty or at zero. Still editable: a weighted
-  // chin-up or a band-assisted one is not the same load.
-  const [weight, setWeight] = useState(bodyLoad ? String(bodyLoad) : "");
+  const repsOnly = bodyLoad != null;
+  const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
 
   // A comma is the decimal separator in most of the ten languages, and
   // parseFloat("62,5") silently returns 62. Take either.
   const num = (s: string) => parseFloat(s.replace(",", "."));
-  const ready = Number.isFinite(num(weight)) && num(reps) > 0;
+  const load = repsOnly ? bodyLoad : num(weight);
+  const ready = Number.isFinite(load) && num(reps) > 0;
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!ready) return;
-    onAdd(exerciseId, num(weight), Math.round(num(reps)));
+    onAdd(exerciseId, load as number, Math.round(num(reps)));
     setReps("");
     // The weight usually repeats across sets and the reps usually don't, so
     // only the reps field is cleared. One less thing to retype mid-session.
@@ -66,15 +76,19 @@ export default function SetLogger({
       )}
 
       <form className="log-form" onSubmit={submit}>
-        <input
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          inputMode="decimal"
-          placeholder={t(`unit.${unit}`, undefined, unit)}
-          aria-label={t("log.weight")}
-          maxLength={6}
-        />
-        <span className="by">×</span>
+        {!repsOnly && (
+          <>
+            <input
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              inputMode="decimal"
+              placeholder={t(`unit.${unit}`, undefined, unit)}
+              aria-label={t("log.weight")}
+              maxLength={6}
+            />
+            <span className="by">×</span>
+          </>
+        )}
         <input
           value={reps}
           onChange={(e) => setReps(e.target.value)}
@@ -87,6 +101,17 @@ export default function SetLogger({
           {t("log.addSet")}
         </button>
       </form>
+
+      {/* Says where the load came from, so a set that appears as "82 kg × 10"
+          after typing only "10" is explained rather than surprising. */}
+      {repsOnly && (
+        <p className="body-load">
+          {t("log.atBodyWeight", {
+            weight: bodyLoad,
+            unit: t(`unit.${unit}`, undefined, unit),
+          })}
+        </p>
+      )}
 
       {best && (
         <p className="best">

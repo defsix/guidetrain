@@ -767,3 +767,10 @@
   line-height: 1.45;
   color: var(--text-muted);
 }
+
+.body-load {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}

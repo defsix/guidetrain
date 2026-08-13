@@ -205,7 +205,8 @@
   "repsShort": "powt.",
   "removeSet": "Usuń serię",
   "best": "Najlepszy",
-  "unit": "Jednostka ciężaru"
+  "unit": "Jednostka ciężaru",
+  "atBodyWeight": "Obciążenie równe masie ciała, {weight} {unit}."
  },
  "unit": {
   "kg": "kg",

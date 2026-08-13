@@ -376,13 +376,19 @@ text input on the site rendered in Arial while everything around it didn't.
 Asked for on the first screen, as an exact figure to the nearest whole unit
 rather than a band. Age is context and a band is fine for it; body weight is
 arithmetic — it is the load on all **29 bodyweight exercises** in the
-catalogue, and you cannot put a band on a bar. Logging a push-up starts at that
-figure instead of at zero or blank, and stays editable, since a weighted
-chin-up is not the same load as an unassisted one.
+catalogue, and you cannot put a band on a bar.
 
-It is stored with its unit and only used to prefill when that unit matches the
-one being logged in — converting silently would put a number on screen nobody
-entered. Like everything else here it stays on the device.
+Which is why **a push-up asks for reps alone.** Its load is the person doing
+it, so a weight field there is a question with only one honest answer, and one
+more thing to type while holding a phone mid-set. The weight is still recorded,
+so the set reads `82 kg × 10` like any other and counts towards a plan; it just
+isn't asked for. A line under the field says where the number came from, so
+typing `10` and getting `82 kg × 10` is explained rather than surprising.
+
+Two cases fall back to asking, both deliberately: a profile saved before this
+field existed, and a body weight recorded in the other unit — converting
+silently would put a number on screen nobody entered. Like everything else
+here, it stays on the device.
 
 ## The saved workout
 

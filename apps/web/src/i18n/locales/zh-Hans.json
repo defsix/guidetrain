@@ -190,7 +190,8 @@
   "repsShort": "次",
   "removeSet": "删除该组",
   "best": "最佳",
-  "unit": "重量单位"
+  "unit": "重量单位",
+  "atBodyWeight": "以体重 {weight} {unit} 作为负荷。"
  },
  "unit": {
   "kg": "公斤",

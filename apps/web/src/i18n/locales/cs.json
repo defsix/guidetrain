@@ -205,7 +205,8 @@
   "repsShort": "opak.",
   "removeSet": "Odebrat sérii",
   "best": "Nejlepší",
-  "unit": "Jednotka váhy"
+  "unit": "Jednotka váhy",
+  "atBodyWeight": "Zátěž odpovídá vaší hmotnosti, {weight} {unit}."
  },
  "unit": {
   "kg": "kg",
