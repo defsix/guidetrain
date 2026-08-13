@@ -253,5 +253,52 @@
    "one": "{done} de {count} ejercicio hecho",
    "other": "{done} de {count} ejercicios hechos"
   }
+ },
+ "plans": {
+  "title": "Planes listos",
+  "close": "Cerrar planes",
+  "browse": "Empezar con un plan",
+  "back": "Todos los planes",
+  "intro": "Elige una estructura, mira los pesos que usarías de verdad y se convierte en tus entrenamientos.",
+  "perWeek": {
+   "one": "{count} sesión por semana",
+   "other": "{count} sesiones por semana"
+  },
+  "days": {
+   "one": "{count} entrenamiento",
+   "other": "{count} entrenamientos"
+  },
+  "use": {
+   "one": "Añadir {count} entrenamiento",
+   "other": "Añadir {count} entrenamientos"
+  },
+  "pickYourOwn": "elige tú",
+  "from": {
+   "logged": "de tus series",
+   "bodyweight": "punto de partida"
+  },
+  "startingNote": "Los pesos marcados «punto de partida» salen de tu peso corporal, edad y sexo: una media poblacional, no una medición tuya. Trata la primera serie como una prueba: si sube fácil, añade; si no, quita. En cuanto registres una serie, ese ejercicio usará tus propios números.",
+  "loggedNote": "Las series están para terminarlas, no para acabar contigo: deja una o dos repeticiones en reserva.",
+  "day": {
+   "a": "Entrenamiento A",
+   "b": "Entrenamiento B",
+   "upper": "Tren superior",
+   "lower": "Tren inferior",
+   "push": "Empuje",
+   "pull": "Tirón",
+   "legs": "Piernas"
+  },
+  "fullbody": {
+   "name": "Cuerpo completo",
+   "desc": "Dos sesiones alternas que cubren todo, con los grandes básicos. El sitio habitual para empezar."
+  },
+  "upperlower": {
+   "name": "Superior / inferior",
+   "desc": "Divide el cuerpo en dos y entrena cada mitad dos veces por semana. Más volumen."
+  },
+  "ppl": {
+   "name": "Empuje / tirón / piernas",
+   "desc": "Agrupa por movimiento y no por músculo. Más ejercicios por sesión."
+  }
  }
 }

@@ -253,5 +253,52 @@
    "one": "{done} de {count} exercício feito",
    "other": "{done} de {count} exercícios feitos"
   }
+ },
+ "plans": {
+  "title": "Planos prontos",
+  "close": "Fechar planos",
+  "browse": "Começar por um plano",
+  "back": "Todos os planos",
+  "intro": "Escolha uma estrutura, veja os pesos que usaria mesmo, e passa a ser o seu treino.",
+  "perWeek": {
+   "one": "{count} sessão por semana",
+   "other": "{count} sessões por semana"
+  },
+  "days": {
+   "one": "{count} treino",
+   "other": "{count} treinos"
+  },
+  "use": {
+   "one": "Adicionar {count} treino",
+   "other": "Adicionar {count} treinos"
+  },
+  "pickYourOwn": "escolha você",
+  "from": {
+   "logged": "das suas séries",
+   "bodyweight": "ponto de partida"
+  },
+  "startingNote": "Os pesos marcados «ponto de partida» vêm do seu peso corporal, idade e sexo: uma média populacional, não uma medição sua. Trate a primeira série como um teste: se subir fácil, acrescente; se não, tire. Assim que registar uma série, esse exercício passa a usar os seus próprios números.",
+  "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
+  "day": {
+   "a": "Treino A",
+   "b": "Treino B",
+   "upper": "Superior",
+   "lower": "Inferior",
+   "push": "Empurrar",
+   "pull": "Puxar",
+   "legs": "Pernas"
+  },
+  "fullbody": {
+   "name": "Corpo inteiro",
+   "desc": "Duas sessões alternadas que cobrem tudo, nos grandes exercícios com barra. O início habitual."
+  },
+  "upperlower": {
+   "name": "Superior / inferior",
+   "desc": "Divide o corpo em dois, cada metade duas vezes por semana. Mais volume."
+  },
+  "ppl": {
+   "name": "Empurrar / puxar / pernas",
+   "desc": "Agrupa por movimento e não por músculo. Mais exercícios por sessão."
+  }
  }
 }

@@ -16,6 +16,17 @@ export type Program = {
    * their ids.
    */
   name: string;
+  /**
+   * A translation key, for workouts the app named rather than the reader —
+   * the days of a ready-made plan. Rendered through `t` like any other string,
+   * so "Upper" reads as "Oberkörper" in German. `name` still wins if it is set,
+   * which is what renaming one does.
+   *
+   * Storing the *translated* label instead would freeze it into whichever
+   * language happened to be on when the plan was applied, which is the same
+   * mistake as storing exercise names rather than their ids.
+   */
+  nameKey?: string;
   /** Exercise ids, in the order they will be done. */
   exerciseIds: string[];
   /**
@@ -73,6 +84,7 @@ function read(): Program[] {
           .map((p: any) => ({
             id: p.id,
             name: typeof p.name === "string" ? p.name : "",
+            nameKey: typeof p.nameKey === "string" ? p.nameKey : undefined,
             exerciseIds: p.exerciseIds.filter((x: unknown) => typeof x === "string"),
             targets: cleanTargets(p.targets),
           }));
@@ -218,6 +230,36 @@ export function usePrograms() {
 
   const clear = useCallback(() => editActive(() => []), [editActive]);
 
+  /**
+   * Add whole workouts at once, from a ready-made plan.
+   *
+   * Built in one write rather than by calling create() and then toggling each
+   * exercise: those are separate state updates, and a plan half-applied
+   * because a render landed between them would be a workout missing exercises
+   * with no sign anything went wrong.
+   */
+  const addWorkouts = useCallback(
+    (days: { name: string; exercises: { id: string; sets: number; reps: number }[] }[]) => {
+      const made: Program[] = days.map((d) => ({
+        id: uid(),
+        name: "",
+        nameKey: `plans.day.${d.name}`,
+        exerciseIds: d.exercises.map((e) => e.id),
+        targets: Object.fromEntries(
+          d.exercises.map((e) => [e.id, { sets: e.sets, reps: e.reps }]),
+        ),
+      }));
+      if (!made.length) return;
+      setPrograms((prev) => {
+        const next = [...prev, ...made];
+        persist(KEY, next);
+        return next;
+      });
+      select(made[0].id);
+    },
+    [select],
+  );
+
   /** Set or clear one exercise's target in the active program. */
   const setTarget = useCallback(
     (exId: string, target: { sets: number; reps: number } | null) => {
@@ -252,6 +294,7 @@ export function usePrograms() {
     removeExercise,
     move,
     clear,
+    addWorkouts,
     setTarget,
     targets: active?.targets ?? {},
     save,

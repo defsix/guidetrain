@@ -269,5 +269,58 @@
    "many": "{done} z {count} cviku hotovo",
    "other": "{done} z {count} cviků hotovo"
   }
+ },
+ "plans": {
+  "title": "Hotové plány",
+  "close": "Zavřít plány",
+  "browse": "Začít podle plánu",
+  "back": "Všechny plány",
+  "intro": "Vyberte si formu, uvidíte váhy, které byste skutečně použili, a stane se z toho váš trénink.",
+  "perWeek": {
+   "one": "{count} trénink týdně",
+   "few": "{count} tréninky týdně",
+   "many": "{count} tréninků týdně",
+   "other": "{count} tréninku týdně"
+  },
+  "days": {
+   "one": "{count} trénink",
+   "few": "{count} tréninky",
+   "many": "{count} tréninků",
+   "other": "{count} tréninku"
+  },
+  "use": {
+   "one": "Přidat {count} trénink",
+   "few": "Přidat {count} tréninky",
+   "many": "Přidat {count} tréninků",
+   "other": "Přidat {count} tréninku"
+  },
+  "pickYourOwn": "zvolte si sami",
+  "from": {
+   "logged": "z vašich sérií",
+   "bodyweight": "výchozí bod"
+  },
+  "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti, věku a pohlaví — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
+  "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
+  "day": {
+   "a": "Trénink A",
+   "b": "Trénink B",
+   "upper": "Horní část",
+   "lower": "Dolní část",
+   "push": "Tlak",
+   "pull": "Tah",
+   "legs": "Nohy"
+  },
+  "fullbody": {
+   "name": "Celé tělo",
+   "desc": "Dvě střídající se jednotky pokrývající vše, na velkých cvicích s činkou. Obvyklý začátek."
+  },
+  "upperlower": {
+   "name": "Horní / dolní",
+   "desc": "Rozdělí tělo na dvě části, každou dvakrát týdně. Vyšší objem."
+  },
+  "ppl": {
+   "name": "Tlak / tah / nohy",
+   "desc": "Řadí podle pohybu, ne podle části těla. Více cviků v jednotce, méně svalů."
+  }
  }
 }

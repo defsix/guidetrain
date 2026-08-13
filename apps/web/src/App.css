@@ -962,3 +962,118 @@
   border-left: 2px solid var(--accent);
   color: var(--text);
 }
+
+/* --- ready-made plans --------------------------------------------------- */
+.plans-panel {
+  position: fixed;
+  z-index: 32;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+}
+
+@media (max-width: 560px) {
+  .plans-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    max-height: 88svh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+.plans-panel h2 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.plans-intro { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-muted); }
+
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.13s;
+}
+.plan-card:hover { border-color: var(--accent); }
+.plan-card .pname { font-size: 14px; font-weight: 600; color: var(--text); }
+.plan-card .pmeta {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.plan-card .pdesc { font-size: 12px; line-height: 1.45; color: var(--text-muted); margin-top: 3px; }
+
+.plans-back {
+  align-self: flex-start;
+  background: none; border: 0; padding: 0;
+  color: var(--text-muted); font-family: var(--mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+}
+.plans-back:hover { color: var(--accent); }
+
+.plan-day h3 {
+  margin: 0 0 6px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--text-muted); font-weight: 500;
+}
+.plan-day ul { list-style: none; margin: 0 0 12px; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.plan-day li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 9px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 12.5px;
+}
+.plan-day .dname { min-width: 0; overflow-wrap: anywhere; line-height: 1.3; }
+.plan-day .dload { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; }
+.plan-day .dload strong { font-size: 13px; font-weight: 600; }
+.plan-day .dload em {
+  font-style: normal; font-family: var(--mono); font-size: 8.5px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+}
+/* Where the number came from, said in the colour it deserves: your own lifts
+   are solid, a population average is not. */
+.plan-day .dload em.logged { color: var(--accent); }
+.plan-day .dload em.bodyweight, .plan-day .dload em.unknown { color: var(--text-muted); }
+.plan-day .dsets {
+  font-family: var(--mono); font-size: 11px; color: var(--text-muted); white-space: nowrap;
+}
+
+.plans-open {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 7px 12px;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.plans-open:hover { border-color: var(--accent); color: var(--accent); }
+
+.workout-foot { display: flex; gap: 8px; flex-wrap: wrap; }

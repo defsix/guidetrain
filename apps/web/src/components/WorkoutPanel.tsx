@@ -52,21 +52,29 @@ type Props = {
   onRemoveSet: (uid: string) => void;
   targets: Record<string, { sets: number; reps: number }>;
   onTarget: (id: string, t: { sets: number; reps: number } | null) => void;
+  onBrowsePlans: () => void;
   /** Every set ever recorded — the plan works from history, not just today. */
   allSets: SetEntry[];
   /** Body weight in the logging unit, or undefined if it isn't known. */
   bodyLoad?: number;
 };
 
-/** "Workout 1", "Workout 2" — numbered by position, translated at render. */
+/**
+ * What to call a workout: what the reader typed, else the key the app gave it,
+ * else its position. All three resolve at render, so none of them freeze a
+ * language into storage.
+ */
 function label(p: Program, programs: Program[], t: (k: string, v?: any) => string) {
-  return p.name.trim() || t("program.untitled", { n: programs.indexOf(p) + 1 });
+  if (p.name.trim()) return p.name.trim();
+  if (p.nameKey) return t(p.nameKey);
+  return t("program.untitled", { n: programs.indexOf(p) + 1 });
 }
 
 export default function WorkoutPanel({
   ids, programs, active, onSelect, onCreate, onRename, onRemoveProgram,
   open, onClose, onRemove, onMove, onClear,
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
+  onBrowsePlans,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -164,7 +172,14 @@ export default function WorkoutPanel({
         )}
 
         {items.length === 0 ? (
-          <p className="workout-empty">{t("workout.empty")}</p>
+          <>
+            <p className="workout-empty">{t("workout.empty")}</p>
+            {/* The other way in, for anyone who would rather be handed a
+                workout than assemble one. */}
+            <button className="plans-open" onClick={onBrowsePlans}>
+              {t("plans.browse")}
+            </button>
+          </>
         ) : (
           <>
             {(() => {
@@ -236,9 +251,14 @@ export default function WorkoutPanel({
                 </li>
               ))}
             </ol>
-            <button className="workout-clear" onClick={onClear}>
-              {t("workout.clear")}
-            </button>
+            <div className="workout-foot">
+              <button className="plans-open" onClick={onBrowsePlans}>
+                {t("plans.browse")}
+              </button>
+              <button className="workout-clear" onClick={onClear}>
+                {t("workout.clear")}
+              </button>
+            </div>
           </>
         )}
       </aside>

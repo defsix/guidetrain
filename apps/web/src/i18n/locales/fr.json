@@ -253,5 +253,52 @@
    "one": "{done} exercice sur {count} fait",
    "other": "{done} exercices sur {count} faits"
   }
+ },
+ "plans": {
+  "title": "Séances prêtes",
+  "close": "Fermer les séances",
+  "browse": "Partir d'un programme",
+  "back": "Tous les programmes",
+  "intro": "Choisissez une structure, voyez les charges que vous utiliseriez vraiment, et cela devient vos séances.",
+  "perWeek": {
+   "one": "{count} séance par semaine",
+   "other": "{count} séances par semaine"
+  },
+  "days": {
+   "one": "{count} séance",
+   "other": "{count} séances"
+  },
+  "use": {
+   "one": "Ajouter {count} séance",
+   "other": "Ajouter {count} séances"
+  },
+  "pickYourOwn": "à vous de voir",
+  "from": {
+   "logged": "d'après vos séries",
+   "bodyweight": "point de départ"
+  },
+  "startingNote": "Les charges marquées « point de départ » viennent de votre poids, de votre âge et de votre sexe : une moyenne de population, pas une mesure de vous. Traitez la première série comme un test : si elle passe facilement, ajoutez ; sinon, retirez. Dès que vous enregistrez une série, cet exercice utilise vos propres chiffres.",
+  "loggedNote": "Les séries sont faites pour être terminées : gardez une ou deux répétitions en réserve.",
+  "day": {
+   "a": "Séance A",
+   "b": "Séance B",
+   "upper": "Haut du corps",
+   "lower": "Bas du corps",
+   "push": "Poussée",
+   "pull": "Tirage",
+   "legs": "Jambes"
+  },
+  "fullbody": {
+   "name": "Corps entier",
+   "desc": "Deux séances alternées couvrant tout, sur les grands mouvements à la barre. Le point de départ habituel."
+  },
+  "upperlower": {
+   "name": "Haut / bas",
+   "desc": "Coupe le corps en deux, chaque moitié travaillée deux fois par semaine. Plus de volume."
+  },
+  "ppl": {
+   "name": "Poussée / tirage / jambes",
+   "desc": "Groupe par mouvement plutôt que par muscle. Plus d'exercices par séance."
+  }
  }
 }

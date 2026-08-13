@@ -5,6 +5,7 @@ import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import WorkoutPanel from "../components/WorkoutPanel";
+import PlanLibrary from "../components/PlanLibrary";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useT } from "../i18n/I18nProvider";
@@ -18,6 +19,7 @@ export default function BodyExplorer() {
   const programs = usePrograms();
   const log = useLog();
   const [showWorkout, setShowWorkout] = useState(false);
+  const [showPlans, setShowPlans] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -83,6 +85,7 @@ export default function BodyExplorer() {
         allSets={log.entries}
         targets={programs.targets}
         onTarget={programs.setTarget}
+        onBrowsePlans={() => { setShowWorkout(false); setShowPlans(true); }}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
@@ -91,6 +94,13 @@ export default function BodyExplorer() {
             ? profile.bodyWeight
             : undefined
         }
+      />
+      <PlanLibrary
+        open={showPlans}
+        onClose={() => setShowPlans(false)}
+        allSets={log.entries}
+        profile={profile ?? null}
+        onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
       />
     </div>
   );

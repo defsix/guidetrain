@@ -407,6 +407,46 @@ field existed, and a body weight recorded in the other unit — converting
 silently would put a number on screen nobody entered. Like everything else
 here, it stays on the device.
 
+## Ready-made plans
+
+Three shapes — full body, upper/lower, push/pull/legs — previewed **with the
+weights you would actually use**, then added as named workouts with their
+targets already set. A plan that says "Barbell Squat, 3 × 5" still leaves you a
+decision in the gym; one that says 77.5 kg does not.
+
+Each is a common structure rather than anything invented here, and each is
+built only from exercises this catalogue has.
+`node tools/exercises/check-plans.mjs` fails if a plan ever names one it
+doesn't, or omits a starting weight, since either would render a blank row.
+
+### Where each weight comes from
+
+Two sources, deliberately not the same kind of thing, and every row says which
+it is:
+
+- **From your lifts** — your best logged set, through Epley, backed off a tenth
+  to a weight you can finish. A calculation.
+- **Starting point** — body weight × a per-exercise fraction, adjusted by sex
+  and age band. A population average, not a measurement of you.
+
+**There is no path from body weight to a one-rep max.** The estimated max is
+what drives the 5/3/1 planner, and it has to come from a set that happened;
+feeding it a demographic guess would launder an average into a personal record.
+So the no-history path outputs a first working set and labels it as one, with
+the instruction to treat it as a test.
+
+The fractions are chosen light, because the costs are not symmetric: a set that
+turns out easy costs one set, and a set that turns out heavy costs a back. The
+person receiving these numbers is by definition the one with nothing logged —
+the least able to tell that a number is wrong. Under-18s take the most
+conservative factor in the table, and "prefer not to say" takes the lower of
+the two sex figures rather than a guess.
+
+Nothing barbell is ever prescribed below **20 kg**, an empty Olympic bar. That
+floor reads the equipment field from the catalogue rather than the exercise id
+— an earlier version tested whether the id began with "Barbell", which is false
+of "Standing Military Press", and a light profile was told to press 7.5 kg.
+
 ## Named workouts
 
 Several workouts rather than one, switched with a row of tabs at the top of the

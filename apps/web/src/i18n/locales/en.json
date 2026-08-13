@@ -253,5 +253,52 @@
    "one": "{done} of {count} exercise done",
    "other": "{done} of {count} exercises done"
   }
+ },
+ "plans": {
+  "title": "Ready-made plans",
+  "close": "Close plans",
+  "browse": "Start from a plan",
+  "back": "All plans",
+  "intro": "Pick a shape, see the weights you would actually use, and it becomes your workouts.",
+  "perWeek": {
+   "one": "{count} session a week",
+   "other": "{count} sessions a week"
+  },
+  "days": {
+   "one": "{count} workout",
+   "other": "{count} workouts"
+  },
+  "use": {
+   "one": "Add {count} workout",
+   "other": "Add {count} workouts"
+  },
+  "pickYourOwn": "pick your own",
+  "from": {
+   "logged": "from your lifts",
+   "bodyweight": "starting point"
+  },
+  "startingNote": "Weights marked “starting point” come from your body weight, age and sex — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
+  "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
+  "day": {
+   "a": "Workout A",
+   "b": "Workout B",
+   "upper": "Upper",
+   "lower": "Lower",
+   "push": "Push",
+   "pull": "Pull",
+   "legs": "Legs"
+  },
+  "fullbody": {
+   "name": "Full body",
+   "desc": "Two alternating sessions covering everything, on the big barbell lifts. The usual place to start."
+  },
+  "upperlower": {
+   "name": "Upper / lower",
+   "desc": "Splits the body in two so each half is trained twice a week. A step up in volume."
+  },
+  "ppl": {
+   "name": "Push / pull / legs",
+   "desc": "Groups by movement rather than body part. More exercises per session, fewer muscles."
+  }
  }
 }

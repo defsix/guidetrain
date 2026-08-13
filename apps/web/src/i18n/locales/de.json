@@ -253,5 +253,52 @@
    "one": "{done} von {count} Übung geschafft",
    "other": "{done} von {count} Übungen geschafft"
   }
+ },
+ "plans": {
+  "title": "Fertige Pläne",
+  "close": "Pläne schließen",
+  "browse": "Mit einem Plan starten",
+  "back": "Alle Pläne",
+  "intro": "Wähle eine Form, sieh die Gewichte, die du wirklich nehmen würdest, und sie wird zu deinen Trainings.",
+  "perWeek": {
+   "one": "{count} Einheit pro Woche",
+   "other": "{count} Einheiten pro Woche"
+  },
+  "days": {
+   "one": "{count} Training",
+   "other": "{count} Trainings"
+  },
+  "use": {
+   "one": "{count} Training übernehmen",
+   "other": "{count} Trainings übernehmen"
+  },
+  "pickYourOwn": "selbst wählen",
+  "from": {
+   "logged": "aus deinen Sätzen",
+   "bodyweight": "Startwert"
+  },
+  "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht, Alter und Geschlecht — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
+  "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
+  "day": {
+   "a": "Training A",
+   "b": "Training B",
+   "upper": "Oberkörper",
+   "lower": "Unterkörper",
+   "push": "Drücken",
+   "pull": "Ziehen",
+   "legs": "Beine"
+  },
+  "fullbody": {
+   "name": "Ganzkörper",
+   "desc": "Zwei abwechselnde Einheiten für alles, mit den großen Langhantelübungen. Der übliche Anfang."
+  },
+  "upperlower": {
+   "name": "Ober / Unter",
+   "desc": "Teilt den Körper in zwei Hälften, jede zweimal pro Woche. Mehr Volumen."
+  },
+  "ppl": {
+   "name": "Drücken / Ziehen / Beine",
+   "desc": "Gruppiert nach Bewegung statt nach Körperteil. Mehr Übungen je Einheit, weniger Muskeln."
+  }
  }
 }

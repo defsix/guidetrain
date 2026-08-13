@@ -269,5 +269,58 @@
    "many": "{done} z {count} ćwiczeń zrobionych",
    "other": "{done} z {count} ćwiczeń zrobione"
   }
+ },
+ "plans": {
+  "title": "Gotowe plany",
+  "close": "Zamknij plany",
+  "browse": "Zacznij od planu",
+  "back": "Wszystkie plany",
+  "intro": "Wybierz układ, zobacz ciężary, których naprawdę użyjesz, i stanie się to twoim treningiem.",
+  "perWeek": {
+   "one": "{count} sesja tygodniowo",
+   "few": "{count} sesje tygodniowo",
+   "many": "{count} sesji tygodniowo",
+   "other": "{count} sesji tygodniowo"
+  },
+  "days": {
+   "one": "{count} trening",
+   "few": "{count} treningi",
+   "many": "{count} treningów",
+   "other": "{count} treningu"
+  },
+  "use": {
+   "one": "Dodaj {count} trening",
+   "few": "Dodaj {count} treningi",
+   "many": "Dodaj {count} treningów",
+   "other": "Dodaj {count} treningu"
+  },
+  "pickYourOwn": "wybierz sam",
+  "from": {
+   "logged": "z twoich serii",
+   "bodyweight": "punkt wyjścia"
+  },
+  "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała, wieku i płci — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
+  "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
+  "day": {
+   "a": "Trening A",
+   "b": "Trening B",
+   "upper": "Góra",
+   "lower": "Dół",
+   "push": "Pchanie",
+   "pull": "Ciągnięcie",
+   "legs": "Nogi"
+  },
+  "fullbody": {
+   "name": "Całe ciało",
+   "desc": "Dwie naprzemienne jednostki obejmujące wszystko, na dużych bojach ze sztangą. Zwykły początek."
+  },
+  "upperlower": {
+   "name": "Góra / dół",
+   "desc": "Dzieli ciało na dwie części, każda dwa razy w tygodniu. Więcej objętości."
+  },
+  "ppl": {
+   "name": "Pchanie / ciągnięcie / nogi",
+   "desc": "Grupuje według ruchu, nie części ciała. Więcej ćwiczeń na jednostkę."
+  }
  }
 }
