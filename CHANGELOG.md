@@ -70,7 +70,9 @@ Newest first. Numbers in brackets are pull requests.
   *tibialis* raise), and one word waived for one exercise on measured evidence:
   a cable kickback has no two-legged version, so twenty candidate titles across
   two searches contained no "one" or "single". The waiver is per exercise, so
-  "Dumbbell One-Arm Upright Row" still refuses a two-arm video.
+  "Dumbbell One-Arm Upright Row" still refuses a two-arm video. A `SEARCH_AS`
+  query is also used verbatim now: the "exercise proper form" suffix helps a
+  bare exercise name and drowns an already-specific one.
 - **179 of 180 had a video** — five of the six that the contradiction rules
   had left on a search link came back once the resolver was taught what those
   movements are actually called. The catalogue says "Suspended Row" and the

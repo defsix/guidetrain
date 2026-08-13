@@ -227,6 +227,11 @@ movement. All six came back, and none of it by lowering the bar:
 - **Take the closest match, not the first acceptable one.** The gate says
   whether a candidate is *acceptable*; among those that are, the one sharing the
   most words with the exercise name now wins, with search rank breaking ties.
+- **A `SEARCH_AS` query is used verbatim.** Every other search appends
+  "exercise proper form", which steers a bare exercise name towards
+  demonstrations — and drowns a query that is already specific. `leg press
+  tibialis raise` returns the one video actually filmed on a leg press at rank
+  0; the same words plus that suffix pushed it out of the top ten.
 
 ### Training pairs
 

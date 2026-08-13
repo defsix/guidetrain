@@ -117,13 +117,25 @@ NOT_DISTINGUISHING = {
 # can only stop the search returning ten videos of a movement nobody asked
 # about. "Suspended Row" searched literally returns barbell rows; searched as
 # "TRX row" it returns the exercise.
+#
+# These are used *verbatim*: the "exercise proper form" suffix every other
+# search gets is not appended. That suffix earns its place on a bare exercise
+# name, where it steers the results towards demonstrations, but it drowns a
+# query that is already specific. "leg press tibialis raise" returns the one
+# video filmed on a leg press at rank 0; the same words plus "exercise proper
+# form" pushed it out of the top ten entirely, which cost two searches to
+# notice.
 SEARCH_AS = {
     "Decline Reverse Crunch": "reverse crunch on a decline bench",
     "Suspended Reverse Crunch": "TRX suspended reverse crunch knee tuck",
     "One-Legged Cable Kickback": "single leg cable glute kickback",
     "Kneeling Cable Crunch With Alternating Oblique Twists":
         "kneeling cable oblique crunch with a twist",
-    "Reverse Calf Raise on Leg Press": "tibialis raise on the leg press machine",
+    # Plain and short. "tibialis raise on the leg press machine" pushed the one
+    # video actually filmed on a leg press out of the top ten; "leg press
+    # tibialis raise" returns it first. The extra words were doing the search no
+    # favours, which is worth knowing before writing a longer query here.
+    "Reverse Calf Raise on Leg Press": "leg press tibialis raise",
     "Suspended Row": "how to do a TRX row suspension trainer",
 }
 
@@ -255,7 +267,7 @@ def resolve(name, taken=()):
     raise" was in the same result set. Relevance order breaks ties, so YouTube's
     own ranking still decides between equals.
     """
-    q = f"{SEARCH_AS.get(name, name)} exercise proper form"
+    q = SEARCH_AS.get(name) or f"{name} exercise proper form"
     found = get("search", part="snippet", q=q, type="video", maxResults=10,
                 videoEmbeddable="true", safeSearch="strict", relevanceLanguage="en")
     ids = [i["id"]["videoId"] for i in found.get("items", [])]
