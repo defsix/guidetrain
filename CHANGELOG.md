@@ -156,14 +156,23 @@ Newest first. Numbers in brackets are pull requests.
   exercise once it is, which is the sharper question: a bench press loads the
   triceps and a chest fly barely does, so before you say which, the weaker
   claim is the only honest one.
+- **The fonts the design always named are now actually there** — `Space
+  Grotesk` and `JetBrains Mono` were declared in the CSS but never bundled: no
+  `@font-face`, no font file, so both silently fell back and every visitor read
+  the fallback on every screen. They are now self-hosted rather than linked
+  from Google's CDN, which would have told a third party which pages a reader
+  opens — the same trade the video player already declines. SIL OFL 1.1, both
+  licences committed beside the files. Variable fonts split by script: 106 KB
+  in total but nobody downloads that, since the browser takes only the subsets
+  a page needs — English two files (62 KB), Polish four, Russian three. Space
+  Grotesk has no Cyrillic and neither face has CJK, so those fall back per
+  glyph, correctly.
 - **One font stack, and controls that use it** — `--sans` and `--mono` are
   declared once and inherited everywhere, instead of being written out at
   thirteen call sites where the canvas and the page disagreed about the
   fallback chain. The username input had been rendering in Arial, since form
   controls take a UA font unless told to inherit and only `button` had been
-  told. Worth stating plainly: neither `Space Grotesk` nor `JetBrains Mono` is
-  bundled — no `@font-face`, no font file — so both have always fallen back,
-  and what everyone has been reading is the fallback.
+  told.
 - **The body is one colour until you ask it a question** — grey, dark or light
   to suit the theme, with the muscle you pick in the theme's own orange and
   nothing else wearing anything. Opening an exercise puts that orange on what

@@ -1,3 +1,5 @@
+@import './fonts.css';
+
 /*
  * Theme tokens.
  *
@@ -13,11 +15,11 @@
      agreed only as long as system-ui resolved, and diverged silently where it
      didn't.
 
-     Neither named face is bundled: there is no @font-face and no font file in
-     the repo, so 'Space Grotesk' and 'JetBrains Mono' have never once rendered
-     and every visitor has been reading the fallback. The names stay at the
-     front so self-hosting them later is a two-line change, and they are here
-     rather than in thirteen places so it stays a two-line change. */
+     Both named faces are now bundled and self-hosted (see fonts.css), so the
+     first entry in each stack is the one that renders. What follows still
+     matters: `font-display: swap` shows the fallback until the face arrives,
+     and Cyrillic and CJK keep seeing it — Space Grotesk has no Cyrillic, and
+     neither face has CJK. */
   --sans: 'Space Grotesk', system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 

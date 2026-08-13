@@ -339,22 +339,33 @@ empty. The overlay clears when the body is painted, which is the honest moment
 
 ## Type
 
-Two stacks, `--sans` and `--mono`, declared once in `index.css` and inherited
-everywhere. They used to be written out at each call site, and the two didn't
-agree: the canvas asked for `'Space Grotesk', system-ui, sans-serif` while the
-page asked for `system-ui, "Segoe UI", Roboto` — the same result wherever
-`system-ui` resolves, and different where it doesn't.
+**Space Grotesk** for text, **JetBrains Mono** for labels and figures, both
+self-hosted. A `<link>` to Google's CDN would tell a third party which pages a
+reader opens, and the app declines that trade elsewhere — the video player
+fetches nothing from YouTube until it is clicked — so the files are in the repo
+under `apps/web/src/assets/fonts`, SIL OFL 1.1 with both licences beside them.
 
-**Neither named face is bundled.** There is no `@font-face` and no font file in
-the repo, so `Space Grotesk` and `JetBrains Mono` have never rendered and every
-visitor has been reading the fallback. The names stay at the front of each
-stack so self-hosting them is a two-line change — and they now live in one
-place rather than thirteen, so it stays a two-line change.
+Two stacks, `--sans` and `--mono`, declared once in `index.css` and inherited
+everywhere. They used to be written out at each call site and the two didn't
+agree: the canvas asked for `'Space Grotesk', system-ui, sans-serif` while the
+page asked for `system-ui, "Segoe UI", Roboto` — identical wherever `system-ui`
+resolves, different where it doesn't. And neither named face was bundled at
+all, so for a long time every visitor read the fallback on every screen.
+
+Variable fonts, split by script: 106 KB in total, but nobody downloads that.
+The browser fetches only the subsets a page needs, keyed by `unicode-range` —
+English pulls two files (62 KB), Polish four, Russian three. Space Grotesk has
+no Cyrillic, so Russian body text falls back per glyph while its mono labels
+don't; Japanese and Chinese are in neither face and fall back entirely, which
+is right, since a CJK webfont is megabytes and every device already has one.
+`font-display: swap` keeps text readable from first paint.
 
 Form controls don't inherit type from the page; they take a UA font unless told
 otherwise. `button` was already handled, `input` was not, which is why the one
 text input on the site rendered in Arial while everything around it didn't.
 `button, input, select, textarea { font: inherit }` covers the rest.
+
+    python3 tools/fonts/fetch-fonts.py   # re-download and regenerate fonts.css
 
 ## Theming
 
