@@ -461,11 +461,11 @@ export default function AnatomyViewer({
                               );
                             })}
                           </div>
-                          {x.instructions.length > 0 && (
-                            <ol className="steps">
-                              {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
-                            </ol>
-                          )}
+                          {/* Actions and planning first, reference text after.
+                              The instructions run to eight long steps, and
+                              anything below them was found only by someone who
+                              already knew to scroll — which is no way to offer
+                              a suggestion. */}
                           {x.videoId ? (
                             <button className="watch" onClick={() => setVideo(x)}>
                               ▶ {t('viewer.watch')}
@@ -498,6 +498,12 @@ export default function AnatomyViewer({
                                 </button>
                               ))}
                             </div>
+                          )}
+
+                          {x.instructions.length > 0 && (
+                            <ol className="steps">
+                              {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
+                            </ol>
                           )}
                         </div>
                       )}

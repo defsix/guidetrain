@@ -162,9 +162,12 @@
 .drill-body .work.primary { color: var(--text); }
 .drill-body .work.primary .dot { opacity: 1; }
 
+/* Last in the panel now, under the same rule that separates the pair block, so
+   the three parts of an exercise divide evenly: what it works, what to do with
+   it, and how to do it. */
 .drill-body .steps {
-  margin: 0 0 10px; padding-left: 17px; font-size: 12px; line-height: 1.55;
-  color: var(--text-muted);
+  margin: 11px 0 0; padding: 9px 0 0 17px; font-size: 12px; line-height: 1.55;
+  color: var(--text-muted); border-top: 1px solid var(--border);
 }
 .drill-body .steps li { margin-bottom: 4px; }
 .drill-body .watch {
