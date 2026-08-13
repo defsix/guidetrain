@@ -11,11 +11,27 @@
  "onboarding": {
   "title": "Bem-vindo ao GuideTrain",
   "subtitle": "Alguns dados rápidos para adaptarmos o seu treino.",
+  "statMuscles": {
+   "one": "{count} grupo muscular",
+   "other": "{count} grupos musculares"
+  },
+  "statExercises": {
+   "one": "{count} exercício",
+   "other": "{count} exercícios"
+  },
+  "statLanguages": {
+   "one": "{count} idioma",
+   "other": "{count} idiomas"
+  },
   "username": "Nome de usuário",
   "usernamePlaceholder": "ex.: iron_ada",
   "gender": "Gênero",
   "ageGroup": "Faixa etária",
-  "continue": "Continuar para o explorador corporal"
+  "continue": "Continuar para o explorador corporal",
+  "progress": {
+   "one": "Falta {count} campo",
+   "other": "Faltam {count} campos"
+  }
  },
  "gender": {
   "female": "Feminino",

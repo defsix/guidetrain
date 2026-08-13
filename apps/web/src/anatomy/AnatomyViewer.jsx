@@ -5,7 +5,6 @@ import * as THREE from 'three';
 import AnatomyModel from './AnatomyModel';
 import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
-import { zoneColor } from './zoneMapping';
 import exerciseData from './exercises.json';
 import { pairsFor } from './pairs';
 import VideoModal from './VideoModal';
@@ -400,7 +399,7 @@ export default function AnatomyViewer({
                   onMouseLeave={() => setHover(null)}
                   title={zoneDesc(z)}
                 >
-                  <span className="dot" style={{ background: zoneColor(z) }} />
+                  <span className="dot" />
                   <span className="mlabel">{zoneName(z)}</span>
                 </button>
               ))}
@@ -456,7 +455,7 @@ export default function AnatomyViewer({
                               const isPrimary = x.primary.includes(k);
                               return (
                                 <span key={k} className={`work ${isPrimary ? 'primary' : ''}`}>
-                                  <span className="dot" style={{ background: zoneColor(z) }} />
+                                  <span className="dot" />
                                   {zoneName(z)}
                                 </span>
                               );

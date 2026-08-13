@@ -11,11 +11,35 @@
  "onboarding": {
   "title": "Witaj w GuideTrain",
   "subtitle": "Kilka szybkich informacji, abyśmy mogli dopasować Twój trening.",
+  "statMuscles": {
+   "one": "{count} grupa mięśniowa",
+   "few": "{count} grupy mięśniowe",
+   "many": "{count} grup mięśniowych",
+   "other": "{count} grupy mięśniowe"
+  },
+  "statExercises": {
+   "one": "{count} ćwiczenie",
+   "few": "{count} ćwiczenia",
+   "many": "{count} ćwiczeń",
+   "other": "{count} ćwiczenia"
+  },
+  "statLanguages": {
+   "one": "{count} język",
+   "few": "{count} języki",
+   "many": "{count} języków",
+   "other": "{count} języka"
+  },
   "username": "Nazwa użytkownika",
   "usernamePlaceholder": "np. iron_ada",
   "gender": "Płeć",
   "ageGroup": "Grupa wiekowa",
-  "continue": "Przejdź do eksploratora ciała"
+  "continue": "Przejdź do eksploratora ciała",
+  "progress": {
+   "one": "Zostało {count} pole",
+   "few": "Zostały {count} pola",
+   "many": "Zostało {count} pól",
+   "other": "Zostało {count} pola"
+  }
  },
  "gender": {
   "female": "Kobieta",

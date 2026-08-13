@@ -11,11 +11,35 @@
  "onboarding": {
   "title": "Добро пожаловать в GuideTrain",
   "subtitle": "Несколько быстрых вопросов, чтобы подобрать вам тренировки.",
+  "statMuscles": {
+   "one": "{count} группа мышц",
+   "few": "{count} группы мышц",
+   "many": "{count} групп мышц",
+   "other": "{count} группы мышц"
+  },
+  "statExercises": {
+   "one": "{count} упражнение",
+   "few": "{count} упражнения",
+   "many": "{count} упражнений",
+   "other": "{count} упражнения"
+  },
+  "statLanguages": {
+   "one": "{count} язык",
+   "few": "{count} языка",
+   "many": "{count} языков",
+   "other": "{count} языка"
+  },
   "username": "Имя пользователя",
   "usernamePlaceholder": "напр. iron_ada",
   "gender": "Пол",
   "ageGroup": "Возрастная группа",
-  "continue": "Перейти к обзору тела"
+  "continue": "Перейти к обзору тела",
+  "progress": {
+   "one": "Осталось заполнить {count} поле",
+   "few": "Осталось заполнить {count} поля",
+   "many": "Осталось заполнить {count} полей",
+   "other": "Осталось заполнить {count} поля"
+  }
  },
  "gender": {
   "female": "Женский",

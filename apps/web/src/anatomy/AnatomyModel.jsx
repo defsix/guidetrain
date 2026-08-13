@@ -1,15 +1,27 @@
 import React, { useRef, useMemo, useEffect, useLayoutEffect } from 'react';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtFace, zoneColor } from './zoneMapping';
+import { bakeVertexZones, computeZoneBoundaryEdges, pickZoneAtFace } from './zoneMapping';
 
-// Untrainable parts (head, hands, feet) and region-filtered-out muscles, per
-// theme — a mid grey that reads as "inactive" against either background.
-const INACTIVE = {
-  dark: { neutral: '#4a5361', dim: '#2f353f', outline: '#05070a' },
-  light: { neutral: '#b6bec9', dim: '#cdd3db', outline: '#2c3440' },
+/**
+ * The body is one colour until you ask it a question.
+ *
+ * It used to arrive wearing seventeen — a distinct hue per muscle, doubling as
+ * the picker's legend. That showed everything at once and therefore emphasised
+ * nothing: a body already lit up in every direction has no way left to answer
+ * "which one is the quadriceps", because the answer was already on screen along
+ * with sixteen others. Traced borders still show where each muscle begins, so
+ * the map is not lost — only the shouting.
+ *
+ * `accent` is the theme's own orange, the same one the buttons use, copied here
+ * because the 3D canvas can't read CSS custom properties. `second` is that
+ * orange pulled back toward the body, for a muscle an exercise works but isn't
+ * about.
+ */
+const BODY = {
+  dark: { base: '#59626f', dim: '#2f353f', accent: '#f97316', outline: '#05070a' },
+  light: { base: '#b6bec9', dim: '#cdd3db', accent: '#c2410c', outline: '#2c3440' },
 };
-const HILITE = new THREE.Color('#ffffff');
 
 // How far outline lines are lifted off the surface (native units) to avoid
 // z-fighting with the mesh they trace.
@@ -34,7 +46,7 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
   const { scene } = useGLTF(url);
   const meshRef = useRef();
   const hoverRef = useRef(null);
-  const palette = INACTIVE[theme] || INACTIVE.dark;
+  const palette = BODY[theme] || BODY.dark;
 
   // Find the first mesh in the GLB and give it a fresh vertex-color material.
   const { geometry, material } = useMemo(() => {
@@ -74,39 +86,44 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
     const col = geometry.attributes.color;
     const pos = geometry.attributes.position;
     const Z = map.zones;
-    const neutral = new THREE.Color(palette.neutral);
+    const base = new THREE.Color(palette.base);
     const dim = new THREE.Color(palette.dim);
+    const accent = new THREE.Color(palette.accent);
+    // A supporting muscle is the accent pulled most of the way back to the
+    // body: clearly involved, clearly not the point. Derived rather than a
+    // fourth hand-picked colour, so it tracks the accent in both themes.
+    const second = accent.clone().lerp(base, 0.62);
     // An exercise takes over the whole body: everything it trains is lit and
     // everything else drops back, so what the movement works is legible at a
     // glance. This is the illustration for an exercise — the app's own model
     // rather than a stock photo of somebody lifting.
     const prim = exercise ? new Set(exercise.primary || []) : null;
     const sec = exercise ? new Set(exercise.secondary || []) : null;
+    const filtering = !exercise && region !== 'all';
 
     for (let i = 0; i < pos.count; i++) {
-      let c = neutral;
       const zi = baked.vertZone[i];
       const zone = zi >= 0 ? Z[zi] : null;
-      // Hands, feet and head aren't trainable groups — leave them neutral.
-      if (zone && zone.selectable !== false) {
-        if (exercise) {
-          if (prim.has(zone.key)) c = new THREE.Color(zoneColor(zone)).lerp(HILITE, 0.3);
-          else if (sec.has(zone.key)) c = new THREE.Color(zoneColor(zone)).lerp(dim, 0.45);
-          else c = dim;
-        } else if (region === 'all' || zone.region === region) {
-          c = new THREE.Color(zoneColor(zone));
-        } else {
-          c = dim;
-        }
+      // Hands, feet and head aren't trainable, so they are never the answer to
+      // anything; they fall back with everything else that isn't being asked
+      // about, and wear the plain body colour when nothing is.
+      const trainable = zone && zone.selectable !== false;
+      let c;
+      if (exercise) {
+        if (trainable && prim.has(zone.key)) c = accent;
+        else if (trainable && sec.has(zone.key)) c = second;
+        else c = dim;
+      } else if (filtering) {
+        c = trainable && zone.region === region ? base : dim;
+      } else {
+        c = base;
       }
       col.setXYZ(i, c.r, c.g, c.b);
     }
-    // Selection brightens the muscle's own colour rather than replacing it, so
-    // it stays identifiable while clearly standing out.
+    // The chosen muscle is the one thing on the body wearing a colour, which is
+    // what makes it findable at a glance from across the picker.
     if (!exercise && selectedId && baked.zoneVerts[selectedId]) {
-      const zone = Z.find((z) => z.id === selectedId);
-      const c = new THREE.Color(zoneColor(zone)).lerp(HILITE, 0.45);
-      baked.zoneVerts[selectedId].forEach((i) => col.setXYZ(i, c.r, c.g, c.b));
+      baked.zoneVerts[selectedId].forEach((i) => col.setXYZ(i, accent.r, accent.g, accent.b));
     }
     col.needsUpdate = true;
   };
@@ -152,7 +169,7 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
         onClick={handleClick}
       />
       <Outline points={boundary.all} color={palette.outline} opacity={theme === "light" ? 0.6 : 0.5} />
-      {selectedBoundary && <Outline points={selectedBoundary} color="#fff4d6" opacity={0.95} />}
+      {selectedBoundary && <Outline points={selectedBoundary} color={palette.outline} opacity={0.85} />}
     </group>
   );
 }

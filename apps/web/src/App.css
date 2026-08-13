@@ -1,28 +1,99 @@
 .onboarding {
   width: min(560px, 100%);
   margin: 0 auto;
-  padding: 48px 24px 64px;
+  padding: 32px 24px 64px;
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 22px;
 }
+
+/* The first screen was three questions on a blank page — correct, and saying
+   nothing about what answering them leads to. The hero is where that gets
+   said: the name, the promise, and three real numbers. */
+.onboarding-hero {
+  position: relative;
+  margin: 0 -24px 4px;
+  padding: 28px 24px 26px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* A soft accent light behind the title. Pure CSS, so it costs no request and
+   follows the theme's own accent in both directions. */
+.onboarding-hero::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: 50%;
+  width: 460px;
+  height: 320px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, var(--accent-soft), transparent 72%);
+  pointer-events: none;
+}
+
+.onboarding-hero > * { position: relative; }
 
 .onboarding-head {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.onboarding .eyebrow {
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 .onboarding h1 {
-  font-size: clamp(24px, 5vw, 30px);
-  letter-spacing: -0.01em;
+  font-size: clamp(26px, 6vw, 34px);
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin: 0;
 }
 
 .subtitle {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 15px;
+  color: var(--text-muted);
+}
+
+/* Three figures, counted from the data at build time. Wraps to two lines on a
+   narrow screen rather than shrinking below a readable size. */
+.onboarding .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.onboarding .stats li {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 11px;
+}
+
+/* Says what the greyed-out button is waiting for. Reserves its line whether or
+   not there is anything to say, so the button doesn't jump as it fills in. */
+.form-progress {
+  margin: 0;
+  min-height: 1.2em;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
 }
 
 /* --- theme switch ------------------------------------------------------ */
@@ -51,11 +122,6 @@
   font-size: 15px;
   line-height: 1;
   color: var(--accent);
-}
-
-.theme-toggle-label {
-  font-weight: 600;
-  letter-spacing: 0.01em;
 }
 
 /* --- form -------------------------------------------------------------- */
@@ -203,75 +269,6 @@
   inset: 0;
   height: auto;
   min-height: 0;
-}
-
-/* --- language picker --------------------------------------------------- */
-/* Shaped like .theme-toggle so the two sit together as one control group.
-   Ten languages is too many to cycle through a button, so this is a native
-   <select> — which is also what already behaves on a phone and with a screen
-   reader. The select is transparent and laid over the pill so the closed state
-   can show just the language name; left to itself it would render the selected
-   option's text, and "Device language — Português" does not fit here. */
-.lang-toggle {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  border-radius: 999px;
-  padding: 7px 12px;
-  font-size: 13px;
-  cursor: pointer;
-  flex: 0 0 auto;
-  transition: border-color 0.15s, color 0.15s;
-}
-
-.lang-toggle:hover {
-  border-color: var(--border-strong);
-  color: var(--text);
-}
-
-.lang-toggle:focus-within {
-  border-color: var(--accent);
-  color: var(--text);
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.lang-toggle-icon { font-size: 14px; line-height: 1; }
-
-.lang-toggle-label {
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-}
-
-.lang-toggle-caret { font-size: 12px; line-height: 1; opacity: 0.7; }
-
-/* Covers the pill exactly. 16px keeps iOS Safari from zooming the page when
-   the control takes focus. */
-.lang-toggle select {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-/* The open list is drawn by the OS, which does not inherit the page's colours
-   — so name them, or a dark-theme user gets black text on black. */
-.lang-toggle select option {
-  background: var(--panel);
-  color: var(--text);
 }
 
 /* Both controls travel together in each header, and stay right-aligned if the

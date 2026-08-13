@@ -67,17 +67,31 @@ stops moving is precisely what that setting is asking about.
 
 ## Colour
 
-`MUSCLE_COLORS` (`apps/web/src/anatomy/zoneMapping.js`) is the single source of
-colour for both the model and the picker, so a swatch in the list is exactly the
-colour on the body. It's a system, not seventeen separate choices: nine hues
-evenly spaced round the wheel, each at a deep and a bright step at matched
-chroma.
+**The body is one colour until you ask it a question.** Grey — dark against the
+dark canvas, light against the light one — with the muscle you pick wearing the
+theme's own orange, and nothing else wearing anything. Open an exercise and the
+muscles it works take that orange, the ones it merely uses take a softened
+version of it, and the rest of the body drops back.
 
-Every pair a person can confuse — muscles that touch on the model, muscles
-listed one above the other in the picker — is scored by OKLab distance under
-normal vision and under simulated colour blindness. The palette clears the
-lightness band, chroma floor and both separation floors against **the light and
-the dark canvas alike**. Built by `tools/muscle-segmentation/palette-design.py`.
+It used to arrive wearing seventeen colours, one per muscle, doubling as the
+picker's legend. That showed everything at once and so emphasised nothing: a
+body already lit up in every direction has no way left to answer *which one is
+the quadriceps*, because the answer was on screen along with sixteen others.
+The traced borders between muscles stay, so the map is not lost — only the
+shouting. The picker's swatches say the same thing the body does: a row of quiet
+marks, and the one you picked lit up.
+
+Three colours per theme carry it, in `AnatomyModel.jsx`: the body, the dropped
+back, and the accent. The supporting-muscle tone is derived from the accent
+rather than picked, so it tracks whatever the accent is. The 3D canvas can't
+read CSS custom properties, which is why the accent is written out there as well
+as in `index.css`.
+
+`MUSCLE_COLORS` and `tools/muscle-segmentation/palette-design.py` are kept but
+no longer applied — seventeen hues separated by OKLab distance under normal
+vision and under simulated colour blindness, against both canvases. The work
+holds if per-muscle colour ever comes back; the reason it went is above, and it
+isn't that the palette was bad.
 
 ## Exercises
 

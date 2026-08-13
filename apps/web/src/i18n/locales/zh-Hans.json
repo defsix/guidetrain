@@ -11,11 +11,23 @@
  "onboarding": {
   "title": "欢迎使用 GuideTrain",
   "subtitle": "简单几项信息，帮助我们为你定制训练。",
+  "statMuscles": {
+   "other": "{count} 个肌肉群"
+  },
+  "statExercises": {
+   "other": "{count} 个动作"
+  },
+  "statLanguages": {
+   "other": "{count} 种语言"
+  },
   "username": "用户名",
   "usernamePlaceholder": "例如 iron_ada",
   "gender": "性别",
   "ageGroup": "年龄段",
-  "continue": "进入身体浏览器"
+  "continue": "进入身体浏览器",
+  "progress": {
+   "other": "还差 {count} 项"
+  }
  },
  "gender": {
   "female": "女",

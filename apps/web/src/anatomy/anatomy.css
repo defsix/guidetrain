@@ -68,13 +68,15 @@
 .anatomy-root .muscle.active {
   background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
 }
-/* A ring keeps the swatch legible on both canvases: several of the muscle
-   colours sit just under 3:1 against one surface or the other, and the ring
-   plus the name beside it is what carries them. */
+/* The swatch shows what the body is doing, not which muscle this is. The body
+   wears one colour and the chosen muscle wears the accent, so the list says the
+   same thing: a row of quiet marks, and the one you picked lit up. */
 .anatomy-root .muscle .dot {
   width: 11px; height: 11px; border-radius: 3px; flex: none;
-  box-shadow: 0 0 0 1px var(--border-strong) inset, 0 0 0 1px rgba(0, 0, 0, 0.18);
+  background: var(--border-strong); transition: background 0.13s;
 }
+.anatomy-root .muscle:hover .dot { background: var(--text-muted); }
+.anatomy-root .muscle.active .dot { background: var(--accent); }
 /* Wrap rather than truncate. Anatomical names in German, Russian, Polish and
    Czech are long — "Двуглавая Мышца Плеча", "Mięsień Skośny Zewnętrzny
    Brzucha" — and clipping them to "Двуглавая Мыш…" makes half the list
@@ -151,10 +153,11 @@
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 11px; color: var(--text-muted);
 }
-/* Secondary muscles read quieter, matching how they're painted on the model. */
+/* Accent for what the movement is about, the same accent pulled back for what
+   it merely uses — the two states the body itself is showing at that moment. */
 .drill-body .work .dot {
-  width: 9px; height: 9px; border-radius: 3px; opacity: 0.45;
-  box-shadow: 0 0 0 1px var(--border-strong) inset;
+  width: 9px; height: 9px; border-radius: 3px;
+  background: var(--accent); opacity: 0.4;
 }
 .drill-body .work.primary { color: var(--text); }
 .drill-body .work.primary .dot { opacity: 1; }

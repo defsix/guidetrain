@@ -149,6 +149,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The body is one colour until you ask it a question** — grey, dark or light
+  to suit the theme, with the muscle you pick in the theme's own orange and
+  nothing else wearing anything. Opening an exercise puts that orange on what
+  the movement is about, a softened version on what it merely uses, and drops
+  the rest of the body back. It used to arrive wearing seventeen colours, one
+  per muscle, which showed everything at once and so emphasised nothing — a
+  body already lit up everywhere cannot answer "which one is the quadriceps".
+  Traced muscle borders stay, so the map survives; the picker's swatches now
+  say the same thing the body does. `MUSCLE_COLORS` and its OKLab generator are
+  kept but unapplied, since the palette was never the problem.
+- **The first screen says what is behind it** — it was three questions on a
+  blank page, correct and silent about where answering them leads. It now opens
+  with the name, an accent wash, and three figures counted from the data rather
+  than typed in: 17 muscle groups, 180 exercises, 10 languages. The greyed-out
+  button also says what it is waiting for ("2 more to fill in"), announced
+  politely for a screen reader, where before it just sat there disabled.
 - **Train This picks an exercise** — the button named an intention and then did
   nothing you could see. It now opens one of that muscle's exercises in the
   player, for anyone who wants to train the muscle and doesn't want to choose

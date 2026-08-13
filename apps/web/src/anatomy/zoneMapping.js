@@ -180,8 +180,13 @@ export function computeZoneBoundaryEdges(geometry, baked, map, liftEps = 0, smoo
 }
 
 /**
- * The muscle palette — the single source of colour for both the model and the
- * picker, so a swatch in the list is exactly the colour on the body.
+ * The muscle palette — a colour per muscle. NOT CURRENTLY APPLIED: the model
+ * ships in one colour with the chosen muscle in the theme accent (see BODY in
+ * AnatomyModel.jsx), because seventeen colours at once emphasised nothing.
+ *
+ * Kept, with its generator, because the work is sound and independent of that
+ * decision — if per-muscle colour returns, this is what it returns to. What
+ * follows describes how it was built.
  *
  * These are not chosen by eye. Every pair that a person can actually confuse —
  * muscles that touch on the model, and muscles listed one above the other in

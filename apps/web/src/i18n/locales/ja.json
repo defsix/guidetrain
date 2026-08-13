@@ -11,11 +11,23 @@
  "onboarding": {
   "title": "GuideTrain へようこそ",
   "subtitle": "トレーニングを最適化するために、いくつか教えてください。",
+  "statMuscles": {
+   "other": "{count} の筋肉グループ"
+  },
+  "statExercises": {
+   "other": "{count} 種目"
+  },
+  "statLanguages": {
+   "other": "{count} 言語"
+  },
   "username": "ユーザー名",
   "usernamePlaceholder": "例：iron_ada",
   "gender": "性別",
   "ageGroup": "年齢層",
-  "continue": "ボディエクスプローラーへ進む"
+  "continue": "ボディエクスプローラーへ進む",
+  "progress": {
+   "other": "あと {count} 項目"
+  }
  },
  "gender": {
   "female": "女性",

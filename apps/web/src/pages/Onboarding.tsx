@@ -5,6 +5,17 @@ import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import { useT } from "../i18n/I18nProvider";
+import { LOCALES } from "../i18n";
+import muscleMap from "../anatomy/muscle-map.json";
+import exercises from "../anatomy/exercises.json";
+
+// Counted from the data rather than typed in, because a number in a headline is
+// exactly the kind of thing that quietly stops being true. Both files are
+// already in the bundle for the explorer, so this costs nothing.
+const MUSCLE_COUNT = muscleMap.zones.filter((z) => z.selectable !== false).length;
+const EXERCISE_COUNT = new Set(
+  Object.values(exercises.muscles).flatMap((list) => list.map((x) => x.id)),
+).size;
 
 // The numeric bands read the same in every language, so only the two worded
 // ends carry a translation key; the rest are digits and stay as they are.
@@ -36,16 +47,27 @@ export default function Onboarding() {
     navigate("/explore");
   }
 
+  const done = [username.trim().length > 0, gender !== null, ageGroup !== null]
+    .filter(Boolean).length;
+
   return (
     <div className="onboarding">
-      <div className="onboarding-head">
-        <div>
-          <h1>{t("onboarding.title")}</h1>
-          <p className="subtitle">{t("onboarding.subtitle")}</p>
+      <div className="onboarding-hero">
+        <div className="onboarding-head">
+          <p className="eyebrow">GuideTrain</p>
+          <div className="header-controls">
+            <ThemeToggle pref={pref} onChange={setPref} />
+          </div>
         </div>
-        <div className="header-controls">
-          <ThemeToggle pref={pref} onChange={setPref} />
-        </div>
+        <h1>{t("onboarding.title")}</h1>
+        <p className="subtitle">{t("onboarding.subtitle")}</p>
+        {/* What is actually behind the door, in three numbers. The first screen
+            used to promise only that answering three questions led somewhere. */}
+        <ul className="stats">
+          <li>{t("onboarding.statMuscles", { count: MUSCLE_COUNT })}</li>
+          <li>{t("onboarding.statExercises", { count: EXERCISE_COUNT })}</li>
+          <li>{t("onboarding.statLanguages", { count: LOCALES.length })}</li>
+        </ul>
       </div>
 
       <label className="field">
@@ -93,6 +115,12 @@ export default function Onboarding() {
       <button className="primary-button" disabled={!canContinue} onClick={handleContinue}>
         {t("onboarding.continue")}
       </button>
+      {/* The button greys out until all three are answered and never said why.
+          Announced politely so it reaches a screen reader when it changes,
+          rather than interrupting whatever is being read. */}
+      <p className="form-progress" aria-live="polite">
+        {canContinue ? ' ' : t("onboarding.progress", { count: 3 - done })}
+      </p>
     </div>
   );
 }

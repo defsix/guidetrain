@@ -11,11 +11,35 @@
  "onboarding": {
   "title": "Vítejte v GuideTrain",
   "subtitle": "Několik rychlých údajů, abychom vám mohli přizpůsobit trénink.",
+  "statMuscles": {
+   "one": "{count} svalová skupina",
+   "few": "{count} svalové skupiny",
+   "many": "{count} svalové skupiny",
+   "other": "{count} svalových skupin"
+  },
+  "statExercises": {
+   "one": "{count} cvik",
+   "few": "{count} cviky",
+   "many": "{count} cviku",
+   "other": "{count} cviků"
+  },
+  "statLanguages": {
+   "one": "{count} jazyk",
+   "few": "{count} jazyky",
+   "many": "{count} jazyka",
+   "other": "{count} jazyků"
+  },
   "username": "Uživatelské jméno",
   "usernamePlaceholder": "např. iron_ada",
   "gender": "Pohlaví",
   "ageGroup": "Věková skupina",
-  "continue": "Pokračovat do průzkumníka těla"
+  "continue": "Pokračovat do průzkumníka těla",
+  "progress": {
+   "one": "Zbývá vyplnit {count} pole",
+   "few": "Zbývají vyplnit {count} pole",
+   "many": "Zbývá vyplnit {count} pole",
+   "other": "Zbývá vyplnit {count} polí"
+  }
  },
  "gender": {
   "female": "Žena",

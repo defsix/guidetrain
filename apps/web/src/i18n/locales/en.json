@@ -11,11 +11,27 @@
  "onboarding": {
   "title": "Welcome to GuideTrain",
   "subtitle": "A few quick details so we can tailor your training.",
+  "statMuscles": {
+   "one": "{count} muscle group",
+   "other": "{count} muscle groups"
+  },
+  "statExercises": {
+   "one": "{count} exercise",
+   "other": "{count} exercises"
+  },
+  "statLanguages": {
+   "one": "{count} language",
+   "other": "{count} languages"
+  },
   "username": "Username",
   "usernamePlaceholder": "e.g. iron_ada",
   "gender": "Gender",
   "ageGroup": "Age group",
-  "continue": "Continue to body explorer"
+  "continue": "Continue to body explorer",
+  "progress": {
+   "one": "{count} more to fill in",
+   "other": "{count} more to fill in"
+  }
  },
  "gender": {
   "female": "Female",
