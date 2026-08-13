@@ -170,6 +170,27 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **What to do when the cycle doesn't go up** — the plan described success and
+  nothing else, which the README had already named as the part that gets
+  somebody hurt. It now marks each week's top set hit or missed against the log,
+  and when a lift stalls it offers Wendler's answer: 10% off that lift's
+  training max, rebuild. The reset is stored per exercise, since a training max
+  derived from your best set would otherwise climb straight back. Two things the
+  browser found that the reasoning hadn't: the seed set was marking its own
+  cycle (a 140 kg five puts week three's top set at 140 kg), so only work logged
+  since the training max was fixed now counts; and with a reset active the panel
+  still claimed the number was "90% of the estimate" one line above the note
+  saying it wasn't.
+- **History** — every set has been stored since logging shipped and none of it
+  was ever shown. Now readable by day, for what you did on Tuesday, and by
+  exercise, for whether a lift is going anywhere. On the device, like the rest.
+- **Unit tests, at last** — 34 of them over the arithmetic that decides what
+  goes on a bar: Epley's edge at one rep, the 5/3/1 percentages and reset, the
+  plate walk including a weight the rack cannot make, and the plan
+  prescriptions. Expected values worked by hand from the sources rather than
+  captured from a passing run — two failed first time because my arithmetic had
+  forgotten the loads get rounded to something loadable. `npm run check` runs
+  them alongside the three data gates and the build.
 - **What the number on screen actually means** — it differed by equipment and
   the app never said which. A barbell's 100 kg is the whole loaded bar, so it
   now shows the 40 kg a side and the plates to build it from — the halving is

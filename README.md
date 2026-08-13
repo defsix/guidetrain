@@ -591,6 +591,48 @@ Worked example, the one this was built against: a 100 kg × 5 squat estimates a
 weeks**. The same target on a bench press takes 4, since upper-body lifts move
 at half the rate.
 
+### When it doesn't go up
+
+A plan that only describes success is the part that gets somebody hurt, so the
+panel reads the log back against the cycle on screen and marks each week's top
+set hit or missed. The minimum is the programme's own: five in week one, three
+in week two, one in week three, on the last and heaviest set. Falling under it
+is the training max saying it is too high.
+
+The answer is **not** to try again heavier. That lift's training max comes down
+10% and rebuilds — only that lift, since the others are progressing fine.
+"Two steps forward, one step back" is what keeps the method running for years.
+([Norma](https://www.norma-athletics.at/guides/wendler-531/),
+[Marathon CrossFit](https://www.marathon-crossfit.com/blog/how-to-reset-jim-wendler-531-when-you-stall))
+
+A reset has to be stored or it does not exist: the training max is normally
+derived from your best set, so it would climb straight back the moment it was
+recomputed, and showing the old figure after telling someone to drop 10% is
+worse than never offering the reset. It is kept per exercise with the estimate
+it replaced and the day it happened, and it can be put back.
+
+Two subtleties that only showed up in the browser:
+
+- **The seed set was marking its own cycle.** A 140 kg five estimates a 163 kg
+  max, a 147.5 kg training max, and a week-three top set of 140 kg — the seed's
+  own weight. Week three read as passed before the cycle had begun. Only work
+  logged *since the training max was fixed* counts as an attempt at it, which
+  after a reset means only the rebuild counts.
+- **Two weeks can want the same bar.** Sets are matched to weeks by weight,
+  because that is all the log records. At low training maxes 85% and 90% round
+  to the same loadable weight, and then a set belongs equally to both; those
+  weeks come back flagged and no verdict is drawn. Telling somebody to reset a
+  lift they did not fail is the error worth avoiding.
+
+### History
+
+Every set is kept, and now shown: **by day** for "what did I actually do on
+Tuesday", with sets grouped under their exercise, and **by exercise** for "is
+my squat going anywhere", which no single session can answer. Opening a lift
+lists every set of it with the best estimated max and the set that produced it.
+An exercise id that has left the catalogue falls back to the id rather than
+rendering a blank row and losing the work.
+
 ## Theming
 
 Light, dark, or follow the device — one icon button in the header cycles the
@@ -620,6 +662,24 @@ cp .env.example .env.local
 npm run dev
 ```
 
+### Checks
+
+```bash
+npm run check
+```
+
+Runs everything, in the order that fails cheapest first: the exercise pairing
+rules, the ready-made plans against the catalogue, the ten locales against
+English, the unit tests, then a full type-check and build. Every push to `main`
+deploys, so this runs before pushing rather than after.
+
+The unit tests (`apps/web/src/lib/*.test.ts`, `npm run test -w apps/web`) cover
+the arithmetic that decides what somebody puts on a bar — Epley and its edge at
+one rep, the 5/3/1 percentages and reset, the plate breakdown, and the plan
+prescriptions. Their expected values are worked by hand from the sources cited
+in the code rather than captured from a passing run: a fixture recorded from
+the implementation agrees with whatever the implementation does, bugs included.
+
 ## Hosting on GitHub Pages
 
 `.github/workflows/deploy-pages.yml` builds and publishes `apps/web` on every
@@ -639,40 +699,54 @@ Two things apply only to the Pages build:
 1. ✅ 3D anatomical body model with selectable muscle groups
 2. ✅ Training exercises per muscle group — instructions, equipment, the muscles
    lit on the model, and a real demonstration video for all 180
-3. Personal training programs (build your own, save/bookmark) — **a single
-   saved workout is built**: add from the explorer, reorder, remove, kept in
-   `localStorage`. Named programs with sets and reps are the rest of it.
-4. Accounts (username, sex, approximate age) and public program library
+3. ✅ Personal training programs — several named workouts, built by hand or
+   from a ready-made plan, with targets, set logging and history, all in
+   `localStorage`
+4. ✅ Getting to your next max — 5/3/1 off your logged sets, with the weights
+   carried into the workout and a reset when a lift stalls
+5. Accounts (username, sex, approximate age) and public program library —
+   the next thing, and the one several items below are waiting on
 
-Asked for, not yet built:
+### Waiting on accounts
+
+Everything the app stores is `localStorage`: per device, per browser, gone with
+the phone. These need a server behind them rather than more front-end work.
+
+- **Sync and durability** — the same training on a laptop and a phone, and a
+  history that survives a lost device. Nothing here adds capability; it stops
+  the existing capability from being one browser wipe from zero.
+- **A public program library** — roadmap 5's other half. Programs are already
+  data; sharing them is an account and an endpoint away.
+
+### Asked for, not yet built
 
 - **Autoplay on selection** — *on hold.* Opening an exercise would start its
   video rather than waiting for a click. Worth noting when it comes back: the
   player deliberately fetches nothing from YouTube until you click, so autoplay
   spends that, and it may want to be opt-in.
-- **Get me to my next max** — *needs accounts first (roadmap 4).* You record
-  your best lift, name the number you want, and the app plans the way there:
-  100 kg today, 110 kg wanted, so you back off and build up rather than trying
-  110 on Monday.
 
-  The maths is well established and needs sourcing properly before any of it
-  ships, but the shape of it is known. Estimating a one-rep max from a set you
-  actually did is Epley (`1RM = w × (1 + reps/30)`) or Brzycki
-  (`1RM = w × 36 / (37 − reps)`); they agree closely under about 10 reps and
-  drift apart above it. Working back down is a percentage table off a *training
-  max* set below the true one — Wendler's 5/3/1 uses 90% and adds a fixed
-  2.5 kg upper / 5 kg lower per four-week cycle, which puts 100 → 110 kg at two
-  cycles. Whether that specific programme, a linear progression or something
-  else is what GuideTrain should teach is a decision, not a lookup.
+### Ideas, unscheduled
 
-  Three things to settle when it is built, none of them arithmetic:
-  - **Where the number comes from.** A typed-in "my max is 100" is a claim, an
-    estimate from a recorded set is a calculation. They should not look alike.
-  - **What happens when a cycle fails**, because it will. A plan that only
-    describes success is the part that gets someone hurt.
-  - **How it is framed.** This is the first feature that would tell a person
-    what load to put on a bar. Novice, injured and returning lifters are the
-    ones a percentage table serves worst, and the app knows an age band but
-    nothing about training history.
+Not commitments. Roughly in the order they would earn their place:
+
+- **Rest timer between sets** — the main reason to be holding a phone
+  mid-workout that the app does not yet cover.
+- **Warm-up sets** calculated up to the working weight, which everyone does by
+  hand and nobody enjoys.
+- **Swap an exercise** — the rack is busy, give me something that trains the
+  same thing. The pairing rules already know which exercises share muscles.
+- **A progress chart per lift**, now that history exists to draw one from.
+- **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,
+  StrongLifts, GZCLP.
+- **Install as an app (PWA)** — it is already a static site that needs no
+  network once loaded, so this is mostly a manifest and a service worker.
+- **Body weight over time**, which the onboarding already asks for once.
+
+### Known gaps
+
+- **Hands take the forearm's colour** rather than being an untrainable part.
+  Needs a wrist landmark and a segmentation change.
+- **`apps/web/src/lib/api.ts` is dead** — imported nowhere, kept for the
+  backend phase.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).
