@@ -149,6 +149,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Kilos, everywhere** — the pound option is gone, and with it a whole
+  dimension: "best", the estimate and the plan no longer have to ask whether
+  two numbers are comparable before comparing them. A log written in pounds is
+  converted once on read and written back, rather than left to be read as
+  though 225 meant kilos. A profile whose body weight was saved in pounds is
+  left alone and asks for the weight instead, since converting it silently
+  would show a number nobody entered.
+- **One Watch demonstration, not two** — the control under a training pair was
+  falling back to a browser default button, bordered and black and twice the
+  size of the identical control four lines above it. The rule was scoped to the
+  exercise body and missed the pair; both now use the small accent version.
 - **Body weight, exact, on the first screen** — a figure to the nearest whole
   unit rather than a band, because unlike age it is arithmetic: it is the load
   on all 29 bodyweight exercises in the catalogue.

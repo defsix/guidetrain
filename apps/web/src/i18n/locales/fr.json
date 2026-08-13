@@ -195,12 +195,10 @@
   "repsShort": "réps",
   "removeSet": "Supprimer la série",
   "best": "Record",
-  "unit": "Unité de charge",
   "atBodyWeight": "Chargé à votre poids de corps, {weight} {unit}."
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "Plan →",

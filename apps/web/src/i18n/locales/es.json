@@ -195,12 +195,10 @@
   "repsShort": "reps",
   "removeSet": "Quitar serie",
   "best": "Mejor",
-  "unit": "Unidad de peso",
   "atBodyWeight": "Con tu peso corporal como carga, {weight} {unit}."
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "Plan →",

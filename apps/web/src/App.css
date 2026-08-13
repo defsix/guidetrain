@@ -502,37 +502,6 @@
 .workout-list > li { flex-direction: column; align-items: stretch; gap: 7px; }
 .wrow { display: flex; align-items: center; gap: 9px; }
 
-.workout-head-right {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-/* Two halves of one control, so it reads as a choice rather than two buttons. */
-.unit-switch {
-  display: inline-flex;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.unit-switch button {
-  background: none;
-  border: 0;
-  color: var(--text-muted);
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.unit-switch button.on {
-  background: var(--accent);
-  color: var(--accent-text);
-}
-
 .logger {
   display: flex;
   flex-direction: column;

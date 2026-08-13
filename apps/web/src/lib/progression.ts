@@ -1,4 +1,4 @@
-import type { SetEntry, Unit } from "../state/useLog";
+import type { SetEntry } from "../state/useLog";
 
 /**
  * Getting from the max you have to the max you want.
@@ -11,8 +11,8 @@ import type { SetEntry, Unit } from "../state/useLog";
  *
  * Sources checked rather than recalled:
  *   - Wendler 5/3/1 — training max 90% of the 1RM; week 1 65/75/85, week 2
- *     70/80/90, week 3 75/85/95, week 4 deload 40/50/60; +10 lb per cycle on
- *     squat and deadlift, +5 lb on bench and press.
+ *     70/80/90, week 3 75/85/95, week 4 deload 40/50/60; +10 lb (5 kg) per
+ *     cycle on squat and deadlift, +5 lb (2.5 kg) on bench and press.
  *     https://barbend.com/5-3-1-program/ and https://exrx.net/WeightTraining/Powerlifting/531
  *   - Epley, the estimator used here: 1RM = w × (1 + reps/30).
  *
@@ -53,37 +53,27 @@ export function bestEstimate(sets: SetEntry[]): { set: SetEntry; oneRM: number }
   for (const s of sets) {
     const oneRM = estimateOneRepMax(s.weight, s.reps);
     if (oneRM === null) continue;
-    if (!best) {
-      best = { set: s, oneRM };
-      continue;
-    }
-    // Never across units: 60 kg and 135 lb are the same lift and 135 is the
-    // bigger number. The first unit seen wins and the rest sit it out.
-    if (s.unit !== best.set.unit) continue;
-    if (oneRM > best.oneRM) best = { set: s, oneRM };
+    if (!best || oneRM > best.oneRM) best = { set: s, oneRM };
   }
   return best;
 }
 
 /**
- * The smallest plate the gym is assumed to have, per side.
+ * The smallest plate the gym is assumed to have, per side, in kilos.
  *
  * The loadable step is *twice* this, because plates go on in pairs: with 2.5 kg
  * as the smallest plate, a barbell moves 5 kg at a time and 87.5 kg is not a
  * weight you can build. Getting this wrong is the difference between a plan you
  * follow and a plan you round in your head every set.
  */
-export const SMALLEST_PLATE = { kg: 2.5, lb: 5 } as const;
+export const SMALLEST_PLATE = 2.5;
 
 /** What the bar can actually change by: a plate on each side. */
-export function loadStep(unit: Unit): number {
-  return SMALLEST_PLATE[unit] * 2;
-}
+export const LOAD_STEP = SMALLEST_PLATE * 2;
 
 /** Round to something you can actually load. */
-export function roundLoad(value: number, unit: Unit): number {
-  const step = loadStep(unit);
-  return Math.round(value / step) * step;
+export function roundLoad(value: number): number {
+  return Math.round(value / LOAD_STEP) * LOAD_STEP;
 }
 
 /** 5/3/1 works off a training max deliberately set below the real one. */
@@ -97,9 +87,8 @@ export const TRAINING_MAX_FRACTION = 0.9;
  * identical. Only the working sets get rounded, and they are the only numbers
  * anyone puts on a bar.
  */
-export function trainingMax(oneRM: number, unit: Unit): number {
-  const step = SMALLEST_PLATE[unit];
-  return Math.round((oneRM * TRAINING_MAX_FRACTION) / step) * step;
+export function trainingMax(oneRM: number): number {
+  return Math.round((oneRM * TRAINING_MAX_FRACTION) / SMALLEST_PLATE) * SMALLEST_PLATE;
 }
 
 export type PlannedSet = { percent: number; reps: number; amrap: boolean; load: number };
@@ -113,7 +102,7 @@ const CYCLE: { key: string; deload: boolean; sets: [number, number, boolean][] }
 ];
 
 /** The four weeks of one cycle, as loads you can put on a bar. */
-export function cycle(tm: number, unit: Unit): PlannedWeek[] {
+export function cycle(tm: number): PlannedWeek[] {
   return CYCLE.map((w) => ({
     label: w.key,
     deload: w.deload,
@@ -121,7 +110,7 @@ export function cycle(tm: number, unit: Unit): PlannedWeek[] {
       percent,
       reps,
       amrap,
-      load: roundLoad((tm * percent) / 100, unit),
+      load: roundLoad((tm * percent) / 100),
     })),
   }));
 }
@@ -141,8 +130,7 @@ export function cycle(tm: number, unit: Unit): PlannedWeek[] {
  * first and the legs second, so looking at both is what puts it on the right
  * side.
  */
-export function incrementFor(usesLegs: boolean, unit: Unit): number {
-  if (unit === "lb") return usesLegs ? 10 : 5;
+export function incrementFor(usesLegs: boolean): number {
   return usesLegs ? 5 : 2.5;
 }
 

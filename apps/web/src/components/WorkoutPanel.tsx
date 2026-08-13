@@ -3,7 +3,7 @@ import exercises from "../anatomy/exercises.json";
 import muscleMap from "../anatomy/muscle-map.json";
 import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
-import type { SetEntry, Unit } from "../state/useLog";
+import type { SetEntry } from "../state/useLog";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -38,8 +38,6 @@ type Props = {
   onRemove: (id: string) => void;
   onMove: (id: string, delta: number) => void;
   onClear: () => void;
-  unit: Unit;
-  onUnit: (u: Unit) => void;
   today: Map<string, SetEntry[]>;
   best: Map<string, SetEntry>;
   onAddSet: (id: string, weight: number, reps: number) => void;
@@ -52,7 +50,7 @@ type Props = {
 
 export default function WorkoutPanel({
   ids, open, onClose, onRemove, onMove, onClear,
-  unit, onUnit, today, best, onAddSet, onRemoveSet, allSets, bodyLoad,
+  today, best, onAddSet, onRemoveSet, allSets, bodyLoad,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -77,26 +75,9 @@ export default function WorkoutPanel({
       <aside className="workout-panel" aria-label={t("workout.title")}>
         <div className="workout-head">
           <h2>{t("workout.title")}</h2>
-          <div className="workout-head-right">
-            {/* Which unit new sets are recorded in. Entries already written
-                keep the unit they were written in, so this changes what
-                happens next and never what already happened. */}
-            <div className="unit-switch" role="group" aria-label={t("log.unit")}>
-              {(["kg", "lb"] as Unit[]).map((u) => (
-                <button
-                  key={u}
-                  className={unit === u ? "on" : ""}
-                  aria-pressed={unit === u}
-                  onClick={() => onUnit(u)}
-                >
-                  {t(`unit.${u}`, undefined, u)}
-                </button>
-              ))}
-            </div>
-            <button className="workout-close" onClick={onClose} aria-label={t("workout.close")}>
-              ✕
-            </button>
-          </div>
+          <button className="workout-close" onClick={onClose} aria-label={t("workout.close")}>
+            ✕
+          </button>
         </div>
 
         {items.length === 0 ? (
@@ -143,7 +124,6 @@ export default function WorkoutPanel({
                   </div>
                   <SetLogger
                     exerciseId={x.id}
-                    unit={unit}
                     todaysSets={today.get(x.id) ?? []}
                     best={best.get(x.id)}
                     onAdd={onAddSet}
@@ -170,7 +150,6 @@ export default function WorkoutPanel({
             sets={allSets.filter((s) => s.id === planning)}
             usesLegs={usesLegs(raw)}
             barbell={raw.equipment === "barbell"}
-            unit={unit}
             onClose={() => setPlanning(null)}
           />
         );

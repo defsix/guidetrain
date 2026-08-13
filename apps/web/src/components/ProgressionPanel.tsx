@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import type { SetEntry, Unit } from "../state/useLog";
+import type { SetEntry } from "../state/useLog";
 import {
   bestEstimate, cycle, cyclesTo, incrementFor, roundLoad, trainingMax,
   MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION,
@@ -11,7 +11,6 @@ type Props = {
   sets: SetEntry[];
   usesLegs: boolean;
   barbell: boolean;
-  unit: Unit;
   onClose: () => void;
 };
 
@@ -24,23 +23,23 @@ type Props = {
  * cannot tell them apart will happily build eight weeks on top of a guess.
  */
 export default function ProgressionPanel({
-  name, sets, usesLegs, barbell, unit, onClose,
+  name, sets, usesLegs, barbell, onClose,
 }: Props) {
   const { t } = useI18n();
   const best = useMemo(() => bestEstimate(sets), [sets]);
-  const increment = incrementFor(usesLegs, unit);
+  const increment = incrementFor(usesLegs);
 
-  const currentMax = best ? roundLoad(best.oneRM, unit) : 0;
+  const currentMax = best ? roundLoad(best.oneRM) : 0;
   const [target, setTarget] = useState(() =>
-    best ? String(roundLoad(best.oneRM + increment * 2, unit)) : "",
+    best ? String(roundLoad(best.oneRM + increment * 2)) : "",
   );
 
   const targetNum = parseFloat(target.replace(",", "."));
-  const tm = best ? trainingMax(best.oneRM, unit) : 0;
-  const targetTM = Number.isFinite(targetNum) ? trainingMax(targetNum, unit) : 0;
+  const tm = best ? trainingMax(best.oneRM) : 0;
+  const targetTM = Number.isFinite(targetNum) ? trainingMax(targetNum) : 0;
   const cycles = cyclesTo(tm, targetTM, increment);
-  const weeks = useMemo(() => cycle(tm, unit), [tm, unit]);
-  const u = t(`unit.${unit}`, undefined, unit);
+  const weeks = useMemo(() => cycle(tm), [tm]);
+  const u = t("unit.kg");
 
   return (
     <>

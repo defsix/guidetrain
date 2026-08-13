@@ -205,12 +205,10 @@
   "repsShort": "opak.",
   "removeSet": "Odebrat sérii",
   "best": "Nejlepší",
-  "unit": "Jednotka váhy",
   "atBodyWeight": "Zátěž odpovídá vaší hmotnosti, {weight} {unit}."
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "Plán →",

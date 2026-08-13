@@ -70,17 +70,16 @@ export default function BodyExplorer() {
         onRemove={remove}
         onMove={move}
         onClear={clear}
-        unit={log.unit}
-        onUnit={log.setUnit}
         today={log.today}
         best={log.best}
         onAddSet={log.add}
         onRemoveSet={log.remove}
         allSets={log.entries}
         bodyLoad={
-          // Only when the recorded unit matches the one being logged in;
-          // converting silently would put a number on screen nobody entered.
-          profile?.bodyWeight && profile.bodyWeightUnit === log.unit
+          // Everything is kilos now. A profile saved in pounds is left alone
+          // rather than converted behind the reader's back — the weight field
+          // comes back for it, which is the honest fallback.
+          profile?.bodyWeight && profile.bodyWeightUnit !== "lb"
             ? profile.bodyWeight
             : undefined
         }

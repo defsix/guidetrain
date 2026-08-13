@@ -1,10 +1,9 @@
 import { useState } from "react";
-import type { SetEntry, Unit } from "../state/useLog";
+import type { SetEntry } from "../state/useLog";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
   exerciseId: string;
-  unit: Unit;
   todaysSets: SetEntry[];
   best?: SetEntry;
   onAdd: (id: string, weight: number, reps: number) => void;
@@ -34,7 +33,7 @@ type Props = {
  * towards a plan; it just isn't asked for.
  */
 export default function SetLogger({
-  exerciseId, unit, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad,
+  exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad,
 }: Props) {
   const { t } = useI18n();
   const repsOnly = bodyLoad != null;
@@ -63,7 +62,7 @@ export default function SetLogger({
           {todaysSets.map((s, i) => (
             <li key={s.uid}>
               <span className="sn">{i + 1}</span>
-              {s.weight} {t(`unit.${s.unit}`, undefined, s.unit)} × {s.reps}
+              {s.weight} {t("unit.kg")} × {s.reps}
               <button
                 onClick={() => onRemove(s.uid)}
                 aria-label={`${t("log.removeSet")} — ${s.weight} × ${s.reps}`}
@@ -82,7 +81,7 @@ export default function SetLogger({
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
               inputMode="decimal"
-              placeholder={t(`unit.${unit}`, undefined, unit)}
+              placeholder={t("unit.kg")}
               aria-label={t("log.weight")}
               maxLength={6}
             />
@@ -106,16 +105,13 @@ export default function SetLogger({
           after typing only "10" is explained rather than surprising. */}
       {repsOnly && (
         <p className="body-load">
-          {t("log.atBodyWeight", {
-            weight: bodyLoad,
-            unit: t(`unit.${unit}`, undefined, unit),
-          })}
+          {t("log.atBodyWeight", { weight: bodyLoad, unit: t("unit.kg") })}
         </p>
       )}
 
       {best && (
         <p className="best">
-          {t("log.best")} {best.weight} {t(`unit.${best.unit}`, undefined, best.unit)} × {best.reps}
+          {t("log.best")} {best.weight} {t("unit.kg")} × {best.reps}
           {/* Only offered once there is a set to work from, since the plan is
               built from recorded lifts and has nothing to say without one. */}
           <button className="plan-link" onClick={onPlan}>

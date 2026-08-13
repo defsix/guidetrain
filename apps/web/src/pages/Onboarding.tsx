@@ -38,7 +38,6 @@ export default function Onboarding() {
   const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [bodyWeight, setBodyWeight] = useState("");
-  const [unit, setUnit] = useState<"kg" | "lb">("kg");
 
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people
@@ -56,7 +55,6 @@ export default function Onboarding() {
       gender: gender!,
       ageGroup: ageGroup!,
       bodyWeight: weightNum,
-      bodyWeightUnit: unit,
     };
     setProfile(profile);
     navigate("/explore");
@@ -125,19 +123,7 @@ export default function Onboarding() {
             aria-label={t("onboarding.bodyWeight")}
             maxLength={5}
           />
-          <div className="unit-switch" role="group" aria-label={t("log.unit")}>
-            {(["kg", "lb"] as const).map((u) => (
-              <button
-                key={u}
-                type="button"
-                className={unit === u ? "on" : ""}
-                aria-pressed={unit === u}
-                onClick={() => setUnit(u)}
-              >
-                {t(`unit.${u}`, undefined, u)}
-              </button>
-            ))}
-          </div>
+          <span className="cap">{t("unit.kg")}</span>
         </div>
         <p className="field-note">{t("onboarding.bodyWeightWhy")}</p>
       </div>

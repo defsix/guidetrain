@@ -195,12 +195,10 @@
   "repsShort": "Wdh.",
   "removeSet": "Satz entfernen",
   "best": "Bestwert",
-  "unit": "Gewichtseinheit",
   "atBodyWeight": "Belastet mit deinem Körpergewicht, {weight} {unit}."
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "Plan →",

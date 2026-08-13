@@ -1,21 +1,19 @@
 import { useCallback, useMemo, useState } from "react";
 
 const LOG_KEY = "guidetrain.log";
-const UNIT_KEY = "guidetrain.unit";
+const LEGACY_UNIT_KEY = "guidetrain.unit";
 
-export type Unit = "kg" | "lb";
+/** Kilos, everywhere. One pound in kilos, for reading older entries. */
+const LB_TO_KG = 0.45359237;
 
 export type SetEntry = {
   /** Unique per set, so removing one can't take its twin with it. */
   uid: string;
   /** Exercise id, the same one the saved workout stores. */
   id: string;
+  /** Kilos. Always kilos — see the note on reading below. */
   weight: number;
   reps: number;
-  /** Stored per entry, not per user: changing the preference later must not
-      silently reinterpret what was already written down. 60 recorded in kg
-      stays 60 kg even if the app is switched to pounds tomorrow. */
-  unit: Unit;
   /** Epoch ms. Kept as a number so sorting needs no parsing. */
   at: number;
 };
@@ -31,6 +29,13 @@ export type SetEntry = {
  * Like the saved workout this is localStorage, so it is per-device and per
  * browser. Nothing here needs a server; accounts would add sync and durability,
  * not capability.
+ *
+ * Weights were briefly recorded with a unit beside them. They are kilos now and
+ * only kilos, which removes a whole dimension: nothing has to ask whether two
+ * numbers are comparable before comparing them. An entry written in pounds is
+ * converted once, on read, rather than left to be read as if 225 meant kilos —
+ * that would be a wrong number on screen, which is the one thing worse than a
+ * missing one.
  */
 function readLog(): SetEntry[] {
   try {
@@ -40,24 +45,28 @@ function readLog(): SetEntry[] {
     if (!Array.isArray(parsed)) return [];
     // Storage is not a trusted input: another tab, an older build or devtools
     // can put anything here. Keep only entries that are entirely well formed.
-    return parsed.filter(
-      (x): x is SetEntry =>
-        x &&
-        typeof x.uid === "string" &&
-        typeof x.id === "string" &&
-        Number.isFinite(x.weight) &&
-        Number.isFinite(x.reps) &&
-        (x.unit === "kg" || x.unit === "lb") &&
-        Number.isFinite(x.at),
-    );
+    return parsed
+      .filter(
+        (x: any) =>
+          x &&
+          typeof x.uid === "string" &&
+          typeof x.id === "string" &&
+          Number.isFinite(x.weight) &&
+          Number.isFinite(x.reps) &&
+          Number.isFinite(x.at),
+      )
+      .map((x: any): SetEntry => ({
+        uid: x.uid,
+        id: x.id,
+        // Rounded to a half kilo: 225 lb is 102.058 kg, and six decimal places
+        // of a number nobody typed is false precision.
+        weight: x.unit === "lb" ? Math.round(x.weight * LB_TO_KG * 2) / 2 : x.weight,
+        reps: x.reps,
+        at: x.at,
+      }));
   } catch {
     return [];
   }
-}
-
-function readUnit(): Unit {
-  const raw = localStorage.getItem(UNIT_KEY);
-  return raw === "lb" ? "lb" : "kg";
 }
 
 function persist(key: string, value: unknown) {
@@ -72,30 +81,31 @@ const sameDay = (a: number, b: number) =>
   new Date(a).toDateString() === new Date(b).toDateString();
 
 export function useLog() {
-  const [entries, setEntries] = useState<SetEntry[]>(readLog);
-  const [unit, setUnitState] = useState<Unit>(readUnit);
+  const [entries, setEntries] = useState<SetEntry[]>(() => {
+    const list = readLog();
+    // A converted entry has to be written back, or it converts again next time.
+    persist(LOG_KEY, list);
+    try { localStorage.removeItem(LEGACY_UNIT_KEY); } catch { /* nothing to do */ }
+    return list;
+  });
 
-  const add = useCallback(
-    (id: string, weight: number, reps: number) => {
-      if (!Number.isFinite(weight) || !Number.isFinite(reps) || reps <= 0) return;
-      setEntries((prev) => {
-        const next = [
-          ...prev,
-          {
-            uid: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
-            id,
-            weight,
-            reps,
-            unit,
-            at: Date.now(),
-          },
-        ];
-        persist(LOG_KEY, next);
-        return next;
-      });
-    },
-    [unit],
-  );
+  const add = useCallback((id: string, weight: number, reps: number) => {
+    if (!Number.isFinite(weight) || !Number.isFinite(reps) || reps <= 0) return;
+    setEntries((prev) => {
+      const next = [
+        ...prev,
+        {
+          uid: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`,
+          id,
+          weight,
+          reps,
+          at: Date.now(),
+        },
+      ];
+      persist(LOG_KEY, next);
+      return next;
+    });
+  }, []);
 
   const remove = useCallback((uid: string) => {
     setEntries((prev) => {
@@ -103,11 +113,6 @@ export function useLog() {
       persist(LOG_KEY, next);
       return next;
     });
-  }, []);
-
-  const setUnit = useCallback((next: Unit) => {
-    persist(UNIT_KEY, next);
-    setUnitState(next);
   }, []);
 
   /** Sets recorded today, by exercise — what the panel shows under each row. */
@@ -135,22 +140,12 @@ export function useLog() {
     const out = new Map<string, SetEntry>();
     for (const e of entries) {
       const cur = out.get(e.id);
-      if (!cur) {
-        out.set(e.id, e);
-        continue;
-      }
-      // Only ever compared within one unit. 60 kg and 135 lb are the same lift
-      // and 135 is the bigger number, so comparing across them would report the
-      // wrong set as the best one; the first unit seen for an exercise wins,
-      // and entries in the other are left out of the comparison rather than
-      // silently converted.
-      if (e.unit !== cur.unit) continue;
-      if (e.weight > cur.weight || (e.weight === cur.weight && e.reps > cur.reps)) {
+      if (!cur || e.weight > cur.weight || (e.weight === cur.weight && e.reps > cur.reps)) {
         out.set(e.id, e);
       }
     }
     return out;
   }, [entries]);
 
-  return { entries, unit, setUnit, add, remove, today, best };
+  return { entries, add, remove, today, best };
 }

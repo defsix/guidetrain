@@ -205,12 +205,10 @@
   "repsShort": "powt.",
   "removeSet": "Usuń serię",
   "best": "Najlepszy",
-  "unit": "Jednostka ciężaru",
   "atBodyWeight": "Obciążenie równe masie ciała, {weight} {unit}."
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "Plan →",

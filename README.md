@@ -426,11 +426,12 @@ the weight usually repeats across a set and the reps usually don't. A comma is
 accepted as the decimal separator — it is the separator in most of the ten
 languages, and `parseFloat("62,5")` silently returns `62`.
 
-Units are **kg or lb, stored per entry rather than per user.** Switching the
-preference changes what happens next and never what already happened: 60
-recorded in kilos stays 60 kilos. For the same reason the "best" figure only
-compares within a unit — 60 kg and 135 lb are the same lift and 135 is the
-bigger number, so comparing across them would name the wrong set.
+**Kilos, everywhere.** Weights briefly carried a unit beside them and no longer
+do, which removes a whole dimension: nothing has to ask whether two numbers are
+comparable before comparing them. An entry written in pounds is converted once
+on read and written back — leaving it to be read as though 225 meant kilos
+would put a wrong number on screen, which is the one thing worse than a missing
+one.
 
 The best figure is a set that actually happened, not an estimated one-rep max.
 Estimating is the progression feature's job, and its formulas want checking
@@ -469,8 +470,8 @@ The maths, checked against sources rather than recalled:
   ([BarBend](https://barbend.com/5-3-1-program/),
   [ExRx](https://exrx.net/WeightTraining/Powerlifting/531))
 
-**The gym's smallest plate is assumed to be 2.5 kg (5 lb), so the bar moves in
-5 kg steps** — plates go on in pairs, and 87.5 kg is not a weight you can
+**The gym's smallest plate is assumed to be 2.5 kg, so the bar moves in 5 kg
+steps** — plates go on in pairs, and 87.5 kg is not a weight you can
 build. Every working load rounds to that step. The *training max* deliberately
 does not: it is a number to calculate from rather than a weight to load, and
 rounding it would drag every percentage below it with the same error and make

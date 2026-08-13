@@ -190,12 +190,10 @@
   "repsShort": "回",
   "removeSet": "セットを削除",
   "best": "自己ベスト",
-  "unit": "重量の単位",
   "atBodyWeight": "負荷は体重の {weight} {unit} です。"
  },
  "unit": {
-  "kg": "kg",
-  "lb": "lb"
+  "kg": "kg"
  },
  "plan": {
   "open": "プラン →",
