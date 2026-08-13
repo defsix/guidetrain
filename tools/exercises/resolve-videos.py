@@ -91,7 +91,24 @@ ALIAS = {"rdl": {"romanian", "stiff", "legged", "deadlift"}, "db": {"dumbbell"},
          "single": {"one"}, "unilateral": {"one"}, "banded": {"band"},
          # Straps. The catalogue says "suspended"; the world says TRX, which is
          # a brand that became the name of the movement.
-         "trx": {"suspended"}, "strap": {"suspended"}, "suspension": {"suspended"}}
+         "trx": {"suspended"}, "strap": {"suspended"}, "suspension": {"suspended"},
+         # A "reverse calf raise" is dorsiflexion, which everyone who films it
+         # calls a tibialis raise. Both meanings are kept, so the word still
+         # matches a title that says tibialis outright.
+         "tibialis": {"tibialis", "reverse"}}
+
+# Words that distinguish nothing *for a particular exercise*, because the
+# movement has no other version.
+#
+# The strong-word rule earns its keep on "Dumbbell One-Arm Upright Row", where a
+# two-arm version genuinely exists and is the default. A cable kickback has no
+# two-legged version — you would fall over — so no one writes "one" in the
+# title. Measured before deciding: twenty candidate titles across two searches,
+# not one of them said "one" or "single". Waiving the word here is following the
+# evidence; waiving it everywhere would undo the rule.
+NOT_DISTINGUISHING = {
+    "One-Legged Cable Kickback": {"one"},
+}
 
 # What the movement is actually called, where that differs from the catalogue.
 #
@@ -106,8 +123,8 @@ SEARCH_AS = {
     "One-Legged Cable Kickback": "single leg cable glute kickback",
     "Kneeling Cable Crunch With Alternating Oblique Twists":
         "kneeling cable oblique crunch with a twist",
-    "Reverse Calf Raise on Leg Press": "reverse calf raise on the leg press tibialis",
-    "Suspended Row": "TRX suspended row on a suspension trainer",
+    "Reverse Calf Raise on Leg Press": "tibialis raise on the leg press machine",
+    "Suspended Row": "how to do a TRX row suspension trainer",
 }
 
 # Qualifiers that separate one variant of a movement from another.
@@ -192,7 +209,7 @@ def contradicts(name, title):
         a, b = n & fam, t & fam
         if a and b and not (a & b):
             return f"{'/'.join(sorted(a))} vs {'/'.join(sorted(b))}"
-    gone = (n & STRONG) - t
+    gone = (n & STRONG) - t - NOT_DISTINGUISHING.get(name, set())
     if gone:
         return f"name says {'/'.join(sorted(gone))}, title doesn't"
     return None
@@ -229,6 +246,14 @@ def resolve(name, taken=()):
     opened the same video twice in a row and looked broken. Falling back to a
     shared video is still allowed once the alternatives run out: two exercises
     on one demonstration beats one exercise on none.
+
+    Among the candidates that qualify, the one sharing the most words with the
+    exercise name wins rather than whichever came first. The gate is a pass/fail
+    on whether a video is *acceptable*, and taking the first acceptable answer
+    threw away better ones sitting two rows below: "Reverse Calf Raise on Leg
+    Press" took a generic "Tibialis Anterior Raises" while "Leg press tibialis
+    raise" was in the same result set. Relevance order breaks ties, so YouTube's
+    own ranking still decides between equals.
     """
     q = f"{SEARCH_AS.get(name, name)} exercise proper form"
     found = get("search", part="snippet", q=q, type="video", maxResults=10,
@@ -239,8 +264,9 @@ def resolve(name, taken=()):
     # videoEmbeddable on search is a filter, but confirm against the video
     # itself — it is one cheap call (1 unit) and it is the authoritative answer.
     info = get("videos", part="status,snippet", id=",".join(ids))
-    fallback = None
-    for v in info.get("items", []):
+    want = words(name)
+    free, shared = [], []
+    for rank, v in enumerate(info.get("items", [])):
         st = v.get("status", {})
         if not (st.get("embeddable") and st.get("privacyStatus") == "public"):
             continue
@@ -249,10 +275,14 @@ def resolve(name, taken=()):
             continue
         hit = {"videoId": v["id"], "videoTitle": title,
                "videoChannel": v["snippet"]["channelTitle"]}
-        if v["id"] not in taken:
-            return hit
-        fallback = fallback or hit
-    return fallback
+        # More words in common with the name is a closer match; rank is the
+        # tiebreak, so among equals YouTube's own ordering still wins.
+        (shared if v["id"] in taken else free).append(
+            (-len(want & words(title)), rank, hit))
+    for bucket in (free, shared):
+        if bucket:
+            return min(bucket, key=lambda x: x[:2])[2]
+    return None
 
 
 def main():

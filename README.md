@@ -127,11 +127,10 @@ named in the build script and marked `"source": "curated"`.
 
 ### Video
 
-179 of the 180 exercises play a real demonstration in the app, in a
-click-to-load `youtube-nocookie` player — nothing is fetched from YouTube until
-you open one. The last one keeps the search link, because nothing that
-demonstrably showed *that* movement could be found; see the gate below for why
-that is the right answer rather than a gap. A *search* cannot be embedded
+All 180 exercises play a real demonstration in the app, in a click-to-load
+`youtube-nocookie` player — nothing is fetched from YouTube until you open one.
+Anything that ever loses its video falls back to a search link, which always
+works. A *search* cannot be embedded
 (YouTube removed `listType=search` in November 2020), so this needs real video
 ids:
 
@@ -204,24 +203,30 @@ touch a YouTube account, and it isn't used at runtime, so it can be deleted once
 the ids are baked in.
 
 Anything without an id keeps the YouTube search link, and the player always
-offers that way out too — video ids rot, and 179 exercises having one today is
+offers that way out too — video ids rot, and all 180 having one today is
 not a promise they still will, which is why the search link exists in the first
 place. **Train This only deals from exercises that have a video**, so it never
 opens an empty player; every muscle has at least four, the neck fewest.
 
 Coverage fell from 180 to 174 when the contradiction rules landed — the rule
 working, not a regression: those six had been showing the plain version of the
-movement. Five came back once the resolver was taught **what the movements are
-actually called**. The catalogue says "Suspended Row"; the world says *TRX row*,
-and a literal search returns barbell rows all day. `SEARCH_AS` maps those names
-for the query only — the answer is still judged against the real name by the
-same gate, so a better question cannot let a worse video through.
+movement. All six came back, and none of it by lowering the bar:
 
-One is still on the search link, and should be. "One-Legged Cable Kickback"
-needs a title saying *one* or *single*, and almost nobody writes it, because a
-cable kickback is one-legged by its nature. The gate is right in general — it is
-what keeps "Dumbbell One-Arm Upright Row" off a two-arm video — and one exercise
-sending you to a search is a better outcome than bending it.
+- **Ask the right question.** The catalogue says "Suspended Row"; the world says
+  *TRX row*, and a literal search returns barbell rows all day. `SEARCH_AS` maps
+  those names for the query only. The answer is still judged against the real
+  name by the same gate, so a better question cannot admit a worse video.
+- **Teach the synonyms.** TRX, strap and suspension all mean "suspended". A
+  reverse calf raise is dorsiflexion, which everyone who films it calls a
+  *tibialis* raise.
+- **Waive a word only where the evidence says it distinguishes nothing.** A
+  cable kickback has no two-legged version, so no one writes "one" in the title
+  — twenty candidates across two searches, not one of them did. That waiver is
+  listed per exercise in `NOT_DISTINGUISHING`, so "Dumbbell One-Arm Upright Row"
+  still refuses a two-arm video.
+- **Take the closest match, not the first acceptable one.** The gate says
+  whether a candidate is *acceptable*; among those that are, the one sharing the
+  most words with the exercise name now wins, with search rank breaking ties.
 
 ### Training pairs
 

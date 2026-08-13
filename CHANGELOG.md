@@ -63,7 +63,15 @@ Newest first. Numbers in brackets are pull requests.
   rest; a search now passes over anything already taken while another candidate
   remains, falling back to a shared video only when nothing else matches. 11
   freed, 0 duplicates left.
-- **179 of 180 have a video** — five of the six that the contradiction rules
+- **All 180 have a video again, without lowering the bar** — the closest
+  acceptable candidate now wins rather than the first one, since the gate only
+  says whether a video is *acceptable* and taking the earliest threw away better
+  matches in the same result set. Synonyms taught (a reverse calf raise is a
+  *tibialis* raise), and one word waived for one exercise on measured evidence:
+  a cable kickback has no two-legged version, so twenty candidate titles across
+  two searches contained no "one" or "single". The waiver is per exercise, so
+  "Dumbbell One-Arm Upright Row" still refuses a two-arm video.
+- **179 of 180 had a video** — five of the six that the contradiction rules
   had left on a search link came back once the resolver was taught what those
   movements are actually called. The catalogue says "Suspended Row" and the
   world says *TRX row*, so a literal search returned barbell rows; `SEARCH_AS`
