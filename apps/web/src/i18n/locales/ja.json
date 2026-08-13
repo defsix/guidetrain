@@ -39,6 +39,8 @@
   },
   "watch": "デモを見る",
   "searchYouTube": "YouTube で検索 →",
+  "pairTitle": "セット間に組み合わせる",
+  "pairWhy": "部位が異なるため、互いに疲労させません。",
   "loading": "モデルを読み込んでいます…",
   "closePanel": "パネルを閉じる"
  },

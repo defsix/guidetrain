@@ -29,6 +29,20 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Exercises
 
+- **Training pairs** — opening an exercise now suggests three to superset it
+  with, so the rest between sets trains something; tapping one plays its
+  demonstration. Pairing is by non-competing region, and region of the
+  *primary* muscle alone would not have done it: a lat pulldown is Back and a
+  biceps curl is Arms, yet both load the biceps, and 13% of ordered pairs in
+  the catalogue differ on that point. The rule maps every muscle an exercise
+  names, primary and secondary, to its region and requires the two sets to be
+  disjoint — which subsumes "no shared muscle", since a muscle belongs to one
+  region. Every exercise keeps at least 4 legal partners, median 91, so nothing
+  is left unpaired. Ranking is what makes them useful at that count: a
+  demonstration first, then no extra kit, then the same difficulty, spread
+  across different primary muscles and stable between calls.
+  `tools/exercises/check-pairs.mjs` verifies all of that against the shipped
+  data and exits non-zero on a violation.
 - **A video has to match the variant, not just the movement** — sharing a word
   was necessary and not sufficient. "Seated Dumbbell Curl" opened *Incline
   Dumbbell Curl*, and "Band Hip Adductions" opened a *Banded Hip Abduction*,

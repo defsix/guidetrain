@@ -202,6 +202,41 @@ been showing the plain version of the movement. A reader told a video shows
 their exercise has no reason to doubt it, so the search link, which makes them
 choose, is the more honest answer.
 
+### Training pairs
+
+Opening an exercise also suggests three to superset it with — something to do
+in the rest between sets, so the pause trains something instead of nothing.
+Tapping one plays its demonstration.
+
+A partner has to be **non-competing**, and the whole question is what that means
+against real data. Region of the *primary* muscle alone is not enough: a lat
+pulldown is Back and a biceps curl is Arms, so by that test they pair — and both
+load the biceps, which is why your arms give out on the second set. 13% of
+ordered pairs in the catalogue differ on exactly that point.
+
+So the rule takes every muscle an exercise names, **primary and secondary**,
+maps each to its region, and requires the two sets of regions to be disjoint.
+Because a muscle belongs to exactly one region, that subsumes "no shared
+muscle" — two exercises sharing no region cannot share a muscle. One rule
+instead of two, and the stricter of them.
+
+It is affordable: every one of the 180 exercises keeps **at least 4** legal
+partners and the median is 91, so nothing is left unpaired.
+
+With that many candidates the ranking is what makes the suggestion useful
+rather than merely legal — a demonstration you can watch, then no extra kit
+(body-only, or failing that the equipment you are already standing at), then
+the same difficulty. The three shown are spread across different primary
+muscles, because three legal partners that are all calf raises answer the wrong
+question. Ties break on id, so an exercise proposes the same partners every
+time: a plan, not a slot machine.
+
+    node tools/exercises/check-pairs.mjs
+
+checks the rule against the shipped catalogue — no suggested pair shares a
+region or a muscle, none of the 180 is left without a partner, and the
+suggestions are stable between calls. It exits non-zero, so it can gate a build.
+
 ### wger, and why it isn't used
 
 wger's catalogue is CC-BY-SA with proper per-image licence and author fields,
@@ -334,13 +369,6 @@ Two things apply only to the Pages build:
 
 Asked for, not yet built:
 
-- **Training pairs** — while you train one muscle, suggest a second exercise to
-  do between sets (supersets), so the rest period does something. Pairing is by
-  **non-competing region**, and region alone won't do it: a lat pulldown and a
-  biceps curl sit in different regions but both load the biceps, and 23% of
-  cross-region pairs in the catalogue overlap that way. So the rule is a
-  different region *and* no shared muscle across `primary` + `secondary` —
-  both of which the exercise data already carries, on 70% of entries.
 - **Autoplay on selection** — *on hold.* Opening an exercise would start its
   video rather than waiting for a click. Worth noting when it comes back: the
   player deliberately fetches nothing from YouTube until you click, so autoplay

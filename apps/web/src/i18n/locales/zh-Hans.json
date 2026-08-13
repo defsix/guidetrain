@@ -39,6 +39,8 @@
   },
   "watch": "观看示范",
   "searchYouTube": "在 YouTube 搜索 →",
+  "pairTitle": "组间搭配训练",
+  "pairWhy": "部位不同，互不影响恢复。",
   "loading": "正在加载模型…",
   "closePanel": "关闭面板"
  },

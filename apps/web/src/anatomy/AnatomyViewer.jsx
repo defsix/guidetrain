@@ -7,6 +7,7 @@ import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
 import { zoneColor } from './zoneMapping';
 import exerciseData from './exercises.json';
+import { pairsFor } from './pairs';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
 import './anatomy.css';
@@ -206,6 +207,14 @@ export default function AnatomyViewer({
   const shownDrill = useMemo(
     () => drills.find((x) => x.id === openDrill) || null,
     [drills, openDrill],
+  );
+
+  // Exercises to superset with the open one. Localised here rather than in
+  // pairs.js, because the rule is about muscles and regions and stays the same
+  // in every language; only the names shown change.
+  const partners = useMemo(
+    () => pairsFor(shownDrill).map(localizeExercise),
+    [shownDrill, localizeExercise],
   );
 
   // The map ships English. Its text is looked up by zone key and falls back to
@@ -466,6 +475,30 @@ export default function AnatomyViewer({
                             <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
                               {t('viewer.searchYouTube')}
                             </a>
+                          )}
+
+                          {/* What to do in the rest between sets. Nothing here
+                              shares a region with the exercise above, so it
+                              trains while the first movement recovers. */}
+                          {partners.length > 0 && (
+                            <div className="pairs">
+                              <h4>{t('viewer.pairTitle')}</h4>
+                              <p className="pair-why">{t('viewer.pairWhy')}</p>
+                              {partners.map((p) => (
+                                <button
+                                  key={p.id}
+                                  className="pair"
+                                  onClick={() => setVideo(p)}
+                                  disabled={!p.videoId}
+                                  title={p.videoId ? t('viewer.watch') : undefined}
+                                >
+                                  <span className="pname">{p.name}</span>
+                                  <span className="tags">
+                                    <em>{t(`equipment.${p.equipment}`, undefined, p.equipment)}</em>
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
                           )}
                         </div>
                       )}

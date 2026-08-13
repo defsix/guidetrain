@@ -40,6 +40,8 @@
   },
   "watch": "Watch demonstration",
   "searchYouTube": "Search YouTube →",
+  "pairTitle": "Pair between sets",
+  "pairWhy": "Different regions, so neither tires the other.",
   "loading": "Loading the model…",
   "closePanel": "Close panel"
  },
