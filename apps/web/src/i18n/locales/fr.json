@@ -335,5 +335,27 @@
   "perSide": "{weight} {unit} par côté",
   "barOnly": "La barre seule — sans disques.",
   "perHand": "par main"
+ },
+ "history": {
+  "title": "Historique",
+  "close": "Fermer l'historique",
+  "empty": "Rien d'enregistré pour l'instant. Les séries que vous notez apparaîtront ici.",
+  "byDay": "Par jour",
+  "byExercise": "Par exercice",
+  "back": "Tous les exercices",
+  "total": {
+   "one": "{count} série",
+   "other": "{count} séries"
+  },
+  "sessions": {
+   "one": "{count} séance",
+   "other": "{count} séances"
+  },
+  "setsLogged": {
+   "one": "{count} série",
+   "other": "{count} séries"
+  },
+  "best": "meilleure {weight} {unit} × {reps}",
+  "bestEver": "Meilleur max estimé {max} {unit}, d'après {weight} {unit} × {reps}."
  }
 }

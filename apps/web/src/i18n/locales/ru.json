@@ -359,5 +359,33 @@
   "perSide": "{weight} {unit} на сторону",
   "barOnly": "Только гриф — без блинов.",
   "perHand": "на руку"
+ },
+ "history": {
+  "title": "История",
+  "close": "Закрыть историю",
+  "empty": "Пока ничего не записано. Записанные подходы появятся здесь.",
+  "byDay": "По дням",
+  "byExercise": "По упражнениям",
+  "back": "Все упражнения",
+  "total": {
+   "one": "{count} подход",
+   "few": "{count} подхода",
+   "many": "{count} подходов",
+   "other": "{count} подхода"
+  },
+  "sessions": {
+   "one": "{count} тренировка",
+   "few": "{count} тренировки",
+   "many": "{count} тренировок",
+   "other": "{count} тренировки"
+  },
+  "setsLogged": {
+   "one": "{count} подход",
+   "few": "{count} подхода",
+   "many": "{count} подходов",
+   "other": "{count} подхода"
+  },
+  "best": "лучший {weight} {unit} × {reps}",
+  "bestEver": "Лучший расчётный максимум {max} {unit}, из {weight} {unit} × {reps}."
  }
 }

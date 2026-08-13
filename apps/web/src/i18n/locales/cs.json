@@ -359,5 +359,33 @@
   "perSide": "{weight} {unit} na každé straně",
   "barOnly": "Jen osa — bez kotoučů.",
   "perHand": "na ruku"
+ },
+ "history": {
+  "title": "Historie",
+  "close": "Zavřít historii",
+  "empty": "Zatím nic zapsáno. Zaznamenané série se objeví zde.",
+  "byDay": "Po dnech",
+  "byExercise": "Po cvicích",
+  "back": "Všechny cviky",
+  "total": {
+   "one": "{count} série",
+   "few": "{count} série",
+   "many": "{count} série",
+   "other": "{count} sérií"
+  },
+  "sessions": {
+   "one": "{count} trénink",
+   "few": "{count} tréninky",
+   "many": "{count} tréninku",
+   "other": "{count} tréninků"
+  },
+  "setsLogged": {
+   "one": "{count} série",
+   "few": "{count} série",
+   "many": "{count} série",
+   "other": "{count} sérií"
+  },
+  "best": "nejlepší {weight} {unit} × {reps}",
+  "bestEver": "Nejlepší odhad maxima {max} {unit}, z {weight} {unit} × {reps}."
  }
 }

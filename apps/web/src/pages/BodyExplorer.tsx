@@ -6,6 +6,7 @@ import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
+import HistoryPanel from "../components/HistoryPanel";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
@@ -24,6 +25,7 @@ export default function BodyExplorer() {
   const tms = useTrainingMax();
   const [showWorkout, setShowWorkout] = useState(false);
   const [showPlans, setShowPlans] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -54,6 +56,17 @@ export default function BodyExplorer() {
             {t("workout.title")}
             <span className="wcount">{programs.ids.length}</span>
           </button>
+          {/* Only once there is something to look at. An empty history
+              button is a promise the app cannot keep yet. */}
+          {log.entries.length > 0 && (
+            <button
+              className="history-button"
+              onClick={() => setShowHistory(true)}
+              aria-expanded={showHistory}
+            >
+              {t("history.title")}
+            </button>
+          )}
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>
@@ -104,6 +117,11 @@ export default function BodyExplorer() {
             ? profile.bodyWeight
             : undefined
         }
+      />
+      <HistoryPanel
+        open={showHistory}
+        onClose={() => setShowHistory(false)}
+        sets={log.entries}
       />
       <PlanLibrary
         open={showPlans}

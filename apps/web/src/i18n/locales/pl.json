@@ -359,5 +359,33 @@
   "perSide": "{weight} {unit} na stronę",
   "barOnly": "Sam gryf — bez talerzy.",
   "perHand": "na rękę"
+ },
+ "history": {
+  "title": "Historia",
+  "close": "Zamknij historię",
+  "empty": "Nic jeszcze nie zapisano. Zapisane serie pojawią się tutaj.",
+  "byDay": "Wg dnia",
+  "byExercise": "Wg ćwiczenia",
+  "back": "Wszystkie ćwiczenia",
+  "total": {
+   "one": "{count} seria",
+   "few": "{count} serie",
+   "many": "{count} serii",
+   "other": "{count} serii"
+  },
+  "sessions": {
+   "one": "{count} trening",
+   "few": "{count} treningi",
+   "many": "{count} treningów",
+   "other": "{count} treningów"
+  },
+  "setsLogged": {
+   "one": "{count} seria",
+   "few": "{count} serie",
+   "many": "{count} serii",
+   "other": "{count} serii"
+  },
+  "best": "najlepsza {weight} {unit} × {reps}",
+  "bestEver": "Najlepsze szacowane maksimum {max} {unit}, z {weight} {unit} × {reps}."
  }
 }

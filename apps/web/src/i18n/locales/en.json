@@ -335,5 +335,27 @@
   "perSide": "{weight} {unit} a side",
   "barOnly": "Just the bar — nothing on it.",
   "perHand": "per hand"
+ },
+ "history": {
+  "title": "History",
+  "close": "Close history",
+  "empty": "Nothing logged yet. Sets you record appear here.",
+  "byDay": "By day",
+  "byExercise": "By exercise",
+  "back": "All exercises",
+  "total": {
+   "one": "{count} set",
+   "other": "{count} sets"
+  },
+  "sessions": {
+   "one": "{count} session",
+   "other": "{count} sessions"
+  },
+  "setsLogged": {
+   "one": "{count} set",
+   "other": "{count} sets"
+  },
+  "best": "best {weight} {unit} × {reps}",
+  "bestEver": "Best estimated max {max} {unit}, from {weight} {unit} × {reps}."
  }
 }

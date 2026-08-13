@@ -323,5 +323,24 @@
   "perSide": "每边 {weight} {unit}",
   "barOnly": "只有杠铃杆 — 不加片。",
   "perHand": "每只手"
+ },
+ "history": {
+  "title": "历史",
+  "close": "关闭历史",
+  "empty": "还没有记录。记录的组数会出现在这里。",
+  "byDay": "按日期",
+  "byExercise": "按动作",
+  "back": "所有动作",
+  "total": {
+   "other": "{count} 组"
+  },
+  "sessions": {
+   "other": "{count} 次训练"
+  },
+  "setsLogged": {
+   "other": "{count} 组"
+  },
+  "best": "最好 {weight} {unit} × {reps}",
+  "bestEver": "最佳推算最大重量 {max} {unit}，来自 {weight} {unit} × {reps}。"
  }
 }

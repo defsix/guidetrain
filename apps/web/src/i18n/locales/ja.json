@@ -323,5 +323,24 @@
   "perSide": "片側 {weight} {unit}",
   "barOnly": "バーのみ — プレートなし。",
   "perHand": "片手あたり"
+ },
+ "history": {
+  "title": "履歴",
+  "close": "履歴を閉じる",
+  "empty": "まだ記録がありません。記録したセットがここに表示されます。",
+  "byDay": "日ごと",
+  "byExercise": "種目ごと",
+  "back": "すべての種目",
+  "total": {
+   "other": "{count}セット"
+  },
+  "sessions": {
+   "other": "{count}回"
+  },
+  "setsLogged": {
+   "other": "{count}セット"
+  },
+  "best": "最高 {weight} {unit} × {reps}",
+  "bestEver": "推定最大は {max} {unit}（{weight} {unit} × {reps} から）。"
  }
 }
