@@ -5,6 +5,11 @@ app yet — this is phase 1 of
 [the plan](../README.md#the-intended-shape), which is the schema and its
 policies, applied and proved before any code depends on it.
 
+**Status: the project exists and the migration has been applied.** The four
+tables are there with RLS on. What remains is step 3 below — proving the
+policies actually hold — and step 4, putting the keys where the app can find
+them. Both want a laptop.
+
 ## Applying it
 
 1. Create a project at [supabase.com](https://supabase.com). Take the project
@@ -31,9 +36,44 @@ policies, applied and proved before any code depends on it.
 
    It creates two throwaway accounts, has one write a set, and then tries every
    way the second can reach it: reading, planting a row under the first
-   account's id, deleting, and asking while signed out. Turn off email
-   confirmation while you run it, or sign-up returns no session and it stops
-   and says so.
+   account's id, deleting, and asking while signed out. Every line should read
+   `ok`.
+
+   **Turn off Auth → Providers → Email → Confirm email while it runs**, or
+   sign-up returns no session and the script stops and says so. Turn it back on
+   afterwards.
+
+   From a phone, where Node is not an option, this SQL checks the two things
+   that matter instead — weaker than the script, since it inspects the policies
+   rather than attacking them, but it catches the mistakes that actually happen:
+
+   ```sql
+   select c.relname as table_name,
+          c.relrowsecurity as rls_on,
+          p.policyname,
+          p.qual is not null as has_using,
+          p.with_check is not null as has_with_check
+   from pg_class c
+   left join pg_policies p on p.tablename = c.relname and p.schemaname = 'public'
+   where c.relnamespace = 'public'::regnamespace and c.relkind = 'r'
+   order by c.relname;
+   ```
+
+   Four rows, all three booleans true on every one. `has_with_check` is the
+   column people get wrong.
+
+4. Point the app at the project:
+
+   ```bash
+   cat > apps/web/.env.local <<'EOF'
+   VITE_SUPABASE_URL=https://xxx.supabase.co
+   VITE_SUPABASE_ANON_KEY=sb_publishable_...
+   EOF
+   ```
+
+   `.env.local` is already gitignored (`*.local` in `apps/web/.gitignore`).
+   Both values ship in the bundle and are meant to; leave them unset and the app
+   works exactly as it does now, storing everything locally.
 
 ## Why the policies come before the tables
 
