@@ -170,6 +170,21 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Ready-made plans, with the weights to actually use** — three well-worn
+  shapes (full body, upper/lower, push/pull/legs), previewed with real loads and
+  added as named workouts with their targets already set. Where a lift has been
+  logged the weight is a calculation from it: best set through Epley, backed off
+  a tenth to something finishable. Where it has not, it is body weight times a
+  per-exercise fraction adjusted by sex and age band — a population average,
+  labelled "starting point" rather than dressed up as a prediction, and light on
+  purpose, since a set that turns out easy costs one set and a set that turns out
+  heavy costs a back. What it deliberately will not do is derive a one-rep max
+  from demographics: that number drives the 5/3/1 planner and has to come from a
+  set that happened. Barbell lifts floor at the empty 20 kg bar, read from the
+  catalogue's equipment field — asking the id whether it began with "Barbell"
+  was true of `Barbell_Squat` and false of `Standing_Military_Press`, and told a
+  60 kg profile to press 7.5 kg. `tools/exercises/check-plans.mjs` fails if a
+  plan names an exercise the catalogue lacks, which had already happened once.
 - **The plan shows every cycle, and says why the weeks climb slowly** — it
   promised "2 cycles, about 8 weeks" above a four-row table and never mentioned
   that the four weeks repeat at a higher training max. They can now be stepped
