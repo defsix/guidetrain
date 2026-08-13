@@ -920,3 +920,45 @@
   color: var(--text-muted);
 }
 .workout-progress.done { color: var(--accent); }
+
+/* Step through the cycles: the same four weeks at a higher training max. */
+.cycle-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 0 2px;
+  border-top: 1px solid var(--border);
+}
+
+.cycle-nav span {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  flex: 1;
+}
+
+.cycle-nav button {
+  flex: none;
+  width: 28px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 0;
+  cursor: pointer;
+}
+.cycle-nav button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.cycle-nav button:disabled { opacity: 0.3; cursor: default; }
+
+/* A note the reader needs rather than one they can skip. */
+.plan-note.flag {
+  padding-left: 9px;
+  border-left: 2px solid var(--accent);
+  color: var(--text);
+}

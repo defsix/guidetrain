@@ -221,7 +221,13 @@
   "amrapNote": "+ signifie faire la dernière série en autant de répétitions propres que possible, sans aller à l'échec.",
   "amrapHelp": "autant de répétitions que possible",
   "barbellNote": "5/3/1 a été écrit pour les grands mouvements à la barre. Les pourcentages restent valables, mais les paliers supposent un exercice lourdement chargeable.",
-  "estimateNote": "Une estimation à partir d'une série, pas une mesure. Si une semaine semble fausse, c'est le plan qui l'est."
+  "estimateNote": "Une estimation à partir d'une série, pas une mesure. Si une semaine semble fausse, c'est le plan qui l'est.",
+  "cycleOf": "Cycle {at} sur {total} — maximum d'entraînement {tm} {unit}",
+  "prevCycle": "Cycle précédent",
+  "nextCycle": "Cycle suivant",
+  "repeatNote": "Les mêmes quatre semaines se répètent à chaque cycle, avec {increment} {unit} de plus sur le maximum d'entraînement : c'est de là que vient la progression.",
+  "lightNote": "Les paliers hebdomadaires sont volontairement petits. Chaque charge est une part du maximum d'entraînement, pas du vrai, donc un cycle ne demande jamais un effort maximal ; le travail vient des séries marquées +.",
+  "sameLoads": "Les mêmes charges que le cycle précédent. {increment} {unit} sur le maximum d'entraînement, c'est moins que le plus petit palier possible avec des disques de {plate} {unit} : l'écart disparaît à l'arrondi et se voit au cycle suivant."
  },
  "program": {
   "untitled": "Séance {n}",

@@ -221,7 +221,13 @@
   "amrapNote": "+ significa hacer la última serie con todas las repeticiones limpias posibles, sin llegar al fallo.",
   "amrapHelp": "tantas repeticiones como sea posible",
   "barbellNote": "5/3/1 se escribió para los grandes ejercicios con barra. Los porcentajes sirven igual, pero los saltos suponen un ejercicio que admite mucha carga.",
-  "estimateNote": "Una estimación a partir de una serie, no una medición. Si una semana no cuadra, el que falla es el plan."
+  "estimateNote": "Una estimación a partir de una serie, no una medición. Si una semana no cuadra, el que falla es el plan.",
+  "cycleOf": "Ciclo {at} de {total} — máximo de entrenamiento {tm} {unit}",
+  "prevCycle": "Ciclo anterior",
+  "nextCycle": "Ciclo siguiente",
+  "repeatNote": "Las mismas cuatro semanas se repiten cada ciclo, sumando {increment} {unit} al máximo de entrenamiento: de ahí viene el aumento.",
+  "lightNote": "Los saltos semanales son pequeños a propósito. Cada carga es una parte del máximo de entrenamiento, no del real, así que un ciclo nunca pide un levantamiento máximo; el trabajo lo hacen las series con +.",
+  "sameLoads": "Los mismos pesos que el ciclo anterior. {increment} {unit} en el máximo de entrenamiento es menos que el salto más pequeño posible con discos de {plate} {unit}, así que aquí se redondea y aparece en el ciclo siguiente."
  },
  "program": {
   "untitled": "Entrenamiento {n}",

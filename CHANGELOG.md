@@ -170,6 +170,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The plan shows every cycle, and says why the weeks climb slowly** — it
+  promised "2 cycles, about 8 weeks" above a four-row table and never mentioned
+  that the four weeks repeat at a higher training max. They can now be stepped
+  through, and two notes answer what the table provoked: the weekly jumps are
+  small because every load is a share of the *training* max rather than the
+  real one, and the increase comes per cycle.
+- **Repeated cycles are labelled as repeated** — with a 2.5 kg smallest plate
+  the bar moves in 5 kg steps, and 5 kg of training max is 4.75 kg at 95%, so a
+  cycle's increase can round away completely: at a 197.5 kg training max, cycles
+  1 and 2 call for identical weights. Arithmetic rather than a bug, but two
+  identical tables look like a broken one, so the panel now says which cycle
+  repeats and why.
 - **Targets you tick off by lifting** — an exercise can carry `3 × 5`, drawn as
   pips beside it, with a line counting finished exercises. The pips fill from
   the log and nothing is tappable to tick: a tick set by hand would be a second

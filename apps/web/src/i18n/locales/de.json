@@ -221,7 +221,13 @@
   "amrapNote": "+ heißt: letzter Satz auf so viele saubere Wiederholungen wie möglich, nicht bis zum Versagen.",
   "amrapHelp": "so viele Wiederholungen wie möglich",
   "barbellNote": "5/3/1 wurde für die großen Langhantelübungen geschrieben. Die Prozente gelten auch hier, die Sprünge setzen aber schwer belastbare Übungen voraus.",
-  "estimateNote": "Eine Schätzung aus einem Satz, keine Messung. Fühlt sich eine Woche falsch an, liegt es am Plan."
+  "estimateNote": "Eine Schätzung aus einem Satz, keine Messung. Fühlt sich eine Woche falsch an, liegt es am Plan.",
+  "cycleOf": "Zyklus {at} von {total} — Trainingsmaximum {tm} {unit}",
+  "prevCycle": "Vorheriger Zyklus",
+  "nextCycle": "Nächster Zyklus",
+  "repeatNote": "Dieselben vier Wochen wiederholen sich jeden Zyklus, mit {increment} {unit} mehr auf dem Trainingsmaximum — daher kommt die Steigerung.",
+  "lightNote": "Die kleinen Wochensprünge sind Absicht. Jede Last ist ein Anteil des Trainingsmaximums, nicht des echten, also verlangt ein Zyklus nie eine Maximalleistung; die Arbeit leisten die +-Sätze.",
+  "sameLoads": "Dieselben Gewichte wie im Zyklus davor. {increment} {unit} mehr Trainingsmaximum sind weniger als der kleinste Sprung, den eine Stange mit {plate}-{unit}-Scheiben machen kann — es fällt hier der Rundung zum Opfer und zeigt sich im nächsten Zyklus."
  },
  "program": {
   "untitled": "Training {n}",

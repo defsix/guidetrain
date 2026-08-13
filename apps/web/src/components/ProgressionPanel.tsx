@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import {
   bestEstimate, cycle, cyclesTo, incrementFor, roundLoad, trainingMax,
-  MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION,
+  MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION, SMALLEST_PLATE,
 } from "../lib/progression";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -38,7 +38,32 @@ export default function ProgressionPanel({
   const tm = best ? trainingMax(best.oneRM) : 0;
   const targetTM = Number.isFinite(targetNum) ? trainingMax(targetNum) : 0;
   const cycles = cyclesTo(tm, targetTM, increment);
-  const weeks = useMemo(() => cycle(tm), [tm]);
+
+  // Which cycle's numbers the table is showing. The four weeks repeat with a
+  // higher training max each time, and showing only the first left the panel
+  // promising eight weeks while displaying four — the question anyone would
+  // ask, and the app had no answer on screen.
+  const [shown, setShown] = useState(1);
+  const total = Math.max(1, cycles);
+  const at = Math.min(shown, total);
+  const cycleTM = tm + increment * (at - 1);
+  const weeks = useMemo(() => cycle(cycleTM), [cycleTM]);
+
+  /**
+   * Whether this cycle asks for exactly the weights the last one did.
+   *
+   * It can, and it is not a bug in the plan: with 2.5 kg as the smallest plate
+   * the bar moves in 5 kg steps, and 5 kg of training max is 4.75 kg at 95% —
+   * less than one plate a side. Two identical tables in a row look broken
+   * unless the panel says why, so it says why.
+   */
+  const repeatsPrevious = useMemo(() => {
+    if (at <= 1) return false;
+    const loads = (ws: ReturnType<typeof cycle>) =>
+      ws.map((w) => w.sets.map((x) => x.load).join()).join("|");
+    return loads(cycle(cycleTM - increment)) === loads(weeks);
+  }, [at, cycleTM, increment, weeks]);
+
   const u = t("unit.kg");
 
   return (
@@ -104,6 +129,30 @@ export default function ProgressionPanel({
               })}
             </p>
 
+            {/* Step through the cycles rather than showing only the first. The
+                same four weeks, run at a training max that is `increment`
+                higher each time — which is where the progress actually comes
+                from, and is worth being able to look at. */}
+            {total > 1 && (
+              <div className="cycle-nav">
+                <button
+                  onClick={() => setShown(at - 1)}
+                  disabled={at <= 1}
+                  aria-label={t("plan.prevCycle")}
+                >
+                  ‹
+                </button>
+                <span>{t("plan.cycleOf", { at, total, tm: cycleTM, unit: u })}</span>
+                <button
+                  onClick={() => setShown(at + 1)}
+                  disabled={at >= total}
+                  aria-label={t("plan.nextCycle")}
+                >
+                  ›
+                </button>
+              </div>
+            )}
+
             <table className="plan-table">
               <tbody>
                 {weeks.map((w) => (
@@ -120,6 +169,19 @@ export default function ProgressionPanel({
               </tbody>
             </table>
 
+            {repeatsPrevious && (
+              <p className="plan-note flag">
+                {t("plan.sameLoads", { increment, unit: u, plate: SMALLEST_PLATE })}
+              </p>
+            )}
+            {total > 1 && (
+              <p className="plan-note">
+                {t("plan.repeatNote", { increment, unit: u })}
+              </p>
+            )}
+            {/* Answers the obvious question: why are the weekly jumps so
+                small? Because they are supposed to be. */}
+            <p className="plan-note">{t("plan.lightNote")}</p>
             <p className="plan-note">{t("plan.amrapNote")}</p>
             {!barbell && <p className="plan-note">{t("plan.barbellNote")}</p>}
             <p className="plan-note">{t("plan.estimateNote")}</p>

@@ -221,7 +221,13 @@
   "amrapNote": "+ means take the last set for as many good reps as you can, not to failure.",
   "amrapHelp": "as many reps as possible",
   "barbellNote": "5/3/1 was written for the main barbell lifts. The percentages still work here, but the jumps assume something you can load heavily.",
-  "estimateNote": "An estimate from one set, not a measurement. If a week feels wrong, it is the plan that is wrong."
+  "estimateNote": "An estimate from one set, not a measurement. If a week feels wrong, it is the plan that is wrong.",
+  "cycleOf": "Cycle {at} of {total} — training max {tm} {unit}",
+  "prevCycle": "Previous cycle",
+  "nextCycle": "Next cycle",
+  "repeatNote": "The same four weeks repeat each cycle, with {increment} {unit} added to the training max — that is where the increase comes from.",
+  "lightNote": "The weekly jumps are small on purpose. Every load is a share of the training max, not of your real one, so a cycle never asks for a maximum lift; the work comes from the + sets.",
+  "sameLoads": "Same weights as the cycle before. {increment} {unit} on the training max is less than the smallest jump a bar can make with {plate} {unit} plates, so it rounds away here and shows up in the next cycle."
  },
  "program": {
   "untitled": "Workout {n}",

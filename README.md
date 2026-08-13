@@ -534,6 +534,19 @@ rounding it would drag every percentage below it with the same error and make
 the 2.5 kg upper-body increment impossible to apply at all — two cycles would
 come out identical.
 
+The panel steps through the cycles rather than showing only the first — the
+same four weeks at a training max `increment` higher each time, which is where
+the progress actually comes from. It also says so, because "2 cycles, about 8
+weeks" above a four-row table is a question the app should answer itself.
+
+**One consequence of the 2.5 kg plate worth knowing.** The bar moves in 5 kg
+steps, and 5 kg of training max is 4.75 kg at 95% — less than a plate a side.
+So a cycle's increase can round away entirely: at a 197.5 kg training max,
+cycles 1 and 2 call for identical weights and the top set only moves every
+second cycle. That is arithmetic, not a bug, but two identical tables look like
+one, so the panel says which cycles repeat and why. With 1.25 kg plates every
+cycle would differ; `SMALLEST_PLATE` is the one number to change.
+
 Worked example, the one this was built against: a 100 kg × 5 squat estimates a
 117.5 kg max, giving a 105 kg training max and a first week opening at 70 kg —
 the backing off — and reaching a 127.5 kg target takes **2 cycles, about 8

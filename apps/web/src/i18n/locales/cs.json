@@ -233,7 +233,13 @@
   "amrapNote": "+ znamená poslední sérii na co nejvíce čistých opakování, ne do selhání.",
   "amrapHelp": "co nejvíce opakování",
   "barbellNote": "5/3/1 vzniklo pro hlavní cviky s činkou. Procenta platí i tady, ale přírůstky počítají s cvikem, který lze těžce zatížit.",
-  "estimateNote": "Odhad z jedné série, ne měření. Pokud týden nesedí, chyba je v plánu."
+  "estimateNote": "Odhad z jedné série, ne měření. Pokud týden nesedí, chyba je v plánu.",
+  "cycleOf": "Cyklus {at} z {total} — tréninkové maximum {tm} {unit}",
+  "prevCycle": "Předchozí cyklus",
+  "nextCycle": "Další cyklus",
+  "repeatNote": "Stejné čtyři týdny se opakují každý cyklus, vždy s {increment} {unit} navíc k tréninkovému maximu — odtud plyne nárůst.",
+  "lightNote": "Malé týdenní přírůstky jsou záměrné. Každá zátěž je podílem tréninkového maxima, ne toho skutečného, takže cyklus nikdy nežádá maximální zvedání; práci odvedou série s +.",
+  "sameLoads": "Stejné váhy jako v předchozím cyklu. {increment} {unit} na tréninkovém maximu je méně než nejmenší skok, který lze s kotouči {plate} {unit} udělat, takže se zde zaokrouhlí pryč a projeví se až v dalším cyklu."
  },
  "program": {
   "untitled": "Trénink {n}",

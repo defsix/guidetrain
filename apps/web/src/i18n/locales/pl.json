@@ -233,7 +233,13 @@
   "amrapNote": "+ oznacza ostatnią serię na tyle czystych powtórzeń, ile dasz radę — nie do upadku.",
   "amrapHelp": "jak najwięcej powtórzeń",
   "barbellNote": "5/3/1 powstało dla głównych bojów ze sztangą. Procenty nadal działają, ale przyrosty zakładają ćwiczenie, które można mocno obciążyć.",
-  "estimateNote": "Szacunek z jednej serii, nie pomiar. Jeśli tydzień wydaje się zły, to plan jest zły."
+  "estimateNote": "Szacunek z jednej serii, nie pomiar. Jeśli tydzień wydaje się zły, to plan jest zły.",
+  "cycleOf": "Cykl {at} z {total} — maksimum treningowe {tm} {unit}",
+  "prevCycle": "Poprzedni cykl",
+  "nextCycle": "Następny cykl",
+  "repeatNote": "Te same cztery tygodnie powtarzają się w każdym cyklu, z {increment} {unit} więcej na maksimum treningowym — stąd bierze się przyrost.",
+  "lightNote": "Małe tygodniowe skoki są zamierzone. Każde obciążenie to część maksimum treningowego, a nie prawdziwego, więc cykl nigdy nie wymaga maksymalnego boju; pracę wykonują serie z +.",
+  "sameLoads": "Te same ciężary co w poprzednim cyklu. {increment} {unit} na maksimum treningowym to mniej niż najmniejszy skok możliwy z talerzami {plate} {unit}, więc zaokrągla się tutaj i pojawi się w kolejnym cyklu."
  },
  "program": {
   "untitled": "Trening {n}",
