@@ -32,9 +32,15 @@ const fail = (m) => { console.log("  FAIL " + m); bad++; };
 const pass = (m) => console.log("  ok   " + m);
 
 const stamp = Date.now();
+// example.com is rejected outright -- Supabase validates against the RFC 2606
+// reserved domains as an obvious-fake-address check, independent of whatever
+// the dashboard's email confirmation setting is. mailinator.com is a real,
+// long-standing public inbox domain that passes that check; nothing needs to
+// actually arrive there since these accounts are thrown away immediately
+// after the test.
 const users = [
-  { email: `rls-a-${stamp}@example.com`, password: `pw-a-${stamp}!A1` },
-  { email: `rls-b-${stamp}@example.com`, password: `pw-b-${stamp}!B2` },
+  { email: `rls-a-${stamp}@mailinator.com`, password: `pw-a-${stamp}!A1` },
+  { email: `rls-b-${stamp}@mailinator.com`, password: `pw-b-${stamp}!B2` },
 ];
 
 async function signUp(u) {
