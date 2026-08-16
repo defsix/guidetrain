@@ -357,5 +357,22 @@
   },
   "best": "meilleure {weight} {unit} × {reps}",
   "bestEver": "Meilleur max estimé {max} {unit}, d'après {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Compte",
+  "close": "Fermer le compte",
+  "signedIn": "Compte",
+  "signIn": "Se connecter",
+  "signUp": "Créer un compte",
+  "email": "E-mail",
+  "password": "Mot de passe",
+  "confirmSent": "Confirmez le compte via le lien reçu par e-mail, puis connectez-vous.",
+  "why": "En vous connectant, votre entraînement reste sur cet appareil et se synchronise aussi avec votre compte, pour ne rien perdre si le téléphone est perdu.",
+  "signOut": "Se déconnecter",
+  "signOutNote": "Votre entraînement reste sur cet appareil. Se déconnecter arrête seulement son envoi vers votre compte.",
+  "merging": "Réunion de cet appareil et de votre compte…",
+  "syncing": "Enregistrement dans votre compte…",
+  "synced": "Enregistré dans votre compte.",
+  "syncError": "Échec de la synchronisation : {error}"
  }
 }

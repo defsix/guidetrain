@@ -387,5 +387,22 @@
   },
   "best": "nejlepší {weight} {unit} × {reps}",
   "bestEver": "Nejlepší odhad maxima {max} {unit}, z {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Účet",
+  "close": "Zavřít účet",
+  "signedIn": "Účet",
+  "signIn": "Přihlásit se",
+  "signUp": "Vytvořit účet",
+  "email": "E-mail",
+  "password": "Heslo",
+  "confirmSent": "Potvrďte účet přes odkaz v e-mailu a pak se přihlaste.",
+  "why": "Přihlášením se váš trénink z tohoto zařízení uloží i do účtu, takže ho neztratíte se ztraceným telefonem.",
+  "signOut": "Odhlásit se",
+  "signOutNote": "Trénink zůstává v tomto zařízení. Odhlášení jen zastaví jeho ukládání do účtu.",
+  "merging": "Slučuji toto zařízení s vaším účtem…",
+  "syncing": "Ukládám do účtu…",
+  "synced": "Uloženo do účtu.",
+  "syncError": "Synchronizace se nezdařila: {error}"
  }
 }

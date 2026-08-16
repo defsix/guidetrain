@@ -816,6 +816,98 @@
 .hdate { color: var(--text-muted); }
 .hload { color: var(--text); }
 
+/* --- account & sync ------------------------------------------------------ */
+.account-button {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 7px 13px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.account-button:hover { border-color: var(--accent); color: var(--accent); }
+.account-button.signed-in { border-color: var(--accent); color: var(--accent); }
+
+.account-panel {
+  position: fixed;
+  z-index: 31;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(460px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--panel);
+  border-left: 1px solid var(--border);
+}
+.account-panel > * { flex: none; }
+
+@media (min-width: 1100px) {
+  .account-panel { width: min(520px, 40vw); padding: 26px 30px; }
+}
+
+@media (max-width: 560px) {
+  .account-panel {
+    top: auto;
+    left: 0;
+    width: auto;
+    height: 94svh;
+    max-height: 94svh;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+.account-panel h2 {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.account-email {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.account-form { display: flex; flex-direction: column; gap: 14px; }
+
+.account-signout {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+}
+.account-signout:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Present at every status so "did that just save?" always has an answer on
+   screen rather than only appearing when something goes wrong. */
+.sync-status {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.sync-status.synced { color: var(--accent); }
+/* Same colour a missed 5/3/1 week uses — the app's one existing "this needs
+   attention" red, rather than a second one invented for this panel. */
+.sync-status.error { color: #c2410c; }
+
 /* --- what the number means ---------------------------------------------- */
 .loading-note {
   margin: 0;

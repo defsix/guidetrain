@@ -357,5 +357,22 @@
   },
   "best": "mejor {weight} {unit} × {reps}",
   "bestEver": "Mejor máximo estimado {max} {unit}, a partir de {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Cuenta",
+  "close": "Cerrar cuenta",
+  "signedIn": "Cuenta",
+  "signIn": "Iniciar sesión",
+  "signUp": "Crear cuenta",
+  "email": "Correo",
+  "password": "Contraseña",
+  "confirmSent": "Confirma la cuenta con el enlace del correo y luego inicia sesión.",
+  "why": "Al iniciar sesión, tu entrenamiento se mantiene en este dispositivo y también se sincroniza con tu cuenta, así un móvil perdido no se lo lleva.",
+  "signOut": "Cerrar sesión",
+  "signOutNote": "Tu entrenamiento se queda en este dispositivo. Cerrar sesión solo detiene el envío a tu cuenta.",
+  "merging": "Uniendo este dispositivo con tu cuenta…",
+  "syncing": "Guardando en tu cuenta…",
+  "synced": "Guardado en tu cuenta.",
+  "syncError": "No se pudo sincronizar: {error}"
  }
 }

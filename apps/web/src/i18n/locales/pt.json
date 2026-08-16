@@ -357,5 +357,22 @@
   },
   "best": "melhor {weight} {unit} × {reps}",
   "bestEver": "Melhor máximo estimado {max} {unit}, a partir de {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Conta",
+  "close": "Fechar conta",
+  "signedIn": "Conta",
+  "signIn": "Iniciar sessão",
+  "signUp": "Criar conta",
+  "email": "E-mail",
+  "password": "Palavra-passe",
+  "confirmSent": "Confirme a conta pelo link no e-mail e depois inicie sessão.",
+  "why": "Ao iniciar sessão, o seu treino fica neste aparelho e sincroniza também com a conta, para não se perder com um telemóvel extraviado.",
+  "signOut": "Terminar sessão",
+  "signOutNote": "O seu treino fica neste aparelho. Terminar sessão só interrompe o envio para a conta.",
+  "merging": "A juntar este aparelho à sua conta…",
+  "syncing": "A guardar na conta…",
+  "synced": "Guardado na conta.",
+  "syncError": "Não foi possível sincronizar: {error}"
  }
 }

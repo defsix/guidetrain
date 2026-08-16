@@ -1,5 +1,6 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { Profile } from "../types";
+import { write, remove, onWrite } from "../lib/storage";
 
 const STORAGE_KEY = "guidetrain.profile";
 
@@ -16,13 +17,22 @@ function readProfile(): Profile | null {
 export function useProfile() {
   const [profile, setProfileState] = useState<Profile | null>(() => readProfile());
 
+  // A write this hook did not make — sync pulling a profile down after
+  // sign-in — has to be picked up too, or the app keeps showing whatever was
+  // on screen before the merge until the next reload.
+  useEffect(() => onWrite((key) => {
+    if (key === STORAGE_KEY) setProfileState(readProfile());
+  }), []);
+
   const setProfile = useCallback((next: Profile) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    // Routed through lib/storage rather than localStorage directly, so a sync
+    // layer can hear about every write without this hook knowing one exists.
+    write(STORAGE_KEY, next);
     setProfileState(next);
   }, []);
 
   const clearProfile = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY);
+    remove(STORAGE_KEY);
     setProfileState(null);
   }, []);
 

@@ -5,6 +5,7 @@ import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
+import AccountPanel from "../components/AccountPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
@@ -12,6 +13,8 @@ import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
 import { useTrainingMax } from "../state/useTrainingMax";
+import { useAuth } from "../state/useAuth";
+import { useSync } from "../state/useSync";
 import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
@@ -24,9 +27,12 @@ export default function BodyExplorer() {
   const log = useLog();
   const skips = useSkips();
   const tms = useTrainingMax();
+  const auth = useAuth();
+  const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
   const [showPlans, setShowPlans] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showAccount, setShowAccount] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -70,6 +76,17 @@ export default function BodyExplorer() {
               aria-expanded={showHistory}
             >
               {t("history.title")}
+            </button>
+          )}
+          {/* Hidden with no project configured, rather than open onto a
+              form that cannot do anything — see AccountPanel. */}
+          {auth.available && (
+            <button
+              className={`account-button ${auth.session ? "signed-in" : ""}`}
+              onClick={() => setShowAccount(true)}
+              aria-expanded={showAccount}
+            >
+              {auth.session ? t("account.signedIn") : t("account.title")}
             </button>
           )}
           <ThemeToggle pref={pref} onChange={setPref} />
@@ -128,6 +145,14 @@ export default function BodyExplorer() {
         onClose={() => setShowHistory(false)}
         sets={log.entries}
       />
+      {auth.available && (
+        <AccountPanel
+          open={showAccount}
+          onClose={() => setShowAccount(false)}
+          auth={auth}
+          sync={sync}
+        />
+      )}
       <PlanLibrary
         open={showPlans}
         onClose={() => setShowPlans(false)}

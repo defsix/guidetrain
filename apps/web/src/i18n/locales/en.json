@@ -357,5 +357,22 @@
   },
   "best": "best {weight} {unit} × {reps}",
   "bestEver": "Best estimated max {max} {unit}, from {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Account",
+  "close": "Close account",
+  "signedIn": "Account",
+  "signIn": "Sign in",
+  "signUp": "Create account",
+  "email": "Email",
+  "password": "Password",
+  "confirmSent": "Check your email to confirm the account, then sign in.",
+  "why": "Signing in keeps your training on this device and syncs it to your account, so a lost phone does not lose it.",
+  "signOut": "Sign out",
+  "signOutNote": "Your training stays on this device. Signing out only stops it from also going to your account.",
+  "merging": "Bringing this device and your account together…",
+  "syncing": "Saving to your account…",
+  "synced": "Saved to your account.",
+  "syncError": "Could not sync: {error}"
  }
 }

@@ -357,5 +357,22 @@
   },
   "best": "bester {weight} {unit} × {reps}",
   "bestEver": "Bestes geschätztes Maximum {max} {unit}, aus {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Konto",
+  "close": "Konto schließen",
+  "signedIn": "Konto",
+  "signIn": "Anmelden",
+  "signUp": "Konto erstellen",
+  "email": "E-Mail",
+  "password": "Passwort",
+  "confirmSent": "Bestätige das Konto über den Link in der E-Mail und melde dich dann an.",
+  "why": "Beim Anmelden bleibt dein Training auf diesem Gerät und wird zusätzlich mit deinem Konto synchronisiert, damit ein verlorenes Handy es nicht mit sich nimmt.",
+  "signOut": "Abmelden",
+  "signOutNote": "Dein Training bleibt auf diesem Gerät. Abmelden stoppt nur die zusätzliche Sicherung im Konto.",
+  "merging": "Gerät und Konto werden zusammengeführt…",
+  "syncing": "Wird im Konto gespeichert…",
+  "synced": "Im Konto gespeichert.",
+  "syncError": "Synchronisierung fehlgeschlagen: {error}"
  }
 }

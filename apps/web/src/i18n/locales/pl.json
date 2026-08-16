@@ -387,5 +387,22 @@
   },
   "best": "najlepsza {weight} {unit} × {reps}",
   "bestEver": "Najlepsze szacowane maksimum {max} {unit}, z {weight} {unit} × {reps}."
+ },
+ "account": {
+  "title": "Konto",
+  "close": "Zamknij konto",
+  "signedIn": "Konto",
+  "signIn": "Zaloguj się",
+  "signUp": "Załóż konto",
+  "email": "E-mail",
+  "password": "Hasło",
+  "confirmSent": "Potwierdź konto linkiem z e-maila, a potem się zaloguj.",
+  "why": "Po zalogowaniu trening z tego urządzenia zostaje na miejscu i dodatkowo synchronizuje się z kontem, więc zgubiony telefon go nie zabierze.",
+  "signOut": "Wyloguj się",
+  "signOutNote": "Trening zostaje na tym urządzeniu. Wylogowanie tylko przestaje wysyłać go do konta.",
+  "merging": "Łączenie tego urządzenia z kontem…",
+  "syncing": "Zapisywanie na koncie…",
+  "synced": "Zapisano na koncie.",
+  "syncError": "Synchronizacja nie powiodła się: {error}"
  }
 }

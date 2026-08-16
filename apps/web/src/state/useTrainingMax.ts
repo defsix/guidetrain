@@ -1,4 +1,5 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { write as storageWrite, onWrite } from "../lib/storage";
 
 const KEY = "guidetrain.tm";
 
@@ -52,20 +53,25 @@ function read(): Store {
 export function useTrainingMax() {
   const [overrides, setOverrides] = useState<Store>(read);
 
-  const write = useCallback((next: Store) => {
+  // A write this hook did not make — sync pulling merged data down after
+  // sign-in — has to be picked up too, or the panel keeps showing whatever was
+  // on it before the merge until the next reload.
+  useEffect(() => onWrite((key) => {
+    if (key === KEY) setOverrides(read());
+  }), []);
+
+  // Routed through lib/storage rather than localStorage directly, so a sync
+  // layer can hear about every write without this hook knowing one exists.
+  const save = useCallback((next: Store) => {
     setOverrides(next);
-    try {
-      localStorage.setItem(KEY, JSON.stringify(next));
-    } catch {
-      // A full or disabled store costs this decision, not the app.
-    }
+    storageWrite(KEY, next);
   }, []);
 
   const set = useCallback(
     (id: string, tm: number, from: number) => {
-      write({ ...overrides, [id]: { tm, from, at: Date.now() } });
+      save({ ...overrides, [id]: { tm, from, at: Date.now() } });
     },
-    [overrides, write],
+    [overrides, save],
   );
 
   /** Back to the figure the log implies. */
@@ -73,9 +79,9 @@ export function useTrainingMax() {
     (id: string) => {
       const next = { ...overrides };
       delete next[id];
-      write(next);
+      save(next);
     },
-    [overrides, write],
+    [overrides, save],
   );
 
   return { overrides, set, clear };

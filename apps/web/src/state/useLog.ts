@@ -1,4 +1,5 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { write as storageWrite, onWrite } from "../lib/storage";
 
 const LOG_KEY = "guidetrain.log";
 const LEGACY_UNIT_KEY = "guidetrain.unit";
@@ -69,12 +70,13 @@ function readLog(): SetEntry[] {
   }
 }
 
+/**
+ * Routed through `lib/storage` rather than `localStorage` directly, so a sync
+ * layer can hear about every write without this hook knowing one exists — see
+ * `lib/storage.ts` and `lib/sync.ts`.
+ */
 function persist(key: string, value: unknown) {
-  try {
-    localStorage.setItem(key, typeof value === "string" ? value : JSON.stringify(value));
-  } catch {
-    // A full or disabled store costs the session, not the app.
-  }
+  storageWrite(key, value);
 }
 
 const sameDay = (a: number, b: number) =>
@@ -88,6 +90,14 @@ export function useLog() {
     try { localStorage.removeItem(LEGACY_UNIT_KEY); } catch { /* nothing to do */ }
     return list;
   });
+
+  // A write this hook did not make — the sync layer pulling merged data down
+  // after sign-in — has to be picked up too, or the screen keeps showing
+  // whatever was on it before the merge until the next reload. Re-reading is
+  // safe on the hook's own writes as well: they already match what is stored.
+  useEffect(() => onWrite((key) => {
+    if (key === LOG_KEY) setEntries(readLog());
+  }), []);
 
   const add = useCallback((id: string, weight: number, reps: number) => {
     if (!Number.isFinite(weight) || !Number.isFinite(reps) || reps <= 0) return;

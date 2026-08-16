@@ -342,5 +342,22 @@
   },
   "best": "最好 {weight} {unit} × {reps}",
   "bestEver": "最佳推算最大重量 {max} {unit}，来自 {weight} {unit} × {reps}。"
+ },
+ "account": {
+  "title": "账户",
+  "close": "关闭账户",
+  "signedIn": "账户",
+  "signIn": "登录",
+  "signUp": "创建账户",
+  "email": "邮箱",
+  "password": "密码",
+  "confirmSent": "请点击邮件中的链接确认账户，然后登录。",
+  "why": "登录后，本机的训练记录会保留，并同步到你的账户，这样换手机也不会丢失。",
+  "signOut": "退出登录",
+  "signOutNote": "训练记录仍保留在本机。退出登录只是停止同步到账户。",
+  "merging": "正在合并本机数据与账户…",
+  "syncing": "正在保存到账户…",
+  "synced": "已保存到账户。",
+  "syncError": "同步失败：{error}"
  }
 }

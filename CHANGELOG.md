@@ -170,6 +170,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Sign-in and sync, wired but waiting on a project** — the four hooks
+  (`useLog`, `usePrograms`, `useTrainingMax`, `useProfile`) now write through
+  one seam in `lib/storage.ts` instead of calling `localStorage` directly, and
+  listen for writes they did not make themselves — which is what lets a sync
+  pull update the screen without a reload. `useSync` merges local and remote on
+  sign-in (local written first, so a flaky connection cannot leave the device
+  worse off) and pushes on every later change, debounced. The account panel
+  only appears once a Supabase project is configured; with none, which is the
+  state everyone is in until the keys exist, the app is exactly what it was
+  before this. Not yet exercised against a real project.
 - **Live at guidetrain.me** — off `defsix.github.io/guidetrain/`, which now
   301-redirects, so old links keep working. Two pieces make it hold:
   `apps/web/public/CNAME` ships inside `dist/`, because an Actions deploy
