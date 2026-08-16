@@ -62,7 +62,7 @@ them. Both want a laptop.
    Four rows, all three booleans true on every one. `has_with_check` is the
    column people get wrong.
 
-4. Point the app at the project:
+4. Point the app at the project, for local development:
 
    ```bash
    cat > apps/web/.env.local <<'EOF'
@@ -74,6 +74,17 @@ them. Both want a laptop.
    `.env.local` is already gitignored (`*.local` in `apps/web/.gitignore`).
    Both values ship in the bundle and are meant to; leave them unset and the app
    works exactly as it does now, storing everything locally.
+
+5. Point the **deployed** site at the project. `.env.local` only reaches a
+   local `npm run dev` — the live site is built by
+   `.github/workflows/deploy-pages.yml`, which bakes Vite env vars in at build
+   time and has no access to a file that never left your machine. Add the same
+   two values as **repository secrets**: Settings → Secrets and variables →
+   Actions → New repository secret, once for `VITE_SUPABASE_URL` and once for
+   `VITE_SUPABASE_ANON_KEY`. Nothing sensitive is going in there — both values
+   are meant to be public — it is only the mechanism GitHub Actions uses to
+   pass a value into a build. The next push (or a manual run of the workflow)
+   picks them up.
 
 ## Why the policies come before the tables
 

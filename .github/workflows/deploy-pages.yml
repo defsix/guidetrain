@@ -38,6 +38,19 @@ jobs:
         # what keeps the domain attached: with an Actions deploy the setting in
         # Pages is re-applied from the artifact, and an artifact without that
         # file silently drops the custom domain on the next push.
+        #
+        # VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are baked in here,
+        # Vite env vars being resolved at build time rather than read at
+        # runtime. Both are meant to end up in the public bundle -- the
+        # publishable key names the project, not a person, and row-level
+        # security is what actually protects the data (supabase/README.md) --
+        # so these are ordinary repository secrets, not anything sensitive
+        # enough to need a vault. Left unset, as on a fork with no Supabase
+        # project, hasBackend is false and the app is exactly what it was
+        # before accounts existed: no button, nothing missing.
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: npx vite build
 
       - uses: actions/configure-pages@v5
