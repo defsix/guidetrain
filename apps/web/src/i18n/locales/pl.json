@@ -403,6 +403,12 @@
   "merging": "Łączenie tego urządzenia z kontem…",
   "syncing": "Zapisywanie na koncie…",
   "synced": "Zapisano na koncie.",
-  "syncError": "Synchronizacja nie powiodła się: {error}"
+  "syncError": "Synchronizacja nie powiodła się: {error}",
+  "continueWith": {
+   "google": "Kontynuuj z Google",
+   "apple": "Kontynuuj z Apple",
+   "facebook": "Kontynuuj z Facebook"
+  },
+  "or": "lub"
  }
 }

@@ -373,6 +373,12 @@
   "merging": "Gerät und Konto werden zusammengeführt…",
   "syncing": "Wird im Konto gespeichert…",
   "synced": "Im Konto gespeichert.",
-  "syncError": "Synchronisierung fehlgeschlagen: {error}"
+  "syncError": "Synchronisierung fehlgeschlagen: {error}",
+  "continueWith": {
+   "google": "Weiter mit Google",
+   "apple": "Weiter mit Apple",
+   "facebook": "Weiter mit Facebook"
+  },
+  "or": "oder"
  }
 }

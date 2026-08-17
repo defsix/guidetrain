@@ -59,9 +59,19 @@ if (url && anonKey) {
       auth: {
         persistSession: true,
         autoRefreshToken: true,
-        // The app is hash-routed, and a magic link or OAuth redirect comes back
-        // with its tokens in the fragment, which is where the route also lives.
         detectSessionInUrl: true,
+        // Explicit rather than trusting the library default, which is
+        // 'implicit' — that flow returns the session as a URL *fragment*
+        // (`#access_token=...`), and this app is hash-routed, so the two would
+        // fight over the same piece of the URL. 'pkce' returns an
+        // authorization code as a real query parameter instead. Verified
+        // against auth-js's own source rather than assumed: parseParametersFromURL
+        // reads the query string and the fragment separately and lets the
+        // query string win on a key collision, and the post-exchange cleanup
+        // (GoTrueClient._getSessionFromURL) only ever deletes from
+        // `url.searchParams` — `url.hash`, and with it this app's route, is
+        // never touched.
+        flowType: "pkce",
       },
     });
   }
@@ -71,3 +81,18 @@ export const supabase = client;
 
 /** Whether accounts are available at all. False is a normal, working state. */
 export const hasBackend = client !== null;
+
+/**
+ * Providers with real credentials in place, both in their own console and in
+ * Supabase's dashboard.
+ *
+ * A provider not listed here would still redirect a visitor to a real consent
+ * screen and back to a clear error — not broken, but not something to put in
+ * front of anyone before it has actually been proven working end to end.
+ *
+ * A plain array rather than an env var on purpose: turning a provider on is a
+ * one-line code change with nothing secret in it, and it means confirming
+ * Google works needs no extra dashboard step beyond the ones already done —
+ * flip this, push, and it appears.
+ */
+export const ENABLED_OAUTH_PROVIDERS: ("google" | "apple" | "facebook")[] = [];

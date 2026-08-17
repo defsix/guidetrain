@@ -104,6 +104,51 @@ Two details that are easy to get wrong and quiet when you do:
   rather than true, so the anon key matches no row. That is the behaviour to
   rely on rather than a separate "deny anonymous" policy.
 
+## OAuth (Google, then Apple and Facebook)
+
+Code is in place; every provider starts **off** until proven working end to
+end, per exercise.
+
+The credentials go in two places, both required:
+
+1. **The provider's own console** — a Google Cloud project (OAuth consent
+   screen + client ID/secret), Apple Developer account (needs an active
+   $99/year membership before Sign in with Apple can even be configured), or
+   Facebook developer app. Each one wants an **authorized redirect URI**,
+   which is Supabase's own callback:
+   `https://lnunotawuljlfvksupik.supabase.co/auth/v1/callback`.
+2. **Supabase's dashboard** — Authentication → Sign In / Providers → the
+   provider → paste in the client ID and secret from step 1, save.
+
+Once both are done for a provider, turn it on in the app by editing
+`apps/web/src/lib/supabase.ts`:
+
+```ts
+export const ENABLED_OAUTH_PROVIDERS: ("google" | "apple" | "facebook")[] = ["google"];
+```
+
+Not an env var on purpose — nothing in that line is secret, so there is no new
+dashboard step beyond the two above. Push, and the button appears.
+
+### Why this needed more than "add a button"
+
+The app is hash-routed (`guidetrain.me/#/explore`), because GitHub Pages
+cannot rewrite unknown paths to `index.html`. OAuth's default *implicit* flow
+returns the session as a URL **fragment** (`#access_token=...`), which would
+fight the router for the same part of the URL. The client is configured with
+`flowType: "pkce"` instead, which returns an authorization **code** as a real
+query parameter — verified against `auth-js`'s own source rather than assumed:
+`parseParametersFromURL` reads the query string separately from the fragment
+and lets the query string win on a key collision, and the post-exchange
+cleanup only ever touches `url.searchParams`. The route survives untouched.
+
+Confirmed by intercepting the real authorize request the app builds
+(`code_challenge` and `code_challenge_method=s256` present, `redirect_to`
+correctly pointing at `#/explore`) — that is as far as this could be verified
+without a live provider. **The actual click-through — consent screen,
+redirect back, landing signed in — only you can test**, the same way the RLS
+check needed a real project.
+
 ## Shape notes
 
 - **`sets` keeps the client's id** as `client_uid`, unique per user. Syncing the

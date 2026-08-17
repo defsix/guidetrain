@@ -373,6 +373,12 @@
   "merging": "A juntar este aparelho à sua conta…",
   "syncing": "A guardar na conta…",
   "synced": "Guardado na conta.",
-  "syncError": "Não foi possível sincronizar: {error}"
+  "syncError": "Não foi possível sincronizar: {error}",
+  "continueWith": {
+   "google": "Continuar com o Google",
+   "apple": "Continuar com a Apple",
+   "facebook": "Continuar com o Facebook"
+  },
+  "or": "ou"
  }
 }

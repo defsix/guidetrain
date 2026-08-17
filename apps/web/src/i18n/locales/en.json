@@ -373,6 +373,12 @@
   "merging": "Bringing this device and your account together…",
   "syncing": "Saving to your account…",
   "synced": "Saved to your account.",
-  "syncError": "Could not sync: {error}"
+  "syncError": "Could not sync: {error}",
+  "continueWith": {
+   "google": "Continue with Google",
+   "apple": "Continue with Apple",
+   "facebook": "Continue with Facebook"
+  },
+  "or": "or"
  }
 }

@@ -358,6 +358,12 @@
   "merging": "この端末とアカウントを統合しています…",
   "syncing": "アカウントに保存しています…",
   "synced": "アカウントに保存しました。",
-  "syncError": "同期できませんでした: {error}"
+  "syncError": "同期できませんでした: {error}",
+  "continueWith": {
+   "google": "Googleで続ける",
+   "apple": "Appleで続ける",
+   "facebook": "Facebookで続ける"
+  },
+  "or": "または"
  }
 }

@@ -87,6 +87,26 @@ export function useAuth() {
     await supabase.auth.signOut();
   }, []);
 
+  /**
+   * Hands off to a third-party provider. There is no session to return here —
+   * a successful call ends with the browser already navigating to the
+   * provider's consent screen, not with anything this function could report.
+   * Only a failure to even start the redirect surfaces, as an error.
+   *
+   * Sent back to `#/explore`, the only place this is ever called from — the
+   * account panel does not exist anywhere the app would not already show that
+   * route once signed in.
+   */
+  const signInWithOAuth = useCallback(async (provider: "google" | "apple" | "facebook") => {
+    if (!supabase) return;
+    setError(null);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider,
+      options: { redirectTo: `${window.location.origin}/#/explore` },
+    });
+    if (error) setError(error.message);
+  }, []);
+
   const clearError = useCallback(() => setError(null), []);
 
   return {
@@ -99,5 +119,6 @@ export function useAuth() {
     signIn,
     signUp,
     signOut,
+    signInWithOAuth,
   };
 }

@@ -180,6 +180,16 @@ Newest first. Numbers in brackets are pull requests.
   only appears once a Supabase project is configured; with none, which is the
   state everyone is in until the keys exist, the app is exactly what it was
   before this. Not yet exercised against a real project.
+- **Google sign-in, built and proven as far as it can be without a live
+  provider** — flowType set to `pkce` rather than the library default of
+  `implicit`, because implicit returns the session in a URL fragment
+  (`#access_token=...`), which would fight the app's own hash routing for the
+  same part of the URL. Verified against auth-js's source rather than assumed:
+  the code exchange only ever touches `url.searchParams`, never `url.hash`.
+  Confirmed by intercepting the real authorize request the app builds — PKCE
+  parameters present, redirect target correct. Providers start off
+  (`ENABLED_OAUTH_PROVIDERS`) until proven working end to end in a real
+  browser, which needs credentials only a person can create.
 - **Live at guidetrain.me** — off `defsix.github.io/guidetrain/`, which now
   301-redirects, so old links keep working. Two pieces make it hold:
   `apps/web/public/CNAME` ships inside `dist/`, because an Actions deploy

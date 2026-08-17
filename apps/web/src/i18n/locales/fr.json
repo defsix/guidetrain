@@ -373,6 +373,12 @@
   "merging": "Réunion de cet appareil et de votre compte…",
   "syncing": "Enregistrement dans votre compte…",
   "synced": "Enregistré dans votre compte.",
-  "syncError": "Échec de la synchronisation : {error}"
+  "syncError": "Échec de la synchronisation : {error}",
+  "continueWith": {
+   "google": "Continuer avec Google",
+   "apple": "Continuer avec Apple",
+   "facebook": "Continuer avec Facebook"
+  },
+  "or": "ou"
  }
 }

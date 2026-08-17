@@ -403,6 +403,12 @@
   "merging": "Slučuji toto zařízení s vaším účtem…",
   "syncing": "Ukládám do účtu…",
   "synced": "Uloženo do účtu.",
-  "syncError": "Synchronizace se nezdařila: {error}"
+  "syncError": "Synchronizace se nezdařila: {error}",
+  "continueWith": {
+   "google": "Pokračovat přes Google",
+   "apple": "Pokračovat přes Apple",
+   "facebook": "Pokračovat přes Facebook"
+  },
+  "or": "nebo"
  }
 }
