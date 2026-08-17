@@ -717,8 +717,11 @@ Three things apply only to the deployed build:
    `localStorage`
 4. ✅ Getting to your next max — 5/3/1 off your logged sets, with the weights
    carried into the workout and a reset when a lift stalls
-5. Accounts (username, sex, approximate age) and public program library —
-   the next thing, and the one several items below are waiting on
+5. ✅ Accounts and sync — Supabase, row-level security proven by attacking it
+   with a second account rather than trusting the policy shape, sign-in
+   merging local and remote before anything is pushed. Live at guidetrain.me
+6. A public program library — sharing a workout with someone who isn't you,
+   the one thing roadmap 5 didn't cover
 
 ### The intended shape
 
@@ -787,16 +790,19 @@ DNS change rather than a broken bookmark, and it gives OAuth consent screens
 and confirmation emails a sender that does not look like somebody's personal
 GitHub account.
 
-### Waiting on accounts
+### Now that accounts exist
 
-Everything the app stores is `localStorage`: per device, per browser, gone with
-the phone. These need a server behind them rather than more front-end work.
-
-- **Sync and durability** — the same training on a laptop and a phone, and a
-  history that survives a lost device. Nothing here adds capability; it stops
-  the existing capability from being one browser wipe from zero.
-- **A public program library** — roadmap 5's other half. Programs are already
-  data; sharing them is an account and an endpoint away.
+- **A public program library** — the `programs` table already has everything a
+  shared workout needs; this is a visibility flag, a browse screen, and a
+  decision about moderation, not a schema change.
+- **Custom SMTP** — the built-in mailer allows 2–4 confirmation emails an hour,
+  the same limit on Free and Pro, and is meant for testing rather than real
+  sign-ups
+  ([Supabase rate limits](https://supabase.com/docs/guides/auth/rate-limits)).
+  Fine for now; add a provider (Resend, Postmark) in Settings → Auth → SMTP
+  before pointing real users at sign-up.
+- **OAuth providers** — email/password only today. Google or Apple sign-in
+  wants the domain settled first, which it now is.
 
 ### Asked for, not yet built
 
