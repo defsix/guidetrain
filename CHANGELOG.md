@@ -170,6 +170,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The sign-up confirmation email now links to the real domain** — it was
+  landing on `localhost:3000`, unreachable from anywhere but the machine that
+  built the app, because `signUp` never set `emailRedirectTo` and Supabase
+  falls back to the project's Site URL, which defaults to `localhost:3000`
+  and has to be changed by hand in the dashboard. The link now targets the
+  app's own origin explicitly rather than depending on that dashboard field
+  being right. Deliberately the bare origin rather than `#/explore` directly:
+  the confirmation carries a PKCE code as a real query parameter, and rather
+  than guess how Supabase combines a query string with a URL that already has
+  a hash, it lands on `/` and lets onboarding's own redirect-once-signed-in
+  effect (below) carry it the rest of the way. The dashboard's Site URL and
+  Redirect URLs still need to be updated separately — this only removes the
+  code's dependence on that being done right.
 - **Sign in before onboarding, not only after** — the account button now also
   appears on the welcome screen, before any of the four profile questions are
   answered. Previously the only way in was to fill them out first: onboarding

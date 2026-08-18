@@ -67,7 +67,20 @@ export function useAuth() {
   const signUp = useCallback(async (email: string, password: string) => {
     if (!supabase) return false;
     setError(null);
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      // Without this, the confirmation email links to the project's Site
+      // URL — a Supabase-dashboard setting that defaults to
+      // http://localhost:3000 and has to be changed by hand. Setting it here
+      // means the link is correct regardless of what that dashboard field
+      // says. The target is the bare origin, not "#/explore" directly: the
+      // confirmation link carries a PKCE `code` as a real query parameter,
+      // and landing on "/" lets onboarding's own redirect-once-signed-in
+      // effect send it on to the explorer, rather than this guessing at how
+      // Supabase combines a query string with a URL that already has a hash.
+      options: { emailRedirectTo: window.location.origin },
+    });
     if (error) {
       setError(error.message);
       return false;
