@@ -317,7 +317,8 @@
   "pickYourOwn": "wybierz sam",
   "from": {
    "logged": "z twoich serii",
-   "bodyweight": "punkt wyjścia"
+   "bodyweight": "punkt wyjścia",
+   "atBodyWeight": "twoja masa ciała"
   },
   "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała, wieku i płci — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
@@ -332,7 +333,8 @@
    "chest": "Klatka piersiowa",
    "back": "Plecy",
    "shoulders": "Barki",
-   "arms": "Ramiona"
+   "arms": "Ramiona",
+   "full": "Całe ciało"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -350,6 +352,18 @@
   "bodypart": {
    "name": "Split na partie mięśniowe",
    "desc": "Jedna partia mięśniowa dziennie, pięć dni w tygodniu — więcej objętości na sesję, częstotliwość raz w tygodniu. Klasyczny split kulturystyczny."
+  },
+  "dumbbell": {
+   "name": "Całe ciało z hantlami",
+   "desc": "Ta sama struktura na całe ciało, zbudowana wyłącznie z hantli — bez sztangi czy stojaka. Do siłowni w domu, albo gdy stojak jest zawsze zajęty."
+  },
+  "minimal": {
+   "name": "Minimalny, dwa dni w tygodniu",
+   "desc": "Cztery ćwiczenia, dwa razy w tygodniu — przysiad, martwy ciąg, wyciskanie i przyciąganie, nic ponadto. Na sytuacje, gdy naprawdę masz tylko dwie sesje."
+  },
+  "noequip": {
+   "name": "Tylko masa ciała",
+   "desc": "Bez dodatkowego obciążenia — pompki, podciąganie i przysiady z masą własną, mając tylko drążek do zwisu. Na podróże, pokój hotelowy, albo start bez niczego."
   }
  },
  "skip": {

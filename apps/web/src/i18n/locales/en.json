@@ -295,7 +295,8 @@
   "pickYourOwn": "pick your own",
   "from": {
    "logged": "from your lifts",
-   "bodyweight": "starting point"
+   "bodyweight": "starting point",
+   "atBodyWeight": "your body weight"
   },
   "startingNote": "Weights marked “starting point” come from your body weight, age and sex — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
@@ -310,7 +311,8 @@
    "chest": "Chest",
    "back": "Back",
    "shoulders": "Shoulders",
-   "arms": "Arms"
+   "arms": "Arms",
+   "full": "Full body"
   },
   "fullbody": {
    "name": "Full body",
@@ -328,6 +330,18 @@
   "bodypart": {
    "name": "Body part split",
    "desc": "One muscle group a day, five days a week — more volume per session, once-weekly frequency. The classic bodybuilding split."
+  },
+  "dumbbell": {
+   "name": "Dumbbell-only full body",
+   "desc": "The same full-body shape, built entirely from dumbbells — no barbell or rack required. For a home gym, or a commercial one when the rack is always busy."
+  },
+  "minimal": {
+   "name": "Minimal, two days a week",
+   "desc": "Four lifts, twice a week — a squat, a deadlift, a press and a pull, nothing extra. For when two sessions is what you actually have."
+  },
+  "noequip": {
+   "name": "Bodyweight only",
+   "desc": "No added weight — push-ups, pull-ups and bodyweight squats, using nothing but a bar to hang from. For travel, a hotel room, or starting out with nothing."
   }
  },
  "skip": {

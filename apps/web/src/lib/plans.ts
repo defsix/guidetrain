@@ -166,6 +166,80 @@ export const PLANS: PlanTemplate[] = [
       },
     ],
   },
+  {
+    // The full-body shape again, this time built so that no barbell or rack is
+    // ever required — a home gym with a pair of dumbbells and nothing else can
+    // still run it. There is no dumbbell overhead press in this catalogue, so
+    // day B leans on an upright row for the shoulders rather than pretending
+    // one exists.
+    id: "dumbbell",
+    perWeek: 3,
+    days: [
+      {
+        name: "a",
+        exercises: [
+          { id: "Dumbbell_Squat", sets: 3, reps: 8 },
+          { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
+          { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 10 },
+        ],
+      },
+      {
+        name: "b",
+        exercises: [
+          { id: "Dumbbell_Squat", sets: 3, reps: 8 },
+          { id: "Standing_Dumbbell_Upright_Row", sets: 3, reps: 10 },
+          { id: "Stiff-Legged_Dumbbell_Deadlift", sets: 1, reps: 8 },
+        ],
+      },
+    ],
+  },
+  {
+    // Two sessions, not three or five — the other shapes assume the frequency
+    // is negotiable and the exercise list isn't; this is the reverse. Squats
+    // only once here rather than the twice or three times the other full-body
+    // shapes give it, so the hinge carries the legs on day B instead.
+    id: "minimal",
+    perWeek: 2,
+    days: [
+      {
+        name: "a",
+        exercises: [
+          { id: "Barbell_Squat", sets: 3, reps: 5 },
+          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
+          { id: "Bent_Over_Barbell_Row", sets: 3, reps: 5 },
+        ],
+      },
+      {
+        name: "b",
+        exercises: [
+          { id: "Barbell_Deadlift", sets: 1, reps: 5 },
+          { id: "Standing_Military_Press", sets: 3, reps: 5 },
+          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 8 },
+        ],
+      },
+    ],
+  },
+  {
+    // No equipment at all except something to hang from. The catalogue's
+    // "body only" tag is exactly this category, and the app already knows what
+    // to do with it — the workout logger asks for reps alone and records the
+    // set at body weight, which is why this plan needs no entry in
+    // BODY_FRACTION below: `prescribe` reads the tag itself.
+    id: "noequip",
+    perWeek: 3,
+    days: [
+      {
+        name: "full",
+        exercises: [
+          { id: "Push-Up_Wide", sets: 3, reps: 12 },
+          { id: "Pullups", sets: 3, reps: 6 },
+          { id: "Bodyweight_Squat", sets: 3, reps: 15 },
+          { id: "Single_Leg_Glute_Bridge", sets: 3, reps: 12 },
+          { id: "3_4_Sit-Up", sets: 3, reps: 20 },
+        ],
+      },
+    ],
+  },
 ];
 
 /** An Olympic bar. Nothing barbell can be prescribed below it. */
@@ -184,6 +258,19 @@ const BAR = 20;
 const BARBELL = new Set<string>();
 for (const list of Object.values(exercises.muscles as Record<string, { id: string; equipment?: string }[]>)) {
   for (const x of list) if (x.equipment === "barbell") BARBELL.add(x.id);
+}
+
+/**
+ * Exercises whose load is the person doing them, same source as `BARBELL`.
+ *
+ * These need no entry in `BODY_FRACTION` — a push-up isn't loaded with a
+ * fraction of body weight scaled by age and sex, it's loaded with body
+ * weight, full stop. `prescribe` reads this set before it ever looks at the
+ * fraction table.
+ */
+const BODYONLY = new Set<string>();
+for (const list of Object.values(exercises.muscles as Record<string, { id: string; equipment?: string }[]>)) {
+  for (const x of list) if (x.equipment === "body only") BODYONLY.add(x.id);
 }
 
 /**
@@ -222,6 +309,17 @@ const BODY_FRACTION: Record<string, number> = {
   Upright_Barbell_Row: 0.22,
   Face_Pull: 0.08,
   Alternate_Hammer_Curl: 0.12,
+
+  // The dumbbell-only full body plan. Each is a per-hand fraction — the
+  // catalogue's own instructions confirm all three are done with one dumbbell
+  // per hand, not a single dumbbell held in both — so the same "per hand"
+  // reading the logger already gives Dumbbell_Bench_Press applies here too.
+  // Lighter than their barbell analogues on purpose: a bar the same
+  // percentage away from the body's centre of mass is easier to balance than
+  // two independent dumbbells, and grip is the first thing to give out.
+  Dumbbell_Squat: 0.2,
+  Standing_Dumbbell_Upright_Row: 0.1,
+  "Stiff-Legged_Dumbbell_Deadlift": 0.2,
 };
 
 /**
@@ -264,8 +362,15 @@ export function workingLoad(oneRM: number, reps: number): number {
 
 export type Prescription = {
   load: number;
-  /** Where the number came from, which the panel must say out loud. */
-  source: "logged" | "bodyweight" | "unknown";
+  /**
+   * Where the number came from, which the panel must say out loud.
+   *
+   * `atBodyWeight` is not a fifth kind of estimate alongside `bodyweight` — it
+   * is not an estimate at all. A push-up is loaded with exactly the body
+   * weight on the profile, not a demographic-adjusted share of it, so there is
+   * nothing here for sex or age to scale.
+   */
+  source: "logged" | "bodyweight" | "atBodyWeight" | "unknown";
 };
 
 /**
@@ -287,11 +392,13 @@ export function prescribe(
   }
   if (best !== null) return { load: workingLoad(best, reps), source: "logged" };
 
-  const fraction = BODY_FRACTION[exerciseId];
   const bw = profile?.bodyWeight;
-  if (!fraction || !bw || profile?.bodyWeightUnit === "lb") {
-    return { load: 0, source: "unknown" };
-  }
+  if (!bw || profile?.bodyWeightUnit === "lb") return { load: 0, source: "unknown" };
+
+  if (BODYONLY.has(exerciseId)) return { load: bw, source: "atBodyWeight" };
+
+  const fraction = BODY_FRACTION[exerciseId];
+  if (!fraction) return { load: 0, source: "unknown" };
   const sex = SEX_FACTOR[profile.gender] ?? SEX_FACTOR.other;
   const age = AGE_FACTOR[profile.ageGroup] ?? 1;
   const raw = bw * fraction * sex * age;

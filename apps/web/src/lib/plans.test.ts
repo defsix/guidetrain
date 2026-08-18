@@ -89,6 +89,20 @@ describe("prescribe", () => {
     const p = prescribe("Barbell_Squat", 5, [], profile());
     expect(p.load).toBeLessThan(profile().bodyWeight!);
   });
+
+  it("loads a bodyweight exercise at exactly body weight, not a fraction of it", () => {
+    // Push-Up_Wide is "body only" equipment. Unlike a barbell or dumbbell
+    // lift, sex and age must not touch this number — a 60-year-old and a
+    // 25-year-old at the same body weight do the same push-up against the
+    // same load, because it is their own weight, not a population guess.
+    const base = prescribe("Push-Up_Wide", 12, [], profile()).load;
+    const older = prescribe("Push-Up_Wide", 12, [], profile({ ageGroup: "60+" })).load;
+    const female = prescribe("Push-Up_Wide", 12, [], profile({ gender: "female" })).load;
+    expect(base).toBe(profile().bodyWeight);
+    expect(older).toBe(base);
+    expect(female).toBe(base);
+    expect(prescribe("Push-Up_Wide", 12, [], profile()).source).toBe("atBodyWeight");
+  });
 });
 
 describe("PLANS", () => {
@@ -96,7 +110,12 @@ describe("PLANS", () => {
     for (const plan of PLANS) {
       for (const day of plan.days) {
         for (const e of day.exercises) {
-          expect(prescribe(e.id, e.reps, [], profile()).source, e.id).toBe("bodyweight");
+          // "bodyweight" for anything loaded with a fraction of body weight,
+          // "atBodyWeight" for a push-up or pull-up whose load is the whole
+          // of it — either is a real prescription, unlike "unknown".
+          expect(["bodyweight", "atBodyWeight"], e.id).toContain(
+            prescribe(e.id, e.reps, [], profile()).source,
+          );
         }
       }
     }

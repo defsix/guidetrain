@@ -317,7 +317,8 @@
   "pickYourOwn": "zvolte si sami",
   "from": {
    "logged": "z vašich sérií",
-   "bodyweight": "výchozí bod"
+   "bodyweight": "výchozí bod",
+   "atBodyWeight": "vaše tělesná hmotnost"
   },
   "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti, věku a pohlaví — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
@@ -332,7 +333,8 @@
    "chest": "Hrudník",
    "back": "Záda",
    "shoulders": "Ramena",
-   "arms": "Paže"
+   "arms": "Paže",
+   "full": "Celé tělo"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -350,6 +352,18 @@
   "bodypart": {
    "name": "Split podle partií",
    "desc": "Jedna svalová partie denně, pět dní v týdnu — víc objemu za trénink, frekvence jednou týdně. Klasický kulturistický split."
+  },
+  "dumbbell": {
+   "name": "Celé tělo s jednoručkami",
+   "desc": "Stejná celotělová struktura, celá postavená na jednoručkách — bez činky nebo stojanu. Pro domácí posilovnu, nebo když je stojan pořád obsazený."
+  },
+  "minimal": {
+   "name": "Minimalistický, dva dny v týdnu",
+   "desc": "Čtyři cviky, dvakrát týdně — dřep, mrtvý tah, tlak a tah, nic navíc. Pro chvíle, kdy máte skutečně jen dvě jednotky."
+  },
+  "noequip": {
+   "name": "Jen vlastní váha",
+   "desc": "Žádná přidaná zátěž — kliky, shyby a dřepy s vlastní vahou, jen s hrazdou na shyby. Na cesty, do hotelového pokoje, nebo na úplný začátek."
   }
  },
  "skip": {

@@ -295,7 +295,8 @@
   "pickYourOwn": "selbst wählen",
   "from": {
    "logged": "aus deinen Sätzen",
-   "bodyweight": "Startwert"
+   "bodyweight": "Startwert",
+   "atBodyWeight": "dein Körpergewicht"
   },
   "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht, Alter und Geschlecht — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
@@ -310,7 +311,8 @@
    "chest": "Brust",
    "back": "Rücken",
    "shoulders": "Schultern",
-   "arms": "Arme"
+   "arms": "Arme",
+   "full": "Ganzkörper"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -328,6 +330,18 @@
   "bodypart": {
    "name": "Split nach Muskelgruppen",
    "desc": "Eine Muskelgruppe pro Tag, fünf Tage die Woche — mehr Volumen pro Einheit, einmal wöchentliche Frequenz. Der klassische Bodybuilding-Split."
+  },
+  "dumbbell": {
+   "name": "Ganzkörper mit Kurzhanteln",
+   "desc": "Die gleiche Ganzkörperstruktur, komplett mit Kurzhanteln — keine Langhantel oder Rack nötig. Fürs Homegym, oder wenn das Rack immer belegt ist."
+  },
+  "minimal": {
+   "name": "Minimal, zweimal die Woche",
+   "desc": "Vier Übungen, zweimal die Woche — eine Kniebeuge, ein Kreuzheben, ein Drücken und ein Ziehen, nichts extra. Für den Fall, dass zwei Einheiten alles sind, was du wirklich hast."
+  },
+  "noequip": {
+   "name": "Nur Körpergewicht",
+   "desc": "Kein Zusatzgewicht — Liegestütze, Klimmzüge und Kniebeugen mit dem eigenen Körpergewicht, nur mit einer Stange zum Hängen. Für unterwegs, ein Hotelzimmer, oder den Einstieg ganz ohne Ausrüstung."
   }
  },
  "skip": {

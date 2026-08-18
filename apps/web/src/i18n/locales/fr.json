@@ -295,7 +295,8 @@
   "pickYourOwn": "à vous de voir",
   "from": {
    "logged": "d'après vos séries",
-   "bodyweight": "point de départ"
+   "bodyweight": "point de départ",
+   "atBodyWeight": "votre poids de corps"
   },
   "startingNote": "Les charges marquées « point de départ » viennent de votre poids, de votre âge et de votre sexe : une moyenne de population, pas une mesure de vous. Traitez la première série comme un test : si elle passe facilement, ajoutez ; sinon, retirez. Dès que vous enregistrez une série, cet exercice utilise vos propres chiffres.",
   "loggedNote": "Les séries sont faites pour être terminées : gardez une ou deux répétitions en réserve.",
@@ -310,7 +311,8 @@
    "chest": "Pectoraux",
    "back": "Dos",
    "shoulders": "Épaules",
-   "arms": "Bras"
+   "arms": "Bras",
+   "full": "Corps entier"
   },
   "fullbody": {
    "name": "Corps entier",
@@ -328,6 +330,18 @@
   "bodypart": {
    "name": "Répartition par groupe musculaire",
    "desc": "Un groupe musculaire par jour, cinq jours par semaine — plus de volume par séance, une fréquence hebdomadaire. La répartition classique du bodybuilding."
+  },
+  "dumbbell": {
+   "name": "Corps entier aux haltères",
+   "desc": "La même structure corps entier, construite entièrement avec des haltères — pas besoin de barre ni de rack. Pour une salle à la maison, ou quand le rack est toujours pris."
+  },
+  "minimal": {
+   "name": "Minimal, deux jours par semaine",
+   "desc": "Quatre mouvements, deux fois par semaine — un squat, un soulevé de terre, une poussée et une traction, rien de plus. Pour quand deux séances, c'est vraiment tout ce que vous avez."
+  },
+  "noequip": {
+   "name": "Poids du corps uniquement",
+   "desc": "Aucune charge ajoutée — pompes, tractions et squats au poids du corps, avec juste une barre à laquelle vous suspendre. Pour voyager, une chambre d'hôtel, ou débuter sans rien."
   }
  },
  "skip": {

@@ -409,10 +409,13 @@ here, it stays on the device.
 
 ## Ready-made plans
 
-Four shapes — full body, upper/lower, push/pull/legs, body part split —
+Seven shapes — full body, upper/lower, push/pull/legs, body part split,
+dumbbell-only full body, a minimal two-day full body, and bodyweight only —
 previewed **with the weights you would actually use**, then added as named
 workouts with their targets already set. A plan that says "Barbell Squat,
 3 × 5" still leaves you a decision in the gym; one that says 77.5 kg does not.
+The last three are chosen by equipment and time rather than by goal — no
+barbell, only two sessions a week, or no equipment at all.
 
 Each is a common structure rather than anything invented here, and each is
 built only from exercises this catalogue has.
@@ -421,13 +424,16 @@ doesn't, or omits a starting weight, since either would render a blank row.
 
 ### Where each weight comes from
 
-Two sources, deliberately not the same kind of thing, and every row says which
-it is:
+Three sources, deliberately not the same kind of thing, and every row says
+which it is:
 
 - **From your lifts** — your best logged set, through Epley, backed off a tenth
   to a weight you can finish. A calculation.
 - **Starting point** — body weight × a per-exercise fraction, adjusted by sex
   and age band. A population average, not a measurement of you.
+- **Your body weight** — for a push-up, a pull-up, a bodyweight squat: the
+  load is the whole of your body weight, not a fraction of it and not
+  adjusted for sex or age, because it is not an estimate of anything.
 
 **There is no path from body weight to a one-rep max.** The estimated max is
 what drives the 5/3/1 planner, and it has to come from a set that happened;

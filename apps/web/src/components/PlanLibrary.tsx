@@ -68,6 +68,12 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
     }));
   }, [chosen, byExercise, profile]);
 
+  // Only true once something on screen actually needs it explained — a plan
+  // built entirely from logged lifts or from body-only exercises never shows
+  // the words "starting point" at all, and the note would be answering a
+  // question nothing on the page asked.
+  const hasStartingPoint = resolved?.some((day) => day.exercises.some((e) => e.source === "bodyweight"));
+
   const u = t("unit.kg");
   if (!open) return null;
 
@@ -143,7 +149,7 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
             ))}
 
             {/* Said once, plainly, above the button that commits to it. */}
-            <p className="plan-note flag">{t("plans.startingNote")}</p>
+            {hasStartingPoint && <p className="plan-note flag">{t("plans.startingNote")}</p>}
             <p className="plan-note">{t("plans.loggedNote")}</p>
             {/* The weights above are not just a preview any more — they go into
                 the workout, where the logger offers them back set by set. */}

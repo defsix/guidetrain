@@ -170,6 +170,27 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Three more plans, chosen by what equipment and time a person actually
+  has rather than by goal** — a dumbbell-only full body for a home gym with no
+  barbell or rack, a minimal two-day-a-week shape for whoever really only has
+  two sessions, and a bodyweight-only plan for a hotel room or a start with
+  nothing. The last needed a real distinction the code hadn't made before:
+  `prescribe` had exactly one non-logged path, body weight times a
+  per-exercise fraction adjusted for sex and age, and a push-up isn't that —
+  its load *is* the full body weight, unscaled, because a 60-year-old and a
+  25-year-old at the same weight do the same push-up against the same
+  resistance. A `"body only"` reading from the catalogue (parallel to the
+  barbell floor's own reading) now short-circuits straight to body weight
+  before the fraction table is ever consulted, under its own `atBodyWeight`
+  source rather than being folded into `"bodyweight"` and dressed up as an
+  estimate it isn't. The dumbbell plan reuses the same per-hand convention the
+  logger already applies to `Dumbbell_Bench_Press`, confirmed against the
+  catalogue's own instructions rather than assumed for the three new
+  exercises. One rendering bug caught before it shipped: the "weights marked
+  starting point" note is fixed text below every plan preview, and would have
+  explained a label that never appears on a plan built entirely from logged
+  lifts or body-only exercises — it now only renders when something on screen
+  actually says "starting point".
 - **A fourth ready-made plan: body part split** — chest, back, legs, shoulders
   and arms across five days, one muscle group a session instead of the two or
   three a week the other three shapes give it. Eight new exercises needed a

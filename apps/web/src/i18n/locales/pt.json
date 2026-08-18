@@ -295,7 +295,8 @@
   "pickYourOwn": "escolha você",
   "from": {
    "logged": "das suas séries",
-   "bodyweight": "ponto de partida"
+   "bodyweight": "ponto de partida",
+   "atBodyWeight": "o seu peso corporal"
   },
   "startingNote": "Os pesos marcados «ponto de partida» vêm do seu peso corporal, idade e sexo: uma média populacional, não uma medição sua. Trate a primeira série como um teste: se subir fácil, acrescente; se não, tire. Assim que registar uma série, esse exercício passa a usar os seus próprios números.",
   "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
@@ -310,7 +311,8 @@
    "chest": "Peito",
    "back": "Costas",
    "shoulders": "Ombros",
-   "arms": "Braços"
+   "arms": "Braços",
+   "full": "Corpo inteiro"
   },
   "fullbody": {
    "name": "Corpo inteiro",
@@ -328,6 +330,18 @@
   "bodypart": {
    "name": "Divisão por grupo muscular",
    "desc": "Um grupo muscular por dia, cinco dias por semana — mais volume por sessão, frequência semanal. A divisão clássica do bodybuilding."
+  },
+  "dumbbell": {
+   "name": "Corpo inteiro com halteres",
+   "desc": "A mesma estrutura de corpo inteiro, construída só com halteres — sem barra nem rack. Para treinar em casa, ou quando o rack está sempre ocupado."
+  },
+  "minimal": {
+   "name": "Mínimo, dois dias por semana",
+   "desc": "Quatro exercícios, duas vezes por semana — um agachamento, um levantamento terra, um press e uma puxada, nada mais. Para quando duas sessões é tudo o que realmente tem."
+  },
+  "noequip": {
+   "name": "Só peso corporal",
+   "desc": "Sem carga adicional — flexões, elevações e agachamentos com o peso do corpo, usando apenas uma barra para se pendurar. Para viajar, um quarto de hotel, ou para começar sem nada."
   }
  },
  "skip": {

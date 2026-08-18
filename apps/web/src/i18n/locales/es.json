@@ -295,7 +295,8 @@
   "pickYourOwn": "elige tú",
   "from": {
    "logged": "de tus series",
-   "bodyweight": "punto de partida"
+   "bodyweight": "punto de partida",
+   "atBodyWeight": "tu peso corporal"
   },
   "startingNote": "Los pesos marcados «punto de partida» salen de tu peso corporal, edad y sexo: una media poblacional, no una medición tuya. Trata la primera serie como una prueba: si sube fácil, añade; si no, quita. En cuanto registres una serie, ese ejercicio usará tus propios números.",
   "loggedNote": "Las series están para terminarlas, no para acabar contigo: deja una o dos repeticiones en reserva.",
@@ -310,7 +311,8 @@
    "chest": "Pecho",
    "back": "Espalda",
    "shoulders": "Hombros",
-   "arms": "Brazos"
+   "arms": "Brazos",
+   "full": "Cuerpo completo"
   },
   "fullbody": {
    "name": "Cuerpo completo",
@@ -328,6 +330,18 @@
   "bodypart": {
    "name": "Rutina por grupos musculares",
    "desc": "Un grupo muscular al día, cinco días a la semana — más volumen por sesión, frecuencia semanal. La rutina clásica de culturismo."
+  },
+  "dumbbell": {
+   "name": "Cuerpo completo con mancuernas",
+   "desc": "La misma estructura de cuerpo completo, construida solo con mancuernas — sin barra ni rack. Para un gimnasio en casa, o cuando el rack siempre está ocupado."
+  },
+  "minimal": {
+   "name": "Mínimo, dos días a la semana",
+   "desc": "Cuatro ejercicios, dos veces por semana — una sentadilla, un peso muerto, un empuje y un tirón, nada más. Para cuando dos sesiones es lo que realmente tienes."
+  },
+  "noequip": {
+   "name": "Solo peso corporal",
+   "desc": "Sin peso añadido — flexiones, dominadas y sentadillas con el propio peso, con nada más que una barra donde colgarte. Para viajar, una habitación de hotel, o empezar sin nada."
   }
  },
  "skip": {

@@ -1599,7 +1599,7 @@
 /* Where the number came from, said in the colour it deserves: your own lifts
    are solid, a population average is not. */
 .plan-day .dload em.logged { color: var(--accent); }
-.plan-day .dload em.bodyweight, .plan-day .dload em.unknown { color: var(--text-muted); }
+.plan-day .dload em.bodyweight, .plan-day .dload em.atBodyWeight, .plan-day .dload em.unknown { color: var(--text-muted); }
 .plan-day .dsets {
   font-family: var(--mono); font-size: 11px; color: var(--text-muted); white-space: nowrap;
 }
