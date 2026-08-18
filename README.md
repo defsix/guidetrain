@@ -846,14 +846,14 @@ GitHub account.
 - **A public program library** — the `programs` table already has everything a
   shared workout needs; this is a visibility flag, a browse screen, and a
   decision about moderation, not a schema change.
-- **Custom SMTP** — the built-in mailer allows 2–4 confirmation emails an hour,
-  the same limit on Free and Pro, and is meant for testing rather than real
-  sign-ups
+- ✅ **Custom SMTP** — the built-in mailer allowed only 2–4 confirmation emails
+  an hour, the same limit on Free and Pro, and was meant for testing rather
+  than real sign-ups
   ([Supabase rate limits](https://supabase.com/docs/guides/auth/rate-limits)).
-  Fine for now; add a provider (Resend, Postmark) in Settings → Auth → SMTP
-  before pointing real users at sign-up.
-- **OAuth providers** — email/password only today. Google or Apple sign-in
-  wants the domain settled first, which it now is.
+  Live on Resend now, sending as `noreply@guidetrain.me`.
+- ✅ **OAuth providers** — Google sign-in is live, proven by an actual
+  click-through. Apple ($99/year Developer Program) and Facebook are queued
+  behind it, same pattern once there's a reason to prioritise either.
 
 ### Asked for, not yet built
 
@@ -875,8 +875,28 @@ Not commitments. Roughly in the order they would earn their place:
 - **A progress chart per lift**, now that history exists to draw one from.
 - **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,
   StrongLifts, GZCLP.
-- **Install as an app (PWA)** — it is already a static site that needs no
-  network once loaded, so this is mostly a manifest and a service worker.
+- **Install as an app (PWA)** — it is already a static site built around
+  working offline (the local-storage-first design was there from the start,
+  not retrofitted), so this is mostly a manifest and a service worker.
+  HashRouter helps for free here too: the whole app is one static shell
+  regardless of route, which is exactly what a service worker wants to cache.
+- **A real native wrapper, not just a PWA** — there is a working precedent for
+  this already, in [`defsix/time`](https://github.com/defsix/time), a sibling
+  project on the same stack (Vite/React/TypeScript, no backend, GitHub Pages).
+  It wraps its web app in a plain Android `WebView` (Kotlin,
+  `WebViewAssetLoader` serving the bundled assets straight out of the APK) and
+  a `WKWebView` on iOS (Swift/SwiftUI, a custom `app://` scheme handler doing
+  the same), with real native features bridged in on top — alarms, a
+  keep-awake mode, geolocation — through a small Promise-based JS↔native
+  bridge shared by both platforms. Its 10-locale i18n carried over to both
+  wrapped apps automatically, no separate native translation work, since
+  they're wrapping the same web UI GuideTrain's own i18n setup already
+  matches. Android ships as a signed APK via GitHub Releases rather than the
+  Play Store; iOS needs a paid Apple Developer certificate ($99/year, same
+  cost already noted for Apple sign-in above) that project hasn't set up
+  either. Worth returning to as the template if GuideTrain ever wants more
+  than "installable" — a rest timer with a real notification, say, needs this
+  path rather than a PWA's.
 - **Body weight over time**, which the onboarding already asks for once.
 
 ### Known gaps
