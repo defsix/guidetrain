@@ -7,7 +7,7 @@
   "scripts": {
     "dev:web": "npm run dev -w apps/web",
     "dev:api": "npm run dev -w apps/api",
-    "check": "node tools/exercises/check-pairs.mjs && node --import tsx tools/exercises/check-plans.ts && node tools/i18n/check-locales.mjs && npm run test -w apps/web && npm run build -w apps/web"
+    "check": "node tools/exercises/check-pairs.mjs && node --import tsx tools/exercises/check-plans.ts && node tools/i18n/check-locales.mjs && npm run test -w apps/web && npm run build -w apps/web && npm run test:e2e -w apps/web"
   },
   "devDependencies": {
     "playwright-core": "^1.61.1"

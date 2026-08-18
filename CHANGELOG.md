@@ -170,6 +170,26 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **An end-to-end smoke suite, so a redirect or a splash timing breaking
+  silently stops being how these get found.** Two changes in a row this
+  session (the lazy-loaded explorer, then the splash showing on every visit)
+  were checked by hand with a throwaway Playwright script written fresh each
+  time — useful once, gone afterwards. `apps/web/e2e/*.spec.ts`
+  (`@playwright/test`, `npm run test:e2e -w apps/web`, wired into
+  `npm run check`) makes that permanent instead: five tests, run against a
+  production `vite preview` build rather than the dev server, since dev's
+  unbundled modules don't reflect what a visitor's browser actually does.
+  Covers a new visitor's full splash-then-form-then-explorer path, the
+  disabled-until-answered Continue button, a returning visitor's quick
+  bar-less splash (profile seeded straight into `localStorage` to skip the
+  form), the plan library opening with cards, and an equipment chip
+  surviving a close-and-reopen. Sanity-checked the suite itself before
+  trusting it: broke the equipment chip's selected-class logic on purpose,
+  confirmed the relevant test actually failed, then reverted. Local-only for
+  now, not gated in CI — matches how the rest of `npm run check` already
+  works, run before pushing rather than after. `vite.config.ts` gained a
+  `test.exclude` for `e2e/**` so vitest's own default include pattern
+  doesn't try to run Playwright's spec files as unit tests.
 - **The 3D model no longer loads before the welcome screen does.**
   `BodyExplorer` — Three.js, `@react-three/fiber`, `@react-three/drei` and
   the rest of the anatomy viewer's dependency tree, together ~63% of the

@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
@@ -11,5 +11,11 @@ export default defineConfig({
     fs: {
       allow: ['..', '../..'],
     },
+  },
+  test: {
+    // Playwright owns e2e/ (its own test runner, run via `npm run test:e2e`);
+    // vitest's default include pattern would otherwise try to run those
+    // .spec.ts files too and fail on the unfamiliar `@playwright/test` API.
+    exclude: ['**/node_modules/**', 'e2e/**'],
   },
 })

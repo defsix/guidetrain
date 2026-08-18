@@ -721,8 +721,9 @@ npm run check
 
 Runs everything, in the order that fails cheapest first: the exercise pairing
 rules, the ready-made plans against the catalogue, the ten locales against
-English, the unit tests, then a full type-check and build. Every push to `main`
-deploys, so this runs before pushing rather than after.
+English, the unit tests, a full type-check and build, then the end-to-end
+suite against that build. Every push to `main` deploys, so this runs before
+pushing rather than after — there is no test gate in CI, only this.
 
 The unit tests (`apps/web/src/lib/*.test.ts`, `npm run test -w apps/web`) cover
 the arithmetic that decides what somebody puts on a bar — Epley and its edge at
@@ -730,6 +731,23 @@ one rep, the 5/3/1 percentages and reset, the plate breakdown, and the plan
 prescriptions. Their expected values are worked by hand from the sources cited
 in the code rather than captured from a passing run: a fixture recorded from
 the implementation agrees with whatever the implementation does, bugs included.
+
+The end-to-end suite (`apps/web/e2e/*.spec.ts`, Playwright,
+`npm run test:e2e -w apps/web`) covers what the unit tests can't: that the app
+actually renders and behaves right in a real browser. It runs against a
+production build (`vite preview`, not the dev server) since that's what a
+visitor gets and what the dev server's unbundled modules and lazy chunks would
+otherwise hide. Five smoke tests: a new visitor gets the full splash and can
+reach the explorer through the form; the disabled-until-answered state on
+Continue; a returning visitor (a profile seeded straight into `localStorage`,
+skipping the form) gets the quick bar-less splash and redirects; the plan
+library opens with plan cards; an equipment chip toggles and survives closing
+and reopening the panel. Not exhaustive — SetLogger, history and theme aren't
+covered yet — but enough to catch a redirect, a splash timing, or a panel
+silently breaking, which is what actually happened by hand, repeatedly, over
+the course of shipping the last few features here before this suite existed.
+First run on a machine that hasn't used Playwright before needs
+`npx playwright install chromium` once.
 
 ## Hosting
 
