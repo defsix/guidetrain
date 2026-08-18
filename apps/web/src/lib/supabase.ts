@@ -95,4 +95,4 @@ export const hasBackend = client !== null;
  * Google works needs no extra dashboard step beyond the ones already done —
  * flip this, push, and it appears.
  */
-export const ENABLED_OAUTH_PROVIDERS: ("google" | "apple" | "facebook")[] = [];
+export const ENABLED_OAUTH_PROVIDERS: ("google" | "apple" | "facebook")[] = ["google"];
