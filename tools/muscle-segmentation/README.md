@@ -129,6 +129,7 @@ Landmarks are measured, never assumed:
 | crotch | scanning up, surface on the midline jumps as the legs merge | f=0.50 |
 | ribs | trunk wins back half the depth it loses at the waist | f=0.66 |
 | elbow | thinnest point of the limb between shoulder and wrist | f=0.67 |
+| wrist | the arm's own radial width, measured from each height band's own centre, bottoms out below the elbow | f=0.565 |
 | throat hollow | the dip in the front surface between the collarbones | f=0.845 |
 | chin | where that same surface juts forward again | f=0.875 |
 
@@ -310,38 +311,44 @@ produced the bleed in the first place.
 ## Strays
 
 Region growing works on the painted texture, and the arms hang beside the
-thighs. Where the two surfaces nearly touch, growth crossed the gap. The
-shipped model carried two of these:
+thighs. Where the two surfaces nearly touch, growth crossed the gap. Before
+the wrist landmark below existed, this showed up as **127 faces on the upper
+thighs labelled "forearm"** — selecting Forearm lit part of the leg. That
+specific stray is gone now, not fixed separately: it was genuine hand
+geometry that used to get swallowed into "fore" by the bug described below,
+carrying its own misplaced-thigh sliver along with it under the wrong name.
+With hand correctly identified, the same sliver shows up as ~230 faces of
+"hand" landing on the thighs instead, caught by the same rule under its
+correct name.
 
-- **127 faces on the upper thighs labelled "forearm"** — selecting Forearm lit
-  part of the leg.
-- **an 87-face "hand" patch on the thighs**, while the real hands ended up
-  labelled forearm, leaving the zone with no hand geometry at all.
-
-`5-despeckle-zones.py` finds both from geometry alone, without re-running the
-segmentation. Two rules, each measured against the shipped model:
+`5-despeckle-zones.py` finds this from geometry alone, without re-running the
+segmentation:
 
 | rule | test | what it caught |
 | --- | --- | --- |
-| detached island | smaller than a fifth of its zone, and more than 0.10 from the zone's main mass | the forearm patches, sitting 0.202 away |
-| speck zone | under 0.5% of the surface, in pieces more than 0.10 apart | "hand", 0.15% in two scraps 0.359 apart |
+| detached island | smaller than a fifth of its zone, and more than 0.10 from the zone's main mass | four "hand" scraps, 0.223–0.258 away, 228 faces total |
+| speck zone | under 0.5% of the surface, in pieces more than 0.10 apart | — |
 
 The size test is what spares a paired muscle: the real left and right halves
 are comparable in size, so neither is ever the small one. Every legitimately
-separate island in the model is within 0.066 of its zone — well under the
-threshold.
+separate island in the model is well under the threshold.
 
 Each patch takes **one** zone, the majority vote of the kept surface around it
 counted on the folded body. Voting per face instead paints a mosaic — these
 patches straddle quadriceps, glutes and hamstrings — and the internal borders
-never quite mirror, which took mirror disagreement from 0.76% to 0.93%. One
-label per patch has none, and lands at **0.73%**: better than before the
-repair, because the strays were themselves a source of asymmetry.
+never quite mirror, which is worse for symmetry than one label per patch.
 
 Only `_ZONE` bytes change, so the file keeps its length and layout and a second
 run is a no-op.
 
-**Known, not fixed:** the hands are still labelled forearm and so render in the
-forearm's colour rather than as an untrainable part like the head and feet.
-Separating them needs a wrist landmark, which is a segmentation change rather
-than a cleanup.
+**Fixed:** the hands used to be labelled forearm — "fore" and "hand" were
+painted as one continuous, unbordered patch, cut only by an unmeasured `0.46`
+guess that actually bisected the palm rather than finding the wrist, and
+whatever survived that was then folded back into "fore" by the one-in-six
+minority rule, since "hand" wasn't on the list of landmark cuts that rule is
+meant to protect. `2-name-muscles.py` now measures the wrist properly (see the
+landmark table above) and exempts "hand" from the minority fold. Verified by
+rendering the corrected zone map and checking the wrist boundary against the
+model by eye, then by `check-symmetry.py`: "hand" sits at 3.18% of body
+surface, 1.59%/1.59% left/right, with 0.1% mirror mismatch — one of the
+best-agreeing zones in the model, not the near-empty zone it was.

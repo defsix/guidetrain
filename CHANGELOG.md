@@ -131,6 +131,23 @@ Newest first. Numbers in brackets are pull requests.
 
 ## Muscle model
 
+- **Hands stop taking the forearm's colour** — selecting Forearm used to light
+  the hands too, since "fore" and "hand" were painted as one continuous,
+  unbordered patch and the code cutting them apart had two bugs at once. The
+  cut sat at a guessed height (`0.46`) that actually bisected the palm rather
+  than finding the wrist; whatever "hand" the guess did carve free was then
+  folded back into "fore" by the rule that gives a small minority label back
+  to the majority, since "hand" wasn't on the short list of landmark cuts that
+  rule is meant to leave alone. `2-name-muscles.py` now measures the wrist
+  properly — the arm's own radial width, taken from each height band's own
+  centre rather than the body's, bottoms out at f=0.565, not 0.46 — and
+  exempts "hand" from the minority fold. Verified by rendering the corrected
+  zone map against the model by eye (five fingers, a clean wrist line, nothing
+  else in the body touched) and by `check-symmetry.py`: "hand" is now 3.18%
+  of body surface at 1.59%/1.59% left/right with 0.1% mirror mismatch — one of
+  the best-agreeing zones in the model, not the near-empty one it was.
+  Confirmed live in the app: selecting Forearm now stops cleanly at the wrist
+  on both arms.
 - **Forearm no longer lights part of the thigh** — the arms hang beside the
   legs, and region growing crossed the gap: 127 faces on the upper thighs were
   labelled "forearm", and a further 87 were labelled "hand" while the real
@@ -138,8 +155,12 @@ Newest first. Numbers in brackets are pull requests.
   an island far from the muscle it names, or a zone too small to be a muscle
   and in scattered pieces — and folds each patch into the surface around it.
   Mirror disagreement **improves from 0.76% to 0.73%**, since the strays were
-  themselves a source of it. Known and not fixed: the hands still carry the
-  forearm's colour rather than rendering as an untrainable part.
+  themselves a source of it. The 127/87 split above predates the fix in the
+  entry above this one: now that hand and forearm are correctly two zones,
+  the same underlying stray geometry surfaces as ~230 misplaced "hand" faces
+  instead of a mix of both wrong names — see
+  `tools/muscle-segmentation/README.md`'s Strays section for the current
+  numbers.
 
 - **Hip crease, smooth borders, full picker** [#13] — the trunk-to-leg line
   follows the hip crease instead of a horizontal plane, so obliques no longer

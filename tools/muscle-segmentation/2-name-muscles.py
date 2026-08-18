@@ -7,8 +7,8 @@ the whole region — that is what per-face noise ruins — while its height is r
 per face, so a region spanning a landmark is cut there.
 
 Landmarks are measured from the mesh, never assumed: the crotch where the legs
-merge, the ribcage's lower edge, the throat hollow and the chin, the elbow, and
-the sideways reach separating a limb from the trunk.
+merge, the ribcage's lower edge, the throat hollow and the chin, the elbow,
+the wrist, and the sideways reach separating a limb from the trunk.
 
 Front and back are told apart by how much of a region's surface faces each way,
 not by where its centre sits — a limb is round, so a patch along the back of the
@@ -54,6 +54,15 @@ for f in np.arange(0.40,0.58,0.01):
 CROTCH=best[0]
 ARM_X=0.09          # beyond this sideways, a patch is on a limb not the trunk
 ELBOW=0.67          # thinnest point of the limb between shoulder and wrist
+# Wrist: the arm's own radial width (distance from each height band's own
+# centre, not from the body's) bottoms out around f=0.565 -- narrow through
+# the fingers, widening into the palm, a soft local dip near the wrist bones,
+# then rising the rest of the way to the elbow. It was 0.46 before, which is
+# the palm's own widest point, not the wrist -- that cut the hand in half
+# rather than off, and most of what it did carve free was then folded back
+# into "fore" below by the one-in-six rule, since the wrist landmark wasn't
+# on the list that rule already protects.
+WRIST=0.565
 
 # Iliac crest: the top of the pelvis. Walking down from the waist, the trunk
 # flares out to the hips; the crest is where it has gained half that flare.
@@ -100,7 +109,8 @@ _z=np.array(_z); _lo=int(np.argmin(_z))
 NECK_LO=_fs[_lo]
 NECK_HI=_fs[_lo+1+int(np.diff(_z[_lo:]).argmax())]
 print(f"landmarks: crotch f={CROTCH:.3f}  ribs f={RIBS:.2f}  elbow f={ELBOW}  "
-      f"arm |x|>{ARM_X}  iliac f={ILIAC:.2f}  neck f={NECK_LO:.3f}..{NECK_HI:.3f}")
+      f"wrist f={WRIST}  arm |x|>{ARM_X}  iliac f={ILIAC:.2f}  "
+      f"neck f={NECK_LO:.3f}..{NECK_HI:.3f}")
 
 # Body centre line in depth, per height slice, so "front" means in front of
 # the spine rather than in front of the world origin.
@@ -178,7 +188,7 @@ def classify(f,x,ff,mf=0.0):
     if ax>armx:                                   # limb, clear of the trunk
         if f>0.76: return "delt"
         if f>ELBOW: return "tri" if back else "bic"
-        if f>0.46: return "fore"
+        if f>WRIST: return "fore"
         return "hand"
     # Where the leg stops being the trunk. In front the hip crease is lowest at
     # the midline, where the legs meet, and rises to the crest of the pelvis at
@@ -360,9 +370,13 @@ units=np.unique(unit)
 # same complaint as biceps and triceps sharing a patch.
 #
 # The cuts land only on measured landmarks — the waist, the throat hollow, the
-# chin, the crotch — never on an arbitrary height, and a piece holding less
-# than a sixth of its unit is given back to the majority so the cut can't leave
-# slivers.
+# chin, the crotch, the wrist — never on an arbitrary height, and a piece
+# holding less than a sixth of its unit is given back to the majority so the
+# cut can't leave slivers. "hand" is exempt: it is never a sliver left by a
+# threshold falling in the wrong place, it is what the wrist landmark is
+# there to cut loose, and a hand is reliably the smaller share of a unit that
+# also holds forearm. Folding it back in by share alone is what used to erase
+# it almost entirely.
 decision={}
 for u in units:
     m=unit==u; w=area[m]; idx=np.where(m)[0]
@@ -384,7 +398,8 @@ for u in units:
     keys,inv=np.unique(lab,return_inverse=True)
     share=np.zeros(len(keys)); np.add.at(share,inv,w)
     major=keys[share.argmax()]
-    lab[np.isin(lab,keys[share/w.sum()<1/6])]=major
+    minor=keys[(share/w.sum()<1/6)&(keys!="hand")]
+    lab[np.isin(lab,minor)]=major
     decision[u]=lab if len(np.unique(lab))>1 else major
 
 face_group=np.empty(len(tris),dtype=object)

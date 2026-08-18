@@ -917,9 +917,4 @@ Not commitments. Roughly in the order they would earn their place:
   path rather than a PWA's.
 - **Body weight over time**, which the onboarding already asks for once.
 
-### Known gaps
-
-- **Hands take the forearm's colour** rather than being an untrainable part.
-  Needs a wrist landmark and a segmentation change.
-
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).

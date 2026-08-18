@@ -11,35 +11,32 @@ Add --dry-run to see what it would change without writing.
 Why this exists
 ---------------
 Region growing works on the painted texture, and the arms hang beside the
-thighs. Where the two surfaces nearly touch, growth crossed the gap: 127 faces
-on the upper thighs came out labelled "forearm", so selecting Forearm lit part
-of the leg. The same crossing left an 87-face "hand" patch on the thighs while
-the real hands ended up labelled forearm.
+thighs. Where the two surfaces nearly touch, growth crossed the gap: a
+handful of faces on the upper thighs come out labelled "hand" (formerly
+"forearm", back when the wrist landmark in 2-name-muscles.py didn't exist and
+the two were one unbroken zone) so selecting Forearm or Hand lights part of
+the leg too.
 
-Both are the same defect — a label a long way from the muscle it names — and
-both are recognisable from geometry alone, without re-running the segmentation.
-
-Two rules, each measured against the shipped model rather than guessed:
+This is recognisable from geometry alone, without re-running the segmentation:
 
   detached island  An island smaller than a fifth of its zone and further than
                    DETACHED from the zone's main mass. In the model the real
                    left/right halves of a paired muscle are comparable in size,
-                   so the size test alone spares them; the forearm strays sit
-                   0.202 away, while every legitimately separate island is
-                   within 0.066.
+                   so the size test alone spares them; the shipped model's
+                   thigh strays sit 0.22-0.26 away, while every legitimately
+                   separate island is well under DETACHED.
 
   speck zone       A zone holding less than SPECK of the surface whose islands
                    are all detached from each other. That is not a muscle, it
-                   is leftover noise. "Hand" is 0.15% of the surface in two
-                   detached scraps; no other zone is under 1%.
+                   is leftover noise.
 
 Each flagged patch takes one zone — the majority vote of the kept surface
 around it, counted on the body folded about its midline. Only `_ZONE` bytes
 change: same length, same layout, so the rest of the file is untouched, and
 running it twice is a no-op.
 
-Mirror disagreement goes from 0.76% to 0.73%, i.e. the strays were themselves
-a source of asymmetry. `check-symmetry.py` is the check.
+`check-symmetry.py` is the check for whether this helped or hurt mirror
+agreement.
 """
 import argparse
 import collections
