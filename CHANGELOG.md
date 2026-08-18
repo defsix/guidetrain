@@ -170,6 +170,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The 3D model no longer loads before the welcome screen does.**
+  `BodyExplorer` — Three.js, `@react-three/fiber`, `@react-three/drei` and
+  the rest of the anatomy viewer's dependency tree, together ~63% of the
+  app's JS — used to ship in the same bundle as Onboarding, so a first-time
+  visitor's browser downloaded and parsed the entire 3D engine before the
+  form asking for a username ever painted. `App.tsx` now loads
+  `BodyExplorer` behind `React.lazy()` instead of a static import, splitting
+  it into its own chunk that only fetches when a route actually needs it.
+  Onboarding's own chunk dropped from 1,546.74 kB to 472.46 kB (gzip:
+  421.70 kB → 129.10 kB); the split-off `BodyExplorer` chunk is 1,074.57 kB
+  (gzip: 293.04 kB) and no longer on the critical path for first paint.
+  Since everyone reaches `/explore` sooner or later — filling in the form
+  or hitting one of Onboarding's two redirects for a returning visitor —
+  Onboarding also fires a background `import("./BodyExplorer")` the moment
+  it mounts, so the chunk is already warm by the time Continue is pressed
+  rather than adding a second wait after it.
 - **Equipment: what's actually available, prioritising exercise lists and
   training-pair suggestions around it** — a new panel in the header, next to
   Account and History, where the reader picks from barbell, dumbbell,

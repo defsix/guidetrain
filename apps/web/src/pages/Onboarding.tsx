@@ -61,6 +61,17 @@ export default function Onboarding() {
     if (profile) navigate("/explore", { replace: true });
   }, [profile, navigate]);
 
+  // BodyExplorer is loaded lazily (see App.tsx) so its Three.js weight never
+  // blocks this screen's own first paint — but everyone ends up there,
+  // whether that's someone filling in the form or one of the two redirects
+  // above. Fetching it now, in the background, means the wait happened while
+  // they were reading or typing rather than after they pressed the button.
+  // A plain dynamic import rather than calling the lazy component itself:
+  // this only wants the network request started, not anything rendered.
+  useEffect(() => {
+    void import("./BodyExplorer");
+  }, []);
+
   // The splash: shown once, and only once the two redirects above have had
   // their chance to fire instead. `profile` is known synchronously — a
   // returning visitor never risks seeing this start — but `auth.loading`
