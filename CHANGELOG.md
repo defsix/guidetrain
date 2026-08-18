@@ -226,6 +226,21 @@ Newest first. Numbers in brackets are pull requests.
     until the column exists, syncing a profile fails outright for anyone
     signed in (caught by the existing error handling, not a crash, but sync
     silently stops working until it's run).
+- **The splash now shows on every visit, not just a stranger's first one** —
+  a returning visitor (a saved profile, or a session already signed in) used
+  to skip it outright and land straight on `/explore`; now they get it too,
+  in a quick, bar-less form (`quick` on `Splash`): the mark and tagline still
+  fade in, but there's no progress bar (nothing's actually loading for
+  someone Onboarding already knows), and the hold-then-fade drops from
+  0.9s + 0.5s to 0.25s + 0.25s so it reads as a flash of the brand in passing
+  rather than a second loading screen. The two redirects (account, or a
+  device profile) now wait on the splash reaching "done" instead of firing
+  the instant `profile`/`auth.session` resolve — previously that race is
+  exactly what kept a returning visitor from ever seeing the splash start.
+  Browser-verified against a production build both ways: a fresh visitor
+  still gets the full 1.4s version with its bar, a returning one gets the
+  quick flash and reaches `/explore` in ~550ms, matching the shortened
+  timers, with the 3D canvas rendering normally either way.
 - **A splash, shown once, to someone Onboarding has just confirmed is new**
   — the bolt beside the wordmark and a "Train smarter" tagline underneath,
   a thin bar filling at the bottom while it holds, faded into the welcome

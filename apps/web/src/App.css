@@ -16,6 +16,12 @@
 }
 .splash-fade { opacity: 0; }
 
+/* The "someone Onboarding already knows" version — see Splash.tsx. Faster
+   in and out to match, so the mark reads as a flash on the way past rather
+   than a second loading screen for a page that isn't loading anything. */
+.splash-quick { transition-duration: 0.25s; }
+.splash-quick .splash-row { animation-duration: 0.25s; }
+
 .splash-row {
   display: flex;
   align-items: center;

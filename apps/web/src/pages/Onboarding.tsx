@@ -43,28 +43,10 @@ export default function Onboarding() {
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [bodyWeight, setBodyWeight] = useState("");
 
-  // A returning user should never retype what their account already knows.
-  // Signing in here starts the same merge BodyExplorer would run — this just
-  // means nobody has to fill in the form first to reach the button that makes
-  // it irrelevant.
-  useEffect(() => {
-    if (auth.session) navigate("/explore", { replace: true });
-  }, [auth.session, navigate]);
-
-  // The same idea for whoever never needed an account at all: this route
-  // rendered unconditionally regardless of a saved profile, so reloading the
-  // app — a new tab, a bookmark, a PWA relaunch — meant filling in the form
-  // again every time, even though `useProfile` already had the answer before
-  // the first paint. Redirect rather than skip the render entirely, so the
-  // effect fires the same way the sign-in one does above.
-  useEffect(() => {
-    if (profile) navigate("/explore", { replace: true });
-  }, [profile, navigate]);
-
   // BodyExplorer is loaded lazily (see App.tsx) so its Three.js weight never
   // blocks this screen's own first paint — but everyone ends up there,
   // whether that's someone filling in the form or one of the two redirects
-  // above. Fetching it now, in the background, means the wait happened while
+  // below. Fetching it now, in the background, means the wait happened while
   // they were reading or typing rather than after they pressed the button.
   // A plain dynamic import rather than calling the lazy component itself:
   // this only wants the network request started, not anything rendered.
@@ -72,18 +54,22 @@ export default function Onboarding() {
     void import("./BodyExplorer");
   }, []);
 
-  // The splash: shown once, and only once the two redirects above have had
-  // their chance to fire instead. `profile` is known synchronously — a
-  // returning visitor never risks seeing this start — but `auth.loading`
-  // is not, so the splash stays off until a session has been ruled out too.
-  // Skipping that check would mean occasionally starting the animation for
-  // someone about to be sent straight to the explorer a moment later.
+  // The splash: shown once per visit, and only once `auth.loading` has
+  // settled — it's known synchronously for `profile`, but not for
+  // `auth.session`, so starting any earlier risks showing the new-visitor
+  // version to someone about to turn out signed in. Which version is a
+  // separate question from whether one shows at all: someone `profile` or
+  // `auth.session` already vouches for gets the quick, bar-less flash
+  // (see Splash.tsx) rather than the full first-time one — recognition, not
+  // a second loading screen for a page that has nothing left to load.
   const [splashPhase, setSplashPhase] = useState<"pending" | "showing" | "fading" | "done">(
     "pending",
   );
+  const [splashQuick, setSplashQuick] = useState(false);
 
   useEffect(() => {
-    if (splashPhase !== "pending" || auth.loading || auth.session || profile) return;
+    if (splashPhase !== "pending" || auth.loading) return;
+    setSplashQuick(Boolean(auth.session || profile));
     setSplashPhase("showing");
   }, [splashPhase, auth.loading, auth.session, profile]);
 
@@ -95,15 +81,36 @@ export default function Onboarding() {
       setSplashPhase("done");
       return;
     }
-    const hold = setTimeout(() => setSplashPhase("fading"), 900);
+    const hold = setTimeout(() => setSplashPhase("fading"), splashQuick ? 250 : 900);
     return () => clearTimeout(hold);
-  }, [splashPhase]);
+  }, [splashPhase, splashQuick]);
 
   useEffect(() => {
     if (splashPhase !== "fading") return;
-    const fade = setTimeout(() => setSplashPhase("done"), 500);
+    const fade = setTimeout(() => setSplashPhase("done"), splashQuick ? 250 : 500);
     return () => clearTimeout(fade);
-  }, [splashPhase]);
+  }, [splashPhase, splashQuick]);
+
+  // A returning user should never retype what their account already knows.
+  // Signing in here starts the same merge BodyExplorer would run — this just
+  // means nobody has to fill in the form first to reach the button that makes
+  // it irrelevant. Gated on the splash reaching "done" so the quick flash
+  // above has actually had its moment before the redirect fires under it.
+  useEffect(() => {
+    if (splashPhase !== "done") return;
+    if (auth.session) navigate("/explore", { replace: true });
+  }, [splashPhase, auth.session, navigate]);
+
+  // The same idea for whoever never needed an account at all: this route
+  // rendered unconditionally regardless of a saved profile, so reloading the
+  // app — a new tab, a bookmark, a PWA relaunch — meant filling in the form
+  // again every time, even though `useProfile` already had the answer before
+  // the first paint. Redirect rather than skip the render entirely, so the
+  // effect fires the same way the sign-in one does above.
+  useEffect(() => {
+    if (splashPhase !== "done") return;
+    if (profile) navigate("/explore", { replace: true });
+  }, [splashPhase, profile, navigate]);
 
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people
@@ -134,7 +141,7 @@ export default function Onboarding() {
           auth.loading is still being resolved, for however briefly. */}
       {splashPhase === "pending" && <div className="splash" aria-hidden="true" />}
       {(splashPhase === "showing" || splashPhase === "fading") && (
-        <Splash fading={splashPhase === "fading"} />
+        <Splash fading={splashPhase === "fading"} quick={splashQuick} />
       )}
       <div className="onboarding-hero">
         <div className="onboarding-head">
