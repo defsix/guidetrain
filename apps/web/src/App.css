@@ -16,48 +16,84 @@
 }
 .splash-fade { opacity: 0; }
 
-.splash-mark {
-  display: grid;
-  place-items: center;
+.splash-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
   animation: splash-in 0.6s ease-out;
 }
-/* Both children share one grid cell, centred — the name lands on the bolt's
-   exact middle without following its outline, which a jagged lightning
-   shape would make illegible. */
-.splash-mark svg {
-  grid-area: 1 / 1;
-  height: clamp(180px, 42vh, 420px);
-  width: clamp(180px, 42vh, 420px);
+
+.splash-row svg {
+  height: clamp(120px, 20vh, 190px);
+  width: clamp(120px, 20vh, 190px);
+  flex: none;
   display: block;
 }
-.splash-bolt { fill: var(--accent); }
+.splash-bolt { fill: var(--accent); filter: drop-shadow(0 0 22px var(--accent-soft)); }
+
+.splash-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .splash-name {
-  grid-area: 1 / 1;
   font-family: var(--sans);
-  font-size: clamp(22px, 5vw, 44px);
+  font-size: clamp(32px, 6.5vw, 64px);
   font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-muted);
   white-space: nowrap;
-  /* A pill in the page's own background, not the bolt's — legible sitting on
-     the fill either theme paints it, rather than assuming one contrast
-     direction. */
-  background: var(--bg);
-  padding: 6px 22px;
-  border-radius: 999px;
-  box-shadow: var(--shadow);
 }
 .splash-name b { font-weight: 700; color: var(--text); }
+
+.splash-tagline {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.splash-bar {
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+.splash-bar-fill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--text-muted);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: splash-bar 0.9s ease-out forwards;
+}
 
 @keyframes splash-in {
   from { opacity: 0; transform: scale(0.92); }
   to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes splash-bar {
+  to { transform: scaleX(1); }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .splash-mark { animation: none; }
+  .splash-row { animation: none; }
+  .splash-bar-fill { animation: none; transform: scaleX(1); }
   .splash { transition: none; }
+}
+
+@media (max-width: 560px) {
+  .splash-row { flex-direction: column; text-align: center; gap: 14px; }
+  .splash-text { align-items: center; }
 }
 
 .onboarding {

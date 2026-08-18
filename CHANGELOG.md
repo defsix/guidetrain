@@ -171,20 +171,22 @@ Newest first. Numbers in brackets are pull requests.
 ## App
 
 - **A splash, shown once, to someone Onboarding has just confirmed is new**
-  — the bolt full window, the wordmark in a pill directly over its middle,
-  held for 0.9s and faded into the welcome form over 0.5s. Same path data as
-  `Logo`, not copy-pasted, and the same colour convention: the bolt takes
-  `--accent`, "Guide" sits in `--text-muted`, "Train" in `--text` — both
-  already theme-aware, so it reads correctly in light or dark without any
-  logic of its own. The timing only starts once a returning visitor's two
-  redirects (an account, or a profile already on the device — see below and
-  the previous entry) have had their chance to fire instead: `profile` is
-  known synchronously, so that risk was never real, but `auth.loading`
-  is not, and starting the animation for someone about to be sent straight to
-  the explorer a moment later would have been worse than never adding it.
-  Skipped entirely under `prefers-reduced-motion: reduce`. Browser-verified
-  in both themes, mid-fade, and with reduced motion forced, where it never
-  renders at all.
+  — the bolt beside the wordmark and a "Train smarter" tagline underneath,
+  a thin bar filling at the bottom while it holds, faded into the welcome
+  form after 0.9s over a 0.5s transition. Same path data as `Logo`, not
+  copy-pasted, scaled up rather than redrawn; same colour convention too —
+  the bolt takes `--accent` with a soft glow, "Guide" sits in `--text-muted`,
+  "Train" in `--text` — all already theme-aware, so it reads correctly in
+  light or dark without any logic of its own. The tagline is a real
+  translation key across all ten locales, not hard-coded English. The timing
+  only starts once a returning visitor's two redirects (an account, or a
+  profile already on the device — see below) have had their chance to fire
+  instead: `profile` is known synchronously, so that risk was never real, but
+  `auth.loading` is not, and starting the animation for someone about to be
+  sent straight to the explorer a moment later would have been worse than
+  never adding it. Skipped entirely under `prefers-reduced-motion: reduce`.
+  Browser-verified in both themes, mid-fade, and with reduced motion forced,
+  where it never renders at all.
 - **Onboarding no longer reshows itself to someone it already knows, and
   drops a stat nobody was evaluating the app by** — two small fixes to the
   welcome screen. First, `/` rendered onboarding unconditionally, with no
