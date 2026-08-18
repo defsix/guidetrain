@@ -23,12 +23,6 @@
    "many": "{count} ćwiczeń",
    "other": "{count} ćwiczenia"
   },
-  "statLanguages": {
-   "one": "{count} język",
-   "few": "{count} języki",
-   "many": "{count} języków",
-   "other": "{count} języka"
-  },
   "username": "Nazwa użytkownika",
   "usernamePlaceholder": "np. iron_ada",
   "bodyWeight": "Masa ciała",

@@ -19,10 +19,6 @@
    "one": "{count} exercise",
    "other": "{count} exercises"
   },
-  "statLanguages": {
-   "one": "{count} language",
-   "other": "{count} languages"
-  },
   "username": "Username",
   "usernamePlaceholder": "e.g. iron_ada",
   "bodyWeight": "Body weight",

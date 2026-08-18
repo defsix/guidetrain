@@ -23,12 +23,6 @@
    "many": "{count} cviku",
    "other": "{count} cviků"
   },
-  "statLanguages": {
-   "one": "{count} jazyk",
-   "few": "{count} jazyky",
-   "many": "{count} jazyka",
-   "other": "{count} jazyků"
-  },
   "username": "Uživatelské jméno",
   "usernamePlaceholder": "např. iron_ada",
   "bodyWeight": "Tělesná hmotnost",

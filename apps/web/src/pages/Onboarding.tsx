@@ -9,7 +9,6 @@ import ThemeToggle from "../components/ThemeToggle";
 import AccountPanel from "../components/AccountPanel";
 import Logo from "../components/Logo";
 import { useT } from "../i18n/I18nProvider";
-import { LOCALES } from "../i18n";
 import muscleMap from "../anatomy/muscle-map.json";
 import exercises from "../anatomy/exercises.json";
 
@@ -33,7 +32,7 @@ const AGE_GROUPS: { value: AgeGroup; key?: string; label?: string }[] = [
 
 export default function Onboarding() {
   const navigate = useNavigate();
-  const { setProfile } = useProfile();
+  const { profile, setProfile } = useProfile();
   const { pref, setPref } = useTheme();
   const auth = useAuth();
   const sync = useSync(auth.userId);
@@ -50,6 +49,16 @@ export default function Onboarding() {
   useEffect(() => {
     if (auth.session) navigate("/explore", { replace: true });
   }, [auth.session, navigate]);
+
+  // The same idea for whoever never needed an account at all: this route
+  // rendered unconditionally regardless of a saved profile, so reloading the
+  // app — a new tab, a bookmark, a PWA relaunch — meant filling in the form
+  // again every time, even though `useProfile` already had the answer before
+  // the first paint. Redirect rather than skip the render entirely, so the
+  // effect fires the same way the sign-in one does above.
+  useEffect(() => {
+    if (profile) navigate("/explore", { replace: true });
+  }, [profile, navigate]);
 
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people
@@ -98,12 +107,13 @@ export default function Onboarding() {
         </div>
         <h1>{t("onboarding.title")}</h1>
         <p className="subtitle">{t("onboarding.subtitle")}</p>
-        {/* What is actually behind the door, in three numbers. The first screen
-            used to promise only that answering three questions led somewhere. */}
+        {/* What is actually behind the door. Language count used to sit here
+            too, but it isn't something a visitor evaluates the app by — it's
+            true of the app regardless of which one they read it in, and
+            invisible to them either way. */}
         <ul className="stats">
           <li>{t("onboarding.statMuscles", { count: MUSCLE_COUNT })}</li>
           <li>{t("onboarding.statExercises", { count: EXERCISE_COUNT })}</li>
-          <li>{t("onboarding.statLanguages", { count: LOCALES.length })}</li>
         </ul>
       </div>
 

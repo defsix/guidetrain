@@ -170,6 +170,23 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Onboarding no longer reshows itself to someone it already knows, and
+  drops a stat nobody was evaluating the app by** — two small fixes to the
+  welcome screen. First, `/` rendered onboarding unconditionally, with no
+  check for a profile already sitting in `localStorage`: a new tab, a
+  bookmark, a PWA relaunch all meant re-answering three questions `useProfile`
+  already had the answer to before the first paint. A redirect-once-known
+  effect fixes it, the same shape as the redirect-once-signed-in one added
+  last time — both now sit side by side, one for an account, one for a device
+  that never needed one. Second, the "10 languages" stat pill is gone: it was
+  never something a visitor evaluates their own use of the app by, true
+  regardless of which language they're reading it in and invisible to them
+  either way, unlike the muscle and exercise counts next to it. The unused
+  `onboarding.statLanguages` key is removed from all ten locale files rather
+  than left unread. Full gate green. Browser-verified: a fresh visitor sees
+  two stat pills instead of three; a visitor with a saved local profile
+  loading the bare root URL lands on the explorer directly, with the
+  onboarding form never rendering at all.
 - **The sex picker is gone from onboarding** — nothing else in the app ever
   read it. Its one job was `SEX_FACTOR` in `prescribe()`, cutting the
   starting-weight guess by 32% for "female" and "other" and leaving it full

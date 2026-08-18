@@ -23,12 +23,6 @@
    "many": "{count} упражнений",
    "other": "{count} упражнения"
   },
-  "statLanguages": {
-   "one": "{count} язык",
-   "few": "{count} языка",
-   "many": "{count} языков",
-   "other": "{count} языка"
-  },
   "username": "Имя пользователя",
   "usernamePlaceholder": "напр. iron_ada",
   "bodyWeight": "Вес тела",

@@ -19,10 +19,6 @@
    "one": "{count} ejercicio",
    "other": "{count} ejercicios"
   },
-  "statLanguages": {
-   "one": "{count} idioma",
-   "other": "{count} idiomas"
-  },
   "username": "Nombre de usuario",
   "usernamePlaceholder": "p. ej. iron_ada",
   "bodyWeight": "Peso corporal",
