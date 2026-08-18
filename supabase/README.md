@@ -166,3 +166,8 @@ check needed a real project.
 - **`skips` and `theme` are not here.** Skipped sets are same-day only and
   expire by themselves; the theme is a property of the device. Syncing either
   would be work that makes the product slightly worse.
+- **`profiles.gender` is unused as of `migrations/0002_drop_gender.sql`.** The
+  app stopped asking at onboarding — see the migration file for why — and the
+  code stopped reading and writing it. The column itself is only dropped once
+  that migration is applied; nothing breaks if it isn't, since an unused
+  nullable column is just dead weight, not a bug. Apply it whenever.

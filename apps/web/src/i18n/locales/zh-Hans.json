@@ -22,7 +22,6 @@
   },
   "username": "用户名",
   "usernamePlaceholder": "例如 iron_ada",
-  "gender": "性别",
   "bodyWeight": "体重",
   "bodyWeightPlaceholder": "例如 82",
   "bodyWeightWhy": "作为俯卧撑、引体向上等自重动作的负荷。",
@@ -31,11 +30,6 @@
   "progress": {
    "other": "还差 {count} 项"
   }
- },
- "gender": {
-  "female": "女",
-  "male": "男",
-  "other": "其他 / 不愿透露"
  },
  "age": {
   "teen": "18 岁以下",

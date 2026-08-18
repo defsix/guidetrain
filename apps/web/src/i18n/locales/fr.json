@@ -25,7 +25,6 @@
   },
   "username": "Nom d'utilisateur",
   "usernamePlaceholder": "p. ex. iron_ada",
-  "gender": "Genre",
   "bodyWeight": "Poids de corps",
   "bodyWeightPlaceholder": "p. ex. 82",
   "bodyWeightWhy": "Sert de charge pour les pompes, les tractions et les autres exercices au poids du corps.",
@@ -35,11 +34,6 @@
    "one": "Encore {count} champ",
    "other": "Encore {count} champs"
   }
- },
- "gender": {
-  "female": "Femme",
-  "male": "Homme",
-  "other": "Autre / Je préfère ne pas répondre"
  },
  "age": {
   "teen": "Moins de 18 ans",

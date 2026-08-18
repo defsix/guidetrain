@@ -1,10 +1,7 @@
-export type Gender = "male" | "female" | "other";
-
 export type AgeGroup = "teen" | "18-29" | "30-44" | "45-59" | "60+";
 
 export interface Profile {
   username: string;
-  gender: Gender;
   ageGroup: AgeGroup;
   /**
    * Body weight in kilos, to the nearest whole one. An exact figure rather than

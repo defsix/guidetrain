@@ -6,7 +6,6 @@ import { PLANS, prescribe, workingLoad } from "./plans";
 const profile = (over: Partial<Profile> = {}): Profile =>
   ({
     username: "test",
-    gender: "male",
     ageGroup: "30-44",
     bodyWeight: 82,
     bodyWeightUnit: "kg",
@@ -43,8 +42,9 @@ describe("prescribe", () => {
   it("falls back to body weight, and never dresses it up as a logged lift", () => {
     const p = prescribe("Barbell_Squat", 5, [], profile());
     expect(p.source).toBe("bodyweight");
-    // 82 x 0.5 (squat) x 1 (male) x 1 (30-44) = 41, rounded to a loadable 40.
-    expect(p.load).toBe(40);
+    // 82 x 0.5 (squat) x 0.68 (conservative) x 1 (30-44) = 27.88, rounded to
+    // a loadable 27.5.
+    expect(p.load).toBe(27.5);
   });
 
   it("says nothing rather than inventing a weight with nothing to go on", () => {
@@ -56,27 +56,28 @@ describe("prescribe", () => {
       .toBe("unknown");
   });
 
-  it("scales down for age and sex, never up", () => {
+  it("scales down for age, never up", () => {
     const base = prescribe("Barbell_Squat", 5, [], profile()).load;
     const older = prescribe("Barbell_Squat", 5, [], profile({ ageGroup: "60+" })).load;
-    const female = prescribe("Barbell_Squat", 5, [], profile({ gender: "female" })).load;
     const teen = prescribe("Barbell_Squat", 5, [], profile({ ageGroup: "teen" })).load;
     expect(older).toBeLessThan(base);
-    expect(female).toBeLessThan(base);
     expect(teen).toBeLessThan(base);
   });
 
-  it("gives 'prefer not to say' the lower of the two figures, not a guess", () => {
-    const other = prescribe("Barbell_Squat", 5, [], profile({ gender: "other" })).load;
-    const female = prescribe("Barbell_Squat", 5, [], profile({ gender: "female" })).load;
-    expect(other).toBe(female);
+  it("applies the same conservative fraction to every profile", () => {
+    // There is no field left to make this number differ by anything but age
+    // and body weight — see the comment on CONSERVATIVE_FACTOR for why that
+    // is deliberate rather than a gap.
+    const a = prescribe("Barbell_Squat", 5, [], profile()).load;
+    const b = prescribe("Barbell_Squat", 5, [], profile({ username: "someone else" })).load;
+    expect(a).toBe(b);
   });
 
   it("never prescribes a barbell lift below an empty bar", () => {
     // The bug this exists to prevent: the floor once asked whether the id
     // began with "Barbell", which is false of Standing_Military_Press, and a
     // light profile was told to press 7.5 kg.
-    const light = profile({ bodyWeight: 40, gender: "female", ageGroup: "teen" });
+    const light = profile({ bodyWeight: 40, ageGroup: "teen" });
     for (const id of ["Standing_Military_Press", "Bent_Over_Barbell_Row", "Barbell_Squat"]) {
       expect(prescribe(id, 5, [], light).load, id).toBeGreaterThanOrEqual(20);
     }
@@ -92,15 +93,13 @@ describe("prescribe", () => {
 
   it("loads a bodyweight exercise at exactly body weight, not a fraction of it", () => {
     // Push-Up_Wide is "body only" equipment. Unlike a barbell or dumbbell
-    // lift, sex and age must not touch this number — a 60-year-old and a
-    // 25-year-old at the same body weight do the same push-up against the
-    // same load, because it is their own weight, not a population guess.
+    // lift, age must not touch this number — a 60-year-old and a 25-year-old
+    // at the same body weight do the same push-up against the same load,
+    // because it is their own weight, not a population guess.
     const base = prescribe("Push-Up_Wide", 12, [], profile()).load;
     const older = prescribe("Push-Up_Wide", 12, [], profile({ ageGroup: "60+" })).load;
-    const female = prescribe("Push-Up_Wide", 12, [], profile({ gender: "female" })).load;
     expect(base).toBe(profile().bodyWeight);
     expect(older).toBe(base);
-    expect(female).toBe(base);
     expect(prescribe("Push-Up_Wide", 12, [], profile()).source).toBe("atBodyWeight");
   });
 });

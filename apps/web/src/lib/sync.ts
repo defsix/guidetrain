@@ -126,7 +126,6 @@ function profileToRow(userId: string, p: Profile): Row {
   return {
     id: userId,
     username: p.username ?? null,
-    gender: p.gender ?? null,
     age_group: p.ageGroup ?? null,
     body_weight: p.bodyWeight ?? null,
     body_weight_unit: p.bodyWeightUnit ?? "kg",
@@ -135,10 +134,14 @@ function profileToRow(userId: string, p: Profile): Row {
 }
 
 function rowToProfile(r: Row): Profile | null {
-  if (!r?.username && !r?.gender && !r?.age_group) return null;
+  // `gender` dropped from the app in favour of one conservative default for
+  // everyone (see plans.ts), but an account synced before that still has the
+  // column set — reading it here would resurrect a field nothing writes or
+  // shows any more, so it stays out of the returned Profile even where it
+  // exists on the row.
+  if (!r?.username && !r?.age_group) return null;
   return {
     username: String(r.username ?? ""),
-    gender: (r.gender as Profile["gender"]) ?? "other",
     ageGroup: (r.age_group as Profile["ageGroup"]) ?? "30-44",
     ...(r.body_weight != null ? { bodyWeight: Number(r.body_weight) } : {}),
     bodyWeightUnit: (r.body_weight_unit as "kg" | "lb") ?? "kg",

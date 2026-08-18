@@ -358,9 +358,9 @@ for (const list of Object.values(exercises.muscles as Record<string, { id: strin
  * Exercises whose load is the person doing them, same source as `BARBELL`.
  *
  * These need no entry in `BODY_FRACTION` — a push-up isn't loaded with a
- * fraction of body weight scaled by age and sex, it's loaded with body
- * weight, full stop. `prescribe` reads this set before it ever looks at the
- * fraction table.
+ * fraction of body weight scaled by age, it's loaded with body weight, full
+ * stop. `prescribe` reads this set before it ever looks at the fraction
+ * table.
  */
 const BODYONLY = new Set<string>();
 for (const list of Object.values(exercises.muscles as Record<string, { id: string; equipment?: string }[]>)) {
@@ -419,18 +419,11 @@ const BODY_FRACTION: Record<string, number> = {
 /**
  * How much of that fraction to apply, from what the profile knows.
  *
- * Population averages, and worth naming as such. Upper-body strength differs
- * between sexes by more than lower-body does, and strength declines with age
- * from roughly the mid-forties. Both are true of populations and neither is
- * true of any particular person, which is the whole reason the output is a
- * starting point rather than a prescription.
- *
- * "Other / prefer not to say" takes the lower figure. There is no basis for
- * picking a number for someone who declined to be sorted, and of the two
- * available errors, starting light is the recoverable one.
+ * A population average, and worth naming as such — strength declines with age
+ * from roughly the mid-forties, which is true of the population and not of
+ * any particular person, which is the whole reason the output is a starting
+ * point rather than a prescription.
  */
-const SEX_FACTOR: Record<string, number> = { male: 1, female: 0.68, other: 0.68 };
-
 const AGE_FACTOR: Record<string, number> = {
   // Under 18s get the most conservative figure in the table. Loading a
   // still-growing skeleton from a population average is the least defensible
@@ -441,6 +434,23 @@ const AGE_FACTOR: Record<string, number> = {
   "45-59": 0.9,
   "60+": 0.78,
 };
+
+/**
+ * Applied to every profile, not read from one.
+ *
+ * There used to be a sex field here, asked at onboarding for exactly this:
+ * upper-body strength differs between sexes by more than lower-body does, so
+ * the fraction was cut for "female" and "other" and left full for "male".
+ * But nothing else in the app ever read that field, the cut only ever
+ * applied to a number the app already calls a starting point rather than a
+ * measurement, and "other" was already defined as taking the more
+ * conservative of the two figures — of the two ways this guess can be wrong,
+ * starting light is the recoverable one, for anybody. That reasoning does
+ * not depend on which figure a person picked, so it no longer asks: every
+ * profile gets the conservative fraction, and the first real set is what
+ * actually finds the right number.
+ */
+const CONSERVATIVE_FACTOR = 0.68;
 
 /**
  * The working weight for a set of `reps`, from an estimated one-rep max.
@@ -462,7 +472,7 @@ export type Prescription = {
    * `atBodyWeight` is not a fifth kind of estimate alongside `bodyweight` — it
    * is not an estimate at all. A push-up is loaded with exactly the body
    * weight on the profile, not a demographic-adjusted share of it, so there is
-   * nothing here for sex or age to scale.
+   * nothing here for age to scale.
    */
   source: "logged" | "bodyweight" | "atBodyWeight" | "unknown";
 };
@@ -493,9 +503,8 @@ export function prescribe(
 
   const fraction = BODY_FRACTION[exerciseId];
   if (!fraction) return { load: 0, source: "unknown" };
-  const sex = SEX_FACTOR[profile.gender] ?? SEX_FACTOR.other;
   const age = AGE_FACTOR[profile.ageGroup] ?? 1;
-  const raw = bw * fraction * sex * age;
+  const raw = bw * fraction * CONSERVATIVE_FACTOR * age;
   // Never below an empty bar, and never below one loadable step for anything
   // else — a plan asking for 6 kg on a barbell is a plan you cannot follow.
   const floor = BARBELL.has(exerciseId) ? BAR : LOAD_STEP;

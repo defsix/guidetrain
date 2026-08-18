@@ -22,7 +22,6 @@
   },
   "username": "ユーザー名",
   "usernamePlaceholder": "例：iron_ada",
-  "gender": "性別",
   "bodyWeight": "体重",
   "bodyWeightPlaceholder": "例: 82",
   "bodyWeightWhy": "腕立て伏せや懸垂など、自重種目の負荷として使います。",
@@ -31,11 +30,6 @@
   "progress": {
    "other": "あと {count} 項目"
   }
- },
- "gender": {
-  "female": "女性",
-  "male": "男性",
-  "other": "その他 / 回答しない"
  },
  "age": {
   "teen": "18歳未満",

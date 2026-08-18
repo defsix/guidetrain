@@ -437,11 +437,11 @@ which it is:
 
 - **From your lifts** — your best logged set, through Epley, backed off a tenth
   to a weight you can finish. A calculation.
-- **Starting point** — body weight × a per-exercise fraction, adjusted by sex
-  and age band. A population average, not a measurement of you.
+- **Starting point** — body weight × a per-exercise fraction × a conservative
+  factor × an age-band factor. A population average, not a measurement of you.
 - **Your body weight** — for a push-up, a pull-up, a bodyweight squat: the
   load is the whole of your body weight, not a fraction of it and not
-  adjusted for sex or age, because it is not an estimate of anything.
+  adjusted for age, because it is not an estimate of anything.
 
 **There is no path from body weight to a one-rep max.** The estimated max is
 what drives the 5/3/1 planner, and it has to come from a set that happened;
@@ -453,8 +453,13 @@ The fractions are chosen light, because the costs are not symmetric: a set that
 turns out easy costs one set, and a set that turns out heavy costs a back. The
 person receiving these numbers is by definition the one with nothing logged —
 the least able to tell that a number is wrong. Under-18s take the most
-conservative factor in the table, and "prefer not to say" takes the lower of
-the two sex figures rather than a guess.
+conservative age factor in the table, and every profile takes the same 0.68
+conservative factor outright — onboarding used to ask sex and use it to decide
+between that figure and a fuller one, until it turned out nothing else in the
+app read the answer and the reasoning for the lower figure never depended on
+which one a person picked. Simpler to give everyone the safer number and let
+the first real set find the true one, which is what the app was already telling
+people to expect.
 
 Nothing barbell is ever prescribed below **20 kg**, an empty Olympic bar. That
 floor reads the equipment field from the catalogue rather than the exercise id

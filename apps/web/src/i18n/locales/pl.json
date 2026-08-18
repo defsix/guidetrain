@@ -31,7 +31,6 @@
   },
   "username": "Nazwa użytkownika",
   "usernamePlaceholder": "np. iron_ada",
-  "gender": "Płeć",
   "bodyWeight": "Masa ciała",
   "bodyWeightPlaceholder": "np. 82",
   "bodyWeightWhy": "Służy jako obciążenie w pompkach, podciąganiu i innych ćwiczeniach z masą własną.",
@@ -43,11 +42,6 @@
    "many": "Zostało {count} pól",
    "other": "Zostało {count} pola"
   }
- },
- "gender": {
-  "female": "Kobieta",
-  "male": "Mężczyzna",
-  "other": "Inna / Wolę nie podawać"
  },
  "age": {
   "teen": "Poniżej 18",

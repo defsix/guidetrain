@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { AgeGroup, Gender, Profile } from "../types";
+import type { AgeGroup, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import { useAuth } from "../state/useAuth";
@@ -31,8 +31,6 @@ const AGE_GROUPS: { value: AgeGroup; key?: string; label?: string }[] = [
   { value: "60+", key: "age.60plus" },
 ];
 
-const GENDERS: Gender[] = ["female", "male", "other"];
-
 export default function Onboarding() {
   const navigate = useNavigate();
   const { setProfile } = useProfile();
@@ -42,14 +40,13 @@ export default function Onboarding() {
   const [showAccount, setShowAccount] = useState(false);
   const t = useT();
   const [username, setUsername] = useState("");
-  const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [bodyWeight, setBodyWeight] = useState("");
 
   // A returning user should never retype what their account already knows.
   // Signing in here starts the same merge BodyExplorer would run — this just
-  // means nobody has to answer four questions first to reach the button that
-  // makes them irrelevant.
+  // means nobody has to fill in the form first to reach the button that makes
+  // it irrelevant.
   useEffect(() => {
     if (auth.session) navigate("/explore", { replace: true });
   }, [auth.session, navigate]);
@@ -60,14 +57,12 @@ export default function Onboarding() {
   const weightNum = Math.round(parseFloat(bodyWeight.replace(",", ".")));
   const weightOk = Number.isFinite(weightNum) && weightNum > 0;
 
-  const canContinue =
-    username.trim().length > 0 && gender !== null && ageGroup !== null && weightOk;
+  const canContinue = username.trim().length > 0 && ageGroup !== null && weightOk;
 
   function handleContinue() {
     if (!canContinue) return;
     const profile: Profile = {
       username: username.trim(),
-      gender: gender!,
       ageGroup: ageGroup!,
       bodyWeight: weightNum,
     };
@@ -75,7 +70,7 @@ export default function Onboarding() {
     navigate("/explore");
   }
 
-  const done = [username.trim().length > 0, gender !== null, ageGroup !== null, weightOk]
+  const done = [username.trim().length > 0, ageGroup !== null, weightOk]
     .filter(Boolean).length;
 
   return (
@@ -122,22 +117,6 @@ export default function Onboarding() {
         />
       </label>
 
-      <fieldset className="field">
-        <legend>{t("onboarding.gender")}</legend>
-        <div className="chip-row">
-          {GENDERS.map((g) => (
-            <button
-              key={g}
-              type="button"
-              className={`chip ${gender === g ? "chip-selected" : ""}`}
-              onClick={() => setGender(g)}
-            >
-              {t(`gender.${g}`)}
-            </button>
-          ))}
-        </div>
-      </fieldset>
-
       {/* An exact figure, not a band. Age is context; this is arithmetic — it is
           the load on every bodyweight exercise in the catalogue, and you cannot
           put a band on a bar. */}
@@ -176,11 +155,11 @@ export default function Onboarding() {
       <button className="primary-button" disabled={!canContinue} onClick={handleContinue}>
         {t("onboarding.continue")}
       </button>
-      {/* The button greys out until all four are answered and never said why.
+      {/* The button greys out until all three are answered and never said why.
           Announced politely so it reaches a screen reader when it changes,
           rather than interrupting whatever is being read. */}
       <p className="form-progress" aria-live="polite">
-        {canContinue ? '' : t("onboarding.progress", { count: 4 - done })}
+        {canContinue ? '' : t("onboarding.progress", { count: 3 - done })}
       </p>
 
       <AccountPanel open={showAccount} onClose={() => setShowAccount(false)} auth={auth} sync={sync} />

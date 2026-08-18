@@ -170,6 +170,27 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The sex picker is gone from onboarding** — nothing else in the app ever
+  read it. Its one job was `SEX_FACTOR` in `prescribe()`, cutting the
+  starting-weight guess by 32% for "female" and "other" and leaving it full
+  for "male"; "other" was already defined as taking the more conservative of
+  the two figures, on the reasoning that of the two ways a starting-point
+  guess can be wrong, starting light is the recoverable one for anybody. That
+  reasoning never depended on which figure a person picked, so every profile
+  now gets the conservative fraction — `CONSERVATIVE_FACTOR = 0.68`, applied
+  unconditionally where `SEX_FACTOR` used to be looked up. Onboarding is
+  three questions instead of four. `Profile.gender` and the `Gender` type are
+  gone from the app entirely rather than left unused; `lib/sync.ts` stops
+  reading and writing the column but the database schema needs a separate,
+  optional step — `supabase/migrations/0002_drop_gender.sql` drops it
+  whenever it's convenient to run; nothing breaks before that, an unused
+  nullable column is just dead weight. Full gate green (36 tests, one
+  rewritten to assert every profile gets the same fraction rather than
+  asserting a scaling relationship that no longer exists). Browser-verified:
+  onboarding shows only username, body weight and age group, the continue
+  button enables on three answers instead of four, and a plan preview's
+  starting weights are lower across the board and still respect the empty-bar
+  floor.
 - **Body part split now offers a 4-day variant alongside its original 5** —
   the one plan in the library where day count wasn't free to change: the other
   six are all rotations, where training one more or less often just changes

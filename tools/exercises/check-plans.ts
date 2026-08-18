@@ -45,37 +45,34 @@ for (const e of entries) {
  * Every profile the onboarding can actually produce, so the floor is checked
  * at the corners rather than at one convenient middle. The lightest of these
  * is the one that broke: 40 kg × 0.25 × 0.68 × 0.7 is 4.76 kg, and a bar
- * weighs twenty.
+ * weighs twenty. (0.68 was once a sex-conditional factor; every profile gets
+ * it now — see CONSERVATIVE_FACTOR in plans.ts.)
  */
-const SEXES = ["male", "female", "other"];
 const AGES = ["teen", "18-29", "30-44", "45-59", "60+"];
 const WEIGHTS = [40, 60, 82, 120];
 const BAR = 20;
 
-for (const sex of SEXES) {
-  for (const ageGroup of AGES) {
-    for (const bodyWeight of WEIGHTS) {
-      const profile = {
-        username: "check",
-        gender: sex,
-        ageGroup,
-        bodyWeight,
-        bodyWeightUnit: "kg",
-      } as unknown as Profile;
-      for (const e of entries) {
-        const p = prescribe(e.id, e.reps, [], profile);
-        // Nothing derived from a body weight may come out unusable: no blank
-        // where a starting weight belongs, and no barbell under an empty bar.
-        if (p.source === "unknown") {
-          fail(`no starting weight for ${e.id} at ${bodyWeight}kg ${sex} ${ageGroup}`);
-        } else if (known.get(e.id)?.equipment === "barbell" && p.load < BAR) {
-          fail(
-            `${e.id} prescribes ${p.load}kg — below the empty ${BAR}kg bar ` +
-              `(${bodyWeight}kg ${sex} ${ageGroup})`,
-          );
-        } else if (p.load <= 0) {
-          fail(`${e.id} prescribes ${p.load}kg at ${bodyWeight}kg ${sex} ${ageGroup}`);
-        }
+for (const ageGroup of AGES) {
+  for (const bodyWeight of WEIGHTS) {
+    const profile = {
+      username: "check",
+      ageGroup,
+      bodyWeight,
+      bodyWeightUnit: "kg",
+    } as unknown as Profile;
+    for (const e of entries) {
+      const p = prescribe(e.id, e.reps, [], profile);
+      // Nothing derived from a body weight may come out unusable: no blank
+      // where a starting weight belongs, and no barbell under an empty bar.
+      if (p.source === "unknown") {
+        fail(`no starting weight for ${e.id} at ${bodyWeight}kg ${ageGroup}`);
+      } else if (known.get(e.id)?.equipment === "barbell" && p.load < BAR) {
+        fail(
+          `${e.id} prescribes ${p.load}kg — below the empty ${BAR}kg bar ` +
+            `(${bodyWeight}kg ${ageGroup})`,
+        );
+      } else if (p.load <= 0) {
+        fail(`${e.id} prescribes ${p.load}kg at ${bodyWeight}kg ${ageGroup}`);
       }
     }
   }
@@ -96,5 +93,5 @@ if (bad) {
 }
 console.log(
   `every plan exercise exists and is in range; ` +
-    `${SEXES.length * AGES.length * WEIGHTS.length} profiles all get a loadable starting weight`,
+    `${AGES.length * WEIGHTS.length} profiles all get a loadable starting weight`,
 );

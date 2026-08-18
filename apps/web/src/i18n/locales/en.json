@@ -25,7 +25,6 @@
   },
   "username": "Username",
   "usernamePlaceholder": "e.g. iron_ada",
-  "gender": "Gender",
   "bodyWeight": "Body weight",
   "bodyWeightPlaceholder": "e.g. 82",
   "bodyWeightWhy": "Used as the load for push-ups, chin-ups and the other bodyweight exercises.",
@@ -35,11 +34,6 @@
    "one": "{count} more to fill in",
    "other": "{count} more to fill in"
   }
- },
- "gender": {
-  "female": "Female",
-  "male": "Male",
-  "other": "Other / Prefer not to say"
  },
  "age": {
   "teen": "Under 18",

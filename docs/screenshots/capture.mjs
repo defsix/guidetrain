@@ -30,7 +30,7 @@ async function desktopFlow() {
   await page.screenshot({ path: path.join(OUT, "01-onboarding.png") });
 
   await page.fill('input[placeholder="e.g. iron_ada"]', "iron_ada");
-  await page.click('button:has-text("Female")');
+  await page.fill('input[placeholder="e.g. 82"]', "68");
   await page.click('button:has-text("18 - 29")');
   await page.click('button:has-text("Continue to body explorer")');
   await page.waitForURL("**/explore");
@@ -64,7 +64,7 @@ async function mobileFlow() {
   await page.evaluate(() =>
     localStorage.setItem(
       "guidetrain.profile",
-      JSON.stringify({ username: "iron_ada", gender: "female", ageGroup: "18-29" })
+      JSON.stringify({ username: "iron_ada", ageGroup: "18-29", bodyWeight: 68, bodyWeightUnit: "kg" })
     )
   );
   // HashRouter: the route lives in the hash, not the path.

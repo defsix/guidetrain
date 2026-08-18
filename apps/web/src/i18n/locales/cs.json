@@ -31,7 +31,6 @@
   },
   "username": "Uživatelské jméno",
   "usernamePlaceholder": "např. iron_ada",
-  "gender": "Pohlaví",
   "bodyWeight": "Tělesná hmotnost",
   "bodyWeightPlaceholder": "např. 82",
   "bodyWeightWhy": "Slouží jako zátěž u kliků, shybů a dalších cviků s vlastní vahou.",
@@ -43,11 +42,6 @@
    "many": "Zbývá vyplnit {count} pole",
    "other": "Zbývá vyplnit {count} polí"
   }
- },
- "gender": {
-  "female": "Žena",
-  "male": "Muž",
-  "other": "Jiné / Nechci uvádět"
  },
  "age": {
   "teen": "Do 18 let",

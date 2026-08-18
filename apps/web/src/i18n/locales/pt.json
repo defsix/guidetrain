@@ -25,7 +25,6 @@
   },
   "username": "Nome de usuário",
   "usernamePlaceholder": "ex.: iron_ada",
-  "gender": "Gênero",
   "bodyWeight": "Peso corporal",
   "bodyWeightPlaceholder": "ex. 82",
   "bodyWeightWhy": "Serve de carga para flexões, elevações e os restantes exercícios com o peso do corpo.",
@@ -35,11 +34,6 @@
    "one": "Falta {count} campo",
    "other": "Faltam {count} campos"
   }
- },
- "gender": {
-  "female": "Feminino",
-  "male": "Masculino",
-  "other": "Outro / Prefiro não dizer"
  },
  "age": {
   "teen": "Menos de 18",
