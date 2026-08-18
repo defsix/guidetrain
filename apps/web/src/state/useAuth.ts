@@ -93,9 +93,12 @@ export function useAuth() {
    * provider's consent screen, not with anything this function could report.
    * Only a failure to even start the redirect surfaces, as an error.
    *
-   * Sent back to `#/explore`, the only place this is ever called from — the
-   * account panel does not exist anywhere the app would not already show that
-   * route once signed in.
+   * Sent back to `#/explore` regardless of where the account panel was opened
+   * from — onboarding included, now that a returning user can sign in before
+   * ever filling in a profile. Landing there while the merge is still in
+   * flight is fine: `BodyExplorer` mounts its own `useAuth`/`useSync` pair,
+   * sees the already-persisted session, and runs the same merge again —
+   * `mergeOnSignIn` is safe to repeat.
    */
   const signInWithOAuth = useCallback(async (provider: "google" | "apple" | "facebook") => {
     if (!supabase) return;

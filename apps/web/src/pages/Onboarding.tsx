@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { AgeGroup, Gender, Profile } from "../types";
 import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
+import { useAuth } from "../state/useAuth";
+import { useSync } from "../state/useSync";
 import ThemeToggle from "../components/ThemeToggle";
+import AccountPanel from "../components/AccountPanel";
 import Logo from "../components/Logo";
 import { useT } from "../i18n/I18nProvider";
 import { LOCALES } from "../i18n";
@@ -34,11 +37,22 @@ export default function Onboarding() {
   const navigate = useNavigate();
   const { setProfile } = useProfile();
   const { pref, setPref } = useTheme();
+  const auth = useAuth();
+  const sync = useSync(auth.userId);
+  const [showAccount, setShowAccount] = useState(false);
   const t = useT();
   const [username, setUsername] = useState("");
   const [gender, setGender] = useState<Gender | null>(null);
   const [ageGroup, setAgeGroup] = useState<AgeGroup | null>(null);
   const [bodyWeight, setBodyWeight] = useState("");
+
+  // A returning user should never retype what their account already knows.
+  // Signing in here starts the same merge BodyExplorer would run — this just
+  // means nobody has to answer four questions first to reach the button that
+  // makes them irrelevant.
+  useEffect(() => {
+    if (auth.session) navigate("/explore", { replace: true });
+  }, [auth.session, navigate]);
 
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people
@@ -73,6 +87,17 @@ export default function Onboarding() {
               anybody sees of the app. */}
           <Logo size={38} withName />
           <div className="header-controls">
+            {/* Hidden with no project configured, exactly as it is once
+                signed in — see AccountPanel. */}
+            {auth.available && (
+              <button
+                className="account-button"
+                onClick={() => setShowAccount(true)}
+                aria-expanded={showAccount}
+              >
+                {t("account.title")}
+              </button>
+            )}
             <ThemeToggle pref={pref} onChange={setPref} />
           </div>
         </div>
@@ -157,6 +182,8 @@ export default function Onboarding() {
       <p className="form-progress" aria-live="polite">
         {canContinue ? '' : t("onboarding.progress", { count: 4 - done })}
       </p>
+
+      <AccountPanel open={showAccount} onClose={() => setShowAccount(false)} auth={auth} sync={sync} />
     </div>
   );
 }

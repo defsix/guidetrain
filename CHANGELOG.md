@@ -170,6 +170,20 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Sign in before onboarding, not only after** — the account button now also
+  appears on the welcome screen, before any of the four profile questions are
+  answered. Previously the only way in was to fill them out first: onboarding
+  routed unconditionally, with no check for an existing profile and no way to
+  reach the account panel except through it, so a returning user on a new
+  device had to type a username, sex, age and body weight it was about to
+  throw away — `mergeOnSignIn` already preferred the real profile over
+  whatever was typed locally, so the answers were discarded within a second of
+  signing in, but the person still had to produce them first. Signing in here
+  now redirects straight to the explorer once a session exists, and
+  `BodyExplorer` runs the same merge again on arrival — `mergeOnSignIn` was
+  already safe to call twice, so this needed no new sync logic, only a second
+  place to open the same panel and a redirect once the session says who they
+  are.
 - **Three more plans, chosen by what equipment and time a person actually
   has rather than by goal** — a dumbbell-only full body for a home gym with no
   barbell or rack, a minimal two-day-a-week shape for whoever really only has
