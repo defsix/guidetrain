@@ -1,3 +1,65 @@
+/* --- splash --------------------------------------------------------------
+   Shown once, before onboarding's own content, and only ever to someone
+   Onboarding has already confirmed is new — see the phase guard there. */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* The theme's own background, not a fixed colour — dark or light follows
+     the device the same way the rest of the app does. */
+  background: var(--bg);
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+.splash-fade { opacity: 0; }
+
+.splash-mark {
+  display: grid;
+  place-items: center;
+  animation: splash-in 0.6s ease-out;
+}
+/* Both children share one grid cell, centred — the name lands on the bolt's
+   exact middle without following its outline, which a jagged lightning
+   shape would make illegible. */
+.splash-mark svg {
+  grid-area: 1 / 1;
+  height: clamp(180px, 42vh, 420px);
+  width: clamp(180px, 42vh, 420px);
+  display: block;
+}
+.splash-bolt { fill: var(--accent); }
+
+.splash-name {
+  grid-area: 1 / 1;
+  font-family: var(--sans);
+  font-size: clamp(22px, 5vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  /* A pill in the page's own background, not the bolt's — legible sitting on
+     the fill either theme paints it, rather than assuming one contrast
+     direction. */
+  background: var(--bg);
+  padding: 6px 22px;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+}
+.splash-name b { font-weight: 700; color: var(--text); }
+
+@keyframes splash-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-mark { animation: none; }
+  .splash { transition: none; }
+}
+
 .onboarding {
   width: min(560px, 100%);
   margin: 0 auto;

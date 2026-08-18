@@ -8,6 +8,7 @@ import { useSync } from "../state/useSync";
 import ThemeToggle from "../components/ThemeToggle";
 import AccountPanel from "../components/AccountPanel";
 import Logo from "../components/Logo";
+import Splash from "../components/Splash";
 import { useT } from "../i18n/I18nProvider";
 import muscleMap from "../anatomy/muscle-map.json";
 import exercises from "../anatomy/exercises.json";
@@ -60,6 +61,39 @@ export default function Onboarding() {
     if (profile) navigate("/explore", { replace: true });
   }, [profile, navigate]);
 
+  // The splash: shown once, and only once the two redirects above have had
+  // their chance to fire instead. `profile` is known synchronously — a
+  // returning visitor never risks seeing this start — but `auth.loading`
+  // is not, so the splash stays off until a session has been ruled out too.
+  // Skipping that check would mean occasionally starting the animation for
+  // someone about to be sent straight to the explorer a moment later.
+  const [splashPhase, setSplashPhase] = useState<"pending" | "showing" | "fading" | "done">(
+    "pending",
+  );
+
+  useEffect(() => {
+    if (splashPhase !== "pending" || auth.loading || auth.session || profile) return;
+    setSplashPhase("showing");
+  }, [splashPhase, auth.loading, auth.session, profile]);
+
+  useEffect(() => {
+    if (splashPhase !== "showing") return;
+    // Motion nobody asked for is the one thing worse than a screen that took
+    // a moment to appear.
+    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
+      setSplashPhase("done");
+      return;
+    }
+    const hold = setTimeout(() => setSplashPhase("fading"), 900);
+    return () => clearTimeout(hold);
+  }, [splashPhase]);
+
+  useEffect(() => {
+    if (splashPhase !== "fading") return;
+    const fade = setTimeout(() => setSplashPhase("done"), 500);
+    return () => clearTimeout(fade);
+  }, [splashPhase]);
+
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people
   // will type one.
@@ -84,6 +118,13 @@ export default function Onboarding() {
 
   return (
     <div className="onboarding">
+      {/* Pending covers the form with a blank, un-marked overlay rather than
+          nothing — the alternative is a flash of the form itself while
+          auth.loading is still being resolved, for however briefly. */}
+      {splashPhase === "pending" && <div className="splash" aria-hidden="true" />}
+      {(splashPhase === "showing" || splashPhase === "fading") && (
+        <Splash fading={splashPhase === "fading"} />
+      )}
       <div className="onboarding-hero">
         <div className="onboarding-head">
           {/* The mark carries the name here rather than an all-caps label:
