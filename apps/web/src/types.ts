@@ -45,12 +45,3 @@ export interface Profile {
   equipment?: EquipmentTag[];
 }
 
-export interface MuscleGroup {
-  id: string;
-  slug: string;
-  name: string;
-  latinName: string;
-  description: string;
-  sortOrder: number;
-}
-

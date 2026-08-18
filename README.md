@@ -921,7 +921,5 @@ Not commitments. Roughly in the order they would earn their place:
 
 - **Hands take the forearm's colour** rather than being an untrainable part.
   Needs a wrist landmark and a segmentation change.
-- **`apps/web/src/lib/api.ts` is dead** — imported nowhere, kept for the
-  backend phase.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).

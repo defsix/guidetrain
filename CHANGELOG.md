@@ -170,6 +170,14 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **`apps/web/src/lib/api.ts` removed** — a client for `apps/api`'s
+  `/api/muscle-groups` endpoint, imported nowhere; the viewer has read
+  `src/anatomy/muscle-map.json` directly since well before this was written.
+  Took the `MuscleGroup` type in `types.ts` with it (its only reader) and
+  `VITE_API_URL` out of `.env.example` (its only reader). `apps/api` itself
+  and `data/muscle-groups.json` are untouched — the API still serves that
+  data from its own seed, this only removes the web app's dead client for
+  it.
 - **An end-to-end smoke suite, so a redirect or a splash timing breaking
   silently stops being how these get found.** Two changes in a row this
   session (the lazy-loaded explorer, then the splash showing on every visit)
