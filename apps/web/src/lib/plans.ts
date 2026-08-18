@@ -24,11 +24,24 @@ import type { SetEntry } from "../state/useLog";
 
 export type PlanExercise = { id: string; sets: number; reps: number };
 export type PlanDay = { name: string; exercises: PlanExercise[] };
+/** One frequency a plan can be run at — its own day list, not a relabelling. */
+export type PlanVariant = {
+  /** Sessions a week this variant assumes, for the summary line. */
+  perWeek: number;
+  days: PlanDay[];
+};
 export type PlanTemplate = {
   id: string;
-  days: PlanDay[];
-  /** Sessions a week the plan assumes, for the summary line. */
-  perWeek: number;
+  /**
+   * Almost always one entry. A second only belongs here when fewer days
+   * genuinely changes what gets trained — a rotation like full body or
+   * push/pull/legs is already flexible for free, since running it more or
+   * less often is just how frequently the same days get repeated, nothing a
+   * second variant would add. Body part split is the exception: each day is
+   * a muscle group with no rotation to slow down, so a shorter week has to
+   * actually combine muscle groups rather than just visit them less often.
+   */
+  variants: PlanVariant[];
 };
 
 /**
@@ -40,76 +53,88 @@ export type PlanTemplate = {
 export const PLANS: PlanTemplate[] = [
   {
     id: "fullbody",
-    perWeek: 3,
-    days: [
+    variants: [
       {
-        name: "a",
-        exercises: [
-          { id: "Barbell_Squat", sets: 3, reps: 5 },
-          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
-          { id: "Bent_Over_Barbell_Row", sets: 3, reps: 5 },
-        ],
-      },
-      {
-        name: "b",
-        exercises: [
-          { id: "Barbell_Squat", sets: 3, reps: 5 },
-          { id: "Standing_Military_Press", sets: 3, reps: 5 },
-          { id: "Barbell_Deadlift", sets: 1, reps: 5 },
+        perWeek: 3,
+        days: [
+          {
+            name: "a",
+            exercises: [
+              { id: "Barbell_Squat", sets: 3, reps: 5 },
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
+              { id: "Bent_Over_Barbell_Row", sets: 3, reps: 5 },
+            ],
+          },
+          {
+            name: "b",
+            exercises: [
+              { id: "Barbell_Squat", sets: 3, reps: 5 },
+              { id: "Standing_Military_Press", sets: 3, reps: 5 },
+              { id: "Barbell_Deadlift", sets: 1, reps: 5 },
+            ],
+          },
         ],
       },
     ],
   },
   {
     id: "upperlower",
-    perWeek: 4,
-    days: [
+    variants: [
       {
-        name: "upper",
-        exercises: [
-          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 6 },
-          { id: "Bent_Over_Barbell_Row", sets: 4, reps: 6 },
-          { id: "Standing_Military_Press", sets: 3, reps: 8 },
-          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
-        ],
-      },
-      {
-        name: "lower",
-        exercises: [
-          { id: "Barbell_Squat", sets: 4, reps: 6 },
-          { id: "Romanian_Deadlift", sets: 3, reps: 8 },
-          { id: "Leg_Press", sets: 3, reps: 10 },
-          { id: "Calf_Press_On_The_Leg_Press_Machine", sets: 3, reps: 12 },
+        perWeek: 4,
+        days: [
+          {
+            name: "upper",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 6 },
+              { id: "Bent_Over_Barbell_Row", sets: 4, reps: 6 },
+              { id: "Standing_Military_Press", sets: 3, reps: 8 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "lower",
+            exercises: [
+              { id: "Barbell_Squat", sets: 4, reps: 6 },
+              { id: "Romanian_Deadlift", sets: 3, reps: 8 },
+              { id: "Leg_Press", sets: 3, reps: 10 },
+              { id: "Calf_Press_On_The_Leg_Press_Machine", sets: 3, reps: 12 },
+            ],
+          },
         ],
       },
     ],
   },
   {
     id: "ppl",
-    perWeek: 3,
-    days: [
+    variants: [
       {
-        name: "push",
-        exercises: [
-          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 6 },
-          { id: "Standing_Military_Press", sets: 3, reps: 8 },
-          { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
-        ],
-      },
-      {
-        name: "pull",
-        exercises: [
-          { id: "Bent_Over_Barbell_Row", sets: 4, reps: 6 },
-          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
-          { id: "Barbell_Curl", sets: 3, reps: 10 },
-        ],
-      },
-      {
-        name: "legs",
-        exercises: [
-          { id: "Barbell_Squat", sets: 4, reps: 6 },
-          { id: "Romanian_Deadlift", sets: 3, reps: 8 },
-          { id: "Leg_Press", sets: 3, reps: 12 },
+        perWeek: 3,
+        days: [
+          {
+            name: "push",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 6 },
+              { id: "Standing_Military_Press", sets: 3, reps: 8 },
+              { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "pull",
+            exercises: [
+              { id: "Bent_Over_Barbell_Row", sets: 4, reps: 6 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
+              { id: "Barbell_Curl", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "legs",
+            exercises: [
+              { id: "Barbell_Squat", sets: 4, reps: 6 },
+              { id: "Romanian_Deadlift", sets: 3, reps: 8 },
+              { id: "Leg_Press", sets: 3, reps: 12 },
+            ],
+          },
         ],
       },
     ],
@@ -118,50 +143,107 @@ export const PLANS: PlanTemplate[] = [
     // The other three all train each muscle two or three times a week. This
     // one trains it once, at higher volume per session — a different, equally
     // real way to run a week, not a worse version of the others.
+    //
+    // The one plan in this file where the number of days isn't negotiable for
+    // free: every other shape is a rotation, and running one more or less
+    // often just changes how frequently the same days repeat. Here each day
+    // *is* a muscle group, so a shorter week has to actually combine two of
+    // them rather than visit the full five less often — hence two variants
+    // instead of one, the only plan that needs it.
     id: "bodypart",
-    perWeek: 5,
-    days: [
+    variants: [
       {
-        name: "chest",
-        exercises: [
-          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 8 },
-          { id: "Barbell_Incline_Bench_Press_-_Medium_Grip", sets: 3, reps: 10 },
-          { id: "Dumbbell_Bench_Press", sets: 3, reps: 12 },
+        // Shoulders and arms share a day rather than either of the other
+        // three — legs is already the plan's biggest single session, and
+        // splitting chest or back into a combined day leaves the other three
+        // days lopsided. Volume is trimmed to fit one session rather than
+        // just concatenated: four exercises, not six, dropping the two most
+        // redundant with what shoulders and arms already get secondarily
+        // from the chest and back days.
+        perWeek: 4,
+        days: [
+          {
+            name: "chest",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 8 },
+              { id: "Barbell_Incline_Bench_Press_-_Medium_Grip", sets: 3, reps: 10 },
+              { id: "Dumbbell_Bench_Press", sets: 3, reps: 12 },
+            ],
+          },
+          {
+            name: "back",
+            exercises: [
+              { id: "Bent_Over_Barbell_Row", sets: 4, reps: 8 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
+              { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 12 },
+            ],
+          },
+          {
+            name: "legs",
+            exercises: [
+              { id: "Barbell_Squat", sets: 4, reps: 8 },
+              { id: "Leg_Press", sets: 3, reps: 10 },
+              { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
+              { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "shouldersarms",
+            exercises: [
+              { id: "Standing_Military_Press", sets: 3, reps: 8 },
+              { id: "Face_Pull", sets: 3, reps: 15 },
+              { id: "Barbell_Curl", sets: 3, reps: 10 },
+              { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 8 },
+            ],
+          },
         ],
       },
       {
-        name: "back",
-        exercises: [
-          { id: "Bent_Over_Barbell_Row", sets: 4, reps: 8 },
-          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
-          { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 12 },
-        ],
-      },
-      {
-        name: "legs",
-        exercises: [
-          { id: "Barbell_Squat", sets: 4, reps: 8 },
-          { id: "Leg_Press", sets: 3, reps: 10 },
-          { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
-          { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
-        ],
-      },
-      {
-        name: "shoulders",
-        exercises: [
-          { id: "Standing_Military_Press", sets: 4, reps: 8 },
-          { id: "Upright_Barbell_Row", sets: 3, reps: 10 },
-          // Light and high-rep on purpose — a rear-delt/rotator accessory,
-          // not a lift anyone loads heavy.
-          { id: "Face_Pull", sets: 3, reps: 15 },
-        ],
-      },
-      {
-        name: "arms",
-        exercises: [
-          { id: "Barbell_Curl", sets: 3, reps: 10 },
-          { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 8 },
-          { id: "Alternate_Hammer_Curl", sets: 3, reps: 12 },
+        perWeek: 5,
+        days: [
+          {
+            name: "chest",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 8 },
+              { id: "Barbell_Incline_Bench_Press_-_Medium_Grip", sets: 3, reps: 10 },
+              { id: "Dumbbell_Bench_Press", sets: 3, reps: 12 },
+            ],
+          },
+          {
+            name: "back",
+            exercises: [
+              { id: "Bent_Over_Barbell_Row", sets: 4, reps: 8 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
+              { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 12 },
+            ],
+          },
+          {
+            name: "legs",
+            exercises: [
+              { id: "Barbell_Squat", sets: 4, reps: 8 },
+              { id: "Leg_Press", sets: 3, reps: 10 },
+              { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
+              { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "shoulders",
+            exercises: [
+              { id: "Standing_Military_Press", sets: 4, reps: 8 },
+              { id: "Upright_Barbell_Row", sets: 3, reps: 10 },
+              // Light and high-rep on purpose — a rear-delt/rotator accessory,
+              // not a lift anyone loads heavy.
+              { id: "Face_Pull", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "arms",
+            exercises: [
+              { id: "Barbell_Curl", sets: 3, reps: 10 },
+              { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 8 },
+              { id: "Alternate_Hammer_Curl", sets: 3, reps: 12 },
+            ],
+          },
         ],
       },
     ],
@@ -173,22 +255,26 @@ export const PLANS: PlanTemplate[] = [
     // day B leans on an upright row for the shoulders rather than pretending
     // one exists.
     id: "dumbbell",
-    perWeek: 3,
-    days: [
+    variants: [
       {
-        name: "a",
-        exercises: [
-          { id: "Dumbbell_Squat", sets: 3, reps: 8 },
-          { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
-          { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 10 },
-        ],
-      },
-      {
-        name: "b",
-        exercises: [
-          { id: "Dumbbell_Squat", sets: 3, reps: 8 },
-          { id: "Standing_Dumbbell_Upright_Row", sets: 3, reps: 10 },
-          { id: "Stiff-Legged_Dumbbell_Deadlift", sets: 1, reps: 8 },
+        perWeek: 3,
+        days: [
+          {
+            name: "a",
+            exercises: [
+              { id: "Dumbbell_Squat", sets: 3, reps: 8 },
+              { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
+              { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "b",
+            exercises: [
+              { id: "Dumbbell_Squat", sets: 3, reps: 8 },
+              { id: "Standing_Dumbbell_Upright_Row", sets: 3, reps: 10 },
+              { id: "Stiff-Legged_Dumbbell_Deadlift", sets: 1, reps: 8 },
+            ],
+          },
         ],
       },
     ],
@@ -199,22 +285,26 @@ export const PLANS: PlanTemplate[] = [
     // only once here rather than the twice or three times the other full-body
     // shapes give it, so the hinge carries the legs on day B instead.
     id: "minimal",
-    perWeek: 2,
-    days: [
+    variants: [
       {
-        name: "a",
-        exercises: [
-          { id: "Barbell_Squat", sets: 3, reps: 5 },
-          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
-          { id: "Bent_Over_Barbell_Row", sets: 3, reps: 5 },
-        ],
-      },
-      {
-        name: "b",
-        exercises: [
-          { id: "Barbell_Deadlift", sets: 1, reps: 5 },
-          { id: "Standing_Military_Press", sets: 3, reps: 5 },
-          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 8 },
+        perWeek: 2,
+        days: [
+          {
+            name: "a",
+            exercises: [
+              { id: "Barbell_Squat", sets: 3, reps: 5 },
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
+              { id: "Bent_Over_Barbell_Row", sets: 3, reps: 5 },
+            ],
+          },
+          {
+            name: "b",
+            exercises: [
+              { id: "Barbell_Deadlift", sets: 1, reps: 5 },
+              { id: "Standing_Military_Press", sets: 3, reps: 5 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 8 },
+            ],
+          },
         ],
       },
     ],
@@ -226,16 +316,20 @@ export const PLANS: PlanTemplate[] = [
     // set at body weight, which is why this plan needs no entry in
     // BODY_FRACTION below: `prescribe` reads the tag itself.
     id: "noequip",
-    perWeek: 3,
-    days: [
+    variants: [
       {
-        name: "full",
-        exercises: [
-          { id: "Push-Up_Wide", sets: 3, reps: 12 },
-          { id: "Pullups", sets: 3, reps: 6 },
-          { id: "Bodyweight_Squat", sets: 3, reps: 15 },
-          { id: "Single_Leg_Glute_Bridge", sets: 3, reps: 12 },
-          { id: "3_4_Sit-Up", sets: 3, reps: 20 },
+        perWeek: 3,
+        days: [
+          {
+            name: "full",
+            exercises: [
+              { id: "Push-Up_Wide", sets: 3, reps: 12 },
+              { id: "Pullups", sets: 3, reps: 6 },
+              { id: "Bodyweight_Squat", sets: 3, reps: 15 },
+              { id: "Single_Leg_Glute_Bridge", sets: 3, reps: 12 },
+              { id: "3_4_Sit-Up", sets: 3, reps: 20 },
+            ],
+          },
         ],
       },
     ],

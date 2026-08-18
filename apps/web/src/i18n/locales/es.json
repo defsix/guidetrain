@@ -312,7 +312,8 @@
    "back": "Espalda",
    "shoulders": "Hombros",
    "arms": "Brazos",
-   "full": "Cuerpo completo"
+   "full": "Cuerpo completo",
+   "shouldersarms": "Hombros / Brazos"
   },
   "fullbody": {
    "name": "Cuerpo completo",
@@ -329,7 +330,7 @@
   "carryNote": "Estos pesos pasan a tu entrenamiento y se te devuelven serie a serie al registrar.",
   "bodypart": {
    "name": "Rutina por grupos musculares",
-   "desc": "Un grupo muscular al día, cinco días a la semana — más volumen por sesión, frecuencia semanal. La rutina clásica de culturismo."
+   "desc": "Un grupo muscular al día, cuatro o cinco días a la semana — más volumen por sesión, baja frecuencia. La rutina clásica de culturismo, ajustada a los días que realmente tienes."
   },
   "dumbbell": {
    "name": "Cuerpo completo con mancuernas",
@@ -342,7 +343,8 @@
   "noequip": {
    "name": "Solo peso corporal",
    "desc": "Sin peso añadido — flexiones, dominadas y sentadillas con el propio peso, con nada más que una barra donde colgarte. Para viajar, una habitación de hotel, o empezar sin nada."
-  }
+  },
+  "frequency": "Días a la semana"
  },
  "skip": {
   "set": "Saltar esta serie",

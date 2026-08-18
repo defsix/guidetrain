@@ -334,7 +334,8 @@
    "back": "Plecy",
    "shoulders": "Barki",
    "arms": "Ramiona",
-   "full": "Całe ciało"
+   "full": "Całe ciało",
+   "shouldersarms": "Barki / Ramiona"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -351,7 +352,7 @@
   "carryNote": "Te ciężary trafiają do treningu i przy zapisie są podpowiadane seria po serii.",
   "bodypart": {
    "name": "Split na partie mięśniowe",
-   "desc": "Jedna partia mięśniowa dziennie, pięć dni w tygodniu — więcej objętości na sesję, częstotliwość raz w tygodniu. Klasyczny split kulturystyczny."
+   "desc": "Jedna partia mięśniowa dziennie, cztery lub pięć dni w tygodniu — więcej objętości na sesję, niska częstotliwość. Klasyczny split kulturystyczny, dopasowany do liczby dni, które naprawdę masz."
   },
   "dumbbell": {
    "name": "Całe ciało z hantlami",
@@ -364,7 +365,8 @@
   "noequip": {
    "name": "Tylko masa ciała",
    "desc": "Bez dodatkowego obciążenia — pompki, podciąganie i przysiady z masą własną, mając tylko drążek do zwisu. Na podróże, pokój hotelowy, albo start bez niczego."
-  }
+  },
+  "frequency": "Dni w tygodniu"
  },
  "skip": {
   "set": "Pomiń tę serię",

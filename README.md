@@ -417,10 +417,18 @@ workouts with their targets already set. A plan that says "Barbell Squat,
 The last three are chosen by equipment and time rather than by goal — no
 barbell, only two sessions a week, or no equipment at all.
 
+Six of the seven are rotations, where running them more or less often is
+already free — nothing to configure, just how frequently the same days
+repeat. Body part split is the exception: each day is a muscle group with no
+rotation to slow down, so it offers an actual 4-day variant alongside the
+original 5, combining shoulders and arms into one trimmed session rather than
+just visiting five days less often.
+
 Each is a common structure rather than anything invented here, and each is
 built only from exercises this catalogue has.
-`node tools/exercises/check-plans.mjs` fails if a plan ever names one it
-doesn't, or omits a starting weight, since either would render a blank row.
+`node --import tsx tools/exercises/check-plans.ts` fails if a plan ever names
+one it doesn't, or omits a starting weight, since either would render a blank
+row.
 
 ### Where each weight comes from
 

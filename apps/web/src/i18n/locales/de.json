@@ -312,7 +312,8 @@
    "back": "Rücken",
    "shoulders": "Schultern",
    "arms": "Arme",
-   "full": "Ganzkörper"
+   "full": "Ganzkörper",
+   "shouldersarms": "Schultern / Arme"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -329,7 +330,7 @@
   "carryNote": "Diese Gewichte wandern in dein Training und werden beim Eintragen Satz für Satz zurückgegeben.",
   "bodypart": {
    "name": "Split nach Muskelgruppen",
-   "desc": "Eine Muskelgruppe pro Tag, fünf Tage die Woche — mehr Volumen pro Einheit, einmal wöchentliche Frequenz. Der klassische Bodybuilding-Split."
+   "desc": "Eine Muskelgruppe pro Tag, vier oder fünf Tage die Woche — mehr Volumen pro Einheit, niedrige Frequenz. Der klassische Bodybuilding-Split, angepasst an die Tage, die du wirklich hast."
   },
   "dumbbell": {
    "name": "Ganzkörper mit Kurzhanteln",
@@ -342,7 +343,8 @@
   "noequip": {
    "name": "Nur Körpergewicht",
    "desc": "Kein Zusatzgewicht — Liegestütze, Klimmzüge und Kniebeugen mit dem eigenen Körpergewicht, nur mit einer Stange zum Hängen. Für unterwegs, ein Hotelzimmer, oder den Einstieg ganz ohne Ausrüstung."
-  }
+  },
+  "frequency": "Tage pro Woche"
  },
  "skip": {
   "set": "Satz überspringen",

@@ -34,6 +34,17 @@ type Props = {
 export default function PlanLibrary({ open, onClose, allSets, profile, onApply }: Props) {
   const { t, localizeExercise } = useI18n();
   const [chosen, setChosen] = useState<PlanTemplate | null>(null);
+  const [variantIndex, setVariantIndex] = useState(0);
+
+  // The fullest variant by default — for every plan but one this is the only
+  // variant there is, and for body part split it preserves what shipped
+  // first: five days, with four one tap away rather than the other way round.
+  function choose(plan: PlanTemplate) {
+    setChosen(plan);
+    setVariantIndex(plan.variants.length - 1);
+  }
+
+  const variant = chosen?.variants[variantIndex] ?? chosen?.variants[0];
 
   const byExercise = useMemo(() => {
     const m = new Map<string, SetEntry[]>();
@@ -54,8 +65,8 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
    * have no way to know which one to believe.
    */
   const resolved = useMemo(() => {
-    if (!chosen) return null;
-    return chosen.days.map((day) => ({
+    if (!variant) return null;
+    return variant.days.map((day) => ({
       name: day.name,
       exercises: day.exercises.map((e) => {
         const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile);
@@ -66,7 +77,7 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
         };
       }),
     }));
-  }, [chosen, byExercise, profile]);
+  }, [variant, byExercise, profile]);
 
   // Only true once something on screen actually needs it explained — a plan
   // built entirely from logged lifts or from body-only exercises never shows
@@ -91,15 +102,20 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
         {!chosen ? (
           <>
             <p className="plans-intro">{t("plans.intro")}</p>
-            {PLANS.map((p) => (
-              <button key={p.id} className="plan-card" onClick={() => setChosen(p)}>
-                <span className="pname">{t(`plans.${p.id}.name`)}</span>
-                <span className="pmeta">
-                  {t("plans.perWeek", { count: p.perWeek })} · {t("plans.days", { count: p.days.length })}
-                </span>
-                <span className="pdesc">{t(`plans.${p.id}.desc`)}</span>
-              </button>
-            ))}
+            {PLANS.map((p) => {
+              // The card shows the default variant's numbers — the fullest
+              // one, same as what opening the plan lands on.
+              const v = p.variants[p.variants.length - 1];
+              return (
+                <button key={p.id} className="plan-card" onClick={() => choose(p)}>
+                  <span className="pname">{t(`plans.${p.id}.name`)}</span>
+                  <span className="pmeta">
+                    {t("plans.perWeek", { count: v.perWeek })} · {t("plans.days", { count: v.days.length })}
+                  </span>
+                  <span className="pdesc">{t(`plans.${p.id}.desc`)}</span>
+                </button>
+              );
+            })}
           </>
         ) : (
           <>
@@ -107,6 +123,27 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
               ‹ {t("plans.back")}
             </button>
             <p className="plan-name">{t(`plans.${chosen.id}.name`)}</p>
+
+            {/* Only when there is a real choice — most plans have exactly one
+                variant, and a selector offering one option is not a choice,
+                it's a decoy. */}
+            {chosen.variants.length > 1 && (
+              <div className="plan-frequency">
+                <span className="plan-frequency-label">{t("plans.frequency")}</span>
+                <div className="chip-row">
+                  {chosen.variants.map((v, i) => (
+                    <button
+                      key={v.perWeek}
+                      type="button"
+                      className={`chip ${i === variantIndex ? "chip-selected" : ""}`}
+                      onClick={() => setVariantIndex(i)}
+                    >
+                      {v.perWeek}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {resolved?.map((day) => (
               <div className="plan-day" key={day.name}>
@@ -163,7 +200,7 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
                 onClose();
               }}
             >
-              {t("plans.use", { count: chosen.days.length })}
+              {t("plans.use", { count: variant?.days.length ?? 0 })}
             </button>
           </>
         )}

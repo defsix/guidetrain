@@ -1573,6 +1573,16 @@
 }
 .plans-back:hover { color: var(--accent); }
 
+.plan-frequency { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.plan-frequency-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+/* Transparent rather than the chip's own default `--panel` fill — on the
+   `--panel` background this whole preview sits on, that fill would read as
+   no fill at all, the same flatness `.plan-card` avoids the same way. */
+.plan-frequency .chip { background: transparent; padding: 6px 15px; }
+
 .plan-day h3 {
   margin: 0 0 6px;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;

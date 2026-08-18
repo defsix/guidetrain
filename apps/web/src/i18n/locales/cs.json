@@ -334,7 +334,8 @@
    "back": "Záda",
    "shoulders": "Ramena",
    "arms": "Paže",
-   "full": "Celé tělo"
+   "full": "Celé tělo",
+   "shouldersarms": "Ramena / Paže"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -351,7 +352,7 @@
   "carryNote": "Tyto váhy se přenesou do tréninku a při zapisování je dostanete zpět sérii po sérii.",
   "bodypart": {
    "name": "Split podle partií",
-   "desc": "Jedna svalová partie denně, pět dní v týdnu — víc objemu za trénink, frekvence jednou týdně. Klasický kulturistický split."
+   "desc": "Jedna svalová partie denně, čtyři nebo pět dní v týdnu — víc objemu za trénink, nízká frekvence. Klasický kulturistický split, přizpůsobený tomu, kolik dní skutečně máte."
   },
   "dumbbell": {
    "name": "Celé tělo s jednoručkami",
@@ -364,7 +365,8 @@
   "noequip": {
    "name": "Jen vlastní váha",
    "desc": "Žádná přidaná zátěž — kliky, shyby a dřepy s vlastní vahou, jen s hrazdou na shyby. Na cesty, do hotelového pokoje, nebo na úplný začátek."
-  }
+  },
+  "frequency": "Dní v týdnu"
  },
  "skip": {
   "set": "Přeskočit sérii",

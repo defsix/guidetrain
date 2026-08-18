@@ -30,7 +30,7 @@ const fail = (m: string) => {
   bad++;
 };
 
-const entries = PLANS.flatMap((p) => p.days.flatMap((d) => d.exercises));
+const entries = PLANS.flatMap((p) => p.variants.flatMap((v) => v.days.flatMap((d) => d.exercises)));
 console.log(
   `${entries.length} plan entries, ${new Set(entries.map((e) => e.id)).size} distinct exercises`,
 );

@@ -312,7 +312,8 @@
    "back": "Dos",
    "shoulders": "Épaules",
    "arms": "Bras",
-   "full": "Corps entier"
+   "full": "Corps entier",
+   "shouldersarms": "Épaules / Bras"
   },
   "fullbody": {
    "name": "Corps entier",
@@ -329,7 +330,7 @@
   "carryNote": "Ces charges passent dans votre séance et vous sont proposées série par série à la saisie.",
   "bodypart": {
    "name": "Répartition par groupe musculaire",
-   "desc": "Un groupe musculaire par jour, cinq jours par semaine — plus de volume par séance, une fréquence hebdomadaire. La répartition classique du bodybuilding."
+   "desc": "Un groupe musculaire par jour, quatre ou cinq jours par semaine — plus de volume par séance, une fréquence faible. La répartition classique du bodybuilding, ajustée au nombre de jours dont vous disposez réellement."
   },
   "dumbbell": {
    "name": "Corps entier aux haltères",
@@ -342,7 +343,8 @@
   "noequip": {
    "name": "Poids du corps uniquement",
    "desc": "Aucune charge ajoutée — pompes, tractions et squats au poids du corps, avec juste une barre à laquelle vous suspendre. Pour voyager, une chambre d'hôtel, ou débuter sans rien."
-  }
+  },
+  "frequency": "Jours par semaine"
  },
  "skip": {
   "set": "Passer cette série",

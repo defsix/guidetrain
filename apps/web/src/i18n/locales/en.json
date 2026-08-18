@@ -312,7 +312,8 @@
    "back": "Back",
    "shoulders": "Shoulders",
    "arms": "Arms",
-   "full": "Full body"
+   "full": "Full body",
+   "shouldersarms": "Shoulders / Arms"
   },
   "fullbody": {
    "name": "Full body",
@@ -329,7 +330,7 @@
   "carryNote": "These weights go into your workout, offered back one set at a time as you log.",
   "bodypart": {
    "name": "Body part split",
-   "desc": "One muscle group a day, five days a week — more volume per session, once-weekly frequency. The classic bodybuilding split."
+   "desc": "One muscle group a day, four or five days a week — more volume per session, low weekly frequency. The classic bodybuilding split, sized to how many days you actually have."
   },
   "dumbbell": {
    "name": "Dumbbell-only full body",
@@ -342,7 +343,8 @@
   "noequip": {
    "name": "Bodyweight only",
    "desc": "No added weight — push-ups, pull-ups and bodyweight squats, using nothing but a bar to hang from. For travel, a hotel room, or starting out with nothing."
-  }
+  },
+  "frequency": "Days a week"
  },
  "skip": {
   "set": "Skip this set",

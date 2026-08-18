@@ -108,14 +108,17 @@ describe("prescribe", () => {
 describe("PLANS", () => {
   it("prescribes a starting weight for every exercise it names", () => {
     for (const plan of PLANS) {
-      for (const day of plan.days) {
-        for (const e of day.exercises) {
-          // "bodyweight" for anything loaded with a fraction of body weight,
-          // "atBodyWeight" for a push-up or pull-up whose load is the whole
-          // of it — either is a real prescription, unlike "unknown".
-          expect(["bodyweight", "atBodyWeight"], e.id).toContain(
-            prescribe(e.id, e.reps, [], profile()).source,
-          );
+      for (const variant of plan.variants) {
+        for (const day of variant.days) {
+          for (const e of day.exercises) {
+            // "bodyweight" for anything loaded with a fraction of body
+            // weight, "atBodyWeight" for a push-up or pull-up whose load is
+            // the whole of it — either is a real prescription, unlike
+            // "unknown".
+            expect(["bodyweight", "atBodyWeight"], e.id).toContain(
+              prescribe(e.id, e.reps, [], profile()).source,
+            );
+          }
         }
       }
     }
@@ -123,14 +126,27 @@ describe("PLANS", () => {
 
   it("keeps sets and reps in a sane range", () => {
     for (const plan of PLANS) {
-      for (const day of plan.days) {
-        for (const e of day.exercises) {
-          expect(e.sets, e.id).toBeGreaterThan(0);
-          expect(e.sets, e.id).toBeLessThanOrEqual(10);
-          expect(e.reps, e.id).toBeGreaterThan(0);
-          expect(e.reps, e.id).toBeLessThanOrEqual(30);
+      for (const variant of plan.variants) {
+        for (const day of variant.days) {
+          for (const e of day.exercises) {
+            expect(e.sets, e.id).toBeGreaterThan(0);
+            expect(e.sets, e.id).toBeLessThanOrEqual(10);
+            expect(e.reps, e.id).toBeGreaterThan(0);
+            expect(e.reps, e.id).toBeLessThanOrEqual(30);
+          }
         }
       }
     }
+  });
+
+  it("gives every plan at least one variant, and only body part split more than one", () => {
+    // The rest are rotations: running one more or less often is already free,
+    // so a second variant there would be a relabelling with extra code behind
+    // it, not a real choice.
+    for (const plan of PLANS) {
+      expect(plan.variants.length, plan.id).toBeGreaterThan(0);
+      if (plan.id !== "bodypart") expect(plan.variants.length, plan.id).toBe(1);
+    }
+    expect(PLANS.find((p) => p.id === "bodypart")?.variants.length).toBe(2);
   });
 });

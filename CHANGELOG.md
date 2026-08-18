@@ -170,6 +170,20 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Body part split now offers a 4-day variant alongside its original 5** —
+  the one plan in the library where day count wasn't free to change: the other
+  six are all rotations, where training one more or less often just changes
+  how frequently the same days repeat, but body part split's days *are* the
+  muscle groups, so a shorter week has to actually combine two of them rather
+  than visit all five less often. The new 4-day version merges shoulders and
+  arms into one session with the volume trimmed to fit — four exercises
+  instead of six, not the two days concatenated. `PlanTemplate` now holds a
+  `variants` array instead of a single day list; every other plan still has
+  exactly one entry, and a new test asserts that stays true, so a future plan
+  doesn't grow a pointless selector by accident. A "days a week" chip picker
+  appears on the preview screen only when there's more than one variant to
+  choose from, defaulting to the fuller original rather than surprising
+  anyone who already knew this plan as five days.
 - **The sign-up confirmation email now links to the real domain** — it was
   landing on `localhost:3000`, unreachable from anywhere but the machine that
   built the app, because `signUp` never set `emailRedirectTo` and Supabase
