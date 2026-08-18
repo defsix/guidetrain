@@ -286,9 +286,11 @@
   "from": {
    "logged": "de tus series",
    "bodyweight": "punto de partida",
-   "atBodyWeight": "tu peso corporal"
+   "atBodyWeight": "tu peso corporal",
+   "relatedLift": "de {lift}"
   },
-  "startingNote": "Los pesos marcados «punto de partida» salen de tu peso corporal, edad y sexo: una media poblacional, no una medición tuya. Trata la primera serie como una prueba: si sube fácil, añade; si no, quita. En cuanto registres una serie, ese ejercicio usará tus propios números.",
+  "startingNote": "Los pesos marcados «punto de partida» salen de tu peso corporal y edad: una media poblacional, no una medición tuya. Trata la primera serie como una prueba: si sube fácil, añade; si no, quita. En cuanto registres una serie, ese ejercicio usará tus propios números.",
+  "relatedNote": "Los pesos marcados «de» otro ejercicio están escalados desde un máximo conocido en ese ejercicio, no medidos en este — un número real, solo que no de esta barra. Fija el tuyo propio en la página de Estadísticas.",
   "loggedNote": "Las series están para terminarlas, no para acabar contigo: deja una o dos repeticiones en reserva.",
   "day": {
    "a": "Entrenamiento A",
@@ -403,5 +405,19 @@
   "close": "Cerrar equipo",
   "intro": "Lo que realmente tienes disponible ahora mismo, no un dato permanente sobre ti — elige lo que corresponda. Las listas de ejercicios se reordenan para poner estos primero; nada se oculta.",
   "bodyweightNote": "Los ejercicios con el propio peso — flexiones, dominadas y el resto — siempre cuentan como disponibles, porque no necesitas nada para hacerlos."
+ },
+ "stats": {
+  "title": "Estadísticas",
+  "close": "Cerrar estadísticas",
+  "bodyWeight": "Peso corporal",
+  "squat": "Sentadilla",
+  "bench": "Press de banca",
+  "deadlift": "Peso muerto",
+  "notSet": "sin definir",
+  "save": "Guardar",
+  "noHistory": "Nada registrado todavía.",
+  "overrideFrom": "Fijado a mano, por encima de los {from} {unit} que implica tu registro.",
+  "overrideNoLog": "Fijado a mano — todavía no hay nada registrado para este ejercicio.",
+  "revert": "Volver a {max} {unit}"
  }
 }

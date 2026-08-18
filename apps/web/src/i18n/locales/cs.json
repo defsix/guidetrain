@@ -306,9 +306,11 @@
   "from": {
    "logged": "z vašich sérií",
    "bodyweight": "výchozí bod",
-   "atBodyWeight": "vaše tělesná hmotnost"
+   "atBodyWeight": "vaše tělesná hmotnost",
+   "relatedLift": "podle {lift}"
   },
-  "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti, věku a pohlaví — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
+  "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti a věku — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
+  "relatedNote": "Váhy označené „podle“ jiného cviku vycházejí ze známého maxima na tomto cviku, ne z měření tady — jde o reálné číslo, jen ne z této osy. Vlastní si nastavte na stránce Statistiky.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
   "day": {
    "a": "Trénink A",
@@ -431,5 +433,19 @@
   "close": "Zavřít vybavení",
   "intro": "Co máte skutečně k dispozici právě teď, ne trvalý fakt o vás — vyberte, co platí. Seznamy cviků se přeskupí tak, aby byly tyto na prvním místě; nic se neskrývá.",
   "bodyweightNote": "Cviky s vlastní vahou — kliky, shyby a další — se vždy počítají jako dostupné, protože k nim nic nepotřebujete."
+ },
+ "stats": {
+  "title": "Statistiky",
+  "close": "Zavřít statistiky",
+  "bodyWeight": "Tělesná hmotnost",
+  "squat": "Dřep",
+  "bench": "Bench Press",
+  "deadlift": "Mrtvý tah",
+  "notSet": "nenastaveno",
+  "save": "Uložit",
+  "noHistory": "Zatím nic nezaznamenáno.",
+  "overrideFrom": "Nastaveno ručně, nad {from} {unit}, které plyne z vašeho záznamu.",
+  "overrideNoLog": "Nastaveno ručně — pro tento cvik zatím nic nezaznamenáno.",
+  "revert": "Použít znovu {max} {unit}"
  }
 }

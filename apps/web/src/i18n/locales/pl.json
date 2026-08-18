@@ -306,9 +306,11 @@
   "from": {
    "logged": "z twoich serii",
    "bodyweight": "punkt wyjścia",
-   "atBodyWeight": "twoja masa ciała"
+   "atBodyWeight": "twoja masa ciała",
+   "relatedLift": "na podstawie: {lift}"
   },
-  "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała, wieku i płci — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
+  "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała i wieku — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
+  "relatedNote": "Ciężary oznaczone „na podstawie” innego ćwiczenia są przeskalowane ze znanego maksimum na tamtym ćwiczeniu, a nie zmierzone tutaj — to prawdziwa liczba, tylko nie z tej sztangi. Swoje własne maksimum możesz ustawić na stronie Statystyki.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
   "day": {
    "a": "Trening A",
@@ -431,5 +433,19 @@
   "close": "Zamknij sprzęt",
   "intro": "To, co naprawdę masz teraz pod ręką, nie stały fakt o tobie — zaznacz, co pasuje. Listy ćwiczeń przestawiają się tak, by były one na początku; nic nie jest ukrywane.",
   "bodyweightNote": "Ćwiczenia z masą własną — pompki, podciąganie i reszta — zawsze liczą się jako dostępne, bo nic do nich nie potrzeba."
+ },
+ "stats": {
+  "title": "Statystyki",
+  "close": "Zamknij statystyki",
+  "bodyWeight": "Masa ciała",
+  "squat": "Przysiad",
+  "bench": "Wyciskanie leżąc",
+  "deadlift": "Martwy ciąg",
+  "notSet": "nie ustawiono",
+  "save": "Zapisz",
+  "noHistory": "Nic jeszcze nie zapisano.",
+  "overrideFrom": "Ustawione ręcznie, powyżej {from} {unit} wynikających z twojego dziennika.",
+  "overrideNoLog": "Ustawione ręcznie — dla tego ćwiczenia nic jeszcze nie zapisano.",
+  "revert": "Wróć do {max} {unit}"
  }
 }

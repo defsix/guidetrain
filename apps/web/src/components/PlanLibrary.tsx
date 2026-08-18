@@ -2,7 +2,9 @@ import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import { PLANS, prescribe } from "../lib/plans";
 import type { PlanTemplate } from "../lib/plans";
+import { bestEstimate } from "../lib/progression";
 import type { SetEntry } from "../state/useLog";
+import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { AppliedDay } from "../state/usePrograms";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
@@ -19,6 +21,8 @@ type Props = {
   onClose: () => void;
   allSets: SetEntry[];
   profile: Profile | null;
+  /** A max set by hand on the stats page, per exercise id — see useKnownMax. */
+  knownMaxes: Record<string, KnownMaxEntry>;
   /** Applies the plan as named workouts, carrying the weights just previewed. */
   onApply: (days: AppliedDay[]) => void;
 };
@@ -31,7 +35,9 @@ type Props = {
  * you can follow — provided it is honest about where that number came from,
  * which is why every row carries its source.
  */
-export default function PlanLibrary({ open, onClose, allSets, profile, onApply }: Props) {
+export default function PlanLibrary({
+  open, onClose, allSets, profile, knownMaxes, onApply,
+}: Props) {
   const { t, localizeExercise } = useI18n();
   const [chosen, setChosen] = useState<PlanTemplate | null>(null);
   const [variantIndex, setVariantIndex] = useState(0);
@@ -57,6 +63,22 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
   }, [allSets]);
 
   /**
+   * The best known max for any exercise, not just the one being prescribed —
+   * `prescribe`'s `knownMax` parameter. A max set by hand on the stats page
+   * wins over one estimated from the log, same rule as `ProgressionPanel`'s
+   * training max: it only exists because someone chose to state it, and
+   * recomputing from the log would immediately overrule that choice.
+   */
+  const knownMax = useMemo(() => {
+    return (id: string): number | null => {
+      const manual = knownMaxes[id]?.max;
+      if (manual) return manual;
+      const derived = bestEstimate(byExercise.get(id) ?? []);
+      return derived ? derived.oneRM : null;
+    };
+  }, [knownMaxes, byExercise]);
+
+  /**
    * The chosen plan with every weight worked out — computed once, then both
    * shown and applied.
    *
@@ -69,21 +91,25 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
     return variant.days.map((day) => ({
       name: day.name,
       exercises: day.exercises.map((e) => {
-        const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile);
+        const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile, knownMax);
         return {
           ...e,
           load: p.source === "unknown" ? undefined : p.load,
           source: p.source,
+          relatedTo: p.relatedTo,
         };
       }),
     }));
-  }, [variant, byExercise, profile]);
+  }, [variant, byExercise, profile, knownMax]);
 
   // Only true once something on screen actually needs it explained — a plan
   // built entirely from logged lifts or from body-only exercises never shows
   // the words "starting point" at all, and the note would be answering a
-  // question nothing on the page asked.
+  // question nothing on the page asked. relatedLift gets its own note, since
+  // "population average" would be a wrong explanation for a number that came
+  // from a real max on a different lift.
   const hasStartingPoint = resolved?.some((day) => day.exercises.some((e) => e.source === "bodyweight"));
+  const hasRelatedLift = resolved?.some((day) => day.exercises.some((e) => e.source === "relatedLift"));
 
   const u = t("unit.kg");
   if (!open) return null;
@@ -153,6 +179,8 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
                     const raw = BY_ID.get(e.id);
                     if (!raw) return null;
                     const x = localizeExercise(raw);
+                    const anchorRaw = e.relatedTo ? BY_ID.get(e.relatedTo) : undefined;
+                    const anchorName = anchorRaw ? localizeExercise(anchorRaw).name : "";
                     return (
                       <li key={e.id}>
                         <span className="dname">{x.name}</span>
@@ -171,7 +199,11 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
                                   <span className="per-hand"> {t("load.perHand")}</span>
                                 )}
                               </strong>
-                              <em className={e.source}>{t(`plans.from.${e.source}`)}</em>
+                              <em className={e.source}>
+                                {e.source === "relatedLift"
+                                  ? t("plans.from.relatedLift", { lift: anchorName })
+                                  : t(`plans.from.${e.source}`)}
+                              </em>
                             </>
                           )}
                         </span>
@@ -187,6 +219,7 @@ export default function PlanLibrary({ open, onClose, allSets, profile, onApply }
 
             {/* Said once, plainly, above the button that commits to it. */}
             {hasStartingPoint && <p className="plan-note flag">{t("plans.startingNote")}</p>}
+            {hasRelatedLift && <p className="plan-note flag">{t("plans.relatedNote")}</p>}
             <p className="plan-note">{t("plans.loggedNote")}</p>
             {/* The weights above are not just a preview any more — they go into
                 the workout, where the logger offers them back set by set. */}

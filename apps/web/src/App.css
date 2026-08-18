@@ -935,7 +935,8 @@
 .account-button.signed-in { border-color: var(--accent); color: var(--accent); }
 
 .account-panel,
-.equipment-panel {
+.equipment-panel,
+.stats-panel {
   position: fixed;
   z-index: 31;
   top: 0;
@@ -952,15 +953,17 @@
   border-left: 1px solid var(--border);
 }
 .account-panel > *,
-.equipment-panel > * { flex: none; }
+.equipment-panel > *,
+.stats-panel > * { flex: none; }
 
 @media (min-width: 1100px) {
-  .account-panel, .equipment-panel { width: min(520px, 40vw); padding: 26px 30px; }
+  .account-panel, .equipment-panel, .stats-panel { width: min(520px, 40vw); padding: 26px 30px; }
 }
 
 @media (max-width: 560px) {
   .account-panel,
-  .equipment-panel {
+  .equipment-panel,
+  .stats-panel {
     top: auto;
     left: 0;
     width: auto;
@@ -973,7 +976,8 @@
 }
 
 .account-panel h2,
-.equipment-panel h2 {
+.equipment-panel h2,
+.stats-panel h2 {
   margin: 0;
   font-family: var(--mono);
   font-size: 10px;
@@ -986,6 +990,85 @@
   margin: 0;
   font-size: 15px;
   font-weight: 600;
+}
+
+.stats-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.stats-section:last-child { border-bottom: 0; padding-bottom: 0; }
+
+.stats-section h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stats-current {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.stats-edit { display: flex; gap: 8px; }
+
+.stats-edit input {
+  flex: 1;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 15px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.stats-save {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 0 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.stats-save:hover { border-color: var(--accent); color: var(--accent); }
+
+/* The chart: one accent-coloured line and nothing else competing for
+   attention. No axis grid, no legend — four of these sit in one panel and
+   each already carries a label above it. */
+.stats-chart { width: 100%; height: 64px; display: block; }
+.stats-chart-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.stats-chart-dot { fill: var(--accent); }
+.stats-chart-value {
+  font-family: var(--mono);
+  font-size: 10px;
+  fill: var(--text);
+}
+.stats-chart-axis {
+  font-family: var(--mono);
+  font-size: 9px;
+  fill: var(--text-muted);
+}
+.stats-chart-empty {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 .account-form { display: flex; flex-direction: column; gap: 14px; }

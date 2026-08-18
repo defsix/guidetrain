@@ -191,6 +191,68 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A stats page: body weight, a max for each of the three big lifts, and a
+  chart per number** — a new panel in the header, next to Equipment, with
+  four sections (body weight, Squat, Bench, Deadlift), each an editable
+  current value and a hand-rolled SVG line chart of it over time. Body
+  weight was only ever set once, at onboarding — `profile.bodyWeight` stays
+  the single current value everything else already reads, and a new
+  append-only history (`useBodyWeightLog.ts`) records a dated entry every
+  time this panel saves a new one, purely to draw the chart; nothing is
+  back-dated for a profile that predates this. A lift's max is `useKnownMax.ts`
+  — deliberately not `useTrainingMax.ts`, whose number is a 5/3/1 *training*
+  max kept at 90% of a real one on purpose (`TRAINING_MAX_FRACTION`); a
+  lifter typing "my max squat" means the real number, and the two would
+  collide if shared. Auto-populated from the log (`bestEstimate`, the same
+  helper `ProgressionPanel` already uses) when there's history, and — unlike
+  the 5/3/1 planner, which refuses a typed-in max on principle since it
+  drives eight weeks of percentages — directly editable even with nothing
+  logged at all: closer to the trust an onboarding body-weight field already
+  extends than to a calculation, and says so, the same way a `Prescription`'s
+  `source` already does. Charts are genuinely hand-rolled inline SVG, no
+  charting library, in keeping with the bundle-size work earlier this
+  session; a single accent-coloured line each, since the app has exactly one
+  accent colour and four of these sit in one panel already labelled by
+  section.
+  - **A known max now nudges a close barbell relative's starting weight, not
+    just its own lift.** `plans.ts` gains `RELATED_TO`, a short, hand-picked
+    table (Incline Bench Press and Close-Grip Bench Press, both anchored on
+    flat Bench Press, both at 0.8× — the ratio the existing `BODY_FRACTION`
+    table already implied between them, made explicit rather than invented
+    twice) and `prescribe()` gains an optional `knownMax` lookup. Squat and
+    Deadlift have no entries: nothing in the catalogue is both barbell-
+    equipped and a close enough relative to extrapolate from with the same
+    confidence, and the table stays exactly as short as the evidence
+    supports — "100 kg bench doesn't mean it can be done with dumbbells" was
+    the standing instruction, so equipment always has to match, not just
+    the muscle. A new `relatedLift` source sits between `logged` and
+    `bodyweight` in how much the panel trusts it, with its own explanatory
+    note (`plans.relatedNote`) distinct from the body-weight one — "from a
+    real max on a different lift" is a different claim from "a population
+    average," and showing the wrong explanation would be worse than showing
+    none. Every existing `prescribe()` call site and test keeps working
+    unmodified, since `knownMax` is optional and only ever consulted for the
+    two ids in `RELATED_TO`.
+  - **Fixed a stale line while in the neighbourhood**: `plans.startingNote`
+    still said the body-weight guess came from "body weight, age and sex" in
+    all ten locales, long after the `gender` field itself was removed from
+    the calculation. Corrected to "body weight and age" everywhere, since
+    the note is meant to say what the calculation actually does.
+  - Both new tables (`known_maxes`, `body_weight_log`,
+    `migrations/0004_stats.sql`) sync like their nearest existing analogue —
+    last-write-wins per lift like `training_maxes`, union-by-id like `sets`
+    — but unlike every migration before it, this one is genuinely optional
+    to defer: nothing existing writes to these tables, only this new panel
+    does, so `sync.ts` queries and pushes them separately from the four core
+    tables specifically so a missing-relation error there can't take down
+    set, programme or profile syncing with it.
+  - Verified end to end: unit tests for `RELATED_TO`'s scaling and its
+    boundary (never fires outside its two ids, never overrides this
+    exercise's own log), two new Playwright specs (a max set by hand with no
+    log shows the right note and no revert button; a known Bench Press max
+    correctly nudges Incline Bench Press's preview to 55 kg with a "from
+    Barbell Bench Press" label), and a live browser check of the same
+    end-to-end path with a screenshot at each step.
 - **`apps/web/src/lib/api.ts` removed** — a client for `apps/api`'s
   `/api/muscle-groups` endpoint, imported nowhere; the viewer has read
   `src/anatomy/muscle-map.json` directly since well before this was written.

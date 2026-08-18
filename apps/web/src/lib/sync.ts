@@ -3,16 +3,22 @@ import { read, write } from "./storage";
 import type { SetEntry } from "../state/useLog";
 import type { Program } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
+import type { KnownMaxEntry } from "../state/useKnownMax";
+import type { WeighIn } from "../state/useBodyWeightLog";
 import type { EquipmentTag, Profile } from "../types";
 
 export const LOG_KEY = "guidetrain.log";
 export const PROGRAMS_KEY = "guidetrain.programs";
 export const PROFILE_KEY = "guidetrain.profile";
 export const TM_KEY = "guidetrain.tm";
+export const KNOWN_MAX_KEY = "guidetrain.knownmax";
+export const BODYWEIGHT_LOG_KEY = "guidetrain.bodyweight-log";
 
 /** The keys worth syncing. Skips and theme are properties of the day and the
  *  device respectively — see supabase/README.md. */
-export const SYNCED_KEYS = [LOG_KEY, PROGRAMS_KEY, PROFILE_KEY, TM_KEY];
+export const SYNCED_KEYS = [
+  LOG_KEY, PROGRAMS_KEY, PROFILE_KEY, TM_KEY, KNOWN_MAX_KEY, BODYWEIGHT_LOG_KEY,
+];
 
 /**
  * Local and remote, reconciled.
@@ -120,6 +126,56 @@ function rowsToTm(rows: Row[]): Record<string, TrainingMaxOverride> {
   return out;
 }
 
+// ---------------------------------------------------------------- known maxes
+
+function knownMaxToRows(userId: string, kms: Record<string, KnownMaxEntry>): Row[] {
+  return Object.entries(kms).map(([exerciseId, v]) => ({
+    user_id: userId,
+    exercise_id: exerciseId,
+    max: v.max,
+    derived_from: v.from,
+    set_at: new Date(v.at).toISOString(),
+  }));
+}
+
+function rowsToKnownMax(rows: Row[]): Record<string, KnownMaxEntry> {
+  const out: Record<string, KnownMaxEntry> = {};
+  for (const r of rows) {
+    out[String(r.exercise_id)] = {
+      max: Number(r.max),
+      from: r.derived_from != null ? Number(r.derived_from) : null,
+      at: new Date(String(r.set_at)).getTime(),
+    };
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------- body weight log
+
+function weighInsToRows(userId: string, entries: WeighIn[]): Row[] {
+  return entries.map((w) => ({
+    user_id: userId,
+    client_uid: w.uid,
+    weight: w.weight,
+    recorded_at: new Date(w.at).toISOString(),
+  }));
+}
+
+function rowsToWeighIns(rows: Row[]): WeighIn[] {
+  return rows.map((r) => ({
+    uid: String(r.client_uid),
+    weight: Number(r.weight),
+    at: new Date(String(r.recorded_at)).getTime(),
+  }));
+}
+
+/** Union by uid, same reasoning as `unionSets`. */
+function unionWeighIns(a: WeighIn[], b: WeighIn[]): WeighIn[] {
+  const byUid = new Map<string, WeighIn>();
+  for (const w of [...a, ...b]) byUid.set(w.uid, w);
+  return [...byUid.values()].sort((x, y) => x.at - y.at);
+}
+
 // ---------------------------------------------------------------- profile
 
 function profileToRow(userId: string, p: Profile): Row {
@@ -181,6 +237,17 @@ export async function mergeOnSignIn(): Promise<SyncResult> {
     const firstError = setsRes.error || progRes.error || tmRes.error || profRes.error;
     if (firstError) return { ok: false, error: firstError.message, pulled: 0, pushed: 0 };
 
+    // known_maxes and body_weight_log queried separately from the block above
+    // and their errors never fail the merge: migrations/0004_stats.sql is
+    // optional to defer, unlike the four tables above, so a device signing in
+    // before it has been applied gets "relation does not exist" here — that
+    // should mean these two just don't sync yet, not that logging a set stops
+    // working too.
+    const [kmRes, bwRes] = await Promise.all([
+      supabase.from("known_maxes").select("*"),
+      supabase.from("body_weight_log").select("*"),
+    ]);
+
     const remoteSets = rowsToSets((setsRes.data ?? []) as Row[]);
     const localSets = read<SetEntry[]>(LOG_KEY) ?? [];
     const mergedSets = unionSets(localSets, remoteSets);
@@ -201,6 +268,19 @@ export async function mergeOnSignIn(): Promise<SyncResult> {
       if (!mergedTm[id] || v.at > mergedTm[id].at) mergedTm[id] = v;
     }
 
+    // Same per-lift, more-recent-wins rule as training maxes.
+    const remoteKnownMax = kmRes.error ? {} : rowsToKnownMax((kmRes.data ?? []) as Row[]);
+    const localKnownMax = read<Record<string, KnownMaxEntry>>(KNOWN_MAX_KEY) ?? {};
+    const mergedKnownMax = { ...localKnownMax };
+    for (const [id, v] of Object.entries(remoteKnownMax)) {
+      if (!mergedKnownMax[id] || v.at > mergedKnownMax[id].at) mergedKnownMax[id] = v;
+    }
+
+    // Same union-by-uid rule as the set log.
+    const remoteWeighIns = bwRes.error ? [] : rowsToWeighIns((bwRes.data ?? []) as Row[]);
+    const localWeighIns = read<WeighIn[]>(BODYWEIGHT_LOG_KEY) ?? [];
+    const mergedWeighIns = unionWeighIns(localWeighIns, remoteWeighIns);
+
     const remoteProfile = profRes.data ? rowToProfile(profRes.data as Row) : null;
     const localProfile = read<Profile>(PROFILE_KEY);
     const mergedProfile = remoteProfile ?? localProfile;
@@ -210,6 +290,8 @@ export async function mergeOnSignIn(): Promise<SyncResult> {
     write(LOG_KEY, mergedSets);
     write(PROGRAMS_KEY, mergedPrograms);
     write(TM_KEY, mergedTm);
+    write(KNOWN_MAX_KEY, mergedKnownMax);
+    write(BODYWEIGHT_LOG_KEY, mergedWeighIns);
     if (mergedProfile) write(PROFILE_KEY, mergedProfile);
 
     const pushed = await pushAll();
@@ -232,6 +314,8 @@ export async function pushAll(): Promise<{ ok: boolean; error?: string }> {
   const sets = read<SetEntry[]>(LOG_KEY) ?? [];
   const programs = read<Program[]>(PROGRAMS_KEY) ?? [];
   const tms = read<Record<string, TrainingMaxOverride>>(TM_KEY) ?? {};
+  const knownMaxes = read<Record<string, KnownMaxEntry>>(KNOWN_MAX_KEY) ?? {};
+  const weighIns = read<WeighIn[]>(BODYWEIGHT_LOG_KEY) ?? [];
   const profile = read<Profile>(PROFILE_KEY);
 
   try {
@@ -273,6 +357,23 @@ export async function pushAll(): Promise<{ ok: boolean; error?: string }> {
     if (profile) {
       const { error } = await supabase.from("profiles").upsert(profileToRow(userId, profile));
       if (error) return { ok: false, error: error.message };
+    }
+
+    // Neither push aborts on error: migrations/0004_stats.sql is optional to
+    // defer, so "relation does not exist" here just means these two haven't
+    // caught up yet, not that the rest of this push should be thrown away.
+    if (Object.keys(knownMaxes).length) {
+      await supabase
+        .from("known_maxes")
+        .upsert(knownMaxToRows(userId, knownMaxes), { onConflict: "user_id,exercise_id" });
+    }
+    if (weighIns.length) {
+      await supabase
+        .from("body_weight_log")
+        .upsert(weighInsToRows(userId, weighIns), {
+          onConflict: "user_id,client_uid",
+          ignoreDuplicates: true,
+        });
     }
 
     return { ok: true };

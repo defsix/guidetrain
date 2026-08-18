@@ -439,6 +439,47 @@ field existed, and a body weight recorded in the other unit — converting
 silently would put a number on screen nobody entered. Like everything else
 here, it stays on the device.
 
+Onboarding is a one-time question, though — see [Stats](#stats) for where
+body weight (and everything else about it) is editable afterwards.
+
+## Stats
+
+A panel in the header, next to Equipment: body weight and a max for each of
+the big three barbell lifts (Squat, Bench, Deadlift), each with a current
+value, an edit field, and a small chart of it over time.
+
+**Auto-populated where there's history, editable where there isn't.** A
+lift's max defaults to the best estimate your log already implies (the same
+Epley-based estimator the progression panel uses), but can be typed in
+directly even with nothing logged for that lift at all. That is a
+deliberate departure from the 5/3/1 planner, which refuses a typed-in max on
+principle — that number drives eight weeks of percentages and has to come
+from a set that happened. A stats page is a different kind of question:
+closer to "tell the app what you already know about yourself," the same
+trust the onboarding body-weight field already gets. It still says which is
+which, the same way a starting weight already says whether it came from your
+lifts or a population guess.
+
+**A known max nudges a close relative's starting weight, not just its own
+lift.** Incline Bench Press and Close-Grip Bench Press have no log of their
+own yet? Their first working weight now scales from a known Bench Press max
+(0.8× it, the ratio the app's fraction table already implied between them)
+rather than only ever a body-weight guess — labelled "from Bench Press" so
+the number is never mistaken for one measured on that bar. Deliberately
+narrow: Squat and Deadlift get no such relative, since nothing in the
+catalogue is both barbell-equipped and a close enough relative to extrapolate
+from with the same confidence, and a dumbbell lift never inherits from a
+barbell max regardless of how much muscle it shares — "100 kg bench doesn't
+mean it can be done with dumbbells" is exactly the case this stays narrow to
+avoid.
+
+**The charts are hand-rolled SVG**, no charting library, matching the
+bundle-size discipline the rest of the app already keeps to. Body weight's
+chart draws from a new append-only history that starts recording the moment
+this panel is first used to change it — there is no way to back-date a
+number nobody wrote down, so a long-time profile's chart starts today rather
+than inventing a flat line back to onboarding.
+
 ## Ready-made plans
 
 Seven shapes — full body, upper/lower, push/pull/legs, body part split,
@@ -890,7 +931,6 @@ Not commitments. Roughly in the order they would earn their place:
   hand and nobody enjoys.
 - **Swap an exercise** — the rack is busy, give me something that trains the
   same thing. The pairing rules already know which exercises share muscles.
-- **A progress chart per lift**, now that history exists to draw one from.
 - **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,
   StrongLifts, GZCLP.
 - **Install as an app (PWA)** — it is already a static site built around
@@ -915,6 +955,5 @@ Not commitments. Roughly in the order they would earn their place:
   either. Worth returning to as the template if GuideTrain ever wants more
   than "installable" — a rest timer with a real notification, say, needs this
   path rather than a PWA's.
-- **Body weight over time**, which the onboarding already asks for once.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).

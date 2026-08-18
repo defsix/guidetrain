@@ -286,9 +286,11 @@
   "from": {
    "logged": "d'après vos séries",
    "bodyweight": "point de départ",
-   "atBodyWeight": "votre poids de corps"
+   "atBodyWeight": "votre poids de corps",
+   "relatedLift": "d'après {lift}"
   },
-  "startingNote": "Les charges marquées « point de départ » viennent de votre poids, de votre âge et de votre sexe : une moyenne de population, pas une mesure de vous. Traitez la première série comme un test : si elle passe facilement, ajoutez ; sinon, retirez. Dès que vous enregistrez une série, cet exercice utilise vos propres chiffres.",
+  "startingNote": "Les charges marquées « point de départ » viennent de votre poids et de votre âge : une moyenne de population, pas une mesure de vous. Traitez la première série comme un test : si elle passe facilement, ajoutez ; sinon, retirez. Dès que vous enregistrez une série, cet exercice utilise vos propres chiffres.",
+  "relatedNote": "Les charges marquées « d'après » un autre exercice sont mises à l'échelle depuis un maximum connu sur cet exercice, pas mesurées ici — un vrai nombre, juste pas de cette barre. Définissez le vôtre sur la page Statistiques.",
   "loggedNote": "Les séries sont faites pour être terminées : gardez une ou deux répétitions en réserve.",
   "day": {
    "a": "Séance A",
@@ -403,5 +405,19 @@
   "close": "Fermer équipement",
   "intro": "Ce à quoi vous avez vraiment accès en ce moment, pas un fait permanent vous concernant — cochez ce qui s'applique. Les listes d'exercices se réorganisent pour mettre ceux-ci en premier ; rien n'est masqué.",
   "bodyweightNote": "Les exercices au poids du corps — pompes, tractions et le reste — comptent toujours comme disponibles, puisqu'ils ne nécessitent rien."
+ },
+ "stats": {
+  "title": "Statistiques",
+  "close": "Fermer les statistiques",
+  "bodyWeight": "Poids de corps",
+  "squat": "Squat",
+  "bench": "Développé couché",
+  "deadlift": "Soulevé de terre",
+  "notSet": "non défini",
+  "save": "Enregistrer",
+  "noHistory": "Rien d'enregistré pour l'instant.",
+  "overrideFrom": "Défini à la main, au-dessus des {from} {unit} qu'implique votre historique.",
+  "overrideNoLog": "Défini à la main — rien d'enregistré pour cet exercice pour l'instant.",
+  "revert": "Revenir à {max} {unit}"
  }
 }

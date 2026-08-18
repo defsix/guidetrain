@@ -286,9 +286,11 @@
   "from": {
    "logged": "aus deinen Sätzen",
    "bodyweight": "Startwert",
-   "atBodyWeight": "dein Körpergewicht"
+   "atBodyWeight": "dein Körpergewicht",
+   "relatedLift": "aus {lift}"
   },
-  "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht, Alter und Geschlecht — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
+  "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht und Alter — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
+  "relatedNote": "Mit „aus“ markierte Gewichte sind von einem bekannten Maximum bei dieser anderen Übung skaliert, nicht an dieser Stange gemessen — eine echte Zahl, nur nicht von hier. Dein eigenes Maximum kannst du auf der Statistik-Seite eintragen.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
   "day": {
    "a": "Training A",
@@ -403,5 +405,19 @@
   "close": "Ausrüstung schließen",
   "intro": "Was dir gerade wirklich zur Verfügung steht, keine dauerhafte Tatsache über dich — wähle, was zutrifft. Übungslisten ordnen sich neu, sodass diese zuerst stehen; nichts wird versteckt.",
   "bodyweightNote": "Körpergewichtsübungen — Liegestütze, Klimmzüge und der Rest — zählen immer als verfügbar, da du dafür nichts brauchst."
+ },
+ "stats": {
+  "title": "Statistik",
+  "close": "Statistik schließen",
+  "bodyWeight": "Körpergewicht",
+  "squat": "Kniebeuge",
+  "bench": "Bankdrücken",
+  "deadlift": "Kreuzheben",
+  "notSet": "nicht festgelegt",
+  "save": "Speichern",
+  "noHistory": "Noch nichts erfasst.",
+  "overrideFrom": "Von Hand gesetzt, über den {from} {unit}, die dein Protokoll ergibt.",
+  "overrideNoLog": "Von Hand gesetzt — für diese Übung noch nichts erfasst.",
+  "revert": "Wieder {max} {unit} verwenden"
  }
 }

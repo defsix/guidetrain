@@ -180,3 +180,14 @@ check needed a real project.
   tags is read from the exercise catalogue's own equipment field elsewhere in
   the app (`EQUIPMENT_TAGS` in `types.ts`) and a fixed set of columns here
   would be a second place that list has to be kept in sync with the first.
+- **`known_maxes` and `body_weight_log` need `migrations/0004_stats.sql`
+  applied, and this one *is* optional to defer.** Unlike equipment, nothing
+  existing writes to these tables — only the new stats panel does — so an
+  unmigrated project just means those two edits don't sync yet; `sync.ts`
+  queries and pushes them separately from the four core tables specifically so
+  a "relation does not exist" error there can't take down set/programme/
+  profile syncing with it. `known_maxes` is `training_maxes`'s shape with a
+  nullable `derived_from`: a known max is allowed to be a claim with nothing
+  logged behind it at all, which a training-max reset never is. `body_weight_log`
+  is `sets`'s shape — append-only, unioned by `client_uid` — because a weigh-in
+  is recorded once and never edited, the same reasoning as the set log above.

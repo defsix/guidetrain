@@ -6,20 +6,25 @@ import type { SetEntry } from "../state/useLog";
 /**
  * Ready-made plans, and the weights to start them with.
  *
- * Two ways a weight gets onto the screen, and they are deliberately not the
+ * Three ways a weight gets onto the screen, and they are deliberately not the
  * same kind of thing:
  *
  *   from a lift you logged   a calculation — your own best set, run through
  *                            Epley, then backed off to a working weight
+ *   from a related lift      the same calculation, run on a *known* max for a
+ *                            close barbell relative (see RELATED_TO) rather
+ *                            than this exact exercise — still a real max, just
+ *                            not measured on this bar
  *   from body weight         a *starting point to test*, not an estimate of
  *                            anything. Population averages, chosen light.
  *
- * The second is why there is no path from body weight to a one-rep max
+ * The third is why there is no path from body weight to a one-rep max
  * anywhere in this file. An estimated max drives the 5/3/1 planner, and that
- * number has to come from a set that happened. Feeding it a demographic guess
- * would launder an average into a personal record — and the person with no
- * logged lifts is precisely the one least able to tell that the number is
- * wrong. So the no-history path outputs a first working set and says so.
+ * number has to come from a set that happened (or a max someone who trains
+ * that lift already knows — see `useKnownMax.ts`), never from a demographic
+ * guess: laundering an average into a personal record is worst for exactly
+ * the person with no logged lifts to check it against. So the no-history,
+ * no-related-max path outputs a first working set and says so.
  */
 
 export type PlanExercise = { id: string; sets: number; reps: number };
@@ -417,6 +422,37 @@ const BODY_FRACTION: Record<string, number> = {
 };
 
 /**
+ * A close barbell relative of one of the three lifts the stats panel tracks
+ * (`Barbell_Squat`, `Barbell_Bench_Press_-_Medium_Grip`, `Barbell_Deadlift`),
+ * worth nudging from a *known* max on that lift rather than only ever a
+ * body-weight guess — see `prescribe`'s `knownMax` parameter below.
+ *
+ * Deliberately short. This is not "every exercise that shares a primary
+ * muscle" — the catalogue carries no family/variant field to check that
+ * against safely (a dumbbell press and a barbell press share `pec` and
+ * nothing else useful; "100 kg bench doesn't mean it can be done with
+ * dumbbells" is exactly the case this table exists to keep out). Each entry
+ * here is barbell-to-barbell, same primary and secondary muscles as its
+ * anchor, and the fraction is not a fresh guess: it is the ratio the
+ * `BODY_FRACTION` table already encodes between the two lifts (0.32 / 0.4 =
+ * 0.8 for both incline and close-grip against flat bench), made explicit and
+ * reused rather than invented twice. Squat and deadlift have no entries: no
+ * exercise in this catalogue is both barbell-equipped and a close enough
+ * relative of either to extrapolate from with the same confidence — see
+ * `RELATED_TO`'s own limits noted where `prescribe` reads it.
+ */
+const RELATED_TO: Record<string, { anchor: string; fraction: number }> = {
+  "Barbell_Incline_Bench_Press_-_Medium_Grip": {
+    anchor: "Barbell_Bench_Press_-_Medium_Grip",
+    fraction: 0.8,
+  },
+  "Close-Grip_Barbell_Bench_Press": {
+    anchor: "Barbell_Bench_Press_-_Medium_Grip",
+    fraction: 0.8,
+  },
+};
+
+/**
  * How much of that fraction to apply, from what the profile knows.
  *
  * A population average, and worth naming as such — strength declines with age
@@ -473,8 +509,18 @@ export type Prescription = {
    * is not an estimate at all. A push-up is loaded with exactly the body
    * weight on the profile, not a demographic-adjusted share of it, so there is
    * nothing here for age to scale.
+   *
+   * `relatedLift` sits between `logged` and `bodyweight` in how much it is
+   * trusted: it is still built from a real max, just not this exercise's own
+   * — see `RELATED_TO`.
    */
-  source: "logged" | "bodyweight" | "atBodyWeight" | "unknown";
+  source: "logged" | "relatedLift" | "bodyweight" | "atBodyWeight" | "unknown";
+  /**
+   * Set only when `source` is `relatedLift`: which lift the number actually
+   * came from, so the panel can say so rather than presenting a Bench Press
+   * number as if it were measured on Incline Bench.
+   */
+  relatedTo?: string;
 };
 
 /**
@@ -482,12 +528,23 @@ export type Prescription = {
  *
  * `sets` is every set ever logged for this exercise; the best usable one wins,
  * exactly as the progression panel does it, so the two never disagree.
+ *
+ * `knownMax` answers "what's the best known max for exercise X", for any X —
+ * not just the one being prescribed. It is a function rather than a number so
+ * a caller with several exercises to prescribe (a whole plan, see
+ * `PlanLibrary.tsx`) can pass one lookup covering all of them, built however
+ * that caller likes: a real one-rep max someone typed into the stats panel
+ * (`useKnownMax`), or the same log-derived estimate this function already
+ * computes for `exerciseId` itself, just for a different id. Optional, and
+ * skipped entirely for an exercise with no `RELATED_TO` entry, so every
+ * existing caller and test keeps working unchanged without passing it.
  */
 export function prescribe(
   exerciseId: string,
   reps: number,
   logged: SetEntry[],
   profile: Profile | null,
+  knownMax?: (id: string) => number | null,
 ): Prescription {
   let best: number | null = null;
   for (const s of logged) {
@@ -495,6 +552,18 @@ export function prescribe(
     if (oneRM !== null && (best === null || oneRM > best)) best = oneRM;
   }
   if (best !== null) return { load: workingLoad(best, reps), source: "logged" };
+
+  const related = RELATED_TO[exerciseId];
+  if (related) {
+    const anchorMax = knownMax?.(related.anchor);
+    if (anchorMax) {
+      return {
+        load: workingLoad(anchorMax * related.fraction, reps),
+        source: "relatedLift",
+        relatedTo: related.anchor,
+      };
+    }
+  }
 
   const bw = profile?.bodyWeight;
   if (!bw || profile?.bodyWeightUnit === "lb") return { load: 0, source: "unknown" };

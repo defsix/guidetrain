@@ -7,6 +7,7 @@ import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
 import AccountPanel from "../components/AccountPanel";
 import EquipmentPanel from "../components/EquipmentPanel";
+import StatsPanel from "../components/StatsPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
@@ -14,6 +15,8 @@ import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
 import { useTrainingMax } from "../state/useTrainingMax";
+import { useKnownMax } from "../state/useKnownMax";
+import { useBodyWeightLog } from "../state/useBodyWeightLog";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
 import { useT } from "../i18n/I18nProvider";
@@ -28,6 +31,8 @@ export default function BodyExplorer() {
   const log = useLog();
   const skips = useSkips();
   const tms = useTrainingMax();
+  const knownMax = useKnownMax();
+  const weighIns = useBodyWeightLog();
   const auth = useAuth();
   const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
@@ -35,6 +40,7 @@ export default function BodyExplorer() {
   const [showHistory, setShowHistory] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
+  const [showStats, setShowStats] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -101,6 +107,18 @@ export default function BodyExplorer() {
               aria-expanded={showEquipment}
             >
               {t("equipmentPanel.title")}
+            </button>
+          )}
+          {/* Same "signed-in" treatment once a max has actually been set by
+              hand — a body weight alone came from onboarding and isn't a
+              reason to highlight this yet. */}
+          {profile && (
+            <button
+              className={`account-button ${Object.keys(knownMax.overrides).length ? "signed-in" : ""}`}
+              onClick={() => setShowStats(true)}
+              aria-expanded={showStats}
+            >
+              {t("stats.title")}
             </button>
           )}
           <ThemeToggle pref={pref} onChange={setPref} />
@@ -176,11 +194,28 @@ export default function BodyExplorer() {
           onChange={(equipment) => setProfile({ ...profile, equipment })}
         />
       )}
+      {profile && (
+        <StatsPanel
+          open={showStats}
+          onClose={() => setShowStats(false)}
+          profile={profile}
+          onSetBodyWeight={(kg) => {
+            setProfile({ ...profile, bodyWeight: kg });
+            weighIns.add(kg);
+          }}
+          weighIns={weighIns.entries}
+          allSets={log.entries}
+          knownMaxes={knownMax.overrides}
+          onSetKnownMax={knownMax.set}
+          onClearKnownMax={knownMax.clear}
+        />
+      )}
       <PlanLibrary
         open={showPlans}
         onClose={() => setShowPlans(false)}
         allSets={log.entries}
         profile={profile ?? null}
+        knownMaxes={knownMax.overrides}
         onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
       />
     </div>

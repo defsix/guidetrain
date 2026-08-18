@@ -286,9 +286,11 @@
   "from": {
    "logged": "from your lifts",
    "bodyweight": "starting point",
-   "atBodyWeight": "your body weight"
+   "atBodyWeight": "your body weight",
+   "relatedLift": "from {lift}"
   },
-  "startingNote": "Weights marked “starting point” come from your body weight, age and sex — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
+  "startingNote": "Weights marked “starting point” come from your body weight and age — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
+  "relatedNote": "Weights marked “from” another lift are scaled from a known max on that lift, not measured on this one — a real number, just not this bar's. Set your own on the Stats page.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
   "day": {
    "a": "Workout A",
@@ -403,5 +405,19 @@
   "close": "Close equipment",
   "intro": "What you actually have access to right now, not a permanent fact about you — pick as many as apply. Exercise lists reorder to put these first; nothing is hidden.",
   "bodyweightNote": "Bodyweight exercises — push-ups, pull-ups and the rest — always count as available, since they need nothing to try."
+ },
+ "stats": {
+  "title": "Stats",
+  "close": "Close stats",
+  "bodyWeight": "Body weight",
+  "squat": "Squat",
+  "bench": "Bench",
+  "deadlift": "Deadlift",
+  "notSet": "not set",
+  "save": "Save",
+  "noHistory": "Nothing recorded yet.",
+  "overrideFrom": "Set by hand, over the {from} {unit} your log implies.",
+  "overrideNoLog": "Set by hand — nothing logged for this lift yet.",
+  "revert": "Use {max} {unit} again"
  }
 }

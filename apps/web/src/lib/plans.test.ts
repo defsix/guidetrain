@@ -102,6 +102,61 @@ describe("prescribe", () => {
     expect(older).toBe(base);
     expect(prescribe("Push-Up_Wide", 12, [], profile()).source).toBe("atBodyWeight");
   });
+
+  describe("relatedLift", () => {
+    const benchAnchor = "Barbell_Bench_Press_-_Medium_Grip";
+    const knownMax = (max: number) => (id: string) => (id === benchAnchor ? max : null);
+
+    it("nudges a close relative from a known max on the anchor lift", () => {
+      const p = prescribe(
+        "Barbell_Incline_Bench_Press_-_Medium_Grip",
+        5,
+        [],
+        profile(),
+        knownMax(100),
+      );
+      expect(p.source).toBe("relatedLift");
+      expect(p.relatedTo).toBe(benchAnchor);
+      // 100 x 0.8 (the incline/flat ratio) = 80, run through the same
+      // workingLoad as any other estimated max: 80 / (1 + 5/30) = 68.57,
+      // x 0.9 = 61.7, rounded to 62.5.
+      expect(p.load).toBe(62.5);
+    });
+
+    it("never touches an exercise with no RELATED_TO entry", () => {
+      // Barbell_Squat has no related-lift entry (see RELATED_TO's own
+      // comment for why), so a knownMax lookup that would happily answer for
+      // it must still be ignored — this path only ever fires for the small,
+      // hand-picked list.
+      const p = prescribe("Barbell_Squat", 5, [], profile(), () => 200);
+      expect(p.source).toBe("bodyweight");
+    });
+
+    it("falls back to the body-weight guess when the anchor's max is unknown", () => {
+      const p = prescribe(
+        "Barbell_Incline_Bench_Press_-_Medium_Grip",
+        5,
+        [],
+        profile(),
+        () => null,
+      );
+      expect(p.source).toBe("bodyweight");
+    });
+
+    it("prefers this exercise's own log over a related lift's known max", () => {
+      const own: SetEntry = {
+        uid: "own", id: "Barbell_Incline_Bench_Press_-_Medium_Grip", weight: 60, reps: 5, at: 0,
+      };
+      const p = prescribe(
+        "Barbell_Incline_Bench_Press_-_Medium_Grip",
+        5,
+        [own],
+        profile(),
+        knownMax(999),
+      );
+      expect(p.source).toBe("logged");
+    });
+  });
 });
 
 describe("PLANS", () => {
