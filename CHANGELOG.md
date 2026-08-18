@@ -189,17 +189,21 @@ Newest first. Numbers in brackets are pull requests.
     exactly where it was — a machine-only reader still *sees* the barbell
     row they could ask a gym neighbour to spot, which a filter would have
     taken away along with the ones they can't do.
-  - **Training-pair suggestions get the same scoring input, and — worth
-    knowing — it verified out to have no visible effect today.** Checked
-    against all 180 exercises: an equipment preference never once changed
-    which three partners got suggested, because "no extra kit" already
-    outranks it and there are always at least three legal body-only
-    candidates for every exercise and region in the catalogue, filling every
-    slot before the new bonus is ever consulted. Kept anyway rather than
-    reverted — it's correct and harmless, and starts mattering the moment
-    the body-only content in the catalogue changes shape. Anyone touching
-    `score()` in `pairs.js` should know this going in rather than rediscover
-    it.
+  - **Training-pair suggestions get the same input, and it took a second
+    pass to actually matter.** First version added `equipmentAvailable` as a
+    scoring bonus below "no extra kit" — body-only, needing nothing, always
+    outranked it, and every exercise and region has at least three legal
+    body-only candidates, so it filled all three visible slots regardless of
+    what was picked. Checked against all 180 exercises: zero suggestions
+    changed. Fixed by tying rather than ranking: body-only, the exact
+    equipment you're already at, and equipment you said you have are now one
+    "can do it next" tier, not three descending ones — a bodyweight move and
+    a lift on your own gear are equally real answers to "what's my
+    rest-break partner" once you've actually stated what you have. Verified
+    the fix the same way the bug was found: kettlebells now changes the
+    suggestion for 25 of 180 exercises, dumbbell for 87, barbell for 127.
+    `check-pairs.mjs`'s guarantees are untouched — this only reorders within
+    the already-legal set.
   - The Supabase side needs `migrations/0003_equipment.sql` applied — unlike
     the gender-drop migration, this one is not optional to defer:
     `profileToRow` now sends an `equipment` key on every profile upsert, so

@@ -59,26 +59,23 @@ function disjoint(a, b) {
  * arbitrary pick would offer a barbell exercise to someone mid-set on a machine
  * across the room. In descending weight:
  *
- *   a demonstration     an exercise you can watch beats one you have to search
- *   no extra kit        body-only needs nothing; failing that, the same
- *                       equipment you are already standing at
- *   equipment you own    a superset partner requiring gear the reader does not
- *                        have is not one they can actually do next
- *   same difficulty      a beginner mid-set does not want an expert movement
+ *   a demonstration    an exercise you can watch beats one you have to search
+ *   can do it next     body-only (needs nothing), the same equipment you are
+ *                      already standing at, or equipment you said you have —
+ *                      tied deliberately, see below
+ *   same difficulty    a beginner mid-set does not want an expert movement
  *
- * `equipmentAvailable`, when given, only ever adds — the same-kit bonus above
- * it already implies access (you are mid-set on it), so the two never
- * disagree, and this is the one that does the work when there is no anchor
- * yet to share kit with at all.
- *
- * Worth knowing before touching this: checked against all 180 exercises, and
- * that bonus never once changed the top 3. "No extra kit" already outranks
- * it, and there are always at least three legal body-only candidates for
- * every exercise and region in this catalogue — they fill every slot before
- * `equipmentAvailable` is ever consulted. It is kept anyway because it is
- * correct and costs nothing, and it starts mattering the day the body-only
- * side of the catalogue changes shape. Don't read its current silence as a
- * bug in the plumbing.
+ * The three "can do it next" cases used to be a strict order — body-only
+ * above same-kit above equipment-owned — on the reasoning that needing
+ * literally nothing beats needing to walk to your own gear. In practice that
+ * meant `equipmentAvailable` never won a single suggestion across all 180
+ * exercises: there are always at least three legal body-only candidates for
+ * every exercise and region, so they filled every visible slot before an
+ * owned-equipment bonus was ever consulted regardless of what was picked.
+ * Tied now on purpose instead: once someone has said what they have, a
+ * bodyweight move and a lift on their own gear are both real, equally valid
+ * answers to "what's my rest-break partner", and ranking one above the other
+ * was asserting a preference nobody asked for.
  *
  * Ties break on id so the suggestion is stable — the same exercise proposes the
  * same partners every time it is opened, which is what makes it a plan rather
@@ -87,9 +84,11 @@ function disjoint(a, b) {
 function score(anchor, x, equipmentAvailable) {
   let s = 0;
   if (x.videoId) s += 8;
-  if (x.equipment === 'body only') s += 4;
-  else if (anchor && x.equipment === anchor.equipment) s += 3;
-  else if (equipmentAvailable && equipmentAvailable.has(x.equipment)) s += 2;
+  const canDoItNext =
+    x.equipment === 'body only' ||
+    (anchor && x.equipment === anchor.equipment) ||
+    (equipmentAvailable && equipmentAvailable.has(x.equipment));
+  if (canDoItNext) s += 4;
   if (anchor && x.level === anchor.level) s += 1;
   return s;
 }

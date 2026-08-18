@@ -295,13 +295,16 @@ was. A machine-only reader still sees the barbell row they could ask a gym
 neighbour to spot, which a filter would have taken away along with the ones
 they can't do.
 
-Training-pair suggestions read the same preference, and it is worth knowing
-this plainly rather than assuming: checked against all 180 exercises, it
-never once changed which three partners got suggested. "No extra kit" already
-outranks it in that ranking, and every exercise and region has at least three
-legal body-only candidates, filling every slot first. Kept anyway — it is
-correct and costs nothing, and starts mattering the moment the catalogue's
-body-only content changes shape.
+Training-pair suggestions read the same preference. The first version ranked
+it below "no extra kit" — body-only above the exact equipment you're already
+at above equipment you said you have — and verified out to change nothing:
+every exercise and region has at least three legal body-only candidates,
+which filled all three visible slots regardless of what was picked. Fixed by
+tying instead of ranking: body-only, same-as-anchor and owned-equipment are
+now one "can do it next" tier, since a bodyweight move and a lift on your own
+gear are equally real answers to "what's my rest-break partner" once you've
+said what you have. Now changes the suggestion for 25 of 180 exercises with
+kettlebells selected, 87 with dumbbell, 127 with barbell.
 
 The Supabase side needs `supabase/migrations/0003_equipment.sql` applied. It
 is not optional to defer the way the gender-drop migration was: profile syncs
