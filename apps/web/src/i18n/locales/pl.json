@@ -425,5 +425,11 @@
  },
  "splash": {
   "tagline": "Trenuj mądrzej"
+ },
+ "equipmentPanel": {
+  "title": "Sprzęt",
+  "close": "Zamknij sprzęt",
+  "intro": "To, co naprawdę masz teraz pod ręką, nie stały fakt o tobie — zaznacz, co pasuje. Listy ćwiczeń przestawiają się tak, by były one na początku; nic nie jest ukrywane.",
+  "bodyweightNote": "Ćwiczenia z masą własną — pompki, podciąganie i reszta — zawsze liczą się jako dostępne, bo nic do nich nie potrzeba."
  }
 }

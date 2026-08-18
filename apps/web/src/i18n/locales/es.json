@@ -397,5 +397,11 @@
  },
  "splash": {
   "tagline": "Entrena de forma inteligente"
+ },
+ "equipmentPanel": {
+  "title": "Equipo",
+  "close": "Cerrar equipo",
+  "intro": "Lo que realmente tienes disponible ahora mismo, no un dato permanente sobre ti — elige lo que corresponda. Las listas de ejercicios se reordenan para poner estos primero; nada se oculta.",
+  "bodyweightNote": "Los ejercicios con el propio peso — flexiones, dominadas y el resto — siempre cuentan como disponibles, porque no necesitas nada para hacerlos."
  }
 }

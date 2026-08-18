@@ -6,6 +6,7 @@ import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
 import AccountPanel from "../components/AccountPanel";
+import EquipmentPanel from "../components/EquipmentPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
@@ -21,7 +22,7 @@ const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
 
 export default function BodyExplorer() {
   const navigate = useNavigate();
-  const { profile } = useProfile();
+  const { profile, setProfile } = useProfile();
   const { pref, resolved, setPref } = useTheme();
   const programs = usePrograms();
   const log = useLog();
@@ -33,6 +34,7 @@ export default function BodyExplorer() {
   const [showPlans, setShowPlans] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
+  const [showEquipment, setShowEquipment] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -89,6 +91,18 @@ export default function BodyExplorer() {
               {auth.session ? t("account.signedIn") : t("account.title")}
             </button>
           )}
+          {/* Marked once something is actually selected, the same "signed-in"
+              treatment the account button gets, so a glance at the header
+              says whether this is doing anything right now. */}
+          {profile && (
+            <button
+              className={`account-button ${profile.equipment?.length ? "signed-in" : ""}`}
+              onClick={() => setShowEquipment(true)}
+              aria-expanded={showEquipment}
+            >
+              {t("equipmentPanel.title")}
+            </button>
+          )}
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>
@@ -102,6 +116,7 @@ export default function BodyExplorer() {
           theme={resolved}
           savedIds={programs.ids}
           onToggleSave={programs.toggle}
+          equipmentAvailable={profile?.equipment}
         />
       </div>
       <WorkoutPanel
@@ -151,6 +166,14 @@ export default function BodyExplorer() {
           onClose={() => setShowAccount(false)}
           auth={auth}
           sync={sync}
+        />
+      )}
+      {profile && (
+        <EquipmentPanel
+          open={showEquipment}
+          onClose={() => setShowEquipment(false)}
+          profile={profile}
+          onChange={(equipment) => setProfile({ ...profile, equipment })}
         />
       )}
       <PlanLibrary

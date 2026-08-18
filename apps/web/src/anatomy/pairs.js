@@ -62,17 +62,34 @@ function disjoint(a, b) {
  *   a demonstration     an exercise you can watch beats one you have to search
  *   no extra kit        body-only needs nothing; failing that, the same
  *                       equipment you are already standing at
- *   same difficulty     a beginner mid-set does not want an expert movement
+ *   equipment you own    a superset partner requiring gear the reader does not
+ *                        have is not one they can actually do next
+ *   same difficulty      a beginner mid-set does not want an expert movement
+ *
+ * `equipmentAvailable`, when given, only ever adds — the same-kit bonus above
+ * it already implies access (you are mid-set on it), so the two never
+ * disagree, and this is the one that does the work when there is no anchor
+ * yet to share kit with at all.
+ *
+ * Worth knowing before touching this: checked against all 180 exercises, and
+ * that bonus never once changed the top 3. "No extra kit" already outranks
+ * it, and there are always at least three legal body-only candidates for
+ * every exercise and region in this catalogue — they fill every slot before
+ * `equipmentAvailable` is ever consulted. It is kept anyway because it is
+ * correct and costs nothing, and it starts mattering the day the body-only
+ * side of the catalogue changes shape. Don't read its current silence as a
+ * bug in the plumbing.
  *
  * Ties break on id so the suggestion is stable — the same exercise proposes the
  * same partners every time it is opened, which is what makes it a plan rather
  * than a slot machine.
  */
-function score(anchor, x) {
+function score(anchor, x, equipmentAvailable) {
   let s = 0;
   if (x.videoId) s += 8;
   if (x.equipment === 'body only') s += 4;
   else if (anchor && x.equipment === anchor.equipment) s += 3;
+  else if (equipmentAvailable && equipmentAvailable.has(x.equipment)) s += 2;
   if (anchor && x.level === anchor.level) s += 1;
   return s;
 }
@@ -83,12 +100,18 @@ function score(anchor, x) {
  * `anchor` is the exercise being paired with, when there is one — it only
  * sharpens the ranking (same kit, same difficulty), never the legality, so a
  * muscle with no exercise chosen yet gets the same rule applied to less
- * information rather than a different rule.
+ * information rather than a different rule. `equipmentAvailable` sharpens it
+ * the same way, from what the reader said they have rather than what they
+ * are already standing at.
  */
-function pick(regions, anchor, limit, excludeId) {
+function pick(regions, anchor, limit, excludeId, equipmentAvailable) {
   const legal = ALL.filter(
     (x) => x.id !== excludeId && disjoint(regions, REGIONS_OF.get(x.id)),
-  ).sort((a, b) => score(anchor, b) - score(anchor, a) || a.id.localeCompare(b.id));
+  ).sort(
+    (a, b) =>
+      score(anchor, b, equipmentAvailable) - score(anchor, a, equipmentAvailable) ||
+      a.id.localeCompare(b.id),
+  );
 
   const out = [];
   const taken = new Set();
@@ -115,10 +138,10 @@ function pick(regions, anchor, limit, excludeId) {
  * legal partners that are all calf raises is a correct answer to the wrong
  * question, since the point of the rest period is to train something else.
  */
-export function pairsFor(exercise, limit = 3) {
+export function pairsFor(exercise, limit = 3, equipmentAvailable = null) {
   if (!exercise) return [];
   const mine = REGIONS_OF.get(exercise.id);
-  return mine ? pick(mine, exercise, limit, exercise.id) : [];
+  return mine ? pick(mine, exercise, limit, exercise.id, equipmentAvailable) : [];
 }
 
 /**
@@ -131,9 +154,9 @@ export function pairsFor(exercise, limit = 3) {
  * muscle sits in. Opening an exercise replaces these with partners that know
  * about its secondary muscles too.
  */
-export function pairsForRegion(region, limit = 3) {
+export function pairsForRegion(region, limit = 3, equipmentAvailable = null) {
   if (!region) return [];
-  return pick(new Set([region]), null, limit, null);
+  return pick(new Set([region]), null, limit, null, equipmentAvailable);
 }
 
 /** Every exercise, one entry each — exported for the checker. */

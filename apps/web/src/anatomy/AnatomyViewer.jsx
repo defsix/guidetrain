@@ -129,6 +129,7 @@ function FrameToVisible({ cover, sideCover, children }) {
  *   onSelect?: ((zone: any) => void) | null,
  *   savedIds?: string[] | null,
  *   onToggleSave?: ((id: string) => void) | null,
+ *   equipmentAvailable?: string[] | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -146,6 +147,10 @@ export default function AnatomyViewer({
   // Pass both to get the control, neither to leave it out entirely.
   savedIds = null,
   onToggleSave = null,
+  // What's actually available right now — see EquipmentPanel. Undefined or
+  // empty means no preference stated, and every list here stays in exactly
+  // the order it always rendered in.
+  equipmentAvailable = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -220,12 +225,36 @@ export default function AnatomyViewer({
     return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
   }, [selected, openDrill, panel]);
 
+  // Available equipment as a set once per render rather than re-scanning an
+  // array on every comparison — pairsFor/pairsForRegion below take the same
+  // set, so it's shared rather than rebuilt for each.
+  const equipmentSet = useMemo(
+    () => (equipmentAvailable && equipmentAvailable.length ? new Set(equipmentAvailable) : null),
+    [equipmentAvailable],
+  );
+  // Bodyweight work needs nothing, so it counts as available regardless of
+  // what was picked; everything else needs an actual match.
+  const hasEquipment = useCallback(
+    (x) => x.equipment === 'body only' || (equipmentSet ? equipmentSet.has(x.equipment) : true),
+    [equipmentSet],
+  );
+
   // Exercises for the selected muscle, and the one whose detail is open — that
   // one is painted onto the model so you can see what the movement trains.
-  const drills = useMemo(
-    () => (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise),
-    [selected, localizeExercise],
-  );
+  //
+  // Stable rather than a plain filter: nothing here is hidden, only
+  // reordered, because "prioritise" is not "hide" — a machine-only reader
+  // filtered here would never *see* the barbell row they could still ask a
+  // gym neighbour to spot, and the whole point of the equipment tags on
+  // every row is that the reader keeps that information either way.
+  const drills = useMemo(() => {
+    const list = (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise);
+    if (!equipmentSet) return list;
+    return list
+      .map((x, i) => [x, i])
+      .sort(([a, i], [b, j]) => (hasEquipment(b) - hasEquipment(a)) || i - j)
+      .map(([x]) => x);
+  }, [selected, localizeExercise, equipmentSet, hasEquipment]);
   const saved = useMemo(() => new Set(savedIds || []), [savedIds]);
 
   const shownDrill = useMemo(
@@ -238,10 +267,10 @@ export default function AnatomyViewer({
   // in every language; only the names shown change.
   const partners = useMemo(() => {
     const found = shownDrill
-      ? pairsFor(shownDrill)
-      : pairsForRegion(selected?.region);
+      ? pairsFor(shownDrill, 3, equipmentSet)
+      : pairsForRegion(selected?.region, 3, equipmentSet);
     return found.map(localizeExercise);
-  }, [shownDrill, selected, localizeExercise]);
+  }, [shownDrill, selected, localizeExercise, equipmentSet]);
 
   // The map ships English. Its text is looked up by zone key and falls back to
   // whatever the map itself says, so a zone added to the model before it has

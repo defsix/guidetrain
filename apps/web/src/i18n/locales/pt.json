@@ -397,5 +397,11 @@
  },
  "splash": {
   "tagline": "Treine de forma mais inteligente"
+ },
+ "equipmentPanel": {
+  "title": "Equipamento",
+  "close": "Fechar equipamento",
+  "intro": "O que realmente tem disponível agora, não um facto permanente sobre si — selecione o que se aplica. As listas de exercícios reorganizam-se para colocar estes primeiro; nada é escondido.",
+  "bodyweightNote": "Os exercícios com o peso do corpo — flexões, elevações e os restantes — contam sempre como disponíveis, pois não precisam de nada."
  }
 }

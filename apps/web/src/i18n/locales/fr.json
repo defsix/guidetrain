@@ -397,5 +397,11 @@
  },
  "splash": {
   "tagline": "Entraînez-vous plus intelligemment"
+ },
+ "equipmentPanel": {
+  "title": "Équipement",
+  "close": "Fermer équipement",
+  "intro": "Ce à quoi vous avez vraiment accès en ce moment, pas un fait permanent vous concernant — cochez ce qui s'applique. Les listes d'exercices se réorganisent pour mettre ceux-ci en premier ; rien n'est masqué.",
+  "bodyweightNote": "Les exercices au poids du corps — pompes, tractions et le reste — comptent toujours comme disponibles, puisqu'ils ne nécessitent rien."
  }
 }

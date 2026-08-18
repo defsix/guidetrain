@@ -425,5 +425,11 @@
  },
  "splash": {
   "tagline": "Trénuj chytřeji"
+ },
+ "equipmentPanel": {
+  "title": "Vybavení",
+  "close": "Zavřít vybavení",
+  "intro": "Co máte skutečně k dispozici právě teď, ne trvalý fakt o vás — vyberte, co platí. Seznamy cviků se přeskupí tak, aby byly tyto na prvním místě; nic se neskrývá.",
+  "bodyweightNote": "Cviky s vlastní vahou — kliky, shyby a další — se vždy počítají jako dostupné, protože k nim nic nepotřebujete."
  }
 }

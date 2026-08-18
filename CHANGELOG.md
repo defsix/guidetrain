@@ -170,6 +170,42 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Equipment: what's actually available, prioritising exercise lists and
+  training-pair suggestions around it** — a new panel in the header, next to
+  Account and History, where the reader picks from barbell, dumbbell,
+  machine, cable, kettlebells, bands and exercise ball. Nothing selected
+  means no preference, and every list renders exactly as it always has;
+  that's deliberate, since this is meant to be flipped back and forth as a
+  gym-goer trains at home some days, not answered once at onboarding and
+  forgotten. `equipment` on `Profile` is a fixed list read straight from the
+  catalogue's own equipment tags rather than a second list to keep in sync —
+  "other" is left out on purpose, since it's the catalogue's grab-bag for
+  sleds, wrist rollers and suspension trainers, no two of which are the same
+  purchase, so a single checkbox for it would claim access to gear a "yes"
+  was never actually about.
+  - **The muscle exercise list reorders, never hides.** A stable sort brings
+    matching exercises (plus anything body-only, which needs nothing and
+    always counts as available) to the top and leaves everything else
+    exactly where it was — a machine-only reader still *sees* the barbell
+    row they could ask a gym neighbour to spot, which a filter would have
+    taken away along with the ones they can't do.
+  - **Training-pair suggestions get the same scoring input, and — worth
+    knowing — it verified out to have no visible effect today.** Checked
+    against all 180 exercises: an equipment preference never once changed
+    which three partners got suggested, because "no extra kit" already
+    outranks it and there are always at least three legal body-only
+    candidates for every exercise and region in the catalogue, filling every
+    slot before the new bonus is ever consulted. Kept anyway rather than
+    reverted — it's correct and harmless, and starts mattering the moment
+    the body-only content in the catalogue changes shape. Anyone touching
+    `score()` in `pairs.js` should know this going in rather than rediscover
+    it.
+  - The Supabase side needs `migrations/0003_equipment.sql` applied — unlike
+    the gender-drop migration, this one is not optional to defer:
+    `profileToRow` now sends an `equipment` key on every profile upsert, so
+    until the column exists, syncing a profile fails outright for anyone
+    signed in (caught by the existing error handling, not a crash, but sync
+    silently stops working until it's run).
 - **A splash, shown once, to someone Onboarding has just confirmed is new**
   — the bolt beside the wordmark and a "Train smarter" tagline underneath,
   a thin bar filling at the bottom while it holds, faded into the welcome

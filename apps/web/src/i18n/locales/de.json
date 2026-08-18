@@ -397,5 +397,11 @@
  },
  "splash": {
   "tagline": "Trainiere smarter"
+ },
+ "equipmentPanel": {
+  "title": "Ausrüstung",
+  "close": "Ausrüstung schließen",
+  "intro": "Was dir gerade wirklich zur Verfügung steht, keine dauerhafte Tatsache über dich — wähle, was zutrifft. Übungslisten ordnen sich neu, sodass diese zuerst stehen; nichts wird versteckt.",
+  "bodyweightNote": "Körpergewichtsübungen — Liegestütze, Klimmzüge und der Rest — zählen immer als verfügbar, da du dafür nichts brauchst."
  }
 }

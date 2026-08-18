@@ -279,6 +279,35 @@ checks the rule against the shipped catalogue — no suggested pair shares a
 region or a muscle, none of the 180 is left without a partner, and the
 suggestions are stable between calls. It exits non-zero, so it can gate a build.
 
+### Equipment
+
+A panel in the header, next to Account and History, where the reader picks
+from barbell, dumbbell, machine, cable, kettlebells, bands and exercise ball —
+what's actually available right now, not a permanent fact about them. Meant to
+be flipped back and forth as a gym-goer trains at home some days, which is why
+it lives in a panel rather than a question asked once at onboarding. Nothing
+selected means no preference, and every list renders exactly as it always has.
+
+The muscle exercise list **reorders, never hides**: a stable sort brings
+matching exercises — plus anything body-only, which needs nothing and always
+counts as available — to the top, and leaves everything else exactly where it
+was. A machine-only reader still sees the barbell row they could ask a gym
+neighbour to spot, which a filter would have taken away along with the ones
+they can't do.
+
+Training-pair suggestions read the same preference, and it is worth knowing
+this plainly rather than assuming: checked against all 180 exercises, it
+never once changed which three partners got suggested. "No extra kit" already
+outranks it in that ranking, and every exercise and region has at least three
+legal body-only candidates, filling every slot first. Kept anyway — it is
+correct and costs nothing, and starts mattering the moment the catalogue's
+body-only content changes shape.
+
+The Supabase side needs `supabase/migrations/0003_equipment.sql` applied. It
+is not optional to defer the way the gender-drop migration was: profile syncs
+now send an `equipment` column on every upsert, so until it exists, syncing
+fails (caught, not a crash) for anyone signed in.
+
 ### wger, and why it isn't used
 
 wger's catalogue is CC-BY-SA with proper per-image licence and author fields,

@@ -3,7 +3,7 @@ import { read, write } from "./storage";
 import type { SetEntry } from "../state/useLog";
 import type { Program } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
-import type { Profile } from "../types";
+import type { EquipmentTag, Profile } from "../types";
 
 export const LOG_KEY = "guidetrain.log";
 export const PROGRAMS_KEY = "guidetrain.programs";
@@ -129,6 +129,11 @@ function profileToRow(userId: string, p: Profile): Row {
     age_group: p.ageGroup ?? null,
     body_weight: p.bodyWeight ?? null,
     body_weight_unit: p.bodyWeightUnit ?? "kg",
+    // Empty rather than null when nothing is selected — a Postgres text[]
+    // column reads an empty array back as `[]`, not `null`, so writing null
+    // here would make rowToProfile's `[] : []` fallback do the work anyway;
+    // written explicitly so what leaves the client matches what comes back.
+    equipment: p.equipment ?? [],
     updated_at: new Date().toISOString(),
   };
 }
@@ -140,11 +145,13 @@ function rowToProfile(r: Row): Profile | null {
   // shows any more, so it stays out of the returned Profile even where it
   // exists on the row.
   if (!r?.username && !r?.age_group) return null;
+  const equipment = Array.isArray(r.equipment) ? (r.equipment as EquipmentTag[]) : [];
   return {
     username: String(r.username ?? ""),
     ageGroup: (r.age_group as Profile["ageGroup"]) ?? "30-44",
     ...(r.body_weight != null ? { bodyWeight: Number(r.body_weight) } : {}),
     bodyWeightUnit: (r.body_weight_unit as "kg" | "lb") ?? "kg",
+    ...(equipment.length ? { equipment } : {}),
   };
 }
 

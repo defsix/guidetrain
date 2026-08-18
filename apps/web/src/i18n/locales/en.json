@@ -397,5 +397,11 @@
  },
  "splash": {
   "tagline": "Train smarter"
+ },
+ "equipmentPanel": {
+  "title": "Equipment",
+  "close": "Close equipment",
+  "intro": "What you actually have access to right now, not a permanent fact about you — pick as many as apply. Exercise lists reorder to put these first; nothing is hidden.",
+  "bodyweightNote": "Bodyweight exercises — push-ups, pull-ups and the rest — always count as available, since they need nothing to try."
  }
 }
