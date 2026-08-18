@@ -96,10 +96,17 @@ export default function Onboarding() {
   // means nobody has to fill in the form first to reach the button that makes
   // it irrelevant. Gated on the splash reaching "done" so the quick flash
   // above has actually had its moment before the redirect fires under it.
+  //
+  // Both this effect and the one below also check `auth.recovery`: a
+  // password-reset link signs the browser in the same way an ordinary
+  // sign-in does, and whoever followed it almost certainly already has a
+  // profile too — so without the check, either redirect would fire and carry
+  // the reader straight past the one screen the link existed to reach. See
+  // the account panel, opened automatically below for the same reason.
   useEffect(() => {
-    if (splashPhase !== "done") return;
+    if (splashPhase !== "done" || auth.recovery) return;
     if (auth.session) navigate("/explore", { replace: true });
-  }, [splashPhase, auth.session, navigate]);
+  }, [splashPhase, auth.session, auth.recovery, navigate]);
 
   // The same idea for whoever never needed an account at all: this route
   // rendered unconditionally regardless of a saved profile, so reloading the
@@ -108,9 +115,16 @@ export default function Onboarding() {
   // the first paint. Redirect rather than skip the render entirely, so the
   // effect fires the same way the sign-in one does above.
   useEffect(() => {
-    if (splashPhase !== "done") return;
+    if (splashPhase !== "done" || auth.recovery) return;
     if (profile) navigate("/explore", { replace: true });
-  }, [splashPhase, profile, navigate]);
+  }, [splashPhase, profile, auth.recovery, navigate]);
+
+  // A recovery link lands here with nowhere else to go — this screen is the
+  // one place `<AccountPanel>` already exists on a fresh session, and the
+  // panel itself is what actually shows the "set a new password" form.
+  useEffect(() => {
+    if (auth.recovery) setShowAccount(true);
+  }, [auth.recovery]);
 
   // A comma is the decimal separator in most of the ten languages, so take
   // either — though this is asked to the nearest whole unit and most people

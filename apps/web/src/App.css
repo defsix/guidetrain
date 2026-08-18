@@ -1406,6 +1406,15 @@
   text-decoration: underline;
 }
 
+/* Standalone in the sign-in form rather than trailing another line of text,
+   so tm-clear's own margin-left (which assumes the latter) would just push
+   it in from an edge nothing else lines up with. */
+.forgot-password {
+  align-self: flex-start;
+  margin-left: 0;
+  font-size: 13px;
+}
+
 /* The week that is currently in the workout, marked on the row rather than
    only on its button — the whole line is the thing that is in use. */
 .plan-table tr.using { background: color-mix(in srgb, var(--accent) 9%, transparent); }

@@ -395,7 +395,20 @@
    "apple": "Continuer avec Apple",
    "facebook": "Continuer avec Facebook"
   },
-  "or": "ou"
+  "or": "ou",
+  "forgotPassword": "Mot de passe oublié ?",
+  "sendReset": "Envoyer le lien de réinitialisation",
+  "resetSent": "Consultez vos e-mails : un lien pour réinitialiser votre mot de passe vous attend.",
+  "recoveryIntro": "Définissez un nouveau mot de passe pour terminer la connexion.",
+  "newPassword": "Nouveau mot de passe",
+  "setPassword": "Définir le mot de passe",
+  "recoveryDone": "Mot de passe changé — fermez ce panneau pour continuer.",
+  "changePassword": "Changer le mot de passe",
+  "save": "Enregistrer",
+  "passwordSaved": "Mot de passe changé.",
+  "changeEmail": "Changer d'e-mail",
+  "newEmail": "Nouvel e-mail",
+  "emailChangeSent": "Consultez votre nouvelle adresse : un lien pour confirmer le changement vous attend."
  },
  "splash": {
   "tagline": "Entraînez-vous plus intelligemment"

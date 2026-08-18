@@ -395,7 +395,20 @@
    "apple": "Continue with Apple",
    "facebook": "Continue with Facebook"
   },
-  "or": "or"
+  "or": "or",
+  "forgotPassword": "Forgot password?",
+  "sendReset": "Send reset link",
+  "resetSent": "Check your email for a link to reset your password.",
+  "recoveryIntro": "Set a new password to finish signing in.",
+  "newPassword": "New password",
+  "setPassword": "Set password",
+  "recoveryDone": "Password changed — close this panel to continue.",
+  "changePassword": "Change password",
+  "save": "Save",
+  "passwordSaved": "Password changed.",
+  "changeEmail": "Change email",
+  "newEmail": "New email",
+  "emailChangeSent": "Check your new address for a link to confirm the change."
  },
  "splash": {
   "tagline": "Train smarter"

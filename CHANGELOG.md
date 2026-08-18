@@ -191,6 +191,34 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Forgot password, change password, change email** — the account panel
+  could sign in, sign up and sign out, and nothing else; anyone who forgot a
+  password had no way back into their own account. A "Forgot password?" link
+  on the sign-in form sends Supabase's own reset email
+  (`resetPasswordForEmail`), landing back on the app with a real, working
+  session — which is exactly the trap: without handling it specially, the
+  app's own redirect-once-signed-in effects would read that session as an
+  ordinary sign-in and carry the reader straight past the one screen the
+  link existed to reach. `useAuth.ts` now catches Supabase's
+  `PASSWORD_RECOVERY` event (fired once, the moment the link resolves) as a
+  `recovery` flag; `Onboarding.tsx`'s two redirect effects both check it
+  before firing, and a third effect opens the account panel automatically
+  so there's somewhere for the resulting "set a new password" form to
+  appear. Signed-in readers get the same two actions directly in the panel
+  — change password and change email, each its own small section reusing
+  the stats panel's `.stats-section`/`.stats-edit` styling rather than
+  inventing a second form language. An email change goes through Supabase's
+  "secure email change" (on by default): a confirmation link to the new
+  address before anything actually changes, plus a notice to the old one,
+  so a stolen session alone can't quietly redirect an account's mail.
+  Verified as far as a live Supabase project isn't available to verify
+  against: `tsc -b` clean, and a full click-through against a temporary
+  fake project config (`.env.local`, never committed) with a hand-crafted
+  session written into `localStorage` to reach the signed-in view without a
+  real backend — every new form state renders correctly, including the
+  genuine `auth.error` display when the fake project's network calls fail
+  as expected. The actual email delivery and recovery-link round trip need
+  a live project and are for the reader to confirm.
 - **A stats page: body weight, a max for each of the three big lifts, and a
   chart per number** — a new panel in the header, next to Equipment, with
   four sections (body weight, Squat, Bench, Deadlift), each an editable

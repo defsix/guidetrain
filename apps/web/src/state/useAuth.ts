@@ -11,6 +11,15 @@ export type AuthState = {
   error: string | null;
   available: boolean;
   userId: string | null;
+  /**
+   * A password-reset link was just followed. Supabase's own recovery flow
+   * signs the browser in — the link carries a real session — which is
+   * exactly what makes this flag necessary: without it, the app's own
+   * redirect-once-signed-in effects would read that session as an ordinary
+   * sign-in and send the reader straight to the explorer, past the one
+   * screen the whole link existed to reach.
+   */
+  recovery: boolean;
 };
 
 /**
@@ -27,6 +36,7 @@ export function useAuth() {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(hasBackend);
   const [error, setError] = useState<string | null>(null);
+  const [recovery, setRecovery] = useState(false);
 
   useEffect(() => {
     if (!supabase) return;
@@ -40,9 +50,15 @@ export function useAuth() {
 
     // Covers refreshes, sign-outs in another tab, and the redirect back from a
     // confirmation link — all of which change the session without this hook
-    // being the one that asked.
-    const { data: sub } = supabase.auth.onAuthStateChange((_event, next) => {
+    // being the one that asked. PASSWORD_RECOVERY is Supabase's own event for
+    // exactly one moment: a recovery link was just followed. It fires once,
+    // alongside the session it also signs in, so it has to be caught right
+    // here rather than inferred later from anything about the session itself
+    // — a recovered session looks identical to an ordinary one once this
+    // event has passed.
+    const { data: sub } = supabase.auth.onAuthStateChange((event, next) => {
       if (!alive) return;
+      if (event === "PASSWORD_RECOVERY") setRecovery(true);
       setSession(next);
       setLoading(false);
     });
@@ -98,6 +114,64 @@ export function useAuth() {
   const signOut = useCallback(async () => {
     if (!supabase) return;
     await supabase.auth.signOut();
+    setRecovery(false);
+  }, []);
+
+  /**
+   * Sends the "reset your password" email. Deliberately reports success even
+   * when the address has no account — Supabase itself stays quiet either way
+   * (see its own docs on this), and a form that answered honestly would tell
+   * anyone who typed an email address whether it was registered.
+   */
+  const resetPassword = useCallback(async (email: string) => {
+    if (!supabase) return false;
+    setError(null);
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      // Same reasoning as emailRedirectTo on signUp: the bare origin, not
+      // "#/explore" — Onboarding.tsx's own redirect effect is what gets a
+      // signed-in reader the rest of the way there, once recovery is no
+      // longer in the way of it.
+      redirectTo: window.location.origin,
+    });
+    if (error) {
+      setError(error.message);
+      return false;
+    }
+    return true;
+  }, []);
+
+  /** Sets a new password — the recovery flow's landing action, and also
+   *  reachable from the account panel by anyone already signed in. */
+  const updatePassword = useCallback(async (password: string) => {
+    if (!supabase) return false;
+    setError(null);
+    const { error } = await supabase.auth.updateUser({ password });
+    if (error) {
+      setError(error.message);
+      return false;
+    }
+    setRecovery(false);
+    return true;
+  }, []);
+
+  /**
+   * Starts an email change. The new address gets a confirmation link before
+   * anything actually changes — Supabase's "secure email change" setting
+   * (on by default) sends one to the old address too, so a stolen session
+   * alone cannot quietly redirect an account's mail.
+   */
+  const updateEmail = useCallback(async (email: string) => {
+    if (!supabase) return false;
+    setError(null);
+    const { error } = await supabase.auth.updateUser(
+      { email },
+      { emailRedirectTo: window.location.origin },
+    );
+    if (error) {
+      setError(error.message);
+      return false;
+    }
+    return true;
   }, []);
 
   /**
@@ -132,9 +206,13 @@ export function useAuth() {
     clearError,
     available: hasBackend,
     userId: session?.user.id ?? null,
+    recovery,
     signIn,
     signUp,
     signOut,
     signInWithOAuth,
+    resetPassword,
+    updatePassword,
+    updateEmail,
   };
 }

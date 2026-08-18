@@ -395,7 +395,20 @@
    "apple": "Continuar com a Apple",
    "facebook": "Continuar com o Facebook"
   },
-  "or": "ou"
+  "or": "ou",
+  "forgotPassword": "Esqueceu-se da palavra-passe?",
+  "sendReset": "Enviar link de reposição",
+  "resetSent": "Consulte o seu e-mail: vai receber um link para repor a palavra-passe.",
+  "recoveryIntro": "Defina uma nova palavra-passe para terminar de iniciar sessão.",
+  "newPassword": "Nova palavra-passe",
+  "setPassword": "Definir palavra-passe",
+  "recoveryDone": "Palavra-passe alterada — feche este painel para continuar.",
+  "changePassword": "Alterar palavra-passe",
+  "save": "Guardar",
+  "passwordSaved": "Palavra-passe alterada.",
+  "changeEmail": "Alterar e-mail",
+  "newEmail": "Novo e-mail",
+  "emailChangeSent": "Consulte o seu novo e-mail: vai receber um link para confirmar a alteração."
  },
  "splash": {
   "tagline": "Treine de forma mais inteligente"

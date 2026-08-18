@@ -423,7 +423,20 @@
    "apple": "Pokračovat přes Apple",
    "facebook": "Pokračovat přes Facebook"
   },
-  "or": "nebo"
+  "or": "nebo",
+  "forgotPassword": "Zapomněli jste heslo?",
+  "sendReset": "Odeslat odkaz na obnovení",
+  "resetSent": "Zkontrolujte e-mail, přijde vám odkaz na obnovení hesla.",
+  "recoveryIntro": "Nastavte nové heslo a dokončete přihlášení.",
+  "newPassword": "Nové heslo",
+  "setPassword": "Nastavit heslo",
+  "recoveryDone": "Heslo změněno — pokračujte zavřením tohoto panelu.",
+  "changePassword": "Změnit heslo",
+  "save": "Uložit",
+  "passwordSaved": "Heslo změněno.",
+  "changeEmail": "Změnit e-mail",
+  "newEmail": "Nový e-mail",
+  "emailChangeSent": "Zkontrolujte novou adresu, přijde vám odkaz pro potvrzení změny."
  },
  "splash": {
   "tagline": "Trénuj chytřeji"

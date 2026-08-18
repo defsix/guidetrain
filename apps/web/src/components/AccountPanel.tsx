@@ -38,11 +38,26 @@ type Props = {
  */
 export default function AccountPanel({ open, onClose, auth, sync }: Props) {
   const { t } = useI18n();
-  const [mode, setMode] = useState<"in" | "up">("in");
+  const [mode, setMode] = useState<"in" | "up" | "reset">("in");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmSent, setConfirmSent] = useState(false);
+  const [resetSent, setResetSent] = useState(false);
   const [busy, setBusy] = useState(false);
+
+  // The recovery form's own field — kept separate from `password` above so
+  // switching in from a recovery link never shows a stray value left over
+  // from an unrelated sign-in attempt on the same device.
+  const [recoveryPassword, setRecoveryPassword] = useState("");
+  const [recoveryDone, setRecoveryDone] = useState(false);
+
+  // The two change-account forms, each with its own field and its own
+  // "just saved" flag — the panel can only ever be showing one confirmation
+  // per action, but the two actions are independent of each other.
+  const [newPassword, setNewPassword] = useState("");
+  const [passwordSaved, setPasswordSaved] = useState(false);
+  const [newEmail, setNewEmail] = useState("");
+  const [emailChangeSent, setEmailChangeSent] = useState(false);
 
   if (!open) return null;
 
@@ -50,6 +65,12 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
     e.preventDefault();
     setBusy(true);
     setConfirmSent(false);
+    if (mode === "reset") {
+      const ok = await auth.resetPassword(email);
+      setBusy(false);
+      if (ok) setResetSent(true);
+      return;
+    }
     const ok = mode === "in" ? await auth.signIn(email, password) : await auth.signUp(email, password);
     setBusy(false);
     if (ok) {
@@ -60,6 +81,41 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
       // like it silently did nothing.
       setConfirmSent(true);
       auth.clearError();
+    }
+  }
+
+  async function submitRecovery(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    const ok = await auth.updatePassword(recoveryPassword);
+    setBusy(false);
+    if (ok) {
+      setRecoveryPassword("");
+      setRecoveryDone(true);
+    }
+  }
+
+  async function submitNewPassword(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    setPasswordSaved(false);
+    const ok = await auth.updatePassword(newPassword);
+    setBusy(false);
+    if (ok) {
+      setNewPassword("");
+      setPasswordSaved(true);
+    }
+  }
+
+  async function submitNewEmail(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    setEmailChangeSent(false);
+    const ok = await auth.updateEmail(newEmail);
+    setBusy(false);
+    if (ok) {
+      setNewEmail("");
+      setEmailChangeSent(true);
     }
   }
 
@@ -74,7 +130,36 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
           </button>
         </div>
 
-        {auth.session ? (
+        {auth.recovery ? (
+          <>
+            {/* No tabs, no OAuth, no way out but finishing this — a recovery
+                link exists for exactly one purpose, and the sign-in form it
+                would otherwise sit beside asks for a password this session
+                was opened specifically because the reader no longer has. */}
+            <p className="plan-note">{t("account.recoveryIntro")}</p>
+            {recoveryDone ? (
+              <p className="plan-note">{t("account.recoveryDone")}</p>
+            ) : (
+              <form className="account-form" onSubmit={submitRecovery}>
+                <label className="field">
+                  <span>{t("account.newPassword")}</span>
+                  <input
+                    type="password"
+                    value={recoveryPassword}
+                    onChange={(e) => setRecoveryPassword(e.target.value)}
+                    autoComplete="new-password"
+                    minLength={6}
+                    required
+                  />
+                </label>
+                {auth.error && <p className="plan-note flag">{auth.error}</p>}
+                <button className="primary-button" type="submit" disabled={busy}>
+                  {t("account.setPassword")}
+                </button>
+              </form>
+            )}
+          </>
+        ) : auth.session ? (
           <>
             <p className="account-email">{auth.session.user.email}</p>
 
@@ -96,6 +181,73 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                 a shared device must not delete the training that is sitting in
                 this browser — it is already safe in the account either way. */}
             <p className="plan-note">{t("account.signOutNote")}</p>
+
+            <section className="stats-section">
+              <h3>{t("account.changePassword")}</h3>
+              <form className="stats-edit" onSubmit={submitNewPassword}>
+                <input
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  autoComplete="new-password"
+                  minLength={6}
+                  placeholder={t("account.newPassword")}
+                  aria-label={t("account.newPassword")}
+                  required
+                />
+                <button type="submit" className="stats-save" disabled={busy}>
+                  {t("account.save")}
+                </button>
+              </form>
+              {passwordSaved && <p className="plan-note">{t("account.passwordSaved")}</p>}
+            </section>
+
+            <section className="stats-section">
+              <h3>{t("account.changeEmail")}</h3>
+              <form className="stats-edit" onSubmit={submitNewEmail}>
+                <input
+                  type="email"
+                  value={newEmail}
+                  onChange={(e) => setNewEmail(e.target.value)}
+                  autoComplete="email"
+                  placeholder={t("account.newEmail")}
+                  aria-label={t("account.newEmail")}
+                  required
+                />
+                <button type="submit" className="stats-save" disabled={busy}>
+                  {t("account.save")}
+                </button>
+              </form>
+              {emailChangeSent && <p className="plan-note">{t("account.emailChangeSent")}</p>}
+            </section>
+            {auth.error && <p className="plan-note flag">{auth.error}</p>}
+          </>
+        ) : mode === "reset" ? (
+          <>
+            <button
+              type="button"
+              className="plans-back"
+              onClick={() => { setMode("in"); auth.clearError(); setResetSent(false); }}
+            >
+              ‹ {t("account.signIn")}
+            </button>
+            <form className="account-form" onSubmit={submit}>
+              <label className="field">
+                <span>{t("account.email")}</span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="email"
+                  required
+                />
+              </label>
+              {resetSent && <p className="plan-note">{t("account.resetSent")}</p>}
+              {auth.error && <p className="plan-note flag">{auth.error}</p>}
+              <button className="primary-button" type="submit" disabled={busy}>
+                {t("account.sendReset")}
+              </button>
+            </form>
           </>
         ) : (
           <>
@@ -152,6 +304,16 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   required
                 />
               </label>
+
+              {mode === "in" && (
+                <button
+                  type="button"
+                  className="tm-clear forgot-password"
+                  onClick={() => { setMode("reset"); auth.clearError(); }}
+                >
+                  {t("account.forgotPassword")}
+                </button>
+              )}
 
               {confirmSent && <p className="plan-note">{t("account.confirmSent")}</p>}
               {auth.error && auth.error !== "confirm" && (

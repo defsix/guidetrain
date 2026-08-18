@@ -381,7 +381,20 @@
    "apple": "Appleで続ける",
    "facebook": "Facebookで続ける"
   },
-  "or": "または"
+  "or": "または",
+  "forgotPassword": "パスワードをお忘れですか？",
+  "sendReset": "再設定リンクを送信",
+  "resetSent": "メールを確認してください。パスワード再設定用のリンクが届きます。",
+  "recoveryIntro": "新しいパスワードを設定してサインインを完了してください。",
+  "newPassword": "新しいパスワード",
+  "setPassword": "パスワードを設定",
+  "recoveryDone": "パスワードを変更しました — このパネルを閉じて続けてください。",
+  "changePassword": "パスワードを変更",
+  "save": "保存",
+  "passwordSaved": "パスワードを変更しました。",
+  "changeEmail": "メールアドレスを変更",
+  "newEmail": "新しいメールアドレス",
+  "emailChangeSent": "新しいメールアドレスを確認してください。変更確認用のリンクが届きます。"
  },
  "splash": {
   "tagline": "スマートにトレーニング"

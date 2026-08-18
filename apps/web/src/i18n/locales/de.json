@@ -395,7 +395,20 @@
    "apple": "Weiter mit Apple",
    "facebook": "Weiter mit Facebook"
   },
-  "or": "oder"
+  "or": "oder",
+  "forgotPassword": "Passwort vergessen?",
+  "sendReset": "Link zum Zurücksetzen senden",
+  "resetSent": "Schau in dein Postfach — dort ist ein Link zum Zurücksetzen deines Passworts.",
+  "recoveryIntro": "Lege ein neues Passwort fest, um die Anmeldung abzuschließen.",
+  "newPassword": "Neues Passwort",
+  "setPassword": "Passwort festlegen",
+  "recoveryDone": "Passwort geändert — schließe dieses Feld, um fortzufahren.",
+  "changePassword": "Passwort ändern",
+  "save": "Speichern",
+  "passwordSaved": "Passwort geändert.",
+  "changeEmail": "E-Mail ändern",
+  "newEmail": "Neue E-Mail",
+  "emailChangeSent": "Schau in dein neues Postfach — dort ist ein Link zur Bestätigung der Änderung."
  },
  "splash": {
   "tagline": "Trainiere smarter"

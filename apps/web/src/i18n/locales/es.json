@@ -395,7 +395,20 @@
    "apple": "Continuar con Apple",
    "facebook": "Continuar con Facebook"
   },
-  "or": "o"
+  "or": "o",
+  "forgotPassword": "¿Olvidaste tu contraseña?",
+  "sendReset": "Enviar enlace para restablecer",
+  "resetSent": "Revisa tu correo: te llegará un enlace para restablecer tu contraseña.",
+  "recoveryIntro": "Fija una nueva contraseña para terminar de iniciar sesión.",
+  "newPassword": "Nueva contraseña",
+  "setPassword": "Fijar contraseña",
+  "recoveryDone": "Contraseña cambiada — cierra este panel para continuar.",
+  "changePassword": "Cambiar contraseña",
+  "save": "Guardar",
+  "passwordSaved": "Contraseña cambiada.",
+  "changeEmail": "Cambiar correo",
+  "newEmail": "Nuevo correo",
+  "emailChangeSent": "Revisa tu nuevo correo: te llegará un enlace para confirmar el cambio."
  },
  "splash": {
   "tagline": "Entrena de forma inteligente"

@@ -913,6 +913,17 @@ GitHub account.
 - ✅ **OAuth providers** — Google sign-in is live, proven by an actual
   click-through. Apple ($99/year Developer Program) and Facebook are queued
   behind it, same pattern once there's a reason to prioritise either.
+- ✅ **Forgot password, change password, change email** — the account panel
+  used to only sign in, sign up and sign out; anyone who forgot a password
+  had no way back in. A reset link now lands back on the app carrying a real
+  session, which `useAuth.ts` catches as a distinct `recovery` state
+  specifically so the app's own "already signed in" redirects don't carry
+  the reader past the one screen that link exists to reach. Signed-in
+  readers can change either directly from the panel. Code-verified against a
+  temporary fake project and a hand-crafted session (never committed) since
+  no live project is available here to click through for real — the actual
+  email delivery and reset-link round trip want confirming against
+  guidetrain.me.
 
 ### Asked for, not yet built
 

@@ -423,7 +423,20 @@
    "apple": "Kontynuuj z Apple",
    "facebook": "Kontynuuj z Facebook"
   },
-  "or": "lub"
+  "or": "lub",
+  "forgotPassword": "Nie pamiętasz hasła?",
+  "sendReset": "Wyślij link do resetu",
+  "resetSent": "Sprawdź e-mail — dostaniesz link do zresetowania hasła.",
+  "recoveryIntro": "Ustaw nowe hasło, aby dokończyć logowanie.",
+  "newPassword": "Nowe hasło",
+  "setPassword": "Ustaw hasło",
+  "recoveryDone": "Hasło zmienione — zamknij ten panel, aby kontynuować.",
+  "changePassword": "Zmień hasło",
+  "save": "Zapisz",
+  "passwordSaved": "Hasło zmienione.",
+  "changeEmail": "Zmień e-mail",
+  "newEmail": "Nowy e-mail",
+  "emailChangeSent": "Sprawdź nowy adres — dostaniesz link do potwierdzenia zmiany."
  },
  "splash": {
   "tagline": "Trenuj mądrzej"
