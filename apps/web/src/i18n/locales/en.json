@@ -306,7 +306,11 @@
    "lower": "Lower",
    "push": "Push",
    "pull": "Pull",
-   "legs": "Legs"
+   "legs": "Legs",
+   "chest": "Chest",
+   "back": "Back",
+   "shoulders": "Shoulders",
+   "arms": "Arms"
   },
   "fullbody": {
    "name": "Full body",
@@ -320,7 +324,11 @@
    "name": "Push / pull / legs",
    "desc": "Groups by movement rather than body part. More exercises per session, fewer muscles."
   },
-  "carryNote": "These weights go into your workout, offered back one set at a time as you log."
+  "carryNote": "These weights go into your workout, offered back one set at a time as you log.",
+  "bodypart": {
+   "name": "Body part split",
+   "desc": "One muscle group a day, five days a week — more volume per session, once-weekly frequency. The classic bodybuilding split."
+  }
  },
  "skip": {
   "set": "Skip this set",

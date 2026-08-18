@@ -32,10 +32,10 @@ export type PlanTemplate = {
 };
 
 /**
- * Three shapes, not thirty. Each is a common, well-worn structure rather than
- * anything invented here, and each is built only from exercises this catalogue
- * actually has — a plan naming a lift the app cannot show you is worse than no
- * plan.
+ * A small, well-worn set of shapes rather than a large invented one. Each is a
+ * real structure people actually train rather than anything designed here, and
+ * each is built only from exercises this catalogue actually has — a plan
+ * naming a lift the app cannot show you is worse than no plan.
  */
 export const PLANS: PlanTemplate[] = [
   {
@@ -114,6 +114,58 @@ export const PLANS: PlanTemplate[] = [
       },
     ],
   },
+  {
+    // The other three all train each muscle two or three times a week. This
+    // one trains it once, at higher volume per session — a different, equally
+    // real way to run a week, not a worse version of the others.
+    id: "bodypart",
+    perWeek: 5,
+    days: [
+      {
+        name: "chest",
+        exercises: [
+          { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 8 },
+          { id: "Barbell_Incline_Bench_Press_-_Medium_Grip", sets: 3, reps: 10 },
+          { id: "Dumbbell_Bench_Press", sets: 3, reps: 12 },
+        ],
+      },
+      {
+        name: "back",
+        exercises: [
+          { id: "Bent_Over_Barbell_Row", sets: 4, reps: 8 },
+          { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 10 },
+          { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 12 },
+        ],
+      },
+      {
+        name: "legs",
+        exercises: [
+          { id: "Barbell_Squat", sets: 4, reps: 8 },
+          { id: "Leg_Press", sets: 3, reps: 10 },
+          { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
+          { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
+        ],
+      },
+      {
+        name: "shoulders",
+        exercises: [
+          { id: "Standing_Military_Press", sets: 4, reps: 8 },
+          { id: "Upright_Barbell_Row", sets: 3, reps: 10 },
+          // Light and high-rep on purpose — a rear-delt/rotator accessory,
+          // not a lift anyone loads heavy.
+          { id: "Face_Pull", sets: 3, reps: 15 },
+        ],
+      },
+      {
+        name: "arms",
+        exercises: [
+          { id: "Barbell_Curl", sets: 3, reps: 10 },
+          { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 8 },
+          { id: "Alternate_Hammer_Curl", sets: 3, reps: 12 },
+        ],
+      },
+    ],
+  },
 ];
 
 /** An Olympic bar. Nothing barbell can be prescribed below it. */
@@ -155,6 +207,21 @@ const BODY_FRACTION: Record<string, number> = {
   Dumbbell_Bench_Press: 0.15,
   Barbell_Curl: 0.15,
   Calf_Press_On_The_Leg_Press_Machine: 1.2,
+
+  // The body-part split. Each set against the nearest lift already above
+  // rather than picked fresh — incline and close-grip run a shade under flat
+  // bench, a one-arm row is braced and so moves more per hand than a press,
+  // Face_Pull is a light high-rep accessory nobody loads heavy.
+  "Barbell_Incline_Bench_Press_-_Medium_Grip": 0.32,
+  "Close-Grip_Barbell_Bench_Press": 0.32,
+  "One-Arm_Dumbbell_Row": 0.2,
+  Seated_Leg_Curl: 0.3,
+  // Calves are strong relative to bodyweight, same reasoning as the leg-press
+  // calf variant above, just a smaller stack on most seated machines.
+  Seated_Calf_Raise: 1.0,
+  Upright_Barbell_Row: 0.22,
+  Face_Pull: 0.08,
+  Alternate_Hammer_Curl: 0.12,
 };
 
 /**

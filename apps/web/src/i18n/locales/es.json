@@ -306,7 +306,11 @@
    "lower": "Tren inferior",
    "push": "Empuje",
    "pull": "Tirón",
-   "legs": "Piernas"
+   "legs": "Piernas",
+   "chest": "Pecho",
+   "back": "Espalda",
+   "shoulders": "Hombros",
+   "arms": "Brazos"
   },
   "fullbody": {
    "name": "Cuerpo completo",
@@ -320,7 +324,11 @@
    "name": "Empuje / tirón / piernas",
    "desc": "Agrupa por movimiento y no por músculo. Más ejercicios por sesión."
   },
-  "carryNote": "Estos pesos pasan a tu entrenamiento y se te devuelven serie a serie al registrar."
+  "carryNote": "Estos pesos pasan a tu entrenamiento y se te devuelven serie a serie al registrar.",
+  "bodypart": {
+   "name": "Rutina por grupos musculares",
+   "desc": "Un grupo muscular al día, cinco días a la semana — más volumen por sesión, frecuencia semanal. La rutina clásica de culturismo."
+  }
  },
  "skip": {
   "set": "Saltar esta serie",

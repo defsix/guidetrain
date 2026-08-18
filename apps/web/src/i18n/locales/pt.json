@@ -306,7 +306,11 @@
    "lower": "Inferior",
    "push": "Empurrar",
    "pull": "Puxar",
-   "legs": "Pernas"
+   "legs": "Pernas",
+   "chest": "Peito",
+   "back": "Costas",
+   "shoulders": "Ombros",
+   "arms": "Braços"
   },
   "fullbody": {
    "name": "Corpo inteiro",
@@ -320,7 +324,11 @@
    "name": "Empurrar / puxar / pernas",
    "desc": "Agrupa por movimento e não por músculo. Mais exercícios por sessão."
   },
-  "carryNote": "Estas cargas vão para o seu treino e são devolvidas série a série ao registar."
+  "carryNote": "Estas cargas vão para o seu treino e são devolvidas série a série ao registar.",
+  "bodypart": {
+   "name": "Divisão por grupo muscular",
+   "desc": "Um grupo muscular por dia, cinco dias por semana — mais volume por sessão, frequência semanal. A divisão clássica do bodybuilding."
+  }
  },
  "skip": {
   "set": "Saltar esta série",

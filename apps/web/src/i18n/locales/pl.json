@@ -328,7 +328,11 @@
    "lower": "Dół",
    "push": "Pchanie",
    "pull": "Ciągnięcie",
-   "legs": "Nogi"
+   "legs": "Nogi",
+   "chest": "Klatka piersiowa",
+   "back": "Plecy",
+   "shoulders": "Barki",
+   "arms": "Ramiona"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -342,7 +346,11 @@
    "name": "Pchanie / ciągnięcie / nogi",
    "desc": "Grupuje według ruchu, nie części ciała. Więcej ćwiczeń na jednostkę."
   },
-  "carryNote": "Te ciężary trafiają do treningu i przy zapisie są podpowiadane seria po serii."
+  "carryNote": "Te ciężary trafiają do treningu i przy zapisie są podpowiadane seria po serii.",
+  "bodypart": {
+   "name": "Split na partie mięśniowe",
+   "desc": "Jedna partia mięśniowa dziennie, pięć dni w tygodniu — więcej objętości na sesję, częstotliwość raz w tygodniu. Klasyczny split kulturystyczny."
+  }
  },
  "skip": {
   "set": "Pomiń tę serię",

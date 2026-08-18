@@ -409,10 +409,10 @@ here, it stays on the device.
 
 ## Ready-made plans
 
-Three shapes — full body, upper/lower, push/pull/legs — previewed **with the
-weights you would actually use**, then added as named workouts with their
-targets already set. A plan that says "Barbell Squat, 3 × 5" still leaves you a
-decision in the gym; one that says 77.5 kg does not.
+Four shapes — full body, upper/lower, push/pull/legs, body part split —
+previewed **with the weights you would actually use**, then added as named
+workouts with their targets already set. A plan that says "Barbell Squat,
+3 × 5" still leaves you a decision in the gym; one that says 77.5 kg does not.
 
 Each is a common structure rather than anything invented here, and each is
 built only from exercises this catalogue has.

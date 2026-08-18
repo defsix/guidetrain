@@ -328,7 +328,11 @@
    "lower": "Dolní část",
    "push": "Tlak",
    "pull": "Tah",
-   "legs": "Nohy"
+   "legs": "Nohy",
+   "chest": "Hrudník",
+   "back": "Záda",
+   "shoulders": "Ramena",
+   "arms": "Paže"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -342,7 +346,11 @@
    "name": "Tlak / tah / nohy",
    "desc": "Řadí podle pohybu, ne podle části těla. Více cviků v jednotce, méně svalů."
   },
-  "carryNote": "Tyto váhy se přenesou do tréninku a při zapisování je dostanete zpět sérii po sérii."
+  "carryNote": "Tyto váhy se přenesou do tréninku a při zapisování je dostanete zpět sérii po sérii.",
+  "bodypart": {
+   "name": "Split podle partií",
+   "desc": "Jedna svalová partie denně, pět dní v týdnu — víc objemu za trénink, frekvence jednou týdně. Klasický kulturistický split."
+  }
  },
  "skip": {
   "set": "Přeskočit sérii",

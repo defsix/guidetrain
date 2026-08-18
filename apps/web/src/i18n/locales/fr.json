@@ -306,7 +306,11 @@
    "lower": "Bas du corps",
    "push": "Poussée",
    "pull": "Tirage",
-   "legs": "Jambes"
+   "legs": "Jambes",
+   "chest": "Pectoraux",
+   "back": "Dos",
+   "shoulders": "Épaules",
+   "arms": "Bras"
   },
   "fullbody": {
    "name": "Corps entier",
@@ -320,7 +324,11 @@
    "name": "Poussée / tirage / jambes",
    "desc": "Groupe par mouvement plutôt que par muscle. Plus d'exercices par séance."
   },
-  "carryNote": "Ces charges passent dans votre séance et vous sont proposées série par série à la saisie."
+  "carryNote": "Ces charges passent dans votre séance et vous sont proposées série par série à la saisie.",
+  "bodypart": {
+   "name": "Répartition par groupe musculaire",
+   "desc": "Un groupe musculaire par jour, cinq jours par semaine — plus de volume par séance, une fréquence hebdomadaire. La répartition classique du bodybuilding."
+  }
  },
  "skip": {
   "set": "Passer cette série",

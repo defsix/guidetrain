@@ -306,7 +306,11 @@
    "lower": "Unterkörper",
    "push": "Drücken",
    "pull": "Ziehen",
-   "legs": "Beine"
+   "legs": "Beine",
+   "chest": "Brust",
+   "back": "Rücken",
+   "shoulders": "Schultern",
+   "arms": "Arme"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -320,7 +324,11 @@
    "name": "Drücken / Ziehen / Beine",
    "desc": "Gruppiert nach Bewegung statt nach Körperteil. Mehr Übungen je Einheit, weniger Muskeln."
   },
-  "carryNote": "Diese Gewichte wandern in dein Training und werden beim Eintragen Satz für Satz zurückgegeben."
+  "carryNote": "Diese Gewichte wandern in dein Training und werden beim Eintragen Satz für Satz zurückgegeben.",
+  "bodypart": {
+   "name": "Split nach Muskelgruppen",
+   "desc": "Eine Muskelgruppe pro Tag, fünf Tage die Woche — mehr Volumen pro Einheit, einmal wöchentliche Frequenz. Der klassische Bodybuilding-Split."
+  }
  },
  "skip": {
   "set": "Satz überspringen",

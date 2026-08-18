@@ -170,6 +170,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A fourth ready-made plan: body part split** — chest, back, legs, shoulders
+  and arms across five days, one muscle group a session instead of the two or
+  three a week the other three shapes give it. Eight new exercises needed a
+  starting-weight fraction each, set by analogy to a lift already in the
+  table rather than picked fresh — incline and close-grip bench sit a shade
+  under flat bench, a one-arm row is braced against a bench and so moves more
+  per hand than a press, `Face_Pull` is a light high-rep accessory nobody
+  loads heavy. `check-plans` passed all 60 synthetic profiles on the first
+  run — the barbell floor and equipment-read fixes from the original three
+  plans already cover a plan added later.
 - **Sign-in and sync, wired but waiting on a project** — the four hooks
   (`useLog`, `usePrograms`, `useTrainingMax`, `useProfile`) now write through
   one seam in `lib/storage.ts` instead of calling `localStorage` directly, and
