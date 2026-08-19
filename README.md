@@ -515,13 +515,16 @@ than inventing a flat line back to onboarding.
 
 ## Ready-made plans
 
-Seven shapes — full body, upper/lower, push/pull/legs, body part split,
-dumbbell-only full body, a minimal two-day full body, and bodyweight only —
-previewed **with the weights you would actually use**, then added as named
-workouts with their targets already set. A plan that says "Barbell Squat,
-3 × 5" still leaves you a decision in the gym; one that says 77.5 kg does not.
-The last three are chosen by equipment and time rather than by goal — no
-barbell, only two sessions a week, or no equipment at all.
+Ten shapes — full body, upper/lower, push/pull/legs, body part split,
+dumbbell-only full body, a minimal two-day full body, bodyweight only,
+StrongLifts 5×5, GZCLP, and 5/3/1 — previewed **with the weights you would
+actually use**, then added as named workouts with their targets already set.
+A plan that says "Barbell Squat, 3 × 5" still leaves you a decision in the
+gym; one that says 77.5 kg does not. The dumbbell-only, minimal and
+bodyweight-only shapes are chosen by equipment and time rather than by goal —
+no barbell, only two sessions a week, or no equipment at all; StrongLifts,
+GZCLP and 5/3/1 are named, specific programs rather than generic shapes, for
+whoever came looking for one of those by name.
 
 Six of the seven are rotations, where running them more or less often is
 already free — nothing to configure, just how frequently the same days
@@ -538,7 +541,7 @@ row.
 
 ### Where each weight comes from
 
-Three sources, deliberately not the same kind of thing, and every row says
+Four sources, deliberately not the same kind of thing, and every row says
 which it is:
 
 - **From your lifts** — your best logged set, through Epley, backed off a tenth
@@ -548,6 +551,13 @@ which it is:
 - **Your body weight** — for a push-up, a pull-up, a bodyweight squat: the
   load is the whole of your body weight, not a fraction of it and not
   adjusted for age, because it is not an estimate of anything.
+- **5/3/1, week 1** — a 5/3/1 main lift's own training max, run through the
+  same weekly cycle `ProgressionPanel` uses. Shown as the real three-set ramp
+  (`95 / 110 / 125 kg`) rather than one figure, because unlike every other
+  row here those three sets genuinely are different weights, and showing one
+  number would claim they weren't. A lift with no training max yet — nothing
+  logged, nothing set by hand — falls back to "pick your own" for its first
+  week rather than inventing one.
 
 **There is no path from body weight to a one-rep max.** The estimated max is
 what drives the 5/3/1 planner, and it has to come from a set that happened;
@@ -571,6 +581,30 @@ Nothing barbell is ever prescribed below **20 kg**, an empty Olympic bar. That
 floor reads the equipment field from the catalogue rather than the exercise id
 — an earlier version tested whether the id began with "Barbell", which is false
 of "Standing Military Press", and a light profile was told to press 7.5 kg.
+
+### StrongLifts, GZCLP, and 5/3/1
+
+Three named programs alongside the generic shapes, each checked against its
+real published structure rather than recalled. StrongLifts 5×5 and GZCLP are
+structurally the same kind of thing every other plan already is — a
+day/exercise/sets/reps shape, run through the same `prescribe()` every plan
+uses for its weights. 5/3/1 is different, and needed to be: it existed in
+this app already as a single-lift panel (**Plan →**, on any exercise with a
+logged set), and "5/3/1 as a plan" means running that same weekly cycle for
+all four main lifts at once rather than inventing a second way to compute a
+5/3/1 week.
+
+So each of 5/3/1's four days flags its main lift, and that row's weight comes
+from `mainLiftWeek1()` in `progression.ts` — the same training max
+`ProgressionPanel` already reads for that exact lift (a hand-set override
+first, else derived from the log), not a number invented for the plan.
+Applying the plan and later opening **Plan →** on that lift therefore agree
+with each other, because they are reading the same training max rather than
+keeping two. Assistance work follows Wendler's own stated categories for a
+beginner running it — a push, a pull, and a single-leg-or-core movement each
+day, whichever the main lift doesn't already cover — though the specific
+exercises filling each category are this app's own pick from its catalogue,
+not Wendler's.
 
 ## Named workouts
 
@@ -1009,8 +1043,6 @@ GitHub account.
 
 Not commitments. Roughly in the order they would earn their place:
 
-- **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,
-  StrongLifts, GZCLP.
 - **Install as an app (PWA)** — it is already a static site built around
   working offline (the local-storage-first design was there from the start,
   not retrofitted), so this is mostly a manifest and a service worker.

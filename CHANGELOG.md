@@ -191,6 +191,38 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Three more ready-made plans: StrongLifts 5×5, GZCLP, and 5/3/1 as a full
+  four-day plan** rather than the single-lift panel it lived in before.
+  StrongLifts and GZCLP are structurally the same kind of thing the plan
+  library already had — a new day/exercise/sets/reps shape, checked against
+  their real published structures
+  ([StrongLifts](https://stronglifts.com/stronglifts-5x5/workout-program/),
+  [GZCLP](https://www.boostcamp.app/coaches/cody-lefever/gzcl-program-gzclp))
+  rather than recalled, running through the same `prescribe()` every other
+  plan uses. 5/3/1 needed different plumbing: each main lift's row is now
+  flagged `mainLift: true`, and a new `mainLiftWeek1()` in `progression.ts`
+  builds its weight from that exercise's *own* training-max cycle — the same
+  training max `ProgressionPanel` already reads for it (a hand-set override
+  first, else derived from the log, `null` when neither exists, mirroring
+  `ProgressionPanel`'s own "log a set first" case) — rather than from a flat
+  prescribed number. Applying the plan and opening Plan → on that lift
+  afterwards therefore agree with each other; a training max set from either
+  place is the one both use. The preview shows the real three-set ramp
+  (`95 / 110 / 125 kg`, not one figure standing in for three different
+  weights, which every other plan's rows are honest to show as identical
+  because they actually are) and falls back to "pick your own" for a lift
+  with no training max yet. Assistance work follows Wendler's own stated
+  categories for a beginner running this — a push, a pull, and a
+  single-leg-or-core movement each day, whichever the main lift doesn't
+  already cover — checked against
+  [jimwendler.com](https://www.jimwendler.com/blogs/jimwendler-com/101065094-5-3-1-for-a-beginner)
+  rather than recalled; the specific exercises within each category are this
+  app's own pick from its catalogue, not Wendler's. Verified with new unit
+  tests for `mainLiftWeek1()` (including that a hand-set training max wins
+  over the derived one, same rule as `ProgressionPanel`) and a new Playwright
+  spec confirming the plan preview shows a real week for a lift with history
+  and "pick your own" for one without, and that applying it carries the
+  correct AMRAP-marked cycle into the workout.
 - **Swap an exercise for one that trains the same muscle** — a ⇄ button
   beside each exercise in a workout opens a short list of replacements,
   picked by a new `swapsFor()` in `pairs.js`: the opposite legality test from

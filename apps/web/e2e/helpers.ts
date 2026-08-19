@@ -3,6 +3,7 @@ import type { Page } from "@playwright/test";
 const STORAGE_KEY = "guidetrain.profile";
 const PROGRAMS_KEY = "guidetrain.programs";
 const ACTIVE_PROGRAM_KEY = "guidetrain.programs.active";
+const LOG_KEY = "guidetrain.log";
 
 /**
  * Seeds a profile into localStorage before the page's own scripts run, so a
@@ -41,5 +42,26 @@ export async function seedProgram(page: Page, exerciseIds: string[] = ["Barbell_
       string,
       string,
     ],
+  );
+}
+
+/**
+ * Seeds logged sets directly, so a test can reach a state that depends on
+ * training-max history (a 5/3/1 cycle, a progression estimate) without
+ * logging them through the UI first. Must be called before `page.goto()`,
+ * same as `seedProfile`.
+ */
+export async function seedLog(
+  page: Page,
+  sets: { id: string; weight: number; reps: number; at?: number }[],
+) {
+  const entries = sets.map((s, i) => ({
+    uid: `seed-${i}`,
+    at: Date.now(),
+    ...s,
+  }));
+  await page.addInitScript(
+    ([key, json]) => localStorage.setItem(key, json),
+    [LOG_KEY, JSON.stringify(entries)] as [string, string],
   );
 }

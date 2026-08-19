@@ -295,11 +295,13 @@
    "bodyweight": "starting point",
    "atBodyWeight": "your body weight",
    "relatedLift": "from {lift}",
-   "knownMax": "your set max"
+   "knownMax": "your set max",
+   "cycle": "5/3/1, week 1"
   },
   "startingNote": "Weights marked “starting point” come from your body weight and age — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
   "knownMaxNote": "Weights marked “your set max” come from the max you set on the Stats page for this lift, not a logged set — a real number, just not measured here yet. Log a set and it takes over.",
   "relatedNote": "Weights marked “from” another lift are scaled from a known max on that lift, not measured on this one — a real number, just not this bar's. Set your own on the Stats page.",
+  "cycleNote": "Squat, bench, deadlift and overhead press each carry their own training max here — the same one Plan → uses for that lift everywhere else in the app. A lift with nothing logged and no training max set shows “pick your own” for its first week; open Plan → on it after adding the workout to set one.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
   "day": {
    "a": "Workout A",
@@ -314,7 +316,11 @@
    "shoulders": "Shoulders",
    "arms": "Arms",
    "full": "Full body",
-   "shouldersarms": "Shoulders / Arms"
+   "shouldersarms": "Shoulders / Arms",
+   "ohp": "Overhead press",
+   "deadlift": "Deadlift",
+   "bench": "Bench press",
+   "squat": "Squat"
   },
   "fullbody": {
    "name": "Full body",
@@ -344,6 +350,18 @@
   "noequip": {
    "name": "Bodyweight only",
    "desc": "No added weight — push-ups, pull-ups and bodyweight squats, using nothing but a bar to hang from. For travel, a hotel room, or starting out with nothing."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Three sessions a week, alternating two workouts, five sets of five on the big lifts. The same shape as Full body, run heavier and faster."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Four days, three tiers — one heavy lift, one lighter, one light accessory. A structured way to keep progressing once a straight-set plan stops moving."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Four main lifts, each on its own weekly cycle off a training max that only ever climbs in small steps, with assistance work alongside. The same system as Plan →, for all four lifts at once."
   },
   "frequency": "Days a week"
  },

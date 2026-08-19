@@ -295,11 +295,13 @@
    "bodyweight": "Startwert",
    "atBodyWeight": "dein Körpergewicht",
    "relatedLift": "aus {lift}",
-   "knownMax": "dein gesetztes Max"
+   "knownMax": "dein gesetztes Max",
+   "cycle": "5/3/1, Woche 1"
   },
   "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht und Alter — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
   "knownMaxNote": "Mit „dein gesetztes Max“ markierte Gewichte stammen aus dem Maximum, das du auf der Statistik-Seite für diese Übung eingetragen hast, nicht aus einem erfassten Satz — eine echte Zahl, nur hier noch nicht gemessen. Trägst du einen Satz ein, übernimmt der.",
   "relatedNote": "Mit „aus“ markierte Gewichte sind von einem bekannten Maximum bei dieser anderen Übung skaliert, nicht an dieser Stange gemessen — eine echte Zahl, nur nicht von hier. Dein eigenes Maximum kannst du auf der Statistik-Seite eintragen.",
+  "cycleNote": "Kniebeuge, Bankdrücken, Kreuzheben und Schulterdrücken haben hier jeweils ihr eigenes Trainingsmaximum — dasselbe, das Plan → für diese Übung überall sonst in der App verwendet. Eine Übung ohne erfassten Satz und ohne gesetztes Trainingsmaximum zeigt für die erste Woche „selbst wählen“; setze eines, indem du nach dem Hinzufügen des Trainings Plan → auf dieser Übung öffnest.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
   "day": {
    "a": "Training A",
@@ -314,7 +316,11 @@
    "shoulders": "Schultern",
    "arms": "Arme",
    "full": "Ganzkörper",
-   "shouldersarms": "Schultern / Arme"
+   "shouldersarms": "Schultern / Arme",
+   "ohp": "Schulterdrücken",
+   "deadlift": "Kreuzheben",
+   "bench": "Bankdrücken",
+   "squat": "Kniebeuge"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -344,6 +350,18 @@
   "noequip": {
    "name": "Nur Körpergewicht",
    "desc": "Kein Zusatzgewicht — Liegestütze, Klimmzüge und Kniebeugen mit dem eigenen Körpergewicht, nur mit einer Stange zum Hängen. Für unterwegs, ein Hotelzimmer, oder den Einstieg ganz ohne Ausrüstung."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Drei Einheiten pro Woche, zwei abwechselnde Trainings, fünf Sätze zu fünf bei den großen Übungen. Die gleiche Struktur wie Ganzkörper, nur schwerer und schneller."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Vier Tage, drei Stufen — eine schwere Hauptübung, eine leichtere, eine leichte Zusatzübung. Ein strukturierter Weg, weiter voranzukommen, sobald ein einfacher Plan nicht mehr reicht."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Vier Hauptübungen, jede mit eigenem Wochenzyklus auf Basis eines Trainingsmaximums, das nur in kleinen Schritten steigt, dazu Zusatzübungen. Das gleiche System wie Plan →, für alle vier Übungen gleichzeitig."
   },
   "frequency": "Tage pro Woche"
  },

@@ -27,7 +27,19 @@ import type { SetEntry } from "../state/useLog";
  * no-related-max path outputs a first working set and says so.
  */
 
-export type PlanExercise = { id: string; sets: number; reps: number };
+export type PlanExercise = {
+  id: string;
+  sets: number;
+  reps: number;
+  /**
+   * This row is a 5/3/1 main lift: its weight comes from this exercise's own
+   * training-max cycle (`mainLiftWeek1` in progression.ts), the same one
+   * `ProgressionPanel` already runs for it, not from `prescribe()`. `sets`
+   * and `reps` here are a nominal week-1 shape (3 sets, 5 reps) used only
+   * where there is no training max yet to build a real week from.
+   */
+  mainLift?: boolean;
+};
 export type PlanDay = { name: string; exercises: PlanExercise[] };
 /** One frequency a plan can be run at — its own day list, not a relabelling. */
 export type PlanVariant = {
@@ -333,6 +345,152 @@ export const PLANS: PlanTemplate[] = [
               { id: "Bodyweight_Squat", sets: 3, reps: 15 },
               { id: "Single_Leg_Glute_Bridge", sets: 3, reps: 12 },
               { id: "3_4_Sit-Up", sets: 3, reps: 20 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    // Mark Rippetoe by way of Mehdi — squat every session, alternating bench
+    // and press, deadlift kept to a single set because it is the one lift
+    // that taxes recovery enough to make five pointless. Structurally the
+    // same shape as "fullbody" above; the difference the name is actually
+    // about is five sets of five rather than three, and a session-by-session
+    // pace that plan doesn't claim. Checked against
+    // https://stronglifts.com/stronglifts-5x5/workout-program/ rather than
+    // recalled.
+    id: "stronglifts",
+    variants: [
+      {
+        perWeek: 3,
+        days: [
+          {
+            name: "a",
+            exercises: [
+              { id: "Barbell_Squat", sets: 5, reps: 5 },
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 5, reps: 5 },
+              { id: "Bent_Over_Barbell_Row", sets: 5, reps: 5 },
+            ],
+          },
+          {
+            name: "b",
+            exercises: [
+              { id: "Barbell_Squat", sets: 5, reps: 5 },
+              { id: "Standing_Military_Press", sets: 5, reps: 5 },
+              { id: "Barbell_Deadlift", sets: 1, reps: 5 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    // Cody LeFever's GZCLP. Four days, three tiers: T1 is the day's main
+    // lift, heavy, 5x3 (the book's last set is AMRAP — this app's flat plans
+    // have no per-set AMRAP flag, so the row shows a straight 5x3 and the
+    // reader is free to push the last set, same simplification made for T3
+    // below); T2 is a second compound at lower intensity, and it is the same
+    // four lifts as T1 rotated one day later, at higher reps; T3 is a single
+    // light accessory chasing volume rather than the bar weight. Checked
+    // against https://www.boostcamp.app/coaches/cody-lefever/gzcl-program-gzclp
+    // rather than recalled: T1 5x3, T2 3x10, T3 3x15, and the exact rotation
+    // of which lift is T1/T2 on which day.
+    id: "gzclp",
+    variants: [
+      {
+        perWeek: 4,
+        days: [
+          {
+            name: "squat",
+            exercises: [
+              { id: "Barbell_Squat", sets: 5, reps: 3 },
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 10 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "ohp",
+            exercises: [
+              { id: "Standing_Military_Press", sets: 5, reps: 3 },
+              { id: "Barbell_Deadlift", sets: 3, reps: 10 },
+              { id: "Bent_Over_Barbell_Row", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "bench",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 5, reps: 3 },
+              { id: "Barbell_Squat", sets: 3, reps: 10 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "deadlift",
+            exercises: [
+              { id: "Barbell_Deadlift", sets: 5, reps: 3 },
+              { id: "Standing_Military_Press", sets: 3, reps: 10 },
+              { id: "Bent_Over_Barbell_Row", sets: 3, reps: 15 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    // Jim Wendler's 5/3/1, as the four days it was written for rather than
+    // the single-lift panel this app already had. Each day's main lift is
+    // flagged `mainLift: true`, which tells PlanLibrary to build its weight
+    // from that exercise's own training-max cycle (see `mainLiftWeek1` in
+    // progression.ts) instead of a flat prescribed number — the same cycle
+    // `ProgressionPanel` already runs for it, so a training max set from
+    // either place is the one both use. `sets`/`reps` here are only the
+    // nominal week-1 shape, used verbatim solely when there is no training
+    // max yet to build a real week from.
+    //
+    // Assistance is Wendler's own stated categories for a beginner running
+    // this — a push, a pull, and a single-leg-or-core movement each day,
+    // whichever the main lift itself doesn't already cover — at 5x10, the
+    // simplest of his supplemental options. Day order (press, deadlift,
+    // bench, squat) and the categories themselves checked against
+    // https://www.jimwendler.com/blogs/jimwendler-com/101065094-5-3-1-for-a-beginner
+    // rather than recalled; the specific exercises within each category are
+    // this app's own pick from its catalogue, not Wendler's.
+    id: "531",
+    variants: [
+      {
+        perWeek: 4,
+        days: [
+          {
+            name: "ohp",
+            exercises: [
+              { id: "Standing_Military_Press", sets: 3, reps: 5, mainLift: true },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 5, reps: 10 },
+              { id: "3_4_Sit-Up", sets: 5, reps: 10 },
+            ],
+          },
+          {
+            name: "deadlift",
+            exercises: [
+              { id: "Barbell_Deadlift", sets: 3, reps: 5, mainLift: true },
+              { id: "Dumbbell_Bench_Press", sets: 5, reps: 10 },
+              { id: "Single_Leg_Glute_Bridge", sets: 5, reps: 10 },
+            ],
+          },
+          {
+            name: "bench",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5, mainLift: true },
+              { id: "Bent_Over_Barbell_Row", sets: 5, reps: 10 },
+              { id: "3_4_Sit-Up", sets: 5, reps: 10 },
+            ],
+          },
+          {
+            name: "squat",
+            exercises: [
+              { id: "Barbell_Squat", sets: 3, reps: 5, mainLift: true },
+              { id: "Dumbbell_Bench_Press", sets: 5, reps: 10 },
+              { id: "Single_Leg_Glute_Bridge", sets: 5, reps: 10 },
             ],
           },
         ],

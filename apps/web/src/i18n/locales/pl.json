@@ -315,11 +315,13 @@
    "bodyweight": "punkt wyjścia",
    "atBodyWeight": "twoja masa ciała",
    "relatedLift": "na podstawie: {lift}",
-   "knownMax": "twoje ustawione maks."
+   "knownMax": "twoje ustawione maks.",
+   "cycle": "5/3/1, tydzień 1"
   },
   "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała i wieku — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
   "knownMaxNote": "Ciężary oznaczone „twoje ustawione maks.” pochodzą z maksimum, które ustawiłeś na stronie Statystyki dla tego ćwiczenia, a nie z zapisanej serii — to prawdziwa liczba, tylko jeszcze niezmierzona tutaj. Gdy zapiszesz serię, to ona przejmie pierwszeństwo.",
   "relatedNote": "Ciężary oznaczone „na podstawie” innego ćwiczenia są przeskalowane ze znanego maksimum na tamtym ćwiczeniu, a nie zmierzone tutaj — to prawdziwa liczba, tylko nie z tej sztangi. Swoje własne maksimum możesz ustawić na stronie Statystyki.",
+  "cycleNote": "Przysiad, wyciskanie leżąc, martwy ciąg i wyciskanie żołnierskie mają tu każde swoje własne maksimum treningowe — to samo, którego używa Plan → dla tego ćwiczenia wszędzie indziej w aplikacji. Ćwiczenie bez zapisanej serii i bez ustawionego maksimum treningowego pokazuje w pierwszym tygodniu „wybierz sam”; ustaw je, otwierając Plan → na tym ćwiczeniu po dodaniu treningu.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
   "day": {
    "a": "Trening A",
@@ -334,7 +336,11 @@
    "shoulders": "Barki",
    "arms": "Ramiona",
    "full": "Całe ciało",
-   "shouldersarms": "Barki / Ramiona"
+   "shouldersarms": "Barki / Ramiona",
+   "ohp": "Wyciskanie żołnierskie",
+   "deadlift": "Martwy ciąg",
+   "bench": "Wyciskanie leżąc",
+   "squat": "Przysiad"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -364,6 +370,18 @@
   "noequip": {
    "name": "Tylko masa ciała",
    "desc": "Bez dodatkowego obciążenia — pompki, podciąganie i przysiady z masą własną, mając tylko drążek do zwisu. Na podróże, pokój hotelowy, albo start bez niczego."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Trzy sesje tygodniowo, dwa naprzemienne treningi, pięć serii po pięć na dużych bojach. Ta sama struktura co Całe ciało, tylko ciężej i szybciej."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Cztery dni, trzy poziomy — jedno ciężkie ćwiczenie, jedno lżejsze, jeden lekki dodatek. Uporządkowany sposób na dalszy postęp, gdy prosty plan przestaje działać."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Cztery główne ćwiczenia, każde na własnym tygodniowym cyklu opartym na maksimum treningowym, które rośnie tylko małymi krokami, plus ćwiczenia dodatkowe. Ten sam system co Plan →, naraz dla wszystkich czterech."
   },
   "frequency": "Dni w tygodniu"
  },

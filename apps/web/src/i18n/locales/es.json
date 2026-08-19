@@ -295,11 +295,13 @@
    "bodyweight": "punto de partida",
    "atBodyWeight": "tu peso corporal",
    "relatedLift": "de {lift}",
-   "knownMax": "tu máximo fijado"
+   "knownMax": "tu máximo fijado",
+   "cycle": "5/3/1, semana 1"
   },
   "startingNote": "Los pesos marcados «punto de partida» salen de tu peso corporal y edad: una media poblacional, no una medición tuya. Trata la primera serie como una prueba: si sube fácil, añade; si no, quita. En cuanto registres una serie, ese ejercicio usará tus propios números.",
   "knownMaxNote": "Los pesos marcados «tu máximo fijado» vienen del máximo que fijaste en la página de Estadísticas para este ejercicio, no de una serie registrada — un número real, solo que aún no medido aquí. En cuanto registres una serie, esa toma el mando.",
   "relatedNote": "Los pesos marcados «de» otro ejercicio están escalados desde un máximo conocido en ese ejercicio, no medidos en este — un número real, solo que no de esta barra. Fija el tuyo propio en la página de Estadísticas.",
+  "cycleNote": "La sentadilla, el press de banca, el peso muerto y el press militar tienen aquí su propio máximo de entrenamiento — el mismo que usa Plan → para ese ejercicio en el resto de la app. Un ejercicio sin ninguna serie registrada y sin máximo de entrenamiento fijado muestra «elige tú» para su primera semana; fija uno abriendo Plan → en ese ejercicio después de añadir el entrenamiento.",
   "loggedNote": "Las series están para terminarlas, no para acabar contigo: deja una o dos repeticiones en reserva.",
   "day": {
    "a": "Entrenamiento A",
@@ -314,7 +316,11 @@
    "shoulders": "Hombros",
    "arms": "Brazos",
    "full": "Cuerpo completo",
-   "shouldersarms": "Hombros / Brazos"
+   "shouldersarms": "Hombros / Brazos",
+   "ohp": "Press militar",
+   "deadlift": "Peso muerto",
+   "bench": "Press de banca",
+   "squat": "Sentadilla"
   },
   "fullbody": {
    "name": "Cuerpo completo",
@@ -344,6 +350,18 @@
   "noequip": {
    "name": "Solo peso corporal",
    "desc": "Sin peso añadido — flexiones, dominadas y sentadillas con el propio peso, con nada más que una barra donde colgarte. Para viajar, una habitación de hotel, o empezar sin nada."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Tres sesiones por semana, dos entrenamientos alternos, cinco series de cinco en los grandes básicos. La misma estructura que Cuerpo completo, pero más pesada y más rápida."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Cuatro días, tres niveles: un ejercicio pesado, uno más ligero, un accesorio ligero. Una forma estructurada de seguir progresando cuando un plan de series fijas deja de avanzar."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Cuatro ejercicios principales, cada uno con su propio ciclo semanal a partir de un máximo de entrenamiento que solo sube en pasos pequeños, con accesorios junto a cada uno. El mismo sistema que Plan →, para los cuatro a la vez."
   },
   "frequency": "Días a la semana"
  },

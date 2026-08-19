@@ -295,11 +295,13 @@
    "bodyweight": "ponto de partida",
    "atBodyWeight": "o seu peso corporal",
    "relatedLift": "de {lift}",
-   "knownMax": "o seu máximo definido"
+   "knownMax": "o seu máximo definido",
+   "cycle": "5/3/1, semana 1"
   },
   "startingNote": "Os pesos marcados «ponto de partida» vêm do seu peso corporal e idade: uma média populacional, não uma medição sua. Trate a primeira série como um teste: se subir fácil, acrescente; se não, tire. Assim que registar uma série, esse exercício passa a usar os seus próprios números.",
   "knownMaxNote": "Os pesos marcados «o seu máximo definido» vêm do máximo que definiu na página de Estatísticas para este exercício, não de uma série registada — um número real, só que ainda não medido aqui. Assim que registar uma série, essa passa a valer.",
   "relatedNote": "Os pesos marcados «de» outro exercício são escalados a partir de um máximo conhecido nesse exercício, não medidos aqui — um número real, só que não desta barra. Defina o seu próprio na página de Estatísticas.",
+  "cycleNote": "O agachamento, o supino, o levantamento terra e o desenvolvimento têm aqui o seu próprio máximo de treino — o mesmo que o Plano → usa para esse exercício em qualquer outro lugar da aplicação. Um exercício sem série registada e sem máximo de treino definido mostra «escolha você» na primeira semana; defina um abrindo o Plano → nesse exercício depois de adicionar o treino.",
   "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
   "day": {
    "a": "Treino A",
@@ -314,7 +316,11 @@
    "shoulders": "Ombros",
    "arms": "Braços",
    "full": "Corpo inteiro",
-   "shouldersarms": "Ombros / Braços"
+   "shouldersarms": "Ombros / Braços",
+   "ohp": "Desenvolvimento",
+   "deadlift": "Levantamento terra",
+   "bench": "Supino",
+   "squat": "Agachamento"
   },
   "fullbody": {
    "name": "Corpo inteiro",
@@ -344,6 +350,18 @@
   "noequip": {
    "name": "Só peso corporal",
    "desc": "Sem carga adicional — flexões, elevações e agachamentos com o peso do corpo, usando apenas uma barra para se pendurar. Para viajar, um quarto de hotel, ou para começar sem nada."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Três sessões por semana, dois treinos alternados, cinco séries de cinco nos grandes exercícios. A mesma estrutura do Corpo inteiro, mais pesada e mais rápida."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Quatro dias, três níveis — um exercício pesado, um mais leve, um acessório leve. Uma forma estruturada de continuar a progredir quando um plano de séries fixas deixa de avançar."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Quatro exercícios principais, cada um com o seu próprio ciclo semanal a partir de um máximo de treino que só sobe aos poucos, com exercícios de apoio a acompanhar. O mesmo sistema do Plano →, para os quatro ao mesmo tempo."
   },
   "frequency": "Dias por semana"
  },

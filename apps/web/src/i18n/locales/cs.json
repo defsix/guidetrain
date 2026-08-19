@@ -315,11 +315,13 @@
    "bodyweight": "výchozí bod",
    "atBodyWeight": "vaše tělesná hmotnost",
    "relatedLift": "podle {lift}",
-   "knownMax": "váš zadaný max"
+   "knownMax": "váš zadaný max",
+   "cycle": "5/3/1, 1. týden"
   },
   "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti a věku — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
   "knownMaxNote": "Váhy označené „váš zadaný max“ vycházejí z maxima, které jste zadali na stránce Statistiky pro tento cvik, ne ze zaznamenané série — jde o reálné číslo, jen zatím neměřené tady. Jakmile zaznamenáte sérii, převezme to ona.",
   "relatedNote": "Váhy označené „podle“ jiného cviku vycházejí ze známého maxima na tomto cviku, ne z měření tady — jde o reálné číslo, jen ne z této osy. Vlastní si nastavte na stránce Statistiky.",
+  "cycleNote": "Dřep, bench press, mrtvý tah a tlak nad hlavou tu mají každý svoje vlastní tréninkové maximum — stejné, jaké používá Plán → pro tento cvik všude jinde v aplikaci. Cvik bez zaznamenané série a bez nastaveného maxima ukazuje pro první týden „zvolte si sami“; tréninkové maximum nastavíte po přidání tréninku otevřením Plánu → na daném cviku.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
   "day": {
    "a": "Trénink A",
@@ -334,7 +336,11 @@
    "shoulders": "Ramena",
    "arms": "Paže",
    "full": "Celé tělo",
-   "shouldersarms": "Ramena / Paže"
+   "shouldersarms": "Ramena / Paže",
+   "ohp": "Tlak nad hlavou",
+   "deadlift": "Mrtvý tah",
+   "bench": "Bench press",
+   "squat": "Dřep"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -364,6 +370,18 @@
   "noequip": {
    "name": "Jen vlastní váha",
    "desc": "Žádná přidaná zátěž — kliky, shyby a dřepy s vlastní vahou, jen s hrazdou na shyby. Na cesty, do hotelového pokoje, nebo na úplný začátek."
+  },
+  "stronglifts": {
+   "name": "StrongLifts 5×5",
+   "desc": "Tři jednotky týdně, dva střídající se tréninky, pět sérií po pěti na velkých cvicích. Stejná struktura jako Celé tělo, jen těžší a rychlejší tempo."
+  },
+  "gzclp": {
+   "name": "GZCLP",
+   "desc": "Čtyři dny, tři úrovně — jeden těžký cvik, jeden lehčí, jeden lehký doplňkový. Strukturovaný způsob, jak pokračovat v progresi, jakmile přímočarý plán přestane fungovat."
+  },
+  "531": {
+   "name": "5/3/1",
+   "desc": "Čtyři hlavní cviky, každý na vlastním týdenním cyklu podle tréninkového maxima, které stoupá jen po malých krocích, s doplňkovými cviky k tomu. Stejný systém jako Plán →, najednou pro všechny čtyři cviky."
   },
   "frequency": "Dní v týdnu"
  },

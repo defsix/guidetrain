@@ -2,10 +2,11 @@ import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import { PLANS, prescribe } from "../lib/plans";
 import type { PlanTemplate } from "../lib/plans";
-import { bestEstimate } from "../lib/progression";
+import { bestEstimate, mainLiftWeek1 } from "../lib/progression";
 import type { SetEntry } from "../state/useLog";
 import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { AppliedDay } from "../state/usePrograms";
+import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -23,6 +24,8 @@ type Props = {
   profile: Profile | null;
   /** A max set by hand on the stats page, per exercise id — see useKnownMax. */
   knownMaxes: Record<string, KnownMaxEntry>;
+  /** A training max set by hand, per exercise id — same store ProgressionPanel reads. */
+  trainingMaxes: Record<string, TrainingMaxOverride>;
   /** Applies the plan as named workouts, carrying the weights just previewed. */
   onApply: (days: AppliedDay[]) => void;
 };
@@ -36,7 +39,7 @@ type Props = {
  * which is why every row carries its source.
  */
 export default function PlanLibrary({
-  open, onClose, allSets, profile, knownMaxes, onApply,
+  open, onClose, allSets, profile, knownMaxes, trainingMaxes, onApply,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [chosen, setChosen] = useState<PlanTemplate | null>(null);
@@ -91,6 +94,26 @@ export default function PlanLibrary({
     return variant.days.map((day) => ({
       name: day.name,
       exercises: day.exercises.map((e) => {
+        if (e.mainLift) {
+          // This row's weight comes from the lift's own 5/3/1 cycle, not
+          // from `prescribe()` — the same training max ProgressionPanel
+          // already reads, so applying this plan and opening Plan → on the
+          // lift afterwards agree with each other rather than each keeping
+          // a separate number.
+          const week1 = mainLiftWeek1(byExercise.get(e.id) ?? [], trainingMaxes[e.id]?.tm);
+          if (!week1) {
+            return { ...e, load: undefined, source: "unknown" as const, relatedTo: undefined };
+          }
+          return {
+            ...e,
+            sets: week1.length,
+            reps: Math.max(...week1.map((s) => s.reps)),
+            load: week1[week1.length - 1].load,
+            steps: week1,
+            source: "cycle" as const,
+            relatedTo: undefined,
+          };
+        }
         const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile, knownMax);
         return {
           ...e,
@@ -100,7 +123,7 @@ export default function PlanLibrary({
         };
       }),
     }));
-  }, [variant, byExercise, profile, knownMax]);
+  }, [variant, byExercise, profile, knownMax, trainingMaxes]);
 
   // Only true once something on screen actually needs it explained — a plan
   // built entirely from logged lifts or from body-only exercises never shows
@@ -112,6 +135,12 @@ export default function PlanLibrary({
   const hasStartingPoint = resolved?.some((day) => day.exercises.some((e) => e.source === "bodyweight"));
   const hasRelatedLift = resolved?.some((day) => day.exercises.some((e) => e.source === "relatedLift"));
   const hasKnownMax = resolved?.some((day) => day.exercises.some((e) => e.source === "knownMax"));
+  // Shown for the 531 plan specifically rather than derived from what's on
+  // screen: even a lift with no training max yet (rendered "unknown", same
+  // as any other row with nothing to go on) is a 531 main lift, and the note
+  // is exactly what explains why opening Plan → on it after adding the
+  // workout is the way to fix that.
+  const isCyclePlan = chosen?.variants.some((v) => v.days.some((d) => d.exercises.some((e) => e.mainLift)));
 
   const u = t("unit.kg");
   if (!open) return null;
@@ -189,6 +218,16 @@ export default function PlanLibrary({
                         <span className="dload">
                           {e.source === "unknown" ? (
                             <em className="unknown">{t("plans.pickYourOwn")}</em>
+                          ) : e.source === "cycle" && e.steps ? (
+                            // A 5/3/1 main lift's three sets are deliberately
+                            // not the same weight, unlike every other row
+                            // here — showing one figure would claim they are.
+                            <>
+                              <strong>
+                                {e.steps.map((s) => s.load).join(" / ")} {u}
+                              </strong>
+                              <em className="cycle">{t("plans.from.cycle")}</em>
+                            </>
                           ) : (
                             <>
                               <strong>
@@ -223,6 +262,7 @@ export default function PlanLibrary({
             {hasStartingPoint && <p className="plan-note flag">{t("plans.startingNote")}</p>}
             {hasKnownMax && <p className="plan-note flag">{t("plans.knownMaxNote")}</p>}
             {hasRelatedLift && <p className="plan-note flag">{t("plans.relatedNote")}</p>}
+            {isCyclePlan && <p className="plan-note flag">{t("plans.cycleNote")}</p>}
             <p className="plan-note">{t("plans.loggedNote")}</p>
             {/* The weights above are not just a preview any more — they go into
                 the workout, where the logger offers them back set by set. */}

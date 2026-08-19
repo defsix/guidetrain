@@ -13,6 +13,7 @@ import {
   cyclesTo,
   estimateOneRepMax,
   incrementFor,
+  mainLiftWeek1,
   platesPerSide,
   resetTrainingMax,
   restSeconds,
@@ -274,6 +275,38 @@ describe("REST_EXTEND_SECONDS", () => {
   it("is a small, positive nudge rather than a whole extra rest period", () => {
     expect(REST_EXTEND_SECONDS).toBeGreaterThan(0);
     expect(REST_EXTEND_SECONDS).toBeLessThan(restSeconds(20));
+  });
+});
+
+describe("mainLiftWeek1", () => {
+  it("returns null with nothing logged and no training max set by hand", () => {
+    expect(mainLiftWeek1([])).toBeNull();
+  });
+
+  it("builds week 1 from the log, same as ProgressionPanel would show", () => {
+    // 140 x 5 estimates 163.33, trainingMax rounds 90% of that to 147.5.
+    // 65/75/85% of 147.5, each rounded to the 2.5 kg step: 95, 110, 125.
+    const week1 = mainLiftWeek1([set(140, 5)]);
+    expect(week1).toEqual([
+      { load: 95, reps: 5 },
+      { load: 110, reps: 5 },
+      { load: 125, reps: 5, amrap: true },
+    ]);
+  });
+
+  it("prefers a training max set by hand over the one the log implies", () => {
+    // Same log as above (derived TM 147.5), but a hand-set 100 kg wins —
+    // ProgressionPanel's own rule, applied here too.
+    const week1 = mainLiftWeek1([set(140, 5)], 100);
+    expect(week1).toEqual([
+      { load: 65, reps: 5 },
+      { load: 75, reps: 5 },
+      { load: 85, reps: 5, amrap: true },
+    ]);
+  });
+
+  it("still returns a week from a training max alone, with nothing logged", () => {
+    expect(mainLiftWeek1([], 100)).not.toBeNull();
   });
 });
 

@@ -218,6 +218,7 @@ export default function BodyExplorer() {
         allSets={log.entries}
         profile={profile ?? null}
         knownMaxes={knownMax.overrides}
+        trainingMaxes={tms.overrides}
         onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
       />
     </div>

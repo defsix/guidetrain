@@ -133,21 +133,37 @@ function cleanTargets(raw: unknown): Record<string, Target> {
  */
 export type AppliedDay = {
   name: string;
-  exercises: { id: string; sets: number; reps: number; load?: number }[];
+  exercises: {
+    id: string;
+    sets: number;
+    reps: number;
+    load?: number;
+    /**
+     * Set only for a 5/3/1 main lift, whose three sets are deliberately not
+     * the same weight — see `mainLiftWeek1` in progression.ts. When present
+     * this replaces `load` entirely rather than supplementing it.
+     */
+    steps?: TargetStep[];
+  }[];
 };
 
 /**
  * A plan's row, turned into a target the workout can act on.
  *
- * The same weight for every set, because that is what these plans prescribe: a
- * straight-set plan asks for 3 × 5 at one load, unlike a 5/3/1 week whose three
- * sets differ. A row with no usable weight — nothing logged and no body weight
- * to work from — keeps its sets and reps and carries no steps, rather than
- * inventing a number to fill the field with.
+ * `steps` wins when the row carries its own, since that is exactly the case
+ * a flat repeated weight would misrepresent: a 5/3/1 main lift's three sets
+ * are deliberately not the same weight. Failing that, the same weight for
+ * every set is right, because that is what a straight-set plan actually
+ * prescribes. A row with no usable weight either way — nothing logged and no
+ * body weight to work from — keeps its sets and reps and carries no steps,
+ * rather than inventing a number to fill the field with.
  */
 function fromPlan(e: AppliedDay["exercises"][number]): Target {
   const t: Target = { sets: e.sets, reps: e.reps };
-  if (e.load && e.load > 0) {
+  if (e.steps) {
+    t.steps = e.steps;
+    t.source = "cycle";
+  } else if (e.load && e.load > 0) {
     t.steps = Array.from({ length: e.sets }, () => ({ load: e.load, reps: e.reps }));
     t.source = "plan";
   }

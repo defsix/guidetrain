@@ -180,6 +180,37 @@ export function cycle(tm: number): PlannedWeek[] {
   }));
 }
 
+export type CycleStep = { load: number; reps: number; amrap?: true };
+
+/**
+ * Week 1 of this lift's own 5/3/1 cycle, for a ready-made plan that wants to
+ * hand a main lift straight to the same system `ProgressionPanel` already
+ * runs for it — rather than a flat weight, which would misrepresent three
+ * sets that are deliberately not the same load.
+ *
+ * `overrideTM` takes a training max set by hand, the same one
+ * `ProgressionPanel` prefers over the derived one and for the same reason: it
+ * only exists because someone chose to state it. Left undefined, this asks
+ * only what the log already implies.
+ *
+ * Returns null exactly when `ProgressionPanel` would show its "log a set
+ * first" message instead of a table — no logged set and no training max is
+ * nothing to build a week out of, and inventing one from a body-weight guess
+ * would be exactly the kind of estimate-dressed-as-a-max the rest of this
+ * file refuses to produce.
+ */
+export function mainLiftWeek1(sets: SetEntry[], overrideTM?: number): CycleStep[] | null {
+  const best = bestEstimate(sets);
+  const derivedTM = best ? trainingMax(best.oneRM) : 0;
+  const tm = overrideTM ?? derivedTM;
+  if (tm <= 0) return null;
+  return cycle(tm)[0].sets.map((s) => ({
+    load: s.load,
+    reps: s.reps,
+    ...(s.amrap ? { amrap: true as const } : {}),
+  }));
+}
+
 /**
  * How much the training max goes up after each four-week cycle.
  *
