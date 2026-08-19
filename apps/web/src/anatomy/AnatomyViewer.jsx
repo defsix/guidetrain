@@ -7,6 +7,8 @@ import EnvironmentBoundary from './EnvironmentBoundary';
 import defaultMap from './muscle-map.json';
 import exerciseData from './exercises.json';
 import { pairsFor, pairsForRegion } from './pairs';
+import { injuryFor, isAvoided } from '../lib/injuries';
+import { injuryTag, injuryNote } from '../lib/injuryMessage';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
 import './anatomy.css';
@@ -140,6 +142,7 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  *   savedIds?: string[] | null,
  *   onToggleSave?: ((id: string) => void) | null,
  *   equipmentAvailable?: string[] | null,
+ *   injuries?: Record<string, {mode: 'avoid'|'warn', setAt: number}> | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -161,6 +164,9 @@ export default function AnatomyViewer({
   // empty means no preference stated, and every list here stays in exactly
   // the order it always rendered in.
   equipmentAvailable = null,
+  // Muscles marked injured on the Stats page — see lib/injuries.ts. Undefined
+  // or empty behaves exactly like no injuries marked.
+  injuries = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -279,11 +285,17 @@ export default function AnatomyViewer({
   // pairs.js, because the rule is about muscles and regions and stays the same
   // in every language; only the names shown change.
   const partners = useMemo(() => {
+    // A wider pool than the 3 actually shown, so an "avoid" injury filtering
+    // some out doesn't just shrink the list below what pairsFor/pairsForRegion
+    // would otherwise have offered.
     const found = shownDrill
-      ? pairsFor(shownDrill, 3, equipmentSet)
-      : pairsForRegion(selected?.region, 3, equipmentSet);
-    return found.map(localizeExercise);
-  }, [shownDrill, selected, localizeExercise, equipmentSet]);
+      ? pairsFor(shownDrill, 8, equipmentSet)
+      : pairsForRegion(selected?.region, 8, equipmentSet);
+    return found
+      .filter((x) => !isAvoided(x, injuries || {}))
+      .slice(0, 3)
+      .map(localizeExercise);
+  }, [shownDrill, selected, localizeExercise, equipmentSet, injuries]);
 
   // The map ships English. Its text is looked up by zone key and falls back to
   // whatever the map itself says, so a zone added to the model before it has
@@ -330,8 +342,17 @@ export default function AnatomyViewer({
   // mid-bag doesn't leave stale translations queued up.
   const bag = useRef({ key: null, queue: [], last: null });
 
+  // The injury marked on the muscle currently under the readout, if any —
+  // every exercise for this muscle has it as their primary mover (see
+  // muscleRegions.ts's MUSCLES export, drawn from the same catalogue), so an
+  // "avoid" here means every one of them is off-limits, not just some.
+  const selectedInjury = useMemo(
+    () => (selected && injuries ? injuries[selected.key ?? selected.id] : null),
+    [selected, injuries],
+  );
+
   const train = () => {
-    if (!selected) return;
+    if (!selected || selectedInjury?.mode === 'avoid') return;
     // Every exercise has a demonstration today, but ids rot and --revalidate
     // drops the bad ones, so this filter is what keeps the button from opening
     // an empty player.
@@ -494,8 +515,18 @@ export default function AnatomyViewer({
               <div className="mname">{zoneName(selected)}</div>
               <div className="mmeta">{regionName(selected.region)}</div>
               <div className="mdesc">{zoneDesc(selected)}</div>
+              {selectedInjury && (
+                <p className="minjury">{injuryNote(t, selectedInjury.mode, zoneName(selected))}</p>
+              )}
             </div>
-            <button className="train-btn" onClick={train}>{t('viewer.trainThis')}</button>
+            <button
+              className="train-btn"
+              onClick={train}
+              disabled={selectedInjury?.mode === 'avoid'}
+              title={selectedInjury?.mode === 'avoid' ? injuryNote(t, 'avoid', zoneName(selected)) : undefined}
+            >
+              {t('viewer.trainThis')}
+            </button>
           </div>
 
           {/* What to do in the rest between sets, before the exercise list
@@ -508,6 +539,9 @@ export default function AnatomyViewer({
               <p className="pair-why">{t('viewer.pairWhy')}</p>
               {partners.map((p) => {
                 const shown = openPair === p.id;
+                // "avoid" partners never reach this list — see the partners
+                // memo above — so the only injury left to flag here is "warn".
+                const injury = injuryFor(p, injuries || {});
                 return (
                   <div key={p.id} className={`pair-item ${shown ? 'open' : ''}`}>
                     <button
@@ -518,6 +552,7 @@ export default function AnatomyViewer({
                       <span className="pname">{p.name}</span>
                       <span className="tags">
                         <em>{t(`equipment.${p.equipment}`, undefined, p.equipment)}</em>
+                        {injury && <em className="injury-flag">{injuryTag(t, injury.mode)}</em>}
                       </span>
                     </button>
                     {/* How to do it first, then the demonstration underneath —

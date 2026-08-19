@@ -1,11 +1,17 @@
+import { injuryFor } from "../lib/injuries";
+import { injuryTag } from "../lib/injuryMessage";
+import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
 
-type Candidate = { id: string; name: string; equipment?: string };
+type Candidate = { id: string; name: string; equipment?: string; primary: string[] };
 
 type Props = {
   /** The exercise being replaced, or null when the panel is closed. */
   exercise: Candidate | null;
   candidates: Candidate[];
+  /** Injuries marked on the Stats page — a candidate under "avoid" is already
+      filtered out before this panel ever sees it; "warn" ones are flagged here. */
+  injuries: Record<string, Injury>;
   onPick: (id: string) => void;
   onClose: () => void;
 };
@@ -19,7 +25,7 @@ type Props = {
  * position and its sets-and-reps target; it does not touch anything already
  * logged, which stays exactly what it always was.
  */
-export default function SwapPanel({ exercise, candidates, onPick, onClose }: Props) {
+export default function SwapPanel({ exercise, candidates, injuries, onPick, onClose }: Props) {
   const { t } = useI18n();
   if (!exercise) return null;
 
@@ -40,16 +46,22 @@ export default function SwapPanel({ exercise, candidates, onPick, onClose }: Pro
           <p className="workout-empty">{t("swap.empty")}</p>
         ) : (
           <ul className="swap-list">
-            {candidates.map((c) => (
-              <li key={c.id}>
-                <button className="swap-option" onClick={() => onPick(c.id)}>
-                  <span className="swap-name">{c.name}</span>
-                  {c.equipment && (
-                    <em>{t(`equipment.${c.equipment}`, undefined, c.equipment)}</em>
-                  )}
-                </button>
-              </li>
-            ))}
+            {candidates.map((c) => {
+              const injury = injuryFor(c, injuries);
+              return (
+                <li key={c.id}>
+                  <button className="swap-option" onClick={() => onPick(c.id)}>
+                    <span className="swap-name">{c.name}</span>
+                    <span className="tags">
+                      {c.equipment && (
+                        <em>{t(`equipment.${c.equipment}`, undefined, c.equipment)}</em>
+                      )}
+                      {injury && <em className="injury-flag">{injuryTag(t, injury.mode)}</em>}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
           </ul>
         )}
       </aside>

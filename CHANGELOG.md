@@ -191,6 +191,25 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Injuries: mark a muscle, avoid or flag anything that trains it** — a new
+  Injuries panel next to Equipment marks any of the 17 trainable muscles as
+  injured, one of two ways chosen per muscle rather than once for the whole
+  feature: "Avoid" keeps anything whose *primary* muscle is the injured one
+  out of Train This, the rest-break partner list and the swap list — not
+  hidden by reordering the way an equipment preference is, actually excluded,
+  since the whole point is not to be offered what would train it. "Warn"
+  leaves every one of those lists exactly as it was and only flags the
+  entries, for an injury worth noting but not planning around. Primary muscle
+  only, on purpose — a bench press leaning on the triceps doesn't count as
+  training them, so a triceps injury doesn't touch bench press. A saved
+  workout is never rewritten for you: an already-added exercise for an
+  injured muscle stays exactly where it is, just flagged, same as a matching
+  row in a ready-made plan's preview. `lib/injuries.ts`'s `injuryFor()` is
+  the one place the primary-muscle match happens, and `lib/injuryMessage.ts`
+  keeps the wording in one place too, so the flag reads the same whether it's
+  on the anatomy readout, a swap candidate, a workout row or a plan preview.
+  In memory and localStorage only for now, like Goals and the rest of the
+  app's per-device state — not yet wired into Supabase sync.
 - **Goals: a weight and a date, for any exercise, tied into every plan** —
   a new Goals section on the Stats page sets a target weight and a target
   date for any exercise in the catalogue (a native `<input list>` picker

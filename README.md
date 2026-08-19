@@ -541,6 +541,39 @@ In memory and localStorage only for now, like the rest of the app's
 per-device state — not yet wired into Supabase sync, the same "optional to
 defer" call already made for the rest of this panel's data.
 
+## Injuries
+
+A separate panel, next to Equipment — mark any of the 17 trainable muscles
+as injured, and choose per muscle, not once for the whole feature, how the
+app should respond:
+
+- **Avoid** keeps anything whose *primary* muscle is the injured one out of
+  Train This, the rest-break partner list, and the swap list. This is the
+  one place in the app that actually excludes rather than reorders — Equipment
+  deliberately never hides an exercise, only reorders the list to put what's
+  available first, because a machine-only reader should still be able to see
+  the barbell row and ask a gym neighbour to spot. An injury is different: the
+  whole point of marking one is not to be offered what would train it.
+- **Warn** leaves every one of those lists exactly as it was and only flags
+  the entries — for an injury worth noting but not planning around.
+
+**Primary muscle only.** A bench press leans on the triceps, but that's not
+what a triceps injury is about — the injury applies to lifts that *train* the
+muscle, not everything a lift happens to touch on the way. `injuryFor()` in
+`lib/injuries.ts` is the one place that check happens, and `lib/injuryMessage.ts`
+keeps the wording in one place too, so the same flag reads identically on the
+anatomy readout, a swap candidate, a workout row, and a ready-made plan's
+preview row.
+
+**Nothing already saved is touched.** An exercise already added to a workout,
+or already sitting in a ready-made plan's preview, for a now-injured muscle is
+never removed or swapped out automatically — it's flagged instead, the same
+non-destructive choice Goals makes. The panel only changes what gets
+*suggested* or *flagged* from here on.
+
+In memory and localStorage only for now, like Goals and the rest of the app's
+per-device state — not yet wired into Supabase sync.
+
 ## Ready-made plans
 
 Ten shapes — full body, upper/lower, push/pull/legs, body part split,

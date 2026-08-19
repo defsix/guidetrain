@@ -454,6 +454,18 @@
   "intro": "O que realmente tem disponível agora, não um facto permanente sobre si — selecione o que se aplica. As listas de exercícios reorganizam-se para colocar estes primeiro; nada é escondido.",
   "bodyweightNote": "Os exercícios com o peso do corpo — flexões, elevações e os restantes — contam sempre como disponíveis, pois não precisam de nada."
  },
+ "injuryPanel": {
+  "title": "Lesões",
+  "close": "Fechar lesões",
+  "intro": "Marque um músculo que está poupando e escolha como a aplicação deve reagir. «Evitar» mantém tudo o que o treina fora de «Treinar este», dos parceiros de descanso e das trocas. «Avisar» deixa essas listas como estão, apenas assinaladas.",
+  "avoid": "Evitar",
+  "warn": "Avisar",
+  "avoidTag": "Evitar — lesão",
+  "warnTag": "Atenção — lesão",
+  "avoidNote": "Evitar — lesão assinalada: {muscle}.",
+  "warnNote": "Atenção — lesão assinalada: {muscle}.",
+  "note": "Isto só muda o que é sugerido ou assinalado a partir de agora — nada do que já está num treino guardado é removido por causa disso."
+ },
  "stats": {
   "title": "Estatísticas",
   "close": "Fechar estatísticas",

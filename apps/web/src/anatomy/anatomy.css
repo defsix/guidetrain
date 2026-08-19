@@ -108,6 +108,14 @@
   text-transform: uppercase; color: var(--text-muted); margin: 3px 0 6px;
 }
 .anatomy-readout .mdesc { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
+/* A note the reader needs rather than one they can skip — an injury marked
+   on this muscle, shown right where Train This would otherwise sit unexplained. */
+.anatomy-readout .minjury {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--accent);
+  margin: 6px 0 0;
+}
 .train-btn {
   align-self: center; white-space: nowrap; background: var(--accent); border: 0; color: var(--accent-text);
   font-family: inherit; font-weight: 600; font-size: 12px; letter-spacing: 0.07em;
@@ -115,6 +123,7 @@
   box-shadow: var(--shadow);
 }
 .train-btn:hover { filter: brightness(1.12); }
+.train-btn:disabled { opacity: 0.5; cursor: not-allowed; filter: none; }
 
 /* Exercises for the selected muscle. The list scrolls inside the readout so a
    long one can't push the panel off the canvas. */

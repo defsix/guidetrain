@@ -482,6 +482,18 @@
   "intro": "Co máte skutečně k dispozici právě teď, ne trvalý fakt o vás — vyberte, co platí. Seznamy cviků se přeskupí tak, aby byly tyto na prvním místě; nic se neskrývá.",
   "bodyweightNote": "Cviky s vlastní vahou — kliky, shyby a další — se vždy počítají jako dostupné, protože k nim nic nepotřebujete."
  },
+ "injuryPanel": {
+  "title": "Zranění",
+  "close": "Zavřít zranění",
+  "intro": "Označte sval, který šetříte, a zvolte, jak na to má aplikace reagovat. „Vyhýbat se“ vyřadí vše, co ho trénuje, z tlačítka „Trénovat tento“, partnerů na pauzu mezi sériemi i ze záměn. „Varovat“ ponechá všechny tyto seznamy beze změny, jen je označí.",
+  "avoid": "Vyhýbat se",
+  "warn": "Varovat",
+  "avoidTag": "Vyhýbat se — zranění",
+  "warnTag": "Pozor — zranění",
+  "avoidNote": "Vyhýbat se — označené zranění: {muscle}.",
+  "warnNote": "Pozor — označené zranění: {muscle}.",
+  "note": "Tohle mění jen to, co se od teď navrhuje nebo označuje — nic, co už máte v uloženém tréninku, se tím neodstraní."
+ },
  "stats": {
   "title": "Statistiky",
   "close": "Zavřít statistiky",

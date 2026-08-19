@@ -12,6 +12,9 @@ import type { Goal } from "../state/useGoals";
 import { useRestTimer } from "../state/useRestTimer";
 import { restSeconds, REST_EXTEND_SECONDS } from "../lib/progression";
 import { usesLegs } from "../lib/muscleRegions";
+import { injuryFor, isAvoided } from "../lib/injuries";
+import { injuryTag, injuryNote } from "../lib/injuryMessage";
+import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -67,6 +70,8 @@ type Props = {
   equipmentAvailable?: string[];
   /** Goals set on the Stats page, per exercise id — shown in Plan → for that exercise. */
   goals: Record<string, Goal>;
+  /** Injuries marked on the Stats page, per muscle id — narrows the swap list and flags matching rows. */
+  injuries: Record<string, Injury>;
 };
 
 /**
@@ -86,7 +91,7 @@ export default function WorkoutPanel({
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
-  onSwap, equipmentAvailable, goals,
+  onSwap, equipmentAvailable, goals, injuries,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -104,10 +109,16 @@ export default function WorkoutPanel({
   // rather than from `items` — the localized copy items holds has already
   // dropped the primary/secondary muscle data swapsFor needs.
   const swapAnchor = swapping ? BY_ID.get(swapping) : null;
-  const swapCandidates = useMemo(
-    () => (swapAnchor ? swapsFor(swapAnchor, 4, equipmentSet).map(localizeExercise) : []),
-    [swapAnchor, equipmentSet, localizeExercise],
-  );
+  const swapCandidates = useMemo(() => {
+    if (!swapAnchor) return [];
+    // A wider pool than the 4 actually shown, so an "avoid" injury filtering
+    // some out doesn't just shrink the list below what swapsFor would
+    // otherwise have offered.
+    return swapsFor(swapAnchor, 12, equipmentSet)
+      .filter((x) => !isAvoided(x, injuries))
+      .slice(0, 4)
+      .map(localizeExercise);
+  }, [swapAnchor, equipmentSet, injuries, localizeExercise]);
 
   /** Sets dealt with today: logged plus skipped. */
   const dealtWith = (id: string) => (today.get(id) ?? []).length + (skips[id] ?? 0);
@@ -266,7 +277,12 @@ export default function WorkoutPanel({
               );
             })()}
             <ol className="workout-list">
-              {items.map((x, i) => (
+              {items.map((x, i) => {
+                const injury = injuryFor(x, injuries);
+                const injuredMuscleName = injury
+                  ? t(`muscles.${injury.muscle}.name`, undefined, injury.muscle)
+                  : "";
+                return (
                 <li key={x.id}>
                   <div className="wrow">
                   <span className="wnum">{i + 1}</span>
@@ -274,6 +290,11 @@ export default function WorkoutPanel({
                     {x.name}
                     {x.equipment && (
                       <em>{t(`equipment.${x.equipment}`, undefined, x.equipment)}</em>
+                    )}
+                    {injury && (
+                      <em className={`injury-flag injury-flag-${injury.mode}`} title={injuryNote(t, injury.mode, injuredMuscleName)}>
+                        {injuryTag(t, injury.mode)}
+                      </em>
                     )}
                   </span>
                   {/* Buttons rather than drag: a drag target is hard to hit on a
@@ -351,7 +372,8 @@ export default function WorkoutPanel({
                     }
                   />
                 </li>
-              ))}
+                );
+              })}
             </ol>
             <div className="workout-foot">
               <button className="plans-open" onClick={onBrowsePlans}>
@@ -388,6 +410,7 @@ export default function WorkoutPanel({
       <SwapPanel
         exercise={items.find((i) => i.id === swapping) ?? null}
         candidates={swapCandidates}
+        injuries={injuries}
         onPick={(newId) => {
           if (swapping) onSwap(swapping, newId);
           setSwapping(null);

@@ -454,6 +454,18 @@
   "intro": "What you actually have access to right now, not a permanent fact about you — pick as many as apply. Exercise lists reorder to put these first; nothing is hidden.",
   "bodyweightNote": "Bodyweight exercises — push-ups, pull-ups and the rest — always count as available, since they need nothing to try."
  },
+ "injuryPanel": {
+  "title": "Injuries",
+  "close": "Close injuries",
+  "intro": "Mark a muscle you're working around, and choose how the app should respond. \"Avoid\" keeps anything that trains it out of Train This, rest-break partners and swaps. \"Warn\" leaves every one of those lists exactly as it was, only flagged.",
+  "avoid": "Avoid",
+  "warn": "Warn",
+  "avoidTag": "Avoid — injury",
+  "warnTag": "Caution — injury",
+  "avoidNote": "Avoid — injury marked: {muscle}.",
+  "warnNote": "Caution — injury marked: {muscle}.",
+  "note": "This only changes what gets suggested or flagged from here on — nothing already in a saved workout is removed for you."
+ },
  "stats": {
   "title": "Stats",
   "close": "Close stats",

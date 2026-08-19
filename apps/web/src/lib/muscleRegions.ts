@@ -13,3 +13,14 @@ export const REGION: Record<string, string> = Object.fromEntries(
 export function usesLegs(x: { primary: string[]; secondary: string[] }): boolean {
   return [...x.primary, ...x.secondary].some((m) => REGION[m] === "Legs");
 }
+
+/**
+ * Every muscle a lift can name as its primary mover, one entry each — the
+ * same set `exercises.json` is keyed by. Excludes zones like `foot`/`hand`/
+ * `head` that the model can show but no exercise trains as a primary muscle
+ * (`selectable: false`), so the injury picker doesn't offer a choice that
+ * could never match anything.
+ */
+export const MUSCLES: { key: string; name: string; region: string }[] = muscleMap.zones
+  .filter((z) => z.key && z.selectable !== false)
+  .map((z) => ({ key: z.key, name: z.name, region: z.region }));

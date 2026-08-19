@@ -454,6 +454,18 @@
   "intro": "Lo que realmente tienes disponible ahora mismo, no un dato permanente sobre ti — elige lo que corresponda. Las listas de ejercicios se reordenan para poner estos primero; nada se oculta.",
   "bodyweightNote": "Los ejercicios con el propio peso — flexiones, dominadas y el resto — siempre cuentan como disponibles, porque no necesitas nada para hacerlos."
  },
+ "injuryPanel": {
+  "title": "Lesiones",
+  "close": "Cerrar lesiones",
+  "intro": "Marca un músculo que estás cuidando y elige cómo debe reaccionar la app. «Evitar» mantiene fuera de «Entrenar esto», los compañeros de descanso y los cambios cualquier cosa que lo entrene. «Avisar» deja esas listas tal cual, solo las marca.",
+  "avoid": "Evitar",
+  "warn": "Avisar",
+  "avoidTag": "Evitar — lesión",
+  "warnTag": "Precaución — lesión",
+  "avoidNote": "Evitar — lesión marcada: {muscle}.",
+  "warnNote": "Precaución — lesión marcada: {muscle}.",
+  "note": "Esto solo cambia lo que se sugiere o se marca a partir de ahora — nada de lo que ya está en un entrenamiento guardado se elimina por esto."
+ },
  "stats": {
   "title": "Estadísticas",
   "close": "Cerrar estadísticas",

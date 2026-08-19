@@ -4,6 +4,7 @@ const STORAGE_KEY = "guidetrain.profile";
 const PROGRAMS_KEY = "guidetrain.programs";
 const ACTIVE_PROGRAM_KEY = "guidetrain.programs.active";
 const LOG_KEY = "guidetrain.log";
+const INJURIES_KEY = "guidetrain.injuries";
 
 /**
  * Seeds a profile into localStorage before the page's own scripts run, so a
@@ -63,5 +64,18 @@ export async function seedLog(
   await page.addInitScript(
     ([key, json]) => localStorage.setItem(key, json),
     [LOG_KEY, JSON.stringify(entries)] as [string, string],
+  );
+}
+
+/**
+ * Seeds a muscle marked injured, by its zone id (see muscle-map.json) —
+ * "quad", "pec" and so on. Must be called before `page.goto()`, same as the
+ * other seed helpers.
+ */
+export async function seedInjury(page: Page, muscleId: string, mode: "avoid" | "warn") {
+  const injuries = { [muscleId]: { mode, setAt: Date.now() } };
+  await page.addInitScript(
+    ([key, json]) => localStorage.setItem(key, json),
+    [INJURIES_KEY, JSON.stringify(injuries)] as [string, string],
   );
 }

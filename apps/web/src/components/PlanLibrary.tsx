@@ -5,11 +5,14 @@ import type { PlanTemplate } from "../lib/plans";
 import { bestEstimate, mainLiftWeek1, goalPace, incrementFor } from "../lib/progression";
 import { usesLegs } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
+import { injuryFor } from "../lib/injuries";
+import { injuryNote } from "../lib/injuryMessage";
 import type { SetEntry } from "../state/useLog";
 import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { AppliedDay } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { Goal } from "../state/useGoals";
+import type { Injury } from "../state/useInjuries";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -38,6 +41,8 @@ type Props = {
   trainingMaxes: Record<string, TrainingMaxOverride>;
   /** Goals set on the Stats page, per exercise id — shown as a pace note on any row that has one. */
   goals: Record<string, Goal>;
+  /** Injuries marked on the Stats page, per muscle id — flagged on any row whose primary muscle matches. */
+  injuries: Record<string, Injury>;
   /** Applies the plan as named workouts, carrying the weights just previewed. */
   onApply: (days: AppliedDay[]) => void;
 };
@@ -51,7 +56,7 @@ type Props = {
  * which is why every row carries its source.
  */
 export default function PlanLibrary({
-  open, onClose, allSets, profile, knownMaxes, trainingMaxes, goals, onApply,
+  open, onClose, allSets, profile, knownMaxes, trainingMaxes, goals, injuries, onApply,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [chosen, setChosen] = useState<PlanTemplate | null>(null);
@@ -234,6 +239,10 @@ export default function PlanLibrary({
                           incrementFor(usesLegs(raw)),
                         )
                       : null;
+                    const injury = injuryFor(raw, injuries);
+                    const injuredMuscleName = injury
+                      ? t(`muscles.${injury.muscle}.name`, undefined, injury.muscle)
+                      : "";
                     return (
                       <li key={e.id}>
                         <span className="dname">{x.name}</span>
@@ -280,6 +289,11 @@ export default function PlanLibrary({
                             {goal.targetWeight} {u}
                             {" — "}
                             {goalPaceMessage(t, pace)}
+                          </span>
+                        )}
+                        {injury && (
+                          <span className={`dinjury dinjury-${injury.mode}`}>
+                            {injuryNote(t, injury.mode, injuredMuscleName)}
                           </span>
                         )}
                       </li>

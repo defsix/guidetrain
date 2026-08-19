@@ -454,6 +454,18 @@
   "intro": "Was dir gerade wirklich zur Verfügung steht, keine dauerhafte Tatsache über dich — wähle, was zutrifft. Übungslisten ordnen sich neu, sodass diese zuerst stehen; nichts wird versteckt.",
   "bodyweightNote": "Körpergewichtsübungen — Liegestütze, Klimmzüge und der Rest — zählen immer als verfügbar, da du dafür nichts brauchst."
  },
+ "injuryPanel": {
+  "title": "Verletzungen",
+  "close": "Verletzungen schließen",
+  "intro": "Markiere einen Muskel, den du schonst, und wähle, wie die App reagieren soll. „Vermeiden“ hält alles, was ihn trainiert, aus „Diesen trainieren“, den Pausenpartnern und den Tauschvorschlägen heraus. „Warnen“ lässt all diese Listen unverändert, markiert die Einträge nur.",
+  "avoid": "Vermeiden",
+  "warn": "Warnen",
+  "avoidTag": "Vermeiden — Verletzung",
+  "warnTag": "Vorsicht — Verletzung",
+  "avoidNote": "Vermeiden — markierte Verletzung: {muscle}.",
+  "warnNote": "Vorsicht — markierte Verletzung: {muscle}.",
+  "note": "Das ändert nur, was ab jetzt vorgeschlagen oder markiert wird — aus einem gespeicherten Workout wird dadurch nichts entfernt."
+ },
  "stats": {
   "title": "Statistik",
   "close": "Statistik schließen",

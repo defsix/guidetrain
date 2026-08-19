@@ -291,6 +291,16 @@
   font-weight: 600;
 }
 
+.injury-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.injury-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.injury-name { font-size: 13px; color: var(--text); }
+
 .primary-button {
   margin-top: 8px;
   background: var(--accent);
@@ -578,6 +588,9 @@
   color: var(--text-muted);
   margin-top: 2px;
 }
+/* A marked "avoid" is worth more weight than an equipment tag — it's the
+   reason this row shouldn't be trained today, not just a detail about it. */
+.wname em.injury-flag-avoid { color: var(--accent); font-weight: 600; }
 
 .wmove {
   flex: none;
@@ -961,6 +974,7 @@
 
 .account-panel,
 .equipment-panel,
+.injury-panel,
 .stats-panel,
 .swap-panel {
   position: fixed;
@@ -980,11 +994,12 @@
 }
 .account-panel > *,
 .equipment-panel > *,
+.injury-panel > *,
 .stats-panel > *,
 .swap-panel > * { flex: none; }
 
 @media (min-width: 1100px) {
-  .account-panel, .equipment-panel, .stats-panel, .swap-panel {
+  .account-panel, .equipment-panel, .injury-panel, .stats-panel, .swap-panel {
     width: min(520px, 40vw);
     padding: 26px 30px;
   }
@@ -993,6 +1008,7 @@
 @media (max-width: 560px) {
   .account-panel,
   .equipment-panel,
+  .injury-panel,
   .stats-panel,
   .swap-panel {
     top: auto;
@@ -1008,6 +1024,7 @@
 
 .account-panel h2,
 .equipment-panel h2,
+.injury-panel h2,
 .stats-panel h2,
 .swap-panel h2 {
   margin: 0;
@@ -1885,6 +1902,7 @@
 }
 .swap-option:hover { border-color: var(--accent); }
 .swap-name { font-size: 13px; color: var(--text); }
+.swap-option .tags { display: flex; gap: 6px; flex: none; }
 .swap-option em {
   flex: none;
   font-style: normal;
@@ -1951,6 +1969,14 @@
   font-size: 11px;
   color: var(--text-muted);
 }
+
+/* Same full-row treatment as .dgoal, on the row an injury flags instead. */
+.plan-day .dinjury {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+.plan-day .dinjury-avoid { color: var(--accent); font-weight: 600; }
 
 .plans-open {
   background: none;

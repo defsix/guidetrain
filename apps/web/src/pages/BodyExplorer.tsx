@@ -7,6 +7,7 @@ import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
 import AccountPanel from "../components/AccountPanel";
 import EquipmentPanel from "../components/EquipmentPanel";
+import InjuryPanel from "../components/InjuryPanel";
 import StatsPanel from "../components/StatsPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
@@ -18,6 +19,7 @@ import { useTrainingMax } from "../state/useTrainingMax";
 import { useKnownMax } from "../state/useKnownMax";
 import { useBodyWeightLog } from "../state/useBodyWeightLog";
 import { useGoals } from "../state/useGoals";
+import { useInjuries } from "../state/useInjuries";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
 import { useT } from "../i18n/I18nProvider";
@@ -35,6 +37,7 @@ export default function BodyExplorer() {
   const knownMax = useKnownMax();
   const weighIns = useBodyWeightLog();
   const goals = useGoals();
+  const injuries = useInjuries();
   const auth = useAuth();
   const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
@@ -43,6 +46,7 @@ export default function BodyExplorer() {
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
+  const [showInjuries, setShowInjuries] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -123,6 +127,16 @@ export default function BodyExplorer() {
               {t("stats.title")}
             </button>
           )}
+          {/* Same "signed-in" treatment once something is actually marked. */}
+          {profile && (
+            <button
+              className={`account-button ${Object.keys(injuries.injuries).length ? "signed-in" : ""}`}
+              onClick={() => setShowInjuries(true)}
+              aria-expanded={showInjuries}
+            >
+              {t("injuryPanel.title")}
+            </button>
+          )}
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>
@@ -137,6 +151,7 @@ export default function BodyExplorer() {
           savedIds={programs.ids}
           onToggleSave={programs.toggle}
           equipmentAvailable={profile?.equipment}
+          injuries={injuries.injuries}
         />
       </div>
       <WorkoutPanel
@@ -169,6 +184,7 @@ export default function BodyExplorer() {
         onSwap={programs.swapExercise}
         equipmentAvailable={profile?.equipment}
         goals={goals.goals}
+        injuries={injuries.injuries}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
@@ -200,6 +216,15 @@ export default function BodyExplorer() {
         />
       )}
       {profile && (
+        <InjuryPanel
+          open={showInjuries}
+          onClose={() => setShowInjuries(false)}
+          injuries={injuries.injuries}
+          onSet={injuries.set}
+          onClear={injuries.clear}
+        />
+      )}
+      {profile && (
         <StatsPanel
           open={showStats}
           onClose={() => setShowStats(false)}
@@ -227,6 +252,7 @@ export default function BodyExplorer() {
         knownMaxes={knownMax.overrides}
         trainingMaxes={tms.overrides}
         goals={goals.goals}
+        injuries={injuries.injuries}
         onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
       />
     </div>

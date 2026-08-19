@@ -482,6 +482,18 @@
   "intro": "To, co naprawdę masz teraz pod ręką, nie stały fakt o tobie — zaznacz, co pasuje. Listy ćwiczeń przestawiają się tak, by były one na początku; nic nie jest ukrywane.",
   "bodyweightNote": "Ćwiczenia z masą własną — pompki, podciąganie i reszta — zawsze liczą się jako dostępne, bo nic do nich nie potrzeba."
  },
+ "injuryPanel": {
+  "title": "Kontuzje",
+  "close": "Zamknij kontuzje",
+  "intro": "Zaznacz mięsień, który oszczędzasz, i wybierz, jak ma zareagować aplikacja. „Unikaj” usuwa wszystko, co go trenuje, z „Trenuj to”, partnerów na przerwę i zamian. „Ostrzegaj” zostawia te listy bez zmian, tylko je oznacza.",
+  "avoid": "Unikaj",
+  "warn": "Ostrzegaj",
+  "avoidTag": "Unikaj — kontuzja",
+  "warnTag": "Uwaga — kontuzja",
+  "avoidNote": "Unikaj — oznaczona kontuzja: {muscle}.",
+  "warnNote": "Uwaga — oznaczona kontuzja: {muscle}.",
+  "note": "To zmienia tylko to, co jest sugerowane lub oznaczane od teraz — nic z zapisanego już treningu nie zostaje przez to usunięte."
+ },
  "stats": {
   "title": "Statystyki",
   "close": "Zamknij statystyki",
