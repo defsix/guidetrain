@@ -1,0 +1,40 @@
+name: GuideTrain
+options:
+  bundleIdPrefix: me.guidetrain
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    CODE_SIGN_STYLE: Automatic
+    TARGETED_DEVICE_FAMILY: "1,2"
+    ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+
+targets:
+  GuideTrain:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: GuideTrain/App
+      - path: GuideTrain/WebView
+      - path: GuideTrain/Resources/Assets.xcassets
+      - path: GuideTrain/Resources/www
+        type: folder
+        buildPhase: resources
+    info:
+      path: GuideTrain/Supporting/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: me.guidetrain.app
+        PRODUCT_NAME: GuideTrain
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+    preBuildScripts:
+      - name: Sync Web Assets
+        script: |
+          "$SRCROOT/Scripts/sync-web-assets.sh"
+        basedOnDependencyAnalysis: false

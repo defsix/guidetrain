@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase, hasBackend } from "../lib/supabase";
+import {
+  isNativeAuthBridgeAvailable,
+  NATIVE_OAUTH_REDIRECT,
+  startNativeOAuth,
+} from "../lib/nativeAuthBridge";
 
 export type AuthState = {
   /** Null while checking, then a session or null for signed out. */
@@ -186,15 +191,29 @@ export function useAuth() {
    * flight is fine: `BodyExplorer` mounts its own `useAuth`/`useSync` pair,
    * sees the already-persisted session, and runs the same merge again —
    * `mergeOnSignIn` is safe to repeat.
+   *
+   * Inside the native Android/iOS shells (see nativeAuthBridge.ts), Google
+   * won't show its consent screen in the embedded WebView at all — so there
+   * `skipBrowserRedirect` stops Supabase from navigating this page, and the
+   * returned authorize URL is handed to native code instead (Custom Tabs on
+   * Android, `ASWebAuthenticationSession` on iOS), which reloads this same
+   * page once the provider redirects back to the app's own custom scheme.
    */
   const signInWithOAuth = useCallback(async (provider: "google" | "apple" | "facebook") => {
     if (!supabase) return;
     setError(null);
-    const { error } = await supabase.auth.signInWithOAuth({
+    const native = isNativeAuthBridgeAvailable();
+    const { data, error } = await supabase.auth.signInWithOAuth({
       provider,
-      options: { redirectTo: `${window.location.origin}/#/explore` },
+      options: native
+        ? { redirectTo: NATIVE_OAUTH_REDIRECT, skipBrowserRedirect: true }
+        : { redirectTo: `${window.location.origin}/#/explore` },
     });
-    if (error) setError(error.message);
+    if (error) {
+      setError(error.message);
+      return;
+    }
+    if (native && data?.url) startNativeOAuth(data.url);
   }, []);
 
   const clearError = useCallback(() => setError(null), []);

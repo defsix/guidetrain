@@ -191,6 +191,33 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Native Android and iOS apps** — real Kotlin (`android/`) and Swift
+  (`ios/`) projects, each a genuine native app shell around the existing
+  web app in a `WebView`/`WKWebView`, rather than a from-scratch
+  reimplementation: the 3D anatomy viewer, all panels, plans, 5/3/1
+  progression, and all ten languages are the same code that runs on the
+  live site, so there's nothing to keep in sync by hand. Native code was
+  written only for what a browser genuinely can't do — chiefly Google
+  sign-in, which Google refuses to show inside an embedded WebView at all.
+  Android hands that consent screen to a Chrome Custom Tab
+  (`android/app/src/main/kotlin/me/guidetrain/app/auth/AuthBridge.kt`); iOS
+  uses `ASWebAuthenticationSession`
+  (`ios/GuideTrain/WebView/AuthBridge.swift`); both redirect back to
+  `guidetrain://auth-callback`, which reloads the WebView at its own
+  origin so Supabase's PKCE code exchange completes exactly as it would
+  after a real browser redirect (`apps/web/src/lib/nativeAuthBridge.ts`,
+  wired into `useAuth.ts`'s `signInWithOAuth`). `apps/web/vite.config.ts`
+  gained `android`/`ios` build modes (relative asset paths, since the
+  native builds bundle the site as local files rather than serving it from
+  a domain root). Both apps ship as signed builds attached to GitHub
+  Releases, sideloaded directly — no Play Store or App Store submission.
+  Android's Gradle build (debug and R8-minified release) was compiled for
+  real in the environment that wrote this — see `android/README.md`'s
+  "Known limitation" section for exactly what was and wasn't verified; iOS
+  has no Linux-compatible toolchain, so its Swift code is written but
+  unverified until built in Xcode (`ios/README.md` carries the same kind
+  of disclosure). Both READMEs also cover generating a release signing key
+  and the build/sign process.
 - **Recommendations now need a trend, not just a number; goals capped at
   three; a state-update race fixed** — three follow-ups on recent work.
   - Recommendations used to appear the moment a profile had any known max

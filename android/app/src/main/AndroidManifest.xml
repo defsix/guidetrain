@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.GuideTrain">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode|screenLayout"
+            android:theme="@style/Theme.GuideTrain">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Catches the redirect back from the OAuth hand-off (see
+                 auth/AuthBridge.kt): Supabase's signInWithOAuth is given
+                 this as its redirectTo, so the provider (and Supabase
+                 itself) sends the browser here once sign-in completes,
+                 routing back into the already-running app via onNewIntent
+                 (singleTask above) rather than spawning a second instance. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="guidetrain" android:host="auth-callback" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

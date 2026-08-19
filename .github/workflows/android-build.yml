@@ -1,0 +1,143 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+    # Version tags (e.g. v1.0) trigger the signed release APK publish step
+    # below, regardless of what files a given tagged commit touches — GitHub
+    # applies `paths` to tag pushes too when both are present in the same
+    # trigger, so this only reliably fires because the documented release
+    # process (bump versionCode/versionName in android/app/build.gradle.kts,
+    # commit, then tag) always touches a path this filter already matches.
+    tags: ['v*']
+    paths:
+      - 'android/**'
+      - 'apps/web/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/android-build.yml'
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'apps/web/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/android-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
+
+      - uses: android-actions/setup-android@v3
+
+      # VITE_SUPABASE_URL/ANON_KEY are baked into the bundled web app the
+      # same way deploy-pages.yml bakes them into the site — left unset (e.g.
+      # on a fork with no Supabase project), the app builds exactly as it did
+      # before accounts existed: no account button, nothing missing.
+      - name: Build debug APK
+        working-directory: android
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: ./gradlew assembleDebug --no-daemon
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guidetrain-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+
+      # Gives a stable URL that always points at the newest build from main,
+      # instead of a per-run artifact link that expires after ~90 days.
+      - name: Publish to the rolling "latest" release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-debug-latest
+          name: Android (latest debug build)
+          body: |
+            Automatically rebuilt and replaced on every push to `main`
+            (currently commit ${{ github.sha }}). This is a **debug build,
+            not signed for distribution** — install directly, e.g.
+            `adb install -r app-debug.apk`.
+          prerelease: true
+          make_latest: false
+          files: android/app/build/outputs/apk/debug/app-debug.apk
+
+      # GuideTrain is distributed only via GitHub Releases (no Play Store),
+      # so this builds a signed .apk, not a .aab. The four secrets below are
+      # optional for ordinary branch/PR builds: without them, the release
+      # build type falls back to debug signing (see
+      # android/app/build.gradle.kts), so this still builds to smoke-test
+      # the R8-minified shape. A tagged release is different — publishing a
+      # debug-signed APK as "the" signed release would be silently wrong,
+      # so that case fails the job instead (see the guard below).
+      - name: Build release APK
+        working-directory: android
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+          ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+        run: |
+          if [ -n "$ANDROID_KEYSTORE_BASE64" ]; then
+            echo "$ANDROID_KEYSTORE_BASE64" | base64 -d > app/release.jks
+            export ANDROID_KEYSTORE_PATH="release.jks"
+          elif [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "::error::ANDROID_KEYSTORE_BASE64 is not set — refusing to publish a debug-signed APK as the signed release for $GITHUB_REF. Add the ANDROID_KEYSTORE_* repo secrets first (see android/README.md)." >&2
+            exit 1
+          fi
+          ./gradlew assembleRelease --no-daemon
+
+      # The release APK's filename is guidetrain-v<versionName>.apk (set in
+      # android/app/build.gradle.kts, not AGP's generic default
+      # app-release.apk), so it's matched by glob here rather than
+      # hardcoded — both upload-artifact and action-gh-release below accept
+      # glob patterns.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guidetrain-release-apk
+          path: android/app/build/outputs/apk/release/*.apk
+          if-no-files-found: error
+
+      # Only for tagged releases (see the `tags` trigger above) — the debug
+      # APK above is already covered by the rolling "latest" release, this
+      # is the signed build people actually install.
+      - name: Compute release APK checksum
+        if: startsWith(github.ref, 'refs/tags/v')
+        working-directory: android/app/build/outputs/apk/release
+        run: sha256sum *.apk > "$(ls *.apk).sha256"
+
+      - name: Publish signed release APK to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          body: |
+            Signed release build (not the debug build above) — this is the
+            one to install. Sideload it directly, and optionally verify it
+            wasn't corrupted/tampered with first:
+
+            ```
+            sha256sum -c guidetrain-v*.apk.sha256
+            ```
+          files: |
+            android/app/build/outputs/apk/release/*.apk
+            android/app/build/outputs/apk/release/*.apk.sha256

@@ -1,0 +1,70 @@
+name: Build iOS Simulator App
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ios/**'
+      - 'apps/web/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ios-build.yml'
+  pull_request:
+    paths:
+      - 'ios/**'
+      - 'apps/web/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ios-build.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    # There's no Apple Developer signing certificate/provisioning profile
+    # configured for this repo, so this builds an unsigned app for the iOS
+    # Simulator rather than a device-installable .ipa. See ios/README.md >
+    # "Building a real-device .ipa" for what a real device build needs.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: ios
+        run: xcodegen generate
+
+      # Same reasoning as android-build.yml: baked into the bundled web app
+      # at build time, and safe to leave unset on a fork with no Supabase
+      # project (hasBackend is just false, nothing else breaks).
+      - name: Build for iOS Simulator (unsigned)
+        working-directory: ios
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          xcodebuild \
+            -project GuideTrain.xcodeproj \
+            -scheme GuideTrain \
+            -configuration Debug \
+            -sdk iphonesimulator \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            build
+
+      - name: Zip the .app
+        working-directory: ios/build/Build/Products/Debug-iphonesimulator
+        run: ditto -c -k --sequesterRsrc --keepParent GuideTrain.app GuideTrain-iphonesimulator.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: guidetrain-ios-simulator
+          path: ios/build/Build/Products/Debug-iphonesimulator/GuideTrain-iphonesimulator.zip
+          if-no-files-found: error

@@ -26,6 +26,24 @@ Regenerate them with the web dev server running: `node docs/screenshots/capture.
 - `tools/muscle-segmentation` — the build that turns the painted model into the
   shipped `.glb`. See [its README](tools/muscle-segmentation/README.md).
 
+## Mobile apps
+
+Both wrap this web app in a native WebView rather than reimplementing the
+anatomy viewer, workout panels, or progression math natively, so they stay
+in sync with the web app automatically:
+
+- [`android/`](android/) — Kotlin, `WebView` + `WebViewAssetLoader`, with a
+  small native bridge for Google sign-in (Google refuses to show its
+  consent screen inside an embedded WebView). See
+  [`android/README.md`](android/README.md).
+- [`ios/`](ios/) — Swift/SwiftUI, `WKWebView` + a custom `app://` scheme
+  handler, and the same OAuth hand-off via `ASWebAuthenticationSession`. See
+  [`ios/README.md`](ios/README.md).
+
+Both are distributed via GitHub Releases (sideload), not the App/Play
+Store. Both READMEs cover generating a signing key and building/signing the
+app.
+
 ## The 3D model
 
 `apps/web/public/models/anatomy_{full,mobile}.glb` is derived from a **Meshy AI

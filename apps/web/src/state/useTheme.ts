@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { setNativeStatusBarAppearance } from "../lib/nativeDisplayBridge";
 
 export type ThemePref = "light" | "dark" | "auto";
 /** What's actually on screen once "auto" has consulted the device. */
@@ -43,6 +44,11 @@ export function useTheme() {
   }, [pref]);
 
   useEffect(() => applyTheme(pref), [pref]);
+
+  // No-op on the plain website; inside the native shells, keeps the status
+  // bar's icon color matching what's actually on screen (see useTheme.ts's
+  // own doc comment above) rather than only the device's system appearance.
+  useEffect(() => setNativeStatusBarAppearance(resolved === "light"), [resolved]);
 
   return { pref, resolved, setPref };
 }
