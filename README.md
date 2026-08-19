@@ -1067,3 +1067,13 @@ Not commitments. Roughly in the order they would earn their place:
   path rather than a PWA's.
 
 Changes are logged in [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+[MIT](LICENSE). The bundled assets are separately and more permissively
+licensed — exercise text from [Free Exercise
+DB](https://github.com/yuhonas/free-exercise-db) (Unlicense, public domain),
+the 3D model (CC0 1.0), the bundled fonts (SIL OFL 1.1, license text
+alongside them under `apps/web/src/assets/fonts`) — none of which restrict
+the code itself; see [Exercises](#exercises) and [The 3D
+model](#the-3d-model) above for where each comes from.

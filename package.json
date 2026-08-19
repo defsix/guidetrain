@@ -1,6 +1,7 @@
 {
   "name": "guidetrain",
   "private": true,
+  "license": "MIT",
   "workspaces": [
     "apps/*"
   ],

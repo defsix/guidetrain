@@ -189,6 +189,21 @@ Newest first. Numbers in brackets are pull requests.
 - **Colour regions replace boxes** [#5] — picking reads a baked `_ZONE`
   attribute instead of testing axis-aligned boxes that overlapped each other.
 
+## Licensing
+
+- **MIT license** — no `LICENSE` file existed before this, which meant the
+  public repo defaulted to all-rights-reserved: viewable, forkable on
+  GitHub, but not legally reusable by anyone. All three `package.json`
+  files now declare it too. Nothing about the app's dependencies or bundled
+  assets forced a particular choice — React, Three.js, `@react-three/fiber`,
+  `@react-three/drei` and the Supabase client are all permissive MIT-family;
+  the bundled exercise text is Unlicense, the 3D model CC0, the fonts OFL,
+  none of which restrict the project's own license either way. MIT over a
+  copyleft license (AGPL) because contributions are wanted and low-friction
+  matters more here than closing the "host a modified fork" gap AGPL exists
+  for — the license governs the code, not the right to run guidetrain.me and
+  charge for it, which a fork gets none of regardless.
+
 ## App
 
 - **Three more ready-made plans: StrongLifts 5×5, GZCLP, and 5/3/1 as a full
