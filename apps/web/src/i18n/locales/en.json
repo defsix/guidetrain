@@ -456,7 +456,6 @@
  },
  "injuryPanel": {
   "title": "Injuries",
-  "close": "Close injuries",
   "intro": "Mark a muscle you're working around, and choose how the app should respond. \"Avoid\" keeps anything that trains it out of Train This, rest-break partners and swaps. \"Warn\" leaves every one of those lists exactly as it was, only flagged.",
   "avoid": "Avoid",
   "warn": "Warn",
@@ -467,8 +466,8 @@
   "note": "This only changes what gets suggested or flagged from here on — nothing already in a saved workout is removed for you."
  },
  "stats": {
-  "title": "Stats",
-  "close": "Close stats",
+  "title": "Progress",
+  "close": "Close progress",
   "bodyWeight": "Body weight",
   "squat": "Squat",
   "bench": "Bench",

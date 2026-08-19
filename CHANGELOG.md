@@ -191,6 +191,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Header tidy-up: Workout moves to the canvas, Injuries moves into Progress** —
+  two changes to where things live, not what they do. Workout's button now
+  sits beside Muscle Groups in the anatomy canvas's own phone-only toolbar
+  instead of the header, on the same 720px breakpoint Muscle Groups already
+  switches on — it's the one button worth pulling out of the header's
+  scrollable strip, since it's also the one most people reach for first.
+  Injuries is no longer a separate panel with its own header button; its
+  marking UI is now a section inside Stats, which is renamed **Progress** to
+  match what it actually is — body weight, lift maxes, goals and injuries,
+  everything this app knows about training a body around, in one place. A
+  signed-in Progress button now lights up for either a hand-set max or a
+  marked injury, since the button covers both.
 - **Injuries: mark a muscle, avoid or flag anything that trains it** — a new
   Injuries panel next to Equipment marks any of the 17 trainable muscles as
   injured, one of two ways chosen per muscle rather than once for the whole

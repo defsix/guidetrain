@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { seedProfile, seedProgram, seedInjury } from "./helpers";
 
 test.describe("injury marking", () => {
-  test("marks a muscle avoided from the Injuries panel and it persists on reopen", async ({
+  test("marks a muscle avoided from the Injuries section of Progress and it persists on reopen", async ({
     page,
   }) => {
     await seedProfile(page);
@@ -10,7 +10,7 @@ test.describe("injury marking", () => {
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
     await expect(page.locator("canvas")).toBeVisible();
 
-    await page.getByRole("button", { name: /injuries/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
     const row = page.locator(".injury-row").filter({ hasText: "Quadriceps" });
     const avoidChip = row.getByRole("button", { name: "Avoid", exact: true });
     await expect(avoidChip).not.toHaveClass(/chip-selected/);
@@ -18,8 +18,8 @@ test.describe("injury marking", () => {
     await avoidChip.click();
     await expect(avoidChip).toHaveClass(/chip-selected/);
 
-    await page.locator(".injury-panel .workout-close").click();
-    await page.getByRole("button", { name: /injuries/i }).click();
+    await page.locator(".stats-panel .workout-close").click();
+    await page.getByRole("button", { name: /progress/i }).click();
     await expect(
       page.locator(".injury-row").filter({ hasText: "Quadriceps" }).getByRole("button", {
         name: "Avoid",

@@ -484,7 +484,6 @@
  },
  "injuryPanel": {
   "title": "Kontuzje",
-  "close": "Zamknij kontuzje",
   "intro": "Zaznacz mięsień, który oszczędzasz, i wybierz, jak ma zareagować aplikacja. „Unikaj” usuwa wszystko, co go trenuje, z „Trenuj to”, partnerów na przerwę i zamian. „Ostrzegaj” zostawia te listy bez zmian, tylko je oznacza.",
   "avoid": "Unikaj",
   "warn": "Ostrzegaj",
@@ -495,8 +494,8 @@
   "note": "To zmienia tylko to, co jest sugerowane lub oznaczane od teraz — nic z zapisanego już treningu nie zostaje przez to usunięte."
  },
  "stats": {
-  "title": "Statystyki",
-  "close": "Zamknij statystyki",
+  "title": "Postępy",
+  "close": "Zamknij postępy",
   "bodyWeight": "Masa ciała",
   "squat": "Przysiad",
   "bench": "Wyciskanie leżąc",

@@ -6,8 +6,9 @@ import type { WeighIn } from "../state/useBodyWeightLog";
 import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { Goal } from "../state/useGoals";
+import type { Injury, InjuryMode } from "../state/useInjuries";
 import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progression";
-import { usesLegs } from "../lib/muscleRegions";
+import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { useI18n } from "../i18n/I18nProvider";
 
@@ -45,6 +46,9 @@ type Props = {
   goals: Record<string, Goal>;
   onSetGoal: (id: string, targetWeight: number, targetDate: number) => void;
   onClearGoal: (id: string) => void;
+  injuries: Record<string, Injury>;
+  onSetInjury: (muscleId: string, mode: InjuryMode) => void;
+  onClearInjury: (muscleId: string) => void;
 };
 
 /**
@@ -140,6 +144,7 @@ export default function StatsPanel({
   open, onClose, profile, onSetBodyWeight, weighIns, allSets,
   knownMaxes, onSetKnownMax, onClearKnownMax,
   trainingMaxes, goals, onSetGoal, onClearGoal,
+  injuries, onSetInjury, onClearInjury,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [weightInput, setWeightInput] = useState("");
@@ -195,6 +200,11 @@ export default function StatsPanel({
     setGoalExercise("");
     setGoalWeightInput("");
     setGoalDateInput("");
+  }
+
+  function toggleInjury(muscleId: string, mode: InjuryMode) {
+    if (injuries[muscleId]?.mode === mode) onClearInjury(muscleId);
+    else onSetInjury(muscleId, mode);
   }
 
   const weightPoints: Point[] = weighIns
@@ -369,6 +379,50 @@ export default function StatsPanel({
             />
             <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
           </form>
+        </section>
+
+        {/* Was its own panel, reached from a separate header button; folded in
+            here since it's one more thing this app already knows about a
+            body, same as a max or a target weight. "Avoid" keeps anything
+            whose primary muscle is this one out of Train This, the rest-break
+            partner list and the swap list. "Warn" leaves those lists exactly
+            as they were, only flagged — chosen per muscle, not once for the
+            whole feature, since a knee that rules out squats entirely is a
+            different injury from a shoulder that just needs watching.
+            Primary muscle only — see lib/injuries.ts's injuryFor(). */}
+        <section className="stats-section">
+          <h3>{t("injuryPanel.title")}</h3>
+          <p className="plans-intro">{t("injuryPanel.intro")}</p>
+          <ul className="injury-list">
+            {MUSCLES.map((m) => {
+              const current = injuries[m.key];
+              const name = t(`muscles.${m.key}.name`, undefined, m.name);
+              return (
+                <li className="injury-row" key={m.key}>
+                  <span className="injury-name">{name}</span>
+                  <div className="chip-row">
+                    <button
+                      type="button"
+                      className={`chip ${current?.mode === "avoid" ? "chip-selected" : ""}`}
+                      aria-pressed={current?.mode === "avoid"}
+                      onClick={() => toggleInjury(m.key, "avoid")}
+                    >
+                      {t("injuryPanel.avoid")}
+                    </button>
+                    <button
+                      type="button"
+                      className={`chip ${current?.mode === "warn" ? "chip-selected" : ""}`}
+                      aria-pressed={current?.mode === "warn"}
+                      onClick={() => toggleInjury(m.key, "warn")}
+                    >
+                      {t("injuryPanel.warn")}
+                    </button>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+          <p className="plan-note">{t("injuryPanel.note")}</p>
         </section>
       </aside>
     </>

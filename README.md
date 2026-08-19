@@ -396,7 +396,10 @@ beside the model and useless when there isn't: at 390px it covered 44% of the
 width, and at 320px the body was reduced to one arm and a pair of legs behind
 it. Below 720px choosing a muscle closes the picker — otherwise it would hide
 the muscle you just picked — and the toolbar button brings it back. Tapping
-outside dismisses it.
+outside dismisses it. Workout's button sits beside it at that width too, since
+it's the header button most people reach for first and the header's own row —
+already carrying a greeting, Account, Equipment, Progress and the theme —
+scrolls sideways rather than growing the page wider than the screen.
 
 The muscle list stays docked on the right, because it is the point of the
 screen — an empty canvas with the list behind a button reads as nothing to do.
@@ -468,13 +471,16 @@ field existed, and a body weight recorded in the other unit — converting
 silently would put a number on screen nobody entered. Like everything else
 here, it stays on the device.
 
-Onboarding is a one-time question, though — see [Stats](#stats) for where
-body weight (and everything else about it) is editable afterwards.
+Onboarding is a one-time question, though — see [Progress](#progress) for
+where body weight (and everything else about it) is editable afterwards.
 
-## Stats
+## Progress
 
-A panel in the header, next to Equipment: body weight and a max for each of
-the big three barbell lifts (Squat, Bench, Deadlift), each with a current
+A panel in the header, next to Equipment — body weight, a max for each of the
+big three barbell lifts (Squat, Bench, Deadlift), goals for any exercise, and
+injury marking, all in one place. It was Stats until injury marking moved in
+from its own panel; "Progress" says what the panel is actually for once body
+weight and lift maxes had company. Each of the big three gets a current
 value, an edit field, and a small chart of it over time.
 
 **Auto-populated where there's history, editable where there isn't.** A
@@ -483,7 +489,7 @@ Epley-based estimator the progression panel uses), but can be typed in
 directly even with nothing logged for that lift at all. That is a
 deliberate departure from the 5/3/1 planner, which refuses a typed-in max on
 principle — that number drives eight weeks of percentages and has to come
-from a set that happened. A stats page is a different kind of question:
+from a set that happened. A progress page is a different kind of question:
 closer to "tell the app what you already know about yourself," the same
 trust the onboarding body-weight field already gets. It still says which is
 which, the same way a starting weight already says whether it came from your
@@ -526,7 +532,7 @@ it) already answers "how many cycles would this take" for a typed-in target;
 a goal is that exact same question, persisted instead of resetting the
 moment the panel closes, and judged against a date instead of left open-
 ended. `goalPace()` in `progression.ts` is the one function that makes the
-call, and it is the *only* place that happens — the Stats page's own list,
+call, and it is the *only* place that happens — the Progress page's own list,
 Plan → for that lift (opened from any workout, regardless of which
 ready-made plan added the exercise), and a note on that exercise's row in
 any plan's preview all call it directly, so the same goal can't read as "on
@@ -541,11 +547,12 @@ In memory and localStorage only for now, like the rest of the app's
 per-device state — not yet wired into Supabase sync, the same "optional to
 defer" call already made for the rest of this panel's data.
 
-## Injuries
+### Injuries
 
-A separate panel, next to Equipment — mark any of the 17 trainable muscles
-as injured, and choose per muscle, not once for the whole feature, how the
-app should respond:
+Was its own panel with its own header button; folded in here since it's one
+more thing this app already knows about a body, same as a max or a target
+weight. Mark any of the 17 trainable muscles as injured, and choose per
+muscle, not once for the whole feature, how the app should respond:
 
 - **Avoid** keeps anything whose *primary* muscle is the injured one out of
   Train This, the rest-break partner list, and the swap list. This is the

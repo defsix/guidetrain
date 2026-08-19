@@ -456,7 +456,6 @@
  },
  "injuryPanel": {
   "title": "Blessures",
-  "close": "Fermer blessures",
   "intro": "Marquez un muscle que vous ménagez, et choisissez comment l'application doit réagir. « Éviter » exclut tout ce qui l'entraîne d'« Entraîner ce muscle », des partenaires de repos et des remplacements. « Avertir » laisse ces listes telles quelles, en se contentant de les signaler.",
   "avoid": "Éviter",
   "warn": "Avertir",
@@ -467,8 +466,8 @@
   "note": "Cela ne change que ce qui est suggéré ou signalé à partir de maintenant — rien de ce qui figure déjà dans un entraînement enregistré n'est retiré pour autant."
  },
  "stats": {
-  "title": "Statistiques",
-  "close": "Fermer les statistiques",
+  "title": "Progression",
+  "close": "Fermer la progression",
   "bodyWeight": "Poids de corps",
   "squat": "Squat",
   "bench": "Développé couché",

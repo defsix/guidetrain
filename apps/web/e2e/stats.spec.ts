@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import { seedProfile } from "./helpers";
 
-test.describe("the stats panel", () => {
+test.describe("the progress panel", () => {
   test.beforeEach(async ({ page }) => {
     await seedProfile(page);
     await page.goto("/");
@@ -10,7 +10,7 @@ test.describe("the stats panel", () => {
   });
 
   test("shows the seeded body weight and lets a lift max be set by hand", async ({ page }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
 
     const panel = page.locator(".stats-panel");
     await expect(panel).toBeVisible();
@@ -33,7 +33,7 @@ test.describe("the stats panel", () => {
   test("a known max nudges a related lift's starting weight in the plan preview", async ({
     page,
   }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
     const benchSection = page
       .locator(".stats-panel .stats-section")
       .filter({ hasText: "Bench" });

@@ -7,7 +7,6 @@ import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
 import AccountPanel from "../components/AccountPanel";
 import EquipmentPanel from "../components/EquipmentPanel";
-import InjuryPanel from "../components/InjuryPanel";
 import StatsPanel from "../components/StatsPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
@@ -46,7 +45,6 @@ export default function BodyExplorer() {
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
-  const [showInjuries, setShowInjuries] = useState(false);
   const t = useT();
 
   useEffect(() => {
@@ -54,6 +52,23 @@ export default function BodyExplorer() {
       navigate("/", { replace: true });
     }
   }, [profile, navigate]);
+
+  // The count is the whole point of the button: it is how you know anything
+  // was saved without opening it. Rendered twice — once in the header for a
+  // wide screen, once beside Muscle Groups in the anatomy canvas's own
+  // toolbar for a phone, where it's the one button worth keeping outside the
+  // header's scrollable strip. CSS shows exactly one of the two at a time, at
+  // the same 720px breakpoint the canvas toolbar already switches on.
+  const workoutButton = (
+    <button
+      className={`workout-button ${programs.ids.length ? "has" : ""}`}
+      onClick={() => setShowWorkout(true)}
+      aria-expanded={showWorkout}
+    >
+      {t("workout.title")}
+      <span className="wcount">{programs.ids.length}</span>
+    </button>
+  );
 
   return (
     <div className="explorer">
@@ -71,16 +86,7 @@ export default function BodyExplorer() {
             : t("explorer.greetingAnon")}
         </p>
         <div className="header-controls">
-          {/* The count is the whole point of the button: it is how you know
-              anything was saved without opening it. */}
-          <button
-            className={`workout-button ${programs.ids.length ? "has" : ""}`}
-            onClick={() => setShowWorkout(true)}
-            aria-expanded={showWorkout}
-          >
-            {t("workout.title")}
-            <span className="wcount">{programs.ids.length}</span>
-          </button>
+          {workoutButton}
           {/* Only once there is something to look at. An empty history
               button is a promise the app cannot keep yet. */}
           {log.entries.length > 0 && (
@@ -115,26 +121,21 @@ export default function BodyExplorer() {
               {t("equipmentPanel.title")}
             </button>
           )}
-          {/* Same "signed-in" treatment once a max has actually been set by
-              hand — a body weight alone came from onboarding and isn't a
-              reason to highlight this yet. */}
+          {/* Same "signed-in" treatment once a max has been set by hand or a
+              muscle marked injured — Progress carries both now, so either one
+              is reason enough to highlight it. A body weight alone came from
+              onboarding and isn't. */}
           {profile && (
             <button
-              className={`account-button ${Object.keys(knownMax.overrides).length ? "signed-in" : ""}`}
+              className={`account-button ${
+                Object.keys(knownMax.overrides).length || Object.keys(injuries.injuries).length
+                  ? "signed-in"
+                  : ""
+              }`}
               onClick={() => setShowStats(true)}
               aria-expanded={showStats}
             >
               {t("stats.title")}
-            </button>
-          )}
-          {/* Same "signed-in" treatment once something is actually marked. */}
-          {profile && (
-            <button
-              className={`account-button ${Object.keys(injuries.injuries).length ? "signed-in" : ""}`}
-              onClick={() => setShowInjuries(true)}
-              aria-expanded={showInjuries}
-            >
-              {t("injuryPanel.title")}
             </button>
           )}
           <ThemeToggle pref={pref} onChange={setPref} />
@@ -152,6 +153,7 @@ export default function BodyExplorer() {
           onToggleSave={programs.toggle}
           equipmentAvailable={profile?.equipment}
           injuries={injuries.injuries}
+          toolbarExtra={workoutButton}
         />
       </div>
       <WorkoutPanel
@@ -216,15 +218,6 @@ export default function BodyExplorer() {
         />
       )}
       {profile && (
-        <InjuryPanel
-          open={showInjuries}
-          onClose={() => setShowInjuries(false)}
-          injuries={injuries.injuries}
-          onSet={injuries.set}
-          onClear={injuries.clear}
-        />
-      )}
-      {profile && (
         <StatsPanel
           open={showStats}
           onClose={() => setShowStats(false)}
@@ -242,6 +235,9 @@ export default function BodyExplorer() {
           goals={goals.goals}
           onSetGoal={goals.set}
           onClearGoal={goals.clear}
+          injuries={injuries.injuries}
+          onSetInjury={injuries.set}
+          onClearInjury={injuries.clear}
         />
       )}
       <PlanLibrary

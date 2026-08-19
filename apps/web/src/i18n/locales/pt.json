@@ -456,7 +456,6 @@
  },
  "injuryPanel": {
   "title": "Lesões",
-  "close": "Fechar lesões",
   "intro": "Marque um músculo que está poupando e escolha como a aplicação deve reagir. «Evitar» mantém tudo o que o treina fora de «Treinar este», dos parceiros de descanso e das trocas. «Avisar» deixa essas listas como estão, apenas assinaladas.",
   "avoid": "Evitar",
   "warn": "Avisar",
@@ -467,8 +466,8 @@
   "note": "Isto só muda o que é sugerido ou assinalado a partir de agora — nada do que já está num treino guardado é removido por causa disso."
  },
  "stats": {
-  "title": "Estatísticas",
-  "close": "Fechar estatísticas",
+  "title": "Progresso",
+  "close": "Fechar progresso",
   "bodyWeight": "Peso corporal",
   "squat": "Agachamento",
   "bench": "Supino",

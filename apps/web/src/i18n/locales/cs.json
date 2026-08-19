@@ -484,7 +484,6 @@
  },
  "injuryPanel": {
   "title": "Zranění",
-  "close": "Zavřít zranění",
   "intro": "Označte sval, který šetříte, a zvolte, jak na to má aplikace reagovat. „Vyhýbat se“ vyřadí vše, co ho trénuje, z tlačítka „Trénovat tento“, partnerů na pauzu mezi sériemi i ze záměn. „Varovat“ ponechá všechny tyto seznamy beze změny, jen je označí.",
   "avoid": "Vyhýbat se",
   "warn": "Varovat",
@@ -495,8 +494,8 @@
   "note": "Tohle mění jen to, co se od teď navrhuje nebo označuje — nic, co už máte v uloženém tréninku, se tím neodstraní."
  },
  "stats": {
-  "title": "Statistiky",
-  "close": "Zavřít statistiky",
+  "title": "Pokrok",
+  "close": "Zavřít pokrok",
   "bodyWeight": "Tělesná hmotnost",
   "squat": "Dřep",
   "bench": "Bench Press",

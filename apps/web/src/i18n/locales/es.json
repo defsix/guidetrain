@@ -456,7 +456,6 @@
  },
  "injuryPanel": {
   "title": "Lesiones",
-  "close": "Cerrar lesiones",
   "intro": "Marca un músculo que estás cuidando y elige cómo debe reaccionar la app. «Evitar» mantiene fuera de «Entrenar esto», los compañeros de descanso y los cambios cualquier cosa que lo entrene. «Avisar» deja esas listas tal cual, solo las marca.",
   "avoid": "Evitar",
   "warn": "Avisar",
@@ -467,8 +466,8 @@
   "note": "Esto solo cambia lo que se sugiere o se marca a partir de ahora — nada de lo que ya está en un entrenamiento guardado se elimina por esto."
  },
  "stats": {
-  "title": "Estadísticas",
-  "close": "Cerrar estadísticas",
+  "title": "Progreso",
+  "close": "Cerrar progreso",
   "bodyWeight": "Peso corporal",
   "squat": "Sentadilla",
   "bench": "Press de banca",

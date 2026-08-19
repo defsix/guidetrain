@@ -14,7 +14,7 @@ test.describe("lift goals", () => {
   });
 
   test("sets a goal on the Stats page and shows its pace", async ({ page }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
 
     const form = page.locator(".stats-goal-form");
     await form.locator(".stats-goal-exercise").fill("Barbell Squat");
@@ -34,7 +34,7 @@ test.describe("lift goals", () => {
   });
 
   test("removing a goal clears it from the list", async ({ page }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
     const form = page.locator(".stats-goal-form");
     await form.locator(".stats-goal-exercise").fill("Barbell Squat");
     await form.locator('input:not([type="date"]):not(.stats-goal-exercise)').fill("180");
@@ -48,7 +48,7 @@ test.describe("lift goals", () => {
   });
 
   test("the same goal and pace show up in Plan → for that lift", async ({ page }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
     const form = page.locator(".stats-goal-form");
     await form.locator(".stats-goal-exercise").fill("Barbell Squat");
     await form.locator('input:not([type="date"]):not(.stats-goal-exercise)').fill("180");
@@ -66,7 +66,7 @@ test.describe("lift goals", () => {
   });
 
   test("a goal shows its pace on a ready-made plan's preview row", async ({ page }) => {
-    await page.getByRole("button", { name: /stats/i }).click();
+    await page.getByRole("button", { name: /progress/i }).click();
     const form = page.locator(".stats-goal-form");
     await form.locator(".stats-goal-exercise").fill("Barbell Squat");
     await form.locator('input:not([type="date"]):not(.stats-goal-exercise)').fill("180");

@@ -143,6 +143,7 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  *   onToggleSave?: ((id: string) => void) | null,
  *   equipmentAvailable?: string[] | null,
  *   injuries?: Record<string, {mode: 'avoid'|'warn', setAt: number}> | null,
+ *   toolbarExtra?: import('react').ReactNode | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -164,9 +165,14 @@ export default function AnatomyViewer({
   // empty means no preference stated, and every list here stays in exactly
   // the order it always rendered in.
   equipmentAvailable = null,
-  // Muscles marked injured on the Stats page — see lib/injuries.ts. Undefined
-  // or empty behaves exactly like no injuries marked.
+  // Muscles marked injured on the Progress page — see lib/injuries.ts.
+  // Undefined or empty behaves exactly like no injuries marked.
   injuries = null,
+  // A host button to show beside Muscle Groups in the phone-only toolbar —
+  // the one place on a narrow screen wide enough to hold a second pill
+  // without the row overflowing. Not the viewer's own concern otherwise,
+  // same reasoning as savedIds/onToggleSave above.
+  toolbarExtra = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -453,6 +459,7 @@ export default function AnatomyViewer({
         >
           {t('viewer.muscleGroups')}
         </button>
+        {toolbarExtra}
       </div>
 
       {/* Tapping the model itself is the other way to dismiss an open panel. */}

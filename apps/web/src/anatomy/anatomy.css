@@ -311,6 +311,18 @@
   }
   .anatomy-toolbar .tool.active { border-color: var(--accent); color: var(--accent); }
 
+  /* The host app's Workout pill, passed in via toolbarExtra — see
+     AnatomyViewer's docs at the top of the file. Its shape (a pill, not a
+     flat rounded box) and badge stay exactly what they are in the header;
+     only the frosted-glass background changes, to match the toolbar it's
+     floating in now rather than the solid header bar it left. */
+  .anatomy-toolbar .workout-button {
+    flex: 1;
+    justify-content: center;
+    background: var(--panel-translucent);
+    backdrop-filter: blur(14px);
+  }
+
   .anatomy-scrim {
     display: block; position: absolute; inset: 0; z-index: 7;
     background: none; border: 0; padding: 0; cursor: pointer;

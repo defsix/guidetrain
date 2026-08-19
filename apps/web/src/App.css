@@ -363,14 +363,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  /* With Account, Equipment, Stats and Injuries all showing at once, the row
-     is wider than a phone screen. `flex: none` used to refuse to shrink it at
-     all — every browser was left with only one option, overflowing the whole
-     page sideways rather than just this row, which is how a signed-in reader
-     ended up scrolled to a cropped mid-slice of every panel, not only this
-     one. Scrolling sideways within its own strip, the same pattern already
-     used for named-program tabs below, keeps every button reachable without
-     ever growing the page past the viewport. */
+  /* With History, Account, Equipment and Progress all showing at once, the
+     row is wider than a phone screen. `flex: none` used to refuse to shrink
+     it at all — every browser was left with only one option, overflowing the
+     whole page sideways rather than just this row, which is how a signed-in
+     reader ended up scrolled to a cropped mid-slice of every panel, not only
+     this one. Scrolling sideways within its own strip, the same pattern
+     already used for named-program tabs below, keeps every button reachable
+     without ever growing the page past the viewport. */
   .explorer .header-controls {
     flex: 1 1 auto;
     min-width: 0;
@@ -378,10 +378,18 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    /* Left-aligned rather than the desktop row's flex-end: a scrollable strip
-       that opens flush right would start with Workout — the one button that
-       carries a live count — already scrolled out of sight. */
+    /* Left-aligned rather than the desktop row's flex-end, so a scrollable
+       strip that overflows opens on its first button rather than its last. */
     justify-content: flex-start;
+  }
+}
+
+/* Workout moves in beside Muscle Groups in the canvas's own toolbar below —
+   the same width it appears at, so the two switch over together rather than
+   Workout sitting alone in a header strip with nothing left to scroll past. */
+@media (max-width: 720px) {
+  .explorer .header-controls .workout-button {
+    display: none;
   }
 }
 
@@ -990,7 +998,6 @@
 
 .account-panel,
 .equipment-panel,
-.injury-panel,
 .stats-panel,
 .swap-panel {
   position: fixed;
@@ -1010,12 +1017,11 @@
 }
 .account-panel > *,
 .equipment-panel > *,
-.injury-panel > *,
 .stats-panel > *,
 .swap-panel > * { flex: none; }
 
 @media (min-width: 1100px) {
-  .account-panel, .equipment-panel, .injury-panel, .stats-panel, .swap-panel {
+  .account-panel, .equipment-panel, .stats-panel, .swap-panel {
     width: min(520px, 40vw);
     padding: 26px 30px;
   }
@@ -1024,7 +1030,6 @@
 @media (max-width: 560px) {
   .account-panel,
   .equipment-panel,
-  .injury-panel,
   .stats-panel,
   .swap-panel {
     top: auto;
@@ -1040,7 +1045,6 @@
 
 .account-panel h2,
 .equipment-panel h2,
-.injury-panel h2,
 .stats-panel h2,
 .swap-panel h2 {
   margin: 0;
