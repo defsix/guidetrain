@@ -191,6 +191,32 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Mobile polish: floating panels, a shorter greeting, and narrower weight
+  fields** — this app is used mostly on a phone, and a round of fixes aimed
+  squarely at that.
+  - Every slide-up panel (Workout, Progress, Equipment, Account, the swap
+    list, Plan →, the plan library, history) now floats with a 10px margin
+    on every side on a narrow screen, instead of sitting flush against the
+    glass on three of its four edges.
+  - The header greeting shrank from a full sentence ("Hi {name} — rotate
+    the model, filter by region, and tap a muscle.") to just "Hi {name}" —
+    that sentence was most of why the header needed a scrolling strip for
+    its buttons on a phone at all. The instructions it used to carry now
+    show as a small hint under the model itself, for a visitor's first
+    three visits only (`isEarlyVisit()` in `BodyExplorer.tsx`), then never
+    again.
+  - The Injuries toggle in Progress is styled as a pill now — the same
+    shape and border every other tappable chip in that panel uses — with
+    an explicit `font-family: inherit`, since `<summary>` is one of the few
+    elements a browser will occasionally hand its own font rather than the
+    page's.
+  - Weight fields (body weight, the three known maxes, a goal's target)
+    are capped around 100px wide instead of claiming the same space as a
+    name or a date — nothing in this app is or will be a 5-digit number.
+  - The "add a goal" form is three rows now — exercise, then weight and
+    date together, then the button — instead of one row wrapping
+    unpredictably, which was squeezing the exercise search and the weight
+    field both.
 - **Injuries collapsed by default, multiple goals per lift, and a real
   exercise search** — three refinements to the Progress panel.
   - The Injuries section is a native `<details>` now, closed until tapped:

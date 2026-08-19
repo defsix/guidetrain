@@ -42,8 +42,9 @@
   "60plus": "60+"
  },
  "explorer": {
-  "greeting": "Cześć {name} — obracaj model, filtruj według partii i dotknij mięśnia.",
-  "greetingAnon": "Obracaj model, filtruj według partii i dotknij mięśnia."
+  "greeting": "Cześć {name}",
+  "greetingAnon": "Cześć",
+  "hint": "Obracaj model, filtruj według partii i dotknij mięśnia."
  },
  "viewer": {
   "muscleGroups": "Grupy mięśniowe",

@@ -390,6 +390,30 @@
   min-height: 0;
 }
 
+/* Under the model, not in the header — see the comment where this renders
+   in BodyExplorer.tsx. The Muscle Groups list opens by default on a phone
+   and can cover most of the canvas, so this sits above every anatomy overlay
+   (highest of which is 9) rather than being lost behind one on first paint —
+   translucent enough that overlapping the tail of a long muscle list for a
+   first-time visitor reads as a hint, not as something broken. */
+.explorer-hint {
+  position: absolute;
+  z-index: 10;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(320px, calc(100% - 32px));
+  margin: 0;
+  padding: 8px 14px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--panel-translucent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
 /* AnatomyViewer's root uses height:100%, which doesn't reliably resolve
    against a flex-sized block parent across browsers. Force it to fill via
    absolute positioning instead, since .explorer-canvas is already relative. */
@@ -505,16 +529,17 @@
 @media (max-width: 560px) {
   .workout-panel {
     top: auto;
-    left: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     width: auto;
     /* Nearly the whole screen. This is the screen you stand and read between
        sets: a sheet over a model you are not looking at spent 24% of a phone
        on the thing behind it. */
-    height: 94svh;
-    max-height: 94svh;
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    border-radius: 16px 16px 0 0;
+    height: calc(94svh - 10px);
+    max-height: calc(94svh - 10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
   }
 }
 
@@ -871,13 +896,14 @@
 @media (max-width: 560px) {
   .history-panel {
     top: auto;
-    left: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     width: auto;
-    height: 94svh;
-    max-height: 94svh;
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    border-radius: 16px 16px 0 0;
+    height: calc(94svh - 10px);
+    max-height: calc(94svh - 10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
   }
 }
 
@@ -1019,18 +1045,23 @@
 }
 
 @media (max-width: 560px) {
+  /* A floating card with a margin on every side, not a sheet flush against
+     the glass — this is the primary way the app is used, and a panel with
+     nothing between its edge and the screen's is one accidental swipe from
+     feeling like it's about to fall off. */
   .account-panel,
   .equipment-panel,
   .stats-panel,
   .swap-panel {
     top: auto;
-    left: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     width: auto;
-    height: 94svh;
-    max-height: 94svh;
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    border-radius: 16px 16px 0 0;
+    height: calc(94svh - 10px);
+    max-height: calc(94svh - 10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
   }
 }
 
@@ -1070,18 +1101,43 @@
   color: var(--text-muted);
 }
 
-/* Closed by default — see the comment in StatsPanel.tsx. Reads the same as
-   every other section's h3 label, cursor and hover the only tell that it's
-   also the toggle. */
+/* Closed by default — see the comment in StatsPanel.tsx. Styled as a pill,
+   the same shape and border every other tappable chip in this panel uses
+   (.chip, below), so it reads as a control rather than a plain label that
+   happens to react to a tap. font-family is set explicitly rather than
+   trusted to inherit — <summary> is one of the few elements a browser will
+   occasionally hand its own UA font rather than the page's. */
 .stats-injuries summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  list-style: none;
   cursor: pointer;
+  font-family: inherit;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--text-muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 9px 16px;
+  transition: border-color 0.15s, color 0.15s;
 }
-.stats-injuries summary:hover { color: var(--text); }
+.stats-injuries summary::-webkit-details-marker { display: none; }
+.stats-injuries summary::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s;
+}
+.stats-injuries[open] summary::after { transform: rotate(-135deg); }
+.stats-injuries summary:hover { border-color: var(--border-strong); color: var(--text); }
 .stats-injuries summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .stats-injuries[open] summary { margin-bottom: 2px; }
 
@@ -1104,6 +1160,15 @@
   font-size: 15px;
   box-shadow: var(--shadow);
   min-width: 0;
+}
+
+/* A weight is never more than 4 digits — this app tops a known max out at
+   1000 kg (see useGoals.ts's read()) — so the field that takes one shouldn't
+   claim the same width as a name or a date. */
+.stats-edit input.weight-input {
+  flex: 0 1 96px;
+  min-width: 64px;
+  max-width: 110px;
 }
 
 .stats-save {
@@ -1135,9 +1200,14 @@
 }
 .stats-goal-head .tm-clear { margin-left: auto; }
 
-.stats-goal-form { flex-wrap: wrap; }
-.stats-goal-form .stats-goal-exercise { flex: 2; min-width: 110px; }
+/* Three rows, not one wrapped row: the exercise field needs real width to
+   search and read a name back in, which a shared line with a weight and a
+   date left no room for. */
+.stats-goal-form { flex-direction: column; align-items: stretch; }
+.stats-goal-form .stats-goal-exercise { width: 100%; }
+.stats-goal-row { display: flex; gap: 8px; }
 .stats-goal-form input[type="date"] { flex: none; width: auto; }
+.stats-goal-form .stats-save { align-self: flex-start; }
 
 /* A text field with a filtered dropdown underneath — see AutocompleteInput.
    Sized and positioned the same way a bare .stats-edit input already was;
@@ -1479,13 +1549,14 @@
 @media (max-width: 560px) {
   .plan-panel {
     top: auto;
-    left: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     width: auto;
-    height: 94svh;
-    max-height: 94svh;
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    border-radius: 16px 16px 0 0;
+    height: calc(94svh - 10px);
+    max-height: calc(94svh - 10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
   }
 }
 
@@ -1909,13 +1980,14 @@
 @media (max-width: 560px) {
   .plans-panel {
     top: auto;
-    left: 0;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
     width: auto;
-    height: 94svh;
-    max-height: 94svh;
-    border-left: 0;
-    border-top: 1px solid var(--border);
-    border-radius: 16px 16px 0 0;
+    height: calc(94svh - 10px);
+    max-height: calc(94svh - 10px);
+    border: 1px solid var(--border);
+    border-radius: 16px;
   }
 }
 

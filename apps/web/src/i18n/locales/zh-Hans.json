@@ -33,8 +33,9 @@
   "60plus": "60 岁以上"
  },
  "explorer": {
-  "greeting": "你好，{name} — 旋转模型，按部位筛选，点按肌肉。",
-  "greetingAnon": "旋转模型，按部位筛选，点按肌肉。"
+  "greeting": "你好，{name}",
+  "greetingAnon": "你好",
+  "hint": "旋转模型，按部位筛选，点按肌肉。"
  },
  "viewer": {
   "muscleGroups": "肌肉群",

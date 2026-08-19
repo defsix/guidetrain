@@ -42,8 +42,9 @@
   "60plus": "60+"
  },
  "explorer": {
-  "greeting": "Ahoj {name} — otáčej modelem, filtruj podle partie a klepni na sval.",
-  "greetingAnon": "Otáčej modelem, filtruj podle partie a klepni na sval."
+  "greeting": "Ahoj {name}",
+  "greetingAnon": "Ahoj",
+  "hint": "Otáčej modelem, filtruj podle partie a klepni na sval."
  },
  "viewer": {
   "muscleGroups": "Svalové skupiny",

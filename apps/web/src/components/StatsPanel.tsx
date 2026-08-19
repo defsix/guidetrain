@@ -235,6 +235,7 @@ export default function StatsPanel({
             onSubmit={(e) => { e.preventDefault(); saveWeight(); }}
           >
             <input
+              className="weight-input"
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
               inputMode="decimal"
@@ -298,6 +299,7 @@ export default function StatsPanel({
                 onSubmit={(e) => { e.preventDefault(); save(); }}
               >
                 <input
+                  className="weight-input"
                   value={input}
                   onChange={(e) =>
                     setMaxInputs((prev) => ({ ...prev, [key]: e.target.value }))
@@ -355,6 +357,9 @@ export default function StatsPanel({
             })
           )}
 
+          {/* Three rows rather than one wrapped one: a lift's name needs real
+              width to search and read back, and squeezing it onto the same
+              line as a weight and a date left both of those cramped too. */}
           <form className="stats-edit stats-goal-form" onSubmit={addGoal}>
             <AutocompleteInput
               className="stats-goal-exercise"
@@ -364,19 +369,22 @@ export default function StatsPanel({
               placeholder={t("stats.goals.exercise")}
               aria-label={t("stats.goals.exercise")}
             />
-            <input
-              value={goalWeightInput}
-              onChange={(e) => setGoalWeightInput(e.target.value)}
-              inputMode="decimal"
-              placeholder={t("stats.goals.weight")}
-              aria-label={t("stats.goals.weight")}
-            />
-            <input
-              type="date"
-              value={goalDateInput}
-              onChange={(e) => setGoalDateInput(e.target.value)}
-              aria-label={t("stats.goals.date")}
-            />
+            <div className="stats-goal-row">
+              <input
+                className="weight-input"
+                value={goalWeightInput}
+                onChange={(e) => setGoalWeightInput(e.target.value)}
+                inputMode="decimal"
+                placeholder={t("stats.goals.weight")}
+                aria-label={t("stats.goals.weight")}
+              />
+              <input
+                type="date"
+                value={goalDateInput}
+                onChange={(e) => setGoalDateInput(e.target.value)}
+                aria-label={t("stats.goals.date")}
+              />
+            </div>
             <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
           </form>
         </section>

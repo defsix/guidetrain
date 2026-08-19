@@ -36,8 +36,9 @@
   "60plus": "60+"
  },
  "explorer": {
-  "greeting": "Bonjour {name} — faites pivoter le modèle, filtrez par région et touchez un muscle.",
-  "greetingAnon": "Faites pivoter le modèle, filtrez par région et touchez un muscle."
+  "greeting": "Bonjour {name}",
+  "greetingAnon": "Bonjour",
+  "hint": "Faites pivoter le modèle, filtrez par région et touchez un muscle."
  },
  "viewer": {
   "muscleGroups": "Groupes musculaires",

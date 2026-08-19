@@ -423,6 +423,26 @@ The model is 1.1 MB, so the canvas now says it is loading rather than sitting
 empty. The overlay clears when the body is painted, which is the honest moment
 — the environment map may still be arriving, but there is something to look at.
 
+**Every slide-up panel floats, with a margin, rather than sitting flush
+against the glass.** Workout, Progress, Equipment, Account, the swap list,
+Plan →, the plan library and history all get a 10px gap on every side on a
+narrow screen — this app is used mostly on a phone, and a panel with nothing
+between its edge and the screen's read as one accidental swipe from falling
+off it.
+
+**The header greeting is just a name now.** "Hi {name} — rotate the model,
+filter by region, and tap a muscle." used to be one sentence competing with
+Account, Equipment and Progress for room in the header — most of why that row
+needed a scrolling strip at all. It's "Hi {name}" now, and the instructions
+moved to a small hint under the model itself, shown only for a visitor's
+first three visits (`isEarlyVisit()` in `BodyExplorer.tsx`) and never again
+after — a reminder that outlives its usefulness is just something else to
+read past.
+
+**Weight fields are narrow on purpose.** Body weight, a known max, a goal's
+target — none of them is ever a 5-digit number, so none of them claims the
+width of a name or a date anymore.
+
 ## Type
 
 **Space Grotesk** for text, **JetBrains Mono** for labels and figures, both

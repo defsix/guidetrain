@@ -36,8 +36,9 @@
   "60plus": "60+"
  },
  "explorer": {
-  "greeting": "Hi {name} — rotate the model, filter by region, and tap a muscle.",
-  "greetingAnon": "Rotate the model, filter by region, and tap a muscle."
+  "greeting": "Hi {name}",
+  "greetingAnon": "Hi",
+  "hint": "Rotate the model, filter by region, and tap a muscle."
  },
  "viewer": {
   "muscleGroups": "Muscle Groups",

@@ -25,6 +25,24 @@ import { useT } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
 
+const HINT_KEY = "guidetrain.explorerVisits";
+const HINT_VISITS = 3;
+
+/**
+ * Whether this is among the first few times the explorer has been opened.
+ *
+ * Read once per mount rather than in an effect: the hint either belongs on
+ * the very first paint or it doesn't, and a moment where it flashes in after
+ * the model has already loaded is worse than not having it. Counts visits,
+ * not taps on the model itself — someone who opens the app, gets pulled
+ * away, and comes back a minute later hasn't used up their explanation yet.
+ */
+function isEarlyVisit(): boolean {
+  const n = Number(localStorage.getItem(HINT_KEY) ?? "0") + 1;
+  localStorage.setItem(HINT_KEY, String(n));
+  return n <= HINT_VISITS;
+}
+
 export default function BodyExplorer() {
   const navigate = useNavigate();
   const { profile, setProfile } = useProfile();
@@ -45,6 +63,7 @@ export default function BodyExplorer() {
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
+  const [showHint] = useState(isEarlyVisit);
   const t = useT();
 
   useEffect(() => {
@@ -76,9 +95,11 @@ export default function BodyExplorer() {
             history and the theme, and on a phone that row is full — the name
             would be the first thing to push something off it. */}
         <Logo size={22} />
-        {/* Two whole sentences rather than a name slot with "there" in it:
-            languages put the name in different places, and some have no
-            natural stand-in for an unknown one. */}
+        {/* Just the greeting — how to use the model used to be written out
+            here too, and on a phone that sentence was most of why the header
+            needed a scrolling strip for its buttons at all. It lives under
+            the model now, for a first-time visitor only, and this stays
+            short at every visit after. */}
         <p className="greeting">
           {profile?.username
             ? t("explorer.greeting", { name: profile.username })
@@ -153,6 +174,11 @@ export default function BodyExplorer() {
           injuries={injuries.injuries}
           toolbarExtra={workoutButton}
         />
+        {/* What the greeting used to say, moved to where the thing it's
+            describing actually is. Only for the first few visits — see
+            isEarlyVisit() above — since a reminder that outlives its
+            usefulness is just something else to read past. */}
+        {showHint && <p className="explorer-hint">{t("explorer.hint")}</p>}
       </div>
       <WorkoutPanel
         ids={programs.ids}
