@@ -69,7 +69,7 @@ type Props = {
   /** Equipment the reader said they have — sharpens swap ranking, same as it does for pairs. */
   equipmentAvailable?: string[];
   /** Goals set on the Stats page, per exercise id — shown in Plan → for that exercise. */
-  goals: Record<string, Goal>;
+  goals: Record<string, Goal[]>;
   /** Injuries marked on the Stats page, per muscle id — narrows the swap list and flags matching rows. */
   injuries: Record<string, Injury>;
 };
@@ -403,7 +403,7 @@ export default function WorkoutPanel({
             onSetTrainingMax={(tm, from) => onSetTrainingMax(planning, tm, from)}
             onClearTrainingMax={() => onClearTrainingMax(planning)}
             onClose={() => setPlanning(null)}
-            goal={goals[planning]}
+            goals={goals[planning] ?? []}
           />
         );
       })()}

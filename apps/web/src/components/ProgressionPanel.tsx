@@ -32,8 +32,8 @@ type Props = {
   override?: TrainingMaxOverride;
   onSetTrainingMax: (tm: number, from: number) => void;
   onClearTrainingMax: () => void;
-  /** Set on the Stats page — a weight and a date, shown here as a pace verdict. */
-  goal?: Goal;
+  /** Every goal set for this exercise on the Stats page — each shown as its own pace verdict. */
+  goals?: Goal[];
 };
 
 /**
@@ -74,7 +74,7 @@ function isApplied(target: Target | undefined, w: Target): boolean {
  */
 export default function ProgressionPanel({
   name, sets, usesLegs, barbell, onClose, workoutTarget, onUseWeek, repsOnly = false,
-  override, onSetTrainingMax, onClearTrainingMax, goal,
+  override, onSetTrainingMax, onClearTrainingMax, goals = [],
 }: Props) {
   const { t } = useI18n();
   const best = useMemo(() => bestEstimate(sets), [sets]);
@@ -82,10 +82,14 @@ export default function ProgressionPanel({
 
   // Reuses the exact function the Stats page's goal list calls, so a goal
   // reads the same pace here as it does there — one calculation, not two
-  // that could quietly disagree.
-  const pace = useMemo(
-    () => (goal ? goalPace(sets, override?.tm, goal.targetWeight, goal.targetDate, increment) : null),
-    [goal, sets, override, increment],
+  // that could quietly disagree. One verdict per goal: two goals on the same
+  // lift are two different questions, not a disagreement to resolve.
+  const paced = useMemo(
+    () => goals.map((goal) => ({
+      goal,
+      pace: goalPace(sets, override?.tm, goal.targetWeight, goal.targetDate, increment),
+    })),
+    [goals, sets, override, increment],
   );
 
   const currentMax = best ? roundLoad(best.oneRM) : 0;
@@ -183,18 +187,18 @@ export default function ProgressionPanel({
               </span>
             </div>
 
-            {/* A goal is set on the Stats page, for any exercise — shown here
-                too since Plan → is where its pace actually gets judged, the
+            {/* Goals are set on the Stats page, for any exercise — shown here
+                too since Plan → is where their pace actually gets judged, the
                 same place every other cycle question on this lift lives. */}
-            {goal && pace && (
-              <p className="plan-note flag">
+            {paced.map(({ goal, pace }) => (
+              <p className="plan-note flag" key={goal.id}>
                 {t("stats.goals.by", { date: goalDateLabel(goal.targetDate) })}
                 {": "}
                 {goal.targetWeight} {u}
                 {" — "}
                 {goalPaceMessage(t, pace)}
               </p>
-            )}
+            ))}
 
             <label className="plan-target">
               <span>{t("plan.target")}</span>

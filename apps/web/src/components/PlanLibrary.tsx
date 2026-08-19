@@ -39,8 +39,8 @@ type Props = {
   knownMaxes: Record<string, KnownMaxEntry>;
   /** A training max set by hand, per exercise id — same store ProgressionPanel reads. */
   trainingMaxes: Record<string, TrainingMaxOverride>;
-  /** Goals set on the Stats page, per exercise id — shown as a pace note on any row that has one. */
-  goals: Record<string, Goal>;
+  /** Goals set on the Stats page, per exercise id — each shown as its own pace note on that row. */
+  goals: Record<string, Goal[]>;
   /** Injuries marked on the Stats page, per muscle id — flagged on any row whose primary muscle matches. */
   injuries: Record<string, Injury>;
   /** Applies the plan as named workouts, carrying the weights just previewed. */
@@ -229,16 +229,17 @@ export default function PlanLibrary({
                     const x = localizeExercise(raw);
                     const anchorRaw = e.relatedTo ? BY_ID.get(e.relatedTo) : undefined;
                     const anchorName = anchorRaw ? localizeExercise(anchorRaw).name : "";
-                    const goal = goals[e.id];
-                    const pace = goal
-                      ? goalPace(
-                          byExercise.get(e.id) ?? [],
-                          trainingMaxes[e.id]?.tm,
-                          goal.targetWeight,
-                          goal.targetDate,
-                          incrementFor(usesLegs(raw)),
-                        )
-                      : null;
+                    const exerciseGoals = goals[e.id] ?? [];
+                    const paced = exerciseGoals.map((goal) => ({
+                      goal,
+                      pace: goalPace(
+                        byExercise.get(e.id) ?? [],
+                        trainingMaxes[e.id]?.tm,
+                        goal.targetWeight,
+                        goal.targetDate,
+                        incrementFor(usesLegs(raw)),
+                      ),
+                    }));
                     const injury = injuryFor(raw, injuries);
                     const injuredMuscleName = injury
                       ? t(`muscles.${injury.muscle}.name`, undefined, injury.muscle)
@@ -282,15 +283,15 @@ export default function PlanLibrary({
                         <span className="dsets">
                           {e.sets} × {e.reps}
                         </span>
-                        {goal && pace && (
-                          <span className="dgoal">
+                        {paced.map(({ goal, pace }) => (
+                          <span className="dgoal" key={goal.id}>
                             {t("stats.goals.by", { date: goalDateLabel(goal.targetDate) })}
                             {": "}
                             {goal.targetWeight} {u}
                             {" — "}
                             {goalPaceMessage(t, pace)}
                           </span>
-                        )}
+                        ))}
                         {injury && (
                           <span className={`dinjury dinjury-${injury.mode}`}>
                             {injuryNote(t, injury.mode, injuredMuscleName)}

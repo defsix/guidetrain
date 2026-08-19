@@ -1070,6 +1070,21 @@
   color: var(--text-muted);
 }
 
+/* Closed by default — see the comment in StatsPanel.tsx. Reads the same as
+   every other section's h3 label, cursor and hover the only tell that it's
+   also the toggle. */
+.stats-injuries summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.stats-injuries summary:hover { color: var(--text); }
+.stats-injuries summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stats-injuries[open] summary { margin-bottom: 2px; }
+
 .stats-current {
   margin: 0;
   font-size: 20px;
@@ -1121,8 +1136,49 @@
 .stats-goal-head .tm-clear { margin-left: auto; }
 
 .stats-goal-form { flex-wrap: wrap; }
-.stats-goal-form input.stats-goal-exercise { flex: 2; min-width: 110px; }
+.stats-goal-form .stats-goal-exercise { flex: 2; min-width: 110px; }
 .stats-goal-form input[type="date"] { flex: none; width: auto; }
+
+/* A text field with a filtered dropdown underneath — see AutocompleteInput.
+   Sized and positioned the same way a bare .stats-edit input already was;
+   the wrapper exists only so the dropdown has somewhere to anchor. */
+.autocomplete { position: relative; }
+.autocomplete-input {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  color: var(--text);
+  font: inherit;
+}
+.autocomplete-input::placeholder { color: var(--text-muted); opacity: 0.7; }
+.autocomplete-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.autocomplete-list {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--panel);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+.autocomplete-option {
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--text);
+  cursor: pointer;
+}
+.autocomplete-option.highlight { background: var(--accent-soft); color: var(--accent); }
 
 /* The chart: one accent-coloured line and nothing else competing for
    attention. No axis grid, no legend — four of these sit in one panel and

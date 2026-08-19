@@ -523,9 +523,17 @@ than inventing a flat line back to onboarding.
 ### Goals
 
 A weight, and a date, for any exercise in the catalogue — not just the three
-this panel otherwise tracks — picked from a plain `<input list>` over all 180
-rather than a custom search component. Each shows a pace verdict: on pace,
-behind, already reached, or the deadline has passed.
+this panel otherwise tracks — picked from a filtered dropdown over all 180
+(`AutocompleteInput`, arrow keys and Enter to move through it). Each shows a
+pace verdict: on pace, behind, already reached, or the deadline has passed.
+
+**More than one goal per lift is allowed.** A near-term number and a
+long-term one are different questions, not a correction of each other, so
+setting a new goal for an exercise that already has one adds to the list
+rather than replacing it. Every place a goal's pace is shown renders one
+verdict per goal, not one per exercise — two squat goals mean two lines in
+the list, two notes in Plan →, two on a plan's preview row, each judged and
+removable on its own.
 
 **Not a new calculation — the existing one, given a deadline.** The 5/3/1
 planner (**Plan →**, reachable on any exercise once something is logged for
@@ -552,8 +560,12 @@ defer" call already made for the rest of this panel's data.
 
 Was its own panel with its own header button; folded in here since it's one
 more thing this app already knows about a body, same as a max or a target
-weight. Mark any of the 17 trainable muscles as injured, and choose per
-muscle, not once for the whole feature, how the app should respond:
+weight. A native `<details>`, closed until tapped — 17 muscles' worth of
+chips isn't something to have sitting open under body weight and three lift
+maxes every time the panel is opened, and a native element gets the
+keyboard and screen-reader behaviour for free. Mark any of the 17 trainable
+muscles as injured, and choose per muscle, not once for the whole feature,
+how the app should respond:
 
 - **Avoid** keeps anything whose *primary* muscle is the injured one out of
   Train This, the rest-break partner list, and the swap list. This is the

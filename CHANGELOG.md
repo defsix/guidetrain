@@ -191,6 +191,27 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Injuries collapsed by default, multiple goals per lift, and a real
+  exercise search** — three refinements to the Progress panel.
+  - The Injuries section is a native `<details>` now, closed until tapped:
+    17 muscles' worth of Avoid/Warn chips no longer sit open under body
+    weight and three lift maxes every time the panel opens, and a native
+    element keeps it keyboard- and screen-reader-accessible for free.
+  - A lift can carry more than one goal — a near-term number and a
+    long-term one are different questions, not a correction of each other.
+    `useGoals`'s store keyes on exercise id the same way it always did, but
+    now holds a list rather than one goal, and every place a goal's pace
+    gets shown — the Progress page's own list, Plan → for that lift, a
+    ready-made plan's preview row — renders one verdict per goal instead of
+    assuming there's only one to show.
+  - The exercise field in "add a goal" was a plain `<input list>` reading
+    from all 180 exercises — a real browser autocomplete, but one whose
+    look and keyboard behaviour vary a lot by platform. A new
+    `AutocompleteInput` replaces it: a filtered dropdown, arrow keys and
+    Enter to move through it, Escape or a click outside to dismiss it. Not
+    a dependency — 180 options is a `.filter()`, in keeping with the rest
+    of this app's dependency budget — and generic enough that anything else
+    wanting a search field over a short list can reuse it.
 - **Header tidy-up: Workout moves to the canvas, Injuries moves into Progress** —
   two changes to where things live, not what they do, and both apply at
   every screen size rather than only on a phone. Workout's button is out of

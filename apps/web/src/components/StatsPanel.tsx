@@ -11,6 +11,7 @@ import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progress
 import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { useI18n } from "../i18n/I18nProvider";
+import AutocompleteInput from "./AutocompleteInput";
 
 type CatalogueEntry = {
   id: string;
@@ -43,9 +44,10 @@ type Props = {
   onClearKnownMax: (id: string) => void;
   /** Training maxes set by hand — goalPace prefers these the same way ProgressionPanel does. */
   trainingMaxes: Record<string, TrainingMaxOverride>;
-  goals: Record<string, Goal>;
+  /** Every goal set for an exercise — more than one is allowed, each judged on its own. */
+  goals: Record<string, Goal[]>;
   onSetGoal: (id: string, targetWeight: number, targetDate: number) => void;
-  onClearGoal: (id: string) => void;
+  onClearGoal: (id: string, goalId: string) => void;
   injuries: Record<string, Injury>;
   onSetInjury: (muscleId: string, mode: InjuryMode) => void;
   onClearInjury: (muscleId: string) => void;
@@ -317,53 +319,51 @@ export default function StatsPanel({
           {Object.keys(goals).length === 0 ? (
             <p className="workout-empty">{t("stats.goals.empty")}</p>
           ) : (
-            Object.entries(goals).map(([id, goal]) => {
+            Object.entries(goals).flatMap(([id, list]) => {
               const raw = BY_ID.get(id);
-              if (!raw) return null;
+              if (!raw) return [];
               const name = localizeExercise(raw).name;
               const increment = incrementFor(usesLegs(raw));
-              const pace = goalPace(
-                setsById.get(id) ?? [],
-                trainingMaxes[id]?.tm,
-                goal.targetWeight,
-                goal.targetDate,
-                increment,
-              );
-              const dateLabel = goalDateLabel(goal.targetDate);
 
-              return (
-                <div className="stats-goal" key={id}>
-                  <p className="stats-goal-head">
-                    <span className="stats-goal-name">
-                      {name} — {goal.targetWeight} {u}
-                    </span>
-                    <span className="stats-goal-date">
-                      {t("stats.goals.by", { date: dateLabel })}
-                    </span>
-                    <button className="tm-clear" onClick={() => onClearGoal(id)}>
-                      {t("stats.goals.remove")}
-                    </button>
-                  </p>
-                  <p className="plan-note">{goalPaceMessage(t, pace)}</p>
-                </div>
-              );
+              return list.map((goal) => {
+                const pace = goalPace(
+                  setsById.get(id) ?? [],
+                  trainingMaxes[id]?.tm,
+                  goal.targetWeight,
+                  goal.targetDate,
+                  increment,
+                );
+                const dateLabel = goalDateLabel(goal.targetDate);
+
+                return (
+                  <div className="stats-goal" key={goal.id}>
+                    <p className="stats-goal-head">
+                      <span className="stats-goal-name">
+                        {name} — {goal.targetWeight} {u}
+                      </span>
+                      <span className="stats-goal-date">
+                        {t("stats.goals.by", { date: dateLabel })}
+                      </span>
+                      <button className="tm-clear" onClick={() => onClearGoal(id, goal.id)}>
+                        {t("stats.goals.remove")}
+                      </button>
+                    </p>
+                    <p className="plan-note">{goalPaceMessage(t, pace)}</p>
+                  </div>
+                );
+              });
             })
           )}
 
           <form className="stats-edit stats-goal-form" onSubmit={addGoal}>
-            <input
+            <AutocompleteInput
               className="stats-goal-exercise"
-              list="stats-goal-exercises"
+              options={localizedExercises.map((x) => x.name)}
               value={goalExercise}
-              onChange={(e) => setGoalExercise(e.target.value)}
+              onChange={setGoalExercise}
               placeholder={t("stats.goals.exercise")}
               aria-label={t("stats.goals.exercise")}
             />
-            <datalist id="stats-goal-exercises">
-              {localizedExercises.map((x) => (
-                <option key={x.id} value={x.name} />
-              ))}
-            </datalist>
             <input
               value={goalWeightInput}
               onChange={(e) => setGoalWeightInput(e.target.value)}
@@ -389,9 +389,13 @@ export default function StatsPanel({
             as they were, only flagged — chosen per muscle, not once for the
             whole feature, since a knee that rules out squats entirely is a
             different injury from a shoulder that just needs watching.
-            Primary muscle only — see lib/injuries.ts's injuryFor(). */}
-        <section className="stats-section">
-          <h3>{t("injuryPanel.title")}</h3>
+            Primary muscle only — see lib/injuries.ts's injuryFor(). A native
+            <details> rather than a button-plus-state: 17 muscles is a wall of
+            chips nobody wants sitting open by default under body weight and
+            three lift maxes, and this needs no JS to stay keyboard- and
+            screen-reader-accessible closed or open. */}
+        <details className="stats-section stats-injuries">
+          <summary>{t("injuryPanel.title")}</summary>
           <p className="plans-intro">{t("injuryPanel.intro")}</p>
           <ul className="injury-list">
             {MUSCLES.map((m) => {
@@ -423,7 +427,7 @@ export default function StatsPanel({
             })}
           </ul>
           <p className="plan-note">{t("injuryPanel.note")}</p>
-        </section>
+        </details>
       </aside>
     </>
   );

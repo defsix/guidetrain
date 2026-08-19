@@ -11,6 +11,10 @@ test.describe("injury marking", () => {
     await expect(page.locator("canvas")).toBeVisible();
 
     await page.getByRole("button", { name: /progress/i }).click();
+    // Collapsed until tapped — see the <details> in StatsPanel.tsx.
+    await expect(page.locator(".injury-list")).toBeHidden();
+    await page.locator(".stats-injuries summary").click();
+
     const row = page.locator(".injury-row").filter({ hasText: "Quadriceps" });
     const avoidChip = row.getByRole("button", { name: "Avoid", exact: true });
     await expect(avoidChip).not.toHaveClass(/chip-selected/);
@@ -20,6 +24,7 @@ test.describe("injury marking", () => {
 
     await page.locator(".stats-panel .workout-close").click();
     await page.getByRole("button", { name: /progress/i }).click();
+    await page.locator(".stats-injuries summary").click();
     await expect(
       page.locator(".injury-row").filter({ hasText: "Quadriceps" }).getByRole("button", {
         name: "Avoid",

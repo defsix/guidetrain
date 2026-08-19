@@ -14,12 +14,18 @@ const KEY = "guidetrain.goals";
  * into a verdict, reusing the exact training-max cycle math ProgressionPanel
  * already runs rather than a second way of answering the same question.
  *
+ * An exercise can carry more than one of these — a near-term and a
+ * long-term squat number are different questions, not a correction of each
+ * other — so `id` is the goal's own identity, distinct from the exercise id
+ * it's filed under.
+ *
  * In memory and localStorage only for now, like the rest of the app's
  * per-device state — not yet wired into Supabase sync (see `sync.ts`'s
  * `SYNCED_KEYS`), the same "optional to defer" call made for the Stats page
  * data before this needed its own migration.
  */
 export type Goal = {
+  id: string;
   targetWeight: number;
   /** Epoch ms. */
   targetDate: number;
@@ -27,7 +33,9 @@ export type Goal = {
   setAt: number;
 };
 
-type Store = Record<string, Goal>;
+type Store = Record<string, Goal[]>;
+
+const makeId = () => `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 
 function read(): Store {
   try {
@@ -37,20 +45,27 @@ function read(): Store {
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
     const out: Store = {};
     for (const [id, v] of Object.entries(parsed as Record<string, any>)) {
-      const targetWeight = Number(v?.targetWeight);
-      const targetDate = Number(v?.targetDate);
-      const setAt = Number(v?.setAt);
-      // Storage is not a trusted input: a nonsensical target weight would
+      // A goal saved before multiple-per-exercise existed is a single object;
+      // a list from since is already the shape read() wants. Either way,
+      // storage is not a trusted input — a nonsensical target weight would
       // drive every percentage in the pace calculation built from it.
-      if (
-        Number.isFinite(targetWeight) &&
-        targetWeight > 0 &&
-        targetWeight <= 1000 &&
-        Number.isFinite(targetDate) &&
-        Number.isFinite(setAt)
-      ) {
-        out[id] = { targetWeight, targetDate, setAt };
+      const list = Array.isArray(v) ? v : [v];
+      const goals: Goal[] = [];
+      for (const g of list) {
+        const targetWeight = Number(g?.targetWeight);
+        const targetDate = Number(g?.targetDate);
+        const setAt = Number(g?.setAt);
+        if (
+          Number.isFinite(targetWeight) &&
+          targetWeight > 0 &&
+          targetWeight <= 1000 &&
+          Number.isFinite(targetDate) &&
+          Number.isFinite(setAt)
+        ) {
+          goals.push({ id: typeof g?.id === "string" && g.id ? g.id : makeId(), targetWeight, targetDate, setAt });
+        }
       }
+      if (goals.length) out[id] = goals;
     }
     return out;
   } catch {
@@ -75,15 +90,19 @@ export function useGoals() {
 
   const set = useCallback(
     (id: string, targetWeight: number, targetDate: number) => {
-      save({ ...goals, [id]: { targetWeight, targetDate, setAt: Date.now() } });
+      const goal: Goal = { id: makeId(), targetWeight, targetDate, setAt: Date.now() };
+      const existing = goals[id] ?? [];
+      save({ ...goals, [id]: [...existing, goal] });
     },
     [goals, save],
   );
 
   const clear = useCallback(
-    (id: string) => {
+    (id: string, goalId: string) => {
+      const remaining = (goals[id] ?? []).filter((g) => g.id !== goalId);
       const next = { ...goals };
-      delete next[id];
+      if (remaining.length) next[id] = remaining;
+      else delete next[id];
       save(next);
     },
     [goals, save],
