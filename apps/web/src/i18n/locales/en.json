@@ -181,6 +181,13 @@
   "goNext": "Go to {name}",
   "finishedLast": "That is the last workout in this plan done. Start the plan again when you are ready."
  },
+ "swap": {
+  "button": "Swap exercise",
+  "title": "Swap {name}",
+  "close": "Close swap",
+  "intro": "Exercises that train the same muscle — pick one to replace it with.",
+  "empty": "No swap found for this exercise."
+ },
  "log": {
   "addSet": "Add set",
   "weight": "Weight",

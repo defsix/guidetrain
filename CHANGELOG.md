@@ -191,6 +191,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Swap an exercise for one that trains the same muscle** — a ⇄ button
+  beside each exercise in a workout opens a short list of replacements,
+  picked by a new `swapsFor()` in `pairs.js`: the opposite legality test from
+  the existing `pairsFor()` (which requires *disjoint* regions, so a
+  rest-break partner doesn't compete for the same recovery), requiring the
+  *same* primary muscle instead — every exercise names exactly one, so this
+  is a direct lookup. Ranked so different equipment comes first, since "the
+  rack is busy" is the actual reason a swap gets asked for and an
+  alternative needing the identical rack doesn't answer that; then a
+  demonstration video, then something startable immediately, then matched
+  difficulty — the same signals `pairsFor`'s ranking uses, reordered for a
+  different problem. The swap keeps its position in the workout and any
+  sets-and-reps target already set for that slot, but drops any prescribed
+  *loads* — those were computed for a lift the slot no longer holds. Logged
+  history is untouched either way. `tools/exercises/check-swaps.mjs` (new,
+  wired into `npm run check`) confirms every one of the 180 exercises has at
+  least 3 legal swaps and that every suggestion actually shares the primary
+  muscle, the same guarantee `check-pairs.mjs` gives the training-pairs rule.
 - **Fixed the 3D model swinging off-centre when rotated** — `FrameToVisible`
   moves the model sideways and up so the muscle-picker panel never covers it,
   but `OrbitControls` was still orbiting around a fixed world-origin target

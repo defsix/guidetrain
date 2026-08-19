@@ -164,6 +164,8 @@ export default function BodyExplorer() {
         trainingMaxes={tms.overrides}
         onSetTrainingMax={tms.set}
         onClearTrainingMax={tms.clear}
+        onSwap={programs.swapExercise}
+        equipmentAvailable={profile?.equipment}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field

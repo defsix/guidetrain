@@ -181,6 +181,13 @@
   "goNext": "Passer à {name}",
   "finishedLast": "C’était la dernière séance du plan. Recommencez-le quand vous voulez."
  },
+ "swap": {
+  "button": "Remplacer l'exercice",
+  "title": "Remplacer {name}",
+  "close": "Fermer le remplacement",
+  "intro": "Exercices qui travaillent le même muscle — choisissez-en un pour le remplacer.",
+  "empty": "Aucun remplacement trouvé pour cet exercice."
+ },
  "log": {
   "addSet": "Ajouter une série",
   "weight": "Charge",

@@ -1,8 +1,10 @@
 import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import muscleMap from "../anatomy/muscle-map.json";
+import { swapsFor } from "../anatomy/pairs";
 import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
+import SwapPanel from "./SwapPanel";
 import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
 import type { Program, Target } from "../state/usePrograms";
@@ -68,6 +70,9 @@ type Props = {
   trainingMaxes: Record<string, TrainingMaxOverride>;
   onSetTrainingMax: (id: string, tm: number, from: number) => void;
   onClearTrainingMax: (id: string) => void;
+  onSwap: (oldId: string, newId: string) => void;
+  /** Equipment the reader said they have — sharpens swap ranking, same as it does for pairs. */
+  equipmentAvailable?: string[];
 };
 
 /**
@@ -87,12 +92,28 @@ export default function WorkoutPanel({
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
+  onSwap, equipmentAvailable,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
+  const [swapping, setSwapping] = useState<string | null>(null);
   const [renaming, setRenaming] = useState(false);
   const [draft, setDraft] = useState("");
   const restTimer = useRestTimer();
+
+  const equipmentSet = useMemo(
+    () => (equipmentAvailable && equipmentAvailable.length ? new Set(equipmentAvailable) : null),
+    [equipmentAvailable],
+  );
+
+  // Computed only while the panel is open, from the exercise being replaced
+  // rather than from `items` — the localized copy items holds has already
+  // dropped the primary/secondary muscle data swapsFor needs.
+  const swapAnchor = swapping ? BY_ID.get(swapping) : null;
+  const swapCandidates = useMemo(
+    () => (swapAnchor ? swapsFor(swapAnchor, 4, equipmentSet).map(localizeExercise) : []),
+    [swapAnchor, equipmentSet, localizeExercise],
+  );
 
   /** Sets dealt with today: logged plus skipped. */
   const dealtWith = (id: string) => (today.get(id) ?? []).length + (skips[id] ?? 0);
@@ -281,6 +302,13 @@ export default function WorkoutPanel({
                       ↓
                     </button>
                     <button
+                      onClick={() => setSwapping(x.id)}
+                      aria-label={`${t("swap.button")} — ${x.name}`}
+                      title={t("swap.button")}
+                    >
+                      ⇄
+                    </button>
+                    <button
                       onClick={() => onRemove(x.id)}
                       aria-label={`${t("workout.remove")} — ${x.name}`}
                     >
@@ -362,6 +390,15 @@ export default function WorkoutPanel({
           />
         );
       })()}
+      <SwapPanel
+        exercise={items.find((i) => i.id === swapping) ?? null}
+        candidates={swapCandidates}
+        onPick={(newId) => {
+          if (swapping) onSwap(swapping, newId);
+          setSwapping(null);
+        }}
+        onClose={() => setSwapping(null)}
+      />
     </>
   );
 }

@@ -189,6 +189,13 @@
   "goNext": "Přejít na {name}",
   "finishedLast": "Poslední trénink plánu je hotový. Až budete chtít, začněte plán znovu."
  },
+ "swap": {
+  "button": "Vyměnit cvik",
+  "title": "Vyměnit {name}",
+  "close": "Zavřít výměnu",
+  "intro": "Cviky, které trénují stejný sval — vyberte, čím ho nahradit.",
+  "empty": "Pro tento cvik nebyla nalezena žádná náhrada."
+ },
  "log": {
   "addSet": "Přidat sérii",
   "weight": "Váha",

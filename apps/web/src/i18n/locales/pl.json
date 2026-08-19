@@ -189,6 +189,13 @@
   "goNext": "Przejdź do {name}",
   "finishedLast": "To był ostatni trening planu. Zacznij plan od nowa, kiedy zechcesz."
  },
+ "swap": {
+  "button": "Zamień ćwiczenie",
+  "title": "Zamień {name}",
+  "close": "Zamknij zamianę",
+  "intro": "Ćwiczenia trenujące ten sam mięsień — wybierz, czym je zastąpić.",
+  "empty": "Nie znaleziono zamiennika dla tego ćwiczenia."
+ },
  "log": {
   "addSet": "Dodaj serię",
   "weight": "Ciężar",

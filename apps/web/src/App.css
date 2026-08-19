@@ -961,7 +961,8 @@
 
 .account-panel,
 .equipment-panel,
-.stats-panel {
+.stats-panel,
+.swap-panel {
   position: fixed;
   z-index: 31;
   top: 0;
@@ -979,16 +980,21 @@
 }
 .account-panel > *,
 .equipment-panel > *,
-.stats-panel > * { flex: none; }
+.stats-panel > *,
+.swap-panel > * { flex: none; }
 
 @media (min-width: 1100px) {
-  .account-panel, .equipment-panel, .stats-panel { width: min(520px, 40vw); padding: 26px 30px; }
+  .account-panel, .equipment-panel, .stats-panel, .swap-panel {
+    width: min(520px, 40vw);
+    padding: 26px 30px;
+  }
 }
 
 @media (max-width: 560px) {
   .account-panel,
   .equipment-panel,
-  .stats-panel {
+  .stats-panel,
+  .swap-panel {
     top: auto;
     left: 0;
     width: auto;
@@ -1002,7 +1008,8 @@
 
 .account-panel h2,
 .equipment-panel h2,
-.stats-panel h2 {
+.stats-panel h2,
+.swap-panel h2 {
   margin: 0;
   font-family: var(--mono);
   font-size: 10px;
@@ -1838,6 +1845,34 @@
   text-transform: uppercase; color: var(--text-muted);
 }
 .plan-card .pdesc { font-size: 12px; line-height: 1.45; color: var(--text-muted); margin-top: 3px; }
+
+.swap-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.swap-option {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: 0.13s;
+}
+.swap-option:hover { border-color: var(--accent); }
+.swap-name { font-size: 13px; color: var(--text); }
+.swap-option em {
+  flex: none;
+  font-style: normal;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
 
 .plans-back {
   align-self: flex-start;

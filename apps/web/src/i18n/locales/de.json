@@ -181,6 +181,13 @@
   "goNext": "Weiter zu {name}",
   "finishedLast": "Das war das letzte Training des Plans. Fang den Plan neu an, wenn du so weit bist."
  },
+ "swap": {
+  "button": "Übung tauschen",
+  "title": "{name} tauschen",
+  "close": "Tausch schließen",
+  "intro": "Übungen, die denselben Muskel trainieren — wähle einen Ersatz.",
+  "empty": "Für diese Übung wurde kein Ersatz gefunden."
+ },
  "log": {
   "addSet": "Satz hinzufügen",
   "weight": "Gewicht",

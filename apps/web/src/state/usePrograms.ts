@@ -339,6 +339,45 @@ export function usePrograms() {
   const clear = useCallback(() => editActive(() => []), [editActive]);
 
   /**
+   * Replace one exercise with another, in place — the rack is busy, not the
+   * workout plan.
+   *
+   * Sets and reps carry over, since they describe the workout rather than the
+   * exercise: "3 sets of 5" means the same thing whichever lift fills the
+   * slot. The prescribed *loads* do not carry over and are dropped — they
+   * were computed for a lift this exercise no longer is, and a stale weight
+   * offered under a new name is worse than none. Logged sets are untouched
+   * either way: they are history, and a swap changes the plan, not what
+   * already happened.
+   *
+   * A no-op if the new exercise is already in the program — two rows for the
+   * same lift is not a legal state this hook produces anywhere else, so a
+   * swap should not create one either.
+   */
+  const swapExercise = useCallback(
+    (oldId: string, newId: string) => {
+      if (oldId === newId) return;
+      setPrograms((prev) => {
+        const id = activeId && prev.some((p) => p.id === activeId) ? activeId : prev[0]?.id;
+        if (!id) return prev;
+        const next = prev.map((p) => {
+          if (p.id !== id) return p;
+          if (!p.exerciseIds.includes(oldId) || p.exerciseIds.includes(newId)) return p;
+          const exerciseIds = p.exerciseIds.map((x) => (x === oldId ? newId : x));
+          const targets = { ...(p.targets ?? {}) };
+          const old = targets[oldId];
+          delete targets[oldId];
+          if (old) targets[newId] = { sets: old.sets, reps: old.reps };
+          return { ...p, exerciseIds, targets };
+        });
+        persist(KEY, next);
+        return next;
+      });
+    },
+    [activeId],
+  );
+
+  /**
    * Add whole workouts at once, from a ready-made plan.
    *
    * Built in one write rather than by calling create() and then toggling each
@@ -400,6 +439,7 @@ export function usePrograms() {
     removeExercise,
     move,
     clear,
+    swapExercise,
     addWorkouts,
     setTarget,
     targets: active?.targets ?? {},

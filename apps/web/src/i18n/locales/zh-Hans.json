@@ -177,6 +177,13 @@
   "goNext": "前往{name}",
   "finishedLast": "这是计划里的最后一次训练。想再来时可以从头开始。"
  },
+ "swap": {
+  "button": "替换动作",
+  "title": "替换{name}",
+  "close": "关闭替换",
+  "intro": "训练同一肌肉的动作——选择一个来替换。",
+  "empty": "未找到该动作的替换项。"
+ },
  "log": {
   "addSet": "添加一组",
   "weight": "重量",

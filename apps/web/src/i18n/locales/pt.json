@@ -181,6 +181,13 @@
   "goNext": "Ir para {name}",
   "finishedLast": "Era o último treino do plano. Recomece-o quando quiser."
  },
+ "swap": {
+  "button": "Trocar exercício",
+  "title": "Trocar {name}",
+  "close": "Fechar troca",
+  "intro": "Exercícios que trabalham o mesmo músculo — escolha um para o substituir.",
+  "empty": "Não foi encontrada substituição para este exercício."
+ },
  "log": {
   "addSet": "Adicionar série",
   "weight": "Peso",

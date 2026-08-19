@@ -136,6 +136,8 @@ function pick(regions, anchor, limit, excludeId, equipmentAvailable) {
  * Partners are spread across different primary muscles where possible: three
  * legal partners that are all calf raises is a correct answer to the wrong
  * question, since the point of the rest period is to train something else.
+ *
+ * @param {Set<string>|null} [equipmentAvailable]
  */
 export function pairsFor(exercise, limit = 3, equipmentAvailable = null) {
   if (!exercise) return [];
@@ -152,10 +154,64 @@ export function pairsFor(exercise, limit = 3, equipmentAvailable = null) {
  * which one you are doing, the only honest claim is about the region the
  * muscle sits in. Opening an exercise replaces these with partners that know
  * about its secondary muscles too.
+ *
+ * @param {Set<string>|null} [equipmentAvailable]
  */
 export function pairsForRegion(region, limit = 3, equipmentAvailable = null) {
   if (!region) return [];
   return pick(new Set([region]), null, limit, null, equipmentAvailable);
+}
+
+/**
+ * How good a replacement this is, once it is known to be a legal one.
+ *
+ * Different equipment ranks first, deliberately above the video/kit/level
+ * signals pairsFor's score weighs first — "the rack is busy" is the actual
+ * reason a swap gets asked for, so an alternative that frees you from the
+ * same equipment answers the real question; one that needs the identical
+ * rack does not, even though it is a legal same-muscle match. Everything
+ * after that mirrors score() above for the same reasons it does there.
+ */
+function swapScore(anchor, x, equipmentAvailable) {
+  let s = 0;
+  if (x.equipment !== anchor.equipment) s += 8;
+  if (x.videoId) s += 4;
+  const canDoItNext =
+    x.equipment === 'body only' || (equipmentAvailable && equipmentAvailable.has(x.equipment));
+  if (canDoItNext) s += 2;
+  if (x.level === anchor.level) s += 1;
+  return s;
+}
+
+/**
+ * Up to `limit` exercises that train the same thing this one does — a
+ * replacement, not a rest-break partner.
+ *
+ * The opposite legality test from pairsFor above: that function requires
+ * disjoint regions, because a superset partner competing for the same
+ * recovery defeats the point of it. A swap is the other question entirely —
+ * the equipment is the problem, not the muscle — so it requires the *same*
+ * primary muscle instead. Every exercise in this catalogue names exactly one
+ * primary muscle (`check-pairs.mjs`'s own data checks this file against
+ * confirm it), so "shares a primary muscle" and "has the same primary
+ * muscle" are the same test here; written as an intersection anyway so nothing
+ * downstream breaks if that ever stops being true.
+ *
+ * Ties break on id so the suggestions are stable, same as pairsFor.
+ *
+ * @param {Set<string>|null} [equipmentAvailable]
+ */
+export function swapsFor(exercise, limit = 4, equipmentAvailable = null) {
+  if (!exercise) return [];
+  const mine = new Set(exercise.primary);
+  const legal = ALL.filter(
+    (x) => x.id !== exercise.id && x.primary.some((m) => mine.has(m)),
+  ).sort(
+    (a, b) =>
+      swapScore(exercise, b, equipmentAvailable) - swapScore(exercise, a, equipmentAvailable) ||
+      a.id.localeCompare(b.id),
+  );
+  return legal.slice(0, limit);
 }
 
 /** Every exercise, one entry each — exported for the checker. */

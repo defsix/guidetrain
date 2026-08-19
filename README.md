@@ -279,6 +279,35 @@ checks the rule against the shipped catalogue — no suggested pair shares a
 region or a muscle, none of the 180 is left without a partner, and the
 suggestions are stable between calls. It exits non-zero, so it can gate a build.
 
+### Swapping an exercise
+
+A ⇄ button beside each exercise in a workout offers a short list of
+replacements — the rack is busy, not the plan. `swapsFor()` is the opposite
+legality test from the pairing rule above: pairing requires *disjoint*
+regions, so a rest-break partner doesn't compete for the same recovery, but a
+swap needs the *same* primary muscle instead, since it is meant to train the
+same thing. Every exercise in the catalogue names exactly one primary muscle,
+so that is a direct lookup rather than a fuzzier region comparison.
+
+Ranked so different equipment comes first — the actual reason a swap gets
+asked for is that a specific piece of kit is unavailable, so an alternative
+needing the identical rack answers a different question than the one being
+asked. After that, the same signals the pairing rule uses: a demonstration
+video, something startable immediately, matched difficulty.
+
+Picking one keeps its position in the workout and any sets-and-reps target
+already set for that slot, but not the *loads* a plan or a training-max cycle
+had prescribed for it — those were computed for the lift the slot no longer
+holds, and a stale weight offered under a new exercise's name would be worse
+than none. Nothing already logged moves: a swap changes the plan, not the
+record of what happened.
+
+    node tools/exercises/check-swaps.mjs
+
+gives the same guarantee `check-pairs.mjs` gives the pairing rule: every one
+of the 180 exercises has at least 3 legal swaps, and every suggestion
+actually shares the primary muscle it claims to.
+
 ### Equipment
 
 A panel in the header, next to Account and History, where the reader picks
@@ -980,8 +1009,6 @@ GitHub account.
 
 Not commitments. Roughly in the order they would earn their place:
 
-- **Swap an exercise** — the rack is busy, give me something that trains the
-  same thing. The pairing rules already know which exercises share muscles.
 - **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,
   StrongLifts, GZCLP.
 - **Install as an app (PWA)** — it is already a static site built around
