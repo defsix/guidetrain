@@ -191,6 +191,29 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A rest timer between sets** — logging a set now starts a countdown, tiered
+  by how many reps it asked for (five and under: 180 seconds; up to twelve: 90;
+  above that: 60) — a rule of thumb, not a formula, documented as such next to
+  `restSeconds()` in `progression.ts`. One timer for the whole workout rather
+  than one per exercise, since logging a set always means moving on to the
+  next thing: whichever exercise was most recently logged for owns it, and a
+  new set anywhere replaces whatever was left of the last one. Tracked as an
+  end timestamp rather than a counting-down number in `useRestTimer.ts`
+  specifically because a backgrounded mobile tab throttles `setInterval` — the
+  number on screen is recomputed from the clock on every tick, so it reads
+  correctly the moment the tab wakes up regardless of how long it was actually
+  asleep. In memory only, unlike everything else in the app: a rest period is
+  a minute or two, and losing it on a reload costs nothing worth persisting.
+  Non-blocking — the "Add set" form stays usable the whole time — with a +15s
+  extend and a skip, and a generated tone plus `navigator.vibrate()` when it
+  runs out, both best-effort and silently skipped wherever unsupported (an
+  autoplay policy, iOS Safari's missing `vibrate`). New prop names on
+  `SetLogger` (`restTimer`, `onRestTimerSkip`, `onRestTimerExtend`)
+  deliberately avoid the existing `onSkipRest`, which already means something
+  unrelated: skipping the remaining planned sets, not a countdown. Verified
+  with new unit tests for `restSeconds`'s tiers and a new Playwright spec
+  (`rest-timer.spec.ts`) covering the tiering, skip, extend, timer replacement
+  on a fresh set, and that the form stays usable throughout.
 - **A known max now changes its own lift, in every plan that names it, not
   only a related one.** `prescribe()`'s `knownMax` lookup was only ever
   consulted for `RELATED_TO`'s two entries (Incline Bench, Close-Grip

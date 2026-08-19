@@ -338,6 +338,11 @@
   },
   "undo": "取り消す"
  },
+ "rest": {
+  "done": "休憩終了",
+  "extend": "+15秒",
+  "skip": "休憩をスキップ"
+ },
  "load": {
   "perSide": "片側 {weight} {unit}",
   "barOnly": "バーのみ — プレートなし。",

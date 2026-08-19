@@ -338,6 +338,11 @@
   },
   "undo": "撤销"
  },
+ "rest": {
+  "done": "休息结束",
+  "extend": "+15秒",
+  "skip": "跳过休息"
+ },
  "load": {
   "perSide": "每边 {weight} {unit}",
   "barOnly": "只有杠铃杆 — 不加片。",

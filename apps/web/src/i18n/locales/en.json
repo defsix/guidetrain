@@ -349,6 +349,11 @@
   },
   "undo": "Undo"
  },
+ "rest": {
+  "done": "Rest done",
+  "extend": "+15s",
+  "skip": "Skip rest"
+ },
  "load": {
   "perSide": "{weight} {unit} a side",
   "barOnly": "Just the bar — nothing on it.",

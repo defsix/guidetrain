@@ -312,3 +312,22 @@ export function cyclesTo(currentTM: number, targetTM: number, increment: number)
   if (targetTM <= currentTM) return 0;
   return Math.ceil((targetTM - currentTM) / increment);
 }
+
+/**
+ * How long to rest before the next set, guessed from how many reps the one
+ * just finished asked for.
+ *
+ * A rule of thumb, not a formula with a source to cite the way Epley is
+ * above: heavier, lower-rep work taxes the nervous system harder and
+ * benefits from recovering longer; light, high-rep work needs less. Offered
+ * as a starting suggestion rather than a measurement — the timer can be
+ * extended because this will be wrong for some lifts and some people.
+ */
+export function restSeconds(reps: number): number {
+  if (reps <= 5) return 180;
+  if (reps <= 12) return 90;
+  return 60;
+}
+
+/** How much a rest timer is extended by, per tap. */
+export const REST_EXTEND_SECONDS = 15;

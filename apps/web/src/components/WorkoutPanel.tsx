@@ -7,6 +7,8 @@ import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
 import type { Program, Target } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
+import { useRestTimer } from "../state/useRestTimer";
+import { restSeconds, REST_EXTEND_SECONDS } from "../lib/progression";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -90,6 +92,7 @@ export default function WorkoutPanel({
   const [planning, setPlanning] = useState<string | null>(null);
   const [renaming, setRenaming] = useState(false);
   const [draft, setDraft] = useState("");
+  const restTimer = useRestTimer();
 
   /** Sets dealt with today: logged plus skipped. */
   const dealtWith = (id: string) => (today.get(id) ?? []).length + (skips[id] ?? 0);
@@ -295,7 +298,10 @@ export default function WorkoutPanel({
                     exerciseId={x.id}
                     todaysSets={today.get(x.id) ?? []}
                     best={best.get(x.id)}
-                    onAdd={onAddSet}
+                    onAdd={(id, weight, reps) => {
+                      onAddSet(id, weight, reps);
+                      restTimer.start(id, restSeconds(reps));
+                    }}
                     onRemove={onRemoveSet}
                     onPlan={() => setPlanning(x.id)}
                     bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
@@ -310,6 +316,17 @@ export default function WorkoutPanel({
                         : undefined
                     }
                     onUnskip={() => onUnskip(x.id)}
+                    restTimer={
+                      restTimer.exerciseId === x.id
+                        ? { remaining: restTimer.remaining, total: restTimer.total }
+                        : null
+                    }
+                    onRestTimerSkip={restTimer.exerciseId === x.id ? restTimer.clear : undefined}
+                    onRestTimerExtend={
+                      restTimer.exerciseId === x.id
+                        ? () => restTimer.extend(REST_EXTEND_SECONDS)
+                        : undefined
+                    }
                   />
                 </li>
               ))}

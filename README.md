@@ -632,6 +632,26 @@ formula to be right. That is also the point of recording sets at all — an
 estimate from a set you performed is a calculation, and a typed-in "my max is
 100" is a claim, and the two should never share a field.
 
+### Rest timer
+
+Logging a set starts a countdown, tiered by how many reps it asked for: five
+and under gets 180 seconds, up to twelve gets 90, above that gets 60 — a rule
+of thumb rather than a formula, unlike the Epley estimator elsewhere, and
+documented as such next to `restSeconds()`. One timer runs for the whole
+workout rather than one per exercise, since logging a set always means moving
+on to something else: whichever exercise was most recently logged for owns
+it, and a new set anywhere replaces whatever was left of the last one.
+
+It is in memory only, unlike everything else in the app — a rest period is a
+minute or two, and losing it on a reload costs nothing worth persisting.
+Tracked as an end timestamp rather than a number that counts down, because a
+backgrounded phone throttles `setInterval`; the figure on screen is
+recomputed from the clock on every tick, so it is still correct the instant
+the screen comes back on regardless of how long it was actually off. It never
+blocks the form — "Add set" stays usable the whole time — and offers a +15s
+extend and a skip, with a generated tone and a vibration when it runs out,
+each silently skipped wherever unsupported.
+
 ### Getting to the next max
 
 Once an exercise has a usable logged set, **Plan** shows the way from the max
@@ -940,8 +960,6 @@ GitHub account.
 
 Not commitments. Roughly in the order they would earn their place:
 
-- **Rest timer between sets** — the main reason to be holding a phone
-  mid-workout that the app does not yet cover.
 - **Warm-up sets** calculated up to the working weight, which everyone does by
   hand and nobody enjoys.
 - **Swap an exercise** — the rack is busy, give me something that trains the

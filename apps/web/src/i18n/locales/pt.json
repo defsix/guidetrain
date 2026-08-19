@@ -349,6 +349,11 @@
   },
   "undo": "Anular"
  },
+ "rest": {
+  "done": "Descanso terminado",
+  "extend": "+15 s",
+  "skip": "Saltar o descanso"
+ },
  "load": {
   "perSide": "{weight} {unit} de cada lado",
   "barOnly": "Só a barra — sem discos.",

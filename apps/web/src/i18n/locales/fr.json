@@ -349,6 +349,11 @@
   },
   "undo": "Annuler"
  },
+ "rest": {
+  "done": "Repos terminé",
+  "extend": "+15 s",
+  "skip": "Passer le repos"
+ },
  "load": {
   "perSide": "{weight} {unit} par côté",
   "barOnly": "La barre seule — sans disques.",

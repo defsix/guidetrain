@@ -371,6 +371,11 @@
   },
   "undo": "Cofnij"
  },
+ "rest": {
+  "done": "Odpoczynek zakończony",
+  "extend": "+15 s",
+  "skip": "Pomiń odpoczynek"
+ },
  "load": {
   "perSide": "{weight} {unit} na stronę",
   "barOnly": "Sam gryf — bez talerzy.",

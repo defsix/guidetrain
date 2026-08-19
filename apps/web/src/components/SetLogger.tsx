@@ -21,6 +21,15 @@ type Props = {
   onSkipSet?: () => void;
   onSkipRest?: () => void;
   onUnskip?: () => void;
+  /**
+   * The rest timer, if it is currently counting down for *this* exercise —
+   * null otherwise, since only one runs at a time for the whole workout.
+   * Named apart from `onSkipRest` above, which already means something
+   * unrelated: skipping the remaining planned sets, not a countdown.
+   */
+  restTimer?: { remaining: number; total: number } | null;
+  onRestTimerSkip?: () => void;
+  onRestTimerExtend?: () => void;
   /** The written instructions, shown on request rather than by default. */
   instructions?: string[];
   /**
@@ -58,9 +67,17 @@ type Props = {
  * the next one. That is the whole point of the two planners: a weight you have
  * to remember from another screen is a weight you get wrong under a bar.
  */
+/** Minutes and seconds, the way a countdown is read rather than reasoned about. */
+function formatRest(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
 export default function SetLogger({
   exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad, target,
   skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions, equipment,
+  restTimer, onRestTimerSkip, onRestTimerExtend,
 }: Props) {
   const { t } = useI18n();
   const repsOnly = bodyLoad != null;
@@ -201,6 +218,35 @@ export default function SetLogger({
           {t("log.addSet")}
         </button>
       </form>
+
+      {/* Non-blocking: the form above stays usable the whole time, since
+          rest is a suggestion, not a lock on the next set. */}
+      {restTimer && (
+        <p className={`rest-timer ${restTimer.remaining === 0 ? "done" : ""}`}>
+          <span
+            className="rest-bar"
+            style={{
+              // A one-off inline value driven by the countdown itself, which
+              // is exactly what CSS custom properties are for — no class per
+              // percentage point.
+              "--rest-pct": `${(restTimer.remaining / Math.max(1, restTimer.total)) * 100}%`,
+            } as React.CSSProperties}
+          />
+          <span className="rest-time">
+            {restTimer.remaining === 0 ? t("rest.done") : formatRest(restTimer.remaining)}
+          </span>
+          {onRestTimerExtend && restTimer.remaining > 0 && (
+            <button className="rest-extend" onClick={onRestTimerExtend}>
+              {t("rest.extend")}
+            </button>
+          )}
+          {onRestTimerSkip && (
+            <button className="rest-skip" onClick={onRestTimerSkip}>
+              {t("rest.skip")}
+            </button>
+          )}
+        </p>
+      )}
 
       {/* What the number on screen actually means, which is not the same
           question for every piece of kit. A barbell's 100 kg is the whole

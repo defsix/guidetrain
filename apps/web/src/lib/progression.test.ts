@@ -5,6 +5,7 @@ import {
   LOAD_STEP,
   MAX_REPS_FOR_ESTIMATE,
   RESET_FRACTION,
+  REST_EXTEND_SECONDS,
   SMALLEST_PLATE,
   TRAINING_MAX_FRACTION,
   bestEstimate,
@@ -14,6 +15,7 @@ import {
   incrementFor,
   platesPerSide,
   resetTrainingMax,
+  restSeconds,
   reviewCycle,
   roundLoad,
   trainingMax,
@@ -238,5 +240,38 @@ describe("reviewCycle", () => {
     expect(clashing.length).toBe(2);
     expect(clashing.every((o) => o.ambiguous)).toBe(true);
     expect(clashing.every((o) => o.missed === false)).toBe(true);
+  });
+});
+
+describe("restSeconds", () => {
+  it("gives heavy, low-rep sets the longest rest", () => {
+    expect(restSeconds(1)).toBe(180);
+    expect(restSeconds(5)).toBe(180);
+  });
+
+  it("gives moderate rep ranges a middle rest", () => {
+    expect(restSeconds(6)).toBe(90);
+    expect(restSeconds(12)).toBe(90);
+  });
+
+  it("gives high-rep sets the shortest rest", () => {
+    expect(restSeconds(13)).toBe(60);
+    expect(restSeconds(20)).toBe(60);
+  });
+
+  it("only ever steps down as reps go up, never back up", () => {
+    let previous = restSeconds(1);
+    for (let reps = 2; reps <= 20; reps++) {
+      const seconds = restSeconds(reps);
+      expect(seconds).toBeLessThanOrEqual(previous);
+      previous = seconds;
+    }
+  });
+});
+
+describe("REST_EXTEND_SECONDS", () => {
+  it("is a small, positive nudge rather than a whole extra rest period", () => {
+    expect(REST_EXTEND_SECONDS).toBeGreaterThan(0);
+    expect(REST_EXTEND_SECONDS).toBeLessThan(restSeconds(20));
   });
 });

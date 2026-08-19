@@ -349,6 +349,11 @@
   },
   "undo": "Rückgängig"
  },
+ "rest": {
+  "done": "Pause vorbei",
+  "extend": "+15 s",
+  "skip": "Pause überspringen"
+ },
  "load": {
   "perSide": "{weight} {unit} pro Seite",
   "barOnly": "Nur die Stange — ohne Scheiben.",
