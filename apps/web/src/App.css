@@ -763,6 +763,31 @@
   text-decoration: line-through;
 }
 
+/* --- warming up to the first working set --------------------------------- */
+.warmup {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+}
+.warmup-label {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.warmup .steps { display: flex; flex-wrap: wrap; gap: 4px 6px; }
+.warmup .steps > span {
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+}
+
 /* --- the mark ----------------------------------------------------------- */
 .logo { display: inline-flex; align-items: center; gap: 9px; flex: none; }
 .logo svg { display: block; }

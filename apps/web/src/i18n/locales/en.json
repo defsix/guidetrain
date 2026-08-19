@@ -354,6 +354,9 @@
   "extend": "+15s",
   "skip": "Skip rest"
  },
+ "warmup": {
+  "label": "Warm-up"
+ },
  "load": {
   "perSide": "{weight} {unit} a side",
   "barOnly": "Just the bar — nothing on it.",

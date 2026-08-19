@@ -343,6 +343,9 @@
   "extend": "+15秒",
   "skip": "休憩をスキップ"
  },
+ "warmup": {
+  "label": "ウォームアップ"
+ },
  "load": {
   "perSide": "片側 {weight} {unit}",
   "barOnly": "バーのみ — プレートなし。",

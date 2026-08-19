@@ -632,6 +632,26 @@ formula to be right. That is also the point of recording sets at all — an
 estimate from a set you performed is a calculation, and a typed-in "my max is
 100" is a claim, and the two should never share a field.
 
+### Warm-up sets
+
+Before the first working set of a barbell exercise, the logger shows a ramp up
+to it: 40% × 5, 60% × 5, 80% × 3 of whatever weight is in the field — a widely
+used rule of thumb, checked against a documented calculator's scheme rather
+than recalled, and offered as a starting point rather than a formula the way
+Epley is elsewhere. It is a ramp to read and do, not a set with an "add"
+button: logging one as though it were a real work set would put something
+into the log that never happened, and the log is the one record everything
+else trusts.
+
+Barbell only, the same line the app already draws for plate-loading math and
+related-lift starting weights — a dumbbell or bodyweight load rarely needs a
+ramp the way a heavily loaded bar does. It shows only before the first set
+logged for that exercise today; by the second set you are already warm. A
+tier that would ask for less than the bar is dropped rather than shown as an
+unloadable number, a tier that rounds up to the working weight itself is
+dropped too, and two tiers that round to the same loadable weight collapse
+into one rather than repeating it.
+
 ### Rest timer
 
 Logging a set starts a countdown, tiered by how many reps it asked for: five
@@ -960,8 +980,6 @@ GitHub account.
 
 Not commitments. Roughly in the order they would earn their place:
 
-- **Warm-up sets** calculated up to the working weight, which everyone does by
-  hand and nobody enjoys.
 - **Swap an exercise** — the rack is busy, give me something that trains the
   same thing. The pairing rules already know which exercises share muscles.
 - **More plan templates** — 5/3/1 as a full plan rather than a per-lift panel,

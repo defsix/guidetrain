@@ -331,3 +331,40 @@ export function restSeconds(reps: number): number {
 
 /** How much a rest timer is extended by, per tap. */
 export const REST_EXTEND_SECONDS = 15;
+
+/**
+ * Sets to work up through before the first working set: lighter, with more
+ * reps early, taper to fewer as the weight climbs.
+ *
+ * A ramp, not a measurement — a widely used rule of thumb rather than a
+ * formula with a derivation like Epley above, offered as a starting point
+ * rather than a prescription. 40% × 5, 60% × 5, 80% × 3 of the working
+ * weight, checked against https://www.hevyapp.com/warm-up-sets/ rather than
+ * recalled.
+ *
+ * Only the tiers that add something are returned. A step below the bar has
+ * nothing to load, so it is dropped rather than shown as a number nobody
+ * could rack; a step that rounds up to the working weight itself — which
+ * LOAD_STEP's 2.5 kg granularity can do at light weights — is dropped too,
+ * since a "warm-up" identical to the work set is not one; and two tiers that
+ * round to the same loadable number collapse into one rather than repeating
+ * it back-to-back.
+ */
+export function warmupSets(
+  target: number,
+  bar = BAR_WEIGHT,
+): { load: number; reps: number }[] {
+  const tiers: [number, number][] = [
+    [0.4, 5],
+    [0.6, 5],
+    [0.8, 3],
+  ];
+  const out: { load: number; reps: number }[] = [];
+  for (const [fraction, reps] of tiers) {
+    const load = roundLoad(target * fraction);
+    if (load < bar || load >= target) continue;
+    if (out.length && out[out.length - 1].load === load) continue;
+    out.push({ load, reps });
+  }
+  return out;
+}

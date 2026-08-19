@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import type { Target } from "../state/usePrograms";
-import { platesPerSide, BAR_WEIGHT } from "../lib/progression";
+import { platesPerSide, warmupSets, BAR_WEIGHT } from "../lib/progression";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -49,6 +49,13 @@ type Props = {
   bodyLoad?: number;
 };
 
+/** Minutes and seconds, the way a countdown is read rather than reasoned about. */
+function formatRest(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
 /**
  * Record one set against one exercise.
  *
@@ -67,13 +74,6 @@ type Props = {
  * the next one. That is the whole point of the two planners: a weight you have
  * to remember from another screen is a weight you get wrong under a bar.
  */
-/** Minutes and seconds, the way a countdown is read rather than reasoned about. */
-function formatRest(seconds: number): string {
-  const m = Math.floor(seconds / 60);
-  const s = seconds % 60;
-  return `${m}:${String(s).padStart(2, "0")}`;
-}
-
 export default function SetLogger({
   exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad, target,
   skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions, equipment,
@@ -138,6 +138,19 @@ export default function SetLogger({
     : null;
   const barOnly = equipment === "barbell" && load === BAR_WEIGHT;
 
+  /**
+   * The ramp up to today's first working set, not shown again once one is
+   * logged — by the second set you are already warm.
+   *
+   * Barbell only, like the plate-loading note above: a barbell working
+   * weight can be well above what the empty bar demands, which is exactly
+   * when a ramp earns its place, while a dumbbell or bodyweight load rarely
+   * asks for one.
+   */
+  const warmups = equipment === "barbell" && !repsOnly && logged === 0 && Number.isFinite(load)
+    ? warmupSets(load as number)
+    : [];
+
   function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!ready) return;
@@ -189,6 +202,23 @@ export default function SetLogger({
             ))}
           </span>
           <em>{t(`target.from.${target?.source ?? "plan"}`)}</em>
+        </p>
+      )}
+
+      {/* A ramp to read and do, not a set to tap "add" on — warm-ups are a
+          suggestion, and logging them as though they were the work set would
+          put something that never happened onto the one record everything
+          else trusts. */}
+      {warmups.length > 0 && (
+        <p className="warmup">
+          <span className="warmup-label">{t("warmup.label")}</span>
+          <span className="steps">
+            {warmups.map((w, i) => (
+              <span key={i}>
+                {w.load} {t("unit.kg")} × {w.reps}
+              </span>
+            ))}
+          </span>
         </p>
       )}
 

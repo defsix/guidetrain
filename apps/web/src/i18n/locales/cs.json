@@ -376,6 +376,9 @@
   "extend": "+15 s",
   "skip": "Přeskočit odpočinek"
  },
+ "warmup": {
+  "label": "Rozcvička"
+ },
  "load": {
   "perSide": "{weight} {unit} na každé straně",
   "barOnly": "Jen osa — bez kotoučů.",

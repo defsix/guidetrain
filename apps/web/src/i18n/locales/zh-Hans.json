@@ -343,6 +343,9 @@
   "extend": "+15秒",
   "skip": "跳过休息"
  },
+ "warmup": {
+  "label": "热身"
+ },
  "load": {
   "perSide": "每边 {weight} {unit}",
   "barOnly": "只有杠铃杆 — 不加片。",

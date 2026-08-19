@@ -191,6 +191,25 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Warm-up sets, ramped to the working weight** — before the first working
+  set of a barbell exercise, `SetLogger` now shows a ramp: 40% × 5, 60% × 5,
+  80% × 3 of whatever weight is in the field, a widely used rule of thumb
+  (checked against a documented calculator's scheme rather than recalled —
+  see `warmupSets()` in `progression.ts`) rather than a derived formula.
+  Purely informational — it is a ramp to read and do, not a set with an "add"
+  button, since logging one as though it were a real work set would put
+  something into the log that never happened. Scoped to barbell equipment
+  only, same line the app already draws for plate-loading math and
+  `RELATED_TO`; shown only before the first set logged today for that
+  exercise, since by the second set you are already warm. A tier that would
+  ask for less than the bar is dropped rather than shown as an unloadable
+  number, a tier that rounds up to the working weight itself is dropped too
+  (a "warm-up" identical to the work set is not one), and two tiers that
+  round to the same loadable weight collapse into one. Verified with new unit
+  tests for the tiering and its edge cases, and a new Playwright spec
+  (`warmup.spec.ts`) confirming the ramp appears for a typed working weight,
+  disappears the moment a set is logged, and shows nothing for a weight
+  already close to the bar.
 - **A rest timer between sets** — logging a set now starts a countdown, tiered
   by how many reps it asked for (five and under: 180 seconds; up to twelve: 90;
   above that: 60) — a rule of thumb, not a formula, documented as such next to

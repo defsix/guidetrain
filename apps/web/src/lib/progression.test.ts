@@ -19,6 +19,7 @@ import {
   reviewCycle,
   roundLoad,
   trainingMax,
+  warmupSets,
 } from "./progression";
 
 /**
@@ -273,5 +274,50 @@ describe("REST_EXTEND_SECONDS", () => {
   it("is a small, positive nudge rather than a whole extra rest period", () => {
     expect(REST_EXTEND_SECONDS).toBeGreaterThan(0);
     expect(REST_EXTEND_SECONDS).toBeLessThan(restSeconds(20));
+  });
+});
+
+describe("warmupSets", () => {
+  it("ramps up in three tiers for a normal working weight", () => {
+    // 40% x 5, 60% x 5, 80% x 3 of 100 — all already on the 2.5 kg step, so
+    // nothing here is rounded away.
+    expect(warmupSets(100)).toEqual([
+      { load: 40, reps: 5 },
+      { load: 60, reps: 5 },
+      { load: 80, reps: 3 },
+    ]);
+  });
+
+  it("drops a tier that would ask for less than the bar", () => {
+    // 40% of 40 is 16, rounded to 15 — below the 20 kg bar, so there is
+    // nothing to load and the tier is dropped rather than shown as 15.
+    // 60% rounds to 25, 80% to 32.5, both above the bar.
+    expect(warmupSets(40)).toEqual([
+      { load: 25, reps: 5 },
+      { load: 32.5, reps: 3 },
+    ]);
+  });
+
+  it("returns nothing once the working weight is already close to the bar", () => {
+    // Every tier of 22.5 (9, 13.5, 18) rounds to at or below the 20 kg bar,
+    // so there is no ramp worth showing — you are already on it.
+    expect(warmupSets(22.5)).toEqual([]);
+  });
+
+  it("collapses two tiers that round to the same loadable weight", () => {
+    // A custom low bar to isolate the collapsing itself: 40% of 10 is 4,
+    // 60% is 6 — both round to the same 5 kg step, so the second is dropped
+    // rather than repeating a tier back-to-back. 80% rounds to 7.5.
+    expect(warmupSets(10, 0)).toEqual([
+      { load: 5, reps: 5 },
+      { load: 7.5, reps: 3 },
+    ]);
+  });
+
+  it("never asks for a warm-up at or above the working weight itself", () => {
+    // 80% of 5 is 4, which rounds up to 5 — equal to the target itself at
+    // this step size, so it is dropped rather than shown as a "warm-up"
+    // identical to the work set. 60% collapses into 40%'s 2.5 first.
+    expect(warmupSets(5, 0)).toEqual([{ load: 2.5, reps: 5 }]);
   });
 });

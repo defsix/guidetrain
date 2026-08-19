@@ -376,6 +376,9 @@
   "extend": "+15 s",
   "skip": "Pomiń odpoczynek"
  },
+ "warmup": {
+  "label": "Rozgrzewka"
+ },
  "load": {
   "perSide": "{weight} {unit} na stronę",
   "barOnly": "Sam gryf — bez talerzy.",

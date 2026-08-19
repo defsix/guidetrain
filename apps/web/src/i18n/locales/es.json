@@ -354,6 +354,9 @@
   "extend": "+15 s",
   "skip": "Saltar el descanso"
  },
+ "warmup": {
+  "label": "Calentamiento"
+ },
  "load": {
   "perSide": "{weight} {unit} por lado",
   "barOnly": "Solo la barra — sin discos.",
