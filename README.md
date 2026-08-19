@@ -460,18 +460,22 @@ trust the onboarding body-weight field already gets. It still says which is
 which, the same way a starting weight already says whether it came from your
 lifts or a population guess.
 
-**A known max nudges a close relative's starting weight, not just its own
-lift.** Incline Bench Press and Close-Grip Bench Press have no log of their
-own yet? Their first working weight now scales from a known Bench Press max
-(0.8× it, the ratio the app's fraction table already implied between them)
-rather than only ever a body-weight guess — labelled "from Bench Press" so
-the number is never mistaken for one measured on that bar. Deliberately
-narrow: Squat and Deadlift get no such relative, since nothing in the
-catalogue is both barbell-equipped and a close enough relative to extrapolate
-from with the same confidence, and a dumbbell lift never inherits from a
-barbell max regardless of how much muscle it shares — "100 kg bench doesn't
-mean it can be done with dumbbells" is exactly the case this stays narrow to
-avoid.
+**A known max changes its own lift everywhere it appears, and nudges one
+close relative besides.** Set a Squat max with nothing logged yet, and every
+plan naming Barbell Squat uses it — not a fraction of body weight — labelled
+"your set max" so it's never mistaken for a real logged number. It also
+scales a small, deliberately narrow set of close barbell relatives that have
+no log of their own: Incline Bench Press and Close-Grip Bench Press take
+0.8× a known Bench Press max (the ratio the app's fraction table already
+implied between them), labelled "from Bench Press" instead. Squat and
+Deadlift get no such relative — nothing else in the catalogue is both
+barbell-equipped and a close enough match to extrapolate from with the same
+confidence, and a dumbbell lift never inherits from a barbell max regardless
+of how much muscle it shares. "100 kg bench doesn't mean it can be done with
+dumbbells" is exactly the case both mechanisms stay narrow to avoid. Either
+way, a real logged set for that exact lift always wins outright — the typed
+max only ever fills in until one exists, and steps aside the moment it does,
+automatically, for every plan that lift appears in.
 
 **The charts are hand-rolled SVG**, no charting library, matching the
 bundle-size discipline the rest of the app already keeps to. Body weight's

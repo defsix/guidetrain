@@ -287,9 +287,11 @@
    "logged": "from your lifts",
    "bodyweight": "starting point",
    "atBodyWeight": "your body weight",
-   "relatedLift": "from {lift}"
+   "relatedLift": "from {lift}",
+   "knownMax": "your set max"
   },
   "startingNote": "Weights marked “starting point” come from your body weight and age — a population average, not a measurement of you. Treat the first set as a test: if it moves easily, add weight; if it does not, take some off. Once you log a set, that lift uses your own numbers instead.",
+  "knownMaxNote": "Weights marked “your set max” come from the max you set on the Stats page for this lift, not a logged set — a real number, just not measured here yet. Log a set and it takes over.",
   "relatedNote": "Weights marked “from” another lift are scaled from a known max on that lift, not measured on this one — a real number, just not this bar's. Set your own on the Stats page.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
   "day": {

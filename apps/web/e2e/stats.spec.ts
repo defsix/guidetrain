@@ -56,5 +56,14 @@ test.describe("the stats panel", () => {
     // (1 + 10/30) x 0.9 = 54, rounded to 55.
     await expect(inclineRow.getByText("55")).toBeVisible();
     await expect(inclineRow.getByText(/from barbell bench press/i)).toBeVisible();
+
+    // The flat Bench Press row itself — not just the related lift — now
+    // uses the known max too: 100 / (1 + 8/30) x 0.9 = 71.05, rounded to 70,
+    // labelled "your set max" rather than "starting point".
+    const benchRow = page
+      .locator(".plans-panel li")
+      .filter({ hasText: "Barbell Bench Press" });
+    await expect(benchRow.getByText("70")).toBeVisible();
+    await expect(benchRow.getByText(/your set max/i)).toBeVisible();
   });
 });

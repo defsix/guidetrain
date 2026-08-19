@@ -123,12 +123,14 @@ describe("prescribe", () => {
       expect(p.load).toBe(62.5);
     });
 
-    it("never touches an exercise with no RELATED_TO entry", () => {
-      // Barbell_Squat has no related-lift entry (see RELATED_TO's own
-      // comment for why), so a knownMax lookup that would happily answer for
-      // it must still be ignored — this path only ever fires for the small,
-      // hand-picked list.
-      const p = prescribe("Barbell_Squat", 5, [], profile(), () => 200);
+    it("never borrows from an anchor lift that isn't RELATED_TO's own", () => {
+      // Barbell_Squat has no RELATED_TO entry naming a different exercise as
+      // its anchor, so a knownMax that only answers for some other id must
+      // not reach it through this path — Barbell_Squat's own knownMax check
+      // (see the "knownMax" describe block below) is a separate mechanism.
+      const p = prescribe("Barbell_Squat", 5, [], profile(), (id) =>
+        id === "Barbell_Bench_Press_-_Medium_Grip" ? 200 : null,
+      );
       expect(p.source).toBe("bodyweight");
     });
 
@@ -155,6 +157,51 @@ describe("prescribe", () => {
         knownMax(999),
       );
       expect(p.source).toBe("logged");
+    });
+  });
+
+  describe("knownMax", () => {
+    it("uses a known max for this exact lift, not only a related one", () => {
+      // The bug this exists to fix: typing a Squat max into the stats page
+      // used to change nothing about Barbell_Squat itself in any plan, only
+      // the two exercises RELATED_TO points at it. knownMax(exerciseId) has
+      // to be checked for the lift being prescribed, not only for whatever
+      // RELATED_TO says its anchor is.
+      const p = prescribe("Barbell_Squat", 5, [], profile(), (id) =>
+        id === "Barbell_Squat" ? 140 : null,
+      );
+      expect(p.source).toBe("knownMax");
+      // 140 / (1 + 5/30) = 120, x 0.9 = 108, rounded to 107.5.
+      expect(p.load).toBe(107.5);
+    });
+
+    it("still prefers this exercise's own log over its own known max", () => {
+      const own: SetEntry = { uid: "own", id: "Barbell_Squat", weight: 100, reps: 5, at: 0 };
+      const p = prescribe("Barbell_Squat", 5, [own], profile(), () => 999);
+      expect(p.source).toBe("logged");
+    });
+
+    it("still falls back to the body-weight guess with no known max at all", () => {
+      const p = prescribe("Barbell_Squat", 5, [], profile(), () => null);
+      expect(p.source).toBe("bodyweight");
+    });
+
+    it("changes the same lift the same way in every plan that names it", () => {
+      // "All the training programmes" is the actual requirement: whichever
+      // plan calls prescribe() for Barbell_Squat, a known Squat max has to
+      // win over the population-average guess every time, not just once.
+      const withKnownMax = (id: string) => (id === "Barbell_Squat" ? 140 : null);
+      for (const plan of PLANS) {
+        for (const variant of plan.variants) {
+          for (const day of variant.days) {
+            for (const e of day.exercises) {
+              if (e.id !== "Barbell_Squat") continue;
+              expect(prescribe(e.id, e.reps, [], profile(), withKnownMax).source, plan.id)
+                .toBe("knownMax");
+            }
+          }
+        }
+      }
     });
   });
 });

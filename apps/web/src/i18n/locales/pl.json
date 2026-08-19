@@ -307,9 +307,11 @@
    "logged": "z twoich serii",
    "bodyweight": "punkt wyjścia",
    "atBodyWeight": "twoja masa ciała",
-   "relatedLift": "na podstawie: {lift}"
+   "relatedLift": "na podstawie: {lift}",
+   "knownMax": "twoje ustawione maks."
   },
   "startingNote": "Ciężary oznaczone „punkt wyjścia” wynikają z twojej masy ciała i wieku — to średnia populacyjna, a nie pomiar ciebie. Potraktuj pierwszą serię jak test: idzie lekko, dołóż; nie idzie, zdejmij. Gdy zapiszesz serię, to ćwiczenie liczy się z twoich własnych liczb.",
+  "knownMaxNote": "Ciężary oznaczone „twoje ustawione maks.” pochodzą z maksimum, które ustawiłeś na stronie Statystyki dla tego ćwiczenia, a nie z zapisanej serii — to prawdziwa liczba, tylko jeszcze niezmierzona tutaj. Gdy zapiszesz serię, to ona przejmie pierwszeństwo.",
   "relatedNote": "Ciężary oznaczone „na podstawie” innego ćwiczenia są przeskalowane ze znanego maksimum na tamtym ćwiczeniu, a nie zmierzone tutaj — to prawdziwa liczba, tylko nie z tej sztangi. Swoje własne maksimum możesz ustawić na stronie Statystyki.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
   "day": {

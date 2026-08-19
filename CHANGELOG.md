@@ -191,6 +191,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A known max now changes its own lift, in every plan that names it, not
+  only a related one.** `prescribe()`'s `knownMax` lookup was only ever
+  consulted for `RELATED_TO`'s two entries (Incline Bench, Close-Grip
+  Bench) — typing a Squat max into the stats page changed nothing about the
+  Squat entries themselves anywhere, in any plan, until a real set got
+  logged. The one lift the number was actually about was the one place it
+  had no effect. `prescribe()` now checks `knownMax(exerciseId)` for the
+  lift being prescribed first, with its own `"knownMax"` source and note
+  (`plans.from.knownMax`, `plans.knownMaxNote`) distinct from `relatedLift`
+  — a real max on this exact lift that hasn't been logged here yet, not a
+  borrowed one. Automatic re-adjustment as more data comes in needed no new
+  plumbing: `logged` is still checked first and still wins outright, so the
+  moment a real set exists for a lift, its estimate — not the typed max —
+  takes over, exactly as it already did for every other prescription
+  source. Verified with new unit tests (checks the same fix across every
+  plan template that names `Barbell_Squat`, not just one) and an extended
+  Playwright spec confirming the flat Bench Press row itself, not only
+  Incline Bench, switches to the known max in a live plan preview.
 - **Forgot password, change password, change email** — the account panel
   could sign in, sign up and sign out, and nothing else; anyone who forgot a
   password had no way back into their own account. A "Forgot password?" link

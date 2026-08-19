@@ -287,9 +287,11 @@
    "logged": "aus deinen Sätzen",
    "bodyweight": "Startwert",
    "atBodyWeight": "dein Körpergewicht",
-   "relatedLift": "aus {lift}"
+   "relatedLift": "aus {lift}",
+   "knownMax": "dein gesetztes Max"
   },
   "startingNote": "Als „Startwert“ markierte Gewichte stammen aus Körpergewicht und Alter — ein Bevölkerungsdurchschnitt, keine Messung an dir. Behandle den ersten Satz als Test: geht er leicht, leg auf; geht er nicht, nimm herunter. Sobald du einen Satz einträgst, rechnet diese Übung mit deinen eigenen Zahlen.",
+  "knownMaxNote": "Mit „dein gesetztes Max“ markierte Gewichte stammen aus dem Maximum, das du auf der Statistik-Seite für diese Übung eingetragen hast, nicht aus einem erfassten Satz — eine echte Zahl, nur hier noch nicht gemessen. Trägst du einen Satz ein, übernimmt der.",
   "relatedNote": "Mit „aus“ markierte Gewichte sind von einem bekannten Maximum bei dieser anderen Übung skaliert, nicht an dieser Stange gemessen — eine echte Zahl, nur nicht von hier. Dein eigenes Maximum kannst du auf der Statistik-Seite eintragen.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
   "day": {

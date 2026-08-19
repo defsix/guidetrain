@@ -287,9 +287,11 @@
    "logged": "das suas séries",
    "bodyweight": "ponto de partida",
    "atBodyWeight": "o seu peso corporal",
-   "relatedLift": "de {lift}"
+   "relatedLift": "de {lift}",
+   "knownMax": "o seu máximo definido"
   },
   "startingNote": "Os pesos marcados «ponto de partida» vêm do seu peso corporal e idade: uma média populacional, não uma medição sua. Trate a primeira série como um teste: se subir fácil, acrescente; se não, tire. Assim que registar uma série, esse exercício passa a usar os seus próprios números.",
+  "knownMaxNote": "Os pesos marcados «o seu máximo definido» vêm do máximo que definiu na página de Estatísticas para este exercício, não de uma série registada — um número real, só que ainda não medido aqui. Assim que registar uma série, essa passa a valer.",
   "relatedNote": "Os pesos marcados «de» outro exercício são escalados a partir de um máximo conhecido nesse exercício, não medidos aqui — um número real, só que não desta barra. Defina o seu próprio na página de Estatísticas.",
   "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
   "day": {

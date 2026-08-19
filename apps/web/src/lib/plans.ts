@@ -510,11 +510,11 @@ export type Prescription = {
    * weight on the profile, not a demographic-adjusted share of it, so there is
    * nothing here for age to scale.
    *
-   * `relatedLift` sits between `logged` and `bodyweight` in how much it is
-   * trusted: it is still built from a real max, just not this exercise's own
-   * — see `RELATED_TO`.
+   * `knownMax` is a max on this exact lift that was typed in rather than
+   * logged — see `useKnownMax.ts`. It outranks `relatedLift`, which is built
+   * from a real max too, just not this exercise's own.
    */
-  source: "logged" | "relatedLift" | "bodyweight" | "atBodyWeight" | "unknown";
+  source: "logged" | "knownMax" | "relatedLift" | "bodyweight" | "atBodyWeight" | "unknown";
   /**
    * Set only when `source` is `relatedLift`: which lift the number actually
    * came from, so the panel can say so rather than presenting a Bench Press
@@ -535,9 +535,12 @@ export type Prescription = {
  * `PlanLibrary.tsx`) can pass one lookup covering all of them, built however
  * that caller likes: a real one-rep max someone typed into the stats panel
  * (`useKnownMax`), or the same log-derived estimate this function already
- * computes for `exerciseId` itself, just for a different id. Optional, and
- * skipped entirely for an exercise with no `RELATED_TO` entry, so every
- * existing caller and test keeps working unchanged without passing it.
+ * computes for `exerciseId` itself, just for a different id. Checked twice —
+ * once for `exerciseId` itself, once for `RELATED_TO[exerciseId]`'s anchor if
+ * it has one — so a known Squat max changes the Squat entries in every plan
+ * that names it, not only a different exercise's. Optional, and simply never
+ * called when omitted, so every existing caller and test keeps working
+ * unchanged without passing it.
  */
 export function prescribe(
   exerciseId: string,
@@ -552,6 +555,14 @@ export function prescribe(
     if (oneRM !== null && (best === null || oneRM > best)) best = oneRM;
   }
   if (best !== null) return { load: workingLoad(best, reps), source: "logged" };
+
+  // A known max on this exact lift, checked before RELATED_TO rather than
+  // only ever informing a *different* exercise's prescription. Without this,
+  // typing a Squat max into the stats page changed nothing about the Squat
+  // entries in any plan until a real set was logged — the one lift the
+  // number was actually about was the one place it had no effect.
+  const ownMax = knownMax?.(exerciseId);
+  if (ownMax) return { load: workingLoad(ownMax, reps), source: "knownMax" };
 
   const related = RELATED_TO[exerciseId];
   if (related) {

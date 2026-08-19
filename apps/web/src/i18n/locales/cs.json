@@ -307,9 +307,11 @@
    "logged": "z vašich sérií",
    "bodyweight": "výchozí bod",
    "atBodyWeight": "vaše tělesná hmotnost",
-   "relatedLift": "podle {lift}"
+   "relatedLift": "podle {lift}",
+   "knownMax": "váš zadaný max"
   },
   "startingNote": "Váhy označené „výchozí bod“ vycházejí z vaší hmotnosti a věku — jde o populační průměr, ne o měření vás. Berte první sérii jako test: pokud jde lehce, přidejte; pokud ne, uberte. Jakmile zaznamenáte sérii, počítá se tento cvik z vašich vlastních čísel.",
+  "knownMaxNote": "Váhy označené „váš zadaný max“ vycházejí z maxima, které jste zadali na stránce Statistiky pro tento cvik, ne ze zaznamenané série — jde o reálné číslo, jen zatím neměřené tady. Jakmile zaznamenáte sérii, převezme to ona.",
   "relatedNote": "Váhy označené „podle“ jiného cviku vycházejí ze známého maxima na tomto cviku, ne z měření tady — jde o reálné číslo, jen ne z této osy. Vlastní si nastavte na stránce Statistiky.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
   "day": {

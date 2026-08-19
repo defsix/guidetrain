@@ -105,11 +105,13 @@ export default function PlanLibrary({
   // Only true once something on screen actually needs it explained — a plan
   // built entirely from logged lifts or from body-only exercises never shows
   // the words "starting point" at all, and the note would be answering a
-  // question nothing on the page asked. relatedLift gets its own note, since
-  // "population average" would be a wrong explanation for a number that came
-  // from a real max on a different lift.
+  // question nothing on the page asked. relatedLift and knownMax each get
+  // their own note, since "population average" would be a wrong explanation
+  // for either — one is a real max on a different lift, the other a real max
+  // on this one that just hasn't been logged here yet.
   const hasStartingPoint = resolved?.some((day) => day.exercises.some((e) => e.source === "bodyweight"));
   const hasRelatedLift = resolved?.some((day) => day.exercises.some((e) => e.source === "relatedLift"));
+  const hasKnownMax = resolved?.some((day) => day.exercises.some((e) => e.source === "knownMax"));
 
   const u = t("unit.kg");
   if (!open) return null;
@@ -219,6 +221,7 @@ export default function PlanLibrary({
 
             {/* Said once, plainly, above the button that commits to it. */}
             {hasStartingPoint && <p className="plan-note flag">{t("plans.startingNote")}</p>}
+            {hasKnownMax && <p className="plan-note flag">{t("plans.knownMaxNote")}</p>}
             {hasRelatedLift && <p className="plan-note flag">{t("plans.relatedNote")}</p>}
             <p className="plan-note">{t("plans.loggedNote")}</p>
             {/* The weights above are not just a preview any more — they go into
