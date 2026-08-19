@@ -42,6 +42,13 @@
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  /* Mobile Safari inflates font size in narrow text columns ("text
+     autosizing") independent of the rest of the page — a list row like the
+     Injuries panel's would render its buttons oversized and overflowing
+     while everything else on screen looked normal. Every size in this app
+     is already chosen deliberately; Safari guessing otherwise is the bug. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 :root[data-theme="dark"] {
