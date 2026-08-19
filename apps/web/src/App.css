@@ -384,15 +384,6 @@
   }
 }
 
-/* Workout moves in beside Muscle Groups in the canvas's own toolbar below —
-   the same width it appears at, so the two switch over together rather than
-   Workout sitting alone in a header strip with nothing left to scroll past. */
-@media (max-width: 720px) {
-  .explorer .header-controls .workout-button {
-    display: none;
-  }
-}
-
 .explorer-canvas {
   flex: 1;
   position: relative;

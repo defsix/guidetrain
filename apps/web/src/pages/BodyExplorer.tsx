@@ -54,11 +54,10 @@ export default function BodyExplorer() {
   }, [profile, navigate]);
 
   // The count is the whole point of the button: it is how you know anything
-  // was saved without opening it. Rendered twice — once in the header for a
-  // wide screen, once beside Muscle Groups in the anatomy canvas's own
-  // toolbar for a phone, where it's the one button worth keeping outside the
-  // header's scrollable strip. CSS shows exactly one of the two at a time, at
-  // the same 720px breakpoint the canvas toolbar already switches on.
+  // was saved without opening it. Lives in the anatomy canvas's own toolbar
+  // rather than the header, at every width — passed down as toolbarExtra —
+  // so it never has to compete with Account/Equipment/Progress for room in a
+  // scrolling strip, and its position doesn't shift as the window resizes.
   const workoutButton = (
     <button
       className={`workout-button ${programs.ids.length ? "has" : ""}`}
@@ -73,9 +72,9 @@ export default function BodyExplorer() {
   return (
     <div className="explorer">
       <div className="explorer-bar">
-        {/* Mark only, and small. The header already carries a greeting, a
-            workout count, history and the theme, and on a phone that row is
-            full — the name would be the first thing to push something off it. */}
+        {/* Mark only, and small. The header already carries a greeting,
+            history and the theme, and on a phone that row is full — the name
+            would be the first thing to push something off it. */}
         <Logo size={22} />
         {/* Two whole sentences rather than a name slot with "there" in it:
             languages put the name in different places, and some have no
@@ -86,7 +85,6 @@ export default function BodyExplorer() {
             : t("explorer.greetingAnon")}
         </p>
         <div className="header-controls">
-          {workoutButton}
           {/* Only once there is something to look at. An empty history
               button is a promise the app cannot keep yet. */}
           {log.entries.length > 0 && (

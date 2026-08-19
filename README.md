@@ -396,10 +396,11 @@ beside the model and useless when there isn't: at 390px it covered 44% of the
 width, and at 320px the body was reduced to one arm and a pair of legs behind
 it. Below 720px choosing a muscle closes the picker — otherwise it would hide
 the muscle you just picked — and the toolbar button brings it back. Tapping
-outside dismisses it. Workout's button sits beside it at that width too, since
-it's the header button most people reach for first and the header's own row —
-already carrying a greeting, Account, Equipment, Progress and the theme —
-scrolls sideways rather than growing the page wider than the screen.
+outside dismisses it. Workout's own button lives in that toolbar's top-left
+corner at every width, not only this one — it's out of the header entirely
+now, so the header's own row, still carrying a greeting, Account, Equipment,
+Progress and the theme, scrolls sideways on a narrow screen rather than
+growing the page wider than it.
 
 The muscle list stays docked on the right, because it is the point of the
 screen — an empty canvas with the list behind a button reads as nothing to do.

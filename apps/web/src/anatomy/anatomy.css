@@ -291,37 +291,46 @@
   .anatomy-loading .spinner { animation-duration: 2.4s; }
 }
 
-/* Phone toolbar and scrim --------------------------------------------------
-   Both hidden above 720px, where the panels fit beside the model. */
-.anatomy-toolbar { display: none; }
+/* Canvas toolbar and scrim --------------------------------------------------
+   The toolbar is visible at every width now, top-left of the canvas — the
+   host app's Workout pill (passed in via toolbarExtra, see the docs at the
+   top of the file) lives here regardless of screen size, mirroring where the
+   muscle-group controls sit on the opposite corner: a toggle on a phone, a
+   permanently open panel top-right on anything wider. Muscle Groups' own
+   toggle button stays phone-only below — a desktop's regions panel is
+   already open, so a button to open it would have nothing to do. The scrim
+   stays phone-only too: it exists to dismiss an overlay panel, and nothing
+   here overlays the model above 720px. */
+.anatomy-toolbar {
+  display: flex; gap: 8px; position: absolute; z-index: 8;
+  top: 16px; left: 16px;
+}
+.anatomy-toolbar .tool { display: none; }
 .anatomy-scrim { display: none; }
+
+/* The pill's shape and badge stay exactly what they are in the header; only
+   the frosted-glass background changes, to match the floating toolbar it
+   lives in now rather than the solid header bar it left. */
+.anatomy-toolbar .workout-button {
+  background: var(--panel-translucent);
+  backdrop-filter: blur(14px);
+}
 
 @media (max-width: 720px) {
   .anatomy-root .muscle { font-size: 11.5px; padding: 4px 6px; }
 
   .anatomy-toolbar {
-    display: flex; gap: 8px; position: absolute; z-index: 8;
     top: 12px; left: 12px; right: 12px;
   }
   .anatomy-toolbar .tool {
+    display: flex;
     flex: 1; font-family: inherit; font-size: 12px; font-weight: 600;
     padding: 9px 10px; border-radius: 11px; cursor: pointer;
     background: var(--panel-translucent); backdrop-filter: blur(14px);
     border: 1px solid var(--border); color: var(--text);
   }
   .anatomy-toolbar .tool.active { border-color: var(--accent); color: var(--accent); }
-
-  /* The host app's Workout pill, passed in via toolbarExtra — see
-     AnatomyViewer's docs at the top of the file. Its shape (a pill, not a
-     flat rounded box) and badge stay exactly what they are in the header;
-     only the frosted-glass background changes, to match the toolbar it's
-     floating in now rather than the solid header bar it left. */
-  .anatomy-toolbar .workout-button {
-    flex: 1;
-    justify-content: center;
-    background: var(--panel-translucent);
-    backdrop-filter: blur(14px);
-  }
+  .anatomy-toolbar .workout-button { flex: 1; justify-content: center; }
 
   .anatomy-scrim {
     display: block; position: absolute; inset: 0; z-index: 7;

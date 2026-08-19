@@ -192,11 +192,15 @@ Newest first. Numbers in brackets are pull requests.
 ## App
 
 - **Header tidy-up: Workout moves to the canvas, Injuries moves into Progress** —
-  two changes to where things live, not what they do. Workout's button now
-  sits beside Muscle Groups in the anatomy canvas's own phone-only toolbar
-  instead of the header, on the same 720px breakpoint Muscle Groups already
-  switches on — it's the one button worth pulling out of the header's
-  scrollable strip, since it's also the one most people reach for first.
+  two changes to where things live, not what they do, and both apply at
+  every screen size rather than only on a phone. Workout's button is out of
+  the header entirely now, living instead in the anatomy canvas's own
+  toolbar, top-left corner — a fixed position rather than one that jumps as
+  the window resizes, and it no longer competes with Account/Equipment/
+  Progress for room in the header's row. On a phone that toolbar already
+  held a Muscle Groups toggle; on anything wider it previously held
+  nothing, since a wide screen's muscle list panel is already open and
+  needs no toggle to reach it — Workout now fills that space instead.
   Injuries is no longer a separate panel with its own header button; its
   marking UI is now a section inside Stats, which is renamed **Progress** to
   match what it actually is — body weight, lift maxes, goals and injuries,
