@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import exercisesData from "../anatomy/exercises.json";
 import type { Profile } from "../types";
 import type { SetEntry } from "../state/useLog";
 import type { WeighIn } from "../state/useBodyWeightLog";
@@ -10,27 +9,9 @@ import type { Injury, InjuryMode } from "../state/useInjuries";
 import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progression";
 import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
+import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
 import { useI18n } from "../i18n/I18nProvider";
 import AutocompleteInput from "./AutocompleteInput";
-
-type CatalogueEntry = {
-  id: string;
-  name: string;
-  instructions: string[];
-  primary: string[];
-  secondary: string[];
-};
-
-// Every exercise, one entry each — the goal picker offers the whole
-// catalogue, not just the three lifts this panel otherwise tracks.
-const ALL_EXERCISES: CatalogueEntry[] = (() => {
-  const seen = new Map<string, CatalogueEntry>();
-  for (const list of Object.values(exercisesData.muscles as Record<string, CatalogueEntry[]>)) {
-    for (const x of list) if (!seen.has(x.id)) seen.set(x.id, x);
-  }
-  return [...seen.values()];
-})();
-const BY_ID = new Map(ALL_EXERCISES.map((x) => [x.id, x]));
 
 type Props = {
   open: boolean;

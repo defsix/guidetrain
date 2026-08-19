@@ -44,7 +44,12 @@
  "explorer": {
   "greeting": "Ahoj {name}",
   "greetingAnon": "Ahoj",
-  "hint": "Otáčej modelem, filtruj podle partie a klepni na sval."
+  "hint": "Otáčej modelem, filtruj podle partie a klepni na sval.",
+  "recs": {
+   "title": "Doporučeno",
+   "dismiss": "Zavřít doporučení",
+   "add": "Přidat"
+  }
  },
  "viewer": {
   "muscleGroups": "Svalové skupiny",

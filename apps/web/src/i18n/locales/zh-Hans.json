@@ -35,7 +35,12 @@
  "explorer": {
   "greeting": "你好，{name}",
   "greetingAnon": "你好",
-  "hint": "旋转模型，按部位筛选，点按肌肉。"
+  "hint": "旋转模型，按部位筛选，点按肌肉。",
+  "recs": {
+   "title": "推荐",
+   "dismiss": "关闭推荐",
+   "add": "添加"
+  }
  },
  "viewer": {
   "muscleGroups": "肌肉群",

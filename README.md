@@ -614,6 +614,40 @@ non-destructive choice Goals makes. The panel only changes what gets
 In memory and localStorage only for now, like Goals and the rest of the app's
 per-device state — not yet wired into Supabase sync.
 
+## Recommendations
+
+A small dismissible card under the model, `.explorer-recs` in
+`BodyExplorer.tsx`, suggests up to three exercises not already in a saved
+workout — each with a real starting weight — once there's a real number to
+base one on.
+
+**Off a real max, never off body weight alone.** `recommendExercises()` in
+`lib/recommend.ts` only accepts `prescribe()`'s `"logged"`, `"knownMax"` and
+`"relatedLift"` sources. `prescribe()` also has a `"bodyweight"` fallback —
+a population-average starting point available to every profile from
+onboarding alone, described under [Ready-made plans](#ready-made-plans)
+below — and that's deliberately excluded here: showing a recommendation off
+nothing but a typed-in body weight would be a suggestion this app has no
+real basis for yet. That restricts the candidates to the three lifts the
+Progress page tracks, plus the two accessories `plans.ts`'s `RELATED_TO`
+already derives from them (Incline and Close-Grip Bench) — the only
+exercises this app can put a real number behind without a log of their
+own. Nothing here is invented: every figure is either logged, typed in on
+the Progress page, or the same related-lift fraction already applied
+everywhere else that number is used.
+
+Excludes anything already saved or marked "avoid" on the Progress page.
+Tapping **Add** puts the exercise straight into the saved workout and drops
+it from the list — the list recomputes from what's saved, so it needs no
+separate dismissal of its own. Dismissing the card itself hides it for
+good, tracked the same way as everything else here: a plain localStorage
+flag, not synced.
+
+**Takes priority over the first-visit hint** (above) when both would
+otherwise show — a reader who already has a known max or a logged set
+doesn't need to be told to tap a muscle, they need to know what to do with
+the data they've already put in.
+
 ## Ready-made plans
 
 Ten shapes — full body, upper/lower, push/pull/legs, body part split,

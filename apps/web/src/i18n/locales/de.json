@@ -38,7 +38,12 @@
  "explorer": {
   "greeting": "Hallo {name}",
   "greetingAnon": "Hallo",
-  "hint": "Drehe das Modell, filtere nach Region und tippe auf einen Muskel."
+  "hint": "Drehe das Modell, filtere nach Region und tippe auf einen Muskel.",
+  "recs": {
+   "title": "Empfohlen",
+   "dismiss": "Empfehlungen schließen",
+   "add": "Hinzufügen"
+  }
  },
  "viewer": {
   "muscleGroups": "Muskelgruppen",

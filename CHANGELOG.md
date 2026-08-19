@@ -191,6 +191,25 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Recommended exercises and starting weights, once there's a real number
+  to offer** — a small dismissible card under the model suggests up to
+  three exercises not yet in a saved workout, each with a starting weight,
+  once a profile has a known max or a logged set for one of the three
+  tracked lifts. Deliberately narrow: `recommendExercises()` in
+  `lib/recommend.ts` only draws from `prescribe()`'s "logged", "knownMax"
+  and "relatedLift" sources — never its "bodyweight" fallback, which is
+  available to every profile from onboarding alone and would make this
+  card appear off nothing but a typed-in body weight, a suggestion this
+  app has no real basis for yet. That restricts the candidate pool to the
+  three lifts the Progress page already tracks plus the two accessories
+  `plans.ts`'s `RELATED_TO` already derives from them (Incline and
+  Close-Grip Bench) — every number is either logged, typed in, or the same
+  related-lift fraction already applied everywhere else, never invented.
+  Excludes anything already saved or marked "avoid". Tapping Add puts the
+  exercise straight in the workout and drops it from the list; dismissing
+  the card hides it for good. Takes priority over the first-visit hint
+  when both would otherwise show, since a reader with real data to act on
+  doesn't need to be told to tap a muscle.
 - **Mobile polish: floating panels, a shorter greeting, and narrower weight
   fields** — this app is used mostly on a phone, and a round of fixes aimed
   squarely at that.

@@ -38,7 +38,12 @@
  "explorer": {
   "greeting": "Hi {name}",
   "greetingAnon": "Hi",
-  "hint": "Rotate the model, filter by region, and tap a muscle."
+  "hint": "Rotate the model, filter by region, and tap a muscle.",
+  "recs": {
+   "title": "Recommended",
+   "dismiss": "Dismiss recommendations",
+   "add": "Add"
+  }
  },
  "viewer": {
   "muscleGroups": "Muscle Groups",

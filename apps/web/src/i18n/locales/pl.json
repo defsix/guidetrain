@@ -44,7 +44,12 @@
  "explorer": {
   "greeting": "Cześć {name}",
   "greetingAnon": "Cześć",
-  "hint": "Obracaj model, filtruj według partii i dotknij mięśnia."
+  "hint": "Obracaj model, filtruj według partii i dotknij mięśnia.",
+  "recs": {
+   "title": "Polecane",
+   "dismiss": "Zamknij polecane",
+   "add": "Dodaj"
+  }
  },
  "viewer": {
   "muscleGroups": "Grupy mięśniowe",

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AnatomyViewer } from "../anatomy";
 import { useProfile } from "../state/useProfile";
@@ -21,7 +21,9 @@ import { useGoals } from "../state/useGoals";
 import { useInjuries } from "../state/useInjuries";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
-import { useT } from "../i18n/I18nProvider";
+import { recommendExercises } from "../lib/recommend";
+import { BY_ID } from "../lib/exerciseCatalogue";
+import { useI18n } from "../i18n/I18nProvider";
 
 const MODEL_URL = `${import.meta.env.BASE_URL}models/anatomy_mobile.glb`;
 
@@ -42,6 +44,8 @@ function isEarlyVisit(): boolean {
   localStorage.setItem(HINT_KEY, String(n));
   return n <= HINT_VISITS;
 }
+
+const RECS_DISMISSED_KEY = "guidetrain.recsDismissed";
 
 export default function BodyExplorer() {
   const navigate = useNavigate();
@@ -64,13 +68,38 @@ export default function BodyExplorer() {
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [showHint] = useState(isEarlyVisit);
-  const t = useT();
+  const [recsDismissed, setRecsDismissed] = useState(
+    () => localStorage.getItem(RECS_DISMISSED_KEY) === "1",
+  );
+  const { t, localizeExercise } = useI18n();
 
   useEffect(() => {
     if (!profile) {
       navigate("/", { replace: true });
     }
   }, [profile, navigate]);
+
+  // Only once there's a real number to offer — see recommendExercises()'s
+  // own reasoning for why an onboarding-only profile doesn't qualify.
+  // Recomputes as programs/log/knownMax change, so adding a recommendation
+  // removes it from the list without needing its own dismiss.
+  const recommendations = useMemo(
+    () =>
+      recommendExercises(
+        programs.ids,
+        log.entries,
+        profile,
+        knownMax.overrides,
+        injuries.injuries,
+      ),
+    [programs.ids, log.entries, profile, knownMax.overrides, injuries.injuries],
+  );
+  const showRecs = recommendations.length > 0 && !recsDismissed;
+
+  function dismissRecs() {
+    localStorage.setItem(RECS_DISMISSED_KEY, "1");
+    setRecsDismissed(true);
+  }
 
   // The count is the whole point of the button: it is how you know anything
   // was saved without opening it. Lives in the anatomy canvas's own toolbar
@@ -174,11 +203,47 @@ export default function BodyExplorer() {
           injuries={injuries.injuries}
           toolbarExtra={workoutButton}
         />
-        {/* What the greeting used to say, moved to where the thing it's
-            describing actually is. Only for the first few visits — see
-            isEarlyVisit() above — since a reminder that outlives its
-            usefulness is just something else to read past. */}
-        {showHint && <p className="explorer-hint">{t("explorer.hint")}</p>}
+        {/* A real number to act on takes priority over the generic
+            first-visit hint below — someone who already has a known max or a
+            logged set doesn't need to be told to tap a muscle, they need to
+            know what to do with the data they've already put in. */}
+        {showRecs ? (
+          <div className="explorer-recs">
+            <div className="explorer-recs-head">
+              <span>{t("explorer.recs.title")}</span>
+              <button
+                className="workout-close"
+                onClick={dismissRecs}
+                aria-label={t("explorer.recs.dismiss")}
+              >
+                ✕
+              </button>
+            </div>
+            <ul>
+              {recommendations.map((r) => {
+                const raw = BY_ID.get(r.id);
+                if (!raw) return null;
+                const name = localizeExercise(raw).name;
+                return (
+                  <li key={r.id}>
+                    <span>
+                      {name} — {r.load} {t("unit.kg")}
+                    </span>
+                    <button onClick={() => programs.toggle(r.id)}>
+                      {t("explorer.recs.add")}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ) : (
+          /* What the greeting used to say, moved to where the thing it's
+             describing actually is. Only for the first few visits — see
+             isEarlyVisit() above — since a reminder that outlives its
+             usefulness is just something else to read past. */
+          showHint && <p className="explorer-hint">{t("explorer.hint")}</p>
+        )}
       </div>
       <WorkoutPanel
         ids={programs.ids}

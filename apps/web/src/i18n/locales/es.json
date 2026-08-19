@@ -38,7 +38,12 @@
  "explorer": {
   "greeting": "Hola {name}",
   "greetingAnon": "Hola",
-  "hint": "Gira el modelo, filtra por región y toca un músculo."
+  "hint": "Gira el modelo, filtra por región y toca un músculo.",
+  "recs": {
+   "title": "Recomendado",
+   "dismiss": "Cerrar recomendaciones",
+   "add": "Añadir"
+  }
  },
  "viewer": {
   "muscleGroups": "Grupos musculares",

@@ -414,6 +414,63 @@
   border-radius: 999px;
 }
 
+/* Same corner and stacking as .explorer-hint, and mutually exclusive with it
+   — see BodyExplorer.tsx. A real number to act on outranks a generic
+   first-visit tip, so this is what shows once there is one. */
+.explorer-recs {
+  position: absolute;
+  z-index: 10;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(300px, calc(100% - 32px));
+  padding: 10px 12px;
+  background: var(--panel-translucent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.explorer-recs-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.explorer-recs ul {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.explorer-recs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text);
+}
+.explorer-recs li span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.explorer-recs li button {
+  flex: none;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.explorer-recs li button:hover { border-color: var(--accent); color: var(--accent); }
+
 /* AnatomyViewer's root uses height:100%, which doesn't reliably resolve
    against a flex-sized block parent across browsers. Force it to fill via
    absolute positioning instead, since .explorer-canvas is already relative. */

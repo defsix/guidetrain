@@ -5,6 +5,7 @@ const PROGRAMS_KEY = "guidetrain.programs";
 const ACTIVE_PROGRAM_KEY = "guidetrain.programs.active";
 const LOG_KEY = "guidetrain.log";
 const INJURIES_KEY = "guidetrain.injuries";
+const KNOWN_MAX_KEY = "guidetrain.knownmax";
 
 /**
  * Seeds a profile into localStorage before the page's own scripts run, so a
@@ -77,5 +78,18 @@ export async function seedInjury(page: Page, muscleId: string, mode: "avoid" | "
   await page.addInitScript(
     ([key, json]) => localStorage.setItem(key, json),
     [INJURIES_KEY, JSON.stringify(injuries)] as [string, string],
+  );
+}
+
+/**
+ * Seeds a known max for an exercise, the same way typing one into the
+ * Progress page would. Must be called before `page.goto()`, same as the
+ * other seed helpers.
+ */
+export async function seedKnownMax(page: Page, exerciseId: string, max: number) {
+  const maxes = { [exerciseId]: { max, from: null, at: Date.now() } };
+  await page.addInitScript(
+    ([key, json]) => localStorage.setItem(key, json),
+    [KNOWN_MAX_KEY, JSON.stringify(maxes)] as [string, string],
   );
 }

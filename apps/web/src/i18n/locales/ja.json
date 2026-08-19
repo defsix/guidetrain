@@ -35,7 +35,12 @@
  "explorer": {
   "greeting": "こんにちは、{name} さん",
   "greetingAnon": "こんにちは",
-  "hint": "モデルを回転させ、部位で絞り込み、筋肉をタップしてください。"
+  "hint": "モデルを回転させ、部位で絞り込み、筋肉をタップしてください。",
+  "recs": {
+   "title": "おすすめ",
+   "dismiss": "おすすめを閉じる",
+   "add": "追加"
+  }
  },
  "viewer": {
   "muscleGroups": "筋肉グループ",
