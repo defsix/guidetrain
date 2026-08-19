@@ -191,6 +191,21 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed the 3D model swinging off-centre when rotated** — `FrameToVisible`
+  moves the model sideways and up so the muscle-picker panel never covers it,
+  but `OrbitControls` was still orbiting around a fixed world-origin target
+  that never followed it. Every drag (and every tick of `autoRotate`) span
+  the camera around empty space next to the model instead of around the
+  model itself, which read as the body swinging off to one side rather than
+  turning in place — most visible on a phone, where the panel's offset is
+  largest. `AnatomyViewer.jsx` now keeps a ref to the `OrbitControls`
+  instance and `FrameToVisible` sets `controls.target` to the model's own
+  live position every frame, at priority `-2` so it runs ahead of drei's own
+  `-1`-priority update. Verified by instrumenting the actual Three.js scene
+  state rather than eyeballing a screenshot: `target.x` now tracks the
+  model's `position.x` exactly on every sampled frame while `camera.position`
+  genuinely moves, confirming the camera orbits the model rather than a
+  stale point beside it.
 - **Warm-up sets, ramped to the working weight** — before the first working
   set of a barbell exercise, `SetLogger` now shows a ramp: 40% × 5, 60% × 5,
   80% × 3 of whatever weight is in the field, a widely used rule of thumb

@@ -59,12 +59,14 @@ const SCENE = {
  * `cover` is the fraction of canvas height the sheet occupies, measured rather
  * than assumed, because the sheet is shorter for a muscle with few exercises.
  */
-function FrameToVisible({ cover, sideCover, children }) {
+function FrameToVisible({ cover, sideCover, controlsRef, children }) {
   const group = useRef();
   const { camera } = useThree();
   const snap = useRef(true);
   const size = useRef(null);
 
+  // Priority -2, ahead of drei's OrbitControls (-1): the orbit target has to
+  // be this frame's position before OrbitControls reads it, not last frame's.
   useFrame((_, delta) => {
     const g = group.current;
     if (!g) return;
@@ -111,7 +113,15 @@ function FrameToVisible({ cover, sideCover, children }) {
     g.position.y += (wantY - g.position.y) * k;
     g.scale.setScalar(g.scale.x + (wantS - g.scale.x) * k);
     snap.current = false;
-  });
+
+    // The body moves to stay clear of the panels, but the orbit pivot was
+    // left behind at the world origin — every drag rotated the camera around
+    // empty space next to the model instead of around the model itself,
+    // which reads as the whole body swinging off to one side rather than
+    // spinning in place. The pivot has to move with it, every frame.
+    const controls = controlsRef?.current;
+    if (controls) controls.target.set(g.position.x, g.position.y, 0);
+  }, -2);
 
   return <group ref={group}>{children}</group>;
 }
@@ -192,6 +202,9 @@ export default function AnatomyViewer({
   const regionsRef = useRef(null);
   const [cover, setCover] = useState(0);
   const [sideCover, setSideCover] = useState(0);
+  // Shared with FrameToVisible so the orbit pivot can be kept over the model
+  // as it steps aside for the panels — see the comment there.
+  const controlsRef = useRef(null);
 
   useEffect(() => {
     const measure = () => {
@@ -364,7 +377,7 @@ export default function AnatomyViewer({
         <directionalLight position={[4, 6, 8]} intensity={scene.key[1]} color={scene.key[0]} />
         <directionalLight position={[-6, 3, -5]} intensity={scene.fill[1]} color={scene.fill[0]} />
         <Suspense fallback={null}>
-          <FrameToVisible cover={cover} sideCover={sideCover}>
+          <FrameToVisible cover={cover} sideCover={sideCover} controlsRef={controlsRef}>
           <AnatomyModel
             url={modelUrl}
             map={map}
@@ -384,6 +397,7 @@ export default function AnatomyViewer({
           </EnvironmentBoundary>
         </Suspense>
         <OrbitControls
+          ref={controlsRef}
           enablePan={false}
           minDistance={1.6}
           maxDistance={7}
@@ -393,7 +407,9 @@ export default function AnatomyViewer({
           // moving is exactly what that setting is about.
           autoRotate={!stillness}
           autoRotateSpeed={0.8}
-          target={[0, 0, 0]}
+          // No static target here — FrameToVisible drives it every frame,
+          // since the model itself moves to stay clear of the panels and the
+          // orbit pivot has to move with it. See the comment there.
         />
       </Canvas>
 
