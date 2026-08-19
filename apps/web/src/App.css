@@ -363,9 +363,25 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  /* With Account, Equipment, Stats and Injuries all showing at once, the row
+     is wider than a phone screen. `flex: none` used to refuse to shrink it at
+     all — every browser was left with only one option, overflowing the whole
+     page sideways rather than just this row, which is how a signed-in reader
+     ended up scrolled to a cropped mid-slice of every panel, not only this
+     one. Scrolling sideways within its own strip, the same pattern already
+     used for named-program tabs below, keeps every button reachable without
+     ever growing the page past the viewport. */
   .explorer .header-controls {
-    flex: none;
+    flex: 1 1 auto;
+    min-width: 0;
     gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    /* Left-aligned rather than the desktop row's flex-end: a scrollable strip
+       that opens flush right would start with Workout — the one button that
+       carries a live count — already scrolled out of sight. */
+    justify-content: flex-start;
   }
 }
 
