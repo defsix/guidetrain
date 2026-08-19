@@ -86,6 +86,21 @@ test.describe("lift goals", () => {
     await expect(page.locator(".stats-goal")).toContainText("200 kg");
   });
 
+  test("caps goals at 3 across every exercise, and frees a slot on removal", async ({ page }) => {
+    await page.getByRole("button", { name: /progress/i }).click();
+    await addGoal(page, "Barbell Squat", "180", "2030-01-01");
+    await addGoal(page, "Barbell Bench Press - Medium Grip", "100", "2030-01-01");
+    await addGoal(page, "Barbell Deadlift", "220", "2030-01-01");
+
+    await expect(page.locator(".stats-goal")).toHaveCount(3);
+    await expect(page.locator(".stats-goal-form")).toHaveCount(0);
+    await expect(page.getByText(/up to 3 goals/i)).toBeVisible();
+
+    await page.locator(".stats-goal").first().getByRole("button", { name: /remove/i }).click();
+    await expect(page.locator(".stats-goal")).toHaveCount(2);
+    await expect(page.locator(".stats-goal-form")).toBeVisible();
+  });
+
   test("the same goal and pace show up in Plan → for that lift", async ({ page }) => {
     await page.getByRole("button", { name: /progress/i }).click();
     const inTenWeeks = new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000);

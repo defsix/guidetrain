@@ -298,28 +298,36 @@ export function usePrograms() {
     });
   }, []);
 
-  /** Everything below edits the active program, creating one if none exists. */
+  /**
+   * Everything below edits the active program, creating one if none exists.
+   *
+   * The id a new program needs is generated here, in the function body, not
+   * inside the `setPrograms` updater below — `create()` is reused for the
+   * same reason it already generates its own id this way rather than inside
+   * *its* updater: React can call an updater function twice in development
+   * (Strict Mode), and `uid()` is not deterministic, so a second call would
+   * mint a different id than the first. When that id also drove a side
+   * effect — persisting it as the active program and setting state for it,
+   * both of which this used to do from inside the updater too — the two
+   * invocations could disagree about which id actually won, and the active
+   * program id on disk could end up pointing at a program that was never
+   * the one the reader's exercise landed in. The updater below is now a
+   * pure function of `prev` and the already-resolved `id`, so calling it
+   * twice computes the identical result both times.
+   */
   const editActive = useCallback(
     (fn: (ids: string[]) => string[]) => {
+      const id = (activeId && programs.some((p) => p.id === activeId) ? activeId : programs[0]?.id)
+        ?? create();
       setPrograms((prev) => {
-        let list = prev;
-        let id = activeId && prev.some((p) => p.id === activeId) ? activeId : prev[0]?.id;
-        if (!id) {
-          // Adding an exercise with no program open should make one rather than
-          // silently do nothing — the + is the first thing anyone presses.
-          id = uid();
-          list = [...prev, { id, name: "", exerciseIds: [] }];
-          persist(ACTIVE_KEY, id);
-          setActiveId(id);
-        }
-        const next = list.map((p) =>
+        const next = prev.map((p) =>
           p.id === id ? { ...p, exerciseIds: fn(p.exerciseIds) } : p,
         );
         persist(KEY, next);
         return next;
       });
     },
-    [activeId],
+    [activeId, programs, create],
   );
 
   const toggle = useCallback(

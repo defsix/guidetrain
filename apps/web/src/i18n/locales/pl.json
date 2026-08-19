@@ -515,6 +515,7 @@
   "goals": {
    "title": "Cele",
    "empty": "Nie ustawiono jeszcze żadnych celów.",
+   "limit": "Maksymalnie {max} cele naraz — usuń jeden, aby dodać kolejny.",
    "exercise": "Ćwiczenie",
    "weight": "Docelowy ciężar",
    "date": "Do",

@@ -487,6 +487,7 @@
   "goals": {
    "title": "Goals",
    "empty": "No goals set yet.",
+   "limit": "Up to {max} goals at once — remove one to add another.",
    "exercise": "Exercise",
    "weight": "Target weight",
    "date": "By",

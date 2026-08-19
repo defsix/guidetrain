@@ -487,6 +487,7 @@
   "goals": {
    "title": "Ziele",
    "empty": "Noch keine Ziele gesetzt.",
+   "limit": "Bis zu {max} Ziele gleichzeitig — entferne eins, um ein weiteres hinzuzufügen.",
    "exercise": "Übung",
    "weight": "Zielgewicht",
    "date": "Bis",

@@ -191,6 +191,41 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Recommendations now need a trend, not just a number; goals capped at
+  three; a state-update race fixed** — three follow-ups on recent work.
+  - Recommendations used to appear the moment a profile had any known max
+    or any single logged set — one data point, taken on faith. They now
+    require a real pattern across a lift's own logged history: a *steady
+    change* from the first session to the latest (≥5%, past the noise of
+    estimating a max from whatever reps happened to get logged) or a
+    *static result* (≤2.5%, the same rounding step every prescribed
+    weight already lands on) — anything in between is too ambiguous to
+    act on and is left alone. A typed-in known max with no logged history
+    behind it no longer qualifies on its own, since a single number,
+    however it got there, isn't a trend. `hasTrend()` in `lib/recommend.ts`
+    groups sets into sessions (one calendar day, not one set) and checks
+    the two bands; Incline and Close-Grip Bench are judged on Bench
+    Press's own trend, since prescribe() derives their number from it and
+    they'd otherwise have no history of their own to check.
+  - Goals are capped at three, across every exercise rather than per
+    exercise — three is also exactly how many lifts the Progress page
+    already tracks a max for. The add form gives way to a plain sentence
+    at the cap, the same way the goal list itself gives way to "no goals
+    set yet" at zero, rather than a button that would otherwise do
+    nothing when tapped.
+  - Fixed a state-update race in `usePrograms.ts`'s `editActive()`: adding
+    the very first exercise with no workout open yet used to generate a
+    new program's id and persist it as the active program from inside a
+    `setPrograms` updater function, which React can call twice in
+    development (Strict Mode) since `uid()` isn't deterministic — the two
+    calls could disagree about which id actually won, leaving the active
+    program id on disk pointing at a program the exercise never actually
+    landed in. `editActive()` now reuses `create()` (which already
+    generated its id outside any updater, correctly) instead of
+    duplicating that logic inline, so the updater is a pure function of
+    its previous state and calling it twice computes the same result both
+    times. Invisible in production, where React never double-invokes —
+    only surfaced running the dev server.
 - **Recommended exercises and starting weights, once there's a real number
   to offer** — a small dismissible card under the model suggests up to
   three exercises not yet in a saved workout, each with a starting weight,

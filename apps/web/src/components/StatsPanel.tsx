@@ -47,6 +47,16 @@ const LIFTS: { id: string; key: string }[] = [
   { id: "Barbell_Deadlift", key: "deadlift" },
 ];
 
+/**
+ * How many goals a reader can have open at once, across every exercise.
+ *
+ * Three, not unlimited — a goal is a thing to actually work towards, and a
+ * list long enough to scroll past stops reading as that. Three is also
+ * exactly enough to cover the lifts this panel already tracks a max for
+ * (`LIFTS`, above), which is the shape most people reach for anyway.
+ */
+const MAX_GOALS = 3;
+
 /** A short date for a chart's axis — day and month only, no year, no weekday. */
 function short(at: number): string {
   return new Date(at).toLocaleDateString(undefined, { day: "numeric", month: "short" });
@@ -161,6 +171,8 @@ export default function StatsPanel({
 
   const u = t("unit.kg");
   const num = (s: string) => parseFloat(s.replace(",", "."));
+  const goalCount = Object.values(goals).reduce((n, list) => n + list.length, 0);
+  const atGoalLimit = goalCount >= MAX_GOALS;
 
   function saveWeight() {
     const kg = num(weightInput);
@@ -171,6 +183,7 @@ export default function StatsPanel({
 
   function addGoal(e: React.FormEvent) {
     e.preventDefault();
+    if (atGoalLimit) return;
     const id = idByName.get(goalExercise.trim());
     const targetWeight = num(goalWeightInput);
     // A plain <input type="date"> value is "yyyy-mm-dd"; midnight local time
@@ -338,36 +351,46 @@ export default function StatsPanel({
             })
           )}
 
-          {/* Three rows rather than one wrapped one: a lift's name needs real
-              width to search and read back, and squeezing it onto the same
-              line as a weight and a date left both of those cramped too. */}
-          <form className="stats-edit stats-goal-form" onSubmit={addGoal}>
-            <AutocompleteInput
-              className="stats-goal-exercise"
-              options={localizedExercises.map((x) => x.name)}
-              value={goalExercise}
-              onChange={setGoalExercise}
-              placeholder={t("stats.goals.exercise")}
-              aria-label={t("stats.goals.exercise")}
-            />
-            <div className="stats-goal-row">
-              <input
-                className="weight-input"
-                value={goalWeightInput}
-                onChange={(e) => setGoalWeightInput(e.target.value)}
-                inputMode="decimal"
-                placeholder={t("stats.goals.weight")}
-                aria-label={t("stats.goals.weight")}
+          {/* Capped at MAX_GOALS, across every exercise, not per exercise —
+              see the constant's own comment for why three. The form gives
+              way to a plain sentence at the cap rather than a button that
+              silently does nothing, matching how the list itself gives way
+              to "no goals set yet" at zero. */}
+          {atGoalLimit ? (
+            <p className="workout-empty">{t("stats.goals.limit", { max: MAX_GOALS })}</p>
+          ) : (
+            // Three rows rather than one wrapped one: a lift's name needs
+            // real width to search and read back, and squeezing it onto the
+            // same line as a weight and a date left both of those cramped
+            // too.
+            <form className="stats-edit stats-goal-form" onSubmit={addGoal}>
+              <AutocompleteInput
+                className="stats-goal-exercise"
+                options={localizedExercises.map((x) => x.name)}
+                value={goalExercise}
+                onChange={setGoalExercise}
+                placeholder={t("stats.goals.exercise")}
+                aria-label={t("stats.goals.exercise")}
               />
-              <input
-                type="date"
-                value={goalDateInput}
-                onChange={(e) => setGoalDateInput(e.target.value)}
-                aria-label={t("stats.goals.date")}
-              />
-            </div>
-            <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
-          </form>
+              <div className="stats-goal-row">
+                <input
+                  className="weight-input"
+                  value={goalWeightInput}
+                  onChange={(e) => setGoalWeightInput(e.target.value)}
+                  inputMode="decimal"
+                  placeholder={t("stats.goals.weight")}
+                  aria-label={t("stats.goals.weight")}
+                />
+                <input
+                  type="date"
+                  value={goalDateInput}
+                  onChange={(e) => setGoalDateInput(e.target.value)}
+                  aria-label={t("stats.goals.date")}
+                />
+              </div>
+              <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
+            </form>
+          )}
         </section>
 
         {/* Was its own panel, reached from a separate header button; folded in

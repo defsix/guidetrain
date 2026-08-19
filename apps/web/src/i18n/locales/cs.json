@@ -515,6 +515,7 @@
   "goals": {
    "title": "Cíle",
    "empty": "Zatím žádné cíle.",
+   "limit": "Nejvýše {max} cíle najednou — jeden odstraňte, abyste mohli přidat další.",
    "exercise": "Cvik",
    "weight": "Cílová váha",
    "date": "Do",

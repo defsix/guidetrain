@@ -547,13 +547,17 @@ this panel otherwise tracks — picked from a filtered dropdown over all 180
 (`AutocompleteInput`, arrow keys and Enter to move through it). Each shows a
 pace verdict: on pace, behind, already reached, or the deadline has passed.
 
-**More than one goal per lift is allowed.** A near-term number and a
-long-term one are different questions, not a correction of each other, so
-setting a new goal for an exercise that already has one adds to the list
-rather than replacing it. Every place a goal's pace is shown renders one
-verdict per goal, not one per exercise — two squat goals mean two lines in
-the list, two notes in Plan →, two on a plan's preview row, each judged and
-removable on its own.
+**More than one goal per lift is allowed — up to three in total.** A
+near-term number and a long-term one are different questions, not a
+correction of each other, so setting a new goal for an exercise that
+already has one adds to the list rather than replacing it. Every place a
+goal's pace is shown renders one verdict per goal, not one per exercise —
+two squat goals mean two lines in the list, two notes in Plan →, two on a
+plan's preview row, each judged and removable on its own. Three total is
+the cap, across every exercise rather than per exercise — also exactly how
+many lifts the Progress page already tracks a max for. The form gives way
+to a plain sentence at the cap, the same way the list itself gives way to
+"no goals set yet" at zero.
 
 **Not a new calculation — the existing one, given a deadline.** The 5/3/1
 planner (**Plan →**, reachable on any exercise once something is logged for
@@ -636,6 +640,20 @@ own. Nothing here is invented: every figure is either logged, typed in on
 the Progress page, or the same related-lift fraction already applied
 everywhere else that number is used.
 
+**Needs a trend, not just a number.** A known max or a single logged set
+used to be enough on its own; it isn't anymore. `hasTrend()` looks at a
+lift's own logged history — grouped one estimate per session (a calendar
+day, not a set, so three sets in one workout is one data point) — and only
+qualifies a *steady change* (≥5% from the first session to the latest,
+past the noise of estimating a max off whatever reps got logged) or a
+*static result* (≤2.5%, the same rounding step every prescribed weight
+already lands on). Anything between those two bands is too ambiguous to
+act on, and a typed-in known max with nothing logged behind it has no
+history to check at all — one number, however it got there, isn't a
+trend. Incline and Close-Grip Bench are judged on Bench Press's own trend,
+since `prescribe()` derives their number from it and they'd otherwise have
+no logged history of their own to look at.
+
 Excludes anything already saved or marked "avoid" on the Progress page.
 Tapping **Add** puts the exercise straight into the saved workout and drops
 it from the list — the list recomputes from what's saved, so it needs no
@@ -644,9 +662,9 @@ good, tracked the same way as everything else here: a plain localStorage
 flag, not synced.
 
 **Takes priority over the first-visit hint** (above) when both would
-otherwise show — a reader who already has a known max or a logged set
-doesn't need to be told to tap a muscle, they need to know what to do with
-the data they've already put in.
+otherwise show — a reader who already has a real trend to act on doesn't
+need to be told to tap a muscle, they need to know what to do with the
+data they've already put in.
 
 ## Ready-made plans
 

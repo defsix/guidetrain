@@ -487,6 +487,7 @@
   "goals": {
    "title": "Objetivos",
    "empty": "Aún no hay objetivos.",
+   "limit": "Hasta {max} objetivos a la vez — elimina uno para añadir otro.",
    "exercise": "Ejercicio",
    "weight": "Peso objetivo",
    "date": "Antes de",
