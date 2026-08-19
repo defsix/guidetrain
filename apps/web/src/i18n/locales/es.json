@@ -466,6 +466,30 @@
   "noHistory": "Nada registrado todavía.",
   "overrideFrom": "Fijado a mano, por encima de los {from} {unit} que implica tu registro.",
   "overrideNoLog": "Fijado a mano — todavía no hay nada registrado para este ejercicio.",
-  "revert": "Volver a {max} {unit}"
+  "revert": "Volver a {max} {unit}",
+  "goals": {
+   "title": "Objetivos",
+   "empty": "Aún no hay objetivos.",
+   "exercise": "Ejercicio",
+   "weight": "Peso objetivo",
+   "date": "Antes de",
+   "add": "Añadir objetivo",
+   "remove": "Quitar",
+   "by": "Antes del {date}",
+   "noBasis": "Registra una serie de este ejercicio, o fija un máximo, para ver tu ritmo.",
+   "reached": "Ya lo has conseguido.",
+   "onPace": {
+    "one": "Falta {count} ciclo, unas {weeksNeeded} semanas — quedan {weeksAvailable} semanas para la fecha límite. Vas bien.",
+    "other": "Faltan {count} ciclos, unas {weeksNeeded} semanas — quedan {weeksAvailable} semanas para la fecha límite. Vas bien."
+   },
+   "behind": {
+    "one": "Falta {count} ciclo, unas {weeksNeeded} semanas — solo quedan {weeksAvailable} semanas para la fecha límite.",
+    "other": "Faltan {count} ciclos, unas {weeksNeeded} semanas — solo quedan {weeksAvailable} semanas para la fecha límite."
+   },
+   "pastDeadline": {
+    "one": "Todavía falta {count} ciclo, unas {weeksNeeded} semanas — la fecha límite ya pasó.",
+    "other": "Todavía faltan {count} ciclos, unas {weeksNeeded} semanas — la fecha límite ya pasó."
+   }
+  }
  }
 }

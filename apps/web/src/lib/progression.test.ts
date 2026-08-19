@@ -12,6 +12,7 @@ import {
   cycle,
   cyclesTo,
   estimateOneRepMax,
+  goalPace,
   incrementFor,
   mainLiftWeek1,
   platesPerSide,
@@ -307,6 +308,45 @@ describe("mainLiftWeek1", () => {
 
   it("still returns a week from a training max alone, with nothing logged", () => {
     expect(mainLiftWeek1([], 100)).not.toBeNull();
+  });
+});
+
+describe("goalPace", () => {
+  const WEEK = 7 * 24 * 60 * 60 * 1000;
+
+  it("returns noBasis with nothing logged and no training max set by hand", () => {
+    expect(goalPace([], undefined, 150, Date.now() + WEEK, 5).status).toBe("noBasis");
+  });
+
+  it("says the goal is already reached when the current training max already covers it", () => {
+    // 140 x 5 derives a training max of 147.5; a target of 100 needs a
+    // training max of only 90 (90% of 100, rounded to the 2.5 kg step).
+    const p = goalPace([set(140, 5)], undefined, 100, Date.now() + WEEK, 5);
+    expect(p.status).toBe("reached");
+  });
+
+  it("says onPace when the deadline leaves enough cycles", () => {
+    // 90% of 120 is 108, rounded to 107.5; from a training max of 100 that
+    // is ceil(7.5 / 5) = 2 cycles, 8 weeks. Ten weeks is enough.
+    const now = Date.now();
+    const p = goalPace([], 100, 120, now + 10 * WEEK, 5, now);
+    expect(p).toEqual({ status: "onPace", cyclesNeeded: 2, weeksNeeded: 8, weeksAvailable: 10 });
+  });
+
+  it("says behind when the deadline doesn't leave enough cycles", () => {
+    // Same 2 cycles / 8 weeks as above, but only 4 weeks on the clock.
+    const now = Date.now();
+    const p = goalPace([], 100, 120, now + 4 * WEEK, 5, now);
+    expect(p).toEqual({ status: "behind", cyclesNeeded: 2, weeksNeeded: 8, weeksAvailable: 4 });
+  });
+
+  it("prefers a training max set by hand over the one the log implies", () => {
+    // 140 x 5 alone derives a training max of 147.5, which would already
+    // reach a 120 kg target (needs only 107.5) — the hand-set 80 below must
+    // still be what the pace is judged from.
+    const now = Date.now();
+    const p = goalPace([set(140, 5)], 80, 120, now + 100 * WEEK, 5, now);
+    expect(p.status).not.toBe("reached");
   });
 });
 

@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
-import muscleMap from "../anatomy/muscle-map.json";
 import { swapsFor } from "../anatomy/pairs";
 import SetLogger from "./SetLogger";
 import ProgressionPanel from "./ProgressionPanel";
@@ -9,8 +8,10 @@ import TargetPips from "./TargetPips";
 import type { SetEntry } from "../state/useLog";
 import type { Program, Target } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
+import type { Goal } from "../state/useGoals";
 import { useRestTimer } from "../state/useRestTimer";
 import { restSeconds, REST_EXTEND_SECONDS } from "../lib/progression";
+import { usesLegs } from "../lib/muscleRegions";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -21,15 +22,6 @@ type Entry = {
   primary: string[];
   secondary: string[];
 };
-
-// Which region each muscle sits in, so a lift can be told apart as upper or
-// lower body — 5/3/1 moves the two at different speeds, and this is how the
-// increment is chosen without hard-coding four exercise names.
-const REGION: Record<string, string> = Object.fromEntries(
-  muscleMap.zones.filter((z) => z.key).map((z) => [z.key, z.region]),
-);
-const usesLegs = (x: Entry) =>
-  [...x.primary, ...x.secondary].some((m) => REGION[m] === "Legs");
 
 // Every exercise, one entry each — the same exercise is listed under every
 // muscle it trains, and the workout stores ids, so this is the lookup back.
@@ -73,6 +65,8 @@ type Props = {
   onSwap: (oldId: string, newId: string) => void;
   /** Equipment the reader said they have — sharpens swap ranking, same as it does for pairs. */
   equipmentAvailable?: string[];
+  /** Goals set on the Stats page, per exercise id — shown in Plan → for that exercise. */
+  goals: Record<string, Goal>;
 };
 
 /**
@@ -92,7 +86,7 @@ export default function WorkoutPanel({
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
-  onSwap, equipmentAvailable,
+  onSwap, equipmentAvailable, goals,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -387,6 +381,7 @@ export default function WorkoutPanel({
             onSetTrainingMax={(tm, from) => onSetTrainingMax(planning, tm, from)}
             onClearTrainingMax={() => onClearTrainingMax(planning)}
             onClose={() => setPlanning(null)}
+            goal={goals[planning]}
           />
         );
       })()}

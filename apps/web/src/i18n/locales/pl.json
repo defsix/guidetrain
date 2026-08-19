@@ -494,6 +494,36 @@
   "noHistory": "Nic jeszcze nie zapisano.",
   "overrideFrom": "Ustawione ręcznie, powyżej {from} {unit} wynikających z twojego dziennika.",
   "overrideNoLog": "Ustawione ręcznie — dla tego ćwiczenia nic jeszcze nie zapisano.",
-  "revert": "Wróć do {max} {unit}"
+  "revert": "Wróć do {max} {unit}",
+  "goals": {
+   "title": "Cele",
+   "empty": "Nie ustawiono jeszcze żadnych celów.",
+   "exercise": "Ćwiczenie",
+   "weight": "Docelowy ciężar",
+   "date": "Do",
+   "add": "Dodaj cel",
+   "remove": "Usuń",
+   "by": "Do {date}",
+   "noBasis": "Zapisz serię dla tego ćwiczenia albo ustaw maksimum, aby zobaczyć tempo.",
+   "reached": "Już tam jesteś.",
+   "onPace": {
+    "one": "Został {count} cykl, około {weeksNeeded} tygodni — do terminu zostało {weeksAvailable} tygodni. W tempie.",
+    "few": "Zostały {count} cykle, około {weeksNeeded} tygodni — do terminu zostało {weeksAvailable} tygodni. W tempie.",
+    "many": "Zostało {count} cykli, około {weeksNeeded} tygodni — do terminu zostało {weeksAvailable} tygodni. W tempie.",
+    "other": "Zostało {count} cyklu, około {weeksNeeded} tygodni — do terminu zostało {weeksAvailable} tygodni. W tempie."
+   },
+   "behind": {
+    "one": "Został {count} cykl, około {weeksNeeded} tygodni — do terminu zostało tylko {weeksAvailable} tygodni.",
+    "few": "Zostały {count} cykle, około {weeksNeeded} tygodni — do terminu zostało tylko {weeksAvailable} tygodni.",
+    "many": "Zostało {count} cykli, około {weeksNeeded} tygodni — do terminu zostało tylko {weeksAvailable} tygodni.",
+    "other": "Zostało {count} cyklu, około {weeksNeeded} tygodni — do terminu zostało tylko {weeksAvailable} tygodni."
+   },
+   "pastDeadline": {
+    "one": "Nadal potrzeba {count} cyklu, około {weeksNeeded} tygodni — termin już minął.",
+    "few": "Nadal potrzeba {count} cykli, około {weeksNeeded} tygodni — termin już minął.",
+    "many": "Nadal potrzeba {count} cykli, około {weeksNeeded} tygodni — termin już minął.",
+    "other": "Nadal potrzeba {count} cyklu, około {weeksNeeded} tygodni — termin już minął."
+   }
+  }
  }
 }

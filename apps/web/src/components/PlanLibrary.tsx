@@ -2,15 +2,25 @@ import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import { PLANS, prescribe } from "../lib/plans";
 import type { PlanTemplate } from "../lib/plans";
-import { bestEstimate, mainLiftWeek1 } from "../lib/progression";
+import { bestEstimate, mainLiftWeek1, goalPace, incrementFor } from "../lib/progression";
+import { usesLegs } from "../lib/muscleRegions";
+import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import type { SetEntry } from "../state/useLog";
 import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { AppliedDay } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
+import type { Goal } from "../state/useGoals";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
 
-type Entry = { id: string; name: string; equipment?: string; instructions: string[] };
+type Entry = {
+  id: string;
+  name: string;
+  equipment?: string;
+  instructions: string[];
+  primary: string[];
+  secondary: string[];
+};
 
 const BY_ID = new Map<string, Entry>();
 for (const list of Object.values(exercises.muscles as Record<string, Entry[]>)) {
@@ -26,6 +36,8 @@ type Props = {
   knownMaxes: Record<string, KnownMaxEntry>;
   /** A training max set by hand, per exercise id — same store ProgressionPanel reads. */
   trainingMaxes: Record<string, TrainingMaxOverride>;
+  /** Goals set on the Stats page, per exercise id — shown as a pace note on any row that has one. */
+  goals: Record<string, Goal>;
   /** Applies the plan as named workouts, carrying the weights just previewed. */
   onApply: (days: AppliedDay[]) => void;
 };
@@ -39,7 +51,7 @@ type Props = {
  * which is why every row carries its source.
  */
 export default function PlanLibrary({
-  open, onClose, allSets, profile, knownMaxes, trainingMaxes, onApply,
+  open, onClose, allSets, profile, knownMaxes, trainingMaxes, goals, onApply,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [chosen, setChosen] = useState<PlanTemplate | null>(null);
@@ -212,6 +224,16 @@ export default function PlanLibrary({
                     const x = localizeExercise(raw);
                     const anchorRaw = e.relatedTo ? BY_ID.get(e.relatedTo) : undefined;
                     const anchorName = anchorRaw ? localizeExercise(anchorRaw).name : "";
+                    const goal = goals[e.id];
+                    const pace = goal
+                      ? goalPace(
+                          byExercise.get(e.id) ?? [],
+                          trainingMaxes[e.id]?.tm,
+                          goal.targetWeight,
+                          goal.targetDate,
+                          incrementFor(usesLegs(raw)),
+                        )
+                      : null;
                     return (
                       <li key={e.id}>
                         <span className="dname">{x.name}</span>
@@ -251,6 +273,15 @@ export default function PlanLibrary({
                         <span className="dsets">
                           {e.sets} × {e.reps}
                         </span>
+                        {goal && pace && (
+                          <span className="dgoal">
+                            {t("stats.goals.by", { date: goalDateLabel(goal.targetDate) })}
+                            {": "}
+                            {goal.targetWeight} {u}
+                            {" — "}
+                            {goalPaceMessage(t, pace)}
+                          </span>
+                        )}
                       </li>
                     );
                   })}

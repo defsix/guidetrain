@@ -1075,6 +1075,27 @@
 }
 .stats-save:hover { border-color: var(--accent); color: var(--accent); }
 
+.stats-goal { display: flex; flex-direction: column; gap: 4px; }
+.stats-goal-head {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
+}
+.stats-goal-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.stats-goal-date {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+.stats-goal-head .tm-clear { margin-left: auto; }
+
+.stats-goal-form { flex-wrap: wrap; }
+.stats-goal-form input.stats-goal-exercise { flex: 2; min-width: 110px; }
+.stats-goal-form input[type="date"] { flex: none; width: auto; }
+
 /* The chart: one accent-coloured line and nothing else competing for
    attention. No axis grid, no legend — four of these sit in one panel and
    each already carries a label above it. */
@@ -1921,6 +1942,14 @@
 .plan-day .dload em.bodyweight, .plan-day .dload em.atBodyWeight, .plan-day .dload em.unknown { color: var(--text-muted); }
 .plan-day .dsets {
   font-family: var(--mono); font-size: 11px; color: var(--text-muted); white-space: nowrap;
+}
+
+/* Spans the full row rather than sitting in the grid's third column — a
+   goal's pace note is a sentence, not one more number alongside the load. */
+.plan-day .dgoal {
+  grid-column: 1 / -1;
+  font-size: 11px;
+  color: var(--text-muted);
 }
 
 .plans-open {

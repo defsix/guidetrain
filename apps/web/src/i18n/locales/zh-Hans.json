@@ -452,6 +452,27 @@
   "noHistory": "还没有记录。",
   "overrideFrom": "手动设置，高于你的记录推算出的 {from} {unit}。",
   "overrideNoLog": "手动设置——这个动作还没有任何记录。",
-  "revert": "改回 {max} {unit}"
+  "revert": "改回 {max} {unit}",
+  "goals": {
+   "title": "目标",
+   "empty": "还没有设置目标。",
+   "exercise": "动作",
+   "weight": "目标重量",
+   "date": "截止",
+   "add": "添加目标",
+   "remove": "移除",
+   "by": "截止{date}",
+   "noBasis": "记录这个动作的一组，或设置一个最大重量，才能看到进度。",
+   "reached": "已经达到了。",
+   "onPace": {
+    "other": "还需{count}个周期，约{weeksNeeded}周——距离截止日期还有{weeksAvailable}周，进度正常。"
+   },
+   "behind": {
+    "other": "还需{count}个周期，约{weeksNeeded}周——距离截止日期只剩{weeksAvailable}周。"
+   },
+   "pastDeadline": {
+    "other": "仍需{count}个周期，约{weeksNeeded}周——截止日期已经过了。"
+   }
+  }
  }
 }

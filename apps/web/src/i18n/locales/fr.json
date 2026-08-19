@@ -466,6 +466,30 @@
   "noHistory": "Rien d'enregistré pour l'instant.",
   "overrideFrom": "Défini à la main, au-dessus des {from} {unit} qu'implique votre historique.",
   "overrideNoLog": "Défini à la main — rien d'enregistré pour cet exercice pour l'instant.",
-  "revert": "Revenir à {max} {unit}"
+  "revert": "Revenir à {max} {unit}",
+  "goals": {
+   "title": "Objectifs",
+   "empty": "Aucun objectif défini pour l'instant.",
+   "exercise": "Exercice",
+   "weight": "Poids visé",
+   "date": "Avant le",
+   "add": "Ajouter un objectif",
+   "remove": "Retirer",
+   "by": "Avant le {date}",
+   "noBasis": "Enregistrez une série pour cet exercice, ou définissez un maximum, pour voir votre rythme.",
+   "reached": "Déjà atteint.",
+   "onPace": {
+    "one": "{count} cycle restant, environ {weeksNeeded} semaines — {weeksAvailable} semaines avant l'échéance. Dans les temps.",
+    "other": "{count} cycles restants, environ {weeksNeeded} semaines — {weeksAvailable} semaines avant l'échéance. Dans les temps."
+   },
+   "behind": {
+    "one": "{count} cycle restant, environ {weeksNeeded} semaines — plus que {weeksAvailable} semaines avant l'échéance.",
+    "other": "{count} cycles restants, environ {weeksNeeded} semaines — plus que {weeksAvailable} semaines avant l'échéance."
+   },
+   "pastDeadline": {
+    "one": "Encore {count} cycle nécessaire, environ {weeksNeeded} semaines — l'échéance est déjà passée.",
+    "other": "Encore {count} cycles nécessaires, environ {weeksNeeded} semaines — l'échéance est déjà passée."
+   }
+  }
  }
 }

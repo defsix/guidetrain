@@ -466,6 +466,30 @@
   "noHistory": "Nothing recorded yet.",
   "overrideFrom": "Set by hand, over the {from} {unit} your log implies.",
   "overrideNoLog": "Set by hand — nothing logged for this lift yet.",
-  "revert": "Use {max} {unit} again"
+  "revert": "Use {max} {unit} again",
+  "goals": {
+   "title": "Goals",
+   "empty": "No goals set yet.",
+   "exercise": "Exercise",
+   "weight": "Target weight",
+   "date": "By",
+   "add": "Add goal",
+   "remove": "Remove",
+   "by": "By {date}",
+   "noBasis": "Log a set for this lift, or set a max, to see your pace.",
+   "reached": "Already there.",
+   "onPace": {
+    "one": "{count} cycle to go, about {weeksNeeded} weeks — {weeksAvailable} weeks until the deadline. On pace.",
+    "other": "{count} cycles to go, about {weeksNeeded} weeks — {weeksAvailable} weeks until the deadline. On pace."
+   },
+   "behind": {
+    "one": "{count} cycle to go, about {weeksNeeded} weeks — only {weeksAvailable} weeks until the deadline.",
+    "other": "{count} cycles to go, about {weeksNeeded} weeks — only {weeksAvailable} weeks until the deadline."
+   },
+   "pastDeadline": {
+    "one": "{count} cycle still needed, about {weeksNeeded} weeks — the deadline has passed.",
+    "other": "{count} cycles still needed, about {weeksNeeded} weeks — the deadline has passed."
+   }
+  }
  }
 }

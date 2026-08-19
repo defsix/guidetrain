@@ -344,6 +344,56 @@ export function cyclesTo(currentTM: number, targetTM: number, increment: number)
   return Math.ceil((targetTM - currentTM) / increment);
 }
 
+const MS_PER_WEEK = 7 * 24 * 60 * 60 * 1000;
+/** Weeks per 5/3/1 cycle — the same four-week block `cycle()` describes. */
+const WEEKS_PER_CYCLE = 4;
+
+export type GoalPace =
+  | { status: "noBasis" }
+  | { status: "reached" }
+  | { status: "onPace" | "behind"; cyclesNeeded: number; weeksNeeded: number; weeksAvailable: number };
+
+/**
+ * Whether a goal — a weight, by a date — is realistic at this lift's own
+ * pace, judged the same way `ProgressionPanel`'s "Target" field already
+ * answers "how long would this take": run the target through `trainingMax`
+ * exactly like a typed-in target does, and count cycles with `cyclesTo`. This
+ * adds nothing new to that math — only a deadline to compare the answer
+ * against, which the panel's own target field never had one of.
+ *
+ * `overrideTM` takes a hand-set training max over the derived one, same rule
+ * and same reason as everywhere else it appears: it only exists because
+ * someone chose to state it. `"noBasis"` is `mainLiftWeek1`'s null case
+ * again — no logged set and no override is nothing to judge a pace against,
+ * and a body-weight guess has no business standing in for one here either.
+ */
+export function goalPace(
+  sets: SetEntry[],
+  overrideTM: number | undefined,
+  targetWeight: number,
+  targetDate: number,
+  increment: number,
+  now = Date.now(),
+): GoalPace {
+  const best = bestEstimate(sets);
+  const derivedTM = best ? trainingMax(best.oneRM) : 0;
+  const tm = overrideTM ?? derivedTM;
+  if (tm <= 0) return { status: "noBasis" };
+
+  const targetTM = trainingMax(targetWeight);
+  if (targetTM <= tm) return { status: "reached" };
+
+  const cyclesNeeded = cyclesTo(tm, targetTM, increment);
+  const weeksNeeded = cyclesNeeded * WEEKS_PER_CYCLE;
+  const weeksAvailable = Math.floor((targetDate - now) / MS_PER_WEEK);
+  return {
+    status: weeksNeeded <= weeksAvailable ? "onPace" : "behind",
+    cyclesNeeded,
+    weeksNeeded,
+    weeksAvailable,
+  };
+}
+
 /**
  * How long to rest before the next set, guessed from how many reps the one
  * just finished asked for.

@@ -513,6 +513,34 @@ this panel is first used to change it — there is no way to back-date a
 number nobody wrote down, so a long-time profile's chart starts today rather
 than inventing a flat line back to onboarding.
 
+### Goals
+
+A weight, and a date, for any exercise in the catalogue — not just the three
+this panel otherwise tracks — picked from a plain `<input list>` over all 180
+rather than a custom search component. Each shows a pace verdict: on pace,
+behind, already reached, or the deadline has passed.
+
+**Not a new calculation — the existing one, given a deadline.** The 5/3/1
+planner (**Plan →**, reachable on any exercise once something is logged for
+it) already answers "how many cycles would this take" for a typed-in target;
+a goal is that exact same question, persisted instead of resetting the
+moment the panel closes, and judged against a date instead of left open-
+ended. `goalPace()` in `progression.ts` is the one function that makes the
+call, and it is the *only* place that happens — the Stats page's own list,
+Plan → for that lift (opened from any workout, regardless of which
+ready-made plan added the exercise), and a note on that exercise's row in
+any plan's preview all call it directly, so the same goal can't read as "on
+pace" in one place and "behind" in another. Deliberately not a dedicated
+plan built around hitting the target by the deadline — that would mean
+either quietly running the cycle faster than the sourced Wendler percentages
+allow, or telling someone a date is safe to promise when the training-max
+maths says otherwise, and this app doesn't invent numbers to make a plan
+look better than it is.
+
+In memory and localStorage only for now, like the rest of the app's
+per-device state — not yet wired into Supabase sync, the same "optional to
+defer" call already made for the rest of this panel's data.
+
 ## Ready-made plans
 
 Ten shapes — full body, upper/lower, push/pull/legs, body part split,

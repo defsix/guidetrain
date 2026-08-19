@@ -466,6 +466,30 @@
   "noHistory": "Noch nichts erfasst.",
   "overrideFrom": "Von Hand gesetzt, über den {from} {unit}, die dein Protokoll ergibt.",
   "overrideNoLog": "Von Hand gesetzt — für diese Übung noch nichts erfasst.",
-  "revert": "Wieder {max} {unit} verwenden"
+  "revert": "Wieder {max} {unit} verwenden",
+  "goals": {
+   "title": "Ziele",
+   "empty": "Noch keine Ziele gesetzt.",
+   "exercise": "Übung",
+   "weight": "Zielgewicht",
+   "date": "Bis",
+   "add": "Ziel hinzufügen",
+   "remove": "Entfernen",
+   "by": "Bis {date}",
+   "noBasis": "Trage einen Satz für diese Übung ein oder setze ein Maximum, um dein Tempo zu sehen.",
+   "reached": "Schon erreicht.",
+   "onPace": {
+    "one": "Noch {count} Zyklus, etwa {weeksNeeded} Wochen — {weeksAvailable} Wochen bis zur Frist. Im Tempo.",
+    "other": "Noch {count} Zyklen, etwa {weeksNeeded} Wochen — {weeksAvailable} Wochen bis zur Frist. Im Tempo."
+   },
+   "behind": {
+    "one": "Noch {count} Zyklus, etwa {weeksNeeded} Wochen — nur noch {weeksAvailable} Wochen bis zur Frist.",
+    "other": "Noch {count} Zyklen, etwa {weeksNeeded} Wochen — nur noch {weeksAvailable} Wochen bis zur Frist."
+   },
+   "pastDeadline": {
+    "one": "Noch {count} Zyklus nötig, etwa {weeksNeeded} Wochen — die Frist ist schon vorbei.",
+    "other": "Noch {count} Zyklen nötig, etwa {weeksNeeded} Wochen — die Frist ist schon vorbei."
+   }
+  }
  }
 }

@@ -1,10 +1,34 @@
 import { useMemo, useState } from "react";
+import exercisesData from "../anatomy/exercises.json";
 import type { Profile } from "../types";
 import type { SetEntry } from "../state/useLog";
 import type { WeighIn } from "../state/useBodyWeightLog";
 import type { KnownMaxEntry } from "../state/useKnownMax";
-import { bestEstimate, roundLoad } from "../lib/progression";
+import type { TrainingMaxOverride } from "../state/useTrainingMax";
+import type { Goal } from "../state/useGoals";
+import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progression";
+import { usesLegs } from "../lib/muscleRegions";
+import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { useI18n } from "../i18n/I18nProvider";
+
+type CatalogueEntry = {
+  id: string;
+  name: string;
+  instructions: string[];
+  primary: string[];
+  secondary: string[];
+};
+
+// Every exercise, one entry each — the goal picker offers the whole
+// catalogue, not just the three lifts this panel otherwise tracks.
+const ALL_EXERCISES: CatalogueEntry[] = (() => {
+  const seen = new Map<string, CatalogueEntry>();
+  for (const list of Object.values(exercisesData.muscles as Record<string, CatalogueEntry[]>)) {
+    for (const x of list) if (!seen.has(x.id)) seen.set(x.id, x);
+  }
+  return [...seen.values()];
+})();
+const BY_ID = new Map(ALL_EXERCISES.map((x) => [x.id, x]));
 
 type Props = {
   open: boolean;
@@ -16,6 +40,11 @@ type Props = {
   knownMaxes: Record<string, KnownMaxEntry>;
   onSetKnownMax: (id: string, max: number, from: number | null) => void;
   onClearKnownMax: (id: string) => void;
+  /** Training maxes set by hand — goalPace prefers these the same way ProgressionPanel does. */
+  trainingMaxes: Record<string, TrainingMaxOverride>;
+  goals: Record<string, Goal>;
+  onSetGoal: (id: string, targetWeight: number, targetDate: number) => void;
+  onClearGoal: (id: string) => void;
 };
 
 /**
@@ -110,10 +139,14 @@ function Trend({ points, unit, empty }: { points: Point[]; unit: string; empty: 
 export default function StatsPanel({
   open, onClose, profile, onSetBodyWeight, weighIns, allSets,
   knownMaxes, onSetKnownMax, onClearKnownMax,
+  trainingMaxes, goals, onSetGoal, onClearGoal,
 }: Props) {
-  const { t } = useI18n();
+  const { t, localizeExercise } = useI18n();
   const [weightInput, setWeightInput] = useState("");
   const [maxInputs, setMaxInputs] = useState<Record<string, string>>({});
+  const [goalExercise, setGoalExercise] = useState("");
+  const [goalWeightInput, setGoalWeightInput] = useState("");
+  const [goalDateInput, setGoalDateInput] = useState("");
 
   const setsById = useMemo(() => {
     const m = new Map<string, SetEntry[]>();
@@ -125,6 +158,17 @@ export default function StatsPanel({
     return m;
   }, [allSets]);
 
+  // Localized once per language change rather than per keystroke in the
+  // picker — the catalogue itself never changes, only its names do.
+  const localizedExercises = useMemo(
+    () => ALL_EXERCISES.map((x) => localizeExercise(x)),
+    [localizeExercise],
+  );
+  const idByName = useMemo(
+    () => new Map(localizedExercises.map((x) => [x.name, x.id])),
+    [localizedExercises],
+  );
+
   if (!open) return null;
 
   const u = t("unit.kg");
@@ -135,6 +179,22 @@ export default function StatsPanel({
     if (!Number.isFinite(kg) || kg <= 0) return;
     onSetBodyWeight(kg);
     setWeightInput("");
+  }
+
+  function addGoal(e: React.FormEvent) {
+    e.preventDefault();
+    const id = idByName.get(goalExercise.trim());
+    const targetWeight = num(goalWeightInput);
+    // A plain <input type="date"> value is "yyyy-mm-dd"; midnight local time
+    // reads back naturally as "N weeks from now" without a timezone surprise.
+    const targetDate = goalDateInput ? new Date(`${goalDateInput}T00:00:00`).getTime() : NaN;
+    if (!id || !Number.isFinite(targetWeight) || targetWeight <= 0 || !Number.isFinite(targetDate)) {
+      return;
+    }
+    onSetGoal(id, targetWeight, targetDate);
+    setGoalExercise("");
+    setGoalWeightInput("");
+    setGoalDateInput("");
   }
 
   const weightPoints: Point[] = weighIns
@@ -240,6 +300,76 @@ export default function StatsPanel({
             </section>
           );
         })}
+
+        <section className="stats-section stats-goals">
+          <h3>{t("stats.goals.title")}</h3>
+
+          {Object.keys(goals).length === 0 ? (
+            <p className="workout-empty">{t("stats.goals.empty")}</p>
+          ) : (
+            Object.entries(goals).map(([id, goal]) => {
+              const raw = BY_ID.get(id);
+              if (!raw) return null;
+              const name = localizeExercise(raw).name;
+              const increment = incrementFor(usesLegs(raw));
+              const pace = goalPace(
+                setsById.get(id) ?? [],
+                trainingMaxes[id]?.tm,
+                goal.targetWeight,
+                goal.targetDate,
+                increment,
+              );
+              const dateLabel = goalDateLabel(goal.targetDate);
+
+              return (
+                <div className="stats-goal" key={id}>
+                  <p className="stats-goal-head">
+                    <span className="stats-goal-name">
+                      {name} — {goal.targetWeight} {u}
+                    </span>
+                    <span className="stats-goal-date">
+                      {t("stats.goals.by", { date: dateLabel })}
+                    </span>
+                    <button className="tm-clear" onClick={() => onClearGoal(id)}>
+                      {t("stats.goals.remove")}
+                    </button>
+                  </p>
+                  <p className="plan-note">{goalPaceMessage(t, pace)}</p>
+                </div>
+              );
+            })
+          )}
+
+          <form className="stats-edit stats-goal-form" onSubmit={addGoal}>
+            <input
+              className="stats-goal-exercise"
+              list="stats-goal-exercises"
+              value={goalExercise}
+              onChange={(e) => setGoalExercise(e.target.value)}
+              placeholder={t("stats.goals.exercise")}
+              aria-label={t("stats.goals.exercise")}
+            />
+            <datalist id="stats-goal-exercises">
+              {localizedExercises.map((x) => (
+                <option key={x.id} value={x.name} />
+              ))}
+            </datalist>
+            <input
+              value={goalWeightInput}
+              onChange={(e) => setGoalWeightInput(e.target.value)}
+              inputMode="decimal"
+              placeholder={t("stats.goals.weight")}
+              aria-label={t("stats.goals.weight")}
+            />
+            <input
+              type="date"
+              value={goalDateInput}
+              onChange={(e) => setGoalDateInput(e.target.value)}
+              aria-label={t("stats.goals.date")}
+            />
+            <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
+          </form>
+        </section>
       </aside>
     </>
   );

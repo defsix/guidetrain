@@ -1,13 +1,15 @@
 import { useMemo, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import {
-  bestEstimate, cycle, cyclesTo, incrementFor, roundLoad, trainingMax,
+  bestEstimate, cycle, cyclesTo, goalPace, incrementFor, roundLoad, trainingMax,
   reviewCycle, resetTrainingMax, RESET_FRACTION,
   MAX_REPS_FOR_ESTIMATE, TRAINING_MAX_FRACTION, SMALLEST_PLATE,
 } from "../lib/progression";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { PlannedWeek } from "../lib/progression";
 import type { Target } from "../state/usePrograms";
+import type { Goal } from "../state/useGoals";
+import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -30,6 +32,8 @@ type Props = {
   override?: TrainingMaxOverride;
   onSetTrainingMax: (tm: number, from: number) => void;
   onClearTrainingMax: () => void;
+  /** Set on the Stats page — a weight and a date, shown here as a pace verdict. */
+  goal?: Goal;
 };
 
 /**
@@ -70,11 +74,19 @@ function isApplied(target: Target | undefined, w: Target): boolean {
  */
 export default function ProgressionPanel({
   name, sets, usesLegs, barbell, onClose, workoutTarget, onUseWeek, repsOnly = false,
-  override, onSetTrainingMax, onClearTrainingMax,
+  override, onSetTrainingMax, onClearTrainingMax, goal,
 }: Props) {
   const { t } = useI18n();
   const best = useMemo(() => bestEstimate(sets), [sets]);
   const increment = incrementFor(usesLegs);
+
+  // Reuses the exact function the Stats page's goal list calls, so a goal
+  // reads the same pace here as it does there — one calculation, not two
+  // that could quietly disagree.
+  const pace = useMemo(
+    () => (goal ? goalPace(sets, override?.tm, goal.targetWeight, goal.targetDate, increment) : null),
+    [goal, sets, override, increment],
+  );
 
   const currentMax = best ? roundLoad(best.oneRM) : 0;
   const [target, setTarget] = useState(() =>
@@ -170,6 +182,19 @@ export default function ProgressionPanel({
                 {t("plan.from", { weight: best.set.weight, unit: u, reps: best.set.reps })}
               </span>
             </div>
+
+            {/* A goal is set on the Stats page, for any exercise — shown here
+                too since Plan → is where its pace actually gets judged, the
+                same place every other cycle question on this lift lives. */}
+            {goal && pace && (
+              <p className="plan-note flag">
+                {t("stats.goals.by", { date: goalDateLabel(goal.targetDate) })}
+                {": "}
+                {goal.targetWeight} {u}
+                {" — "}
+                {goalPaceMessage(t, pace)}
+              </p>
+            )}
 
             <label className="plan-target">
               <span>{t("plan.target")}</span>

@@ -452,6 +452,27 @@
   "noHistory": "まだ記録がありません。",
   "overrideFrom": "手動設定：記録から導かれる{from} {unit}を上回る値です。",
   "overrideNoLog": "手動設定 — この種目はまだ記録がありません。",
-  "revert": "{max} {unit}に戻す"
+  "revert": "{max} {unit}に戻す",
+  "goals": {
+   "title": "目標",
+   "empty": "まだ目標がありません。",
+   "exercise": "種目",
+   "weight": "目標重量",
+   "date": "期限",
+   "add": "目標を追加",
+   "remove": "削除",
+   "by": "{date}まで",
+   "noBasis": "この種目のセットを記録するか、最大重量を設定するとペースが表示されます。",
+   "reached": "すでに達成しています。",
+   "onPace": {
+    "other": "残り{count}サイクル、約{weeksNeeded}週 — 期限まで{weeksAvailable}週。順調です。"
+   },
+   "behind": {
+    "other": "残り{count}サイクル、約{weeksNeeded}週 — 期限まで残り{weeksAvailable}週しかありません。"
+   },
+   "pastDeadline": {
+    "other": "残り{count}サイクル、約{weeksNeeded}週が必要ですが、期限はすでに過ぎています。"
+   }
+  }
  }
 }

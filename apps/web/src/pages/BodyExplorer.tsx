@@ -17,6 +17,7 @@ import { useSkips } from "../state/useSkips";
 import { useTrainingMax } from "../state/useTrainingMax";
 import { useKnownMax } from "../state/useKnownMax";
 import { useBodyWeightLog } from "../state/useBodyWeightLog";
+import { useGoals } from "../state/useGoals";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
 import { useT } from "../i18n/I18nProvider";
@@ -33,6 +34,7 @@ export default function BodyExplorer() {
   const tms = useTrainingMax();
   const knownMax = useKnownMax();
   const weighIns = useBodyWeightLog();
+  const goals = useGoals();
   const auth = useAuth();
   const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
@@ -166,6 +168,7 @@ export default function BodyExplorer() {
         onClearTrainingMax={tms.clear}
         onSwap={programs.swapExercise}
         equipmentAvailable={profile?.equipment}
+        goals={goals.goals}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
@@ -210,6 +213,10 @@ export default function BodyExplorer() {
           knownMaxes={knownMax.overrides}
           onSetKnownMax={knownMax.set}
           onClearKnownMax={knownMax.clear}
+          trainingMaxes={tms.overrides}
+          goals={goals.goals}
+          onSetGoal={goals.set}
+          onClearGoal={goals.clear}
         />
       )}
       <PlanLibrary
@@ -219,6 +226,7 @@ export default function BodyExplorer() {
         profile={profile ?? null}
         knownMaxes={knownMax.overrides}
         trainingMaxes={tms.overrides}
+        goals={goals.goals}
         onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
       />
     </div>

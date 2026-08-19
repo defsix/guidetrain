@@ -494,6 +494,36 @@
   "noHistory": "Zatím nic nezaznamenáno.",
   "overrideFrom": "Nastaveno ručně, nad {from} {unit}, které plyne z vašeho záznamu.",
   "overrideNoLog": "Nastaveno ručně — pro tento cvik zatím nic nezaznamenáno.",
-  "revert": "Použít znovu {max} {unit}"
+  "revert": "Použít znovu {max} {unit}",
+  "goals": {
+   "title": "Cíle",
+   "empty": "Zatím žádné cíle.",
+   "exercise": "Cvik",
+   "weight": "Cílová váha",
+   "date": "Do",
+   "add": "Přidat cíl",
+   "remove": "Odebrat",
+   "by": "Do {date}",
+   "noBasis": "Zaznamenejte sérii pro tento cvik, nebo nastavte maximum, aby se zobrazilo tempo.",
+   "reached": "Už jste tam.",
+   "onPace": {
+    "one": "{count} cyklus zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá {weeksAvailable} týdnů. V tempu.",
+    "few": "{count} cykly zbývají, přibližně {weeksNeeded} týdnů — do termínu zbývá {weeksAvailable} týdnů. V tempu.",
+    "many": "{count} cyklu zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá {weeksAvailable} týdnů. V tempu.",
+    "other": "{count} cyklů zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá {weeksAvailable} týdnů. V tempu."
+   },
+   "behind": {
+    "one": "{count} cyklus zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá jen {weeksAvailable} týdnů.",
+    "few": "{count} cykly zbývají, přibližně {weeksNeeded} týdnů — do termínu zbývá jen {weeksAvailable} týdnů.",
+    "many": "{count} cyklu zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá jen {weeksAvailable} týdnů.",
+    "other": "{count} cyklů zbývá, přibližně {weeksNeeded} týdnů — do termínu zbývá jen {weeksAvailable} týdnů."
+   },
+   "pastDeadline": {
+    "one": "Ještě zbývá {count} cyklus, přibližně {weeksNeeded} týdnů — termín už uplynul.",
+    "few": "Ještě zbývají {count} cykly, přibližně {weeksNeeded} týdnů — termín už uplynul.",
+    "many": "Ještě zbývá {count} cyklu, přibližně {weeksNeeded} týdnů — termín už uplynul.",
+    "other": "Ještě zbývá {count} cyklů, přibližně {weeksNeeded} týdnů — termín už uplynul."
+   }
+  }
  }
 }

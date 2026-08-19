@@ -189,6 +189,29 @@ Newest first. Numbers in brackets are pull requests.
 - **Colour regions replace boxes** [#5] — picking reads a baked `_ZONE`
   attribute instead of testing axis-aligned boxes that overlapped each other.
 
+## App
+
+- **Goals: a weight and a date, for any exercise, tied into every plan** —
+  a new Goals section on the Stats page sets a target weight and a target
+  date for any exercise in the catalogue (a native `<input list>` picker
+  over all 180, not just the three lifts already tracked there), and shows
+  a pace verdict: on pace, behind, already reached, or past the deadline.
+  Deliberately not a dedicated program — the pace math is exactly
+  `ProgressionPanel`'s own existing "how many cycles would this take"
+  answer (`cyclesTo`/`trainingMax`), just given a deadline to be judged
+  against and persisted instead of resetting the moment the panel closes.
+  New `goalPace()` in `progression.ts` is the one place that judgement gets
+  made — the Stats page's own list, `ProgressionPanel` (opened from any
+  workout via Plan →, regardless of which ready-made plan added the
+  exercise), and a new note on any ready-made plan's preview row for an
+  exercise with a goal set all call the exact same function, so a verdict
+  can't quietly disagree between them. `goalPaceMessage()`/`goalDateLabel()` in a new `lib/goalMessage.ts`
+  keep the translated sentence itself in one place too, for the same
+  reason. In memory and localStorage only for now, like the rest of the
+  app's per-device state — not yet wired into Supabase sync, the same
+  "optional to defer" call made for the Stats page data before it needed
+  its own migration.
+
 ## Licensing
 
 - **MIT license** — no `LICENSE` file existed before this, which meant the
