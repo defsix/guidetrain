@@ -1,8 +1,10 @@
 #!/bin/bash
-# Builds the web app (apps/web, two levels up from here — ios/ -> repo root
-# -> apps/web) and syncs its output into the WKWebView-hosted asset bundle.
-# Runs as an Xcode "Run Script" build phase before every build, so the iOS
-# app never ships a stale copy of the site.
+# Builds the web app (apps/web) and syncs its output into the WKWebView-
+# hosted asset bundle. This script lives at ios/Scripts/, so the repo root
+# is two directories up (Scripts -> ios -> repo root), with apps/web a
+# sibling of ios/ under that root. Runs as an Xcode "Run Script" build
+# phase before every build, so the iOS app never ships a stale copy of the
+# site.
 set -euo pipefail
 
 # Xcode's Run Script phases use a minimal PATH that often excludes
@@ -16,7 +18,7 @@ if ! command -v npm >/dev/null 2>&1; then
 fi
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 WWW_DIR="$SCRIPT_DIR/../GuideTrain/Resources/www"
 
 cd "$REPO_ROOT"
