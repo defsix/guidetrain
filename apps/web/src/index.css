@@ -37,6 +37,18 @@
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.08);
   --canvas-bg: #e8ebf0;
 
+  /* How far the notch/status bar and gesture bar/home indicator reach into
+     the screen, so fixed headers and footers can pad around them instead of
+     sitting underneath. `env()` (needs viewport-fit=cover, set in
+     index.html) gives real values on iOS's WKWebView and any modern mobile
+     browser for free — but not Android's plain WebView, which doesn't
+     support env(safe-area-inset-*) at all. The native Android shell (see
+     android/app/.../MainActivity.kt) overrides these two custom properties
+     directly with real measured values; everywhere else, the env()
+     fallback chain here is what's actually used. */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
   color-scheme: light;
   font: 16px/1.5 var(--sans);
   color: var(--text);

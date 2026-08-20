@@ -10,7 +10,10 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.webkit.WebViewAssetLoader
 import androidx.webkit.WebViewAssetLoader.AssetsPathHandler
 import me.guidetrain.app.auth.AuthBridge
@@ -30,9 +33,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var webView: WebView
     private lateinit var assetLoader: WebViewAssetLoader
+    private var safeAreaTopPx = 0
+    private var safeAreaBottomPx = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Draws the WebView edge-to-edge (under the status/nav bars) so the
+        // page's own background reaches the physical screen edges — left
+        // alone, Android reserves a solid system-drawn strip above the
+        // WebView for the status bar, in whatever plain color the theme
+        // happens to use there, which reads as the app not actually filling
+        // the screen. The header's real padding to clear that area comes
+        // from injectSafeAreaInsets below, not from a native inset the
+        // WebView never sees.
+        enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
         assetLoader = WebViewAssetLoader.Builder()
@@ -41,6 +55,14 @@ class MainActivity : AppCompatActivity() {
 
         webView = findViewById(R.id.webView)
         configureWebView(webView)
+
+        ViewCompat.setOnApplyWindowInsetsListener(webView) { _, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            safeAreaTopPx = insets.top
+            safeAreaBottomPx = insets.bottom
+            injectSafeAreaInsets(webView)
+            windowInsets
+        }
 
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState)
@@ -70,6 +92,14 @@ class MainActivity : AppCompatActivity() {
                 view: WebView,
                 request: WebResourceRequest
             ): WebResourceResponse? = assetLoader.shouldInterceptRequest(request.url)
+
+            override fun onPageFinished(view: WebView, url: String?) {
+                super.onPageFinished(view, url)
+                // Re-apply on every (re)load, since a fresh document has none
+                // of the custom properties the insets listener may have
+                // already set earlier against the previous document.
+                injectSafeAreaInsets(view)
+            }
         }
 
         webView.addJavascriptInterface(AuthBridge(this), "GuideTrainAuthBridge")
@@ -84,6 +114,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun indexUrl(): String = "https://${WebViewAssetLoader.DEFAULT_DOMAIN}/assets/www/index.html"
+
+    /**
+     * WebView doesn't support CSS env(safe-area-inset-*) the way WKWebView on
+     * iOS does, so the actual measured system bar insets (converted from raw
+     * pixels to CSS px, i.e. dp) are forwarded as the same --safe-area-top /
+     * --safe-area-bottom custom properties apps/web/src/index.css already
+     * falls back to using env() for on other platforms.
+     */
+    private fun injectSafeAreaInsets(webView: WebView) {
+        val density = resources.displayMetrics.density
+        val topDp = (safeAreaTopPx / density).toInt()
+        val bottomDp = (safeAreaBottomPx / density).toInt()
+        webView.evaluateJavascript(
+            "document.documentElement.style.setProperty('--safe-area-top', '${topDp}px');" +
+                "document.documentElement.style.setProperty('--safe-area-bottom', '${bottomDp}px');",
+            null,
+        )
+    }
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)

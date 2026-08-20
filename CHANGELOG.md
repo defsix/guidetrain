@@ -191,6 +191,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The Android app now actually goes edge-to-edge** — before this, Android
+  reserved a plain, solid-colour strip above the WebView for the status bar
+  (following only the device's system dark/light mode, not the app's own
+  Light/Dark/Auto choice), which read as the app not filling the screen at
+  all. `MainActivity.kt` now calls `enableEdgeToEdge()` so the WebView's own
+  background reaches the physical top and bottom edges, and forwards the
+  real measured system-bar insets into the page as `--safe-area-top` /
+  `--safe-area-bottom` CSS custom properties (re-applied on every page
+  load, since a fresh document has none of what a previous one picked up).
+  The header bars (`.explorer-bar`, `.onboarding-head`'s wrapper) pad
+  around that inset instead of rendering underneath it.
+  `apps/web/index.html` gained `viewport-fit=cover` and
+  `apps/web/src/index.css` defines the same two custom properties via
+  `env(safe-area-inset-*, 0px)` as a fallback — which is what actually
+  takes effect on iOS's WKWebView (real inset values, no native code
+  needed there) and the plain website (0px, notchless desktops/phones
+  alike), Android's WebView being the one platform that doesn't support
+  `env()` for this at all.
 - **Fixed the model rendering off-centre on phones, clipped by the docked
   Muscle Groups panel** — `FrameToVisible` (in `AnatomyViewer.jsx`) steps the
   model aside by moving both its world position and the orbit camera's

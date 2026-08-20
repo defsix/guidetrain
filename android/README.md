@@ -26,6 +26,16 @@ is Google sign-in, covered below.
   `DEFAULT_DOMAIN`) rather than a `file://` URL, so `fetch()` calls to
   Supabase see a real HTTPS origin and behave the same as they do on the
   deployed site.
+- The activity calls `enableEdgeToEdge()` and draws the WebView under the
+  system status/navigation bars, rather than leaving Android to reserve a
+  plain, solid-colour strip there. Since Android's WebView doesn't support
+  CSS `env(safe-area-inset-*)` the way WKWebView on iOS does, `MainActivity`
+  measures the real system bar insets
+  (`ViewCompat.OnApplyWindowInsetsListener`) and forwards them into the
+  page as `--safe-area-top` / `--safe-area-bottom` CSS custom properties
+  (`injectSafeAreaInsets`, re-applied on every page load too) — the same
+  two properties `apps/web/src/index.css` already falls back to using
+  `env()` for everywhere else.
 
 ## OAuth sign-in
 
