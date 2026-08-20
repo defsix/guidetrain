@@ -191,6 +191,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed the model rendering off-centre on phones, clipped by the docked
+  Muscle Groups panel** — `FrameToVisible` (in `AnatomyViewer.jsx`) steps the
+  model aside by moving both its world position and the orbit camera's
+  target to follow it, so dragging still rotates around the body rather
+  than empty space. But an orbit camera always renders its own look-at
+  target dead-centre on screen, no matter where that target sits in world
+  space — so the instant the target followed the body off to one side, the
+  camera swung straight back to keep it centred, undoing the entire
+  offset and leaving the body in the middle of the *full* canvas rather
+  than the narrower band actually free of the panel, right up against its
+  edge. Fixed by rendering an off-axis sub-window of the projection via
+  `camera.setViewOffset()` instead — a real 2D shift of the image,
+  independent of where the camera is aimed — so the body renders centred
+  in the visible band while the orbit target stays truthfully on the body
+  for correct drag behaviour. Confirmed with a real headless-browser
+  render at phone width: previously left just ~1px of clearance before the
+  panel with a large empty gap on the opposite side; now sits with
+  comfortable margin on both sides of the available band.
 - **Native Android and iOS apps** — real Kotlin (`android/`) and Swift
   (`ios/`) projects, each a genuine native app shell around the existing
   web app in a `WebView`/`WKWebView`, rather than a from-scratch

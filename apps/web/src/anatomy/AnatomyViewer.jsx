@@ -63,7 +63,7 @@ const SCENE = {
  */
 function FrameToVisible({ cover, sideCover, controlsRef, children }) {
   const group = useRef();
-  const { camera } = useThree();
+  const { camera, gl, size: viewportSize } = useThree();
   const snap = useRef(true);
   const size = useRef(null);
 
@@ -123,6 +123,32 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
     // spinning in place. The pivot has to move with it, every frame.
     const controls = controlsRef?.current;
     if (controls) controls.target.set(g.position.x, g.position.y, 0);
+
+    // Syncing the orbit target above is necessary for dragging to rotate
+    // around the body rather than empty space — but it comes with a side
+    // effect that undoes the whole point of this component: an orbit camera
+    // always renders its own target dead-centre on screen, no matter where
+    // that target sits in world space. So the instant the target follows
+    // the body off to one side, the camera swings straight back to keep it
+    // centred, and the body ends up exactly where it started — in the
+    // middle of the full canvas, not the middle of the band that's actually
+    // free of panels, which is exactly the clipping this component exists
+    // to prevent.
+    //
+    // setViewOffset renders an off-axis sub-window of the projection
+    // instead — a real 2D shift of the image, independent of where the
+    // camera is aimed — so the body can be centred in the visible band on
+    // screen while the orbit target stays truthfully on the body, for
+    // correct drag behaviour. Units are device pixels of the actual render
+    // target, not CSS pixels, hence the pixelRatio multiply.
+    const dpr = gl.getPixelRatio();
+    const w = Math.round(viewportSize.width * dpr);
+    const h = Math.round(viewportSize.height * dpr);
+    if (w > 0 && h > 0) {
+      const pxPerUnitX = w / viewW;
+      const pxPerUnitY = h / viewH;
+      camera.setViewOffset(w, h, -g.position.x * pxPerUnitX, g.position.y * pxPerUnitY, w, h);
+    }
   }, -2);
 
   return <group ref={group}>{children}</group>;
