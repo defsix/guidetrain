@@ -348,11 +348,15 @@
   }
   .anatomy-root .regions.open { display: flex; flex-direction: column; }
 
-  /* No room beside the model on a phone, so it goes back to a bottom sheet —
-     capped at half the height so the body stays visible above it. */
+  /* No room beside the model on a phone, so it goes back to a bottom sheet.
+     Only .drills (the exercise list) scrolls internally — the name/tag/
+     description/pairs section above it is a fixed height regardless of the
+     sheet's own — so most of this budget goes straight to how many
+     exercises are visible without scrolling. Still capped well short of
+     full height so the body the list is describing stays visible above it. */
   .anatomy-readout {
     left: 12px; right: 12px; width: auto; bottom: 12px;
-    max-height: 52%;
+    max-height: 66%;
   }
   .anatomy-readout .head { flex-wrap: wrap; }
 }

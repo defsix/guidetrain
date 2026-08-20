@@ -191,6 +191,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The muscle readout panel no longer fights the instructions hint, and
+  shows more exercises before you have to scroll** — selecting a muscle on
+  a phone used to leave the first-visit hint bubble (or the recommendations
+  card) sitting on top of the panel it had just opened, since nothing tied
+  the hint's visibility to a muscle actually being selected. `AnatomyViewer`
+  already had an `onSelect` callback in its prop types but `BodyExplorer.tsx`
+  never wired it up; it now tracks a `muscleSelected` flag and suppresses
+  the hint/recs render entirely while the readout is open. Separately, the
+  readout sheet's `max-height` grew from 52% to 66% of the canvas (the
+  `cover` measurement's cap in `AnatomyViewer.jsx` moved from 0.62 to 0.72
+  to match) — only the exercise list inside it scrolls, so the extra room
+  flows straight into more visible rows (confirmed via a real render: 3
+  fully-visible rows before, 5 after, for the same exercise list).
 - **Goal form: the keyboard no longer covers what you're typing, and the
   target-weight and date fields fit their own labels** — the exercise
   search, target weight, and date fields in the Goals form (`StatsPanel.tsx`)

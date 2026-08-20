@@ -262,9 +262,10 @@ export default function AnatomyViewer({
       const rootH = root.getBoundingClientRect().height;
       const sheetH = sheet.getBoundingClientRect().height;
       if (!rootH) return setCover(0);
-      // A little breathing room above the sheet, and a ceiling so the body
-      // never shrinks to nothing if the sheet grows unexpectedly.
-      setCover(Math.min(0.62, (sheetH + 12) / rootH));
+      // A little breathing room above the sheet, and a ceiling — above the
+      // sheet's own 66% CSS cap (see anatomy.css) — so the body never
+      // shrinks to nothing if the sheet grows unexpectedly.
+      setCover(Math.min(0.72, (sheetH + 12) / rootH));
     };
     measure();
 

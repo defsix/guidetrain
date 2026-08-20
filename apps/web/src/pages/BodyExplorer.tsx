@@ -68,6 +68,11 @@ export default function BodyExplorer() {
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [showHint] = useState(isEarlyVisit);
+  // On a phone, a selected muscle opens a bottom sheet over the model — the
+  // same area the hint/recs card floats in, so either would sit right on
+  // top of (and, worse, over the exercise list inside) that sheet once one
+  // is open.
+  const [muscleSelected, setMuscleSelected] = useState(false);
   const [recsDismissed, setRecsDismissed] = useState(
     () => localStorage.getItem(RECS_DISMISSED_KEY) === "1",
   );
@@ -194,9 +199,10 @@ export default function BodyExplorer() {
       </div>
       <div className="explorer-canvas">
         {/* The viewer handles Train This itself — it opens one of the muscle's
-            exercises. The onTrain/onSelect props and the muscle:train window
-            event are still there for a host that wants to record the choice;
-            nothing here needs to yet. */}
+            exercises. onTrain and the muscle:train window event are still
+            there for a host that wants to record the choice; nothing here
+            needs to yet. onSelect just tracks whether the readout sheet is
+            open, to keep the hint/recs card out of its way below. */}
         <AnatomyViewer
           modelUrl={MODEL_URL}
           theme={resolved}
@@ -205,12 +211,15 @@ export default function BodyExplorer() {
           equipmentAvailable={profile?.equipment}
           injuries={injuries.injuries}
           toolbarExtra={workoutButton}
+          onSelect={(zone) => setMuscleSelected(Boolean(zone))}
         />
         {/* A real number to act on takes priority over the generic
             first-visit hint below — someone who already has a known max or a
             logged set doesn't need to be told to tap a muscle, they need to
-            know what to do with the data they've already put in. */}
-        {showRecs ? (
+            know what to do with the data they've already put in. Neither
+            shows once a muscle is selected — on a phone that's the same
+            floating spot the readout sheet's own exercise list occupies. */}
+        {muscleSelected ? null : showRecs ? (
           <div className="explorer-recs">
             <div className="explorer-recs-head">
               <span>{t("explorer.recs.title")}</span>
