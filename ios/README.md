@@ -103,11 +103,14 @@ Then just build and run from Xcode (⌘R) — the "Sync Web Assets" build phase
 builds the web app and refreshes `GuideTrain/Resources/www` automatically.
 Re-run `xcodegen generate` any time `project.yml` changes.
 
-**App icon:** no `AppIcon` image set is included yet — `project.yml`
-deliberately doesn't reference one, so a build doesn't fail over a missing
-asset. Add one in Xcode (Assets.xcassets → New App Icon) and set
-`ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon` back in `project.yml`'s
-`settings.base` before shipping a real build.
+**App icon:** `Assets.xcassets/AppIcon.appiconset` ships a single
+1024×1024 "universal" image (Xcode generates every other required size
+from it) — the same bolt mark as `apps/web/src/components/Logo.tsx`, drawn
+programmatically rather than exported from the SVG. Swap it for real
+artwork whenever you have some; Xcode's asset catalog compiler requires
+*some* `AppIcon` image to exist for any build to succeed at all (a real
+`actool` error this project actually hit, not just a lint warning), so
+this is a placeholder that keeps builds green rather than optional polish.
 
 ### Prebuilt Simulator app via CI
 
