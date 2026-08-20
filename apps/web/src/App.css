@@ -1286,9 +1286,43 @@
    date left no room for. */
 .stats-goal-form { flex-direction: column; align-items: stretch; }
 .stats-goal-form .stats-goal-exercise { width: 100%; }
-.stats-goal-row { display: flex; gap: 8px; }
-.stats-goal-form input[type="date"] { flex: none; width: auto; }
+.stats-goal-row { display: flex; gap: 8px; align-items: flex-end; }
 .stats-goal-form .stats-save { align-self: flex-start; }
+
+/* Wider than a lift's known max: "Target weight" is real text, not four
+   digits, and this row has the room now that it's just this and the date. */
+.stats-goal-row input.weight-input {
+  flex: 1 1 150px;
+  max-width: 180px;
+}
+
+/* A native date input's own empty-state placeholder is unreliable across
+   browsers/WebViews — some show a locale-formatted hint, some show nothing
+   at all — so this field gets a real, always-visible label instead of
+   relying on it. */
+.stats-goal-date-input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1 1 130px;
+}
+.stats-goal-date-input span {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.stats-goal-date-input input[type="date"] {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 15px;
+  box-shadow: var(--shadow);
+}
 
 /* A text field with a filtered dropdown underneath — see AutocompleteInput.
    Sized and positioned the same way a bare .stats-edit input already was;

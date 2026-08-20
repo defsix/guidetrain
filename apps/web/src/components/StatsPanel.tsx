@@ -198,6 +198,15 @@ export default function StatsPanel({
     setGoalDateInput("");
   }
 
+  // The on-screen keyboard can cover a focused field (and, for the exercise
+  // search above, the dropdown that opens under it) before the browser has
+  // resized the visual viewport to make room for it — the delay lets that
+  // settle first.
+  function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
+    const el = e.currentTarget;
+    setTimeout(() => el.scrollIntoView({ block: "center", behavior: "smooth" }), 300);
+  }
+
   function toggleInjury(muscleId: string, mode: InjuryMode) {
     if (injuries[muscleId]?.mode === mode) onClearInjury(muscleId);
     else onSetInjury(muscleId, mode);
@@ -374,19 +383,27 @@ export default function StatsPanel({
               />
               <div className="stats-goal-row">
                 <input
-                  className="weight-input"
+                  className="weight-input goal-weight-input"
                   value={goalWeightInput}
                   onChange={(e) => setGoalWeightInput(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   inputMode="decimal"
                   placeholder={t("stats.goals.weight")}
                   aria-label={t("stats.goals.weight")}
                 />
-                <input
-                  type="date"
-                  value={goalDateInput}
-                  onChange={(e) => setGoalDateInput(e.target.value)}
-                  aria-label={t("stats.goals.date")}
-                />
+                {/* A native date input's own placeholder is unreliable across
+                    browsers/WebViews — some show a locale-formatted hint when
+                    empty, some show nothing at all. This label says what the
+                    field is for either way. */}
+                <label className="stats-goal-date-input">
+                  <span>{t("stats.goals.date")}</span>
+                  <input
+                    type="date"
+                    value={goalDateInput}
+                    onChange={(e) => setGoalDateInput(e.target.value)}
+                    onFocus={scrollIntoViewOnFocus}
+                  />
+                </label>
               </div>
               <button type="submit" className="stats-save">{t("stats.goals.add")}</button>
             </form>

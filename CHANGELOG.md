@@ -191,6 +191,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Goal form: the keyboard no longer covers what you're typing, and the
+  target-weight and date fields fit their own labels** — the exercise
+  search, target weight, and date fields in the Goals form (`StatsPanel.tsx`)
+  now scroll themselves into view on focus, a fixed 300ms after focusing
+  (`AutocompleteInput.tsx`'s exercise field, and both fields in the
+  `stats-goal-row`), which is enough for a phone's on-screen keyboard to
+  finish resizing the visual viewport first — without it, the field (and
+  for the exercise search, the dropdown under it) could end up hidden
+  behind the keyboard with no way to see what you were picking. The target-
+  weight field also grew from the 4-digit-max width shared with the lift-max
+  fields (max 110px) to its own 180px, enough to show its "Target weight"
+  placeholder in full instead of eliding it. The date field gets a real,
+  always-visible "By" label above it now, rather than relying on a native
+  `<input type="date">`'s own empty-state placeholder — unreliable across
+  browsers/WebViews, and on at least one WebView build it was rendering
+  as nothing at all, an unlabeled empty box.
 - **Header reorganised: the mark is the account link, Workout moved ahead of
   Muscle Groups** — the "Account" pill is gone; tapping the bolt mark itself
   opens the account panel now (`.logo-link` in `App.css`, hidden behind no

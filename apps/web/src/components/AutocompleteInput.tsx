@@ -87,7 +87,16 @@ export default function AutocompleteInput({
           setOpen(true);
           setHighlight(0);
         }}
-        onFocus={() => setOpen(true)}
+        onFocus={(e) => {
+          setOpen(true);
+          // On a phone, the on-screen keyboard can end up covering this
+          // field (and the dropdown that opens under it) before the
+          // browser has resized the visual viewport to make room — a
+          // short delay lets that settle before asking to be scrolled
+          // into view, same fix as the date/weight fields beside this one.
+          const el = e.currentTarget;
+          setTimeout(() => el.scrollIntoView({ block: "center", behavior: "smooth" }), 300);
+        }}
         onKeyDown={onKeyDown}
         placeholder={placeholder}
         autoComplete="off"
