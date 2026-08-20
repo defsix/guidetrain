@@ -477,6 +477,7 @@ export default function AnatomyViewer({
           width leaves nothing to look at, so they are opened deliberately and
           only one at a time. Hidden at desktop widths, where both simply fit. */}
       <div className="anatomy-toolbar">
+        {toolbarExtra}
         <button
           className={`tool ${panel === 'regions' ? 'active' : ''}`}
           aria-expanded={panel === 'regions'}
@@ -485,7 +486,6 @@ export default function AnatomyViewer({
         >
           {t('viewer.muscleGroups')}
         </button>
-        {toolbarExtra}
       </div>
 
       {/* Tapping the model itself is the other way to dismiss an open panel. */}

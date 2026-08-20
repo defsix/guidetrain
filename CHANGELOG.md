@@ -191,6 +191,31 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Header reorganised: the mark is the account link, Workout moved ahead of
+  Muscle Groups** — the "Account" pill is gone; tapping the bolt mark itself
+  opens the account panel now (`.logo-link` in `App.css`, hidden behind no
+  backend configured the same as the old button was). That frees up the
+  header row for the greeting, which no longer needs to elide on a phone.
+  In the canvas toolbar, Workout now sits left of Muscle Groups (was the
+  other way round), and Muscle Groups' phone-only toggle picked up the same
+  pill shape (`border-radius: 999px`) the Workout button already had,
+  instead of its own smaller-radius rectangle.
+- **The 3D model was rendering off-centre and clipped by the docked Muscle
+  Groups panel on a phone** — `FrameToVisible` (in `AnatomyViewer.jsx`) was
+  supposed to step the body left by half of whatever the panel covers, but
+  syncing the orbit target to the body's own position (needed so dragging
+  rotates around the body, not empty space) had a side effect nothing
+  caught: an orbit camera always renders its own target dead-centre on
+  screen, no matter where that target actually sits in world space — so the
+  body snapped straight back to the middle of the *whole* canvas every
+  frame, not the narrower band that's actually free of the panel, undoing
+  the entire point of stepping aside. Confirmed with real projected-pixel
+  measurements (not just the formula) before and after: previously the body
+  rendered essentially glued to the panel edge with a huge empty gap on the
+  other side; now `camera.setViewOffset()` shifts the rendered frame itself
+  — a genuine 2D pan, independent of where the camera is aimed — so the
+  body can sit centred in the visible band while the orbit target stays
+  truthfully on the body for correct drag behaviour.
 - **The Android app now actually goes edge-to-edge** — before this, Android
   reserved a plain, solid-colour strip above the WebView for the status bar
   (following only the device's system dark/light mode, not the app's own

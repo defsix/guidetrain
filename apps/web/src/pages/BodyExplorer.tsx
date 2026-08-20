@@ -120,15 +120,29 @@ export default function BodyExplorer() {
   return (
     <div className="explorer">
       <div className="explorer-bar">
-        {/* Mark only, and small. The header already carries a greeting,
-            history and the theme, and on a phone that row is full — the name
-            would be the first thing to push something off it. */}
-        <Logo size={22} />
+        {/* The mark doubles as the link to the account page now — small,
+            and already sitting where a reader's eye starts, rather than a
+            whole extra pill competing with History/Equipment/Progress for
+            room in the scrolling strip. Hidden behind no project configured
+            just stays a plain, unclickable mark — see AccountPanel. */}
+        {auth.available ? (
+          <button
+            className="logo-link"
+            onClick={() => setShowAccount(true)}
+            aria-expanded={showAccount}
+            aria-label={auth.session ? t("account.signedIn") : t("account.title")}
+          >
+            <Logo size={22} />
+          </button>
+        ) : (
+          <Logo size={22} />
+        )}
         {/* Just the greeting — how to use the model used to be written out
             here too, and on a phone that sentence was most of why the header
             needed a scrolling strip for its buttons at all. It lives under
             the model now, for a first-time visitor only, and this stays
-            short at every visit after. */}
+            short at every visit after. Moving Account onto the mark above
+            freed up the room this needs to actually fit instead of eliding. */}
         <p className="greeting">
           {profile?.username
             ? t("explorer.greeting", { name: profile.username })
@@ -144,17 +158,6 @@ export default function BodyExplorer() {
               aria-expanded={showHistory}
             >
               {t("history.title")}
-            </button>
-          )}
-          {/* Hidden with no project configured, rather than open onto a
-              form that cannot do anything — see AccountPanel. */}
-          {auth.available && (
-            <button
-              className={`account-button ${auth.session ? "signed-in" : ""}`}
-              onClick={() => setShowAccount(true)}
-              aria-expanded={showAccount}
-            >
-              {auth.session ? t("account.signedIn") : t("account.title")}
             </button>
           )}
           {/* Marked once something is actually selected, the same "signed-in"

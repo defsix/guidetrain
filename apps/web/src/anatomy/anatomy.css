@@ -323,9 +323,9 @@
     top: 12px; left: 12px; right: 12px;
   }
   .anatomy-toolbar .tool {
-    display: flex;
+    display: flex; justify-content: center;
     flex: 1; font-family: inherit; font-size: 12px; font-weight: 600;
-    padding: 9px 10px; border-radius: 11px; cursor: pointer;
+    padding: 9px 10px; border-radius: 999px; cursor: pointer;
     background: var(--panel-translucent); backdrop-filter: blur(14px);
     border: 1px solid var(--border); color: var(--text);
   }

@@ -921,6 +921,24 @@
 }
 .logo-name b { font-weight: 700; color: var(--text); }
 
+/* The mark itself as the link to the account page, in the explorer header —
+   a plain wrapper rather than a pill, so it reads as "the logo is
+   clickable" rather than as another button competing with History/
+   Equipment/Progress for room. */
+.logo-link {
+  display: inline-flex;
+  background: none;
+  border: 0;
+  padding: 2px;
+  margin: -2px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.logo-link:hover,
+.logo-link:focus-visible {
+  background: var(--bg);
+}
+
 /* --- history ------------------------------------------------------------ */
 .history-button {
   background: transparent;
