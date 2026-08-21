@@ -3,6 +3,9 @@
 A gym training platform. Phase 1: pick your basics, then explore an interactive
 3D anatomical model to see muscle groups.
 
+**[Releases](https://github.com/defsix/guidetrain/releases)** — signed Android
+APKs (sideload) and, once built, iOS.
+
 ## Screenshots
 
 | Onboarding | Body explorer |
