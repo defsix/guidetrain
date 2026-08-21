@@ -91,29 +91,33 @@ export default function Onboarding() {
     return () => clearTimeout(fade);
   }, [splashPhase, splashQuick]);
 
-  // A returning user should never retype what their account already knows.
-  // Signing in here starts the same merge BodyExplorer would run — this just
-  // means nobody has to fill in the form first to reach the button that makes
-  // it irrelevant. Gated on the splash reaching "done" so the quick flash
-  // above has actually had its moment before the redirect fires under it.
+  // Whoever never needed an account at all: this route rendered
+  // unconditionally regardless of a saved profile, so reloading the app — a
+  // new tab, a bookmark, a PWA relaunch — meant filling in the form again
+  // every time, even though `useProfile` already had the answer before the
+  // first paint. Redirect rather than skip the render entirely, so a fresh
+  // sign-in and a returning visit both land here the same way.
   //
-  // Both this effect and the one below also check `auth.recovery`: a
-  // password-reset link signs the browser in the same way an ordinary
-  // sign-in does, and whoever followed it almost certainly already has a
-  // profile too — so without the check, either redirect would fire and carry
-  // the reader straight past the one screen the link existed to reach. See
-  // the account panel, opened automatically below for the same reason.
-  useEffect(() => {
-    if (splashPhase !== "done" || auth.recovery) return;
-    if (auth.session) navigate("/explore", { replace: true });
-  }, [splashPhase, auth.session, auth.recovery, navigate]);
-
-  // The same idea for whoever never needed an account at all: this route
-  // rendered unconditionally regardless of a saved profile, so reloading the
-  // app — a new tab, a bookmark, a PWA relaunch — meant filling in the form
-  // again every time, even though `useProfile` already had the answer before
-  // the first paint. Redirect rather than skip the render entirely, so the
-  // effect fires the same way the sign-in one does above.
+  // Deliberately keyed on `profile`, not `auth.session` — signing in does not
+  // by itself mean a profile exists. `BodyExplorer` refuses to render without
+  // one and bounces straight back here, and a redirect fired on session alone
+  // would send it straight back to `/explore`, and the two would trade the
+  // reader back and forth forever: this was a real bug, reached by signing in
+  // before ever filling in the form (a new visitor's account button is right
+  // there before the form is), or on any device with nothing local and
+  // nothing synced yet. `useSync` above already pulls a remote profile down
+  // on sign-in when one exists; once it lands, `profile` here goes from null
+  // to real and this effect fires on its own — no separate session-triggered
+  // redirect required. Someone signed in with truly nothing to pull down
+  // simply stays on the form, which is correct: there is a profile to create,
+  // not one to wait for.
+  //
+  // Also checks `auth.recovery`: a password-reset link signs the browser in
+  // the same way an ordinary sign-in does, and whoever followed it almost
+  // certainly already has a profile too — so without the check, this would
+  // fire and carry the reader straight past the one screen the link existed
+  // to reach. See the account panel, opened automatically below for the same
+  // reason.
   useEffect(() => {
     if (splashPhase !== "done" || auth.recovery) return;
     if (profile) navigate("/explore", { replace: true });

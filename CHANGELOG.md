@@ -482,6 +482,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed: signing in before finishing the onboarding form trapped the app in
+  an infinite redirect loop**, seen as the splash mark flickering over the
+  form forever with no way through. `Onboarding.tsx` sent anyone with an
+  `auth.session` straight to `/explore` the instant one existed, without
+  checking whether a profile existed too; `BodyExplorer.tsx` refuses to
+  render without a profile and bounces straight back to `/` when one's
+  missing. Neither side was wrong on its own, but together they traded the
+  reader back and forth forever — reachable by tapping the account button and
+  signing in before ever filling in username/weight/age (a new visitor's most
+  natural first move, since the button sits right above the form), or by
+  signing in on any device with nothing cached locally and nothing yet synced
+  to the account. The fix drops the session-only redirect and keeps only the
+  profile-based one, already present for returning visitors: `useSync`
+  already pulls a remote profile down on sign-in when one exists, so once it
+  lands the existing effect fires on its own, no separate trigger needed —
+  and someone with truly nothing to pull down now correctly stays on the form
+  to create one, instead of bouncing between two routes that both refused to
+  render it.
 - **Four more ready-made plans, and a CSV export of your whole log.** A real
   6-day split (chest & back, shoulders & arms, legs, each twice a week with a
   genuinely different exercise selection the second time round rather than
