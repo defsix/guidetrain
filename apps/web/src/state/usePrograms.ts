@@ -32,6 +32,16 @@ export type Target = {
   steps?: TargetStep[];
   /** Which planner wrote the steps, so the workout can say where they came from. */
   source?: "plan" | "cycle";
+  /**
+   * Set only when this row's weight is a literal percent of a max (the
+   * Russian routines) rather than an Epley-derived working weight. The one
+   * piece of the original prescription `fromPlan` would otherwise throw
+   * away — `reps` above is already enough to redo a flat plan row, but a
+   * percent row needs its percentage back too. Exists purely so "Refresh"
+   * (see WorkoutPanel.tsx) can redo the same calculation `source: "plan"`
+   * made at apply time, not a new one.
+   */
+  pct?: number;
 };
 
 export type Program = {
@@ -116,6 +126,11 @@ function cleanTargets(raw: unknown): Record<string, Target> {
         t.steps = steps;
         t.source = v?.source === "cycle" ? "cycle" : "plan";
       }
+      // Only meaningful alongside a plan-sourced target — see the doc on
+      // `Target.pct` — and dropped otherwise so a stray value in storage
+      // can't make Refresh treat a flat row as a percent-of-max one.
+      const pct = Number(v?.pct);
+      if (t.source === "plan" && Number.isFinite(pct) && pct > 0 && pct <= 100) t.pct = pct;
       out[id] = t;
     }
   }
@@ -129,7 +144,11 @@ function cleanTargets(raw: unknown): Record<string, Target> {
  * The load is carried rather than recomputed here on purpose: recomputing it
  * would let the workout disagree with the preview it came from, which is a
  * small window (a set logged in between) but an unnecessary one, and the wrong
- * kind of surprise to spring on someone standing at a rack.
+ * kind of surprise to spring on someone standing at a rack. That is about
+ * applying, not about staying current afterward — see `pct` on `Target` and
+ * "Refresh" in `WorkoutPanel.tsx` for the explicit, opt-in way to redo this
+ * same calculation later, once the weight the plan first offered may no
+ * longer match what your log or maxes now say.
  */
 export type AppliedDay = {
   name: string;
@@ -144,6 +163,8 @@ export type AppliedDay = {
      * this replaces `load` entirely rather than supplementing it.
      */
     steps?: TargetStep[];
+    /** Carried through to `Target.pct` — see its own doc for why. */
+    pct?: number;
   }[];
 };
 
@@ -160,6 +181,7 @@ export type AppliedDay = {
  */
 function fromPlan(e: AppliedDay["exercises"][number]): Target {
   const t: Target = { sets: e.sets, reps: e.reps };
+  if (e.pct) t.pct = e.pct;
   if (e.steps) {
     t.steps = e.steps;
     t.source = "cycle";

@@ -900,6 +900,43 @@
   text-decoration: line-through;
 }
 
+/* Manual refresh of a plan-derived weight — always its own line under the
+   steps/source row, since the caption next to it needs the room. */
+.target-refresh {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+}
+.refresh-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.refresh-btn:hover { color: var(--accent); }
+.refresh-hint {
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+.refresh-result {
+  font-size: 9px;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
 /* --- warming up to the first working set --------------------------------- */
 .warmup {
   margin: 0;

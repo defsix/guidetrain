@@ -275,7 +275,12 @@
    "plan": "de tu plan",
    "cycle": "de tu ciclo"
   },
-  "editClears": "Tus propias series y repeticiones sustituyen los pesos de arriba."
+  "editClears": "Tus propias series y repeticiones sustituyen los pesos de arriba.",
+  "refresh": "Actualizar",
+  "refreshNote": "Se mantiene en este peso hasta que toques Actualizar, aunque cambien tus máximos.",
+  "refreshUpdated": "Actualizado a {weight} {unit}.",
+  "refreshSame": "Ya está actualizado — sin cambios.",
+  "refreshNoData": "Aún no hay suficientes datos para recalcular esto."
  },
  "plans": {
   "title": "Planes listos",

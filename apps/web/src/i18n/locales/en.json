@@ -275,7 +275,12 @@
    "plan": "from your plan",
    "cycle": "from your cycle"
   },
-  "editClears": "Your own sets and reps replace the weights above."
+  "editClears": "Your own sets and reps replace the weights above.",
+  "refresh": "Refresh",
+  "refreshNote": "Stays at this weight until you tap Refresh, even if your maxes change.",
+  "refreshUpdated": "Updated to {weight} {unit}.",
+  "refreshSame": "Already up to date — no change.",
+  "refreshNoData": "Not enough data yet to recalculate this."
  },
  "plans": {
   "title": "Ready-made plans",

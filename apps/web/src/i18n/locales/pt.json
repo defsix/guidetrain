@@ -275,7 +275,12 @@
    "plan": "do seu plano",
    "cycle": "do seu ciclo"
   },
-  "editClears": "As suas próprias séries e repetições substituem as cargas acima."
+  "editClears": "As suas próprias séries e repetições substituem as cargas acima.",
+  "refresh": "Atualizar",
+  "refreshNote": "Mantém-se neste peso até tocar em Atualizar, mesmo que os seus máximos mudem.",
+  "refreshUpdated": "Atualizado para {weight} {unit}.",
+  "refreshSame": "Já está atualizado — sem alterações.",
+  "refreshNoData": "Ainda não há dados suficientes para recalcular isto."
  },
  "plans": {
   "title": "Planos prontos",

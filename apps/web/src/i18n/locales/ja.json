@@ -268,7 +268,12 @@
    "plan": "プランから",
    "cycle": "サイクルから"
   },
-  "editClears": "自分でセット数と回数を決めると、上の重量は消えます。"
+  "editClears": "自分でセット数と回数を決めると、上の重量は消えます。",
+  "refresh": "更新",
+  "refreshNote": "「更新」をタップするまで、マックスが変わってもこの重量のままです。",
+  "refreshUpdated": "{weight} {unit} に更新しました。",
+  "refreshSame": "すでに最新です — 変更はありません。",
+  "refreshNoData": "再計算するのに十分なデータがまだありません。"
  },
  "plans": {
   "title": "既成プラン",

@@ -288,6 +288,8 @@ export default function BodyExplorer() {
         equipmentAvailable={profile?.equipment}
         goals={goals.goals}
         injuries={injuries.injuries}
+        profile={profile}
+        knownMaxes={knownMax.overrides}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field

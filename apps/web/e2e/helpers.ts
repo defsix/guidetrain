@@ -31,8 +31,12 @@ export async function seedProfile(page: Page, overrides: Record<string, unknown>
  * first walking through the plan library or the muscle explorer to build one.
  * Must be called before `page.goto()`, same as `seedProfile`.
  */
-export async function seedProgram(page: Page, exerciseIds: string[] = ["Barbell_Squat"]) {
-  const program = { id: "test-program", name: "Test workout", exerciseIds, targets: {} };
+export async function seedProgram(
+  page: Page,
+  exerciseIds: string[] = ["Barbell_Squat"],
+  targets: Record<string, unknown> = {},
+) {
+  const program = { id: "test-program", name: "Test workout", exerciseIds, targets };
   await page.addInitScript(
     ([programsKey, activeKey, programJson, id]) => {
       localStorage.setItem(programsKey, JSON.stringify([JSON.parse(programJson)]));

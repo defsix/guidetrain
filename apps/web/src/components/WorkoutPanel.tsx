@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import { swapsFor } from "../anatomy/pairs";
 import SetLogger from "./SetLogger";
@@ -9,8 +9,11 @@ import type { SetEntry } from "../state/useLog";
 import type { Program, Target } from "../state/usePrograms";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { Goal } from "../state/useGoals";
+import type { KnownMaxEntry } from "../state/useKnownMax";
+import type { Profile } from "../types";
 import { useRestTimer } from "../state/useRestTimer";
-import { restSeconds, REST_EXTEND_SECONDS } from "../lib/progression";
+import { restSeconds, REST_EXTEND_SECONDS, bestEstimate } from "../lib/progression";
+import { prescribe, prescribePercent } from "../lib/plans";
 import { usesLegs } from "../lib/muscleRegions";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
@@ -72,6 +75,10 @@ type Props = {
   goals: Record<string, Goal[]>;
   /** Injuries marked on the Stats page, per muscle id — narrows the swap list and flags matching rows. */
   injuries: Record<string, Injury>;
+  /** Body weight, unit and age group — same profile `prescribe` reads for a fresh Refresh calculation. */
+  profile: Profile | null;
+  /** A max set by hand on the stats page, per exercise id — beats one estimated from the log, same as PlanLibrary. */
+  knownMaxes: Record<string, KnownMaxEntry>;
 };
 
 /**
@@ -91,7 +98,7 @@ export default function WorkoutPanel({
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
-  onSwap, equipmentAvailable, goals, injuries,
+  onSwap, equipmentAvailable, goals, injuries, profile, knownMaxes,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -103,6 +110,57 @@ export default function WorkoutPanel({
   const equipmentSet = useMemo(
     () => (equipmentAvailable && equipmentAvailable.length ? new Set(equipmentAvailable) : null),
     [equipmentAvailable],
+  );
+
+  const byExercise = useMemo(() => {
+    const m = new Map<string, SetEntry[]>();
+    for (const s of allSets) {
+      const list = m.get(s.id);
+      if (list) list.push(s);
+      else m.set(s.id, [s]);
+    }
+    return m;
+  }, [allSets]);
+
+  // Same lookup PlanLibrary.tsx builds for its own preview — a manual max
+  // beats one estimated from the log — so Refresh (below) redoes the exact
+  // calculation a plan preview would make today, not a different one.
+  const knownMax = useMemo(() => {
+    return (id: string): number | null => {
+      const manual = knownMaxes[id]?.max;
+      if (manual) return manual;
+      const derived = bestEstimate(byExercise.get(id) ?? []);
+      return derived ? derived.oneRM : null;
+    };
+  }, [knownMaxes, byExercise]);
+
+  /**
+   * Redo a plan-derived target's weight calculation from today's data,
+   * without ever calling this on its own — the whole point of "manual" is
+   * that a weight set at apply time stays put until someone explicitly asks
+   * for a new one (see the freeze rationale in usePrograms.ts's `fromPlan`).
+   * Only offered for `source === "plan"` rows: a 5/3/1 `"cycle"` row already
+   * recomputes live every time Plan → is opened, and a target with no
+   * `source` was set by hand, not derived from a plan, so there is nothing
+   * here to redo.
+   */
+  const refreshTarget = useCallback(
+    (exId: string): { status: "updated" | "same" | "no-data"; weight?: number } => {
+      const target = targets[exId];
+      if (!target || target.source !== "plan") return { status: "no-data" };
+      const logged = byExercise.get(exId) ?? [];
+      const p = target.pct
+        ? prescribePercent(exId, target.pct, logged, knownMax)
+        : prescribe(exId, target.reps, logged, profile, knownMax);
+      if (p.source === "unknown" || !p.load) return { status: "no-data" };
+      if (p.load === target.steps?.[0]?.load) return { status: "same" };
+      onTarget(exId, {
+        ...target,
+        steps: Array.from({ length: target.sets }, () => ({ load: p.load, reps: target.reps })),
+      });
+      return { status: "updated", weight: p.load };
+    },
+    [targets, byExercise, knownMax, profile, onTarget],
   );
 
   // Computed only while the panel is open, from the exercise being replaced
@@ -347,6 +405,7 @@ export default function WorkoutPanel({
                     }}
                     onRemove={onRemoveSet}
                     onPlan={() => setPlanning(x.id)}
+                    onRefresh={() => refreshTarget(x.id)}
                     bodyLoad={x.equipment === "body only" ? bodyLoad : undefined}
                     target={targets[x.id]}
                     instructions={x.instructions}

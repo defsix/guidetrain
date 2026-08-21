@@ -268,7 +268,12 @@
    "plan": "来自你的计划",
    "cycle": "来自你的周期"
   },
-  "editClears": "自己设定组数和次数会取代上面的重量。"
+  "editClears": "自己设定组数和次数会取代上面的重量。",
+  "refresh": "刷新",
+  "refreshNote": "在你点击刷新之前会保持这个重量，即使你的最大重量发生变化。",
+  "refreshUpdated": "已更新为 {weight} {unit}。",
+  "refreshSame": "已经是最新的 — 无变化。",
+  "refreshNoData": "数据还不够，无法重新计算。"
  },
  "plans": {
   "title": "现成计划",

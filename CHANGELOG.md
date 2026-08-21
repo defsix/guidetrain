@@ -482,6 +482,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Manual "Refresh" for a plan's prescribed weight.** A weight from a
+  ready-made plan freezes the moment the plan is applied and stays that way on
+  purpose — recomputing it automatically would mean the number under a bar
+  could quietly differ from what you last checked. Now each plan-derived row
+  gets a small Refresh button next to it, plus a standing caption saying
+  exactly that: it won't move until you tap it. Tapping it redoes the same
+  calculation the plan preview would make today — from the log, a known max,
+  or a related lift, same rule `prescribe()`/`prescribePercent()` already
+  apply — and says plainly what happened: updated to a new weight, already up
+  to date, or not enough data yet. Not offered on a 5/3/1 cycle row (it
+  already recalculates live every time Plan → is opened) or on a target set by
+  hand (there's nothing to redo). `Target` gained an optional `pct` field so a
+  percent-of-max row (the Russian routines) carries its own percentage back
+  out of the frozen weight, rather than only `reps` surviving as it did
+  before — a gap that also meant `cleanTargets` was silently dropping `pct` on
+  every reload even before Refresh existed to need it, fixed alongside.
 - **History: a logged set can now be corrected or deleted, and an account can
   be deleted outright.** Every set in History (both the by-day and
   by-exercise views) gets an Edit and a Delete control — Edit opens an inline

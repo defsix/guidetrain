@@ -289,7 +289,12 @@
    "plan": "z vašeho plánu",
    "cycle": "z vašeho cyklu"
   },
-  "editClears": "Vlastní série a opakování nahradí váhy výše."
+  "editClears": "Vlastní série a opakování nahradí váhy výše.",
+  "refresh": "Obnovit",
+  "refreshNote": "Zůstane na této váze, dokud nepoklepete na Obnovit, i když se změní vaše maxima.",
+  "refreshUpdated": "Aktualizováno na {weight} {unit}.",
+  "refreshSame": "Už je aktuální — beze změny.",
+  "refreshNoData": "Zatím není dost dat k přepočtu."
  },
  "plans": {
   "title": "Hotové plány",

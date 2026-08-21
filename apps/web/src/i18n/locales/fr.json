@@ -275,7 +275,12 @@
    "plan": "de votre plan",
    "cycle": "de votre cycle"
   },
-  "editClears": "Vos propres séries et répétitions remplacent les charges ci-dessus."
+  "editClears": "Vos propres séries et répétitions remplacent les charges ci-dessus.",
+  "refresh": "Actualiser",
+  "refreshNote": "Reste à ce poids jusqu'à ce que vous appuyiez sur Actualiser, même si vos maximums changent.",
+  "refreshUpdated": "Mis à jour à {weight} {unit}.",
+  "refreshSame": "Déjà à jour — aucun changement.",
+  "refreshNoData": "Pas encore assez de données pour recalculer ceci."
  },
  "plans": {
   "title": "Séances prêtes",

@@ -275,7 +275,12 @@
    "plan": "aus deinem Plan",
    "cycle": "aus deinem Zyklus"
   },
-  "editClears": "Eigene Sätze und Wiederholungen ersetzen die Gewichte oben."
+  "editClears": "Eigene Sätze und Wiederholungen ersetzen die Gewichte oben.",
+  "refresh": "Aktualisieren",
+  "refreshNote": "Bleibt bei diesem Gewicht, bis du auf Aktualisieren tippst, auch wenn sich deine Maximalwerte ändern.",
+  "refreshUpdated": "Aktualisiert auf {weight} {unit}.",
+  "refreshSame": "Bereits aktuell – keine Änderung.",
+  "refreshNoData": "Noch nicht genug Daten, um das neu zu berechnen."
  },
  "plans": {
   "title": "Fertige Pläne",

@@ -289,7 +289,12 @@
    "plan": "z twojego planu",
    "cycle": "z twojego cyklu"
   },
-  "editClears": "Własne serie i powtórzenia zastąpią ciężary powyżej."
+  "editClears": "Własne serie i powtórzenia zastąpią ciężary powyżej.",
+  "refresh": "Odśwież",
+  "refreshNote": "Ten ciężar zostaje bez zmian, dopóki nie dotkniesz Odśwież, nawet jeśli zmienią się twoje maksymalne wyniki.",
+  "refreshUpdated": "Zaktualizowano do {weight} {unit}.",
+  "refreshSame": "Już aktualne — bez zmian.",
+  "refreshNoData": "Za mało danych, aby to przeliczyć."
  },
  "plans": {
   "title": "Gotowe plany",

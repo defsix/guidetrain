@@ -16,6 +16,17 @@ type Props = {
    * ready-made plan or from a week of the 5/3/1 cycle.
    */
   target?: Target;
+  /**
+   * Redo a plan-derived target's weight from today's data, on request only —
+   * a weight from a plan is frozen at the moment it was applied (see
+   * usePrograms.ts's `fromPlan`) and never changes on its own, even if a max
+   * it was based on has since moved. Passed only for `target.source ===
+   * "plan"` rows; omitted for a 5/3/1 `"cycle"` row (which already
+   * recalculates live every time Plan → is opened) and for a target set by
+   * hand (nothing to redo). Returns what happened so the button's own label
+   * can say so, rather than changing the weight silently.
+   */
+  onRefresh?: () => { status: "updated" | "same" | "no-data"; weight?: number };
   /** Sets skipped today. They advance the prescription and log nothing. */
   skipped?: number;
   onSkipSet?: () => void;
@@ -77,13 +88,31 @@ function formatRest(seconds: number): string {
 export default function SetLogger({
   exerciseId, todaysSets, best, onAdd, onRemove, onPlan, bodyLoad, target,
   skipped = 0, onSkipSet, onSkipRest, onUnskip, instructions, equipment,
-  restTimer, onRestTimerSkip, onRestTimerExtend,
+  restTimer, onRestTimerSkip, onRestTimerExtend, onRefresh,
 }: Props) {
   const { t } = useI18n();
   const repsOnly = bodyLoad != null;
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
   const [showHow, setShowHow] = useState(false);
+  const [refreshResult, setRefreshResult] = useState<
+    { status: "updated" | "same" | "no-data"; weight?: number } | null
+  >(null);
+
+  // A tap's result is worth saying plainly, but not worth saying forever —
+  // it fades back to the standing explanation of what the button does after
+  // a few seconds, the same way the rest timer's "done" state does not stay
+  // on screen indefinitely either.
+  useEffect(() => {
+    if (!refreshResult) return;
+    const id = setTimeout(() => setRefreshResult(null), 3000);
+    return () => clearTimeout(id);
+  }, [refreshResult]);
+
+  function refresh() {
+    if (!onRefresh) return;
+    setRefreshResult(onRefresh());
+  }
 
   // Which prescribed set is next: the sets already logged today plus any
   // skipped are the ones dealt with, so position in the prescription is
@@ -202,6 +231,27 @@ export default function SetLogger({
             ))}
           </span>
           <em>{t(`target.from.${target?.source ?? "plan"}`)}</em>
+          {/* Only for a ready-made-plan row: this weight was fixed the moment
+              the plan was applied and stays fixed until asked, on purpose —
+              see onRefresh's own doc above. Saying so every time, not just
+              after tapping, is the "make it clear" half of this feature. */}
+          {target?.source === "plan" && onRefresh && (
+            <span className="target-refresh">
+              <button type="button" className="refresh-btn" onClick={refresh}>
+                {t("target.refresh")}
+              </button>
+              {refreshResult ? (
+                <span className="refresh-result" role="status">
+                  {refreshResult.status === "updated" &&
+                    t("target.refreshUpdated", { weight: refreshResult.weight ?? 0, unit: t("unit.kg") })}
+                  {refreshResult.status === "same" && t("target.refreshSame")}
+                  {refreshResult.status === "no-data" && t("target.refreshNoData")}
+                </span>
+              ) : (
+                <span className="refresh-hint">{t("target.refreshNote")}</span>
+              )}
+            </span>
+          )}
         </p>
       )}
 
