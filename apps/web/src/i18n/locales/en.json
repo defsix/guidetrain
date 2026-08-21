@@ -455,7 +455,10 @@
   },
   "best": "best {weight} {unit} × {reps}",
   "bestEver": "Best estimated max {max} {unit}, from {weight} {unit} × {reps}.",
-  "export": "Export (.csv)"
+  "export": "Export (.csv)",
+  "editSet": "Edit",
+  "deleteSet": "Delete",
+  "save": "Save"
  },
  "account": {
   "title": "Account",
@@ -491,7 +494,16 @@
   "passwordSaved": "Password changed.",
   "changeEmail": "Change email",
   "newEmail": "New email",
-  "emailChangeSent": "Check your new address for a link to confirm the change."
+  "emailChangeSent": "Check your new address for a link to confirm the change.",
+  "cancel": "Cancel",
+  "deleteLocalData": "Delete all data on this device",
+  "deleteLocalDataWarning": "This clears every set, workout and stat saved on this device — nothing is backed up anywhere. This cannot be undone.",
+  "deleteLocalDataWarningSynced": "This clears every set, workout and stat saved on this device. Your account keeps its own copy — sign in again to bring it back.",
+  "deleteLocalDataConfirm": "Yes, delete everything on this device",
+  "deleteLocalDataDone": "Cleared.",
+  "deleteAccount": "Delete account",
+  "deleteAccountWarning": "This permanently deletes your account and everything in it — every set, workout and stat, on every device. This cannot be undone.",
+  "deleteAccountConfirm": "Yes, delete my account"
  },
  "splash": {
   "tagline": "Train smarter"

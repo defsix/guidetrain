@@ -152,10 +152,19 @@ check needed a real project.
 ## Shape notes
 
 - **`sets` keeps the client's id** as `client_uid`, unique per user. Syncing the
-  log is a set union rather than a merge — sets are appended and never edited —
-  but that only holds while the same set has the same identity on every device.
-  Uploading twice is then a no-op instead of a duplicate. If log entries ever
-  become editable, this stops being free and the merge needs rethinking.
+  log is a set union rather than a merge, which only holds while the same set
+  has the same identity on every device — uploading the same one twice is then
+  a no-op instead of a duplicate. A set *can* be edited now (`useLog.ts`'s
+  `edit()`, a mistyped weight or rep count corrected in place, same uid and
+  date), which is the one case the union alone doesn't cover: `pushAll` no
+  longer ignores a re-uploaded client_uid as a duplicate, so an edit's upload
+  actually overwrites the row, and `unionSets` prefers remote over local on a
+  shared uid so a merge can't resurrect a stale copy over a pushed edit. The
+  gap that leaves: an edit made locally and merged again (a fresh sign-in, a
+  second device) *before* it ever reached the account loses to whatever the
+  account already had — accepted rather than built around, since it needs two
+  devices editing the same historical set while offline to happen at all, and
+  an ordinary push follows an edit within seconds.
 - **`programs.targets` is JSONB** on purpose. It is read whole and written
   whole, and its shape belongs to the app: per-set loads, rep counts, the AMRAP
   flag, which planner wrote it. Normalising it would buy a schema migration
@@ -190,4 +199,14 @@ check needed a real project.
   nullable `derived_from`: a known max is allowed to be a claim with nothing
   logged behind it at all, which a training-max reset never is. `body_weight_log`
   is `sets`'s shape — append-only, unioned by `client_uid` — because a weigh-in
-  is recorded once and never edited, the same reasoning as the set log above.
+  is recorded once and never edited. Unlike `sets` as of `0005` below, nothing
+  here asks for that to change: a bad weigh-in is deleted and re-entered, not
+  corrected in place, the same as any other row before this migration.
+- **`delete_own_account()` needs `migrations/0005_delete_account.sql`
+  applied, and this one is not optional to defer once account deletion ships
+  in the app** — `AccountPanel.tsx`'s "Delete account" calls it by name via
+  `supabase.rpc(...)`, and an unmigrated project just means that button fails
+  with a "function does not exist" error rather than doing nothing. `security
+  definer` is what lets it reach `auth.users` at all, deleting exactly the
+  caller's own row (read from their JWT, not accepted as a parameter) — every
+  table above references it `on delete cascade`, so nothing else needs to run.

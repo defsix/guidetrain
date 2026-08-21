@@ -4,6 +4,7 @@ import type { SetEntry } from "../state/useLog";
 import { estimateOneRepMax, roundLoad } from "../lib/progression";
 import { setsToCsv, downloadCsv } from "../lib/csvExport";
 import { useI18n } from "../i18n/I18nProvider";
+import type { TFn } from "../i18n";
 
 type Entry = { id: string; name: string; equipment?: string; instructions: string[] };
 
@@ -16,6 +17,9 @@ type Props = {
   open: boolean;
   onClose: () => void;
   sets: SetEntry[];
+  /** A mistyped weight or rep count, corrected in place — see useLog.ts's edit(). */
+  onEditSet: (uid: string, weight: number, reps: number) => void;
+  onRemoveSet: (uid: string) => void;
 };
 
 /** A local calendar day, which is what "a session" means to the person doing it. */
@@ -24,6 +28,90 @@ function dayKey(at: number): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
     d.getDate(),
   ).padStart(2, "0")}`;
+}
+
+type RowProps = {
+  s: SetEntry;
+  unit: string;
+  editing: boolean;
+  onStartEdit: () => void;
+  onCancelEdit: () => void;
+  onSaveEdit: (weight: number, reps: number) => void;
+  onRemove: () => void;
+  t: TFn;
+};
+
+/**
+ * One logged set: a plain weight × reps with edit/delete controls, or — while
+ * `editing` — the form those controls open. Shared between the by-day and
+ * by-exercise views rather than written twice, since a set here is the same
+ * thing in either.
+ */
+function SetRow({ s, unit, editing, onStartEdit, onCancelEdit, onSaveEdit, onRemove, t }: RowProps) {
+  const [weight, setWeight] = useState(String(s.weight));
+  const [reps, setReps] = useState(String(s.reps));
+
+  if (editing) {
+    return (
+      <form
+        className="hist-edit-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const w = parseFloat(weight.replace(",", "."));
+          const r = parseInt(reps, 10);
+          if (Number.isFinite(w) && w >= 0 && Number.isFinite(r) && r > 0) onSaveEdit(w, r);
+        }}
+      >
+        <input
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          inputMode="decimal"
+          aria-label={t("log.weight")}
+          className="hist-edit-input"
+        />
+        <span className="cap">{unit}</span>
+        <input
+          value={reps}
+          onChange={(e) => setReps(e.target.value)}
+          inputMode="numeric"
+          aria-label={t("log.reps")}
+          className="hist-edit-input"
+        />
+        <button type="submit" className="hist-edit-save">
+          {t("history.save")}
+        </button>
+        <button type="button" className="hist-edit-cancel" onClick={onCancelEdit}>
+          {t("account.cancel")}
+        </button>
+      </form>
+    );
+  }
+
+  return (
+    <span className="hist-set-row">
+      <span className="hload">
+        {s.weight} {unit} × {s.reps}
+      </span>
+      <span className="hist-set-actions">
+        <button
+          type="button"
+          className="hist-set-action"
+          onClick={onStartEdit}
+          aria-label={t("history.editSet")}
+        >
+          {t("history.editSet")}
+        </button>
+        <button
+          type="button"
+          className="hist-set-action hist-set-remove"
+          onClick={onRemove}
+          aria-label={t("history.deleteSet")}
+        >
+          {t("history.deleteSet")}
+        </button>
+      </span>
+    </span>
+  );
 }
 
 /**
@@ -43,10 +131,11 @@ function dayKey(at: number): string {
  * On the device, like everything else here. Nothing in this file needs a
  * server; accounts would make it survive a lost phone, not make it possible.
  */
-export default function HistoryPanel({ open, onClose, sets }: Props) {
+export default function HistoryPanel({ open, onClose, sets, onEditSet, onRemoveSet }: Props) {
   const { t, localizeExercise } = useI18n();
   const [byExercise, setByExercise] = useState(false);
   const [chosen, setChosen] = useState<string | null>(null);
+  const [editingUid, setEditingUid] = useState<string | null>(null);
 
   const name = useMemo(() => {
     return (id: string) => {
@@ -109,6 +198,16 @@ export default function HistoryPanel({ open, onClose, sets }: Props) {
     downloadCsv(`guidetrain-history-${today}.csv`, csv);
   }
 
+  function saveEdit(uid: string, weight: number, reps: number) {
+    onEditSet(uid, weight, reps);
+    setEditingUid(null);
+  }
+
+  function removeSet(uid: string) {
+    onRemoveSet(uid);
+    if (editingUid === uid) setEditingUid(null);
+  }
+
   const fmtDate = (at: number) =>
     new Date(at).toLocaleDateString(undefined, {
       weekday: "short",
@@ -159,9 +258,16 @@ export default function HistoryPanel({ open, onClose, sets }: Props) {
               {detail.sets.map((s) => (
                 <li key={s.uid}>
                   <span className="hdate">{fmtDate(s.at)}</span>
-                  <span className="hload">
-                    {s.weight} {u} × {s.reps}
-                  </span>
+                  <SetRow
+                    s={s}
+                    unit={u}
+                    editing={editingUid === s.uid}
+                    onStartEdit={() => setEditingUid(s.uid)}
+                    onCancelEdit={() => setEditingUid(null)}
+                    onSaveEdit={(w, r) => saveEdit(s.uid, w, r)}
+                    onRemove={() => removeSet(s.uid)}
+                    t={t}
+                  />
                 </li>
               ))}
             </ul>
@@ -217,17 +323,28 @@ export default function HistoryPanel({ open, onClose, sets }: Props) {
                     <h3>{fmtDate(d.at)}</h3>
                     <ul>
                       {/* Grouped by exercise within the day, since three sets
-                          of the same lift are one thing you did, not three. */}
+                          of the same lift are one thing you did, not three —
+                          but each set inside that group is still its own row,
+                          since editing or deleting one must not touch the
+                          others. */}
                       {[...new Set(d.sets.map((s) => s.id))].map((id) => (
                         <li key={id}>
                           <span className="hname">{name(id)}</span>
                           <span className="hsets">
                             {d.sets
                               .filter((s) => s.id === id)
-                              .map((s, i) => (
-                                <span key={i}>
-                                  {s.weight} {u} × {s.reps}
-                                </span>
+                              .map((s) => (
+                                <SetRow
+                                  key={s.uid}
+                                  s={s}
+                                  unit={u}
+                                  editing={editingUid === s.uid}
+                                  onStartEdit={() => setEditingUid(s.uid)}
+                                  onCancelEdit={() => setEditingUid(null)}
+                                  onSaveEdit={(w, r) => saveEdit(s.uid, w, r)}
+                                  onRemove={() => removeSet(s.uid)}
+                                  t={t}
+                                />
                               ))}
                           </span>
                         </li>

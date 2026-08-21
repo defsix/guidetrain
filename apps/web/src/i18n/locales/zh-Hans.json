@@ -441,7 +441,10 @@
   },
   "best": "最好 {weight} {unit} × {reps}",
   "bestEver": "最佳推算最大重量 {max} {unit}，来自 {weight} {unit} × {reps}。",
-  "export": "导出（.csv）"
+  "export": "导出（.csv）",
+  "editSet": "编辑",
+  "deleteSet": "删除",
+  "save": "保存"
  },
  "account": {
   "title": "账户",
@@ -477,7 +480,16 @@
   "passwordSaved": "密码已修改。",
   "changeEmail": "修改邮箱",
   "newEmail": "新邮箱",
-  "emailChangeSent": "请查看新邮箱，里面有确认修改的链接。"
+  "emailChangeSent": "请查看新邮箱，里面有确认修改的链接。",
+  "cancel": "取消",
+  "deleteLocalData": "删除本机所有数据",
+  "deleteLocalDataWarning": "这会清除本机保存的所有组数、训练和统计数据 — 没有任何备份。此操作无法撤销。",
+  "deleteLocalDataWarningSynced": "这会清除本机保存的所有组数、训练和统计数据。你的账户会保留自己的一份副本 — 重新登录即可找回。",
+  "deleteLocalDataConfirm": "是的，删除本机上的所有内容",
+  "deleteLocalDataDone": "已清除。",
+  "deleteAccount": "删除账户",
+  "deleteAccountWarning": "这会永久删除你的账户及其中的一切 — 所有设备上的所有组数、训练和统计数据。此操作无法撤销。",
+  "deleteAccountConfirm": "是的，删除我的账户"
  },
  "splash": {
   "tagline": "聪明训练"

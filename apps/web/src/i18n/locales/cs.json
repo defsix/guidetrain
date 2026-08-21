@@ -483,7 +483,10 @@
   },
   "best": "nejlepší {weight} {unit} × {reps}",
   "bestEver": "Nejlepší odhad maxima {max} {unit}, z {weight} {unit} × {reps}.",
-  "export": "Exportovat (.csv)"
+  "export": "Exportovat (.csv)",
+  "editSet": "Upravit",
+  "deleteSet": "Smazat",
+  "save": "Uložit"
  },
  "account": {
   "title": "Účet",
@@ -519,7 +522,16 @@
   "passwordSaved": "Heslo změněno.",
   "changeEmail": "Změnit e-mail",
   "newEmail": "Nový e-mail",
-  "emailChangeSent": "Zkontrolujte novou adresu, přijde vám odkaz pro potvrzení změny."
+  "emailChangeSent": "Zkontrolujte novou adresu, přijde vám odkaz pro potvrzení změny.",
+  "cancel": "Zrušit",
+  "deleteLocalData": "Smazat všechna data v tomto zařízení",
+  "deleteLocalDataWarning": "Tím se smažou všechny série, tréninky a statistiky uložené v tomto zařízení — nikde nejsou zálohované. Tohle nelze vrátit zpět.",
+  "deleteLocalDataWarningSynced": "Tím se smažou všechny série, tréninky a statistiky uložené v tomto zařízení. Váš účet si ponechá svou vlastní kopii — přihlaste se znovu a data se vrátí.",
+  "deleteLocalDataConfirm": "Ano, smazat vše v tomto zařízení",
+  "deleteLocalDataDone": "Vymazáno.",
+  "deleteAccount": "Smazat účet",
+  "deleteAccountWarning": "Tím trvale smažete svůj účet a vše v něm — všechny série, tréninky a statistiky, na všech zařízeních. Tohle nelze vrátit zpět.",
+  "deleteAccountConfirm": "Ano, smazat můj účet"
  },
  "splash": {
   "tagline": "Trénuj chytřeji"

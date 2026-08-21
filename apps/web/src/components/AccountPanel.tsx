@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { useAuth } from "../state/useAuth";
 import type { SyncStatus } from "../state/useSync";
 import { ENABLED_OAUTH_PROVIDERS } from "../lib/supabase";
+import { clearAll } from "../lib/storage";
 import { useI18n } from "../i18n/I18nProvider";
 
 /**
@@ -59,7 +60,39 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
   const [newEmail, setNewEmail] = useState("");
   const [emailChangeSent, setEmailChangeSent] = useState(false);
 
+  // Two destructive actions, each its own two-step confirmation rather than
+  // firing on the first click — everything else in this app that removes
+  // something (a goal, an injury, a saved workout) is a single tap, because
+  // each of those is trivial to redo. Neither of these is: one clears a
+  // device, the other deletes an account outright, and a single-click
+  // pattern that works for "remove a goal" is the wrong shape for either.
+  const [confirmingLocal, setConfirmingLocal] = useState(false);
+  const [confirmingAccount, setConfirmingAccount] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [localCleared, setLocalCleared] = useState(false);
+
   if (!open) return null;
+
+  function deleteLocalData() {
+    clearAll();
+    setConfirmingLocal(false);
+    setLocalCleared(true);
+  }
+
+  async function deleteAccount() {
+    setDeletingAccount(true);
+    const ok = await auth.deleteAccount();
+    if (ok) {
+      // The account itself carried this device's own copy of everything —
+      // an account that no longer exists is not somewhere sync can restore
+      // it from, so this is the one case where clearing local data and
+      // deleting the account are the same action rather than two.
+      clearAll();
+      onClose();
+    }
+    setDeletingAccount(false);
+    setConfirmingAccount(false);
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -220,6 +253,41 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
               </form>
               {emailChangeSent && <p className="plan-note">{t("account.emailChangeSent")}</p>}
             </section>
+
+            <section className="stats-section account-danger">
+              <h3>{t("account.deleteAccount")}</h3>
+              {!confirmingAccount ? (
+                <button
+                  type="button"
+                  className="account-delete"
+                  onClick={() => setConfirmingAccount(true)}
+                >
+                  {t("account.deleteAccount")}
+                </button>
+              ) : (
+                <>
+                  <p className="plan-note flag">{t("account.deleteAccountWarning")}</p>
+                  <div className="account-confirm-row">
+                    <button
+                      type="button"
+                      className="account-delete"
+                      onClick={deleteAccount}
+                      disabled={deletingAccount}
+                    >
+                      {t("account.deleteAccountConfirm")}
+                    </button>
+                    <button
+                      type="button"
+                      className="tm-clear"
+                      onClick={() => setConfirmingAccount(false)}
+                      disabled={deletingAccount}
+                    >
+                      {t("account.cancel")}
+                    </button>
+                  </div>
+                </>
+              )}
+            </section>
             {auth.error && <p className="plan-note flag">{auth.error}</p>}
           </>
         ) : mode === "reset" ? (
@@ -327,6 +395,45 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
 
             <p className="plan-note">{t("account.why")}</p>
           </>
+        )}
+
+        {/* Shared across every state above but recovery — clearing this
+            device is a question worth asking whether or not there is
+            anything to sign in to, and the recovery flow has exactly one
+            job to finish before anything else belongs on screen. */}
+        {!auth.recovery && (
+          <section className="stats-section account-danger">
+            <h3>{t("account.deleteLocalData")}</h3>
+            {localCleared ? (
+              <p className="plan-note">{t("account.deleteLocalDataDone")}</p>
+            ) : !confirmingLocal ? (
+              <button
+                type="button"
+                className="account-delete"
+                onClick={() => setConfirmingLocal(true)}
+              >
+                {t("account.deleteLocalData")}
+              </button>
+            ) : (
+              <>
+                <p className="plan-note flag">
+                  {t(auth.session ? "account.deleteLocalDataWarningSynced" : "account.deleteLocalDataWarning")}
+                </p>
+                <div className="account-confirm-row">
+                  <button type="button" className="account-delete" onClick={deleteLocalData}>
+                    {t("account.deleteLocalDataConfirm")}
+                  </button>
+                  <button
+                    type="button"
+                    className="tm-clear"
+                    onClick={() => setConfirmingLocal(false)}
+                  >
+                    {t("account.cancel")}
+                  </button>
+                </div>
+              </>
+            )}
+          </section>
         )}
       </aside>
     </>

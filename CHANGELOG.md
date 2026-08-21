@@ -482,6 +482,34 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **History: a logged set can now be corrected or deleted, and an account can
+  be deleted outright.** Every set in History (both the by-day and
+  by-exercise views) gets an Edit and a Delete control — Edit opens an inline
+  weight/reps form in place, keeping the set's original date rather than
+  moving it to today. This reopened a question `supabase/README.md` had
+  flagged as unresolved: sets were unioned by client id on the assumption
+  they'd never change, and `pushAll`'s upload ignored a re-uploaded id as a
+  duplicate — which would have silently swallowed every edit before it ever
+  reached a signed-in account. Fixed alongside the feature (`sync.ts`'s
+  upsert no longer ignores duplicates; the merge now prefers whichever side
+  is remote on a shared id), documented in the same README rather than left
+  for the next person to rediscover.
+
+  The Account panel gained two destructive actions, each behind its own
+  two-step confirmation rather than a single tap — every other removal in
+  this app is trivial to redo, and these aren't. "Delete all data on this
+  device" clears local storage only and is available whether or not you're
+  signed in — signed in, your account keeps its own copy (`pushAll` skips
+  every table with nothing local to push, confirmed by reading it rather than
+  assumed, so an empty local cache is never mistaken for "delete everything
+  remotely too"). "Delete account" is signed-in only and is the real thing:
+  a new `delete_own_account()` function
+  (`supabase/migrations/0005_delete_account.sql`, `security definer` so it
+  can reach `auth.users`, scoped to the caller's own JWT with no id
+  parameter for anyone to substitute) deletes the account row, which every
+  table already referenced `on delete cascade` — profile, log, programmes,
+  training maxes, known maxes, body-weight history all go in the one
+  statement, and the panel clears the device's own copy in the same action.
 - **Fixed: signing in before finishing the onboarding form trapped the app in
   an infinite redirect loop**, seen as the splash mark flickering over the
   form forever with no way through. `Onboarding.tsx` sent anyone with an

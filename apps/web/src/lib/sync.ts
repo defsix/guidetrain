@@ -68,7 +68,15 @@ function rowsToSets(rows: Row[]): SetEntry[] {
   }));
 }
 
-/** Union by uid. Order does not matter, which is the point. */
+/**
+ * Union by uid — a set on only one side is kept outright, same as before
+ * edits existed. For a uid on both sides, order now does matter: the caller
+ * passes local first and remote second on purpose, so remote wins the rare
+ * case where a set was edited locally and merged again (a fresh sign-in, a
+ * second device) before the edit ever reached the account — see the note on
+ * `sets.length` in `pushAll` for why that narrow a conflict is an acceptable
+ * trade for not building real last-write-wins timestamps into the log.
+ */
 function unionSets(a: SetEntry[], b: SetEntry[]): SetEntry[] {
   const byUid = new Map<string, SetEntry>();
   for (const s of [...a, ...b]) byUid.set(s.uid, s);
@@ -320,14 +328,21 @@ export async function pushAll(): Promise<{ ok: boolean; error?: string }> {
 
   try {
     if (sets.length) {
-      // ignoreDuplicates: a set already up there is the same set. This is the
-      // union rule expressed as one database call.
+      // Not ignoreDuplicates any more: a set can now be edited (see
+      // useLog.ts's edit()), so a re-upload of an existing client_uid has to
+      // actually overwrite the row rather than be silently discarded as "the
+      // same set" — that discard is exactly what made an edited weight or
+      // rep count vanish on its way to the account while the local copy
+      // looked correct. `unionSets` below resolves the one conflict this
+      // creates: a set edited on this device but not yet pushed, merged
+      // against a stale remote copy elsewhere, prefers remote — acceptable
+      // since a push follows an edit within seconds in ordinary use, and the
+      // alternative (a real per-field last-write-wins clock) is a lot of
+      // machinery for a conflict that needs two devices editing the same
+      // historical set while offline to ever happen.
       const { error } = await supabase
         .from("sets")
-        .upsert(setsToRows(userId, sets), {
-          onConflict: "user_id,client_uid",
-          ignoreDuplicates: true,
-        });
+        .upsert(setsToRows(userId, sets), { onConflict: "user_id,client_uid" });
       if (error) return { ok: false, error: error.message };
     }
 

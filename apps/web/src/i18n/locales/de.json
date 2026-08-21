@@ -455,7 +455,10 @@
   },
   "best": "bester {weight} {unit} × {reps}",
   "bestEver": "Bestes geschätztes Maximum {max} {unit}, aus {weight} {unit} × {reps}.",
-  "export": "Exportieren (.csv)"
+  "export": "Exportieren (.csv)",
+  "editSet": "Bearbeiten",
+  "deleteSet": "Löschen",
+  "save": "Speichern"
  },
  "account": {
   "title": "Konto",
@@ -491,7 +494,16 @@
   "passwordSaved": "Passwort geändert.",
   "changeEmail": "E-Mail ändern",
   "newEmail": "Neue E-Mail",
-  "emailChangeSent": "Schau in dein neues Postfach — dort ist ein Link zur Bestätigung der Änderung."
+  "emailChangeSent": "Schau in dein neues Postfach — dort ist ein Link zur Bestätigung der Änderung.",
+  "cancel": "Abbrechen",
+  "deleteLocalData": "Alle Daten auf diesem Gerät löschen",
+  "deleteLocalDataWarning": "Das löscht jeden Satz, jedes Workout und jede Statistik, die auf diesem Gerät gespeichert sind — nirgendwo gibt es eine Sicherung. Das kann nicht rückgängig gemacht werden.",
+  "deleteLocalDataWarningSynced": "Das löscht jeden Satz, jedes Workout und jede Statistik, die auf diesem Gerät gespeichert sind. Dein Konto behält seine eigene Kopie — melde dich erneut an, um sie zurückzuholen.",
+  "deleteLocalDataConfirm": "Ja, alles auf diesem Gerät löschen",
+  "deleteLocalDataDone": "Gelöscht.",
+  "deleteAccount": "Konto löschen",
+  "deleteAccountWarning": "Das löscht dein Konto und alles darin dauerhaft — jeden Satz, jedes Workout und jede Statistik, auf jedem Gerät. Das kann nicht rückgängig gemacht werden.",
+  "deleteAccountConfirm": "Ja, mein Konto löschen"
  },
  "splash": {
   "tagline": "Trainiere smarter"

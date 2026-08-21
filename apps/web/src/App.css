@@ -1101,6 +1101,60 @@
 .hdate { color: var(--text-muted); }
 .hload { color: var(--text); }
 
+/* A logged set, in either view — plain text plus its own edit/delete
+   controls, or (while editing) the form those controls open. Overrides
+   .hsets' own small-pill styling rather than sharing it: a pill fits a bare
+   "100 kg × 5", not one with two buttons riding along beside it. */
+.hsets > .hist-set-row {
+  padding: 2px 0;
+  border: 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text);
+}
+.hist-set-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.hist-set-actions { display: inline-flex; gap: 2px; }
+.hist-set-action {
+  background: none;
+  border: 0;
+  padding: 2px 5px;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.hist-set-action:hover { color: var(--text); background: var(--bg); }
+.hist-set-remove:hover { color: #c2410c; }
+
+.hist-edit-form { display: inline-flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.hist-edit-input {
+  width: 52px;
+  padding: 3px 5px;
+  border: 1px solid var(--border-strong);
+  border-radius: 5px;
+  background: var(--panel);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.hist-edit-save, .hist-edit-cancel {
+  border: 0;
+  border-radius: 999px;
+  padding: 3px 9px;
+  font-family: var(--mono);
+  font-size: 10px;
+  cursor: pointer;
+}
+.hist-edit-save { background: var(--accent); color: #fff; }
+.hist-edit-cancel { background: none; color: var(--text-muted); }
+
 /* --- account & sync ------------------------------------------------------ */
 .account-button {
   background: transparent;
@@ -1464,6 +1518,31 @@
   cursor: pointer;
 }
 .account-signout:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Two destructive actions live here — clearing this device and deleting the
+   account outright — each gated behind its own confirm step (see the
+   *-confirm-row markup) rather than firing on the first tap. */
+.account-delete {
+  align-self: flex-start;
+  background: transparent;
+  /* The same "needs attention" red .sync-status.error and a missed 5/3/1
+     week already use, not a second colour invented for this panel. */
+  border: 1px solid #c2410c;
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: #c2410c;
+  font-size: 13px;
+  cursor: pointer;
+}
+.account-delete:hover:not(:disabled) { background: #c2410c; color: #fff; }
+.account-delete:disabled { opacity: 0.5; cursor: default; }
+
+.account-confirm-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
 /* Present at every status so "did that just save?" always has an answer on
    screen rather than only appearing when something goes wrong. */

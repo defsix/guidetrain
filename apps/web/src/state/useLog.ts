@@ -125,6 +125,24 @@ export function useLog() {
     });
   }, []);
 
+  /**
+   * Corrects a set already logged — a mistyped weight or rep count — rather
+   * than asking for a delete-and-redo that would lose its place in the day
+   * it actually happened on. Keeps the same `uid` and `at`: this is the one
+   * exception to "a set is written once and never touched again" in the note
+   * above, made deliberately rather than by omission — see `sync.ts`'s
+   * `pushAll`, which had to stop ignoring a re-uploaded set for exactly this
+   * to reach an account too.
+   */
+  const edit = useCallback((uid: string, weight: number, reps: number) => {
+    if (!Number.isFinite(weight) || weight < 0 || !Number.isFinite(reps) || reps <= 0) return;
+    setEntries((prev) => {
+      const next = prev.map((x) => (x.uid === uid ? { ...x, weight, reps } : x));
+      persist(LOG_KEY, next);
+      return next;
+    });
+  }, []);
+
   /** Sets recorded today, by exercise — what the panel shows under each row. */
   const today = useMemo(() => {
     const now = Date.now();
@@ -157,5 +175,5 @@ export function useLog() {
     return out;
   }, [entries]);
 
-  return { entries, add, remove, today, best };
+  return { entries, add, remove, edit, today, best };
 }

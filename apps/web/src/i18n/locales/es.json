@@ -455,7 +455,10 @@
   },
   "best": "mejor {weight} {unit} × {reps}",
   "bestEver": "Mejor máximo estimado {max} {unit}, a partir de {weight} {unit} × {reps}.",
-  "export": "Exportar (.csv)"
+  "export": "Exportar (.csv)",
+  "editSet": "Editar",
+  "deleteSet": "Eliminar",
+  "save": "Guardar"
  },
  "account": {
   "title": "Cuenta",
@@ -491,7 +494,16 @@
   "passwordSaved": "Contraseña cambiada.",
   "changeEmail": "Cambiar correo",
   "newEmail": "Nuevo correo",
-  "emailChangeSent": "Revisa tu nuevo correo: te llegará un enlace para confirmar el cambio."
+  "emailChangeSent": "Revisa tu nuevo correo: te llegará un enlace para confirmar el cambio.",
+  "cancel": "Cancelar",
+  "deleteLocalData": "Eliminar todos los datos de este dispositivo",
+  "deleteLocalDataWarning": "Esto borra todas las series, entrenamientos y estadísticas guardados en este dispositivo — no hay copia de seguridad en ningún sitio. Esto no se puede deshacer.",
+  "deleteLocalDataWarningSynced": "Esto borra todas las series, entrenamientos y estadísticas guardados en este dispositivo. Tu cuenta conserva su propia copia — inicia sesión de nuevo para recuperarla.",
+  "deleteLocalDataConfirm": "Sí, eliminar todo en este dispositivo",
+  "deleteLocalDataDone": "Borrado.",
+  "deleteAccount": "Eliminar cuenta",
+  "deleteAccountWarning": "Esto elimina tu cuenta de forma permanente y todo lo que contiene — todas las series, entrenamientos y estadísticas, en todos los dispositivos. Esto no se puede deshacer.",
+  "deleteAccountConfirm": "Sí, eliminar mi cuenta"
  },
  "splash": {
   "tagline": "Entrena de forma inteligente"

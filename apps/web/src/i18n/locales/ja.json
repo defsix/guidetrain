@@ -441,7 +441,10 @@
   },
   "best": "最高 {weight} {unit} × {reps}",
   "bestEver": "推定最大は {max} {unit}（{weight} {unit} × {reps} から）。",
-  "export": "エクスポート（.csv）"
+  "export": "エクスポート（.csv）",
+  "editSet": "編集",
+  "deleteSet": "削除",
+  "save": "保存"
  },
  "account": {
   "title": "アカウント",
@@ -477,7 +480,16 @@
   "passwordSaved": "パスワードを変更しました。",
   "changeEmail": "メールアドレスを変更",
   "newEmail": "新しいメールアドレス",
-  "emailChangeSent": "新しいメールアドレスを確認してください。変更確認用のリンクが届きます。"
+  "emailChangeSent": "新しいメールアドレスを確認してください。変更確認用のリンクが届きます。",
+  "cancel": "キャンセル",
+  "deleteLocalData": "この端末のデータをすべて削除",
+  "deleteLocalDataWarning": "この端末に保存されているすべてのセット、ワークアウト、統計が削除されます — どこにもバックアップはありません。この操作は取り消せません。",
+  "deleteLocalDataWarningSynced": "この端末に保存されているすべてのセット、ワークアウト、統計が削除されます。アカウントには別のコピーが残るので、再度サインインすれば復元できます。",
+  "deleteLocalDataConfirm": "はい、この端末のすべてを削除します",
+  "deleteLocalDataDone": "削除しました。",
+  "deleteAccount": "アカウントを削除",
+  "deleteAccountWarning": "アカウントとその中身がすべての端末で完全に削除されます — すべてのセット、ワークアウト、統計が対象です。この操作は取り消せません。",
+  "deleteAccountConfirm": "はい、アカウントを削除します"
  },
  "splash": {
   "tagline": "スマートにトレーニング"

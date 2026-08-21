@@ -455,7 +455,10 @@
   },
   "best": "meilleure {weight} {unit} × {reps}",
   "bestEver": "Meilleur max estimé {max} {unit}, d'après {weight} {unit} × {reps}.",
-  "export": "Exporter (.csv)"
+  "export": "Exporter (.csv)",
+  "editSet": "Modifier",
+  "deleteSet": "Supprimer",
+  "save": "Enregistrer"
  },
  "account": {
   "title": "Compte",
@@ -491,7 +494,16 @@
   "passwordSaved": "Mot de passe changé.",
   "changeEmail": "Changer d'e-mail",
   "newEmail": "Nouvel e-mail",
-  "emailChangeSent": "Consultez votre nouvelle adresse : un lien pour confirmer le changement vous attend."
+  "emailChangeSent": "Consultez votre nouvelle adresse : un lien pour confirmer le changement vous attend.",
+  "cancel": "Annuler",
+  "deleteLocalData": "Supprimer toutes les données sur cet appareil",
+  "deleteLocalDataWarning": "Cela supprime chaque série, séance et statistique enregistrées sur cet appareil — rien n'est sauvegardé ailleurs. Cette action est irréversible.",
+  "deleteLocalDataWarningSynced": "Cela supprime chaque série, séance et statistique enregistrées sur cet appareil. Votre compte garde sa propre copie — reconnectez-vous pour la récupérer.",
+  "deleteLocalDataConfirm": "Oui, tout supprimer sur cet appareil",
+  "deleteLocalDataDone": "Supprimé.",
+  "deleteAccount": "Supprimer le compte",
+  "deleteAccountWarning": "Cela supprime définitivement votre compte et tout ce qu'il contient — chaque série, séance et statistique, sur tous les appareils. Cette action est irréversible.",
+  "deleteAccountConfirm": "Oui, supprimer mon compte"
  },
  "splash": {
   "tagline": "Entraînez-vous plus intelligemment"

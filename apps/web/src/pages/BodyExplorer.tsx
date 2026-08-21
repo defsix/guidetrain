@@ -301,6 +301,8 @@ export default function BodyExplorer() {
         open={showHistory}
         onClose={() => setShowHistory(false)}
         sets={log.entries}
+        onEditSet={log.edit}
+        onRemoveSet={log.remove}
       />
       {auth.available && (
         <AccountPanel

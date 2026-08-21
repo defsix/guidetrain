@@ -483,7 +483,10 @@
   },
   "best": "najlepsza {weight} {unit} × {reps}",
   "bestEver": "Najlepsze szacowane maksimum {max} {unit}, z {weight} {unit} × {reps}.",
-  "export": "Eksportuj (.csv)"
+  "export": "Eksportuj (.csv)",
+  "editSet": "Edytuj",
+  "deleteSet": "Usuń",
+  "save": "Zapisz"
  },
  "account": {
   "title": "Konto",
@@ -519,7 +522,16 @@
   "passwordSaved": "Hasło zmienione.",
   "changeEmail": "Zmień e-mail",
   "newEmail": "Nowy e-mail",
-  "emailChangeSent": "Sprawdź nowy adres — dostaniesz link do potwierdzenia zmiany."
+  "emailChangeSent": "Sprawdź nowy adres — dostaniesz link do potwierdzenia zmiany.",
+  "cancel": "Anuluj",
+  "deleteLocalData": "Usuń wszystkie dane na tym urządzeniu",
+  "deleteLocalDataWarning": "To usunie każdą serię, trening i statystykę zapisane na tym urządzeniu — nigdzie nie ma kopii zapasowej. Tego nie można cofnąć.",
+  "deleteLocalDataWarningSynced": "To usunie każdą serię, trening i statystykę zapisane na tym urządzeniu. Twoje konto zachowa własną kopię — zaloguj się ponownie, aby ją odzyskać.",
+  "deleteLocalDataConfirm": "Tak, usuń wszystko na tym urządzeniu",
+  "deleteLocalDataDone": "Usunięto.",
+  "deleteAccount": "Usuń konto",
+  "deleteAccountWarning": "To trwale usunie twoje konto i wszystko, co w nim jest — każdą serię, trening i statystykę, na każdym urządzeniu. Tego nie można cofnąć.",
+  "deleteAccountConfirm": "Tak, usuń moje konto"
  },
  "splash": {
   "tagline": "Trenuj mądrzej"

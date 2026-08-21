@@ -216,6 +216,30 @@ export function useAuth() {
     if (native && data?.url) startNativeOAuth(data.url);
   }, []);
 
+  /**
+   * Deletes the account, not just its data. `delete_own_account()`
+   * (`supabase/migrations/0005_delete_account.sql`) removes the row in
+   * `auth.users`; every table a user owns references it `on delete cascade`,
+   * so the profile, log, programmes, training maxes, known maxes and
+   * body-weight history all go with it in one statement. Signs out
+   * afterwards on principle — the session Supabase issued is for an account
+   * that, by the time this returns, no longer exists — though the row being
+   * gone already makes it unusable regardless. Clearing this device's own
+   * local copy is the caller's job (see `clearAll` in `lib/storage.ts`):
+   * this function only knows about the account.
+   */
+  const deleteAccount = useCallback(async () => {
+    if (!supabase) return false;
+    setError(null);
+    const { error } = await supabase.rpc("delete_own_account");
+    if (error) {
+      setError(error.message);
+      return false;
+    }
+    await supabase.auth.signOut();
+    return true;
+  }, []);
+
   const clearError = useCallback(() => setError(null), []);
 
   return {
@@ -233,5 +257,6 @@ export function useAuth() {
     resetPassword,
     updatePassword,
     updateEmail,
+    deleteAccount,
   };
 }
