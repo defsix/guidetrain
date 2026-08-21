@@ -308,6 +308,7 @@
   "knownMaxNote": "Mit „dein gesetztes Max“ markierte Gewichte stammen aus dem Maximum, das du auf der Statistik-Seite für diese Übung eingetragen hast, nicht aus einem erfassten Satz — eine echte Zahl, nur hier noch nicht gemessen. Trägst du einen Satz ein, übernimmt der.",
   "relatedNote": "Mit „aus“ markierte Gewichte sind von einem bekannten Maximum bei dieser anderen Übung skaliert, nicht an dieser Stange gemessen — eine echte Zahl, nur nicht von hier. Dein eigenes Maximum kannst du auf der Statistik-Seite eintragen.",
   "cycleNote": "Kniebeuge, Bankdrücken, Kreuzheben und Schulterdrücken haben hier jeweils ihr eigenes Trainingsmaximum — dasselbe, das Plan → für diese Übung überall sonst in der App verwendet. Eine Übung ohne erfassten Satz und ohne gesetztes Trainingsmaximum zeigt für die erste Woche „selbst wählen“; setze eines, indem du nach dem Hinzufügen des Trainings Plan → auf dieser Übung öffnest.",
+  "percentNote": "Jede Einheit verlangt einen festen Prozentsatz deines besten bekannten Maximums bei dieser Übung, direkt angewendet statt aus den Wiederholungen geschätzt — die eigenen Zahlen des Programms, nicht die übliche Arbeitsgewicht-Schätzung dieser App.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
   "day": {
    "a": "Training A",
@@ -326,7 +327,31 @@
    "ohp": "Schulterdrücken",
    "deadlift": "Kreuzheben",
    "bench": "Bankdrücken",
-   "squat": "Kniebeuge"
+   "squat": "Kniebeuge",
+   "chestback1": "Brust & Rücken",
+   "shouldersarms1": "Schultern & Arme",
+   "legs1": "Beine",
+   "chestback2": "Brust & Rücken (2)",
+   "shouldersarms2": "Schultern & Arme (2)",
+   "legs2": "Beine (2)",
+   "session1": "Einheit 1",
+   "session2": "Einheit 2",
+   "session3": "Einheit 3",
+   "session4": "Einheit 4",
+   "session5": "Einheit 5",
+   "session6": "Einheit 6",
+   "session7": "Einheit 7",
+   "session8": "Einheit 8",
+   "session9": "Einheit 9",
+   "session10": "Einheit 10",
+   "session11": "Einheit 11",
+   "session12": "Einheit 12",
+   "session13": "Einheit 13",
+   "session14": "Einheit 14",
+   "session15": "Einheit 15",
+   "session16": "Einheit 16",
+   "session17": "Einheit 17",
+   "session18": "Einheit 18"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -368,6 +393,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Vier Hauptübungen, jede mit eigenem Wochenzyklus auf Basis eines Trainingsmaximums, das nur in kleinen Schritten steigt, dazu Zusatzübungen. Das gleiche System wie Plan →, für alle vier Übungen gleichzeitig."
+  },
+  "sixday": {
+   "name": "6-Tage-Split",
+   "desc": "Brust & Rücken, Schultern & Arme und Beine, jede Gruppe zweimal pro Woche — beim zweiten Mal eine andere Übungsauswahl statt derselben wiederholten Einheit. Hohes Volumen, sechs Einheiten pro Woche."
+  },
+  "russianSquat": {
+   "name": "Russisches Kniebeugen-Programm",
+   "desc": "Achtzehn Einheiten über sechs Wochen, dreimal wöchentlich Kniebeuge nach einem Prozentsatz deines Maximums — innerhalb einer Woche gleiches Gewicht und gleiche Wiederholungen, dann schwerer und kürzer. Bewusst brutal repetitiv, eine der meistzitierten Arten, eine Kniebeuge schnell um 5–10 % zu steigern."
+  },
+  "russianBench": {
+   "name": "Russisches Bankdrücken-Programm",
+   "desc": "Die Struktur des russischen Kniebeugen-Programms, angewendet auf Bankdrücken statt Kniebeuge — drei Einheiten pro Woche über sechs Wochen, nach einem Prozentsatz deines Maximums."
+  },
+  "russianDeadlift": {
+   "name": "Russisches Kreuzheben-Programm",
+   "desc": "Die Struktur des russischen Kniebeugen-Programms, angewendet auf Kreuzheben statt Kniebeuge — drei Einheiten pro Woche über sechs Wochen, nach einem Prozentsatz deines Maximums. Eine hohe Frequenz für Kreuzheben — geh mit diesem Wissen hinein."
   },
   "frequency": "Tage pro Woche"
  },
@@ -413,7 +454,8 @@
    "other": "{count} Sätze"
   },
   "best": "bester {weight} {unit} × {reps}",
-  "bestEver": "Bestes geschätztes Maximum {max} {unit}, aus {weight} {unit} × {reps}."
+  "bestEver": "Bestes geschätztes Maximum {max} {unit}, aus {weight} {unit} × {reps}.",
+  "export": "Exportieren (.csv)"
  },
  "account": {
   "title": "Konto",

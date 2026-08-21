@@ -308,6 +308,7 @@
   "knownMaxNote": "Les charges marquées « votre max défini » viennent du maximum que vous avez défini sur la page Statistiques pour cet exercice, pas d'une série enregistrée — un vrai nombre, juste pas encore mesuré ici. Dès que vous enregistrez une série, c'est elle qui prend le relais.",
   "relatedNote": "Les charges marquées « d'après » un autre exercice sont mises à l'échelle depuis un maximum connu sur cet exercice, pas mesurées ici — un vrai nombre, juste pas de cette barre. Définissez le vôtre sur la page Statistiques.",
   "cycleNote": "Le squat, le développé couché, le soulevé de terre et le développé militaire ont chacun leur propre max d'entraînement ici — le même que celui utilisé par Plan → pour ce mouvement partout ailleurs dans l'application. Un mouvement sans série enregistrée et sans max d'entraînement défini affiche « à vous de voir » pour sa première semaine ; définissez-en un en ouvrant Plan → sur ce mouvement après avoir ajouté l'entraînement.",
+  "percentNote": "Chaque séance demande un pourcentage fixe de votre meilleur max connu sur ce mouvement, appliqué tel quel plutôt qu'estimé à partir des répétitions — les chiffres propres au programme, pas l'estimation habituelle de charge de travail de cette application.",
   "loggedNote": "Les séries sont faites pour être terminées : gardez une ou deux répétitions en réserve.",
   "day": {
    "a": "Séance A",
@@ -326,7 +327,31 @@
    "ohp": "Développé militaire",
    "deadlift": "Soulevé de terre",
    "bench": "Développé couché",
-   "squat": "Squat"
+   "squat": "Squat",
+   "chestback1": "Pectoraux & dos",
+   "shouldersarms1": "Épaules & bras",
+   "legs1": "Jambes",
+   "chestback2": "Pectoraux & dos (2)",
+   "shouldersarms2": "Épaules & bras (2)",
+   "legs2": "Jambes (2)",
+   "session1": "Séance 1",
+   "session2": "Séance 2",
+   "session3": "Séance 3",
+   "session4": "Séance 4",
+   "session5": "Séance 5",
+   "session6": "Séance 6",
+   "session7": "Séance 7",
+   "session8": "Séance 8",
+   "session9": "Séance 9",
+   "session10": "Séance 10",
+   "session11": "Séance 11",
+   "session12": "Séance 12",
+   "session13": "Séance 13",
+   "session14": "Séance 14",
+   "session15": "Séance 15",
+   "session16": "Séance 16",
+   "session17": "Séance 17",
+   "session18": "Séance 18"
   },
   "fullbody": {
    "name": "Corps entier",
@@ -368,6 +393,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Quatre mouvements principaux, chacun sur son propre cycle hebdomadaire à partir d'un max d'entraînement qui ne monte que par petits paliers, avec des exercices d'accompagnement. Le même système que Plan →, pour les quatre à la fois."
+  },
+  "sixday": {
+   "name": "Répartition en 6 jours",
+   "desc": "Pectoraux et dos, épaules et bras, puis jambes, chaque groupe travaillé deux fois par semaine — avec un choix d'exercices différent la seconde fois plutôt que la même séance répétée. Volume élevé, six séances par semaine."
+  },
+  "russianSquat": {
+   "name": "Programme russe de squat",
+   "desc": "Dix-huit séances sur six semaines, avec un squat trois fois par semaine à partir d'un pourcentage de votre max — même charge et mêmes répétitions dans la semaine, puis plus lourd et plus court la semaine suivante. Volontairement brutal et répétitif, et l'une des méthodes les plus citées pour ajouter 5 à 10 % à son squat rapidement."
+  },
+  "russianBench": {
+   "name": "Programme russe de développé couché",
+   "desc": "La même structure que le programme russe de squat, appliquée au développé couché plutôt qu'au squat — trois séances par semaine pendant six semaines, à partir d'un pourcentage de votre max."
+  },
+  "russianDeadlift": {
+   "name": "Programme russe de soulevé de terre",
+   "desc": "La même structure que le programme russe de squat, appliquée au soulevé de terre plutôt qu'au squat — trois séances par semaine pendant six semaines, à partir d'un pourcentage de votre max. Une fréquence élevée pour le soulevé de terre : à savoir avant de vous lancer."
   },
   "frequency": "Jours par semaine"
  },
@@ -413,7 +454,8 @@
    "other": "{count} séries"
   },
   "best": "meilleure {weight} {unit} × {reps}",
-  "bestEver": "Meilleur max estimé {max} {unit}, d'après {weight} {unit} × {reps}."
+  "bestEver": "Meilleur max estimé {max} {unit}, d'après {weight} {unit} × {reps}.",
+  "export": "Exporter (.csv)"
  },
  "account": {
   "title": "Compte",

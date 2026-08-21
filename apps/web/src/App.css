@@ -613,6 +613,27 @@
   gap: 12px;
 }
 
+.workout-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-export {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+}
+
+.history-export:hover {
+  border-color: var(--border-strong);
+}
+
 .workout-panel h2 {
   margin: 0;
   font-family: var(--mono);

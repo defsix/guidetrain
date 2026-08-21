@@ -328,6 +328,7 @@
   "knownMaxNote": "Ciężary oznaczone „twoje ustawione maks.” pochodzą z maksimum, które ustawiłeś na stronie Statystyki dla tego ćwiczenia, a nie z zapisanej serii — to prawdziwa liczba, tylko jeszcze niezmierzona tutaj. Gdy zapiszesz serię, to ona przejmie pierwszeństwo.",
   "relatedNote": "Ciężary oznaczone „na podstawie” innego ćwiczenia są przeskalowane ze znanego maksimum na tamtym ćwiczeniu, a nie zmierzone tutaj — to prawdziwa liczba, tylko nie z tej sztangi. Swoje własne maksimum możesz ustawić na stronie Statystyki.",
   "cycleNote": "Przysiad, wyciskanie leżąc, martwy ciąg i wyciskanie żołnierskie mają tu każde swoje własne maksimum treningowe — to samo, którego używa Plan → dla tego ćwiczenia wszędzie indziej w aplikacji. Ćwiczenie bez zapisanej serii i bez ustawionego maksimum treningowego pokazuje w pierwszym tygodniu „wybierz sam”; ustaw je, otwierając Plan → na tym ćwiczeniu po dodaniu treningu.",
+  "percentNote": "Każda sesja wymaga stałego procentu twojego najlepszego znanego maksimum w tym ćwiczeniu, zastosowanego wprost, a nie szacowanego na podstawie powtórzeń — to własne liczby programu, a nie zwykłe przybliżenie ciężaru roboczego z tej aplikacji.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
   "day": {
    "a": "Trening A",
@@ -346,7 +347,31 @@
    "ohp": "Wyciskanie żołnierskie",
    "deadlift": "Martwy ciąg",
    "bench": "Wyciskanie leżąc",
-   "squat": "Przysiad"
+   "squat": "Przysiad",
+   "chestback1": "Klatka piersiowa i plecy",
+   "shouldersarms1": "Barki i ramiona",
+   "legs1": "Nogi",
+   "chestback2": "Klatka piersiowa i plecy (2)",
+   "shouldersarms2": "Barki i ramiona (2)",
+   "legs2": "Nogi (2)",
+   "session1": "Sesja 1",
+   "session2": "Sesja 2",
+   "session3": "Sesja 3",
+   "session4": "Sesja 4",
+   "session5": "Sesja 5",
+   "session6": "Sesja 6",
+   "session7": "Sesja 7",
+   "session8": "Sesja 8",
+   "session9": "Sesja 9",
+   "session10": "Sesja 10",
+   "session11": "Sesja 11",
+   "session12": "Sesja 12",
+   "session13": "Sesja 13",
+   "session14": "Sesja 14",
+   "session15": "Sesja 15",
+   "session16": "Sesja 16",
+   "session17": "Sesja 17",
+   "session18": "Sesja 18"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -388,6 +413,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Cztery główne ćwiczenia, każde na własnym tygodniowym cyklu opartym na maksimum treningowym, które rośnie tylko małymi krokami, plus ćwiczenia dodatkowe. Ten sam system co Plan →, naraz dla wszystkich czterech."
+  },
+  "sixday": {
+   "name": "Split 6-dniowy",
+   "desc": "Klatka piersiowa i plecy, barki i ramiona oraz nogi, każda partia trenowana dwa razy w tygodniu — za drugim razem inny dobór ćwiczeń zamiast powtórzenia tej samej sesji. Wysoka objętość, sześć sesji tygodniowo."
+  },
+  "russianSquat": {
+   "name": "Rosyjski program przysiadu",
+   "desc": "Osiemnaście sesji w sześć tygodni, przysiad trzy razy w tygodniu według procentu twojego maksimum — w ramach tygodnia ten sam ciężar i te same powtórzenia, potem cięższe i krótsze w kolejnym. Celowo brutalnie powtarzalny i jeden z najczęściej przywoływanych sposobów, by szybko dodać 5–10 % do przysiadu."
+  },
+  "russianBench": {
+   "name": "Rosyjski program wyciskania leżąc",
+   "desc": "Ta sama struktura co rosyjski program przysiadu, zastosowana do wyciskania leżąc zamiast przysiadu — trzy sesje tygodniowo przez sześć tygodni, według procentu twojego maksimum."
+  },
+  "russianDeadlift": {
+   "name": "Rosyjski program martwego ciągu",
+   "desc": "Ta sama struktura co rosyjski program przysiadu, zastosowana do martwego ciągu zamiast przysiadu — trzy sesje tygodniowo przez sześć tygodni, według procentu twojego maksimum. Wysoka częstotliwość jak na martwy ciąg — miej to na uwadze."
   },
   "frequency": "Dni w tygodniu"
  },
@@ -441,7 +482,8 @@
    "other": "{count} serii"
   },
   "best": "najlepsza {weight} {unit} × {reps}",
-  "bestEver": "Najlepsze szacowane maksimum {max} {unit}, z {weight} {unit} × {reps}."
+  "bestEver": "Najlepsze szacowane maksimum {max} {unit}, z {weight} {unit} × {reps}.",
+  "export": "Eksportuj (.csv)"
  },
  "account": {
   "title": "Konto",

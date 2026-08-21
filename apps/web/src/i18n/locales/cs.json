@@ -328,6 +328,7 @@
   "knownMaxNote": "Váhy označené „váš zadaný max“ vycházejí z maxima, které jste zadali na stránce Statistiky pro tento cvik, ne ze zaznamenané série — jde o reálné číslo, jen zatím neměřené tady. Jakmile zaznamenáte sérii, převezme to ona.",
   "relatedNote": "Váhy označené „podle“ jiného cviku vycházejí ze známého maxima na tomto cviku, ne z měření tady — jde o reálné číslo, jen ne z této osy. Vlastní si nastavte na stránce Statistiky.",
   "cycleNote": "Dřep, bench press, mrtvý tah a tlak nad hlavou tu mají každý svoje vlastní tréninkové maximum — stejné, jaké používá Plán → pro tento cvik všude jinde v aplikaci. Cvik bez zaznamenané série a bez nastaveného maxima ukazuje pro první týden „zvolte si sami“; tréninkové maximum nastavíte po přidání tréninku otevřením Plánu → na daném cviku.",
+  "percentNote": "Každá jednotka žádá pevné procento vašeho nejlepšího známého maxima na tomto cviku, použité přímo, ne odhadnuté z počtu opakování — jde o vlastní čísla programu, ne o obvyklý odhad pracovní váhy v této aplikaci.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
   "day": {
    "a": "Trénink A",
@@ -346,7 +347,31 @@
    "ohp": "Tlak nad hlavou",
    "deadlift": "Mrtvý tah",
    "bench": "Bench press",
-   "squat": "Dřep"
+   "squat": "Dřep",
+   "chestback1": "Hrudník a záda",
+   "shouldersarms1": "Ramena a paže",
+   "legs1": "Nohy",
+   "chestback2": "Hrudník a záda (2)",
+   "shouldersarms2": "Ramena a paže (2)",
+   "legs2": "Nohy (2)",
+   "session1": "Jednotka 1",
+   "session2": "Jednotka 2",
+   "session3": "Jednotka 3",
+   "session4": "Jednotka 4",
+   "session5": "Jednotka 5",
+   "session6": "Jednotka 6",
+   "session7": "Jednotka 7",
+   "session8": "Jednotka 8",
+   "session9": "Jednotka 9",
+   "session10": "Jednotka 10",
+   "session11": "Jednotka 11",
+   "session12": "Jednotka 12",
+   "session13": "Jednotka 13",
+   "session14": "Jednotka 14",
+   "session15": "Jednotka 15",
+   "session16": "Jednotka 16",
+   "session17": "Jednotka 17",
+   "session18": "Jednotka 18"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -388,6 +413,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Čtyři hlavní cviky, každý na vlastním týdenním cyklu podle tréninkového maxima, které stoupá jen po malých krocích, s doplňkovými cviky k tomu. Stejný systém jako Plán →, najednou pro všechny čtyři cviky."
+  },
+  "sixday": {
+   "name": "6denní split",
+   "desc": "Hrudník a záda, ramena a paže, nohy — každá partie dvakrát týdně, podruhé s jiným výběrem cviků místo opakování stejné jednotky. Vysoký objem, šest jednotek týdně."
+  },
+  "russianSquat": {
+   "name": "Ruský dřepový program",
+   "desc": "Osmnáct jednotek za šest týdnů, dřep třikrát týdně podle procenta z vašeho maxima — v rámci týdne stejná váha a opakování, pak těžší a kratší. Záměrně brutálně opakovaný, jeden z nejcitovanějších způsobů, jak rychle přidat 5–10 % k dřepu."
+  },
+  "russianBench": {
+   "name": "Ruský program na bench press",
+   "desc": "Stejná struktura jako ruský dřepový program, ale na bench press místo dřepu — tři jednotky týdně po šest týdnů, podle procenta z vašeho maxima."
+  },
+  "russianDeadlift": {
+   "name": "Ruský program na mrtvý tah",
+   "desc": "Stejná struktura jako ruský dřepový program, ale na mrtvý tah místo dřepu — tři jednotky týdně po šest týdnů, podle procenta z vašeho maxima. Vysoká frekvence na mrtvý tah — počítejte s tím."
   },
   "frequency": "Dní v týdnu"
  },
@@ -441,7 +482,8 @@
    "other": "{count} sérií"
   },
   "best": "nejlepší {weight} {unit} × {reps}",
-  "bestEver": "Nejlepší odhad maxima {max} {unit}, z {weight} {unit} × {reps}."
+  "bestEver": "Nejlepší odhad maxima {max} {unit}, z {weight} {unit} × {reps}.",
+  "export": "Exportovat (.csv)"
  },
  "account": {
   "title": "Účet",

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Profile } from "../types";
 import type { SetEntry } from "../state/useLog";
-import { PLANS, prescribe, workingLoad } from "./plans";
+import { PLANS, prescribe, prescribePercent, workingLoad } from "./plans";
 
 const profile = (over: Partial<Profile> = {}): Profile =>
   ({
@@ -203,6 +203,66 @@ describe("prescribe", () => {
         }
       }
     });
+  });
+});
+
+describe("prescribePercent", () => {
+  it("applies the percent literally, not through workingLoad's Epley formula", () => {
+    // 80% of a 140 kg max is 112 kg exactly — workingLoad(140, 2) would give
+    // something else entirely, since it estimates a working weight from a
+    // rep count rather than taking a stated percentage at face value.
+    const p = prescribePercent("Barbell_Squat", 80, [set(140, 1)], undefined);
+    expect(p.source).toBe("logged");
+    expect(p.load).toBe(112.5); // 112 rounded to the 2.5 kg loadable step
+  });
+
+  it("prefers a logged set over a hand-set known max, same precedence as prescribe", () => {
+    const p = prescribePercent("Barbell_Squat", 80, [set(140, 1)], () => 999);
+    expect(p.source).toBe("logged");
+  });
+
+  it("falls back to a known max when nothing is logged", () => {
+    const p = prescribePercent("Barbell_Squat", 80, [], (id) =>
+      id === "Barbell_Squat" ? 140 : null,
+    );
+    expect(p.source).toBe("knownMax");
+    expect(p.load).toBe(112.5);
+  });
+
+  it("has no body-weight fallback — a percent of nothing is nothing", () => {
+    const p = prescribePercent("Barbell_Squat", 80, [], () => null);
+    expect(p.source).toBe("unknown");
+    expect(p.load).toBe(0);
+  });
+});
+
+describe("the Russian cycle plans", () => {
+  it("run all eighteen sessions on the right lift, ending in the all-out single", () => {
+    const cases: [string, string][] = [
+      ["russianSquat", "Barbell_Squat"],
+      ["russianBench", "Barbell_Bench_Press_-_Medium_Grip"],
+      ["russianDeadlift", "Barbell_Deadlift"],
+    ];
+    for (const [planId, liftId] of cases) {
+      const plan = PLANS.find((p) => p.id === planId);
+      expect(plan, planId).toBeDefined();
+      expect(plan!.variants).toHaveLength(1);
+      const days = plan!.variants[0].days;
+      expect(days, planId).toHaveLength(18);
+      expect(days.map((d) => d.name)).toEqual(
+        Array.from({ length: 18 }, (_, i) => `session${i + 1}`),
+      );
+      for (const day of days) {
+        expect(day.exercises, planId).toHaveLength(1);
+        expect(day.exercises[0].id, planId).toBe(liftId);
+        expect(day.exercises[0].pct, planId).toBeGreaterThan(0);
+      }
+      // The first session is the routine's own baseline, and the last is
+      // the max-test single above the starting max — checked against the
+      // source table rather than only shape-checked.
+      expect(days[0].exercises[0]).toMatchObject({ pct: 80, sets: 6, reps: 2 });
+      expect(days[17].exercises[0]).toMatchObject({ pct: 105, sets: 1, reps: 1 });
+    }
   });
 });
 

@@ -482,6 +482,26 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Four more ready-made plans, and a CSV export of your whole log.** A real
+  6-day split (chest & back, shoulders & arms, legs, each twice a week with a
+  genuinely different exercise selection the second time round rather than
+  the same three days repeated), plus the Russian Squat Routine and the same
+  eighteen-session shape run on bench press and deadlift. The Russian table
+  is a literal percent of a max per session (checked against two independent
+  write-ups —
+  [LiftVault](https://liftvault.com/programs/powerlifting/russian-squat-routine-spreadsheet/),
+  [Cast Iron Strength](https://www.castironstrength.com/russian-squat-routine/)
+  — which agree on all eighteen rows), not `prescribe()`'s usual
+  Epley-and-back-off working weight: a new `prescribePercent()` in `plans.ts`
+  applies the stated percentage directly, so "80%" on the table stays 80% on
+  the screen regardless of the rep count that session asks for. Bench and
+  deadlift run the same shape as an extension of the original squat-only
+  routine, not a separately documented program of their own — deadlift in
+  particular is not usually trained at this frequency, offered here as asked
+  for rather than as this app's own recommendation. History gained an
+  "Export (.csv)" button next to its title, next to the close button —
+  every logged set, oldest first, as a UTF-8 CSV with a BOM so Excel opens
+  translated exercise names correctly instead of guessing the wrong codepage.
 - **Three more ready-made plans: StrongLifts 5×5, GZCLP, and 5/3/1 as a full
   four-day plan** rather than the single-lift panel it lived in before.
   StrongLifts and GZCLP are structurally the same kind of thing the plan

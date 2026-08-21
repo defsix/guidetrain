@@ -308,6 +308,7 @@
   "knownMaxNote": "Os pesos marcados «o seu máximo definido» vêm do máximo que definiu na página de Estatísticas para este exercício, não de uma série registada — um número real, só que ainda não medido aqui. Assim que registar uma série, essa passa a valer.",
   "relatedNote": "Os pesos marcados «de» outro exercício são escalados a partir de um máximo conhecido nesse exercício, não medidos aqui — um número real, só que não desta barra. Defina o seu próprio na página de Estatísticas.",
   "cycleNote": "O agachamento, o supino, o levantamento terra e o desenvolvimento têm aqui o seu próprio máximo de treino — o mesmo que o Plano → usa para esse exercício em qualquer outro lugar da aplicação. Um exercício sem série registada e sem máximo de treino definido mostra «escolha você» na primeira semana; defina um abrindo o Plano → nesse exercício depois de adicionar o treino.",
+  "percentNote": "Cada sessão pede uma percentagem fixa do seu melhor máximo conhecido neste exercício, aplicada diretamente em vez de estimada a partir das repetições — os números do próprio programa, não a estimativa habitual desta app para o peso de trabalho.",
   "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
   "day": {
    "a": "Treino A",
@@ -326,7 +327,31 @@
    "ohp": "Desenvolvimento",
    "deadlift": "Levantamento terra",
    "bench": "Supino",
-   "squat": "Agachamento"
+   "squat": "Agachamento",
+   "chestback1": "Peito & costas",
+   "shouldersarms1": "Ombros & braços",
+   "legs1": "Pernas",
+   "chestback2": "Peito & costas (2)",
+   "shouldersarms2": "Ombros & braços (2)",
+   "legs2": "Pernas (2)",
+   "session1": "Sessão 1",
+   "session2": "Sessão 2",
+   "session3": "Sessão 3",
+   "session4": "Sessão 4",
+   "session5": "Sessão 5",
+   "session6": "Sessão 6",
+   "session7": "Sessão 7",
+   "session8": "Sessão 8",
+   "session9": "Sessão 9",
+   "session10": "Sessão 10",
+   "session11": "Sessão 11",
+   "session12": "Sessão 12",
+   "session13": "Sessão 13",
+   "session14": "Sessão 14",
+   "session15": "Sessão 15",
+   "session16": "Sessão 16",
+   "session17": "Sessão 17",
+   "session18": "Sessão 18"
   },
   "fullbody": {
    "name": "Corpo inteiro",
@@ -368,6 +393,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Quatro exercícios principais, cada um com o seu próprio ciclo semanal a partir de um máximo de treino que só sobe aos poucos, com exercícios de apoio a acompanhar. O mesmo sistema do Plano →, para os quatro ao mesmo tempo."
+  },
+  "sixday": {
+   "name": "Divisão de 6 dias",
+   "desc": "Peito e costas, ombros e braços, e pernas, cada grupo treinado duas vezes por semana — com uma seleção de exercícios diferente da segunda vez, em vez da mesma sessão repetida. Volume elevado, seis sessões por semana."
+  },
+  "russianSquat": {
+   "name": "Rotina russa de agachamento",
+   "desc": "Dezoito sessões ao longo de seis semanas, com agachamento três vezes por semana a partir de uma percentagem do seu máximo — o mesmo peso e as mesmas repetições dentro da semana, depois mais pesado e mais curto na seguinte. Deliberadamente repetitivo, e uma das formas mais citadas de acrescentar 5–10 % a um agachamento rapidamente."
+  },
+  "russianBench": {
+   "name": "Rotina russa de supino",
+   "desc": "A mesma estrutura da rotina russa de agachamento, aplicada ao supino em vez do agachamento — três sessões por semana durante seis semanas, a partir de uma percentagem do seu máximo."
+  },
+  "russianDeadlift": {
+   "name": "Rotina russa de levantamento terra",
+   "desc": "A mesma estrutura da rotina russa de agachamento, aplicada ao levantamento terra em vez do agachamento — três sessões por semana durante seis semanas, a partir de uma percentagem do seu máximo. Uma frequência alta para o levantamento terra; entre já a saber isso."
   },
   "frequency": "Dias por semana"
  },
@@ -413,7 +454,8 @@
    "other": "{count} séries"
   },
   "best": "melhor {weight} {unit} × {reps}",
-  "bestEver": "Melhor máximo estimado {max} {unit}, a partir de {weight} {unit} × {reps}."
+  "bestEver": "Melhor máximo estimado {max} {unit}, a partir de {weight} {unit} × {reps}.",
+  "export": "Exportar (.csv)"
  },
  "account": {
   "title": "Conta",

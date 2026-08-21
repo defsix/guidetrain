@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
 import type { SetEntry } from "../state/useLog";
 import { estimateOneRepMax, roundLoad } from "../lib/progression";
+import { setsToCsv, downloadCsv } from "../lib/csvExport";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = { id: string; name: string; equipment?: string; instructions: string[] };
@@ -102,6 +103,12 @@ export default function HistoryPanel({ open, onClose, sets }: Props) {
   const u = t("unit.kg");
   if (!open) return null;
 
+  function exportCsv() {
+    const csv = setsToCsv(sets, name);
+    const today = new Date().toISOString().slice(0, 10);
+    downloadCsv(`guidetrain-history-${today}.csv`, csv);
+  }
+
   const fmtDate = (at: number) =>
     new Date(at).toLocaleDateString(undefined, {
       weekday: "short",
@@ -118,9 +125,16 @@ export default function HistoryPanel({ open, onClose, sets }: Props) {
       <aside className="history-panel" aria-label={t("history.title")}>
         <div className="workout-head">
           <h2>{t("history.title")}</h2>
-          <button className="workout-close" onClick={onClose} aria-label={t("history.close")}>
-            ✕
-          </button>
+          <div className="workout-head-actions">
+            {sets.length > 0 && (
+              <button className="history-export" onClick={exportCsv}>
+                {t("history.export")}
+              </button>
+            )}
+            <button className="workout-close" onClick={onClose} aria-label={t("history.close")}>
+              ✕
+            </button>
+          </div>
         </div>
 
         {sets.length === 0 ? (

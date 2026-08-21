@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import exercises from "../anatomy/exercises.json";
-import { PLANS, prescribe } from "../lib/plans";
+import { PLANS, prescribe, prescribePercent } from "../lib/plans";
 import type { PlanTemplate } from "../lib/plans";
 import { bestEstimate, mainLiftWeek1, goalPace, incrementFor } from "../lib/progression";
 import { usesLegs } from "../lib/muscleRegions";
@@ -131,6 +131,17 @@ export default function PlanLibrary({
             relatedTo: undefined,
           };
         }
+        if (e.pct) {
+          // A Russian-cycle row: a literal percent of a max, not `prescribe`'s
+          // Epley-derived working weight — see `prescribePercent`.
+          const p = prescribePercent(e.id, e.pct, byExercise.get(e.id) ?? [], knownMax);
+          return {
+            ...e,
+            load: p.source === "unknown" ? undefined : p.load,
+            source: p.source,
+            relatedTo: undefined,
+          };
+        }
         const p = prescribe(e.id, e.reps, byExercise.get(e.id) ?? [], profile, knownMax);
         return {
           ...e,
@@ -158,6 +169,11 @@ export default function PlanLibrary({
   // is exactly what explains why opening Plan → on it after adding the
   // workout is the way to fix that.
   const isCyclePlan = chosen?.variants.some((v) => v.days.some((d) => d.exercises.some((e) => e.mainLift)));
+  // Same idea for the Russian routines: every one of the eighteen sessions
+  // is a genuinely different weight, computed as a percent of a max rather
+  // than estimated from a rep count, and that is worth saying once rather
+  // than leaving each session's number looking arbitrary next to the last.
+  const isPercentPlan = chosen?.variants.some((v) => v.days.some((d) => d.exercises.some((e) => e.pct)));
 
   const u = t("unit.kg");
   if (!open) return null;
@@ -309,6 +325,7 @@ export default function PlanLibrary({
             {hasKnownMax && <p className="plan-note flag">{t("plans.knownMaxNote")}</p>}
             {hasRelatedLift && <p className="plan-note flag">{t("plans.relatedNote")}</p>}
             {isCyclePlan && <p className="plan-note flag">{t("plans.cycleNote")}</p>}
+            {isPercentPlan && <p className="plan-note flag">{t("plans.percentNote")}</p>}
             <p className="plan-note">{t("plans.loggedNote")}</p>
             {/* The weights above are not just a preview any more — they go into
                 the workout, where the logger offers them back set by set. */}

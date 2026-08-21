@@ -1,6 +1,6 @@
 import exercises from "../anatomy/exercises.json";
 import type { Profile } from "../types";
-import { estimateOneRepMax, roundLoad, LOAD_STEP } from "./progression";
+import { bestEstimate, estimateOneRepMax, roundLoad, LOAD_STEP } from "./progression";
 import type { SetEntry } from "../state/useLog";
 
 /**
@@ -39,6 +39,16 @@ export type PlanExercise = {
    * where there is no training max yet to build a real week from.
    */
   mainLift?: boolean;
+  /**
+   * This row's weight is a literal percent of a one-rep max — the Russian
+   * Squat/Bench/Deadlift routines below — rather than `prescribe()`'s usual
+   * Epley-and-back-off working weight. The program's own table names a
+   * percentage directly (`80% x 6 x 2`), and running that through
+   * `workingLoad` would quietly turn 80% into something else depending on
+   * the rep count, which is not what the source table says to do. See
+   * `prescribePercent`.
+   */
+  pct?: number;
 };
 export type PlanDay = { name: string; exercises: PlanExercise[] };
 /** One frequency a plan can be run at — its own day list, not a relabelling. */
@@ -60,6 +70,42 @@ export type PlanTemplate = {
    */
   variants: PlanVariant[];
 };
+
+/**
+ * The Russian Squat Routine's eighteen sessions: percent of a one-rep max,
+ * sets, reps. Checked against two independent write-ups rather than
+ * recalled — see the "russianSquat" plan entry below for the sources, which
+ * agree row for row. The last row is the all-out single the whole cycle
+ * builds to, above the max it started from.
+ */
+const RUSSIAN_TABLE: { pct: number; sets: number; reps: number }[] = [
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 80, sets: 6, reps: 3 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 80, sets: 6, reps: 4 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 80, sets: 6, reps: 5 },
+  { pct: 85, sets: 6, reps: 2 },
+  { pct: 80, sets: 6, reps: 6 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 85, sets: 5, reps: 5 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 90, sets: 4, reps: 4 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 95, sets: 3, reps: 3 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 100, sets: 2, reps: 2 },
+  { pct: 80, sets: 6, reps: 2 },
+  { pct: 105, sets: 1, reps: 1 },
+];
+
+/** `RUSSIAN_TABLE`, as the named days one exercise runs it on. */
+function russianDays(exerciseId: string): PlanDay[] {
+  return RUSSIAN_TABLE.map((row, i) => ({
+    name: `session${i + 1}`,
+    exercises: [{ id: exerciseId, sets: row.sets, reps: row.reps, pct: row.pct }],
+  }));
+}
 
 /**
  * A small, well-worn set of shapes rather than a large invented one. Each is a
@@ -497,6 +543,106 @@ export const PLANS: PlanTemplate[] = [
       },
     ],
   },
+  {
+    // A real 6-day split, not a rotation run more often for free — the two
+    // passes through chest/back, shoulders/arms and legs each week use a
+    // different exercise selection (horizontal press/row first, then
+    // incline/pulldown; quad-dominant legs first, then a hinge-dominant
+    // second pass), so a shorter week genuinely loses variety rather than
+    // just repeating the same three days less often — the same reasoning
+    // "bodypart" above already applies to its own frequency change.
+    id: "sixday",
+    variants: [
+      {
+        perWeek: 6,
+        days: [
+          {
+            name: "chestback1",
+            exercises: [
+              { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 4, reps: 8 },
+              { id: "Bent_Over_Barbell_Row", sets: 4, reps: 8 },
+              { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
+              { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "shouldersarms1",
+            exercises: [
+              { id: "Standing_Military_Press", sets: 4, reps: 8 },
+              { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 8 },
+              { id: "Barbell_Curl", sets: 3, reps: 10 },
+              { id: "Upright_Barbell_Row", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "legs1",
+            exercises: [
+              { id: "Barbell_Squat", sets: 4, reps: 8 },
+              { id: "Leg_Press", sets: 3, reps: 10 },
+              { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
+              { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "chestback2",
+            exercises: [
+              { id: "Barbell_Incline_Bench_Press_-_Medium_Grip", sets: 4, reps: 10 },
+              { id: "Wide-Grip_Lat_Pulldown", sets: 4, reps: 10 },
+              { id: "One-Arm_Dumbbell_Row", sets: 3, reps: 12 },
+              { id: "Face_Pull", sets: 3, reps: 15 },
+            ],
+          },
+          {
+            name: "shouldersarms2",
+            exercises: [
+              { id: "Standing_Dumbbell_Upright_Row", sets: 3, reps: 12 },
+              { id: "Alternate_Hammer_Curl", sets: 3, reps: 12 },
+              { id: "Face_Pull", sets: 3, reps: 15 },
+              { id: "Close-Grip_Barbell_Bench_Press", sets: 3, reps: 10 },
+            ],
+          },
+          {
+            name: "legs2",
+            exercises: [
+              { id: "Romanian_Deadlift", sets: 4, reps: 8 },
+              { id: "Barbell_Squat", sets: 3, reps: 10 },
+              { id: "Seated_Leg_Curl", sets: 3, reps: 12 },
+              { id: "Seated_Calf_Raise", sets: 3, reps: 15 },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    // The Russian Squat Routine — eighteen sessions, three a week for six
+    // weeks, at a literal percent of a one-rep max rather than a working
+    // weight this app estimates. Every session but the last two returns to
+    // 80%; the sessions between are what actually overloads the lift, first
+    // by adding reps to that same 80% (weeks 1–3), then by raising the
+    // percentage itself while volume drops (weeks 4–6), ending in an all-out
+    // single above the starting max. Table checked against two independent
+    // sources rather than recalled — https://liftvault.com/programs/powerlifting/russian-squat-routine-spreadsheet/
+    // and https://www.castironstrength.com/russian-squat-routine/, which
+    // agree on all eighteen rows.
+    //
+    // Bench and deadlift below run the identical eighteen-row shape on a
+    // different lift — a well-known extension of this program within
+    // powerlifting, not a separately documented "Russian Bench/Deadlift
+    // Routine" of its own. Deadlift in particular is not usually trained at
+    // this frequency; the routine is offered here as asked for, not as
+    // something this app is recommending over its usual pull frequency.
+    id: "russianSquat",
+    variants: [{ perWeek: 3, days: russianDays("Barbell_Squat") }],
+  },
+  {
+    id: "russianBench",
+    variants: [{ perWeek: 3, days: russianDays("Barbell_Bench_Press_-_Medium_Grip") }],
+  },
+  {
+    id: "russianDeadlift",
+    variants: [{ perWeek: 3, days: russianDays("Barbell_Deadlift") }],
+  },
 ];
 
 /** An Olympic bar. Nothing barbell can be prescribed below it. */
@@ -747,4 +893,34 @@ export function prescribe(
   // else — a plan asking for 6 kg on a barbell is a plan you cannot follow.
   const floor = BARBELL.has(exerciseId) ? BAR : LOAD_STEP;
   return { load: Math.max(floor, roundLoad(raw)), source: "bodyweight" };
+}
+
+/**
+ * The working weight for one row of a percent-of-max cycle — the Russian
+ * routines above — as `pct` percent of a one-rep max, not run through
+ * `workingLoad`'s Epley-and-back-off. That formula is `prescribe`'s own
+ * estimate of a working weight from a rep count; these rows already carry
+ * the program's own percentage, and estimating on top of a number that is
+ * not an estimate would silently change what the table actually says.
+ *
+ * Resolution order matches `prescribe`: a logged set on this exact exercise
+ * outranks a hand-set known max, same reasoning as there — a set that
+ * actually happened is realer than a number typed in, even when both would
+ * answer the same question. No body-weight fallback: a percent of a max
+ * needs a real max to be a percent of, and a demographic guess is not one —
+ * same refusal `prescribe` makes for the 5/3/1 planner, for the same reason.
+ */
+export function prescribePercent(
+  exerciseId: string,
+  pct: number,
+  logged: SetEntry[],
+  knownMax?: (id: string) => number | null,
+): Prescription {
+  const best = bestEstimate(logged);
+  if (best) return { load: roundLoad((best.oneRM * pct) / 100), source: "logged" };
+
+  const ownMax = knownMax?.(exerciseId);
+  if (ownMax) return { load: roundLoad((ownMax * pct) / 100), source: "knownMax" };
+
+  return { load: 0, source: "unknown" };
 }

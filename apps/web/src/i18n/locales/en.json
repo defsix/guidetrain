@@ -308,6 +308,7 @@
   "knownMaxNote": "Weights marked “your set max” come from the max you set on the Stats page for this lift, not a logged set — a real number, just not measured here yet. Log a set and it takes over.",
   "relatedNote": "Weights marked “from” another lift are scaled from a known max on that lift, not measured on this one — a real number, just not this bar's. Set your own on the Stats page.",
   "cycleNote": "Squat, bench, deadlift and overhead press each carry their own training max here — the same one Plan → uses for that lift everywhere else in the app. A lift with nothing logged and no training max set shows “pick your own” for its first week; open Plan → on it after adding the workout to set one.",
+  "percentNote": "Each session asks for a set percent of your best known max on this lift, applied directly rather than estimated from the reps — the program's own numbers, not this app's usual working-weight guess.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
   "day": {
    "a": "Workout A",
@@ -326,7 +327,31 @@
    "ohp": "Overhead press",
    "deadlift": "Deadlift",
    "bench": "Bench press",
-   "squat": "Squat"
+   "squat": "Squat",
+   "chestback1": "Chest & back",
+   "shouldersarms1": "Shoulders & arms",
+   "legs1": "Legs",
+   "chestback2": "Chest & back (2)",
+   "shouldersarms2": "Shoulders & arms (2)",
+   "legs2": "Legs (2)",
+   "session1": "Session 1",
+   "session2": "Session 2",
+   "session3": "Session 3",
+   "session4": "Session 4",
+   "session5": "Session 5",
+   "session6": "Session 6",
+   "session7": "Session 7",
+   "session8": "Session 8",
+   "session9": "Session 9",
+   "session10": "Session 10",
+   "session11": "Session 11",
+   "session12": "Session 12",
+   "session13": "Session 13",
+   "session14": "Session 14",
+   "session15": "Session 15",
+   "session16": "Session 16",
+   "session17": "Session 17",
+   "session18": "Session 18"
   },
   "fullbody": {
    "name": "Full body",
@@ -368,6 +393,22 @@
   "531": {
    "name": "5/3/1",
    "desc": "Four main lifts, each on its own weekly cycle off a training max that only ever climbs in small steps, with assistance work alongside. The same system as Plan →, for all four lifts at once."
+  },
+  "sixday": {
+   "name": "6-day split",
+   "desc": "Chest & back, shoulders & arms, and legs, each trained twice a week — a different exercise selection the second time round rather than the same session repeated. High volume, six sessions a week."
+  },
+  "russianSquat": {
+   "name": "Russian Squat Routine",
+   "desc": "Eighteen sessions over six weeks, squatting three times a week off a percent of your max — the same weight and reps within a week, then heavier and shorter the next. Brutally repetitive by design, and one of the most-cited ways to add 5–10% to a squat fast."
+  },
+  "russianBench": {
+   "name": "Russian Bench Routine",
+   "desc": "The Russian Squat Routine's shape, run on bench press instead of squat — three sessions a week for six weeks, off a percent of your max."
+  },
+  "russianDeadlift": {
+   "name": "Russian Deadlift Routine",
+   "desc": "The Russian Squat Routine's shape, run on deadlift instead of squat — three sessions a week for six weeks, off a percent of your max. A high frequency for a deadlift; go in knowing that."
   },
   "frequency": "Days a week"
  },
@@ -413,7 +454,8 @@
    "other": "{count} sets"
   },
   "best": "best {weight} {unit} × {reps}",
-  "bestEver": "Best estimated max {max} {unit}, from {weight} {unit} × {reps}."
+  "bestEver": "Best estimated max {max} {unit}, from {weight} {unit} × {reps}.",
+  "export": "Export (.csv)"
  },
  "account": {
   "title": "Account",
