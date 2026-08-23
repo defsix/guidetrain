@@ -209,6 +209,14 @@
   "allMuscles": "Wszystkie",
   "empty": "Nic tu jeszcze nie ma dla tego mięśnia."
  },
+ "stretching": {
+  "title": "Rozciąganie",
+  "close": "Zamknij rozciąganie",
+  "intro": "Tylko do przeglądania — nic tu nie jest zapisywane. Dotknij nazwy, aby zobaczyć instrukcje, dotknij Trzymaj, aby uruchomić stoper.",
+  "empty": "Nic tu jeszcze nie ma dla tego mięśnia.",
+  "start": "Trzymaj",
+  "stop": "Zatrzymaj"
+ },
  "log": {
   "addSet": "Dodaj serię",
   "weight": "Ciężar",

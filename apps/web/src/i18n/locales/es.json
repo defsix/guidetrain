@@ -201,6 +201,14 @@
   "allMuscles": "Todos",
   "empty": "Aún no hay nada para este músculo."
  },
+ "stretching": {
+  "title": "Estiramientos",
+  "close": "Cerrar estiramientos",
+  "intro": "Solo para consultar — aquí no se registra nada. Toca un nombre para ver las instrucciones, toca Mantener para un temporizador.",
+  "empty": "Aún no hay nada para este músculo.",
+  "start": "Mantener",
+  "stop": "Detener"
+ },
  "log": {
   "addSet": "Añadir serie",
   "weight": "Peso",

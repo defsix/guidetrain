@@ -201,6 +201,14 @@
   "allMuscles": "Alle",
   "empty": "Für diesen Muskel gibt es noch nichts."
  },
+ "stretching": {
+  "title": "Stretching",
+  "close": "Stretching schließen",
+  "intro": "Nur zum Ansehen — hier wird nichts eingetragen. Tippe auf einen Namen für Anleitungen, tippe auf Halten für einen Timer.",
+  "empty": "Für diesen Muskel gibt es noch nichts.",
+  "start": "Halten",
+  "stop": "Stoppen"
+ },
  "log": {
   "addSet": "Satz hinzufügen",
   "weight": "Gewicht",

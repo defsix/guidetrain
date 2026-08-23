@@ -201,6 +201,14 @@
   "allMuscles": "Todos",
   "empty": "Ainda não há nada aqui para este músculo."
  },
+ "stretching": {
+  "title": "Alongamento",
+  "close": "Fechar alongamento",
+  "intro": "Apenas para consulta — nada aqui é registado. Toque num nome para ver as instruções, toque em Manter para iniciar um temporizador.",
+  "empty": "Ainda não há nada aqui para este músculo.",
+  "start": "Manter",
+  "stop": "Parar"
+ },
  "log": {
   "addSet": "Adicionar série",
   "weight": "Peso",

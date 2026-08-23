@@ -12,6 +12,7 @@ import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
 import CalisthenicsLibrary from "../components/CalisthenicsLibrary";
+import StretchingLibrary from "../components/StretchingLibrary";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
@@ -69,6 +70,7 @@ export default function BodyExplorer() {
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
   const [showCalisthenics, setShowCalisthenics] = useState(false);
+  const [showStretching, setShowStretching] = useState(false);
   const [showHint] = useState(isEarlyVisit);
   // On a phone, a selected muscle opens a bottom sheet over the model — the
   // same area the hint/recs card floats in, so either would sit right on
@@ -134,6 +136,16 @@ export default function BodyExplorer() {
       aria-expanded={showCalisthenics}
     >
       {t("calisthenics.title")}
+    </button>
+  );
+
+  const stretchingButton = profile && (
+    <button
+      className="workout-button"
+      onClick={() => setShowStretching(true)}
+      aria-expanded={showStretching}
+    >
+      {t("stretching.title")}
     </button>
   );
 
@@ -225,7 +237,7 @@ export default function BodyExplorer() {
           onToggleSave={programs.toggle}
           equipmentAvailable={profile?.equipment}
           injuries={injuries.injuries}
-          toolbarExtra={<>{workoutButton}{calisthenicsButton}</>}
+          toolbarExtra={<>{workoutButton}{calisthenicsButton}{stretchingButton}</>}
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
         />
         {/* A real number to act on takes priority over the generic
@@ -376,6 +388,11 @@ export default function BodyExplorer() {
         onClose={() => setShowCalisthenics(false)}
         programIds={programs.ids}
         onToggle={programs.toggle}
+        injuries={injuries.injuries}
+      />
+      <StretchingLibrary
+        open={showStretching}
+        onClose={() => setShowStretching(false)}
         injuries={injuries.injuries}
       />
     </div>

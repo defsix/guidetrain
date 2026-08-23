@@ -201,6 +201,14 @@
   "allMuscles": "Tous",
   "empty": "Rien ici pour ce muscle pour l'instant."
  },
+ "stretching": {
+  "title": "Étirements",
+  "close": "Fermer les étirements",
+  "intro": "Consultation uniquement — rien n'est enregistré ici. Touchez un nom pour voir les instructions, touchez Maintenir pour lancer un minuteur.",
+  "empty": "Rien ici pour ce muscle pour l'instant.",
+  "start": "Maintenir",
+  "stop": "Arrêter"
+ },
  "log": {
   "addSet": "Ajouter une série",
   "weight": "Charge",

@@ -201,6 +201,14 @@
   "allMuscles": "All",
   "empty": "Nothing here for this muscle yet."
  },
+ "stretching": {
+  "title": "Stretching",
+  "close": "Close stretching",
+  "intro": "Browse only — nothing here is logged. Tap a name for instructions, tap Hold for a timer.",
+  "empty": "Nothing here for this muscle yet.",
+  "start": "Hold",
+  "stop": "Stop"
+ },
  "log": {
   "addSet": "Add set",
   "weight": "Weight",

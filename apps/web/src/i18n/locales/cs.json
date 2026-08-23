@@ -209,6 +209,14 @@
   "allMuscles": "Vše",
   "empty": "Pro tento sval tu zatím nic není."
  },
+ "stretching": {
+  "title": "Strečink",
+  "close": "Zavřít strečink",
+  "intro": "Pouze k prohlížení — nic se tu nezaznamenává. Klepnutím na název zobrazíte pokyny, klepnutím na Držet spustíte časovač.",
+  "empty": "Pro tento sval tu zatím nic není.",
+  "start": "Držet",
+  "stop": "Zastavit"
+ },
  "log": {
   "addSet": "Přidat sérii",
   "weight": "Váha",

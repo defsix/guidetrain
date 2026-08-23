@@ -491,6 +491,22 @@ Newest first. Numbers in brackets are pull requests.
   lightened from `#98a2b3` to `#adb6c4` (8.9:1) — real headroom past AA
   rather than a value that only ever cleared it, in both directions from a
   single shared token.
+- **A Stretching library** — a browse-only list of stretches, its own pill
+  next to Calisthenics in the canvas toolbar. Filterable by muscle, each row
+  expands for instructions, and a "Hold" button starts a countdown for
+  holding it — that's the entire feature. Nothing here is logged, tracked, or
+  touches `Target`/`Program`/history in any way, on purpose: a stretch has no
+  working weight to prescribe. Kept in its own `stretches.json`
+  (`tools/exercises/build-stretches.py`, pulling the "stretching" category
+  the trainable catalogue's own build script already excludes from the same
+  free-exercise-db source) rather than folded into `exercises.json`, so it
+  can never leak into `prescribe()`, `BODYONLY`, or the pair/swap checkers —
+  none of which have any concept of "this isn't trainable." The hold-timer
+  (`useHoldTimer.ts`) is `useRestTimer`'s own drift-proof mechanism (an end
+  timestamp, not a decrementing counter) stripped to just start/remaining/
+  clear; the shared alert sound/vibration both timers use on finishing moved
+  out to `lib/alert.ts` so it's written once. Second and last of the two
+  libraries planned alongside Calisthenics.
 - **A Calisthenics library** — every bodyweight exercise in one place, opened
   from its own pill in the 3D canvas toolbar rather than found one muscle at a
   time. Filterable by muscle, each row expands in place for instructions, and
