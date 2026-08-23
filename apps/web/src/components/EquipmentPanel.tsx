@@ -1,5 +1,6 @@
 import { EQUIPMENT_TAGS, type EquipmentTag, type Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Props = {
   open: boolean;
@@ -21,6 +22,7 @@ type Props = {
  */
 export default function EquipmentPanel({ open, onClose, profile, onChange }: Props) {
   const { t } = useI18n();
+  const swipe = useSwipeDismiss(onClose);
   if (!open) return null;
 
   const current = new Set(profile.equipment ?? []);
@@ -36,7 +38,8 @@ export default function EquipmentPanel({ open, onClose, profile, onChange }: Pro
     <>
       <button className="workout-scrim" aria-label={t("equipmentPanel.close")} onClick={onClose} />
       <aside className="equipment-panel" aria-label={t("equipmentPanel.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("equipmentPanel.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("equipmentPanel.close")}>
             ✕

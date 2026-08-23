@@ -604,6 +604,7 @@
     border: 1px solid var(--border);
     border-radius: 16px;
   }
+  .sheet-handle { display: block; }
 }
 
 .workout-head {
@@ -611,7 +612,30 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+  position: relative;
 }
+
+/* A drag handle for the swipe-down-to-dismiss gesture every one of these
+   sheets shares (see useSwipeDismiss) — shown only where the panel actually
+   is a bottom sheet to swipe. Hidden by default and switched on inside each
+   panel's own mobile breakpoint below, rather than given one of its own:
+   different panels drop to a bottom sheet at slightly different widths, and
+   the handle should always agree with whichever one is currently true. */
+.sheet-handle {
+  display: none;
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--border-strong);
+}
+
+/* The one, brief cue that the gesture registered — before release decides
+   whether it actually closes the panel. */
+.workout-head.dragging { opacity: 0.6; }
 
 .workout-head-actions {
   display: flex;
@@ -1044,6 +1068,7 @@
     border: 1px solid var(--border);
     border-radius: 16px;
   }
+  .sheet-handle { display: block; }
 }
 
 .history-panel h2 {
@@ -1262,6 +1287,7 @@
     border: 1px solid var(--border);
     border-radius: 16px;
   }
+  .sheet-handle { display: block; }
 }
 
 .account-panel h2,
@@ -1818,6 +1844,7 @@
     border: 1px solid var(--border);
     border-radius: 16px;
   }
+  .sheet-handle { display: block; }
 }
 
 .plan-panel h2 {
@@ -2249,6 +2276,7 @@
     border: 1px solid var(--border);
     border-radius: 16px;
   }
+  .sheet-handle { display: block; }
 }
 
 .plans-panel h2 {

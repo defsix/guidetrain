@@ -11,6 +11,7 @@ import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import AutocompleteInput from "./AutocompleteInput";
 
 type Props = {
@@ -167,6 +168,7 @@ export default function StatsPanel({
     [localizedExercises],
   );
 
+  const swipe = useSwipeDismiss(onClose);
   if (!open) return null;
 
   const u = t("unit.kg");
@@ -221,7 +223,8 @@ export default function StatsPanel({
     <>
       <button className="workout-scrim" aria-label={t("stats.close")} onClick={onClose} />
       <aside className="stats-panel" aria-label={t("stats.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("stats.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("stats.close")}>
             ✕

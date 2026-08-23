@@ -5,6 +5,7 @@ import { estimateOneRepMax, roundLoad } from "../lib/progression";
 import { setsToCsv, downloadCsv } from "../lib/csvExport";
 import { useI18n } from "../i18n/I18nProvider";
 import type { TFn } from "../i18n";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Entry = { id: string; name: string; equipment?: string; instructions: string[] };
 
@@ -190,6 +191,7 @@ export default function HistoryPanel({ open, onClose, sets, onEditSet, onRemoveS
   }, [sets]);
 
   const u = t("unit.kg");
+  const swipe = useSwipeDismiss(onClose);
   if (!open) return null;
 
   function exportCsv() {
@@ -222,7 +224,8 @@ export default function HistoryPanel({ open, onClose, sets, onEditSet, onRemoveS
     <>
       <button className="workout-scrim" aria-label={t("history.close")} onClick={onClose} />
       <aside className="history-panel" aria-label={t("history.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("history.title")}</h2>
           <div className="workout-head-actions">
             {sets.length > 0 && (

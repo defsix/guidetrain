@@ -2,6 +2,7 @@ import { injuryFor } from "../lib/injuries";
 import { injuryTag } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Candidate = { id: string; name: string; equipment?: string; primary: string[] };
 
@@ -27,13 +28,15 @@ type Props = {
  */
 export default function SwapPanel({ exercise, candidates, injuries, onPick, onClose }: Props) {
   const { t } = useI18n();
+  const swipe = useSwipeDismiss(onClose);
   if (!exercise) return null;
 
   return (
     <>
       <button className="workout-scrim" aria-label={t("swap.close")} onClick={onClose} />
       <aside className="swap-panel" aria-label={t("swap.title", { name: exercise.name })}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("swap.title", { name: exercise.name })}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("swap.close")}>
             ✕

@@ -12,6 +12,7 @@ import type { Goal } from "../state/useGoals";
 import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { Profile } from "../types";
 import { useRestTimer } from "../state/useRestTimer";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import { restSeconds, REST_EXTEND_SECONDS, bestEstimate } from "../lib/progression";
 import { prescribe, prescribePercent } from "../lib/plans";
 import { usesLegs } from "../lib/muscleRegions";
@@ -106,6 +107,7 @@ export default function WorkoutPanel({
   const [renaming, setRenaming] = useState(false);
   const [draft, setDraft] = useState("");
   const restTimer = useRestTimer();
+  const swipe = useSwipeDismiss(onClose);
 
   const equipmentSet = useMemo(
     () => (equipmentAvailable && equipmentAvailable.length ? new Set(equipmentAvailable) : null),
@@ -213,7 +215,8 @@ export default function WorkoutPanel({
     <>
       <button className="workout-scrim" aria-label={t("workout.close")} onClick={onClose} />
       <aside className="workout-panel" aria-label={t("workout.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("workout.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("workout.close")}>
             ✕

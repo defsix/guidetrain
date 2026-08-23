@@ -482,6 +482,29 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed: the canvas toolbar's pills could wrap onto a second line and
+  overlap the docked Muscle Groups panel below them** — real-device feedback
+  after the Calisthenics/Stretching pills shipped: four pills, one of them
+  "Muscle Groups," were too much for an ordinary phone width at the
+  toolbar's original padding, and the docked panel's position was a
+  hardcoded `top: 58px` that assumed the toolbar could only ever be one
+  line tall. Tightened the pill sizing (smaller font/padding, `nowrap` plus
+  `text-overflow: ellipsis` as a graceful fallback if a translation still
+  doesn't fit) so wrapping is now rare, and — the actual fix for the
+  overlap itself — the panel's offset is a `--toolbar-h` custom property
+  `AnatomyViewer.jsx` keeps current via `ResizeObserver`, not a guess, so
+  it stays correct regardless of how many pills a host app passes in or
+  how tall a translation makes them.
+- **Swipe down to dismiss.** Every bottom sheet in the app — Workout, the
+  plan library, both new exercise libraries, History, Account, Equipment,
+  Progress, Swap, Plan →, and the muscle readout card — can now be closed
+  by dragging its header down, next to the existing tap-the-✕ and
+  tap-the-scrim ways to close one, with a small handle bar shown on the
+  header as the cue that it's draggable. `useSwipeDismiss.ts` is
+  deliberately a committed, threshold-based gesture rather than a live,
+  finger-following drag — scoped to each header specifically, not the
+  scrollable body most of these panels have below it, so a swipe started
+  over a list scrolls the list rather than fighting it for the gesture.
 - **Fixed: secondary text was too low-contrast in both themes** — labels,
   captions, unit suffixes and section headers all read off `--text-muted`,
   which sat at 5.8:1 in light mode and 7.1:1 in dark mode: technically past

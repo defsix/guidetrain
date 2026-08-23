@@ -11,6 +11,7 @@ import { injuryFor, isAvoided } from '../lib/injuries';
 import { injuryTag, injuryNote } from '../lib/injuryMessage';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
+import { useSwipeDismiss } from '../state/useSwipeDismiss';
 import './anatomy.css';
 
 // Regions top to bottom, and the muscles within each in the order they sit on
@@ -238,6 +239,7 @@ export default function AnatomyViewer({
   const rootRef = useRef(null);
   const readoutRef = useRef(null);
   const regionsRef = useRef(null);
+  const toolbarRef = useRef(null);
   const [cover, setCover] = useState(0);
   const [sideCover, setSideCover] = useState(0);
   // Shared with FrameToVisible so the orbit pivot can be kept over the model
@@ -258,6 +260,20 @@ export default function AnatomyViewer({
           ? Math.min(0.5, (list.getBoundingClientRect().width + 12) / rootW)
           : 0,
       );
+      if (root) {
+        // The docked "Muscle Groups" panel used to assume a fixed, single-
+        // line toolbar height (a plain top: 58px in the CSS). Once a host
+        // app starts passing more than one or two pills via toolbarExtra,
+        // long labels — worse still in some translations — wrap onto a
+        // second line, and that guess falls short: the panel then opens
+        // overlapping the wrapped pills instead of below them. Measuring
+        // the real toolbar and exposing it as a custom property lets the
+        // panel's own offset (see anatomy.css) stay correct regardless of
+        // how many pills there are or how tall they end up being.
+        const toolbar = toolbarRef.current;
+        root.style.setProperty('--toolbar-h', toolbar ? `${toolbar.getBoundingClientRect().height}px` : '0px');
+      }
+
       if (!root || !sheet || !overlaps) return setCover(0);
       const rootH = root.getBoundingClientRect().height;
       const sheetH = sheet.getBoundingClientRect().height;
@@ -273,6 +289,7 @@ export default function AnatomyViewer({
     if (readoutRef.current) ro.observe(readoutRef.current);
     if (regionsRef.current) ro.observe(regionsRef.current);
     if (rootRef.current) ro.observe(rootRef.current);
+    if (toolbarRef.current) ro.observe(toolbarRef.current);
     window.addEventListener('resize', measure);
     return () => { ro.disconnect(); window.removeEventListener('resize', measure); };
   }, [selected, openDrill, panel]);
@@ -366,6 +383,9 @@ export default function AnatomyViewer({
     if (z) setPanel(null);
     onSelect && onSelect(z);
   }, [onSelect, region]);
+
+  const closeReadout = useCallback(() => handleSelect(null), [handleSelect]);
+  const readoutSwipe = useSwipeDismiss(closeReadout);
 
   // Train This deals from a shuffled bag, not a die roll: every exercise for
   // this muscle comes up once before any comes up twice. Rolling a die repeats
@@ -477,7 +497,7 @@ export default function AnatomyViewer({
       {/* Phone-only toolbar. The panels below overlay the model, which at this
           width leaves nothing to look at, so they are opened deliberately and
           only one at a time. Hidden at desktop widths, where both simply fit. */}
-      <div className="anatomy-toolbar">
+      <div className="anatomy-toolbar" ref={toolbarRef}>
         {toolbarExtra}
         <button
           className={`tool ${panel === 'regions' ? 'active' : ''}`}
@@ -544,7 +564,11 @@ export default function AnatomyViewer({
       {/* Selection readout, with the exercises that train this muscle */}
       {selected && (
         <div className="anatomy-readout" ref={readoutRef}>
-          <div className="head">
+          <div
+            className={`head ${readoutSwipe.dragging ? 'dragging' : ''}`}
+            {...readoutSwipe.handleProps}
+          >
+            <span className="sheet-handle" aria-hidden="true" />
             <div className="body">
               <div className="mname">{zoneName(selected)}</div>
               <div className="mmeta">{regionName(selected.region)}</div>

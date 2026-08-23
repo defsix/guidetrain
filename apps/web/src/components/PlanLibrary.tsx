@@ -15,6 +15,7 @@ import type { Goal } from "../state/useGoals";
 import type { Injury } from "../state/useInjuries";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Entry = {
   id: string;
@@ -176,13 +177,15 @@ export default function PlanLibrary({
   const isPercentPlan = chosen?.variants.some((v) => v.days.some((d) => d.exercises.some((e) => e.pct)));
 
   const u = t("unit.kg");
+  const swipe = useSwipeDismiss(onClose);
   if (!open) return null;
 
   return (
     <>
       <button className="workout-scrim" aria-label={t("plans.close")} onClick={onClose} />
       <aside className="plans-panel" aria-label={t("plans.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("plans.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("plans.close")}>
             ✕

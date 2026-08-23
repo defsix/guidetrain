@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import stretchesData from "../anatomy/stretches.json";
 import { useHoldTimer } from "../state/useHoldTimer";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
@@ -38,6 +39,7 @@ export default function StretchingLibrary({ open, onClose, injuries }: Props) {
   const [expanded, setExpanded] = useState<string | null>(null);
   const [holdingId, setHoldingId] = useState<string | null>(null);
   const hold = useHoldTimer();
+  const swipe = useSwipeDismiss(onClose);
 
   const muscles = useMemo(() => {
     const seen = new Set<string>();
@@ -69,7 +71,8 @@ export default function StretchingLibrary({ open, onClose, injuries }: Props) {
     <>
       <button className="workout-scrim" aria-label={t("stretching.close")} onClick={onClose} />
       <aside className="stretching-panel" aria-label={t("stretching.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("stretching.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("stretching.close")}>
             ✕

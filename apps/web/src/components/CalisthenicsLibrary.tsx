@@ -4,6 +4,7 @@ import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Props = {
   open: boolean;
@@ -34,6 +35,7 @@ export default function CalisthenicsLibrary({
   const { t, localizeExercise } = useI18n();
   const [muscle, setMuscle] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
+  const swipe = useSwipeDismiss(onClose);
 
   const inProgram = useMemo(() => new Set(programIds), [programIds]);
 
@@ -62,7 +64,8 @@ export default function CalisthenicsLibrary({
     <>
       <button className="workout-scrim" aria-label={t("calisthenics.close")} onClick={onClose} />
       <aside className="calisthenics-panel" aria-label={t("calisthenics.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("calisthenics.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("calisthenics.close")}>
             ✕

@@ -4,6 +4,7 @@ import type { SyncStatus } from "../state/useSync";
 import { ENABLED_OAUTH_PROVIDERS } from "../lib/supabase";
 import { clearAll } from "../lib/storage";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 /**
  * Google's own four-colour mark, not a reconstruction of someone else's brand
@@ -70,6 +71,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
   const [confirmingAccount, setConfirmingAccount] = useState(false);
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [localCleared, setLocalCleared] = useState(false);
+  const swipe = useSwipeDismiss(onClose);
 
   if (!open) return null;
 
@@ -156,7 +158,8 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
     <>
       <button className="workout-scrim" aria-label={t("account.close")} onClick={onClose} />
       <aside className="account-panel" aria-label={t("account.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("account.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("account.close")}>
             ✕

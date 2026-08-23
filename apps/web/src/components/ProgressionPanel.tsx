@@ -11,6 +11,7 @@ import type { Target } from "../state/usePrograms";
 import type { Goal } from "../state/useGoals";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { useI18n } from "../i18n/I18nProvider";
+import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
 type Props = {
   name: string;
@@ -154,12 +155,14 @@ export default function ProgressionPanel({
   ) ?? null;
 
   const u = t("unit.kg");
+  const swipe = useSwipeDismiss(onClose);
 
   return (
     <>
       <button className="workout-scrim" aria-label={t("plan.close")} onClick={onClose} />
       <aside className="plan-panel" aria-label={t("plan.title")}>
-        <div className="workout-head">
+        <div className={`workout-head ${swipe.dragging ? "dragging" : ""}`} {...swipe.handleProps}>
+          <span className="sheet-handle" aria-hidden="true" />
           <h2>{t("plan.title")}</h2>
           <button className="workout-close" onClick={onClose} aria-label={t("plan.close")}>
             ✕

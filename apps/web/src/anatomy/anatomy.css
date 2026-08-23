@@ -100,7 +100,8 @@
   background: var(--panel-translucent); border: 1px solid var(--border); backdrop-filter: blur(14px);
   border-radius: 14px; padding: 15px;
 }
-.anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; }
+.anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; position: relative; }
+.anatomy-readout .head.dragging { opacity: 0.6; }
 .anatomy-readout .body { flex: 1; }
 .anatomy-readout .mname { font-size: 16px; font-weight: 600; }
 .anatomy-readout .mmeta {
@@ -321,16 +322,37 @@
 
   .anatomy-toolbar {
     top: 12px; left: 12px; right: 12px;
+    gap: 6px;
+  }
+  /* Sized to keep every pill — Workout, and whatever a host app adds via
+     toolbarExtra — on one line on an ordinary phone. `min-width: 0` is what
+     lets a flex item shrink below its text's natural width at all; without
+     it `nowrap` + `ellipsis` below have nothing to act on and the pill just
+     pushes the row wider instead. A translation long enough to still not
+     fit degrades to an ellipsis rather than wrapping the row onto a second
+     line — which used to silently push the docked Muscle Groups panel down
+     into overlapping the pills themselves (see the --toolbar-h comment in
+     AnatomyViewer.jsx, which now fixes that regardless, but a pill's own
+     text truncating cleanly is worth having either way). */
+  .anatomy-toolbar .tool,
+  .anatomy-toolbar .workout-button {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .anatomy-toolbar .tool {
     display: flex; justify-content: center;
-    flex: 1; font-family: inherit; font-size: 12px; font-weight: 600;
-    padding: 9px 10px; border-radius: 999px; cursor: pointer;
+    flex: 1; font-family: inherit; font-size: 11px; font-weight: 600;
+    padding: 8px 6px; border-radius: 999px; cursor: pointer;
     background: var(--panel-translucent); backdrop-filter: blur(14px);
     border: 1px solid var(--border); color: var(--text);
   }
   .anatomy-toolbar .tool.active { border-color: var(--accent); color: var(--accent); }
-  .anatomy-toolbar .workout-button { flex: 1; justify-content: center; }
+  .anatomy-toolbar .workout-button {
+    flex: 1; justify-content: center;
+    font-size: 11px; padding: 8px 8px 8px 12px; gap: 5px;
+  }
 
   .anatomy-scrim {
     display: block; position: absolute; inset: 0; z-index: 7;
@@ -340,11 +362,17 @@
   /* The muscle list is the point of the screen, so it stays docked open on the
      right rather than hiding behind a button — the body steps left to make
      room (see FrameToVisible) instead of sitting behind it. Display is a
-     rarely-needed panel, so that one is opened on demand. */
+     rarely-needed panel, so that one is opened on demand.
+
+     top is 12px (the toolbar's own offset) + its real measured height, a
+     custom property AnatomyViewer.jsx keeps current via ResizeObserver,
+     + 12px clearance — not a guessed constant, so this stays correct
+     whether the toolbar holds two pills or five. 46px is only the
+     before-JS-measures fallback (one line at this pill height). */
   .anatomy-root .regions {
     display: none;
-    top: 58px; right: 12px; left: auto; width: 172px;
-    max-height: calc(100% - 82px);
+    top: calc(12px + var(--toolbar-h, 46px) + 12px); right: 12px; left: auto; width: 172px;
+    max-height: calc(100% - 12px - var(--toolbar-h, 46px) - 12px - 12px);
   }
   .anatomy-root .regions.open { display: flex; flex-direction: column; }
 
@@ -359,4 +387,5 @@
     max-height: 66%;
   }
   .anatomy-readout .head { flex-wrap: wrap; }
+  .anatomy-readout .head .sheet-handle { display: block; }
 }
