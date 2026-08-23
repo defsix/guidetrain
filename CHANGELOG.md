@@ -482,6 +482,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **"Search on YouTube" for Calisthenics and Stretching exercises.** Both new
+  libraries already carried a `youtube` search-URL field per entry (the same
+  one `build-exercises.py`/`build-stretches.py` generate for the main
+  catalogue), but nothing surfaced it — the deliberate choice was a plain
+  search link rather than resolving hundreds of exact video IDs the way the
+  trainable catalogue does. Each expanded row now shows a link, right above
+  the instructions, reusing the exact `viewer.searchYouTube` label and
+  `.watch` treatment the muscle picker already uses for its own unresolved
+  exercises, so nothing new needed translating.
+- **Shortened the "Muscle Groups" pill to "Muscles"** in all ten languages —
+  the quick fix for it reading as squashed on a phone now that it shares the
+  toolbar with the Calisthenics and Stretching pills; the panel's own
+  heading uses the same key, so it reads a little terser there too.
 - **Fixed: the canvas toolbar's pills could wrap onto a second line and
   overlap the docked Muscle Groups panel below them** — real-device feedback
   after the Calisthenics/Stretching pills shipped: four pills, one of them

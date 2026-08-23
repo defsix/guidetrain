@@ -29,6 +29,17 @@ test.describe("the calisthenics library", () => {
     expect(filtered).toBeLessThan(allCount);
   });
 
+  test("expanding a row offers a YouTube search link instead of an embed", async ({ page }) => {
+    const panel = page.locator(".calisthenics-panel");
+    const firstItem = panel.locator(".calisthenics-list > li").first();
+
+    await firstItem.locator(".calisthenics-name").click();
+    const link = firstItem.locator("a.watch");
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", /^https:\/\/www\.youtube\.com\/results/);
+    await expect(link).toHaveAttribute("target", "_blank");
+  });
+
   test("adding an exercise from the library puts it in the workout, reps only", async ({
     page,
   }) => {

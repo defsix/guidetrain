@@ -38,6 +38,17 @@ test.describe("the stretching library", () => {
     await expect(firstItem.locator(".stretch-steps")).toBeVisible();
   });
 
+  test("expanding a row offers a YouTube search link instead of an embed", async ({ page }) => {
+    const panel = page.locator(".stretching-panel");
+    const firstItem = panel.locator(".stretch-list > li").first();
+
+    await firstItem.locator(".stretch-name").click();
+    const link = firstItem.locator("a.watch");
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", /^https:\/\/www\.youtube\.com\/results/);
+    await expect(link).toHaveAttribute("target", "_blank");
+  });
+
   test("starting a hold counts down, and stopping it clears the timer", async ({ page }) => {
     const panel = page.locator(".stretching-panel");
     const firstItem = panel.locator(".stretch-list > li").first();

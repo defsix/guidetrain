@@ -131,12 +131,21 @@ export default function CalisthenicsLibrary({
                       {added ? "✓" : "+"}
                     </button>
                   </div>
-                  {isOpen && x.instructions.length > 0 && (
-                    <ol className="how-steps calisthenics-steps">
-                      {x.instructions.map((step, i) => (
-                        <li key={i}>{step}</li>
-                      ))}
-                    </ol>
+                  {isOpen && (
+                    <div className="calisthenics-detail">
+                      {x.youtube && (
+                        <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
+                          {t("viewer.searchYouTube")}
+                        </a>
+                      )}
+                      {x.instructions.length > 0 && (
+                        <ol className="how-steps calisthenics-steps">
+                          {x.instructions.map((step, i) => (
+                            <li key={i}>{step}</li>
+                          ))}
+                        </ol>
+                      )}
+                    </div>
                   )}
                 </li>
               );

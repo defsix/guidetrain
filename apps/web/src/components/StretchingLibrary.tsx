@@ -7,7 +7,7 @@ import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
 
-type Stretch = { id: string; name: string; primary: string[]; instructions: string[] };
+type Stretch = { id: string; name: string; primary: string[]; instructions: string[]; youtube?: string };
 
 const STRETCHES = stretchesData.stretches as Stretch[];
 const DEFAULT_HOLD_SECONDS = 30;
@@ -140,12 +140,21 @@ export default function StretchingLibrary({ open, onClose, injuries }: Props) {
                       </button>
                     )}
                   </div>
-                  {isOpen && x.instructions.length > 0 && (
-                    <ol className="how-steps stretch-steps">
-                      {x.instructions.map((step, i) => (
-                        <li key={i}>{step}</li>
-                      ))}
-                    </ol>
+                  {isOpen && (
+                    <div className="stretch-detail">
+                      {x.youtube && (
+                        <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
+                          {t("viewer.searchYouTube")}
+                        </a>
+                      )}
+                      {x.instructions.length > 0 && (
+                        <ol className="how-steps stretch-steps">
+                          {x.instructions.map((step, i) => (
+                            <li key={i}>{step}</li>
+                          ))}
+                        </ol>
+                      )}
+                    </div>
                   )}
                 </li>
               );

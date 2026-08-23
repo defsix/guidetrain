@@ -7,6 +7,7 @@ export type CatalogueEntry = {
   instructions: string[];
   primary: string[];
   secondary: string[];
+  youtube?: string;
 };
 
 /**
