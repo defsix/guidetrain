@@ -30,7 +30,11 @@
   --border: #d9dee6;
   --border-strong: #b9c1cd;
   --text: #1a1f28;
-  --text-muted: #5c6673;
+  /* Darkened from an earlier #5c6673 (5.8:1 on white) — legible by the
+     letter of WCAG AA, but this app is read one-handed, at arm's length,
+     between sets, sometimes in a gym's bright overhead light. 8.3:1 gives
+     real margin for that instead of a bar that was only ever cleared. */
+  --text-muted: #454f5b;
   --accent: #c2410c;
   --accent-text: #ffffff;
   --accent-soft: rgba(194, 65, 12, 0.1);
@@ -70,7 +74,10 @@
   --border: #232936;
   --border-strong: #333b4b;
   --text: #e6e9ef;
-  --text-muted: #98a2b3;
+  /* Lightened from an earlier #98a2b3 (7.1:1 on panel) for the same reason
+     as light mode's own bump — see the comment there. 8.9:1 on panel,
+     9.5:1 on the page background. */
+  --text-muted: #adb6c4;
   --accent: #f97316;
   --accent-text: #1a1200;
   --accent-soft: rgba(249, 115, 22, 0.16);
@@ -88,7 +95,7 @@
     --border: #232936;
     --border-strong: #333b4b;
     --text: #e6e9ef;
-    --text-muted: #98a2b3;
+    --text-muted: #adb6c4;
     --accent: #f97316;
     --accent-text: #1a1200;
     --accent-soft: rgba(249, 115, 22, 0.16);

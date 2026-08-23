@@ -482,6 +482,15 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed: secondary text was too low-contrast in both themes** — labels,
+  captions, unit suffixes and section headers all read off `--text-muted`,
+  which sat at 5.8:1 in light mode and 7.1:1 in dark mode: technically past
+  WCAG AA, but this app is read one-handed at arm's length, often in a gym's
+  bright overhead light or a dim one. Light mode's grey darkened from
+  `#5c6673` to `#454f5b` (8.3:1 on the panel background); dark mode's
+  lightened from `#98a2b3` to `#adb6c4` (8.9:1) — real headroom past AA
+  rather than a value that only ever cleared it, in both directions from a
+  single shared token.
 - **A Calisthenics library** — every bodyweight exercise in one place, opened
   from its own pill in the 3D canvas toolbar rather than found one muscle at a
   time. Filterable by muscle, each row expands in place for instructions, and
