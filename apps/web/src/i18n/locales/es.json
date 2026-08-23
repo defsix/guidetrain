@@ -194,6 +194,13 @@
   "intro": "Ejercicios que trabajan el mismo músculo — elige uno para sustituirlo.",
   "empty": "No se encontró un sustituto para este ejercicio."
  },
+ "calisthenics": {
+  "title": "Calistenia",
+  "close": "Cerrar calistenia",
+  "intro": "Todos los ejercicios con el propio peso en un solo lugar — toca + para añadir uno a tu entrenamiento, toca un nombre para ver las instrucciones.",
+  "allMuscles": "Todos",
+  "empty": "Aún no hay nada para este músculo."
+ },
  "log": {
   "addSet": "Añadir serie",
   "weight": "Peso",

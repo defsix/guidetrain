@@ -3,6 +3,7 @@ import exercisesData from "../anatomy/exercises.json";
 export type CatalogueEntry = {
   id: string;
   name: string;
+  equipment?: string;
   instructions: string[];
   primary: string[];
   secondary: string[];

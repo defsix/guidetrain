@@ -482,6 +482,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A Calisthenics library** — every bodyweight exercise in one place, opened
+  from its own pill in the 3D canvas toolbar rather than found one muscle at a
+  time. Filterable by muscle, each row expands in place for instructions, and
+  a tap adds or removes it from the active workout — the same `toggle()`
+  already wired to the muscle picker's own "save" button. Scoped exactly to
+  `equipment === "body only"`, the tag `SetLogger` already reads for reps-only
+  logging and `BODYONLY` in `plans.ts` already derives itself from — so every
+  row here logs, prescribes and pairs/swaps correctly with nothing new added
+  to any of those. `exerciseCatalogue.ts`'s shared `CatalogueEntry` type
+  gained `equipment` so this could read it without a second dedup pass over
+  `exercises.json`. First of two libraries planned; Stretching (browse-only,
+  no logging) is next.
 - **Manual "Refresh" for a plan's prescribed weight.** A weight from a
   ready-made plan freezes the moment the plan is applied and stays that way on
   purpose — recomputing it automatically would mean the number under a bar

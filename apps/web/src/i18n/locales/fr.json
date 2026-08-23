@@ -194,6 +194,13 @@
   "intro": "Exercices qui travaillent le même muscle — choisissez-en un pour le remplacer.",
   "empty": "Aucun remplacement trouvé pour cet exercice."
  },
+ "calisthenics": {
+  "title": "Callisthénie",
+  "close": "Fermer la callisthénie",
+  "intro": "Tous les exercices au poids du corps réunis ici — appuyez sur + pour en ajouter un à votre entraînement, touchez un nom pour voir les instructions.",
+  "allMuscles": "Tous",
+  "empty": "Rien ici pour ce muscle pour l'instant."
+ },
  "log": {
   "addSet": "Ajouter une série",
   "weight": "Charge",

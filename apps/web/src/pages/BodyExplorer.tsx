@@ -11,6 +11,7 @@ import StatsPanel from "../components/StatsPanel";
 import WorkoutPanel from "../components/WorkoutPanel";
 import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
+import CalisthenicsLibrary from "../components/CalisthenicsLibrary";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
@@ -67,6 +68,7 @@ export default function BodyExplorer() {
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
+  const [showCalisthenics, setShowCalisthenics] = useState(false);
   const [showHint] = useState(isEarlyVisit);
   // On a phone, a selected muscle opens a bottom sheet over the model — the
   // same area the hint/recs card floats in, so either would sit right on
@@ -119,6 +121,19 @@ export default function BodyExplorer() {
     >
       {t("workout.title")}
       <span className="wcount">{programs.ids.length}</span>
+    </button>
+  );
+
+  // Own pill in the same toolbar rather than the header strip, same
+  // reasoning as workoutButton above. Gated on `profile`, matching every
+  // other panel that isn't meaningful before onboarding.
+  const calisthenicsButton = profile && (
+    <button
+      className="workout-button"
+      onClick={() => setShowCalisthenics(true)}
+      aria-expanded={showCalisthenics}
+    >
+      {t("calisthenics.title")}
     </button>
   );
 
@@ -210,7 +225,7 @@ export default function BodyExplorer() {
           onToggleSave={programs.toggle}
           equipmentAvailable={profile?.equipment}
           injuries={injuries.injuries}
-          toolbarExtra={workoutButton}
+          toolbarExtra={<>{workoutButton}{calisthenicsButton}</>}
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
         />
         {/* A real number to act on takes priority over the generic
@@ -355,6 +370,13 @@ export default function BodyExplorer() {
         goals={goals.goals}
         injuries={injuries.injuries}
         onApply={(days) => { programs.addWorkouts(days); setShowWorkout(true); }}
+      />
+      <CalisthenicsLibrary
+        open={showCalisthenics}
+        onClose={() => setShowCalisthenics(false)}
+        programIds={programs.ids}
+        onToggle={programs.toggle}
+        injuries={injuries.injuries}
       />
     </div>
   );

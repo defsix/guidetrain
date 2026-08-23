@@ -194,6 +194,13 @@
   "intro": "Übungen, die denselben Muskel trainieren — wähle einen Ersatz.",
   "empty": "Für diese Übung wurde kein Ersatz gefunden."
  },
+ "calisthenics": {
+  "title": "Calisthenics",
+  "close": "Calisthenics schließen",
+  "intro": "Jede Körpergewichtsübung an einem Ort — tippe auf +, um sie zu deinem Workout hinzuzufügen, tippe auf einen Namen für Anleitungen.",
+  "allMuscles": "Alle",
+  "empty": "Für diesen Muskel gibt es noch nichts."
+ },
  "log": {
   "addSet": "Satz hinzufügen",
   "weight": "Gewicht",

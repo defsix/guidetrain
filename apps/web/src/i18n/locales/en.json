@@ -194,6 +194,13 @@
   "intro": "Exercises that train the same muscle — pick one to replace it with.",
   "empty": "No swap found for this exercise."
  },
+ "calisthenics": {
+  "title": "Calisthenics",
+  "close": "Close calisthenics",
+  "intro": "Every bodyweight exercise in one place — tap + to add one to your workout, tap a name for instructions.",
+  "allMuscles": "All",
+  "empty": "Nothing here for this muscle yet."
+ },
  "log": {
   "addSet": "Add set",
   "weight": "Weight",

@@ -202,6 +202,13 @@
   "intro": "Ćwiczenia trenujące ten sam mięsień — wybierz, czym je zastąpić.",
   "empty": "Nie znaleziono zamiennika dla tego ćwiczenia."
  },
+ "calisthenics": {
+  "title": "Kalistenika",
+  "close": "Zamknij kalistenikę",
+  "intro": "Wszystkie ćwiczenia z masą własną w jednym miejscu — dotknij +, aby dodać je do treningu, dotknij nazwy, aby zobaczyć instrukcje.",
+  "allMuscles": "Wszystkie",
+  "empty": "Nic tu jeszcze nie ma dla tego mięśnia."
+ },
  "log": {
   "addSet": "Dodaj serię",
   "weight": "Ciężar",

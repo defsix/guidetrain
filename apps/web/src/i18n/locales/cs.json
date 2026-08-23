@@ -202,6 +202,13 @@
   "intro": "Cviky, které trénují stejný sval — vyberte, čím ho nahradit.",
   "empty": "Pro tento cvik nebyla nalezena žádná náhrada."
  },
+ "calisthenics": {
+  "title": "Kalistenika",
+  "close": "Zavřít kalisteniku",
+  "intro": "Všechny cviky s vlastní vahou na jednom místě — klepnutím na + přidáte cvik do tréninku, klepnutím na název zobrazíte pokyny.",
+  "allMuscles": "Vše",
+  "empty": "Pro tento sval tu zatím nic není."
+ },
  "log": {
   "addSet": "Přidat sérii",
   "weight": "Váha",
