@@ -236,33 +236,40 @@ describe("prescribePercent", () => {
   });
 });
 
-describe("the Russian cycle plans", () => {
-  it("run all eighteen sessions on the right lift, ending in the all-out single", () => {
-    const cases: [string, string][] = [
-      ["russianSquat", "Barbell_Squat"],
-      ["russianBench", "Barbell_Bench_Press_-_Medium_Grip"],
-      ["russianDeadlift", "Barbell_Deadlift"],
+describe("the combined Russian plan", () => {
+  it("runs squat, then bench, then deadlift, eighteen sessions each, ending in the all-out single", () => {
+    const plan = PLANS.find((p) => p.id === "russian");
+    expect(plan).toBeDefined();
+    expect(plan!.variants).toHaveLength(1);
+    const variant = plan!.variants[0];
+    expect(variant.perWeek).toBe(3);
+    const days = variant.days;
+    expect(days).toHaveLength(54);
+
+    const blocks: [string, string][] = [
+      ["squat", "Barbell_Squat"],
+      ["bench", "Barbell_Bench_Press_-_Medium_Grip"],
+      ["deadlift", "Barbell_Deadlift"],
     ];
-    for (const [planId, liftId] of cases) {
-      const plan = PLANS.find((p) => p.id === planId);
-      expect(plan, planId).toBeDefined();
-      expect(plan!.variants).toHaveLength(1);
-      const days = plan!.variants[0].days;
-      expect(days, planId).toHaveLength(18);
-      expect(days.map((d) => d.name)).toEqual(
-        Array.from({ length: 18 }, (_, i) => `session${i + 1}`),
-      );
-      for (const day of days) {
-        expect(day.exercises, planId).toHaveLength(1);
-        expect(day.exercises[0].id, planId).toBe(liftId);
-        expect(day.exercises[0].pct, planId).toBeGreaterThan(0);
+    blocks.forEach(([dayName, liftId], b) => {
+      const block = days.slice(b * 18, b * 18 + 18);
+      expect(block.map((d) => d.name), dayName).toEqual(Array(18).fill(dayName));
+      for (const day of block) {
+        expect(day.exercises, dayName).toHaveLength(1);
+        expect(day.exercises[0].id, dayName).toBe(liftId);
+        expect(day.exercises[0].pct, dayName).toBeGreaterThan(0);
       }
-      // The first session is the routine's own baseline, and the last is
-      // the max-test single above the starting max — checked against the
-      // source table rather than only shape-checked.
-      expect(days[0].exercises[0]).toMatchObject({ pct: 80, sets: 6, reps: 2 });
-      expect(days[17].exercises[0]).toMatchObject({ pct: 105, sets: 1, reps: 1 });
-    }
+      // The first session of a block is the routine's own baseline, and the
+      // last is the max-test single above the starting max — checked
+      // against the source table rather than only shape-checked.
+      expect(block[0].exercises[0]).toMatchObject({ pct: 80, sets: 6, reps: 2 });
+      expect(block[17].exercises[0]).toMatchObject({ pct: 105, sets: 1, reps: 1 });
+    });
+
+    // More days than a single week of this variant could hold — the signal
+    // WorkoutPanel.tsx's label function reads to show "Week W · Session S"
+    // rather than "Day N" for this plan specifically.
+    expect(days.length).toBeGreaterThan(variant.perWeek);
   });
 });
 

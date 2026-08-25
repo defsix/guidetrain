@@ -1,9 +1,57 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { write as storageWrite, onWrite } from "../lib/storage";
+import exercises from "../anatomy/exercises.json";
 
 const KEY = "guidetrain.programs";
 const ACTIVE_KEY = "guidetrain.programs.active";
 const LEGACY_WORKOUT_KEY = "guidetrain.workout";
+
+/**
+ * Compound before isolation, for whichever exercise ids don't already know
+ * their own answer — the free-exercise-db `mechanic` field every catalogue
+ * entry already carries (see `exerciseCatalogue.ts`), reused rather than a
+ * second per-exercise classification invented for this. Missing for one
+ * warm-up drill nothing in this file references; treated as compound so it
+ * would sort early rather than vanish if that ever changed.
+ */
+const MECHANIC = new Map<string, string>();
+for (const list of Object.values(exercises.muscles as Record<string, { id: string; mechanic?: string }[]>)) {
+  for (const x of list) if (!MECHANIC.has(x.id)) MECHANIC.set(x.id, x.mechanic ?? "compound");
+}
+
+/**
+ * Compound-first, stable otherwise — sets the *starting* order a plan or a
+ * freshly-added exercise lands in, not a live sort. The app already has a
+ * deliberate manual-reorder feature (the ↑/↓ buttons in `WorkoutPanel.tsx`,
+ * chosen over drag specifically for phone/keyboard use), so this only ever
+ * runs once, at the moment a list of ids is first assembled — re-sorting on
+ * every render would silently undo whatever order someone set by hand.
+ */
+function orderCompoundFirst(ids: string[]): string[] {
+  return ids
+    .map((id, i) => ({ id, i }))
+    .sort((a, b) => {
+      const rank = (id: string) => (MECHANIC.get(id) === "isolation" ? 1 : 0);
+      const d = rank(a.id) - rank(b.id);
+      return d !== 0 ? d : a.i - b.i;
+    })
+    .map((x) => x.id);
+}
+
+/**
+ * Where a single new exercise id belongs among an already compound-first-
+ * ordered list — after the last compound entry if it is one itself, at the
+ * very end if it's an isolation move. Used when adding one exercise at a
+ * time (the muscle picker's or a library's own "add" button), so a workout
+ * built up organically over several visits still reads compound-first
+ * without ever touching the position of anything already there.
+ */
+function insertOrdered(ids: string[], newId: string): string[] {
+  if (MECHANIC.get(newId) === "isolation") return [...ids, newId];
+  let at = ids.length;
+  while (at > 0 && MECHANIC.get(ids[at - 1]) === "isolation") at--;
+  return [...ids.slice(0, at), newId, ...ids.slice(at)];
+}
 
 /**
  * One prescribed set: what to put on the bar, and for how many.
@@ -49,24 +97,46 @@ export type Program = {
   /**
    * What the reader called it, or "" if they never said.
    *
-   * An empty name is displayed as "Workout 1", "Workout 2" — numbered by
-   * position and translated at render. Storing that generated label instead
-   * would freeze it into whichever language happened to be on when the program
-   * was made, which is the same mistake as storing exercise names rather than
-   * their ids.
+   * An empty name is displayed as "Day 1", "Day 2" — numbered by position and
+   * translated at render. Storing that generated label instead would freeze
+   * it into whichever language happened to be on when the program was made,
+   * which is the same mistake as storing exercise names rather than their
+   * ids.
    */
   name: string;
   /**
    * A translation key, for workouts the app named rather than the reader —
    * the days of a ready-made plan. Rendered through `t` like any other string,
    * so "Upper" reads as "Oberkörper" in German. `name` still wins if it is set,
-   * which is what renaming one does.
+   * which is what renaming one does. Absent for the plan days with no real
+   * name of their own — see `PlanDay` in `lib/plans.ts` — which fall back to
+   * a bare position label with nothing appended.
    *
    * Storing the *translated* label instead would freeze it into whichever
    * language happened to be on when the plan was applied, which is the same
    * mistake as storing exercise names rather than their ids.
    */
   nameKey?: string;
+  /**
+   * This day's 1-based position within the plan it was applied from — absent
+   * for a hand-built workout, which has no such sequence to belong to and
+   * falls back to its position in `programs` instead, same as before this
+   * existed. Together with `perWeek` and `weekFraming`, this is what
+   * `WorkoutPanel.tsx`'s label function turns into "Day 2" or "Week 3 ·
+   * Session 1" — see there for the actual rule.
+   */
+  dayIndex?: number;
+  /** The plan variant's sessions-a-week, carried through for the label math above. */
+  perWeek?: number;
+  /**
+   * True when the plan this day came from has more days than a single week
+   * of `perWeek` could hold — a fixed multi-week program (the combined
+   * Russian routine) rather than a rotation meant to repeat indefinitely
+   * (Push/Pull/Legs, GZCLP, ...). Decided once, at apply time, in
+   * `PlanLibrary.tsx` — see the label function in `WorkoutPanel.tsx` for what
+   * it changes about how `dayIndex` reads.
+   */
+  weekFraming?: boolean;
   /** Exercise ids, in the order they will be done. */
   exerciseIds: string[];
   /**
@@ -151,7 +221,18 @@ function cleanTargets(raw: unknown): Record<string, Target> {
  * longer match what your log or maxes now say.
  */
 export type AppliedDay = {
-  name: string;
+  /** Absent for the handful of plan days with no real name — see `PlanDay`. */
+  name?: string;
+  /** This day's 1-based position within the plan it came from — see `Program.dayIndex`. */
+  dayIndex: number;
+  /** The variant's sessions-a-week, carried through for the same label math. */
+  perWeek: number;
+  /**
+   * True when the plan is a fixed multi-week program rather than a rotation
+   * repeated indefinitely — see `Program.weekFraming` and the label function
+   * in `WorkoutPanel.tsx` for what this changes about the day's label.
+   */
+  weekFraming: boolean;
   exercises: {
     id: string;
     sets: number;
@@ -223,6 +304,9 @@ function read(): Program[] {
             id: p.id,
             name: typeof p.name === "string" ? p.name : "",
             nameKey: typeof p.nameKey === "string" ? p.nameKey : undefined,
+            dayIndex: Number.isFinite(p.dayIndex) ? p.dayIndex : undefined,
+            perWeek: Number.isFinite(p.perWeek) ? p.perWeek : undefined,
+            weekFraming: p.weekFraming === true,
             exerciseIds: p.exerciseIds.filter((x: unknown) => typeof x === "string"),
             targets: cleanTargets(p.targets),
           }));
@@ -355,7 +439,7 @@ export function usePrograms() {
   const toggle = useCallback(
     (exId: string) =>
       editActive((ids) =>
-        ids.includes(exId) ? ids.filter((x) => x !== exId) : [...ids, exId],
+        ids.includes(exId) ? ids.filter((x) => x !== exId) : insertOrdered(ids, exId),
       ),
     [editActive],
   );
@@ -436,8 +520,11 @@ export function usePrograms() {
       const made: Program[] = days.map((d) => ({
         id: uid(),
         name: "",
-        nameKey: `plans.day.${d.name}`,
-        exerciseIds: d.exercises.map((e) => e.id),
+        nameKey: d.name ? `plans.day.${d.name}` : undefined,
+        dayIndex: d.dayIndex,
+        perWeek: d.perWeek,
+        weekFraming: d.weekFraming,
+        exerciseIds: orderCompoundFirst(d.exercises.map((e) => e.id)),
         targets: Object.fromEntries(d.exercises.map((e) => [e.id, fromPlan(e)])),
       }));
       if (!made.length) return;

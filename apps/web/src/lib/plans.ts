@@ -50,7 +50,14 @@ export type PlanExercise = {
    */
   pct?: number;
 };
-export type PlanDay = { name: string; exercises: PlanExercise[] };
+/**
+ * `name` is absent for a day whose only distinguishing name would have been
+ * a meaningless letter ("Workout A"/"Workout B") — the position-based label
+ * (`WorkoutPanel.tsx`'s `label()`) already says "Day 1"/"Day 2" on its own,
+ * and appending a letter that carries no information on top of that would
+ * only add noise.
+ */
+export type PlanDay = { name?: string; exercises: PlanExercise[] };
 /** One frequency a plan can be run at — its own day list, not a relabelling. */
 export type PlanVariant = {
   /** Sessions a week this variant assumes, for the summary line. */
@@ -74,7 +81,7 @@ export type PlanTemplate = {
 /**
  * The Russian Squat Routine's eighteen sessions: percent of a one-rep max,
  * sets, reps. Checked against two independent write-ups rather than
- * recalled — see the "russianSquat" plan entry below for the sources, which
+ * recalled — see the "russian" plan entry below for the sources, which
  * agree row for row. The last row is the all-out single the whole cycle
  * builds to, above the max it started from.
  */
@@ -99,10 +106,17 @@ const RUSSIAN_TABLE: { pct: number; sets: number; reps: number }[] = [
   { pct: 105, sets: 1, reps: 1 },
 ];
 
-/** `RUSSIAN_TABLE`, as the named days one exercise runs it on. */
-function russianDays(exerciseId: string): PlanDay[] {
-  return RUSSIAN_TABLE.map((row, i) => ({
-    name: `session${i + 1}`,
+/**
+ * `RUSSIAN_TABLE`, as eighteen days all named `dayName` and running it on
+ * `exerciseId` — one lift's six-week block. `WorkoutPanel.tsx`'s label
+ * function is what actually disambiguates the eighteen identically-named
+ * days from each other (and from the other two lifts' identical blocks) —
+ * see the combined "russian" plan below — so a block doesn't need its own
+ * per-session numbering here the way it once did.
+ */
+function russianBlock(dayName: string, exerciseId: string): PlanDay[] {
+  return RUSSIAN_TABLE.map((row) => ({
+    name: dayName,
     exercises: [{ id: exerciseId, sets: row.sets, reps: row.reps, pct: row.pct }],
   }));
 }
@@ -121,7 +135,6 @@ export const PLANS: PlanTemplate[] = [
         perWeek: 3,
         days: [
           {
-            name: "a",
             exercises: [
               { id: "Barbell_Squat", sets: 3, reps: 5 },
               { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
@@ -129,7 +142,6 @@ export const PLANS: PlanTemplate[] = [
             ],
           },
           {
-            name: "b",
             exercises: [
               { id: "Barbell_Squat", sets: 3, reps: 5 },
               { id: "Standing_Military_Press", sets: 3, reps: 5 },
@@ -323,7 +335,6 @@ export const PLANS: PlanTemplate[] = [
         perWeek: 3,
         days: [
           {
-            name: "a",
             exercises: [
               { id: "Dumbbell_Squat", sets: 3, reps: 8 },
               { id: "Dumbbell_Bench_Press", sets: 3, reps: 10 },
@@ -331,7 +342,6 @@ export const PLANS: PlanTemplate[] = [
             ],
           },
           {
-            name: "b",
             exercises: [
               { id: "Dumbbell_Squat", sets: 3, reps: 8 },
               { id: "Standing_Dumbbell_Upright_Row", sets: 3, reps: 10 },
@@ -353,7 +363,6 @@ export const PLANS: PlanTemplate[] = [
         perWeek: 2,
         days: [
           {
-            name: "a",
             exercises: [
               { id: "Barbell_Squat", sets: 3, reps: 5 },
               { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 3, reps: 5 },
@@ -361,7 +370,6 @@ export const PLANS: PlanTemplate[] = [
             ],
           },
           {
-            name: "b",
             exercises: [
               { id: "Barbell_Deadlift", sets: 1, reps: 5 },
               { id: "Standing_Military_Press", sets: 3, reps: 5 },
@@ -412,7 +420,6 @@ export const PLANS: PlanTemplate[] = [
         perWeek: 3,
         days: [
           {
-            name: "a",
             exercises: [
               { id: "Barbell_Squat", sets: 5, reps: 5 },
               { id: "Barbell_Bench_Press_-_Medium_Grip", sets: 5, reps: 5 },
@@ -420,7 +427,6 @@ export const PLANS: PlanTemplate[] = [
             ],
           },
           {
-            name: "b",
             exercises: [
               { id: "Barbell_Squat", sets: 5, reps: 5 },
               { id: "Standing_Military_Press", sets: 5, reps: 5 },
@@ -615,33 +621,40 @@ export const PLANS: PlanTemplate[] = [
     ],
   },
   {
-    // The Russian Squat Routine — eighteen sessions, three a week for six
-    // weeks, at a literal percent of a one-rep max rather than a working
-    // weight this app estimates. Every session but the last two returns to
-    // 80%; the sessions between are what actually overloads the lift, first
-    // by adding reps to that same 80% (weeks 1–3), then by raising the
-    // percentage itself while volume drops (weeks 4–6), ending in an all-out
-    // single above the starting max. Table checked against two independent
-    // sources rather than recalled — https://liftvault.com/programs/powerlifting/russian-squat-routine-spreadsheet/
+    // The Russian Squat Routine, run on squat, then bench, then deadlift, in
+    // sequence — eighteen weeks total, three sessions a week, each block six
+    // weeks at a literal percent of a one-rep max rather than a working
+    // weight this app estimates. Every session but the last two of a block
+    // returns to 80%; the sessions between are what actually overloads the
+    // lift, first by adding reps to that same 80% (weeks 1–3 of a block),
+    // then by raising the percentage itself while volume drops (weeks 4–6),
+    // ending in an all-out single above the starting max. Table checked
+    // against two independent sources rather than recalled —
+    // https://liftvault.com/programs/powerlifting/russian-squat-routine-spreadsheet/
     // and https://www.castironstrength.com/russian-squat-routine/, which
     // agree on all eighteen rows.
     //
-    // Bench and deadlift below run the identical eighteen-row shape on a
-    // different lift — a well-known extension of this program within
-    // powerlifting, not a separately documented "Russian Bench/Deadlift
-    // Routine" of its own. Deadlift in particular is not usually trained at
-    // this frequency; the routine is offered here as asked for, not as
-    // something this app is recommending over its usual pull frequency.
-    id: "russianSquat",
-    variants: [{ perWeek: 3, days: russianDays("Barbell_Squat") }],
-  },
-  {
-    id: "russianBench",
-    variants: [{ perWeek: 3, days: russianDays("Barbell_Bench_Press_-_Medium_Grip") }],
-  },
-  {
-    id: "russianDeadlift",
-    variants: [{ perWeek: 3, days: russianDays("Barbell_Deadlift") }],
+    // One plan, not three, and sequential rather than concurrent — running
+    // all three lifts' blocks at once would mean squatting, benching and
+    // deadlifting heavy three days a week in the same session, a training
+    // load this app isn't going to hand someone by default. Bench and
+    // deadlift run the identical eighteen-row shape on a different lift — a
+    // well-known extension of this program within powerlifting, not a
+    // separately documented "Russian Bench/Deadlift Routine" of its own.
+    // Deadlift in particular is not usually trained at this frequency; the
+    // routine is offered here as asked for, not as something this app is
+    // recommending over its usual pull frequency.
+    id: "russian",
+    variants: [
+      {
+        perWeek: 3,
+        days: [
+          ...russianBlock("squat", "Barbell_Squat"),
+          ...russianBlock("bench", "Barbell_Bench_Press_-_Medium_Grip"),
+          ...russianBlock("deadlift", "Barbell_Deadlift"),
+        ],
+      },
+    ],
   },
 ];
 

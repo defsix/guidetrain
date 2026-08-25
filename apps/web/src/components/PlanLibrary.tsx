@@ -16,6 +16,7 @@ import type { Injury } from "../state/useInjuries";
 import type { Profile } from "../types";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
+import { positionLabel } from "../lib/programLabel";
 
 type Entry = {
   id: string;
@@ -109,8 +110,15 @@ export default function PlanLibrary({
    */
   const resolved = useMemo(() => {
     if (!variant) return null;
-    return variant.days.map((day) => ({
+    // More days than a single week of this variant could hold means a fixed
+    // multi-week program (the combined Russian routine) rather than a
+    // rotation meant to repeat indefinitely — see `Program.weekFraming`.
+    const weekFraming = variant.days.length > variant.perWeek;
+    return variant.days.map((day, i) => ({
       name: day.name,
+      dayIndex: i + 1,
+      perWeek: variant.perWeek,
+      weekFraming,
       exercises: day.exercises.map((e) => {
         if (e.mainLift) {
           // This row's weight comes from the lift's own 5/3/1 cycle, not
@@ -238,9 +246,15 @@ export default function PlanLibrary({
               </div>
             )}
 
-            {resolved?.map((day) => (
-              <div className="plan-day" key={day.name}>
-                <h3>{t(`plans.day.${day.name}`)}</h3>
+            {resolved?.map((day, i) => (
+              <div className="plan-day" key={i}>
+                <h3>
+                  {positionLabel(
+                    { dayIndex: day.dayIndex, perWeek: day.perWeek, weekFraming: day.weekFraming, nameKey: day.name ? `plans.day.${day.name}` : undefined },
+                    t,
+                    i + 1,
+                  )}
+                </h3>
                 <ul>
                   {day.exercises.map((e) => {
                     const raw = BY_ID.get(e.id);

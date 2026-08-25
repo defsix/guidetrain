@@ -767,6 +767,10 @@
   cursor: default;
 }
 
+.wmove .pin.on {
+  color: var(--accent);
+}
+
 .workout-clear {
   align-self: flex-start;
   background: none;

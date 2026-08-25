@@ -190,6 +190,8 @@
   "clear": "Vymazat seznam",
   "moveUp": "Posunout nahoru",
   "moveDown": "Posunout dolů",
+  "pin": "Připnout nahoru",
+  "unpin": "Odepnout",
   "empty": "Zatím nic uloženo. Otevřete sval a stiskněte + vedle cviku.",
   "finished": "Tento trénink je hotový.",
   "goNext": "Přejít na {name}",
@@ -273,7 +275,8 @@
   "ambiguous": "Dva týdny tohoto cyklu mají stejnou vrcholovou váhu, zapsanou sérii tedy nelze mezi ně rozlišit. Ani jeden není označen."
  },
  "program": {
-  "untitled": "Trénink {n}",
+  "day": "Den {n}",
+  "week": "Týden {week} · Jednotka {session}",
   "tabs": "Vaše tréninky",
   "add": "Nový trénink",
   "name": "Název tréninku",
@@ -351,8 +354,6 @@
   "percentNote": "Každá jednotka žádá pevné procento vašeho nejlepšího známého maxima na tomto cviku, použité přímo, ne odhadnuté z počtu opakování — jde o vlastní čísla programu, ne o obvyklý odhad pracovní váhy v této aplikaci.",
   "loggedNote": "Série se mají dokončit, ne vás zničit — přibližně jedno až dvě opakování v záloze.",
   "day": {
-   "a": "Trénink A",
-   "b": "Trénink B",
    "upper": "Horní část",
    "lower": "Dolní část",
    "push": "Tlak",
@@ -371,27 +372,9 @@
    "chestback1": "Hrudník a záda",
    "shouldersarms1": "Ramena a paže",
    "legs1": "Nohy",
-   "chestback2": "Hrudník a záda (2)",
-   "shouldersarms2": "Ramena a paže (2)",
-   "legs2": "Nohy (2)",
-   "session1": "Jednotka 1",
-   "session2": "Jednotka 2",
-   "session3": "Jednotka 3",
-   "session4": "Jednotka 4",
-   "session5": "Jednotka 5",
-   "session6": "Jednotka 6",
-   "session7": "Jednotka 7",
-   "session8": "Jednotka 8",
-   "session9": "Jednotka 9",
-   "session10": "Jednotka 10",
-   "session11": "Jednotka 11",
-   "session12": "Jednotka 12",
-   "session13": "Jednotka 13",
-   "session14": "Jednotka 14",
-   "session15": "Jednotka 15",
-   "session16": "Jednotka 16",
-   "session17": "Jednotka 17",
-   "session18": "Jednotka 18"
+   "chestback2": "Hrudník a záda",
+   "shouldersarms2": "Ramena a paže",
+   "legs2": "Nohy"
   },
   "fullbody": {
    "name": "Celé tělo",
@@ -438,17 +421,9 @@
    "name": "6denní split",
    "desc": "Hrudník a záda, ramena a paže, nohy — každá partie dvakrát týdně, podruhé s jiným výběrem cviků místo opakování stejné jednotky. Vysoký objem, šest jednotek týdně."
   },
-  "russianSquat": {
-   "name": "Ruský dřepový program",
-   "desc": "Osmnáct jednotek za šest týdnů, dřep třikrát týdně podle procenta z vašeho maxima — v rámci týdne stejná váha a opakování, pak těžší a kratší. Záměrně brutálně opakovaný, jeden z nejcitovanějších způsobů, jak rychle přidat 5–10 % k dřepu."
-  },
-  "russianBench": {
-   "name": "Ruský program na bench press",
-   "desc": "Stejná struktura jako ruský dřepový program, ale na bench press místo dřepu — tři jednotky týdně po šest týdnů, podle procenta z vašeho maxima."
-  },
-  "russianDeadlift": {
-   "name": "Ruský program na mrtvý tah",
-   "desc": "Stejná struktura jako ruský dřepový program, ale na mrtvý tah místo dřepu — tři jednotky týdně po šest týdnů, podle procenta z vašeho maxima. Vysoká frekvence na mrtvý tah — počítejte s tím."
+  "russian": {
+   "name": "Ruský program na dřep, bench press a mrtvý tah",
+   "desc": "Struktura ruského dřepového programu, aplikovaná postupně na všechny tři cviky — dřep, pak bench press, pak mrtvý tah — tři jednotky týdně podle procenta z vašeho maxima, v rámci týdne stejná váha a opakování, pak těžší a kratší. Celkem osmnáct týdnů, šest brutálně opakovaných týdnů na každý cvik, jeden z nejcitovanějších způsobů, jak rychle přidat 5–10 % k výkonu. Záměrně vždy jen jeden cvik, ne všechny tři najednou: tahle frekvence je na jeden cvik už dost, a mrtvý tah se obzvlášť takhle často obvykle netrénuje."
   },
   "frequency": "Dní v týdnu"
  },

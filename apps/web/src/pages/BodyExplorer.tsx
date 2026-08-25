@@ -21,6 +21,7 @@ import { useKnownMax } from "../state/useKnownMax";
 import { useBodyWeightLog } from "../state/useBodyWeightLog";
 import { useGoals } from "../state/useGoals";
 import { useInjuries } from "../state/useInjuries";
+import { usePinnedExercises } from "../state/usePinnedExercises";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
 import { recommendExercises } from "../lib/recommend";
@@ -61,6 +62,7 @@ export default function BodyExplorer() {
   const weighIns = useBodyWeightLog();
   const goals = useGoals();
   const injuries = useInjuries();
+  const pinnedExercises = usePinnedExercises();
   const auth = useAuth();
   const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
@@ -315,6 +317,8 @@ export default function BodyExplorer() {
         equipmentAvailable={profile?.equipment}
         goals={goals.goals}
         injuries={injuries.injuries}
+        pinned={pinnedExercises.pinned}
+        onTogglePin={pinnedExercises.toggle}
         profile={profile}
         knownMaxes={knownMax.overrides}
         bodyLoad={

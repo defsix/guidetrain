@@ -182,6 +182,8 @@
   "clear": "Vider la liste",
   "moveUp": "Monter",
   "moveDown": "Descendre",
+  "pin": "Épingler en haut",
+  "unpin": "Désépingler",
   "empty": "Rien d'enregistré pour l'instant. Ouvrez un muscle et appuyez sur + à côté d'un exercice.",
   "finished": "Cette séance est terminée.",
   "goNext": "Passer à {name}",
@@ -263,7 +265,8 @@
   "ambiguous": "Deux semaines de ce cycle demandent la même charge maximale ; une série enregistrée ne peut donc pas être attribuée. Aucune n'est marquée."
  },
  "program": {
-  "untitled": "Séance {n}",
+  "day": "Jour {n}",
+  "week": "Semaine {week} · Séance {session}",
   "tabs": "Vos séances",
   "add": "Nouvelle séance",
   "name": "Nom de la séance",
@@ -331,8 +334,6 @@
   "percentNote": "Chaque séance demande un pourcentage fixe de votre meilleur max connu sur ce mouvement, appliqué tel quel plutôt qu'estimé à partir des répétitions — les chiffres propres au programme, pas l'estimation habituelle de charge de travail de cette application.",
   "loggedNote": "Les séries sont faites pour être terminées : gardez une ou deux répétitions en réserve.",
   "day": {
-   "a": "Séance A",
-   "b": "Séance B",
    "upper": "Haut du corps",
    "lower": "Bas du corps",
    "push": "Poussée",
@@ -351,27 +352,9 @@
    "chestback1": "Pectoraux & dos",
    "shouldersarms1": "Épaules & bras",
    "legs1": "Jambes",
-   "chestback2": "Pectoraux & dos (2)",
-   "shouldersarms2": "Épaules & bras (2)",
-   "legs2": "Jambes (2)",
-   "session1": "Séance 1",
-   "session2": "Séance 2",
-   "session3": "Séance 3",
-   "session4": "Séance 4",
-   "session5": "Séance 5",
-   "session6": "Séance 6",
-   "session7": "Séance 7",
-   "session8": "Séance 8",
-   "session9": "Séance 9",
-   "session10": "Séance 10",
-   "session11": "Séance 11",
-   "session12": "Séance 12",
-   "session13": "Séance 13",
-   "session14": "Séance 14",
-   "session15": "Séance 15",
-   "session16": "Séance 16",
-   "session17": "Séance 17",
-   "session18": "Séance 18"
+   "chestback2": "Pectoraux & dos",
+   "shouldersarms2": "Épaules & bras",
+   "legs2": "Jambes"
   },
   "fullbody": {
    "name": "Corps entier",
@@ -418,17 +401,9 @@
    "name": "Répartition en 6 jours",
    "desc": "Pectoraux et dos, épaules et bras, puis jambes, chaque groupe travaillé deux fois par semaine — avec un choix d'exercices différent la seconde fois plutôt que la même séance répétée. Volume élevé, six séances par semaine."
   },
-  "russianSquat": {
-   "name": "Programme russe de squat",
-   "desc": "Dix-huit séances sur six semaines, avec un squat trois fois par semaine à partir d'un pourcentage de votre max — même charge et mêmes répétitions dans la semaine, puis plus lourd et plus court la semaine suivante. Volontairement brutal et répétitif, et l'une des méthodes les plus citées pour ajouter 5 à 10 % à son squat rapidement."
-  },
-  "russianBench": {
-   "name": "Programme russe de développé couché",
-   "desc": "La même structure que le programme russe de squat, appliquée au développé couché plutôt qu'au squat — trois séances par semaine pendant six semaines, à partir d'un pourcentage de votre max."
-  },
-  "russianDeadlift": {
-   "name": "Programme russe de soulevé de terre",
-   "desc": "La même structure que le programme russe de squat, appliquée au soulevé de terre plutôt qu'au squat — trois séances par semaine pendant six semaines, à partir d'un pourcentage de votre max. Une fréquence élevée pour le soulevé de terre : à savoir avant de vous lancer."
+  "russian": {
+   "name": "Programme russe de squat, développé couché et soulevé de terre",
+   "desc": "La structure du programme russe de squat, appliquée tour à tour aux trois mouvements — squat, puis développé couché, puis soulevé de terre : trois séances par semaine à partir d'un pourcentage de votre max, avec la même charge et les mêmes répétitions dans la semaine, puis plus lourd et plus court la semaine suivante. Dix-huit semaines au total, six semaines brutalement répétitives par mouvement, l'une des méthodes les plus citées pour ajouter 5 à 10 % à un mouvement rapidement. Un seul mouvement à la fois, volontairement, et non les trois ensemble : cette fréquence est déjà élevée pour un seul mouvement, et le soulevé de terre en particulier n'est généralement pas entraîné aussi souvent."
   },
   "frequency": "Jours par semaine"
  },

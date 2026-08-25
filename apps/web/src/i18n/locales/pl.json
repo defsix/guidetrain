@@ -190,6 +190,8 @@
   "clear": "Wyczyść listę",
   "moveUp": "W górę",
   "moveDown": "W dół",
+  "pin": "Przypnij do góry",
+  "unpin": "Odepnij",
   "empty": "Nic jeszcze nie zapisano. Otwórz mięsień i naciśnij + obok ćwiczenia.",
   "finished": "Ten trening jest skończony.",
   "goNext": "Przejdź do {name}",
@@ -273,7 +275,8 @@
   "ambiguous": "Dwa tygodnie tego cyklu mają ten sam ciężar szczytowy, więc zapisanej serii nie da się przypisać. Żaden nie jest oznaczony."
  },
  "program": {
-  "untitled": "Trening {n}",
+  "day": "Dzień {n}",
+  "week": "Tydzień {week} · Sesja {session}",
   "tabs": "Twoje treningi",
   "add": "Nowy trening",
   "name": "Nazwa treningu",
@@ -351,8 +354,6 @@
   "percentNote": "Każda sesja wymaga stałego procentu twojego najlepszego znanego maksimum w tym ćwiczeniu, zastosowanego wprost, a nie szacowanego na podstawie powtórzeń — to własne liczby programu, a nie zwykłe przybliżenie ciężaru roboczego z tej aplikacji.",
   "loggedNote": "Serie są po to, żeby je skończyć, a nie żeby skończyły ciebie — zostaw jedno lub dwa powtórzenia zapasu.",
   "day": {
-   "a": "Trening A",
-   "b": "Trening B",
    "upper": "Góra",
    "lower": "Dół",
    "push": "Pchanie",
@@ -371,27 +372,9 @@
    "chestback1": "Klatka piersiowa i plecy",
    "shouldersarms1": "Barki i ramiona",
    "legs1": "Nogi",
-   "chestback2": "Klatka piersiowa i plecy (2)",
-   "shouldersarms2": "Barki i ramiona (2)",
-   "legs2": "Nogi (2)",
-   "session1": "Sesja 1",
-   "session2": "Sesja 2",
-   "session3": "Sesja 3",
-   "session4": "Sesja 4",
-   "session5": "Sesja 5",
-   "session6": "Sesja 6",
-   "session7": "Sesja 7",
-   "session8": "Sesja 8",
-   "session9": "Sesja 9",
-   "session10": "Sesja 10",
-   "session11": "Sesja 11",
-   "session12": "Sesja 12",
-   "session13": "Sesja 13",
-   "session14": "Sesja 14",
-   "session15": "Sesja 15",
-   "session16": "Sesja 16",
-   "session17": "Sesja 17",
-   "session18": "Sesja 18"
+   "chestback2": "Klatka piersiowa i plecy",
+   "shouldersarms2": "Barki i ramiona",
+   "legs2": "Nogi"
   },
   "fullbody": {
    "name": "Całe ciało",
@@ -438,17 +421,9 @@
    "name": "Split 6-dniowy",
    "desc": "Klatka piersiowa i plecy, barki i ramiona oraz nogi, każda partia trenowana dwa razy w tygodniu — za drugim razem inny dobór ćwiczeń zamiast powtórzenia tej samej sesji. Wysoka objętość, sześć sesji tygodniowo."
   },
-  "russianSquat": {
-   "name": "Rosyjski program przysiadu",
-   "desc": "Osiemnaście sesji w sześć tygodni, przysiad trzy razy w tygodniu według procentu twojego maksimum — w ramach tygodnia ten sam ciężar i te same powtórzenia, potem cięższe i krótsze w kolejnym. Celowo brutalnie powtarzalny i jeden z najczęściej przywoływanych sposobów, by szybko dodać 5–10 % do przysiadu."
-  },
-  "russianBench": {
-   "name": "Rosyjski program wyciskania leżąc",
-   "desc": "Ta sama struktura co rosyjski program przysiadu, zastosowana do wyciskania leżąc zamiast przysiadu — trzy sesje tygodniowo przez sześć tygodni, według procentu twojego maksimum."
-  },
-  "russianDeadlift": {
-   "name": "Rosyjski program martwego ciągu",
-   "desc": "Ta sama struktura co rosyjski program przysiadu, zastosowana do martwego ciągu zamiast przysiadu — trzy sesje tygodniowo przez sześć tygodni, według procentu twojego maksimum. Wysoka częstotliwość jak na martwy ciąg — miej to na uwadze."
+  "russian": {
+   "name": "Rosyjski program przysiadu, wyciskania leżąc i martwego ciągu",
+   "desc": "Struktura rosyjskiego programu przysiadu, zastosowana po kolei do wszystkich trzech ćwiczeń — przysiadu, potem wyciskania leżąc, potem martwego ciągu: trzy sesje tygodniowo według procentu twojego maksimum, w ramach tygodnia ten sam ciężar i te same powtórzenia, potem cięższe i krótsze w kolejnym. Osiemnaście tygodni łącznie, sześć brutalnie powtarzalnych tygodni na ćwiczenie, jeden z najczęściej przywoływanych sposobów, by szybko dodać 5–10 % do ćwiczenia. Celowo jedno ćwiczenie na raz, a nie wszystkie trzy naraz: ta częstotliwość to już dużo jak na jedno ćwiczenie, a martwy ciąg zwłaszcza zwykle nie jest trenowany tak często."
   },
   "frequency": "Dni w tygodniu"
  },

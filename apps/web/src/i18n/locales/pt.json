@@ -182,6 +182,8 @@
   "clear": "Limpar a lista",
   "moveUp": "Mover para cima",
   "moveDown": "Mover para baixo",
+  "pin": "Fixar no topo",
+  "unpin": "Desafixar",
   "empty": "Nada guardado ainda. Abra um músculo e toque em + ao lado de um exercício.",
   "finished": "Este treino está feito.",
   "goNext": "Ir para {name}",
@@ -263,7 +265,8 @@
   "ambiguous": "Duas semanas deste ciclo pedem o mesmo peso de topo, por isso uma série registada não pode ser atribuída. Nenhuma é marcada."
  },
  "program": {
-  "untitled": "Treino {n}",
+  "day": "Dia {n}",
+  "week": "Semana {week} · Sessão {session}",
   "tabs": "Os seus treinos",
   "add": "Novo treino",
   "name": "Nome do treino",
@@ -331,8 +334,6 @@
   "percentNote": "Cada sessão pede uma percentagem fixa do seu melhor máximo conhecido neste exercício, aplicada diretamente em vez de estimada a partir das repetições — os números do próprio programa, não a estimativa habitual desta app para o peso de trabalho.",
   "loggedNote": "As séries são para terminar, não para o acabar — deixe uma ou duas repetições na reserva.",
   "day": {
-   "a": "Treino A",
-   "b": "Treino B",
    "upper": "Superior",
    "lower": "Inferior",
    "push": "Empurrar",
@@ -351,27 +352,9 @@
    "chestback1": "Peito & costas",
    "shouldersarms1": "Ombros & braços",
    "legs1": "Pernas",
-   "chestback2": "Peito & costas (2)",
-   "shouldersarms2": "Ombros & braços (2)",
-   "legs2": "Pernas (2)",
-   "session1": "Sessão 1",
-   "session2": "Sessão 2",
-   "session3": "Sessão 3",
-   "session4": "Sessão 4",
-   "session5": "Sessão 5",
-   "session6": "Sessão 6",
-   "session7": "Sessão 7",
-   "session8": "Sessão 8",
-   "session9": "Sessão 9",
-   "session10": "Sessão 10",
-   "session11": "Sessão 11",
-   "session12": "Sessão 12",
-   "session13": "Sessão 13",
-   "session14": "Sessão 14",
-   "session15": "Sessão 15",
-   "session16": "Sessão 16",
-   "session17": "Sessão 17",
-   "session18": "Sessão 18"
+   "chestback2": "Peito & costas",
+   "shouldersarms2": "Ombros & braços",
+   "legs2": "Pernas"
   },
   "fullbody": {
    "name": "Corpo inteiro",
@@ -418,17 +401,9 @@
    "name": "Divisão de 6 dias",
    "desc": "Peito e costas, ombros e braços, e pernas, cada grupo treinado duas vezes por semana — com uma seleção de exercícios diferente da segunda vez, em vez da mesma sessão repetida. Volume elevado, seis sessões por semana."
   },
-  "russianSquat": {
-   "name": "Rotina russa de agachamento",
-   "desc": "Dezoito sessões ao longo de seis semanas, com agachamento três vezes por semana a partir de uma percentagem do seu máximo — o mesmo peso e as mesmas repetições dentro da semana, depois mais pesado e mais curto na seguinte. Deliberadamente repetitivo, e uma das formas mais citadas de acrescentar 5–10 % a um agachamento rapidamente."
-  },
-  "russianBench": {
-   "name": "Rotina russa de supino",
-   "desc": "A mesma estrutura da rotina russa de agachamento, aplicada ao supino em vez do agachamento — três sessões por semana durante seis semanas, a partir de uma percentagem do seu máximo."
-  },
-  "russianDeadlift": {
-   "name": "Rotina russa de levantamento terra",
-   "desc": "A mesma estrutura da rotina russa de agachamento, aplicada ao levantamento terra em vez do agachamento — três sessões por semana durante seis semanas, a partir de uma percentagem do seu máximo. Uma frequência alta para o levantamento terra; entre já a saber isso."
+  "russian": {
+   "name": "Rotina russa de agachamento, supino e levantamento terra",
+   "desc": "A forma da rotina russa de agachamento, aplicada por sua vez aos três exercícios — agachamento, depois supino, depois levantamento terra, três sessões por semana a partir de uma percentagem do seu máximo, o mesmo peso e as mesmas repetições dentro da semana, depois mais pesado e mais curto na seguinte. Dezoito semanas ao todo, seis semanas brutalmente repetitivas por exercício, uma das formas mais citadas de acrescentar 5–10 % a um exercício rapidamente. Um exercício de cada vez, de propósito, não os três juntos: esta frequência já é muita para um único exercício, e o levantamento terra em particular normalmente não é treinado com tanta frequência."
   },
   "frequency": "Dias por semana"
  },

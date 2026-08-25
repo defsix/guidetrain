@@ -15,6 +15,7 @@ import { useRestTimer } from "../state/useRestTimer";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import { restSeconds, REST_EXTEND_SECONDS, bestEstimate } from "../lib/progression";
 import { prescribe, prescribePercent } from "../lib/plans";
+import { positionLabel } from "../lib/programLabel";
 import { usesLegs } from "../lib/muscleRegions";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
@@ -76,6 +77,9 @@ type Props = {
   goals: Record<string, Goal[]>;
   /** Injuries marked on the Stats page, per muscle id — narrows the swap list and flags matching rows. */
   injuries: Record<string, Injury>;
+  /** Exercise ids pinned to the top of every workout — see usePinnedExercises.ts. */
+  pinned: string[];
+  onTogglePin: (id: string) => void;
   /** Body weight, unit and age group — same profile `prescribe` reads for a fresh Refresh calculation. */
   profile: Profile | null;
   /** A max set by hand on the stats page, per exercise id — beats one estimated from the log, same as PlanLibrary. */
@@ -83,14 +87,18 @@ type Props = {
 };
 
 /**
- * What to call a workout: what the reader typed, else the key the app gave it,
- * else its position. All three resolve at render, so none of them freeze a
- * language into storage.
+ * What to call a workout: what the reader typed, else `positionLabel`'s
+ * position-based label plus whatever real name the day has — "Day 2 ·
+ * Push", "Week 7 · Session 1 · Bench". Falls back to this workout's position
+ * in `programs` when it isn't from a plan (a hand-built workout) or has no
+ * position of its own, the same label a plan rotation's days get, since a
+ * custom workout is exactly that to whoever tapped through the tabs to find
+ * it. All of it resolves at render, so none of it freezes a language into
+ * storage.
  */
 function label(p: Program, programs: Program[], t: (k: string, v?: any) => string) {
   if (p.name.trim()) return p.name.trim();
-  if (p.nameKey) return t(p.nameKey);
-  return t("program.untitled", { n: programs.indexOf(p) + 1 });
+  return positionLabel(p, t, programs.indexOf(p) + 1);
 }
 
 export default function WorkoutPanel({
@@ -99,7 +107,7 @@ export default function WorkoutPanel({
   today, best, onAddSet, onRemoveSet, allSets, bodyLoad, targets, onTarget,
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
-  onSwap, equipmentAvailable, goals, injuries, profile, knownMaxes,
+  onSwap, equipmentAvailable, goals, injuries, pinned, onTogglePin, profile, knownMaxes,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [planning, setPlanning] = useState<string | null>(null);
@@ -187,7 +195,7 @@ export default function WorkoutPanel({
    * The workout after this one, if the reader has one.
    *
    * Position in the list, which is the order the days of a plan were added in,
-   * so finishing Workout A offers Workout B. Nothing cycles back to the start:
+   * so finishing Day 1 offers Day 2. Nothing cycles back to the start:
    * reaching the end of the week is worth noticing, and a list that quietly
    * wraps would hide it.
    */
@@ -200,14 +208,22 @@ export default function WorkoutPanel({
   // Looked up and translated at render, not at save: a workout saved in English
   // and opened in Polish should be in Polish, and an exercise whose text was
   // corrected should show the correction.
-  const items = useMemo(
-    () =>
-      ids
-        .map((id) => BY_ID.get(id))
-        .filter((x): x is Entry => Boolean(x))
-        .map((x) => localizeExercise(x)),
-    [ids, localizeExercise],
-  );
+  //
+  // Pinned ids float to the top here, live, without ever touching `ids`
+  // itself — the program's own stored order, which the ↑/↓ buttons below
+  // still read and write exactly as before. Un-pinning something is then
+  // just a matter of it no longer qualifying for the front of the list; it
+  // reappears wherever it already sat, nothing rewritten.
+  const items = useMemo(() => {
+    const pinnedSet = new Set(pinned);
+    const localized = ids
+      .map((id) => BY_ID.get(id))
+      .filter((x): x is Entry => Boolean(x))
+      .map((x) => localizeExercise(x));
+    const front = localized.filter((x) => pinnedSet.has(x.id));
+    const rest = localized.filter((x) => !pinnedSet.has(x.id));
+    return [...front, ...rest];
+  }, [ids, localizeExercise, pinned]);
 
   if (!open) return null;
 
@@ -343,6 +359,7 @@ export default function WorkoutPanel({
                 const injuredMuscleName = injury
                   ? t(`muscles.${injury.muscle}.name`, undefined, injury.muscle)
                   : "";
+                const isPinned = pinned.includes(x.id);
                 return (
                 <li key={x.id}>
                   <div className="wrow">
@@ -361,18 +378,33 @@ export default function WorkoutPanel({
                   {/* Buttons rather than drag: a drag target is hard to hit on a
                       phone, impossible from a keyboard, and this list is short
                       enough that two taps beat a gesture. Disabled at the ends
-                      instead of wrapping, since a wrap looks like a bug. */}
+                      instead of wrapping, since a wrap looks like a bug. Also
+                      disabled while pinned — a pinned row's position is
+                      already decided by the pin, and its stored neighbor
+                      could be a different exercise than whatever's rendered
+                      next to it once the pinned ones are floated to the top,
+                      which would make an up/down click here land somewhere
+                      that doesn't match what was on screen. */}
                   <span className="wmove">
                     <button
+                      className={`pin ${isPinned ? "on" : ""}`}
+                      onClick={() => onTogglePin(x.id)}
+                      aria-pressed={isPinned}
+                      aria-label={`${t(isPinned ? "workout.unpin" : "workout.pin")} — ${x.name}`}
+                      title={t(isPinned ? "workout.unpin" : "workout.pin")}
+                    >
+                      {isPinned ? "★" : "☆"}
+                    </button>
+                    <button
                       onClick={() => onMove(x.id, -1)}
-                      disabled={i === 0}
+                      disabled={i === 0 || isPinned}
                       aria-label={`${t("workout.moveUp")} — ${x.name}`}
                     >
                       ↑
                     </button>
                     <button
                       onClick={() => onMove(x.id, 1)}
-                      disabled={i === items.length - 1}
+                      disabled={i === items.length - 1 || isPinned}
                       aria-label={`${t("workout.moveDown")} — ${x.name}`}
                     >
                       ↓

@@ -182,6 +182,8 @@
   "clear": "Vaciar la lista",
   "moveUp": "Subir",
   "moveDown": "Bajar",
+  "pin": "Fijar arriba",
+  "unpin": "Dejar de fijar",
   "empty": "Aún no hay nada guardado. Abre un músculo y pulsa + junto a un ejercicio.",
   "finished": "Entrenamiento terminado.",
   "goNext": "Ir a {name}",
@@ -263,7 +265,8 @@
   "ambiguous": "Dos semanas de este ciclo piden el mismo peso máximo, así que una serie registrada no puede distinguirse entre ellas. Ninguna se marca."
  },
  "program": {
-  "untitled": "Entrenamiento {n}",
+  "day": "Día {n}",
+  "week": "Semana {week} · Sesión {session}",
   "tabs": "Tus entrenamientos",
   "add": "Nuevo entrenamiento",
   "name": "Nombre del entrenamiento",
@@ -331,8 +334,6 @@
   "percentNote": "Cada sesión pide un porcentaje fijo de tu mejor máximo conocido en este ejercicio, aplicado tal cual en vez de estimado a partir de las repeticiones — los números propios del programa, no la estimación habitual de esta app para el peso de trabajo.",
   "loggedNote": "Las series están para terminarlas, no para acabar contigo: deja una o dos repeticiones en reserva.",
   "day": {
-   "a": "Entrenamiento A",
-   "b": "Entrenamiento B",
    "upper": "Tren superior",
    "lower": "Tren inferior",
    "push": "Empuje",
@@ -351,27 +352,9 @@
    "chestback1": "Pecho & espalda",
    "shouldersarms1": "Hombros & brazos",
    "legs1": "Piernas",
-   "chestback2": "Pecho & espalda (2)",
-   "shouldersarms2": "Hombros & brazos (2)",
-   "legs2": "Piernas (2)",
-   "session1": "Sesión 1",
-   "session2": "Sesión 2",
-   "session3": "Sesión 3",
-   "session4": "Sesión 4",
-   "session5": "Sesión 5",
-   "session6": "Sesión 6",
-   "session7": "Sesión 7",
-   "session8": "Sesión 8",
-   "session9": "Sesión 9",
-   "session10": "Sesión 10",
-   "session11": "Sesión 11",
-   "session12": "Sesión 12",
-   "session13": "Sesión 13",
-   "session14": "Sesión 14",
-   "session15": "Sesión 15",
-   "session16": "Sesión 16",
-   "session17": "Sesión 17",
-   "session18": "Sesión 18"
+   "chestback2": "Pecho & espalda",
+   "shouldersarms2": "Hombros & brazos",
+   "legs2": "Piernas"
   },
   "fullbody": {
    "name": "Cuerpo completo",
@@ -418,17 +401,9 @@
    "name": "Split de 6 días",
    "desc": "Pecho y espalda, hombros y brazos, y piernas, cada grupo entrenado dos veces por semana — con una selección de ejercicios distinta la segunda vez, no la misma sesión repetida. Volumen alto, seis sesiones a la semana."
   },
-  "russianSquat": {
-   "name": "Rutina rusa de sentadilla",
-   "desc": "Dieciocho sesiones en seis semanas, con sentadilla tres veces por semana según un porcentaje de tu máximo — el mismo peso y las mismas repeticiones dentro de la semana, luego más pesado y más corto la siguiente. Brutalmente repetitivo por diseño, y una de las formas más citadas de sumar un 5–10 % a la sentadilla rápido."
-  },
-  "russianBench": {
-   "name": "Rutina rusa de press de banca",
-   "desc": "La misma estructura que la rutina rusa de sentadilla, aplicada al press de banca en vez de la sentadilla — tres sesiones por semana durante seis semanas, según un porcentaje de tu máximo."
-  },
-  "russianDeadlift": {
-   "name": "Rutina rusa de peso muerto",
-   "desc": "La misma estructura que la rutina rusa de sentadilla, aplicada al peso muerto en vez de la sentadilla — tres sesiones por semana durante seis semanas, según un porcentaje de tu máximo. Una frecuencia alta para el peso muerto; ve con eso en mente."
+  "russian": {
+   "name": "Rutina rusa de sentadilla, press de banca y peso muerto",
+   "desc": "La estructura de la rutina rusa de sentadilla, aplicada a los tres levantamientos por turnos — sentadilla, luego press de banca, luego peso muerto — tres sesiones por semana según un porcentaje de tu máximo, el mismo peso y las mismas repeticiones dentro de la semana, luego más pesado y más corto la siguiente. Dieciocho semanas en total, seis semanas brutalmente repetitivas por levantamiento, una de las formas más citadas de sumar un 5–10 % a un levantamiento rápido. Un levantamiento a la vez a propósito, no los tres juntos: esta frecuencia ya es mucha para un solo levantamiento, y el peso muerto en particular no suele entrenarse tan seguido."
   },
   "frequency": "Días a la semana"
  },

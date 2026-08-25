@@ -182,6 +182,8 @@
   "clear": "Clear the list",
   "moveUp": "Move up",
   "moveDown": "Move down",
+  "pin": "Pin to the top",
+  "unpin": "Unpin",
   "empty": "Nothing saved yet. Open a muscle and press + beside an exercise to build a workout.",
   "finished": "That is this workout done.",
   "goNext": "Go to {name}",
@@ -263,7 +265,8 @@
   "ambiguous": "Two weeks of this cycle call for the same top weight, so a logged set cannot be told apart between them. Neither is marked."
  },
  "program": {
-  "untitled": "Workout {n}",
+  "day": "Day {n}",
+  "week": "Week {week} · Session {session}",
   "tabs": "Your workouts",
   "add": "New workout",
   "name": "Workout name",
@@ -331,8 +334,6 @@
   "percentNote": "Each session asks for a set percent of your best known max on this lift, applied directly rather than estimated from the reps — the program's own numbers, not this app's usual working-weight guess.",
   "loggedNote": "Sets are meant to be finished, not to end you — roughly one or two reps left in the tank.",
   "day": {
-   "a": "Workout A",
-   "b": "Workout B",
    "upper": "Upper",
    "lower": "Lower",
    "push": "Push",
@@ -351,27 +352,9 @@
    "chestback1": "Chest & back",
    "shouldersarms1": "Shoulders & arms",
    "legs1": "Legs",
-   "chestback2": "Chest & back (2)",
-   "shouldersarms2": "Shoulders & arms (2)",
-   "legs2": "Legs (2)",
-   "session1": "Session 1",
-   "session2": "Session 2",
-   "session3": "Session 3",
-   "session4": "Session 4",
-   "session5": "Session 5",
-   "session6": "Session 6",
-   "session7": "Session 7",
-   "session8": "Session 8",
-   "session9": "Session 9",
-   "session10": "Session 10",
-   "session11": "Session 11",
-   "session12": "Session 12",
-   "session13": "Session 13",
-   "session14": "Session 14",
-   "session15": "Session 15",
-   "session16": "Session 16",
-   "session17": "Session 17",
-   "session18": "Session 18"
+   "chestback2": "Chest & back",
+   "shouldersarms2": "Shoulders & arms",
+   "legs2": "Legs"
   },
   "fullbody": {
    "name": "Full body",
@@ -418,17 +401,9 @@
    "name": "6-day split",
    "desc": "Chest & back, shoulders & arms, and legs, each trained twice a week — a different exercise selection the second time round rather than the same session repeated. High volume, six sessions a week."
   },
-  "russianSquat": {
-   "name": "Russian Squat Routine",
-   "desc": "Eighteen sessions over six weeks, squatting three times a week off a percent of your max — the same weight and reps within a week, then heavier and shorter the next. Brutally repetitive by design, and one of the most-cited ways to add 5–10% to a squat fast."
-  },
-  "russianBench": {
-   "name": "Russian Bench Routine",
-   "desc": "The Russian Squat Routine's shape, run on bench press instead of squat — three sessions a week for six weeks, off a percent of your max."
-  },
-  "russianDeadlift": {
-   "name": "Russian Deadlift Routine",
-   "desc": "The Russian Squat Routine's shape, run on deadlift instead of squat — three sessions a week for six weeks, off a percent of your max. A high frequency for a deadlift; go in knowing that."
+  "russian": {
+   "name": "Russian Squat, Bench & Deadlift",
+   "desc": "The Russian Squat Routine's shape, run on all three lifts in turn — squat, then bench, then deadlift, three sessions a week off a percent of your max, the same weight and reps within a week then heavier and shorter the next. Eighteen weeks total, six brutally repetitive weeks per lift, one of the most-cited ways to add 5–10% to a lift fast. One lift at a time on purpose, not all three together: this frequency is already a lot for a single lift, and deadlift especially isn't usually trained this often."
   },
   "frequency": "Days a week"
  },

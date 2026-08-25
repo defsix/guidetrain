@@ -482,6 +482,36 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The three Russian routines are one plan now, run in sequence, with
+  workout tabs that actually say where you are.** Applying Squat, Bench and
+  Deadlift separately used to add fifty-four tabs across three plans, each
+  one labeled identically "Session 1" through "Session 18" — no way to tell
+  which lift a tab was for without opening it, and eighteen tabs to scroll
+  past before reaching the next lift's block. One "Russian Squat, Bench &
+  Deadlift" plan now runs the same three six-week blocks back to back —
+  eighteen weeks total, still one lift at a time on purpose rather than all
+  three heavy in the same session — and every tab reads "Week 7 · Session 1 ·
+  Bench," continuously numbered across the whole plan, so no two tabs are
+  ever the same label twice.
+- **Every workout tab has a clearer label, plan or not.** The position a day
+  falls at — "Day 2," or "Week 3 · Session 1" for a plan with a real end
+  rather than a rotation — now reads the same way in a plan's preview and in
+  its applied workout tabs, computed from data the plan already carries
+  rather than a name someone typed in. The two meaningless "Workout A"/
+  "Workout B" letters some plans used are gone outright; a hand-built
+  workout with nothing behind it gets the same "Day N" treatment a plan
+  rotation's days get, replacing the old "Workout 1"/"Workout 2" fallback.
+- **Exercises within a day sort compound-first by default, and any exercise
+  can be pinned to the top everywhere it shows up.** A plan applied, or a
+  single exercise added from the muscle picker or a library, now lands
+  compound movements ahead of isolation work — read straight off the
+  `mechanic` field every exercise already carries, not a new classification
+  — rather than whatever order they happened to be authored or tapped in.
+  This sets the *starting* order only: the app's existing ↑/↓ move buttons
+  still work exactly as before for rearranging afterward. Pinning is new and
+  separate — a small ★ next to each exercise floats it to the top of every
+  workout it appears in, globally, without ever touching that workout's own
+  stored order, so un-pinning drops it back exactly where it was.
 - **"Search on YouTube" for Calisthenics and Stretching exercises.** Both new
   libraries already carried a `youtube` search-URL field per entry (the same
   one `build-exercises.py`/`build-stretches.py` generate for the main

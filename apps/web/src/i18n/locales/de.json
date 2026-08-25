@@ -182,6 +182,8 @@
   "clear": "Liste leeren",
   "moveUp": "Nach oben",
   "moveDown": "Nach unten",
+  "pin": "Oben anheften",
+  "unpin": "Nicht mehr anheften",
   "empty": "Noch nichts gespeichert. Öffne einen Muskel und tippe auf + neben einer Übung.",
   "finished": "Dieses Training ist geschafft.",
   "goNext": "Weiter zu {name}",
@@ -263,7 +265,8 @@
   "ambiguous": "Zwei Wochen dieses Zyklus verlangen dasselbe Topgewicht, ein eingetragener Satz lässt sich also nicht zuordnen. Keine der beiden wird markiert."
  },
  "program": {
-  "untitled": "Training {n}",
+  "day": "Tag {n}",
+  "week": "Woche {week} · Einheit {session}",
   "tabs": "Deine Trainings",
   "add": "Neues Training",
   "name": "Name des Trainings",
@@ -331,8 +334,6 @@
   "percentNote": "Jede Einheit verlangt einen festen Prozentsatz deines besten bekannten Maximums bei dieser Übung, direkt angewendet statt aus den Wiederholungen geschätzt — die eigenen Zahlen des Programms, nicht die übliche Arbeitsgewicht-Schätzung dieser App.",
   "loggedNote": "Sätze sollen beendet werden, nicht dich beenden — etwa ein bis zwei Wiederholungen in Reserve.",
   "day": {
-   "a": "Training A",
-   "b": "Training B",
    "upper": "Oberkörper",
    "lower": "Unterkörper",
    "push": "Drücken",
@@ -351,27 +352,9 @@
    "chestback1": "Brust & Rücken",
    "shouldersarms1": "Schultern & Arme",
    "legs1": "Beine",
-   "chestback2": "Brust & Rücken (2)",
-   "shouldersarms2": "Schultern & Arme (2)",
-   "legs2": "Beine (2)",
-   "session1": "Einheit 1",
-   "session2": "Einheit 2",
-   "session3": "Einheit 3",
-   "session4": "Einheit 4",
-   "session5": "Einheit 5",
-   "session6": "Einheit 6",
-   "session7": "Einheit 7",
-   "session8": "Einheit 8",
-   "session9": "Einheit 9",
-   "session10": "Einheit 10",
-   "session11": "Einheit 11",
-   "session12": "Einheit 12",
-   "session13": "Einheit 13",
-   "session14": "Einheit 14",
-   "session15": "Einheit 15",
-   "session16": "Einheit 16",
-   "session17": "Einheit 17",
-   "session18": "Einheit 18"
+   "chestback2": "Brust & Rücken",
+   "shouldersarms2": "Schultern & Arme",
+   "legs2": "Beine"
   },
   "fullbody": {
    "name": "Ganzkörper",
@@ -418,17 +401,9 @@
    "name": "6-Tage-Split",
    "desc": "Brust & Rücken, Schultern & Arme und Beine, jede Gruppe zweimal pro Woche — beim zweiten Mal eine andere Übungsauswahl statt derselben wiederholten Einheit. Hohes Volumen, sechs Einheiten pro Woche."
   },
-  "russianSquat": {
-   "name": "Russisches Kniebeugen-Programm",
-   "desc": "Achtzehn Einheiten über sechs Wochen, dreimal wöchentlich Kniebeuge nach einem Prozentsatz deines Maximums — innerhalb einer Woche gleiches Gewicht und gleiche Wiederholungen, dann schwerer und kürzer. Bewusst brutal repetitiv, eine der meistzitierten Arten, eine Kniebeuge schnell um 5–10 % zu steigern."
-  },
-  "russianBench": {
-   "name": "Russisches Bankdrücken-Programm",
-   "desc": "Die Struktur des russischen Kniebeugen-Programms, angewendet auf Bankdrücken statt Kniebeuge — drei Einheiten pro Woche über sechs Wochen, nach einem Prozentsatz deines Maximums."
-  },
-  "russianDeadlift": {
-   "name": "Russisches Kreuzheben-Programm",
-   "desc": "Die Struktur des russischen Kniebeugen-Programms, angewendet auf Kreuzheben statt Kniebeuge — drei Einheiten pro Woche über sechs Wochen, nach einem Prozentsatz deines Maximums. Eine hohe Frequenz für Kreuzheben — geh mit diesem Wissen hinein."
+  "russian": {
+   "name": "Russisches Kniebeugen-, Bankdrücken- und Kreuzheben-Programm",
+   "desc": "Die Form des russischen Kniebeugen-Programms, der Reihe nach auf alle drei Übungen angewendet — erst Kniebeuge, dann Bankdrücken, dann Kreuzheben, drei Einheiten pro Woche nach einem Prozentsatz deines Maximums, innerhalb einer Woche gleiches Gewicht und gleiche Wiederholungen, in der nächsten dann schwerer und kürzer. Achtzehn Wochen insgesamt, sechs brutal repetitive Wochen pro Übung, eine der meistzitierten Arten, eine Übung schnell um 5–10 % zu steigern. Bewusst eine Übung nach der anderen, nicht alle drei zusammen: Diese Frequenz ist für eine einzelne Übung schon viel, und besonders Kreuzheben wird normalerweise nicht so oft trainiert."
   },
   "frequency": "Tage pro Woche"
  },
