@@ -284,6 +284,21 @@
   "delete": "Smazat",
   "save": "Uložit"
  },
+ "tour": {
+  "step": {
+   "model": "Tažením model otočíte. Klepnutím na libovolný sval zjistíte, co ho trénuje.",
+   "add": "Klepnutím na + ho přidáte do dnešního tréninku — {name} jsme sem přidali jako ukázku.",
+   "workout": "Vše, co přidáte, najdete tady, v pořadí, ve kterém to budete cvičit.",
+   "log": "Zadejte, co jste zvedli, a klepněte na Přidat sérii. To je celý postup.",
+   "plans": "Nebo přeskočte stavění — celý program použijete jedním klepnutím.",
+   "help": "To je celá prohlídka. Klepněte sem, kdykoli si ji budete chtít zopakovat."
+  },
+  "counter": "Krok {n} z {count}",
+  "skip": "Přeskočit",
+  "next": "Další →",
+  "finish": "Rozumím",
+  "helpButton": "Zopakovat prohlídku"
+ },
  "target": {
   "add": "+ cíl",
   "sets": "Série",

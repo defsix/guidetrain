@@ -284,6 +284,21 @@
   "delete": "Usuń",
   "save": "Zapisz"
  },
+ "tour": {
+  "step": {
+   "model": "Przeciągnij, aby obrócić. Dotknij dowolnego mięśnia, aby zobaczyć, co trenuje.",
+   "add": "Dotknij +, aby dodać do dzisiejszego treningu — dodaliśmy tu {name}, żeby ci pokazać.",
+   "workout": "Wszystko, co dodajesz, jest tutaj, w kolejności, w jakiej to zrobisz.",
+   "log": "Wpisz ciężar i powtórzenia, a potem dotknij Dodaj serię. To cała pętla.",
+   "plans": "Albo pomiń budowanie — zastosuj cały program jednym dotknięciem.",
+   "help": "To już cały samouczek. Dotknij tego, kiedy zechcesz go zobaczyć ponownie."
+  },
+  "counter": "Krok {n} z {count}",
+  "skip": "Pomiń",
+  "next": "Dalej →",
+  "finish": "Rozumiem",
+  "helpButton": "Pokaż samouczek ponownie"
+ },
  "target": {
   "add": "+ cel",
   "sets": "Serie",

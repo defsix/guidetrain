@@ -482,6 +482,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **A first-run spotlight tour, and a `?` to replay it.** Six stops through
+  the real app — the 3D model, adding an exercise, the workout it lands in,
+  logging a set, ready-made plans as the shortcut, and where the `?` itself
+  lives — each one dimming everything but the one thing worth looking at
+  behind a scrim with a lit cutout around it, rather than a wall of text
+  nobody reads up front. Look, don't touch: advancing is always the
+  tooltip's own Next/Skip, never a side effect of tapping whatever's
+  spotlighted, so the tour never has to guess whether a real interaction
+  happened the way it expected — it drives its own demo add (Barbell
+  Squat) and opens its own panels rather than waiting for taps it never
+  actually asks for. Shown automatically once, the first time a fresh
+  device reaches the explorer; a small `?` next to the theme toggle replays
+  it from the start any time after, seen or not. `AnatomyViewer.jsx` gained
+  one new `focusMuscleId` prop so the tour can open a muscle's readout the
+  same way tapping it on the model would, without the tour needing to know
+  anything about the viewer's own 3D selection state.
 - **The three Russian routines are one plan now, run in sequence, with
   workout tabs that actually say where you are.** Applying Squat, Bench and
   Deadlift separately used to add fifty-four tabs across three plans, each

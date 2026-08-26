@@ -274,6 +274,21 @@
   "delete": "Eliminar",
   "save": "Guardar"
  },
+ "tour": {
+  "step": {
+   "model": "Arrastra para girar. Toca cualquier músculo para ver qué lo entrena.",
+   "add": "Toca + para añadirlo al entrenamiento de hoy — hemos añadido {name} aquí para mostrártelo.",
+   "workout": "Todo lo que añadas vive aquí, en el orden en que lo harás.",
+   "log": "Introduce lo que levantaste y toca Añadir serie. Eso es todo el ciclo.",
+   "plans": "O sáltate la construcción — aplica un programa completo con un toque.",
+   "help": "Eso es el recorrido. Tócalo cuando quieras volver a verlo."
+  },
+  "counter": "Paso {n} de {count}",
+  "skip": "Saltar",
+  "next": "Siguiente →",
+  "finish": "Entendido",
+  "helpButton": "Repetir el recorrido"
+ },
  "target": {
   "add": "+ objetivo",
   "sets": "Series",

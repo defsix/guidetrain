@@ -498,6 +498,27 @@
   flex-wrap: wrap;
 }
 
+/* --- tour replay button -------------------------------------------------- */
+/* A small round icon rather than a text pill like History/Equipment/Progress
+   — it says one thing, permanently, and doesn't need to compete with those
+   for width in the scrolling strip. */
+.help-button {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.help-button:hover { border-color: var(--accent); color: var(--accent); }
+
 /* --- saved workout ----------------------------------------------------- */
 /* Shaped like the theme toggle so the two read as one control group. The count
    is always shown, zero included: "0" is information, and a badge that appears
@@ -2549,3 +2570,100 @@ span.stretch-hold.running {
 .plans-open:hover { border-color: var(--accent); color: var(--accent); }
 
 .workout-foot { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* --- spotlight tour ------------------------------------------------------ */
+/* A fixed, transparent full-viewport blocker sits under the dimming veil
+   and above the app, catching every tap so the tour is look-don't-touch —
+   advancing only ever happens through the tooltip's own buttons, never as
+   a side effect of tapping whatever's spotlighted. The veil itself is a
+   small element sized to the target with a huge box-shadow spread, the
+   standard spotlight-cutout technique: it paints everything outside its own
+   box, leaving the box itself — the real app underneath — untouched. */
+.tour-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: transparent;
+}
+
+.tour-veil {
+  position: fixed;
+  z-index: 501;
+  border-radius: 12px;
+  box-shadow: 0 0 0 2000px rgba(6, 7, 10, 0.86);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  pointer-events: none;
+  transition: top 0.2s ease, left 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.tour-tooltip {
+  position: fixed;
+  z-index: 502;
+  width: 230px;
+  background: var(--panel);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.45);
+}
+
+.tour-count {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.tour-body {
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+.tour-dots {
+  display: flex;
+  gap: 5px;
+  margin: 0 0 10px;
+}
+.tour-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+.tour-dots span.on {
+  width: 14px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.tour-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tour-skip {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.tour-skip:hover { color: var(--text); }
+
+.tour-next {
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent-text);
+  background: var(--accent);
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 13px;
+  cursor: pointer;
+}

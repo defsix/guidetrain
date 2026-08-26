@@ -274,6 +274,21 @@
   "delete": "Delete",
   "save": "Save"
  },
+ "tour": {
+  "step": {
+   "model": "Drag to rotate. Tap any muscle to see what trains it.",
+   "add": "Tap + to send it to today's workout — we've added {name} here to show you.",
+   "workout": "Everything you've added lives here, in the order you'll do it.",
+   "log": "Enter what you lifted, then tap Add set. That's the whole loop.",
+   "plans": "Or skip the building — apply a full program in one tap.",
+   "help": "That's the tour. Tap this any time you want to see it again."
+  },
+  "counter": "Step {n} of {count}",
+  "skip": "Skip",
+  "next": "Next →",
+  "finish": "Got it",
+  "helpButton": "Replay the tour"
+ },
  "target": {
   "add": "+ target",
   "sets": "Sets",

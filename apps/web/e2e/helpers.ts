@@ -6,6 +6,7 @@ const ACTIVE_PROGRAM_KEY = "guidetrain.programs.active";
 const LOG_KEY = "guidetrain.log";
 const INJURIES_KEY = "guidetrain.injuries";
 const KNOWN_MAX_KEY = "guidetrain.knownmax";
+const TOUR_SEEN_KEY = "guidetrain.tourSeen";
 
 /**
  * Seeds a profile into localStorage before the page's own scripts run, so a
@@ -14,6 +15,30 @@ const KNOWN_MAX_KEY = "guidetrain.knownmax";
  * affects navigations that happen after it's registered.
  */
 export async function seedProfile(page: Page, overrides: Record<string, unknown> = {}) {
+  const profile = {
+    username: "tester",
+    ageGroup: "18-29",
+    bodyWeight: 80,
+    ...overrides,
+  };
+  await page.addInitScript(
+    ([key, json, tourKey]) => {
+      localStorage.setItem(key, json);
+      // Every spec but the tour's own (see seedProfileForTour below) is
+      // testing something other than the first-run tour, and its full-screen
+      // backdrop would otherwise block every one of them the moment the page
+      // loads a fresh, seeded profile.
+      localStorage.setItem(tourKey, "1");
+    },
+    [STORAGE_KEY, JSON.stringify(profile), TOUR_SEEN_KEY] as [string, string, string],
+  );
+}
+
+/**
+ * `seedProfile`, minus the tour-already-seen flag it otherwise always sets —
+ * the one case that wants the spotlight tour to actually auto-start.
+ */
+export async function seedProfileForTour(page: Page, overrides: Record<string, unknown> = {}) {
   const profile = {
     username: "tester",
     ageGroup: "18-29",

@@ -274,6 +274,21 @@
   "delete": "Supprimer",
   "save": "Enregistrer"
  },
+ "tour": {
+  "step": {
+   "model": "Faites glisser pour faire pivoter. Touchez un muscle pour voir ce qu'il travaille.",
+   "add": "Touchez + pour l'envoyer à la séance du jour — nous avons ajouté {name} ici pour vous montrer.",
+   "workout": "Tout ce que vous avez ajouté se trouve ici, dans l'ordre où vous le ferez.",
+   "log": "Saisissez ce que vous avez soulevé, puis touchez Ajouter une série. C'est toute la boucle.",
+   "plans": "Ou passez la construction — appliquez un programme complet en un geste.",
+   "help": "Voilà pour la visite guidée. Touchez ceci quand vous voulez la revoir."
+  },
+  "counter": "Étape {n} sur {count}",
+  "skip": "Passer",
+  "next": "Suivant →",
+  "finish": "Compris",
+  "helpButton": "Revoir la visite guidée"
+ },
  "target": {
   "add": "+ objectif",
   "sets": "Séries",

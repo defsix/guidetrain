@@ -274,6 +274,21 @@
   "delete": "Löschen",
   "save": "Sichern"
  },
+ "tour": {
+  "step": {
+   "model": "Zieh, um zu drehen. Tippe auf einen Muskel, um zu sehen, was er trainiert.",
+   "add": "Tippe auf +, um es zu deinem heutigen Training hinzuzufügen — wir haben {name} hier schon für dich hinzugefügt.",
+   "workout": "Alles, was du hinzugefügt hast, ist hier — in der Reihenfolge, in der du es machst.",
+   "log": "Trag ein, was du gehoben hast, dann tippe auf Satz hinzufügen. Das ist der ganze Ablauf.",
+   "plans": "Oder überspring das Zusammenbauen — wende einen kompletten Plan mit einem Fingertipp an.",
+   "help": "Das war die Tour. Tippe hier, wann immer du sie wiedersehen willst."
+  },
+  "counter": "Schritt {n} von {count}",
+  "skip": "Überspringen",
+  "next": "Weiter →",
+  "finish": "Verstanden",
+  "helpButton": "Tour wiederholen"
+ },
  "target": {
   "add": "+ Ziel",
   "sets": "Sätze",

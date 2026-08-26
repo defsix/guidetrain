@@ -171,6 +171,7 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  *   equipmentAvailable?: string[] | null,
  *   injuries?: Record<string, {mode: 'avoid'|'warn', setAt: number}> | null,
  *   toolbarExtra?: import('react').ReactNode | null,
+ *   focusMuscleId?: string | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -200,6 +201,13 @@ export default function AnatomyViewer({
   // without the row overflowing. Not the viewer's own concern otherwise,
   // same reasoning as savedIds/onToggleSave above.
   toolbarExtra = null,
+  // Opens a muscle's readout the same way tapping it on the model would —
+  // for a host that needs to point at a real exercise row without asking
+  // the reader to find and tap the right spot themselves first. The
+  // spotlight tour is the one caller today: see Tour.tsx. A zone id, not an
+  // object, since the caller only knows which muscle it wants, not the
+  // zone's full shape.
+  focusMuscleId = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -386,6 +394,16 @@ export default function AnatomyViewer({
 
   const closeReadout = useCallback(() => handleSelect(null), [handleSelect]);
   const readoutSwipe = useSwipeDismiss(closeReadout);
+
+  // Fires once per *change* of which muscle the tour wants focused, not on
+  // every render handleSelect's own closures happen to change (e.g. the
+  // reader nudging the region filter mid-step) — those would otherwise
+  // re-fire this and fight them for the selection.
+  useEffect(() => {
+    if (!focusMuscleId) return;
+    const z = selectable.find((m) => m.id === focusMuscleId);
+    if (z) handleSelect(z);
+  }, [focusMuscleId]);
 
   // Train This deals from a shuffled bag, not a die roll: every exercise for
   // this muscle comes up once before any comes up twice. Rolling a die repeats

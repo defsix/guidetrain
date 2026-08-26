@@ -13,6 +13,8 @@ import PlanLibrary from "../components/PlanLibrary";
 import HistoryPanel from "../components/HistoryPanel";
 import CalisthenicsLibrary from "../components/CalisthenicsLibrary";
 import StretchingLibrary from "../components/StretchingLibrary";
+import Tour from "../components/Tour";
+import { useTourSeen } from "../state/useTourSeen";
 import { usePrograms } from "../state/usePrograms";
 import { useLog } from "../state/useLog";
 import { useSkips } from "../state/useSkips";
@@ -50,6 +52,17 @@ function isEarlyVisit(): boolean {
 
 const RECS_DISMISSED_KEY = "guidetrain.recsDismissed";
 
+/**
+ * What the spotlight tour points at while it demonstrates adding an
+ * exercise and logging a set — a real muscle and a real, stable compound
+ * lift rather than an invented example, chosen the same way `injuries.spec.ts`
+ * already relies on this muscle id existing. The tour adds this exercise to
+ * the workout itself when it reaches that step (see `goToTourStep` below)
+ * rather than waiting for a tap that, mid-tour, is never actually asked for.
+ */
+const TOUR_FOCUS_MUSCLE = "quad";
+const TOUR_DEMO_EXERCISE = "Barbell_Squat";
+
 export default function BodyExplorer() {
   const navigate = useNavigate();
   const { profile, setProfile } = useProfile();
@@ -63,6 +76,7 @@ export default function BodyExplorer() {
   const goals = useGoals();
   const injuries = useInjuries();
   const pinnedExercises = usePinnedExercises();
+  const tourSeen = useTourSeen();
   const auth = useAuth();
   const sync = useSync(auth.userId);
   const [showWorkout, setShowWorkout] = useState(false);
@@ -73,6 +87,9 @@ export default function BodyExplorer() {
   const [showStats, setShowStats] = useState(false);
   const [showCalisthenics, setShowCalisthenics] = useState(false);
   const [showStretching, setShowStretching] = useState(false);
+  const [tourActive, setTourActive] = useState(false);
+  const [tourStep, setTourStep] = useState(0);
+  const [tourFocusMuscle, setTourFocusMuscle] = useState<string | null>(null);
   const [showHint] = useState(isEarlyVisit);
   // On a phone, a selected muscle opens a bottom sheet over the model — the
   // same area the hint/recs card floats in, so either would sit right on
@@ -89,6 +106,71 @@ export default function BodyExplorer() {
       navigate("/", { replace: true });
     }
   }, [profile, navigate]);
+
+  /**
+   * What each tour step needs true about the rest of the app before it can
+   * point at anything — which panel is open, and, for the one step that
+   * needs a real exercise already in the workout to point at, that it's
+   * there. Called on every step change, including the first: the tour
+   * drives this itself rather than asking the reader to have already done
+   * it, since a step that says "tap +" and then waits for a tap it never
+   * actually requires would be its own kind of confusing.
+   */
+  function goToTourStep(i: number) {
+    setTourStep(i);
+    if (i === 0) {
+      setShowWorkout(false);
+      setShowPlans(false);
+      setTourFocusMuscle(null);
+    } else if (i === 1) {
+      setShowWorkout(false);
+      setShowPlans(false);
+      setTourFocusMuscle(TOUR_FOCUS_MUSCLE);
+      if (!programs.ids.includes(TOUR_DEMO_EXERCISE)) programs.toggle(TOUR_DEMO_EXERCISE);
+    } else if (i === 2 || i === 3 || i === 4) {
+      // The workout panel, its list, the log form, and the "browse a plan"
+      // link at its foot all stay open across these three steps — orienting
+      // to the workout, logging a set, and revealing the ready-made-plan
+      // shortcut are one continuous view, not three separate ones.
+      setShowWorkout(true);
+    } else if (i === 5) {
+      setShowWorkout(false);
+    }
+  }
+
+  function startTour() {
+    goToTourStep(0);
+    setTourActive(true);
+  }
+
+  function endTour() {
+    setTourActive(false);
+    tourSeen.markSeen();
+  }
+
+  // Once, the first time a fresh device reaches the explorer — a signed-in
+  // return visit or a reload mid-session both skip it, since `tourSeen`
+  // already reflects whichever way it ended last time. `Boolean(profile)`
+  // rather than `profile` itself: onboarding fields can still change after
+  // this fires (Equipment, a body-weight update), and a new profile object
+  // reference on every one of those shouldn't restart something already
+  // finished.
+  useEffect(() => {
+    if (Boolean(profile) && !tourSeen.seen && !tourActive) startTour();
+  }, [Boolean(profile), tourSeen.seen]);
+
+  const tourSteps = useMemo(() => {
+    if (!tourActive) return [];
+    const demoName = localizeExercise(BY_ID.get(TOUR_DEMO_EXERCISE)!).name;
+    return [
+      { selector: ".anatomy-root canvas", body: t("tour.step.model") },
+      { selector: ".anatomy-readout .save.on", body: t("tour.step.add", { name: demoName }) },
+      { selector: ".workout-panel .workout-list", body: t("tour.step.workout") },
+      { selector: ".workout-panel .log-form", body: t("tour.step.log") },
+      { selector: ".workout-panel .plans-open", body: t("tour.step.plans") },
+      { selector: ".help-button", body: t("tour.step.help") },
+    ];
+  }, [tourActive, t, localizeExercise]);
 
   // Only once there's a real number to offer — see recommendExercises()'s
   // own reasoning for why an onboarding-only profile doesn't qualify.
@@ -223,6 +305,21 @@ export default function BodyExplorer() {
               {t("stats.title")}
             </button>
           )}
+          {/* Replays the spotlight tour on demand — the only way back to it
+              once the automatic first run has come and gone. Gated on
+              `profile` like the rest of the header, and left up even while
+              the tour is active so quitting mid-tour still leaves a way
+              back in, same as tapping Skip does. */}
+          {profile && (
+            <button
+              className="help-button"
+              onClick={startTour}
+              aria-label={t("tour.helpButton")}
+              title={t("tour.helpButton")}
+            >
+              ?
+            </button>
+          )}
           <ThemeToggle pref={pref} onChange={setPref} />
         </div>
       </div>
@@ -241,6 +338,7 @@ export default function BodyExplorer() {
           injuries={injuries.injuries}
           toolbarExtra={<>{workoutButton}{calisthenicsButton}{stretchingButton}</>}
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
+          focusMuscleId={tourFocusMuscle}
         />
         {/* A real number to act on takes priority over the generic
             first-visit hint below — someone who already has a known max or a
@@ -399,6 +497,19 @@ export default function BodyExplorer() {
         onClose={() => setShowStretching(false)}
         injuries={injuries.injuries}
       />
+      {tourActive && (
+        <Tour
+          steps={tourSteps}
+          stepIndex={tourStep}
+          onNext={() => goToTourStep(tourStep + 1)}
+          onSkip={endTour}
+          onFinish={endTour}
+          skipLabel={t("tour.skip")}
+          nextLabel={t("tour.next")}
+          finishLabel={t("tour.finish")}
+          counterLabel={t("tour.counter", { n: tourStep + 1, count: tourSteps.length })}
+        />
+      )}
     </div>
   );
 }
