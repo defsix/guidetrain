@@ -65,7 +65,8 @@
    "submit": "Añadir",
    "cancel": "Cancelar",
    "edit": "Editar",
-   "delete": "Eliminar"
+   "delete": "Eliminar",
+   "duplicate": "Es muy parecido a «{name}» — ya está en la lista."
   }
  },
  "video": {

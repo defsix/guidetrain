@@ -125,3 +125,80 @@ test.describe("adding a custom exercise from the muscle picker", () => {
     await expect(drills).toHaveCount(before);
   });
 });
+
+test.describe("duplicate-name detection", () => {
+  test("blocks a near-duplicate of an existing custom exercise, case and spacing aside", async ({
+    page,
+  }) => {
+    await seedProfile(page);
+    await page.goto("/");
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await expect(page.locator("canvas")).toBeVisible();
+
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    const drills = page.locator(".drills li");
+
+    await page.locator(".add-exercise-open").click();
+    const firstForm = page.locator(".add-exercise-form");
+    await firstForm.locator("input").fill("Landmine Press");
+    await firstForm.getByRole("button", { name: "Add" }).click();
+    const before = await drills.count();
+
+    await page.locator(".add-exercise-open").click();
+    const secondForm = page.locator(".add-exercise-form");
+    await secondForm.locator("input").fill("  landmine   press  ");
+    await secondForm.getByRole("button", { name: "Add" }).click();
+
+    await expect(secondForm.locator(".add-exercise-error")).toContainText("Landmine Press");
+    // Blocked, not silently created as a second row.
+    await expect(drills).toHaveCount(before);
+  });
+
+  test("blocks a near-duplicate (typo) of a built-in catalogue exercise", async ({ page }) => {
+    await seedProfile(page);
+    await page.goto("/");
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await expect(page.locator("canvas")).toBeVisible();
+
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    const drills = page.locator(".drills li");
+    const before = await drills.count();
+
+    await page.locator(".add-exercise-open").click();
+    const form = page.locator(".add-exercise-form");
+    await form.locator("input").fill("Push Up Wide");
+    await form.getByRole("button", { name: "Add" }).click();
+
+    await expect(form.locator(".add-exercise-error")).toContainText("Push-Up Wide");
+    await expect(drills).toHaveCount(before);
+  });
+
+  test("does not flag an exercise against its own current name while editing", async ({
+    page,
+  }) => {
+    await seedProfile(page);
+    await page.goto("/");
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await expect(page.locator("canvas")).toBeVisible();
+
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    const drills = page.locator(".drills li");
+
+    await page.locator(".add-exercise-open").click();
+    const createForm = page.locator(".add-exercise-form");
+    await createForm.locator("input").fill("Landmine Press");
+    await createForm.getByRole("button", { name: "Add" }).click();
+
+    const row = drills.last();
+    await row.locator(".drill-head").click();
+    await row.getByRole("button", { name: "Edit" }).click();
+    const editForm = row.locator(".add-exercise-form");
+    // Same name, only the equipment changes — must not flag itself.
+    await editForm.locator(".eq-chip", { hasText: "barbell" }).click();
+    await editForm.getByRole("button", { name: "Save" }).click();
+
+    await expect(editForm).toHaveCount(0);
+    await expect(row).toContainText("Landmine Press");
+    await expect(row).toContainText("barbell");
+  });
+});

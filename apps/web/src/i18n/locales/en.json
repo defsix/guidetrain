@@ -65,7 +65,8 @@
    "submit": "Add",
    "cancel": "Cancel",
    "edit": "Edit",
-   "delete": "Delete"
+   "delete": "Delete",
+   "duplicate": "That's very close to \"{name}\" — already on the list."
   }
  },
  "video": {

@@ -10,6 +10,7 @@ import { pairsFor, pairsForRegion } from './pairs';
 import { injuryFor, isAvoided } from '../lib/injuries';
 import { injuryTag, injuryNote } from '../lib/injuryMessage';
 import { toCatalogueEntry, isCustomExerciseId } from '../state/useCustomExercises';
+import { findDuplicateExerciseName } from '../lib/duplicateExercise';
 import { EQUIPMENT_TAGS } from '../types';
 import { scrollIntoViewOnFocus } from '../lib/scrollIntoViewOnFocus';
 import VideoModal from './VideoModal';
@@ -170,7 +171,7 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  * just with different starting values and a different verb on the submit
  * button.
  */
-function ExerciseForm({ t, name, equipment, onChangeName, onChangeEquipment, onSubmit, onCancel, submitLabel, autoFocus }) {
+function ExerciseForm({ t, name, equipment, onChangeName, onChangeEquipment, onSubmit, onCancel, submitLabel, autoFocus, error }) {
   return (
     <form
       className="add-exercise-form"
@@ -189,6 +190,7 @@ function ExerciseForm({ t, name, equipment, onChangeName, onChangeEquipment, onS
         maxLength={60}
         autoFocus={autoFocus}
       />
+      {error && <p className="add-exercise-error">{error}</p>}
       <div className="eq-chip-row">
         {CUSTOM_EQUIPMENT.map((tag) => (
           <button
@@ -293,6 +295,10 @@ export default function AnatomyViewer({
   const [addingExercise, setAddingExercise] = useState(false);
   const [newExerciseName, setNewExerciseName] = useState('');
   const [newExerciseEquipment, setNewExerciseEquipment] = useState('body only');
+  // Set only after a submit attempt finds a name too close to an existing
+  // one — see findDuplicateExerciseName. Cleared on every keystroke so it
+  // never sits there stale once the reader has changed the name.
+  const [addError, setAddError] = useState(null);
   // Which custom exercise's own drill body is showing the edit form instead
   // of its usual (empty) reference section — at most one at a time, cleared
   // whenever a row opens or closes so reopening one never shows a stale
@@ -300,6 +306,7 @@ export default function AnatomyViewer({
   const [editingCustomId, setEditingCustomId] = useState(null);
   const [editName, setEditName] = useState('');
   const [editEquipment, setEditEquipment] = useState('body only');
+  const [editError, setEditError] = useState(null);
   // Which suggested partner is expanded. A pair used to open its video on the
   // first tap, which answered "show me" before anyone had asked "what is it".
   const [openPair, setOpenPair] = useState(null);
@@ -408,6 +415,19 @@ export default function AnatomyViewer({
   // filtered here would never *see* the barbell row they could still ask a
   // gym neighbour to spot, and the whole point of the equipment tags on
   // every row is that the reader keeps that information either way.
+  // Every catalogue exercise's own localized name, once — for catching a
+  // custom exercise that duplicates one the app already has, not just one
+  // the reader already added themselves. Every muscle in exerciseData is
+  // scanned rather than just the selected one: a name typed under the
+  // wrong muscle should still be caught.
+  const catalogNames = useMemo(() => {
+    const seen = new Map();
+    for (const list of Object.values(exerciseData.muscles)) {
+      for (const x of list) if (!seen.has(x.id)) seen.set(x.id, x);
+    }
+    return [...seen.values()].map((x) => localizeExercise(x).name);
+  }, [localizeExercise]);
+
   const drills = useMemo(() => {
     const list = (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise);
     const ranked = equipmentSet
@@ -481,7 +501,9 @@ export default function AnatomyViewer({
     setOpenPair(null);
     setAddingExercise(false);
     setNewExerciseName('');
+    setAddError(null);
     setEditingCustomId(null);
+    setEditError(null);
     // On a phone the picker sits over the model, so leaving it open would hide
     // the very muscle that was just chosen.
     if (z) setPanel(null);
@@ -770,6 +792,7 @@ export default function AnatomyViewer({
                         onClick={() => {
                           setOpenDrill(open ? null : x.id);
                           setEditingCustomId(null);
+                          setEditError(null);
                         }}
                         aria-expanded={open}
                       >
@@ -816,15 +839,28 @@ export default function AnatomyViewer({
                               t={t}
                               name={editName}
                               equipment={editEquipment}
-                              onChangeName={setEditName}
+                              onChangeName={(v) => { setEditName(v); setEditError(null); }}
                               onChangeEquipment={setEditEquipment}
                               onSubmit={() => {
+                                // Every other custom exercise, and the whole
+                                // catalogue — but not this one's own current
+                                // name, or saving with no real change to the
+                                // name would flag itself as its own duplicate.
+                                const others = (customExercises || [])
+                                  .filter((c) => c.id !== x.id)
+                                  .map((c) => c.name);
+                                const dup = findDuplicateExerciseName(editName, [...catalogNames, ...others]);
+                                if (dup) {
+                                  setEditError(t('viewer.addExercise.duplicate', { name: dup }));
+                                  return;
+                                }
                                 onEditCustomExercise(x.id, editName, editEquipment);
                                 setEditingCustomId(null);
                               }}
-                              onCancel={() => setEditingCustomId(null)}
+                              onCancel={() => { setEditingCustomId(null); setEditError(null); }}
                               submitLabel={t('stats.save')}
                               autoFocus={false}
+                              error={editError}
                             />
                           ) : (
                             <>
@@ -866,6 +902,7 @@ export default function AnatomyViewer({
                                     onClick={() => {
                                       setEditName(x.name);
                                       setEditEquipment(x.equipment || 'body only');
+                                      setEditError(null);
                                       setEditingCustomId(x.id);
                                     }}
                                   >
@@ -897,19 +934,26 @@ export default function AnatomyViewer({
                     t={t}
                     name={newExerciseName}
                     equipment={newExerciseEquipment}
-                    onChangeName={setNewExerciseName}
+                    onChangeName={(v) => { setNewExerciseName(v); setAddError(null); }}
                     onChangeEquipment={setNewExerciseEquipment}
                     onSubmit={() => {
+                      const existing = (customExercises || []).map((c) => c.name);
+                      const dup = findDuplicateExerciseName(newExerciseName, [...catalogNames, ...existing]);
+                      if (dup) {
+                        setAddError(t('viewer.addExercise.duplicate', { name: dup }));
+                        return;
+                      }
                       onAddCustomExercise(selected.key, newExerciseName, newExerciseEquipment);
                       setNewExerciseName('');
                       setAddingExercise(false);
                     }}
-                    onCancel={() => setAddingExercise(false)}
+                    onCancel={() => { setAddingExercise(false); setAddError(null); }}
                     submitLabel={t('viewer.addExercise.submit')}
                     autoFocus
+                    error={addError}
                   />
                 ) : (
-                  <button className="add-exercise-open" onClick={() => setAddingExercise(true)}>
+                  <button className="add-exercise-open" onClick={() => { setAddingExercise(true); setAddError(null); }}>
                     + {t('viewer.addExercise.button')}
                   </button>
                 )

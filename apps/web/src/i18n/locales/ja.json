@@ -61,7 +61,8 @@
    "submit": "追加",
    "cancel": "キャンセル",
    "edit": "編集",
-   "delete": "削除"
+   "delete": "削除",
+   "duplicate": "「{name}」とよく似ています — すでにリストにあります。"
   }
  },
  "video": {

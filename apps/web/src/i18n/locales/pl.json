@@ -73,7 +73,8 @@
    "submit": "Dodaj",
    "cancel": "Anuluj",
    "edit": "Edytuj",
-   "delete": "Usuń"
+   "delete": "Usuń",
+   "duplicate": "To bardzo przypomina „{name}” — już jest na liście."
   }
  },
  "video": {

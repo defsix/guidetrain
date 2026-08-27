@@ -61,7 +61,8 @@
    "submit": "添加",
    "cancel": "取消",
    "edit": "编辑",
-   "delete": "删除"
+   "delete": "删除",
+   "duplicate": "这与“{name}”非常相似——已经在列表中了。"
   }
  },
  "video": {

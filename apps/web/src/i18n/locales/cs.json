@@ -73,7 +73,8 @@
    "submit": "Přidat",
    "cancel": "Zrušit",
    "edit": "Upravit",
-   "delete": "Smazat"
+   "delete": "Smazat",
+   "duplicate": "To je hodně podobné „{name}“ — ten už je na seznamu."
   }
  },
  "video": {

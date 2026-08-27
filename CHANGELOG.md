@@ -482,6 +482,14 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Custom exercises can't quietly duplicate one that's already there.**
+  Adding or renaming one now checks the name against every catalogue
+  exercise and everything else already added — not just for an exact
+  match, but a close one: different case, stray punctuation or spacing, a
+  typo, a dropped or added word. A close match blocks the save with an
+  inline note naming what it matched, rather than silently ending up with
+  two entries for the same exercise. "Squat" next to "Front Squat" still
+  goes through — different exercises, not a typo of each other.
 - **Fixed: the CSV and Markdown exports didn't do anything on Android.**
   Both used the ordinary browser download trick (a Blob URL, a synthetic
   `<a download>` click) — which a real browser tab hands off to the OS, but
