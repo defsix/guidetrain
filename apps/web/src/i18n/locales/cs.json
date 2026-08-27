@@ -608,6 +608,11 @@
     "many": "Ještě zbývá {count} cyklu, přibližně {weeksNeeded} týdnů — termín už uplynul.",
     "other": "Ještě zbývá {count} cyklů, přibližně {weeksNeeded} týdnů — termín už uplynul."
    }
+  },
+  "export": {
+   "title": "Export pro zpětnou vazbu od AI",
+   "intro": "Váš profil, aktuální program, maxima, cíle a celý tréninkový deník v jednom souboru — vložte ho do libovolného AI chatu a získejte zpětnou vazbu k pokroku, plánování nebo k tomu, co zkusit dál.",
+   "button": "Exportovat (.md)"
   }
  }
 }

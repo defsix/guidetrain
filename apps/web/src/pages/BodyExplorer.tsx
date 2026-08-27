@@ -472,6 +472,7 @@ export default function BodyExplorer() {
           injuries={injuries.injuries}
           onSetInjury={injuries.set}
           onClearInjury={injuries.clear}
+          programs={programs.programs}
         />
       )}
       <PlanLibrary

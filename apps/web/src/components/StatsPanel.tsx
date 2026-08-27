@@ -6,10 +6,12 @@ import type { KnownMaxEntry } from "../state/useKnownMax";
 import type { TrainingMaxOverride } from "../state/useTrainingMax";
 import type { Goal } from "../state/useGoals";
 import type { Injury, InjuryMode } from "../state/useInjuries";
+import type { Program } from "../state/usePrograms";
 import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progression";
 import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
+import { buildTrainingExport, downloadText } from "../lib/markdownExport";
 import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
@@ -34,6 +36,8 @@ type Props = {
   injuries: Record<string, Injury>;
   onSetInjury: (muscleId: string, mode: InjuryMode) => void;
   onClearInjury: (muscleId: string) => void;
+  /** Every saved workout, for the AI-ready export — see `lib/markdownExport.ts`. */
+  programs: Program[];
 };
 
 /**
@@ -139,7 +143,7 @@ export default function StatsPanel({
   open, onClose, profile, onSetBodyWeight, weighIns, allSets,
   knownMaxes, onSetKnownMax, onClearKnownMax,
   trainingMaxes, goals, onSetGoal, onClearGoal,
-  injuries, onSetInjury, onClearInjury,
+  injuries, onSetInjury, onClearInjury, programs,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [weightInput, setWeightInput] = useState("");
@@ -204,6 +208,15 @@ export default function StatsPanel({
   function toggleInjury(muscleId: string, mode: InjuryMode) {
     if (injuries[muscleId]?.mode === mode) onClearInjury(muscleId);
     else onSetInjury(muscleId, mode);
+  }
+
+  function exportMarkdown() {
+    const md = buildTrainingExport({
+      profile, allSets, knownMaxes, trainingMaxes, goals, injuries, programs,
+      t, localizeExercise,
+    });
+    const today = new Date().toISOString().slice(0, 10);
+    downloadText(`guidetrain-training-${today}.md`, md, "text/markdown;charset=utf-8;");
   }
 
   const weightPoints: Point[] = weighIns
@@ -454,6 +467,14 @@ export default function StatsPanel({
           </ul>
           <p className="plan-note">{t("injuryPanel.note")}</p>
         </details>
+
+        <section className="stats-section">
+          <h3>{t("stats.export.title")}</h3>
+          <p className="plans-intro">{t("stats.export.intro")}</p>
+          <button type="button" className="stats-save" onClick={exportMarkdown}>
+            {t("stats.export.button")}
+          </button>
+        </section>
       </aside>
     </>
   );

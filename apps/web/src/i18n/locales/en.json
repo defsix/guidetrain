@@ -574,6 +574,11 @@
     "one": "{count} cycle still needed, about {weeksNeeded} weeks — the deadline has passed.",
     "other": "{count} cycles still needed, about {weeksNeeded} weeks — the deadline has passed."
    }
+  },
+  "export": {
+   "title": "Export for AI feedback",
+   "intro": "Your profile, current program, maxes, goals and full training log, as one file — paste it into any AI chat for feedback on progress, planning or what to try next.",
+   "button": "Export (.md)"
   }
  }
 }

@@ -574,6 +574,11 @@
     "one": "Ainda falta {count} ciclo, cerca de {weeksNeeded} semanas — o prazo já passou.",
     "other": "Ainda faltam {count} ciclos, cerca de {weeksNeeded} semanas — o prazo já passou."
    }
+  },
+  "export": {
+   "title": "Exportar para feedback de IA",
+   "intro": "O seu perfil, programa atual, máximos, objetivos e todo o registo de treino, num só ficheiro — cole-o em qualquer chat de IA para obter feedback sobre o seu progresso, planeamento ou o que experimentar a seguir.",
+   "button": "Exportar (.md)"
   }
  }
 }

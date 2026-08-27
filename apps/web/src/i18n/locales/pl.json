@@ -608,6 +608,11 @@
     "many": "Nadal potrzeba {count} cykli, około {weeksNeeded} tygodni — termin już minął.",
     "other": "Nadal potrzeba {count} cyklu, około {weeksNeeded} tygodni — termin już minął."
    }
+  },
+  "export": {
+   "title": "Eksport do informacji zwrotnej od AI",
+   "intro": "Twój profil, aktualny program, maksima, cele i cały dziennik treningowy w jednym pliku — wklej go w dowolnym czacie AI, aby uzyskać informację zwrotną na temat postępów, planowania lub tego, co spróbować dalej.",
+   "button": "Eksportuj (.md)"
   }
  }
 }

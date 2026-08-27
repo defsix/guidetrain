@@ -574,6 +574,11 @@
     "one": "Encore {count} cycle nécessaire, environ {weeksNeeded} semaines — l'échéance est déjà passée.",
     "other": "Encore {count} cycles nécessaires, environ {weeksNeeded} semaines — l'échéance est déjà passée."
    }
+  },
+  "export": {
+   "title": "Export pour retour d'IA",
+   "intro": "Votre profil, programme actuel, maxima, objectifs et tout votre historique d'entraînement, en un seul fichier — collez-le dans n'importe quel chat IA pour un retour sur votre progression, votre planification, ou ce qu'il faut essayer ensuite.",
+   "button": "Exporter (.md)"
   }
  }
 }

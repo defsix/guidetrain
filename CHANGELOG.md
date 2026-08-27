@@ -482,6 +482,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **An AI-ready training export, always one tap away on Progress.**
+  Downloads a single Markdown file — profile, current program, known and
+  training maxes, goals with their pace, muscles being worked around, and
+  the full training log grouped by exercise, chronologically — meant to be
+  pasted whole into any AI chat for feedback on progress, planning or what
+  to try next. Separate from the existing per-set CSV export in History,
+  which stays a flat spreadsheet with no other context: this is the richer,
+  human-and-AI-readable counterpart, built fresh from current data every
+  time rather than kept in sync. Structural headings are in English
+  regardless of locale, the same call the CSV export's column names already
+  make; exercise names, program labels and goal-pace verdicts still read in
+  whatever language the app is in.
 - **Clarified: a barbell exercise's weight is the bar's total, plates
   included.** The other side of the same ambiguity the dumbbell note fixed
   — a set logged as "60 kg" on a barbell exercise already meant the whole

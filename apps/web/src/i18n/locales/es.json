@@ -574,6 +574,11 @@
     "one": "Todavía falta {count} ciclo, unas {weeksNeeded} semanas — la fecha límite ya pasó.",
     "other": "Todavía faltan {count} ciclos, unas {weeksNeeded} semanas — la fecha límite ya pasó."
    }
+  },
+  "export": {
+   "title": "Exportar para feedback de la IA",
+   "intro": "Tu perfil, programa actual, máximos, objetivos y todo tu registro de entrenamiento, en un solo archivo — pégalo en cualquier chat de IA para recibir feedback sobre tu progreso, tu planificación o qué probar a continuación.",
+   "button": "Exportar (.md)"
   }
  }
 }

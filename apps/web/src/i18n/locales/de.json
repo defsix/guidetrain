@@ -574,6 +574,11 @@
     "one": "Noch {count} Zyklus nötig, etwa {weeksNeeded} Wochen — die Frist ist schon vorbei.",
     "other": "Noch {count} Zyklen nötig, etwa {weeksNeeded} Wochen — die Frist ist schon vorbei."
    }
+  },
+  "export": {
+   "title": "Export für KI-Feedback",
+   "intro": "Dein Profil, aktuelles Programm, Maxima, Ziele und dein komplettes Trainingsprotokoll als eine Datei — füge sie in einen beliebigen KI-Chat ein, für Feedback zu Fortschritt, Planung oder die nächsten Schritte.",
+   "button": "Exportieren (.md)"
   }
  }
 }
