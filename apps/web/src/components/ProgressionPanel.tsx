@@ -10,6 +10,7 @@ import type { PlannedWeek } from "../lib/progression";
 import type { Target } from "../state/usePrograms";
 import type { Goal } from "../state/useGoals";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
@@ -208,6 +209,7 @@ export default function ProgressionPanel({
               <input
                 value={target}
                 onChange={(e) => setTarget(e.target.value)}
+                onFocus={scrollIntoViewOnFocus}
                 inputMode="decimal"
                 maxLength={6}
                 aria-label={t("plan.target")}

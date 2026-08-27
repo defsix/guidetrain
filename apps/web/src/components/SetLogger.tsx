@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { SetEntry } from "../state/useLog";
 import type { Target } from "../state/usePrograms";
 import { platesPerSide, warmupSets, BAR_WEIGHT } from "../lib/progression";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -278,6 +279,7 @@ export default function SetLogger({
             <input
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
+              onFocus={scrollIntoViewOnFocus}
               inputMode="decimal"
               placeholder={t("unit.kg")}
               aria-label={t("log.weight")}
@@ -289,6 +291,7 @@ export default function SetLogger({
         <input
           value={reps}
           onChange={(e) => setReps(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           inputMode="numeric"
           placeholder={t("log.repsShort")}
           aria-label={t("log.reps")}

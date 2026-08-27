@@ -482,6 +482,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed: the on-screen keyboard could cover the field you'd just tapped**
+  — the same fix the Goals form got earlier (a short delay for the visual
+  viewport to resize around the keyboard, then scroll the field into view)
+  had never been carried over to most of the app's other text fields: set
+  logging, editing a set in History, the sets×reps and plan-target quick
+  editors, renaming a workout, body weight and known-max on Progress, and
+  every sign-in/password/email field in Account. All of them now use the
+  same fix, pulled out to a shared `scrollIntoViewOnFocus` helper instead of
+  staying a one-off in the Goals form and a near-duplicate in the exercise
+  autocomplete.
 - **A first-run spotlight tour, and a `?` to replay it.** Six stops through
   the real app — the 3D model, adding an exercise, the workout it lands in,
   logging a set, ready-made plans as the shortcut, and where the `?` itself

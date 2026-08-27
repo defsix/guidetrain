@@ -16,6 +16,7 @@ import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import { restSeconds, REST_EXTEND_SECONDS, bestEstimate } from "../lib/progression";
 import { prescribe, prescribePercent } from "../lib/plans";
 import { positionLabel } from "../lib/programLabel";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { usesLegs } from "../lib/muscleRegions";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
@@ -274,6 +275,7 @@ export default function WorkoutPanel({
                 <input
                   value={draft}
                   onChange={(e) => setDraft(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   placeholder={label(active, programs, t)}
                   aria-label={t("program.name")}
                   maxLength={40}

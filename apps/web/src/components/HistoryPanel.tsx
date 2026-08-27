@@ -3,6 +3,7 @@ import exercises from "../anatomy/exercises.json";
 import type { SetEntry } from "../state/useLog";
 import { estimateOneRepMax, roundLoad } from "../lib/progression";
 import { setsToCsv, downloadCsv } from "../lib/csvExport";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import type { TFn } from "../i18n";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
@@ -66,6 +67,7 @@ function SetRow({ s, unit, editing, onStartEdit, onCancelEdit, onSaveEdit, onRem
         <input
           value={weight}
           onChange={(e) => setWeight(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           inputMode="decimal"
           aria-label={t("log.weight")}
           className="hist-edit-input"
@@ -74,6 +76,7 @@ function SetRow({ s, unit, editing, onStartEdit, onCancelEdit, onSaveEdit, onRem
         <input
           value={reps}
           onChange={(e) => setReps(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           inputMode="numeric"
           aria-label={t("log.reps")}
           className="hist-edit-input"

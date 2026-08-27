@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Target } from "../state/usePrograms";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Props = {
@@ -48,6 +49,7 @@ export default function TargetPips({ target, done, skipped = 0, onChange }: Prop
         <input
           value={sets}
           onChange={(e) => setSets(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           inputMode="numeric"
           maxLength={2}
           aria-label={t("target.sets")}
@@ -56,6 +58,7 @@ export default function TargetPips({ target, done, skipped = 0, onChange }: Prop
         <input
           value={reps}
           onChange={(e) => setReps(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           inputMode="numeric"
           maxLength={3}
           aria-label={t("target.reps")}

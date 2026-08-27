@@ -3,6 +3,7 @@ import type { useAuth } from "../state/useAuth";
 import type { SyncStatus } from "../state/useSync";
 import { ENABLED_OAUTH_PROVIDERS } from "../lib/supabase";
 import { clearAll } from "../lib/storage";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
 
@@ -183,6 +184,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                     type="password"
                     value={recoveryPassword}
                     onChange={(e) => setRecoveryPassword(e.target.value)}
+                    onFocus={scrollIntoViewOnFocus}
                     autoComplete="new-password"
                     minLength={6}
                     required
@@ -225,6 +227,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   autoComplete="new-password"
                   minLength={6}
                   placeholder={t("account.newPassword")}
@@ -245,6 +248,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   type="email"
                   value={newEmail}
                   onChange={(e) => setNewEmail(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   autoComplete="email"
                   placeholder={t("account.newEmail")}
                   aria-label={t("account.newEmail")}
@@ -309,6 +313,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   autoComplete="email"
                   required
                 />
@@ -360,6 +365,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   autoComplete="email"
                   required
                 />
@@ -370,6 +376,7 @@ export default function AccountPanel({ open, onClose, auth, sync }: Props) {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onFocus={scrollIntoViewOnFocus}
                   autoComplete={mode === "in" ? "current-password" : "new-password"}
                   minLength={6}
                   required

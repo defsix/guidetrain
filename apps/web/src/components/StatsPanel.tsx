@@ -10,6 +10,7 @@ import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progress
 import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
 import AutocompleteInput from "./AutocompleteInput";
@@ -200,15 +201,6 @@ export default function StatsPanel({
     setGoalDateInput("");
   }
 
-  // The on-screen keyboard can cover a focused field (and, for the exercise
-  // search above, the dropdown that opens under it) before the browser has
-  // resized the visual viewport to make room for it — the delay lets that
-  // settle first.
-  function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
-    const el = e.currentTarget;
-    setTimeout(() => el.scrollIntoView({ block: "center", behavior: "smooth" }), 300);
-  }
-
   function toggleInjury(muscleId: string, mode: InjuryMode) {
     if (injuries[muscleId]?.mode === mode) onClearInjury(muscleId);
     else onSetInjury(muscleId, mode);
@@ -244,6 +236,7 @@ export default function StatsPanel({
               className="weight-input"
               value={weightInput}
               onChange={(e) => setWeightInput(e.target.value)}
+              onFocus={scrollIntoViewOnFocus}
               inputMode="decimal"
               placeholder={profile?.bodyWeight ? String(profile.bodyWeight) : t("stats.bodyWeight")}
               aria-label={t("stats.bodyWeight")}
@@ -310,6 +303,7 @@ export default function StatsPanel({
                   onChange={(e) =>
                     setMaxInputs((prev) => ({ ...prev, [key]: e.target.value }))
                   }
+                  onFocus={scrollIntoViewOnFocus}
                   inputMode="decimal"
                   placeholder={effective ? String(effective) : t(`stats.${key}`)}
                   aria-label={t(`stats.${key}`)}
