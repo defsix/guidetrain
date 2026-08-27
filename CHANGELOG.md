@@ -482,6 +482,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Clarified: a dumbbell exercise's weight is per dumbbell, not the pair
+  combined.** A set logged as "30 kg" on a dumbbell exercise means two 30 kg
+  dumbbells — 60 kg total moved — not one 30 kg dumbbell split between two
+  hands. That was already true of how the app prescribes and estimates a
+  1RM for these lifts, and already said so in one place (a small "per hand"
+  label on the plan preview), but the note next to the weight field itself
+  was too terse to catch. Reworded to say it plainly, and added the same
+  note above the "how to do it" steps when browsing a dumbbell exercise
+  from the muscle picker, not just when logging a set for one already in a
+  workout.
 - **Fixed: the on-screen keyboard could cover the field you'd just tapped**
   — the same fix the Goals form got earlier (a short delay for the visual
   viewport to resize around the keyboard, then scroll the field into view)

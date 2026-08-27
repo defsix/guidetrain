@@ -464,7 +464,8 @@
  "load": {
   "perSide": "{weight} {unit} на сторону",
   "barOnly": "Только гриф — без блинов.",
-  "perHand": "на руку"
+  "perHand": "на руку",
+  "perHandNote": "Вес одной гантели — не обеих вместе."
  },
  "history": {
   "title": "История",

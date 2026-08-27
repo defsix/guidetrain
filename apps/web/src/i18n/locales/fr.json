@@ -442,7 +442,8 @@
  "load": {
   "perSide": "{weight} {unit} par côté",
   "barOnly": "La barre seule — sans disques.",
-  "perHand": "par main"
+  "perHand": "par main",
+  "perHandNote": "Le poids d’un haltère — pas des deux réunis."
  },
  "history": {
   "title": "Historique",

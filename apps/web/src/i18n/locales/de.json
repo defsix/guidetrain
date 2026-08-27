@@ -442,7 +442,8 @@
  "load": {
   "perSide": "{weight} {unit} pro Seite",
   "barOnly": "Nur die Stange — ohne Scheiben.",
-  "perHand": "pro Hand"
+  "perHand": "pro Hand",
+  "perHandNote": "Gewicht einer Kurzhantel — nicht beider zusammen."
  },
  "history": {
   "title": "Verlauf",

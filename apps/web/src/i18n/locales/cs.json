@@ -464,7 +464,8 @@
  "load": {
   "perSide": "{weight} {unit} na každé straně",
   "barOnly": "Jen osa — bez kotoučů.",
-  "perHand": "na ruku"
+  "perHand": "na ruku",
+  "perHandNote": "Váha jedné činky — ne obou dohromady."
  },
  "history": {
   "title": "Historie",

@@ -348,7 +348,7 @@ export default function SetLogger({
         </p>
       )}
       {barOnly && <p className="loading-note">{t("load.barOnly")}</p>}
-      {equipment === "dumbbell" && <p className="loading-note">{t("load.perHand")}</p>}
+      {equipment === "dumbbell" && <p className="loading-note">{t("load.perHandNote")}</p>}
 
       {/* Skipping, which records nothing. A set you did not do is not a set,
           so this moves the prescription on and says so — it never reaches the

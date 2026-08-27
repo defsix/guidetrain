@@ -726,6 +726,9 @@ export default function AnatomyViewer({
                           )}
 
 
+                          {x.equipment === 'dumbbell' && (
+                            <p className="loading-note">{t('load.perHandNote')}</p>
+                          )}
                           {x.instructions.length > 0 && (
                             <ol className="steps">
                               {x.instructions.map((s, i) => <li key={i}>{s}</li>)}

@@ -431,7 +431,8 @@
  "load": {
   "perSide": "片側 {weight} {unit}",
   "barOnly": "バーのみ — プレートなし。",
-  "perHand": "片手あたり"
+  "perHand": "片手あたり",
+  "perHandNote": "片方のダンベルの重さ — 両方の合計ではありません。"
  },
  "history": {
   "title": "履歴",
