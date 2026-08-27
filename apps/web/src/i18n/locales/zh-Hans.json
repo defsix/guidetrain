@@ -432,7 +432,8 @@
   "perSide": "每边 {weight} {unit}",
   "barOnly": "只有杠铃杆 — 不加片。",
   "perHand": "每只手",
-  "perHandNote": "单个哑铃的重量 — 不是两个哑铃的总和。"
+  "perHandNote": "单个哑铃的重量 — 不是两个哑铃的总和。",
+  "barTotalNote": "杠铃的总重量 — 包含杠铃片。"
  },
  "history": {
   "title": "历史",

@@ -443,7 +443,8 @@
   "perSide": "{weight} {unit} de cada lado",
   "barOnly": "Só a barra — sem discos.",
   "perHand": "por mão",
-  "perHandNote": "Peso de um haltere — não dos dois juntos."
+  "perHandNote": "Peso de um haltere — não dos dois juntos.",
+  "barTotalNote": "Peso total da barra — discos incluídos."
  },
  "history": {
   "title": "Histórico",

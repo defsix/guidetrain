@@ -336,7 +336,9 @@ export default function SetLogger({
           loaded bar and nobody hands you one — you build it from a 20 kg bar
           and pairs of plates, and the halving is where people slip. A
           dumbbell's 12.5 kg is one hand; taken as the pair it would be half
-          the weight it should be. Neither was said anywhere. */}
+          the weight it should be. Both are said explicitly now, not just
+          implied by the plate breakdown below (which only appears once
+          there's a weight to break down in the first place). */}
       {loading && (
         <p className="loading-note">
           {t("load.perSide", { weight: loading.side, unit: t("unit.kg") })}
@@ -348,6 +350,9 @@ export default function SetLogger({
         </p>
       )}
       {barOnly && <p className="loading-note">{t("load.barOnly")}</p>}
+      {equipment === "barbell" && !barOnly && (
+        <p className="loading-note">{t("load.barTotalNote")}</p>
+      )}
       {equipment === "dumbbell" && <p className="loading-note">{t("load.perHandNote")}</p>}
 
       {/* Skipping, which records nothing. A set you did not do is not a set,

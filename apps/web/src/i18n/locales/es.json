@@ -443,7 +443,8 @@
   "perSide": "{weight} {unit} por lado",
   "barOnly": "Solo la barra — sin discos.",
   "perHand": "por mano",
-  "perHandNote": "El peso de una mancuerna — no el de las dos juntas."
+  "perHandNote": "El peso de una mancuerna — no el de las dos juntas.",
+  "barTotalNote": "El peso total de la barra — discos incluidos."
  },
  "history": {
   "title": "Historial",

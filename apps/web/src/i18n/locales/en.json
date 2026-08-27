@@ -443,7 +443,8 @@
   "perSide": "{weight} {unit} a side",
   "barOnly": "Just the bar — nothing on it.",
   "perHand": "per hand",
-  "perHandNote": "One dumbbell's weight — not the pair combined."
+  "perHandNote": "One dumbbell's weight — not the pair combined.",
+  "barTotalNote": "The bar's total weight — plates included."
  },
  "history": {
   "title": "History",

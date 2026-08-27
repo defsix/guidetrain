@@ -726,6 +726,9 @@ export default function AnatomyViewer({
                           )}
 
 
+                          {x.equipment === 'barbell' && (
+                            <p className="loading-note">{t('load.barTotalNote')}</p>
+                          )}
                           {x.equipment === 'dumbbell' && (
                             <p className="loading-note">{t('load.perHandNote')}</p>
                           )}

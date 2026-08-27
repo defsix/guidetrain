@@ -432,7 +432,8 @@
   "perSide": "片側 {weight} {unit}",
   "barOnly": "バーのみ — プレートなし。",
   "perHand": "片手あたり",
-  "perHandNote": "片方のダンベルの重さ — 両方の合計ではありません。"
+  "perHandNote": "片方のダンベルの重さ — 両方の合計ではありません。",
+  "barTotalNote": "バーの合計重量 — プレートを含みます。"
  },
  "history": {
   "title": "履歴",

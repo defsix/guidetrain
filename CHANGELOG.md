@@ -482,6 +482,14 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Clarified: a barbell exercise's weight is the bar's total, plates
+  included.** The other side of the same ambiguity the dumbbell note fixed
+  — a set logged as "60 kg" on a barbell exercise already meant the whole
+  loaded bar, 20 kg bar included, which the per-side plate breakdown
+  underneath it implied but never said outright. Now says so plainly next
+  to the weight field (unless the typed weight is exactly the bar, which
+  keeps its existing "just the bar" note instead), and above the "how to
+  do it" steps when browsing a barbell exercise from the muscle picker.
 - **Clarified: a dumbbell exercise's weight is per dumbbell, not the pair
   combined.** A set logged as "30 kg" on a dumbbell exercise means two 30 kg
   dumbbells — 60 kg total moved — not one 30 kg dumbbell split between two

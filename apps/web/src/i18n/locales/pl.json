@@ -465,7 +465,8 @@
   "perSide": "{weight} {unit} na stronę",
   "barOnly": "Sam gryf — bez talerzy.",
   "perHand": "na rękę",
-  "perHandNote": "Waga jednej hantli — nie obu razem."
+  "perHandNote": "Waga jednej hantli — nie obu razem.",
+  "barTotalNote": "Łączna waga gryfu — razem z talerzami."
  },
  "history": {
   "title": "Historia",
