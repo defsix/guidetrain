@@ -24,6 +24,7 @@ import { useBodyWeightLog } from "../state/useBodyWeightLog";
 import { useGoals } from "../state/useGoals";
 import { useInjuries } from "../state/useInjuries";
 import { usePinnedExercises } from "../state/usePinnedExercises";
+import { useCustomExercises, toCatalogueEntry } from "../state/useCustomExercises";
 import { useAuth } from "../state/useAuth";
 import { useSync } from "../state/useSync";
 import { recommendExercises } from "../lib/recommend";
@@ -76,6 +77,16 @@ export default function BodyExplorer() {
   const goals = useGoals();
   const injuries = useInjuries();
   const pinnedExercises = usePinnedExercises();
+  const customExercises = useCustomExercises();
+  // The catalogue plus whatever the reader has typed in themselves — see
+  // useCustomExercises.ts. Only the recommendations card needs this at this
+  // level; every other panel below builds its own from the same list.
+  const byId = useMemo(() => {
+    if (!customExercises.customExercises.length) return BY_ID;
+    const merged = new Map(BY_ID);
+    for (const x of customExercises.customExercises) merged.set(x.id, toCatalogueEntry(x));
+    return merged;
+  }, [customExercises.customExercises]);
   const tourSeen = useTourSeen();
   const auth = useAuth();
   const sync = useSync(auth.userId);
@@ -339,6 +350,8 @@ export default function BodyExplorer() {
           toolbarExtra={<>{workoutButton}{calisthenicsButton}{stretchingButton}</>}
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
           focusMuscleId={tourFocusMuscle}
+          customExercises={customExercises.customExercises}
+          onAddCustomExercise={(primary, name, equipment) => customExercises.add(name, equipment, primary)}
         />
         {/* A real number to act on takes priority over the generic
             first-visit hint below — someone who already has a known max or a
@@ -360,7 +373,7 @@ export default function BodyExplorer() {
             </div>
             <ul>
               {recommendations.map((r) => {
-                const raw = BY_ID.get(r.id);
+                const raw = byId.get(r.id);
                 if (!raw) return null;
                 const name = localizeExercise(raw).name;
                 return (
@@ -419,6 +432,7 @@ export default function BodyExplorer() {
         onTogglePin={pinnedExercises.toggle}
         profile={profile}
         knownMaxes={knownMax.overrides}
+        customExercises={customExercises.customExercises}
         bodyLoad={
           // Everything is kilos now. A profile saved in pounds is left alone
           // rather than converted behind the reader's back — the weight field
@@ -434,6 +448,7 @@ export default function BodyExplorer() {
         sets={log.entries}
         onEditSet={log.edit}
         onRemoveSet={log.remove}
+        customExercises={customExercises.customExercises}
       />
       {auth.available && (
         <AccountPanel
@@ -473,6 +488,7 @@ export default function BodyExplorer() {
           onSetInjury={injuries.set}
           onClearInjury={injuries.clear}
           programs={programs.programs}
+          customExercises={customExercises.customExercises}
         />
       )}
       <PlanLibrary

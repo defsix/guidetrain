@@ -186,6 +186,53 @@
 .drill-body .work.primary { color: var(--text); }
 .drill-body .work.primary .dot { opacity: 1; }
 
+/* An exercise the reader typed in, filed under this muscle — see
+   useCustomExercises.ts. Closed by default, opening into a small form
+   rather than sitting permanently under a list that's mostly the built-in
+   catalogue. */
+.add-exercise-open {
+  display: block; width: 100%; margin-top: 6px; padding: 8px 10px;
+  background: none; border: 1px dashed var(--border); border-radius: 9px; cursor: pointer;
+  font-family: inherit; font-size: 12px; color: var(--text-muted); text-align: left;
+}
+.add-exercise-open:hover { border-color: var(--accent); color: var(--accent); }
+
+.add-exercise-form {
+  margin-top: 6px; padding: 10px; background: var(--panel); border-radius: 9px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.add-exercise-form input {
+  background: var(--bg); border: 1px solid var(--border); border-radius: 7px;
+  padding: 8px 9px; font-family: inherit; font-size: 12.5px; color: var(--text);
+}
+.add-exercise-form input:focus { border-color: var(--accent); outline: none; }
+
+/* A second, small chip style rather than reusing `.chip` — that class is
+   already `.anatomy-root .chip`, the region-filter list's own look (a dot,
+   a count, an `.active` state that means something different here). */
+.eq-chip-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.eq-chip {
+  background: none; border: 1px solid var(--border); border-radius: 999px;
+  padding: 4px 9px; font-family: inherit; font-size: 11px; color: var(--text-muted); cursor: pointer;
+}
+.eq-chip:hover { border-color: var(--border-strong); color: var(--text); }
+.eq-chip-selected, .eq-chip-selected:hover {
+  background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+}
+
+.add-exercise-actions { display: flex; gap: 8px; }
+.add-exercise-actions button[type="submit"] {
+  flex: 1; background: var(--accent); border: 0; color: var(--accent-text);
+  font-family: inherit; font-weight: 600; font-size: 12px; padding: 8px 10px;
+  border-radius: 7px; cursor: pointer;
+}
+.add-exercise-actions button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
+.add-exercise-cancel {
+  background: none; border: 1px solid var(--border); border-radius: 7px;
+  padding: 8px 10px; font-family: inherit; font-size: 12px; color: var(--text-muted); cursor: pointer;
+}
+.add-exercise-cancel:hover { border-color: var(--border-strong); color: var(--text); }
+
 /* Last in the panel now, under the same rule that separates the pair block, so
    the three parts of an exercise divide evenly: what it works, what to do with
    it, and how to do it. */

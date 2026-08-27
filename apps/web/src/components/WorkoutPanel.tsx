@@ -21,6 +21,7 @@ import { usesLegs } from "../lib/muscleRegions";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
+import { type CustomExercise, toCatalogueEntry } from "../state/useCustomExercises";
 import { useI18n } from "../i18n/I18nProvider";
 
 type Entry = {
@@ -85,6 +86,8 @@ type Props = {
   profile: Profile | null;
   /** A max set by hand on the stats page, per exercise id — beats one estimated from the log, same as PlanLibrary. */
   knownMaxes: Record<string, KnownMaxEntry>;
+  /** Exercises the reader typed in themselves — see useCustomExercises.ts. */
+  customExercises: CustomExercise[];
 };
 
 /**
@@ -109,8 +112,19 @@ export default function WorkoutPanel({
   onBrowsePlans, skips, onSkip, onUnskip,
   trainingMaxes, onSetTrainingMax, onClearTrainingMax,
   onSwap, equipmentAvailable, goals, injuries, pinned, onTogglePin, profile, knownMaxes,
+  customExercises,
 }: Props) {
   const { t, localizeExercise } = useI18n();
+
+  // The catalogue plus whatever the reader has typed in themselves — same
+  // lookup shape either way, so nothing downstream has to know which an id
+  // came from.
+  const byId = useMemo(() => {
+    if (!customExercises.length) return BY_ID;
+    const merged = new Map(BY_ID);
+    for (const x of customExercises) merged.set(x.id, toCatalogueEntry(x));
+    return merged;
+  }, [customExercises]);
   const [planning, setPlanning] = useState<string | null>(null);
   const [swapping, setSwapping] = useState<string | null>(null);
   const [renaming, setRenaming] = useState(false);
@@ -177,7 +191,7 @@ export default function WorkoutPanel({
   // Computed only while the panel is open, from the exercise being replaced
   // rather than from `items` — the localized copy items holds has already
   // dropped the primary/secondary muscle data swapsFor needs.
-  const swapAnchor = swapping ? BY_ID.get(swapping) : null;
+  const swapAnchor = swapping ? byId.get(swapping) : null;
   const swapCandidates = useMemo(() => {
     if (!swapAnchor) return [];
     // A wider pool than the 4 actually shown, so an "avoid" injury filtering
@@ -218,13 +232,13 @@ export default function WorkoutPanel({
   const items = useMemo(() => {
     const pinnedSet = new Set(pinned);
     const localized = ids
-      .map((id) => BY_ID.get(id))
+      .map((id) => byId.get(id))
       .filter((x): x is Entry => Boolean(x))
       .map((x) => localizeExercise(x));
     const front = localized.filter((x) => pinnedSet.has(x.id));
     const rest = localized.filter((x) => !pinnedSet.has(x.id));
     return [...front, ...rest];
-  }, [ids, localizeExercise, pinned]);
+  }, [ids, localizeExercise, pinned, byId]);
 
   if (!open) return null;
 
@@ -484,7 +498,7 @@ export default function WorkoutPanel({
       </aside>
       {planning && (() => {
         const x = items.find((i) => i.id === planning);
-        const raw = BY_ID.get(planning);
+        const raw = byId.get(planning);
         if (!x || !raw) return null;
         return (
           <ProgressionPanel

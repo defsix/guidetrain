@@ -54,7 +54,13 @@
   "pairTitle": "セット間に組み合わせる",
   "pairWhy": "部位が異なるため、互いに疲労させません。",
   "loading": "モデルを読み込んでいます…",
-  "closePanel": "パネルを閉じる"
+  "closePanel": "パネルを閉じる",
+  "addExercise": {
+   "button": "自分の種目を追加",
+   "placeholder": "種目名",
+   "submit": "追加",
+   "cancel": "キャンセル"
+  }
  },
  "video": {
   "close": "動画を閉じる",

@@ -58,7 +58,13 @@
   "pairTitle": "À combiner entre les séries",
   "pairWhy": "Régions différentes : aucune ne fatigue l'autre.",
   "loading": "Chargement du modèle…",
-  "closePanel": "Fermer le panneau"
+  "closePanel": "Fermer le panneau",
+  "addExercise": {
+   "button": "Ajouter votre propre exercice",
+   "placeholder": "Nom de l'exercice",
+   "submit": "Ajouter",
+   "cancel": "Annuler"
+  }
  },
  "video": {
   "close": "Fermer la vidéo",

@@ -9,10 +9,17 @@ import exerciseData from './exercises.json';
 import { pairsFor, pairsForRegion } from './pairs';
 import { injuryFor, isAvoided } from '../lib/injuries';
 import { injuryTag, injuryNote } from '../lib/injuryMessage';
+import { toCatalogueEntry } from '../state/useCustomExercises';
+import { EQUIPMENT_TAGS } from '../types';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
 import { useSwipeDismiss } from '../state/useSwipeDismiss';
 import './anatomy.css';
+
+/** Every equipment tag a custom exercise can be filed under — the same
+ * ones `EquipmentPanel` asks about, plus the two the catalogue itself uses
+ * that aren't a real purchase ("body only", "other"). */
+const CUSTOM_EQUIPMENT = [...EQUIPMENT_TAGS, 'body only', 'other'];
 
 // Regions top to bottom, and the muscles within each in the order they sit on
 // the body. The palette is tuned against this order: two swatches listed one
@@ -172,6 +179,8 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  *   injuries?: Record<string, {mode: 'avoid'|'warn', setAt: number}> | null,
  *   toolbarExtra?: import('react').ReactNode | null,
  *   focusMuscleId?: string | null,
+ *   customExercises?: import('../state/useCustomExercises').CustomExercise[] | null,
+ *   onAddCustomExercise?: ((primary: string, name: string, equipment: string) => void) | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -208,6 +217,12 @@ export default function AnatomyViewer({
   // object, since the caller only knows which muscle it wants, not the
   // zone's full shape.
   focusMuscleId = null,
+  // Exercises the reader typed in themselves — see useCustomExercises.ts.
+  // Filtered to the selected muscle and appended below the catalogue's own
+  // list for it, same reasoning as savedIds/onToggleSave above: the viewer
+  // knows how to offer the picker, the host owns where the data lives.
+  customExercises = null,
+  onAddCustomExercise = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -216,6 +231,13 @@ export default function AnatomyViewer({
   const [region, setRegion] = useState('all');
   const [openDrill, setOpenDrill] = useState(null);
   const [video, setVideo] = useState(null);
+  // The "add your own exercise" form, at the bottom of the list — closed by
+  // default so a long catalogue list doesn't grow an always-open form under
+  // it, and reset whenever the selected muscle changes so it can't be left
+  // open pointed at a muscle no longer on screen.
+  const [addingExercise, setAddingExercise] = useState(false);
+  const [newExerciseName, setNewExerciseName] = useState('');
+  const [newExerciseEquipment, setNewExerciseEquipment] = useState('body only');
   // Which suggested partner is expanded. A pair used to open its video on the
   // first tap, which answered "show me" before anyone had asked "what is it".
   const [openPair, setOpenPair] = useState(null);
@@ -326,12 +348,21 @@ export default function AnatomyViewer({
   // every row is that the reader keeps that information either way.
   const drills = useMemo(() => {
     const list = (selected ? exerciseData.muscles[selected.key] || [] : []).map(localizeExercise);
-    if (!equipmentSet) return list;
-    return list
-      .map((x, i) => [x, i])
-      .sort(([a, i], [b, j]) => (hasEquipment(b) - hasEquipment(a)) || i - j)
-      .map(([x]) => x);
-  }, [selected, localizeExercise, equipmentSet, hasEquipment]);
+    const ranked = equipmentSet
+      ? list
+          .map((x, i) => [x, i])
+          .sort(([a, i], [b, j]) => (hasEquipment(b) - hasEquipment(a)) || i - j)
+          .map(([x]) => x)
+      : list;
+    // Always at the true bottom, after the equipment reorder above — a
+    // custom exercise has no catalogue data to rank it by, and its place in
+    // the list is "the one you just added", not a claim about how good a
+    // match it is.
+    const mine = selected
+      ? (customExercises || []).filter((x) => x.primary === selected.key).map(toCatalogueEntry)
+      : [];
+    return mine.length ? [...ranked, ...mine] : ranked;
+  }, [selected, localizeExercise, equipmentSet, hasEquipment, customExercises]);
   const saved = useMemo(() => new Set(savedIds || []), [savedIds]);
 
   const shownDrill = useMemo(
@@ -386,6 +417,8 @@ export default function AnatomyViewer({
     if (z && region !== 'all' && z.region !== region) setRegion('all');
     setOpenDrill(null);
     setOpenPair(null);
+    setAddingExercise(false);
+    setNewExerciseName('');
     // On a phone the picker sits over the model, so leaving it open would hide
     // the very muscle that was just chosen.
     if (z) setPanel(null);
@@ -719,11 +752,11 @@ export default function AnatomyViewer({
                             <button className="watch" onClick={() => setVideo(x)}>
                               ▶ {t('viewer.watch')}
                             </button>
-                          ) : (
+                          ) : x.youtube ? (
                             <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
                               {t('viewer.searchYouTube')}
                             </a>
-                          )}
+                          ) : null}
 
 
                           {x.equipment === 'barbell' && (
@@ -743,6 +776,53 @@ export default function AnatomyViewer({
                   );
                 })}
               </ul>
+              {onAddCustomExercise && (
+                addingExercise ? (
+                  <form
+                    className="add-exercise-form"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (!newExerciseName.trim()) return;
+                      onAddCustomExercise(selected.key, newExerciseName, newExerciseEquipment);
+                      setNewExerciseName('');
+                      setAddingExercise(false);
+                    }}
+                  >
+                    <input
+                      value={newExerciseName}
+                      onChange={(e) => setNewExerciseName(e.target.value)}
+                      placeholder={t('viewer.addExercise.placeholder')}
+                      aria-label={t('viewer.addExercise.placeholder')}
+                      maxLength={60}
+                      autoFocus
+                    />
+                    <div className="eq-chip-row">
+                      {CUSTOM_EQUIPMENT.map((tag) => (
+                        <button
+                          key={tag}
+                          type="button"
+                          className={`eq-chip ${newExerciseEquipment === tag ? 'eq-chip-selected' : ''}`}
+                          onClick={() => setNewExerciseEquipment(tag)}
+                        >
+                          {t(`equipment.${tag}`)}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="add-exercise-actions">
+                      <button type="submit" disabled={!newExerciseName.trim()}>
+                        {t('viewer.addExercise.submit')}
+                      </button>
+                      <button type="button" className="add-exercise-cancel" onClick={() => setAddingExercise(false)}>
+                        {t('viewer.addExercise.cancel')}
+                      </button>
+                    </div>
+                  </form>
+                ) : (
+                  <button className="add-exercise-open" onClick={() => setAddingExercise(true)}>
+                    + {t('viewer.addExercise.button')}
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>

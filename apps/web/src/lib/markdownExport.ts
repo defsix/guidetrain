@@ -11,6 +11,7 @@ import { usesLegs, MUSCLES } from "./muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "./goalMessage";
 import { positionLabel } from "./programLabel";
 import { BY_ID, type CatalogueEntry } from "./exerciseCatalogue";
+import { type CustomExercise, toCatalogueEntry } from "../state/useCustomExercises";
 
 type Localize = <T extends { id: string; name: string; instructions: string[] }>(x: T) => T;
 
@@ -22,6 +23,8 @@ export type ExportInput = {
   goals: Record<string, Goal[]>;
   injuries: Record<string, Injury>;
   programs: Program[];
+  /** Exercises the reader typed in themselves — see useCustomExercises.ts. */
+  customExercises: CustomExercise[];
   t: TFn;
   localizeExercise: Localize;
 };
@@ -30,13 +33,17 @@ function day(at: number): string {
   return new Date(at).toISOString().slice(0, 10);
 }
 
-function exerciseLabel(id: string, localizeExercise: Localize): { name: string; equipment?: string } {
-  const raw = BY_ID.get(id);
+function exerciseLabel(
+  id: string,
+  byId: Map<string, CatalogueEntry>,
+  localizeExercise: Localize,
+): { name: string; equipment?: string } {
+  const raw = byId.get(id);
   // An exercise that has since left the catalogue still has sets or a goal
   // under it, and a blank line would lose them — same fallback HistoryPanel
   // uses for its CSV export.
   if (!raw) return { name: id.replace(/_/g, " ") };
-  const localized = localizeExercise(raw as CatalogueEntry);
+  const localized = localizeExercise(raw);
   return { name: localized.name, equipment: raw.equipment };
 }
 
@@ -67,9 +74,16 @@ function targetLine(target: Target | undefined): string {
  * those are the reader's own data, not export scaffolding.
  */
 export function buildTrainingExport(input: ExportInput): string {
-  const { profile, allSets, knownMaxes, trainingMaxes, goals, injuries, programs, t, localizeExercise } = input;
+  const {
+    profile, allSets, knownMaxes, trainingMaxes, goals, injuries, programs, customExercises,
+    t, localizeExercise,
+  } = input;
   const lines: string[] = [];
   const push = (s = "") => lines.push(s);
+
+  const byId = customExercises.length
+    ? new Map<string, CatalogueEntry>([...BY_ID, ...customExercises.map((x) => [x.id, toCatalogueEntry(x)] as const)])
+    : BY_ID;
 
   push("# GuideTrain training export");
   push();
@@ -107,7 +121,7 @@ export function buildTrainingExport(input: ExportInput): string {
         push("- (empty)");
       } else {
         for (const id of p.exerciseIds) {
-          const { name, equipment } = exerciseLabel(id, localizeExercise);
+          const { name, equipment } = exerciseLabel(id, byId, localizeExercise);
           const target = p.targets?.[id];
           push(`- ${name}${equipment ? ` (${equipment})` : ""} — ${targetLine(target)}`);
         }
@@ -155,7 +169,7 @@ export function buildTrainingExport(input: ExportInput): string {
     const sortedIds = [...ids].sort((a, b) => lastTrained(b) - lastTrained(a));
 
     for (const id of sortedIds) {
-      const { name, equipment } = exerciseLabel(id, localizeExercise);
+      const { name, equipment } = exerciseLabel(id, byId, localizeExercise);
       const sets = (byExercise.get(id) ?? []).slice().sort((a, b) => a.at - b.at);
       const best = bestEstimate(sets);
       const derivedMax = best ? roundLoad(best.oneRM) : null;
@@ -173,7 +187,7 @@ export function buildTrainingExport(input: ExportInput): string {
       if (tm) push(`- 5/3/1 training max: ${tm.tm} kg`);
 
       for (const goal of exGoals) {
-        const pace = goalPace(sets, tm?.tm, goal.targetWeight, goal.targetDate, incrementFor(usesLegs(BY_ID.get(id) ?? { primary: [], secondary: [] })));
+        const pace = goalPace(sets, tm?.tm, goal.targetWeight, goal.targetDate, incrementFor(usesLegs(byId.get(id) ?? { primary: [], secondary: [] })));
         push(
           `- Goal: ${goal.targetWeight} kg by ${goalDateLabel(goal.targetDate)} — ${goalPaceMessage(t, pace)}`,
         );

@@ -7,6 +7,7 @@ import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import type { TFn } from "../i18n";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
+import { type CustomExercise, toCatalogueEntry } from "../state/useCustomExercises";
 
 type Entry = { id: string; name: string; equipment?: string; instructions: string[] };
 
@@ -22,6 +23,8 @@ type Props = {
   /** A mistyped weight or rep count, corrected in place — see useLog.ts's edit(). */
   onEditSet: (uid: string, weight: number, reps: number) => void;
   onRemoveSet: (uid: string) => void;
+  /** Exercises the reader typed in themselves — see useCustomExercises.ts. */
+  customExercises: CustomExercise[];
 };
 
 /** A local calendar day, which is what "a session" means to the person doing it. */
@@ -135,20 +138,30 @@ function SetRow({ s, unit, editing, onStartEdit, onCancelEdit, onSaveEdit, onRem
  * On the device, like everything else here. Nothing in this file needs a
  * server; accounts would make it survive a lost phone, not make it possible.
  */
-export default function HistoryPanel({ open, onClose, sets, onEditSet, onRemoveSet }: Props) {
+export default function HistoryPanel({
+  open, onClose, sets, onEditSet, onRemoveSet, customExercises,
+}: Props) {
   const { t, localizeExercise } = useI18n();
   const [byExercise, setByExercise] = useState(false);
   const [chosen, setChosen] = useState<string | null>(null);
   const [editingUid, setEditingUid] = useState<string | null>(null);
 
+  // The catalogue plus whatever the reader has typed in themselves.
+  const byId = useMemo(() => {
+    if (!customExercises.length) return BY_ID;
+    const merged = new Map(BY_ID);
+    for (const x of customExercises) merged.set(x.id, toCatalogueEntry(x));
+    return merged;
+  }, [customExercises]);
+
   const name = useMemo(() => {
     return (id: string) => {
-      const raw = BY_ID.get(id);
+      const raw = byId.get(id);
       // An exercise that has left the catalogue still has sets under it, and a
       // blank row would lose them. The id is ugly but it is not nothing.
       return raw ? localizeExercise(raw).name : id.replace(/_/g, " ");
     };
-  }, [localizeExercise]);
+  }, [localizeExercise, byId]);
 
   /** Sessions, newest first, each with its sets in the order they were done. */
   const days = useMemo(() => {

@@ -35,7 +35,7 @@ describe("buildTrainingExport", () => {
   it("says plainly when there is no profile, program, injury or log data", () => {
     const md = buildTrainingExport({
       profile: null, allSets: [], knownMaxes: {}, trainingMaxes: {}, goals: {}, injuries: {},
-      programs: [], t, localizeExercise,
+      programs: [], customExercises: [], t, localizeExercise,
     });
     expect(md).toContain("No profile set up yet.");
     expect(md).toContain("No workout set up yet.");
@@ -47,7 +47,7 @@ describe("buildTrainingExport", () => {
     const md = buildTrainingExport({
       profile: { username: "x", ageGroup: "30-44", bodyWeight: 82, equipment: ["barbell", "dumbbell"] },
       allSets: [], knownMaxes: {}, trainingMaxes: {}, goals: {}, injuries: {}, programs: [],
-      t, localizeExercise,
+      customExercises: [], t, localizeExercise,
     });
     expect(md).toContain("Age group: 30-44");
     expect(md).toContain("Body weight: 82 kg");
@@ -72,7 +72,7 @@ describe("buildTrainingExport", () => {
     } as Program;
     const md = buildTrainingExport({
       profile: null, allSets: [], knownMaxes: {}, trainingMaxes: {}, goals: {}, injuries: {},
-      programs: [program], t, localizeExercise,
+      programs: [program], customExercises: [], t, localizeExercise,
     });
     expect(md).toContain("### Push");
     expect(md).toContain("5 @ 80 kg, 5+ @ 85 kg");
@@ -87,7 +87,7 @@ describe("buildTrainingExport", () => {
         set({ id: "Barbell_Deadlift", at: Date.UTC(2026, 0, 20), weight: 140 }),
       ],
       knownMaxes: {}, trainingMaxes: {}, goals: {}, injuries: {}, programs: [],
-      t, localizeExercise,
+      customExercises: [], t, localizeExercise,
     });
     const deadliftIdx = md.indexOf("Barbell Deadlift");
     const squatIdx = md.indexOf("Barbell Squat");
@@ -104,7 +104,7 @@ describe("buildTrainingExport", () => {
       allSets: [set({ weight: 100, reps: 5 })],
       knownMaxes: { Barbell_Squat: { max: 150, from: null, at: 0 } },
       trainingMaxes: {}, goals: {}, injuries: {}, programs: [],
-      t, localizeExercise,
+      customExercises: [], t, localizeExercise,
     });
     expect(md).toContain("Known max, typed in: 150 kg");
   });
@@ -113,8 +113,22 @@ describe("buildTrainingExport", () => {
     const md = buildTrainingExport({
       profile: null, allSets: [], knownMaxes: {}, trainingMaxes: {}, goals: {},
       injuries: { knee: { mode: "avoid", setAt: Date.UTC(2026, 0, 1) } },
-      programs: [], t, localizeExercise,
+      programs: [], customExercises: [], t, localizeExercise,
     });
     expect(md).toContain("- knee: Avoid (marked 2026-01-01)");
+  });
+
+  it("includes a custom exercise's own log the same as a catalogue one", () => {
+    const md = buildTrainingExport({
+      profile: null,
+      allSets: [set({ id: "custom-abc123", weight: 40, reps: 12 })],
+      knownMaxes: {}, trainingMaxes: {}, goals: {}, injuries: {}, programs: [],
+      customExercises: [
+        { id: "custom-abc123", name: "Reverse Nordic Curl", equipment: "body only", primary: "quad", createdAt: 0 },
+      ],
+      t, localizeExercise,
+    });
+    expect(md).toContain("### Reverse Nordic Curl (body only)");
+    expect(md).toContain("40 kg × 12");
   });
 });

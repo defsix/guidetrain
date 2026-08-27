@@ -58,7 +58,13 @@
   "pairTitle": "Pair between sets",
   "pairWhy": "Different regions, so neither tires the other.",
   "loading": "Loading the model…",
-  "closePanel": "Close panel"
+  "closePanel": "Close panel",
+  "addExercise": {
+   "button": "Add your own exercise",
+   "placeholder": "Exercise name",
+   "submit": "Add",
+   "cancel": "Cancel"
+  }
  },
  "video": {
   "close": "Close video",

@@ -66,7 +66,13 @@
   "pairTitle": "Kombinujte mezi sériemi",
   "pairWhy": "Jiné partie, takže se navzájem neunaví.",
   "loading": "Načítání modelu…",
-  "closePanel": "Zavřít panel"
+  "closePanel": "Zavřít panel",
+  "addExercise": {
+   "button": "Přidat vlastní cvik",
+   "placeholder": "Název cviku",
+   "submit": "Přidat",
+   "cancel": "Zrušit"
+  }
  },
  "video": {
   "close": "Zavřít video",

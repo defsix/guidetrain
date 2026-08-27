@@ -54,7 +54,13 @@
   "pairTitle": "组间搭配训练",
   "pairWhy": "部位不同，互不影响恢复。",
   "loading": "正在加载模型…",
-  "closePanel": "关闭面板"
+  "closePanel": "关闭面板",
+  "addExercise": {
+   "button": "添加自己的动作",
+   "placeholder": "动作名称",
+   "submit": "添加",
+   "cancel": "取消"
+  }
  },
  "video": {
   "close": "关闭视频",

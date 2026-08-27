@@ -58,7 +58,13 @@
   "pairTitle": "Combine entre séries",
   "pairWhy": "Regiões diferentes: nenhuma cansa a outra.",
   "loading": "Carregando o modelo…",
-  "closePanel": "Fechar painel"
+  "closePanel": "Fechar painel",
+  "addExercise": {
+   "button": "Adicionar o seu próprio exercício",
+   "placeholder": "Nome do exercício",
+   "submit": "Adicionar",
+   "cancel": "Cancelar"
+  }
  },
  "video": {
   "close": "Fechar vídeo",

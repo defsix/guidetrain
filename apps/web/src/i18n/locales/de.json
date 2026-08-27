@@ -58,7 +58,13 @@
   "pairTitle": "Zwischen den Sätzen kombinieren",
   "pairWhy": "Andere Regionen – keine ermüdet die andere.",
   "loading": "Modell wird geladen…",
-  "closePanel": "Bereich schließen"
+  "closePanel": "Bereich schließen",
+  "addExercise": {
+   "button": "Eigene Übung hinzufügen",
+   "placeholder": "Name der Übung",
+   "submit": "Hinzufügen",
+   "cancel": "Abbrechen"
+  }
  },
  "video": {
   "close": "Video schließen",

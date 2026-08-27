@@ -482,6 +482,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Add your own exercise.** The catalogue's 180 exercises don't cover
+  everything — a machine at one specific gym, a movement with no standard
+  name. A "+ Add your own exercise" control at the bottom of a muscle's
+  exercise list in the picker opens a small form: a name and an equipment
+  choice, filed under that muscle. From then on it behaves exactly like a
+  built-in exercise — logged with weight and reps (plate breakdown and
+  warm-up ramp included, from the equipment picked), tracked in History,
+  offered in the Progress goal autocomplete, and included in both exports.
+  Remembered on the device, at the bottom of that muscle's list, from then
+  on. The one thing it deliberately doesn't do is turn up as a suggested
+  rest-break partner or swap for someone else's exercise — there's no
+  muscle or difficulty data behind it to rank a suggestion on, and a wrong
+  guess there is worse than no suggestion at all.
 - **An AI-ready training export, always one tap away on Progress.**
   Downloads a single Markdown file — profile, current program, known and
   training maxes, goals with their pace, muscles being worked around, and

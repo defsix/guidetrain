@@ -11,6 +11,7 @@ import { bestEstimate, roundLoad, incrementFor, goalPace } from "../lib/progress
 import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
+import { type CustomExercise, toCatalogueEntry } from "../state/useCustomExercises";
 import { buildTrainingExport, downloadText } from "../lib/markdownExport";
 import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
@@ -38,6 +39,8 @@ type Props = {
   onClearInjury: (muscleId: string) => void;
   /** Every saved workout, for the AI-ready export — see `lib/markdownExport.ts`. */
   programs: Program[];
+  /** Exercises the reader typed in themselves — see useCustomExercises.ts. */
+  customExercises: CustomExercise[];
 };
 
 /**
@@ -143,7 +146,7 @@ export default function StatsPanel({
   open, onClose, profile, onSetBodyWeight, weighIns, allSets,
   knownMaxes, onSetKnownMax, onClearKnownMax,
   trainingMaxes, goals, onSetGoal, onClearGoal,
-  injuries, onSetInjury, onClearInjury, programs,
+  injuries, onSetInjury, onClearInjury, programs, customExercises,
 }: Props) {
   const { t, localizeExercise } = useI18n();
   const [weightInput, setWeightInput] = useState("");
@@ -162,11 +165,21 @@ export default function StatsPanel({
     return m;
   }, [allSets]);
 
+  // The catalogue plus whatever the reader has typed in themselves — same
+  // lookup shape either way, so a goal can be set on a custom exercise the
+  // same as any other.
+  const byId = useMemo(() => {
+    if (!customExercises.length) return BY_ID;
+    const merged = new Map(BY_ID);
+    for (const x of customExercises) merged.set(x.id, toCatalogueEntry(x));
+    return merged;
+  }, [customExercises]);
+
   // Localized once per language change rather than per keystroke in the
   // picker — the catalogue itself never changes, only its names do.
   const localizedExercises = useMemo(
-    () => ALL_EXERCISES.map((x) => localizeExercise(x)),
-    [localizeExercise],
+    () => [...ALL_EXERCISES, ...customExercises.map(toCatalogueEntry)].map((x) => localizeExercise(x)),
+    [localizeExercise, customExercises],
   );
   const idByName = useMemo(
     () => new Map(localizedExercises.map((x) => [x.name, x.id])),
@@ -212,7 +225,7 @@ export default function StatsPanel({
 
   function exportMarkdown() {
     const md = buildTrainingExport({
-      profile, allSets, knownMaxes, trainingMaxes, goals, injuries, programs,
+      profile, allSets, knownMaxes, trainingMaxes, goals, injuries, programs, customExercises,
       t, localizeExercise,
     });
     const today = new Date().toISOString().slice(0, 10);
@@ -335,7 +348,7 @@ export default function StatsPanel({
             <p className="workout-empty">{t("stats.goals.empty")}</p>
           ) : (
             Object.entries(goals).flatMap(([id, list]) => {
-              const raw = BY_ID.get(id);
+              const raw = byId.get(id);
               if (!raw) return [];
               const name = localizeExercise(raw).name;
               const increment = incrementFor(usesLegs(raw));
