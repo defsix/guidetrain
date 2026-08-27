@@ -58,7 +58,15 @@ function persist(value: CustomExercise[]) {
   storageWrite(KEY, value);
 }
 
-const makeId = () => `custom-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+const CUSTOM_ID_PREFIX = "custom-";
+const makeId = () => `${CUSTOM_ID_PREFIX}${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+
+/** Whether an exercise id belongs to something the reader typed in, rather
+ * than the catalogue — the one cheap way to tell them apart without also
+ * threading the whole list through wherever the question comes up. */
+export function isCustomExerciseId(id: string): boolean {
+  return id.startsWith(CUSTOM_ID_PREFIX);
+}
 
 export function useCustomExercises() {
   const [customExercises, setCustomExercises] = useState<CustomExercise[]>(read);
@@ -80,7 +88,33 @@ export function useCustomExercises() {
     return entry;
   }, []);
 
-  return { customExercises, add };
+  /**
+   * A mistyped name or the wrong equipment, corrected in place — same
+   * reasoning as `useLog.ts`'s `edit()` for a set: asking for a
+   * delete-and-recreate would lose the exercise's place at the bottom of
+   * its muscle's list. `primary` is deliberately not editable here: it was
+   * implicit from the muscle open when the exercise was created, and
+   * changing it is a "move to a different list" question this doesn't ask.
+   */
+  const edit = useCallback((id: string, name: string, equipment: string) => {
+    const trimmed = name.trim();
+    if (!trimmed) return;
+    setCustomExercises((prev) => {
+      const next = prev.map((x) => (x.id === id ? { ...x, name: trimmed, equipment } : x));
+      persist(next);
+      return next;
+    });
+  }, []);
+
+  const remove = useCallback((id: string) => {
+    setCustomExercises((prev) => {
+      const next = prev.filter((x) => x.id !== id);
+      persist(next);
+      return next;
+    });
+  }, []);
+
+  return { customExercises, add, edit, remove };
 }
 
 /** A custom exercise, reshaped to slot into the same catalogue lookups a

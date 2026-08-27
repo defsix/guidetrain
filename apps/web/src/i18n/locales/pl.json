@@ -71,7 +71,9 @@
    "button": "Dodaj własne ćwiczenie",
    "placeholder": "Nazwa ćwiczenia",
    "submit": "Dodaj",
-   "cancel": "Anuluj"
+   "cancel": "Anuluj",
+   "edit": "Edytuj",
+   "delete": "Usuń"
   }
  },
  "video": {

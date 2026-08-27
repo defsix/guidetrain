@@ -59,7 +59,9 @@
    "button": "自分の種目を追加",
    "placeholder": "種目名",
    "submit": "追加",
-   "cancel": "キャンセル"
+   "cancel": "キャンセル",
+   "edit": "編集",
+   "delete": "削除"
   }
  },
  "video": {

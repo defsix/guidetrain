@@ -57,4 +57,71 @@ test.describe("adding a custom exercise from the muscle picker", () => {
     await expect(historyPanel).toContainText("Landmine Squeeze Press");
     await expect(historyPanel).toContainText("22");
   });
+
+  test("edits a mistyped name or the wrong equipment in place", async ({ page }) => {
+    await seedProfile(page);
+    await page.goto("/");
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await expect(page.locator("canvas")).toBeVisible();
+
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    const drills = page.locator(".drills li");
+    const before = await drills.count();
+    await page.locator(".add-exercise-open").click();
+    const createForm = page.locator(".add-exercise-form");
+    await createForm.locator("input").fill("Landmien Press");
+    await createForm.locator(".eq-chip", { hasText: "dumbbell" }).click();
+    await createForm.getByRole("button", { name: "Add" }).click();
+    await expect(drills).toHaveCount(before + 1);
+
+    const row = drills.last();
+    await row.locator(".drill-head").click();
+    await row.getByRole("button", { name: "Edit" }).click();
+
+    const editForm = row.locator(".add-exercise-form");
+    await expect(editForm).toBeVisible();
+    await expect(editForm.locator("input")).toHaveValue("Landmien Press");
+    await editForm.locator("input").fill("Landmine Press");
+    await editForm.locator(".eq-chip", { hasText: "barbell" }).click();
+    await editForm.getByRole("button", { name: "Save" }).click();
+
+    await expect(editForm).toHaveCount(0);
+    await expect(row).toContainText("Landmine Press");
+    await expect(row).not.toContainText("Landmien Press");
+    await expect(row).toContainText("barbell");
+
+    // Corrected in place, not as a second entry.
+    await expect(drills).toHaveCount(before + 1);
+    await expect(page.locator(".drills li").filter({ hasText: "Landmien Press" })).toHaveCount(0);
+  });
+
+  test("deletes a custom exercise", async ({ page }) => {
+    await seedProfile(page);
+    await page.goto("/");
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await expect(page.locator("canvas")).toBeVisible();
+
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    const drills = page.locator(".drills li");
+    const before = await drills.count();
+
+    await page.locator(".add-exercise-open").click();
+    const form = page.locator(".add-exercise-form");
+    await form.locator("input").fill("Cable Squeeze Fly");
+    await form.getByRole("button", { name: "Add" }).click();
+    await expect(drills).toHaveCount(before + 1);
+
+    const row = drills.last();
+    await row.locator(".drill-head").click();
+    await row.getByRole("button", { name: "Delete" }).click();
+
+    await expect(drills).toHaveCount(before);
+    await expect(page.locator(".drills li").filter({ hasText: "Cable Squeeze Fly" })).toHaveCount(0);
+
+    // Gone for good, not just for this render.
+    await page.reload();
+    await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
+    await page.locator(".muscle").filter({ hasText: "Pectoralis Major" }).click();
+    await expect(drills).toHaveCount(before);
+  });
 });

@@ -233,6 +233,16 @@
 }
 .add-exercise-cancel:hover { border-color: var(--border-strong); color: var(--text); }
 
+/* Delete, next to Edit in a custom exercise's own drill body — same plain
+   link look as `.watch` (Edit reuses that class directly), with the same
+   hover tint History's own delete-a-set action already uses. */
+.custom-exercise-delete {
+  display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--text-muted);
+  text-decoration: none; letter-spacing: 0.02em;
+  background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit;
+}
+.custom-exercise-delete:hover { color: #c2410c; text-decoration: underline; }
+
 /* Last in the panel now, under the same rule that separates the pair block, so
    the three parts of an exercise divide evenly: what it works, what to do with
    it, and how to do it. */

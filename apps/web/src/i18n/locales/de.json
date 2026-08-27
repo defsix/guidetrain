@@ -63,7 +63,9 @@
    "button": "Eigene Übung hinzufügen",
    "placeholder": "Name der Übung",
    "submit": "Hinzufügen",
-   "cancel": "Abbrechen"
+   "cancel": "Abbrechen",
+   "edit": "Bearbeiten",
+   "delete": "Löschen"
   }
  },
  "video": {

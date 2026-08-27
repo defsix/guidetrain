@@ -10,6 +10,7 @@ import AccountPanel from "../components/AccountPanel";
 import Logo from "../components/Logo";
 import Splash from "../components/Splash";
 import { useT } from "../i18n/I18nProvider";
+import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import muscleMap from "../anatomy/muscle-map.json";
 import exercises from "../anatomy/exercises.json";
 
@@ -199,6 +200,7 @@ export default function Onboarding() {
         <input
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onFocus={scrollIntoViewOnFocus}
           placeholder={t("onboarding.usernamePlaceholder")}
           maxLength={32}
         />
@@ -213,6 +215,7 @@ export default function Onboarding() {
           <input
             value={bodyWeight}
             onChange={(e) => setBodyWeight(e.target.value)}
+            onFocus={scrollIntoViewOnFocus}
             inputMode="numeric"
             placeholder={t("onboarding.bodyWeightPlaceholder")}
             aria-label={t("onboarding.bodyWeight")}

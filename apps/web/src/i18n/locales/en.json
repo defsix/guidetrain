@@ -63,7 +63,9 @@
    "button": "Add your own exercise",
    "placeholder": "Exercise name",
    "submit": "Add",
-   "cancel": "Cancel"
+   "cancel": "Cancel",
+   "edit": "Edit",
+   "delete": "Delete"
   }
  },
  "video": {

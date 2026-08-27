@@ -482,6 +482,27 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed: the CSV and Markdown exports didn't do anything on Android.**
+  Both used the ordinary browser download trick (a Blob URL, a synthetic
+  `<a download>` click) — which a real browser tab hands off to the OS, but
+  which an embedded WebView has no download UI of its own to catch, so the
+  click silently did nothing. The Android app now injects a small bridge
+  (`GuideTrainDownloadBridge`) that opens the system's own document picker
+  instead, so the reader still chooses where the file lands; the plain
+  website and any shell that doesn't inject the bridge keep using the
+  original mechanism, which was always correct there.
+- **Add, edit and delete your own exercises.** A custom exercise added from
+  the muscle picker (see below) can now be corrected in place — a mistyped
+  name, the wrong equipment — or removed entirely, both from right inside
+  its own row in that muscle's list, the same place it was created. Neither
+  needs a confirmation dialog: editing opens the same name-and-equipment
+  form pre-filled, and deleting is a single tap, matching how removing a
+  logged set already works elsewhere in the app.
+- **Fixed: a few more places where the on-screen keyboard could still cover
+  the field you'd just tapped** — the onboarding form's username and body
+  weight fields, and the name field in the new "add your own exercise"
+  form, had been missed in the app-wide fix from the last release. Same
+  `scrollIntoViewOnFocus` fix, now applied everywhere a text field exists.
 - **Add your own exercise.** The catalogue's 180 exercises don't cover
   everything — a machine at one specific gym, a movement with no standard
   name. A "+ Add your own exercise" control at the bottom of a muscle's

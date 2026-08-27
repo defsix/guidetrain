@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GuideTrain</string>
+    <string name="download_failed">Couldn\'t save the file — try again.</string>
 </resources>

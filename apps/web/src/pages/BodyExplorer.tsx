@@ -352,6 +352,8 @@ export default function BodyExplorer() {
           focusMuscleId={tourFocusMuscle}
           customExercises={customExercises.customExercises}
           onAddCustomExercise={(primary, name, equipment) => customExercises.add(name, equipment, primary)}
+          onEditCustomExercise={customExercises.edit}
+          onRemoveCustomExercise={customExercises.remove}
         />
         {/* A real number to act on takes priority over the generic
             first-visit hint below — someone who already has a known max or a

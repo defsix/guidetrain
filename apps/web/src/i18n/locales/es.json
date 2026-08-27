@@ -63,7 +63,9 @@
    "button": "Añadir tu propio ejercicio",
    "placeholder": "Nombre del ejercicio",
    "submit": "Añadir",
-   "cancel": "Cancelar"
+   "cancel": "Cancelar",
+   "edit": "Editar",
+   "delete": "Eliminar"
   }
  },
  "video": {

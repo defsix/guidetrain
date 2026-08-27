@@ -9,8 +9,9 @@ import exerciseData from './exercises.json';
 import { pairsFor, pairsForRegion } from './pairs';
 import { injuryFor, isAvoided } from '../lib/injuries';
 import { injuryTag, injuryNote } from '../lib/injuryMessage';
-import { toCatalogueEntry } from '../state/useCustomExercises';
+import { toCatalogueEntry, isCustomExerciseId } from '../state/useCustomExercises';
 import { EQUIPMENT_TAGS } from '../types';
+import { scrollIntoViewOnFocus } from '../lib/scrollIntoViewOnFocus';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
 import { useSwipeDismiss } from '../state/useSwipeDismiss';
@@ -163,6 +164,56 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
 }
 
 /**
+ * The name + equipment form for a custom exercise, shared between creating
+ * one (appended below a muscle's list) and editing one already there (open
+ * inside its own drill body) — the two ask for exactly the same two fields,
+ * just with different starting values and a different verb on the submit
+ * button.
+ */
+function ExerciseForm({ t, name, equipment, onChangeName, onChangeEquipment, onSubmit, onCancel, submitLabel, autoFocus }) {
+  return (
+    <form
+      className="add-exercise-form"
+      onSubmit={(e) => {
+        e.preventDefault();
+        if (!name.trim()) return;
+        onSubmit();
+      }}
+    >
+      <input
+        value={name}
+        onChange={(e) => onChangeName(e.target.value)}
+        onFocus={scrollIntoViewOnFocus}
+        placeholder={t('viewer.addExercise.placeholder')}
+        aria-label={t('viewer.addExercise.placeholder')}
+        maxLength={60}
+        autoFocus={autoFocus}
+      />
+      <div className="eq-chip-row">
+        {CUSTOM_EQUIPMENT.map((tag) => (
+          <button
+            key={tag}
+            type="button"
+            className={`eq-chip ${equipment === tag ? 'eq-chip-selected' : ''}`}
+            onClick={() => onChangeEquipment(tag)}
+          >
+            {t(`equipment.${tag}`)}
+          </button>
+        ))}
+      </div>
+      <div className="add-exercise-actions">
+        <button type="submit" disabled={!name.trim()}>
+          {submitLabel}
+        </button>
+        <button type="button" className="add-exercise-cancel" onClick={onCancel}>
+          {t('viewer.addExercise.cancel')}
+        </button>
+      </div>
+    </form>
+  );
+}
+
+/**
  * The viewer's public surface, written out because TypeScript infers a JS
  * component's props from its defaults — `savedIds = null` would otherwise mean
  * the prop's type *is* null, and passing a real array would be the error.
@@ -181,6 +232,8 @@ function FrameToVisible({ cover, sideCover, controlsRef, children }) {
  *   focusMuscleId?: string | null,
  *   customExercises?: import('../state/useCustomExercises').CustomExercise[] | null,
  *   onAddCustomExercise?: ((primary: string, name: string, equipment: string) => void) | null,
+ *   onEditCustomExercise?: ((id: string, name: string, equipment: string) => void) | null,
+ *   onRemoveCustomExercise?: ((id: string) => void) | null,
  * }} props
  */
 export default function AnatomyViewer({
@@ -223,6 +276,8 @@ export default function AnatomyViewer({
   // knows how to offer the picker, the host owns where the data lives.
   customExercises = null,
   onAddCustomExercise = null,
+  onEditCustomExercise = null,
+  onRemoveCustomExercise = null,
 }) {
   const scene = SCENE[theme] || SCENE.dark;
   const { t, localizeExercise } = useI18n();
@@ -238,6 +293,13 @@ export default function AnatomyViewer({
   const [addingExercise, setAddingExercise] = useState(false);
   const [newExerciseName, setNewExerciseName] = useState('');
   const [newExerciseEquipment, setNewExerciseEquipment] = useState('body only');
+  // Which custom exercise's own drill body is showing the edit form instead
+  // of its usual (empty) reference section — at most one at a time, cleared
+  // whenever a row opens or closes so reopening one never shows a stale
+  // in-progress edit.
+  const [editingCustomId, setEditingCustomId] = useState(null);
+  const [editName, setEditName] = useState('');
+  const [editEquipment, setEditEquipment] = useState('body only');
   // Which suggested partner is expanded. A pair used to open its video on the
   // first tap, which answered "show me" before anyone had asked "what is it".
   const [openPair, setOpenPair] = useState(null);
@@ -419,6 +481,7 @@ export default function AnatomyViewer({
     setOpenPair(null);
     setAddingExercise(false);
     setNewExerciseName('');
+    setEditingCustomId(null);
     // On a phone the picker sits over the model, so leaving it open would hide
     // the very muscle that was just chosen.
     if (z) setPanel(null);
@@ -697,12 +760,17 @@ export default function AnatomyViewer({
               <ul>
                 {drills.map((x) => {
                   const open = openDrill === x.id;
+                  const custom = isCustomExerciseId(x.id);
+                  const editing = custom && editingCustomId === x.id;
                   return (
                     <li key={x.id} className={open ? 'open' : ''}>
                       <div className="drill-row">
                       <button
                         className="drill-head"
-                        onClick={() => setOpenDrill(open ? null : x.id)}
+                        onClick={() => {
+                          setOpenDrill(open ? null : x.id);
+                          setEditingCustomId(null);
+                        }}
                         aria-expanded={open}
                       >
                         <span className="dname">{x.name}</span>
@@ -743,32 +811,79 @@ export default function AnatomyViewer({
                               );
                             })}
                           </div>
-                          {/* Actions and planning first, reference text after.
-                              The instructions run to eight long steps, and
-                              anything below them was found only by someone who
-                              already knew to scroll — which is no way to offer
-                              a suggestion. */}
-                          {x.videoId ? (
-                            <button className="watch" onClick={() => setVideo(x)}>
-                              ▶ {t('viewer.watch')}
-                            </button>
-                          ) : x.youtube ? (
-                            <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
-                              {t('viewer.searchYouTube')}
-                            </a>
-                          ) : null}
+                          {editing ? (
+                            <ExerciseForm
+                              t={t}
+                              name={editName}
+                              equipment={editEquipment}
+                              onChangeName={setEditName}
+                              onChangeEquipment={setEditEquipment}
+                              onSubmit={() => {
+                                onEditCustomExercise(x.id, editName, editEquipment);
+                                setEditingCustomId(null);
+                              }}
+                              onCancel={() => setEditingCustomId(null)}
+                              submitLabel={t('stats.save')}
+                              autoFocus={false}
+                            />
+                          ) : (
+                            <>
+                              {/* Actions and planning first, reference text after.
+                                  The instructions run to eight long steps, and
+                                  anything below them was found only by someone who
+                                  already knew to scroll — which is no way to offer
+                                  a suggestion. */}
+                              {x.videoId ? (
+                                <button className="watch" onClick={() => setVideo(x)}>
+                                  ▶ {t('viewer.watch')}
+                                </button>
+                              ) : x.youtube ? (
+                                <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
+                                  {t('viewer.searchYouTube')}
+                                </a>
+                              ) : null}
 
-
-                          {x.equipment === 'barbell' && (
-                            <p className="loading-note">{t('load.barTotalNote')}</p>
-                          )}
-                          {x.equipment === 'dumbbell' && (
-                            <p className="loading-note">{t('load.perHandNote')}</p>
-                          )}
-                          {x.instructions.length > 0 && (
-                            <ol className="steps">
-                              {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
-                            </ol>
+                              {x.equipment === 'barbell' && (
+                                <p className="loading-note">{t('load.barTotalNote')}</p>
+                              )}
+                              {x.equipment === 'dumbbell' && (
+                                <p className="loading-note">{t('load.perHandNote')}</p>
+                              )}
+                              {x.instructions.length > 0 && (
+                                <ol className="steps">
+                                  {x.instructions.map((s, i) => <li key={i}>{s}</li>)}
+                                </ol>
+                              )}
+                              {/* A custom exercise has none of the above to show
+                                  — no video, no instructions — so this is the
+                                  first thing in its body, not a late addition
+                                  competing with real reference material. */}
+                              {custom && onEditCustomExercise && onRemoveCustomExercise && (
+                                <div className="add-exercise-actions">
+                                  <button
+                                    type="button"
+                                    className="watch"
+                                    onClick={() => {
+                                      setEditName(x.name);
+                                      setEditEquipment(x.equipment || 'body only');
+                                      setEditingCustomId(x.id);
+                                    }}
+                                  >
+                                    {t('viewer.addExercise.edit')}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="custom-exercise-delete"
+                                    onClick={() => {
+                                      onRemoveCustomExercise(x.id);
+                                      setOpenDrill(null);
+                                    }}
+                                  >
+                                    {t('viewer.addExercise.delete')}
+                                  </button>
+                                </div>
+                              )}
+                            </>
                           )}
                         </div>
                       )}
@@ -778,45 +893,21 @@ export default function AnatomyViewer({
               </ul>
               {onAddCustomExercise && (
                 addingExercise ? (
-                  <form
-                    className="add-exercise-form"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      if (!newExerciseName.trim()) return;
+                  <ExerciseForm
+                    t={t}
+                    name={newExerciseName}
+                    equipment={newExerciseEquipment}
+                    onChangeName={setNewExerciseName}
+                    onChangeEquipment={setNewExerciseEquipment}
+                    onSubmit={() => {
                       onAddCustomExercise(selected.key, newExerciseName, newExerciseEquipment);
                       setNewExerciseName('');
                       setAddingExercise(false);
                     }}
-                  >
-                    <input
-                      value={newExerciseName}
-                      onChange={(e) => setNewExerciseName(e.target.value)}
-                      placeholder={t('viewer.addExercise.placeholder')}
-                      aria-label={t('viewer.addExercise.placeholder')}
-                      maxLength={60}
-                      autoFocus
-                    />
-                    <div className="eq-chip-row">
-                      {CUSTOM_EQUIPMENT.map((tag) => (
-                        <button
-                          key={tag}
-                          type="button"
-                          className={`eq-chip ${newExerciseEquipment === tag ? 'eq-chip-selected' : ''}`}
-                          onClick={() => setNewExerciseEquipment(tag)}
-                        >
-                          {t(`equipment.${tag}`)}
-                        </button>
-                      ))}
-                    </div>
-                    <div className="add-exercise-actions">
-                      <button type="submit" disabled={!newExerciseName.trim()}>
-                        {t('viewer.addExercise.submit')}
-                      </button>
-                      <button type="button" className="add-exercise-cancel" onClick={() => setAddingExercise(false)}>
-                        {t('viewer.addExercise.cancel')}
-                      </button>
-                    </div>
-                  </form>
+                    onCancel={() => setAddingExercise(false)}
+                    submitLabel={t('viewer.addExercise.submit')}
+                    autoFocus
+                  />
                 ) : (
                   <button className="add-exercise-open" onClick={() => setAddingExercise(true)}>
                     + {t('viewer.addExercise.button')}

@@ -1,4 +1,5 @@
 import type { SetEntry } from "../state/useLog";
+import { downloadFile } from "./download";
 
 /** One CSV field, quoted only when it actually needs it. */
 function csvField(value: string): string {
@@ -30,23 +31,13 @@ export function setsToCsv(sets: SetEntry[], nameFor: (id: string) => string): st
 }
 
 /**
- * Hands a CSV file to the browser's ordinary download flow — the same
- * mechanism works unmodified inside the Android/iOS WebView shells, since
- * both already let a page-initiated download reach the device's own
- * save/share sheet with no native bridge involved.
+ * Hands a CSV file to the reader — see `download.ts` for how that differs
+ * between the plain website and the Android shell.
  */
 export function downloadCsv(filename: string, csv: string): void {
   // The BOM is what makes Excel open the file as UTF-8 rather than guessing
   // a local codepage — without it, any exercise name outside plain ASCII (a
   // translated name, for instance) renders as mojibake the moment Excel
   // opens it, even though every other CSV reader was already fine.
-  const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  downloadFile(filename, "﻿" + csv, "text/csv;charset=utf-8;");
 }

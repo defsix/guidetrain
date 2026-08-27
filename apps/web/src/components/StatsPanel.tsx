@@ -12,7 +12,8 @@ import { usesLegs, MUSCLES } from "../lib/muscleRegions";
 import { goalPaceMessage, goalDateLabel } from "../lib/goalMessage";
 import { ALL_EXERCISES, BY_ID } from "../lib/exerciseCatalogue";
 import { type CustomExercise, toCatalogueEntry } from "../state/useCustomExercises";
-import { buildTrainingExport, downloadText } from "../lib/markdownExport";
+import { buildTrainingExport } from "../lib/markdownExport";
+import { downloadFile } from "../lib/download";
 import { scrollIntoViewOnFocus } from "../lib/scrollIntoViewOnFocus";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
@@ -229,7 +230,7 @@ export default function StatsPanel({
       t, localizeExercise,
     });
     const today = new Date().toISOString().slice(0, 10);
-    downloadText(`guidetrain-training-${today}.md`, md, "text/markdown;charset=utf-8;");
+    downloadFile(`guidetrain-training-${today}.md`, md, "text/markdown;charset=utf-8;");
   }
 
   const weightPoints: Point[] = weighIns

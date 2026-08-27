@@ -10,7 +10,9 @@ import android.webkit.WebResourceRequest
 import android.webkit.WebResourceResponse
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -35,6 +37,26 @@ class MainActivity : AppCompatActivity() {
     private lateinit var assetLoader: WebViewAssetLoader
     private var safeAreaTopPx = 0
     private var safeAreaBottomPx = 0
+
+    // The file content waiting on the reader to pick a save location in the
+    // document-picker launched below — there is only ever one export in
+    // flight at a time (the button that starts one is inside a panel the
+    // picker's own full-screen UI covers), so a single field is enough.
+    // Must be registered unconditionally before onCreate, which is why this
+    // is a field initializer rather than something set up inside it.
+    private var pendingDownloadContent: String? = null
+    private val createDocumentLauncher =
+        registerForActivityResult(ActivityResultContracts.CreateDocument("*/*")) { uri ->
+            val content = pendingDownloadContent
+            pendingDownloadContent = null
+            if (uri == null || content == null) return@registerForActivityResult
+            try {
+                contentResolver.openOutputStream(uri)?.use { it.write(content.toByteArray(Charsets.UTF_8)) }
+            } catch (e: Exception) {
+                Log.e("GuideTrainDownload", "Failed to write exported file", e)
+                Toast.makeText(this, R.string.download_failed, Toast.LENGTH_LONG).show()
+            }
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,6 +126,7 @@ class MainActivity : AppCompatActivity() {
 
         webView.addJavascriptInterface(AuthBridge(this), "GuideTrainAuthBridge")
         webView.addJavascriptInterface(DisplayBridge(this), "AndroidDisplayBridge")
+        webView.addJavascriptInterface(DownloadBridge(this), "GuideTrainDownloadBridge")
 
         webView.webChromeClient = object : WebChromeClient() {
             override fun onConsoleMessage(message: android.webkit.ConsoleMessage): Boolean {
@@ -114,6 +137,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun indexUrl(): String = "https://${WebViewAssetLoader.DEFAULT_DOMAIN}/assets/www/index.html"
+
+    /**
+     * Called from DownloadBridge.saveFile, already on the UI thread. Opens
+     * Android's document picker rather than writing straight into the
+     * public Downloads folder — that would need WRITE_EXTERNAL_STORAGE on
+     * the older API levels this app still supports (minSdk 26; scoped
+     * storage's MediaStore.Downloads only exists from API 29), and the
+     * picker needs no permission at all on any of them. The content sits in
+     * pendingDownloadContent until createDocumentLauncher's callback fires
+     * with the Uri the reader chose.
+     *
+     * mimeType is accepted for parity with the JS side's downloadFile(),
+     * which always has one — but unused here: the launcher is registered
+     * once with a generic wildcard MIME contract, since AndroidX's
+     * CreateDocument fixes its MIME type at registration rather than per
+     * call, and the two real callers (CSV, Markdown) don't need the system
+     * picker to filter or icon differently to be usable.
+     */
+    fun saveFile(filename: String, @Suppress("UNUSED_PARAMETER") mimeType: String, content: String) {
+        pendingDownloadContent = content
+        createDocumentLauncher.launch(filename)
+    }
 
     /**
      * WebView doesn't support CSS env(safe-area-inset-*) the way WKWebView on

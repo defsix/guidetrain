@@ -71,7 +71,9 @@
    "button": "Přidat vlastní cvik",
    "placeholder": "Název cviku",
    "submit": "Přidat",
-   "cancel": "Zrušit"
+   "cancel": "Zrušit",
+   "edit": "Upravit",
+   "delete": "Smazat"
   }
  },
  "video": {
