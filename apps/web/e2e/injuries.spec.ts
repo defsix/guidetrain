@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile, seedProgram, seedInjury } from "./helpers";
+import { seedProfile, seedProgram, seedInjury, openProgress } from "./helpers";
 
 test.describe("injury marking", () => {
   test("marks a muscle avoided from the Injuries section of Progress and it persists on reopen", async ({
@@ -10,7 +10,7 @@ test.describe("injury marking", () => {
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
     await expect(page.locator("canvas")).toBeVisible();
 
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     // Collapsed until tapped — see the <details> in StatsPanel.tsx.
     await expect(page.locator(".injury-list")).toBeHidden();
     await page.locator(".stats-injuries summary").click();
@@ -23,7 +23,7 @@ test.describe("injury marking", () => {
     await expect(avoidChip).toHaveClass(/chip-selected/);
 
     await page.locator(".stats-panel .workout-close").click();
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     await page.locator(".stats-injuries summary").click();
     await expect(
       page.locator(".injury-row").filter({ hasText: "Quadriceps" }).getByRole("button", {

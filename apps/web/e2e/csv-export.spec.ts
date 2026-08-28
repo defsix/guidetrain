@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile, seedLog, seedCustomExercise } from "./helpers";
+import { seedProfile, seedLog, seedCustomExercise, openHistory } from "./helpers";
 
 test.describe("the CSV export in History", () => {
   test("downloads a CSV of the logged sets", async ({ page }) => {
@@ -8,7 +8,7 @@ test.describe("the CSV export in History", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     const [download] = await Promise.all([
       page.waitForEvent("download"),
       page.locator(".history-export").click(),
@@ -37,7 +37,7 @@ test.describe("the CSV export in History", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     const [download] = await Promise.all([
       page.waitForEvent("download"),
       page.locator(".history-export").click(),

@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile } from "./helpers";
+import { seedProfile, openHistory } from "./helpers";
 
 test.describe("adding a custom exercise from the muscle picker", () => {
   test("creates it under the muscle, remembers it, and it works like any other exercise", async ({
@@ -52,7 +52,7 @@ test.describe("adding a custom exercise from the muscle picker", () => {
 
     // Logged, tracked and named correctly in History — the same as a
     // built-in exercise, not falling back to a raw id.
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     const historyPanel = page.locator(".history-panel");
     await expect(historyPanel).toContainText("Landmine Squeeze Press");
     await expect(historyPanel).toContainText("22");

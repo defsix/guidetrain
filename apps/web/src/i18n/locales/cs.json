@@ -509,6 +509,10 @@
   "deleteSet": "Smazat",
   "save": "Uložit"
  },
+ "menu": {
+  "title": "Nabídka",
+  "close": "Zavřít nabídku"
+ },
  "account": {
   "title": "Účet",
   "close": "Zavřít účet",

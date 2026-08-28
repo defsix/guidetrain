@@ -15,8 +15,8 @@ test.describe("the spotlight tour", () => {
     // Look, don't touch: the backdrop blocks a tap on something the tour
     // hasn't pointed at yet, rather than letting it fall through to the
     // real app underneath.
-    await page.locator(".account-button", { hasText: /progress/i }).click({ force: true });
-    await expect(page.locator(".stats-panel")).toHaveCount(0);
+    await page.locator(".logo-link").click({ force: true });
+    await expect(page.locator(".account-menu")).toHaveCount(0);
 
     await tooltip.getByRole("button", { name: "Next →" }).click();
     await expect(tooltip).toContainText("Step 2 of 6");

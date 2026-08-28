@@ -139,3 +139,22 @@ export async function seedCustomExercise(
     [CUSTOM_EXERCISES_KEY, JSON.stringify(entries)] as [string, string],
   );
 }
+
+/**
+ * History and Progress both live behind the account menu now — opened from
+ * the logo — rather than as their own header pills. Every spec that needs
+ * either panel opens it the same way, so this is the one place that knows
+ * how.
+ */
+export async function openAccountMenuItem(page: Page, name: RegExp | string) {
+  await page.locator(".logo-link").click();
+  await page.locator(".account-menu-item", { hasText: name }).click();
+}
+
+export async function openHistory(page: Page) {
+  await openAccountMenuItem(page, /history/i);
+}
+
+export async function openProgress(page: Page) {
+  await openAccountMenuItem(page, /^progress$/i);
+}

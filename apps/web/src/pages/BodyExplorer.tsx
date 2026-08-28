@@ -5,6 +5,7 @@ import { useProfile } from "../state/useProfile";
 import { useTheme } from "../state/useTheme";
 import ThemeToggle from "../components/ThemeToggle";
 import Logo from "../components/Logo";
+import AccountMenu from "../components/AccountMenu";
 import AccountPanel from "../components/AccountPanel";
 import EquipmentPanel from "../components/EquipmentPanel";
 import StatsPanel from "../components/StatsPanel";
@@ -93,6 +94,7 @@ export default function BodyExplorer() {
   const [showWorkout, setShowWorkout] = useState(false);
   const [showPlans, setShowPlans] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showAccountMenu, setShowAccountMenu] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
   const [showEquipment, setShowEquipment] = useState(false);
   const [showStats, setShowStats] = useState(false);
@@ -244,24 +246,9 @@ export default function BodyExplorer() {
     </button>
   );
 
-  // These used to live in their own strip in the header bar, sharing a line
-  // with the greeting. Squeezed together on a phone that made for two
-  // cramped rows — the greeting and the strip both needing full width at
-  // once — with no more room to give either one. They join Workout/
-  // Calisthenics/Stretching in the canvas's own floating toolbar instead
-  // (passed down as toolbarExtra, below), which already scrolls sideways
-  // to fit however many pills a host app hands it rather than wrapping the
-  // header. The header goes back to being just the logo and greeting, on
-  // one short line, at every width.
-  const historyButton = log.entries.length > 0 && (
-    <button
-      className="history-button"
-      onClick={() => setShowHistory(true)}
-      aria-expanded={showHistory}
-    >
-      {t("history.title")}
-    </button>
-  );
+  // Equipment is what's physically on hand right now, not the reader's own
+  // data — it stays a toolbar pill next to Workout/Calisthenics/Stretching
+  // rather than joining the menu below.
   const equipmentButton = profile && (
     <button
       className={`account-button ${profile.equipment?.length ? "signed-in" : ""}`}
@@ -269,19 +256,6 @@ export default function BodyExplorer() {
       aria-expanded={showEquipment}
     >
       {t("equipmentPanel.title")}
-    </button>
-  );
-  const statsButton = profile && (
-    <button
-      className={`account-button ${
-        Object.keys(knownMax.overrides).length || Object.keys(injuries.injuries).length
-          ? "signed-in"
-          : ""
-      }`}
-      onClick={() => setShowStats(true)}
-      aria-expanded={showStats}
-    >
-      {t("stats.title")}
     </button>
   );
   const helpButton = profile && (
@@ -298,30 +272,33 @@ export default function BodyExplorer() {
   return (
     <div className="explorer">
       <div className="explorer-bar">
-        {/* The mark doubles as the link to the account page now — small,
-            and already sitting where a reader's eye starts, rather than a
-            whole extra pill competing with History/Equipment/Progress for
-            room in the scrolling strip. Hidden behind no project configured
-            just stays a plain, unclickable mark — see AccountPanel. */}
-        {auth.available ? (
-          <button
-            className="logo-link"
-            onClick={() => setShowAccount(true)}
-            aria-expanded={showAccount}
-            aria-label={auth.session ? t("account.signedIn") : t("account.title")}
-          >
-            <Logo size={22} />
-          </button>
-        ) : (
+        {/* History, Progress and account access all live behind one menu
+            now, opened from the mark — see AccountMenu. It's always
+            clickable, account or not: History and Progress have nothing to
+            do with whether a Supabase project is configured, only Account
+            itself does, and AccountMenu hides that one entry on its own
+            when it isn't. */}
+        <button
+          className="logo-link"
+          onClick={() => setShowAccountMenu(true)}
+          aria-expanded={showAccountMenu}
+          aria-label={t("menu.title")}
+        >
           <Logo size={22} />
-        )}
-        {/* Just the greeting now — every button that used to share this row
-            moved to the canvas toolbar above, see the comment there. */}
+        </button>
+        {/* Just the greeting and, on the far right, Help and the theme
+            toggle — the two controls that belong to using the app itself
+            rather than to any one muscle or workout, so they sit in the
+            header rather than the canvas toolbar below. */}
         <p className="greeting">
           {profile?.username
             ? t("explorer.greeting", { name: profile.username })
             : t("explorer.greetingAnon")}
         </p>
+        <div className="header-icons">
+          {helpButton}
+          <ThemeToggle pref={pref} onChange={setPref} />
+        </div>
       </div>
       <div className="explorer-canvas">
         {/* The viewer handles Train This itself — it opens one of the muscle's
@@ -341,11 +318,7 @@ export default function BodyExplorer() {
               {workoutButton}
               {calisthenicsButton}
               {stretchingButton}
-              {historyButton}
               {equipmentButton}
-              {statsButton}
-              {helpButton}
-              <ThemeToggle pref={pref} onChange={setPref} />
             </>
           }
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
@@ -451,6 +424,17 @@ export default function BodyExplorer() {
         onEditSet={log.edit}
         onRemoveSet={log.remove}
         customExercises={customExercises.customExercises}
+      />
+      <AccountMenu
+        open={showAccountMenu}
+        onClose={() => setShowAccountMenu(false)}
+        hasHistory={log.entries.length > 0}
+        hasProfile={!!profile}
+        accountAvailable={auth.available}
+        signedIn={!!auth.session}
+        onOpenHistory={() => setShowHistory(true)}
+        onOpenStats={() => setShowStats(true)}
+        onOpenAccount={() => setShowAccount(true)}
       />
       {auth.available && (
         <AccountPanel

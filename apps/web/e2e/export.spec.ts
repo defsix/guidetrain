@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile, seedProgram, seedLog, seedInjury, seedCustomExercise } from "./helpers";
+import { seedProfile, seedProgram, seedLog, seedInjury, seedCustomExercise, openProgress } from "./helpers";
 
 test.describe("the AI-ready training export", () => {
   test("downloads a Markdown file covering profile, program, injuries and log", async ({
@@ -14,7 +14,7 @@ test.describe("the AI-ready training export", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const panel = page.locator(".stats-panel");
     await expect(panel).toBeVisible();
 
@@ -53,7 +53,7 @@ test.describe("the AI-ready training export", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const panel = page.locator(".stats-panel");
     const exportSection = panel.locator(".stats-section").filter({ hasText: /export/i });
     const [download] = await Promise.all([

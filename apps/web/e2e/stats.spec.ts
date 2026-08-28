@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile } from "./helpers";
+import { seedProfile, openProgress } from "./helpers";
 
 test.describe("the progress panel", () => {
   test.beforeEach(async ({ page }) => {
@@ -10,7 +10,7 @@ test.describe("the progress panel", () => {
   });
 
   test("shows the seeded body weight and lets a lift max be set by hand", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
 
     const panel = page.locator(".stats-panel");
     await expect(panel).toBeVisible();
@@ -33,7 +33,7 @@ test.describe("the progress panel", () => {
   test("a known max nudges a related lift's starting weight in the plan preview", async ({
     page,
   }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const benchSection = page
       .locator(".stats-panel .stats-section")
       .filter({ hasText: "Bench" });

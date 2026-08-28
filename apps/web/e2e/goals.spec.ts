@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile, seedProgram, seedLog } from "./helpers";
+import { seedProfile, seedProgram, seedLog, openProgress } from "./helpers";
 
 test.describe("lift goals", () => {
   test.beforeEach(async ({ page }) => {
@@ -29,7 +29,7 @@ test.describe("lift goals", () => {
   }
 
   test("sets a goal on the Stats page and shows its pace", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
 
     // Ten weeks out — 90% of 180 rounds to a training max of 162.5, which
     // from 147.5 is ceil(15 / 5) = 3 cycles, 12 weeks. Behind at 10 weeks.
@@ -44,7 +44,7 @@ test.describe("lift goals", () => {
   });
 
   test("picking a match from the autocomplete dropdown fills the field", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const form = page.locator(".stats-goal-form");
     const exerciseInput = form.locator(".stats-goal-exercise .autocomplete-input");
 
@@ -60,7 +60,7 @@ test.describe("lift goals", () => {
   });
 
   test("removing a goal clears it from the list", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     await addGoal(page, "Barbell Squat", "180", "2030-01-01");
     await expect(page.locator(".stats-goal")).toBeVisible();
 
@@ -72,7 +72,7 @@ test.describe("lift goals", () => {
   test("the same exercise can carry more than one goal, each judged and removed on its own", async ({
     page,
   }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     await addGoal(page, "Barbell Squat", "180", "2030-01-01");
     await addGoal(page, "Barbell Squat", "200", "2031-06-01");
 
@@ -87,7 +87,7 @@ test.describe("lift goals", () => {
   });
 
   test("caps goals at 3 across every exercise, and frees a slot on removal", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     await addGoal(page, "Barbell Squat", "180", "2030-01-01");
     await addGoal(page, "Barbell Bench Press - Medium Grip", "100", "2030-01-01");
     await addGoal(page, "Barbell Deadlift", "220", "2030-01-01");
@@ -102,7 +102,7 @@ test.describe("lift goals", () => {
   });
 
   test("the same goal and pace show up in Plan → for that lift", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const inTenWeeks = new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000);
     await addGoal(page, "Barbell Squat", "180", inTenWeeks.toISOString().slice(0, 10));
     await page.locator(".stats-panel .workout-close").click();
@@ -116,7 +116,7 @@ test.describe("lift goals", () => {
   });
 
   test("two goals on the same lift both show their own pace in Plan →", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const inTenWeeks = new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000);
     await addGoal(page, "Barbell Squat", "180", inTenWeeks.toISOString().slice(0, 10));
     await addGoal(page, "Barbell Squat", "200", "2031-06-01");
@@ -131,7 +131,7 @@ test.describe("lift goals", () => {
   });
 
   test("a goal shows its pace on a ready-made plan's preview row", async ({ page }) => {
-    await page.getByRole("button", { name: /progress/i }).click();
+    await openProgress(page);
     const inTenWeeks = new Date(Date.now() + 10 * 7 * 24 * 60 * 60 * 1000);
     await addGoal(page, "Barbell Squat", "180", inTenWeeks.toISOString().slice(0, 10));
     await page.locator(".stats-panel .workout-close").click();

@@ -467,6 +467,10 @@
   "deleteSet": "删除",
   "save": "保存"
  },
+ "menu": {
+  "title": "菜单",
+  "close": "关闭菜单"
+ },
  "account": {
   "title": "账户",
   "close": "关闭账户",

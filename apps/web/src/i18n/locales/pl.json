@@ -509,6 +509,10 @@
   "deleteSet": "Usuń",
   "save": "Zapisz"
  },
+ "menu": {
+  "title": "Menu",
+  "close": "Zamknij menu"
+ },
  "account": {
   "title": "Konto",
   "close": "Zamknij konto",

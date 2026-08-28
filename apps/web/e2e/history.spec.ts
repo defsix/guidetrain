@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { seedProfile, seedLog } from "./helpers";
+import { seedProfile, seedLog, openHistory } from "./helpers";
 
 test.describe("history", () => {
   test.beforeEach(async ({ page }) => {
@@ -11,7 +11,7 @@ test.describe("history", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     await page.locator(".hist-set-action", { hasText: "Edit" }).click();
 
     const inputs = page.locator(".hist-edit-input");
@@ -33,7 +33,7 @@ test.describe("history", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     await expect(page.locator(".hist-day li")).toHaveCount(2);
 
     await page
@@ -58,7 +58,7 @@ test.describe("history", () => {
     await page.goto("/");
     await expect(page).toHaveURL(/#\/explore$/, { timeout: 1500 });
 
-    await page.getByRole("button", { name: /history/i }).click();
+    await openHistory(page);
     await page.getByRole("tab", { name: /by exercise/i }).click();
     await page.locator(".hist-lifts button").click();
 

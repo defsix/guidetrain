@@ -336,13 +336,13 @@
   min-height: 100svh;
 }
 
-/* Just the logo and greeting now — every button that used to share this row
-   (History, Account, Equipment, Progress, the theme toggle) moved into the
-   canvas's own floating toolbar, which already handles "more pills than fit"
-   by scrolling sideways instead of wrapping. That left this row with only
-   two things that both want to stay on one line, at any width, so it no
-   longer needs the two-row/scrolling-strip machinery a wider set of buttons
-   here used to require. */
+/* The logo, the greeting, and two small icons on the right — everything
+   else that used to share this row (History, Account, Equipment, Progress)
+   moved behind the logo itself, into AccountMenu; Equipment stayed a
+   toolbar pill over the canvas, since it's about what's on hand right now
+   rather than the reader's own data. Help and the theme toggle land here
+   instead of the toolbar because they belong to using the app, not to any
+   one muscle or workout. */
 .explorer-bar {
   display: flex;
   align-items: center;
@@ -363,6 +363,23 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Help and the theme toggle, matched to the same size, shape and style —
+   one glyph, centred in the same circle — regardless of which control it
+   is. Scoped here rather than restyled on .theme-toggle itself: Onboarding
+   uses the same component in its own, differently-shaped spot, and doesn't
+   need this treatment. */
+.header-icons { display: flex; align-items: center; gap: 8px; flex: none; }
+.header-icons .help-button,
+.header-icons .theme-toggle {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (max-width: 560px) {
@@ -1241,7 +1258,31 @@
 .account-button:hover { border-color: var(--accent); color: var(--accent); }
 .account-button.signed-in { border-color: var(--accent); color: var(--accent); }
 
+/* --- account menu --------------------------------------------------------
+   Where the logo leads: History, Progress and Account access, whichever of
+   the three the current profile and auth state actually have something
+   behind them — see AccountMenu.tsx. Same flat-list shape as .swap-list,
+   since a handful of destinations is exactly what that already reads well
+   as, without inventing a second nav pattern for three rows. */
+.account-menu-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.account-menu-item {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.13s;
+}
+.account-menu-item:hover { border-color: var(--accent); }
+.account-menu-item.signed-in { border-color: var(--accent); color: var(--accent); }
+
 .account-panel,
+.account-menu,
 .equipment-panel,
 .stats-panel,
 .swap-panel,
@@ -1263,6 +1304,7 @@
   border-left: 1px solid var(--border);
 }
 .account-panel > *,
+.account-menu > *,
 .equipment-panel > *,
 .stats-panel > *,
 .swap-panel > *,
@@ -1270,7 +1312,7 @@
 .stretching-panel > * { flex: none; }
 
 @media (min-width: 1100px) {
-  .account-panel, .equipment-panel, .stats-panel, .swap-panel, .calisthenics-panel, .stretching-panel {
+  .account-panel, .account-menu, .equipment-panel, .stats-panel, .swap-panel, .calisthenics-panel, .stretching-panel {
     width: min(520px, 40vw);
     padding: 26px 30px;
   }
@@ -1282,6 +1324,7 @@
      nothing between its edge and the screen's is one accidental swipe from
      feeling like it's about to fall off. */
   .account-panel,
+  .account-menu,
   .equipment-panel,
   .stats-panel,
   .swap-panel,
@@ -1301,6 +1344,7 @@
 }
 
 .account-panel h2,
+.account-menu h2,
 .equipment-panel h2,
 .stats-panel h2,
 .swap-panel h2,

@@ -482,6 +482,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **History, Progress and account access moved behind the logo**, into a
+  new account menu, instead of sharing the canvas toolbar with Workout,
+  Calisthenics, Stretching and Equipment. They're the reader's own data —
+  what's been logged, how it's trending, who's signed in — not something on
+  hand for this session the way Equipment is, so they get their own,
+  smaller menu rather than three more pills in an already-busy strip.
+  Tapping the logo now always opens it, account or not: History and
+  Progress work with or without a Supabase project configured, and the
+  menu only hides its Account row when there truly isn't one to sign in to.
+  Help and the theme toggle moved the other way, off the canvas toolbar and
+  onto the top-right of the header — they belong to using the app, not to
+  any one muscle or workout — and now share one uniform circular style.
 - **Fixed the keyboard still covering text fields on Android, again** —
   the `windowSoftInputMode` fix (below) was necessary but not sufficient.
   The scroll-into-view logic still only trusted one `visualViewport`

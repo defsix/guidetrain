@@ -467,6 +467,10 @@
   "deleteSet": "削除",
   "save": "保存"
  },
+ "menu": {
+  "title": "メニュー",
+  "close": "メニューを閉じる"
+ },
  "account": {
   "title": "アカウント",
   "close": "アカウントを閉じる",
