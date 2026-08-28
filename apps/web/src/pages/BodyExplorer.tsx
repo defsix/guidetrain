@@ -244,6 +244,57 @@ export default function BodyExplorer() {
     </button>
   );
 
+  // These used to live in their own strip in the header bar, sharing a line
+  // with the greeting. Squeezed together on a phone that made for two
+  // cramped rows — the greeting and the strip both needing full width at
+  // once — with no more room to give either one. They join Workout/
+  // Calisthenics/Stretching in the canvas's own floating toolbar instead
+  // (passed down as toolbarExtra, below), which already scrolls sideways
+  // to fit however many pills a host app hands it rather than wrapping the
+  // header. The header goes back to being just the logo and greeting, on
+  // one short line, at every width.
+  const historyButton = log.entries.length > 0 && (
+    <button
+      className="history-button"
+      onClick={() => setShowHistory(true)}
+      aria-expanded={showHistory}
+    >
+      {t("history.title")}
+    </button>
+  );
+  const equipmentButton = profile && (
+    <button
+      className={`account-button ${profile.equipment?.length ? "signed-in" : ""}`}
+      onClick={() => setShowEquipment(true)}
+      aria-expanded={showEquipment}
+    >
+      {t("equipmentPanel.title")}
+    </button>
+  );
+  const statsButton = profile && (
+    <button
+      className={`account-button ${
+        Object.keys(knownMax.overrides).length || Object.keys(injuries.injuries).length
+          ? "signed-in"
+          : ""
+      }`}
+      onClick={() => setShowStats(true)}
+      aria-expanded={showStats}
+    >
+      {t("stats.title")}
+    </button>
+  );
+  const helpButton = profile && (
+    <button
+      className="help-button"
+      onClick={startTour}
+      aria-label={t("tour.helpButton")}
+      title={t("tour.helpButton")}
+    >
+      ?
+    </button>
+  );
+
   return (
     <div className="explorer">
       <div className="explorer-bar">
@@ -264,75 +315,13 @@ export default function BodyExplorer() {
         ) : (
           <Logo size={22} />
         )}
-        {/* Just the greeting — how to use the model used to be written out
-            here too, and on a phone that sentence was most of why the header
-            needed a scrolling strip for its buttons at all. It lives under
-            the model now, for a first-time visitor only, and this stays
-            short at every visit after. Moving Account onto the mark above
-            freed up the room this needs to actually fit instead of eliding. */}
+        {/* Just the greeting now — every button that used to share this row
+            moved to the canvas toolbar above, see the comment there. */}
         <p className="greeting">
           {profile?.username
             ? t("explorer.greeting", { name: profile.username })
             : t("explorer.greetingAnon")}
         </p>
-        <div className="header-controls">
-          {/* Only once there is something to look at. An empty history
-              button is a promise the app cannot keep yet. */}
-          {log.entries.length > 0 && (
-            <button
-              className="history-button"
-              onClick={() => setShowHistory(true)}
-              aria-expanded={showHistory}
-            >
-              {t("history.title")}
-            </button>
-          )}
-          {/* Marked once something is actually selected, the same "signed-in"
-              treatment the account button gets, so a glance at the header
-              says whether this is doing anything right now. */}
-          {profile && (
-            <button
-              className={`account-button ${profile.equipment?.length ? "signed-in" : ""}`}
-              onClick={() => setShowEquipment(true)}
-              aria-expanded={showEquipment}
-            >
-              {t("equipmentPanel.title")}
-            </button>
-          )}
-          {/* Same "signed-in" treatment once a max has been set by hand or a
-              muscle marked injured — Progress carries both now, so either one
-              is reason enough to highlight it. A body weight alone came from
-              onboarding and isn't. */}
-          {profile && (
-            <button
-              className={`account-button ${
-                Object.keys(knownMax.overrides).length || Object.keys(injuries.injuries).length
-                  ? "signed-in"
-                  : ""
-              }`}
-              onClick={() => setShowStats(true)}
-              aria-expanded={showStats}
-            >
-              {t("stats.title")}
-            </button>
-          )}
-          {/* Replays the spotlight tour on demand — the only way back to it
-              once the automatic first run has come and gone. Gated on
-              `profile` like the rest of the header, and left up even while
-              the tour is active so quitting mid-tour still leaves a way
-              back in, same as tapping Skip does. */}
-          {profile && (
-            <button
-              className="help-button"
-              onClick={startTour}
-              aria-label={t("tour.helpButton")}
-              title={t("tour.helpButton")}
-            >
-              ?
-            </button>
-          )}
-          <ThemeToggle pref={pref} onChange={setPref} />
-        </div>
       </div>
       <div className="explorer-canvas">
         {/* The viewer handles Train This itself — it opens one of the muscle's
@@ -347,7 +336,18 @@ export default function BodyExplorer() {
           onToggleSave={programs.toggle}
           equipmentAvailable={profile?.equipment}
           injuries={injuries.injuries}
-          toolbarExtra={<>{workoutButton}{calisthenicsButton}{stretchingButton}</>}
+          toolbarExtra={
+            <>
+              {workoutButton}
+              {calisthenicsButton}
+              {stretchingButton}
+              {historyButton}
+              {equipmentButton}
+              {statsButton}
+              {helpButton}
+              <ThemeToggle pref={pref} onChange={setPref} />
+            </>
+          }
           onSelect={(zone) => setMuscleSelected(Boolean(zone))}
           focusMuscleId={tourFocusMuscle}
           customExercises={customExercises.customExercises}

@@ -336,11 +336,17 @@
   min-height: 100svh;
 }
 
+/* Just the logo and greeting now — every button that used to share this row
+   (History, Account, Equipment, Progress, the theme toggle) moved into the
+   canvas's own floating toolbar, which already handles "more pills than fit"
+   by scrolling sideways instead of wrapping. That left this row with only
+   two things that both want to stay on one line, at any width, so it no
+   longer needs the two-row/scrolling-strip machinery a wider set of buttons
+   here used to require. */
 .explorer-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   /* calc() rather than the plain shorthand, so the header clears a phone's
      status bar/notch instead of rendering underneath it — see
      --safe-area-top in index.css. */
@@ -350,49 +356,22 @@
 }
 
 .explorer .greeting {
+  flex: 1;
   font-size: 14px;
   margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* On a narrow screen the greeting wrapped to nine lines and took nearly half
-   the viewport before the model got any. It keeps one line and elides, and the
-   header stops trying to sit side by side. */
 @media (max-width: 560px) {
   .explorer-bar {
-    gap: 6px 10px;
+    gap: 10px;
     padding: calc(10px + var(--safe-area-top)) 12px 10px;
-    /* Two rows, not one: logo + greeting on the first, the pill strip
-       getting the *whole* width on its own row below rather than
-       splitting it with the greeting. With History, Account, Equipment
-       and Progress all showing at once there were more pills than a
-       shared row had room for, and squeezed that tight the strip hid all
-       but the first one or two behind a horizontal scroll a reader had no
-       visual cue to even try. header-controls' flex-basis below is what
-       actually forces the break. */
-    flex-wrap: wrap;
   }
   .explorer .greeting {
     font-size: 13px;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  /* flex-basis: 100% forces this onto its own row under the logo/greeting
-     line above — see the comment on .explorer-bar. Still scrolls
-     sideways rather than wrapping onto a third row if a language's
-     translated labels ever don't fit even the full width, the same
-     safety net this already had when it was sharing a row. */
-  .explorer .header-controls {
-    flex: 1 1 100%;
-    min-width: 0;
-    gap: 6px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    /* Left-aligned rather than the desktop row's flex-end, so a scrollable
-       strip that overflows opens on its first button rather than its last. */
-    justify-content: flex-start;
   }
 }
 

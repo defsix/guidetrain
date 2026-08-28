@@ -482,6 +482,14 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The header's pill row moved into the canvas toolbar instead of getting
+  its own line.** The two-row split shipped last version worked, but cost a
+  phone real screen height for chrome above the model. History, Account,
+  Equipment, Progress and the theme toggle now live in the same floating
+  strip over the canvas that already held Workout, Calisthenics and
+  Stretching — which was already built to handle "more pills than fit one
+  line" by scrolling sideways rather than wrapping. The header goes back to
+  being just the logo and a one-line greeting, at every width.
 - **Fixed the real cause of the keyboard still covering text fields on
   Android**, after the earlier app-wide fix (v1.7) turned out not to be
   enough on its own. The actual bug was native, not something the page's

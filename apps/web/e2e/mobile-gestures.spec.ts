@@ -33,11 +33,15 @@ test.describe("the canvas toolbar at a real phone width", () => {
     await expect(page.locator("canvas")).toBeVisible();
   });
 
-  test("Workout, Calisthenics, Stretching and Muscle Groups all stay on one line", async ({ page }) => {
+  test("Workout, Calisthenics, Stretching, Muscle Groups and the rest of the header pills all stay on one line", async ({ page }) => {
     const toolbar = page.locator(".anatomy-toolbar");
     const toolbarBox = await toolbar.boundingBox();
     // A single line of these pills is comfortably under 50px tall; a wrap
-    // to two lines — the actual bug reported — roughly doubles that.
+    // to two lines — the actual bug reported — roughly doubles that. History,
+    // Account, Equipment, Progress and the theme toggle live here too now
+    // (moved down from the header bar), so this checks that the whole,
+    // larger set still fits one line by scrolling sideways rather than
+    // wrapping.
     expect(toolbarBox!.height).toBeLessThan(50);
   });
 

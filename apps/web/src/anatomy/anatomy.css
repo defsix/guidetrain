@@ -352,25 +352,34 @@
 
 /* Canvas toolbar and scrim --------------------------------------------------
    The toolbar is visible at every width now, top-left of the canvas — the
-   host app's Workout pill (passed in via toolbarExtra, see the docs at the
-   top of the file) lives here regardless of screen size, mirroring where the
-   muscle-group controls sit on the opposite corner: a toggle on a phone, a
-   permanently open panel top-right on anything wider. Muscle Groups' own
-   toggle button stays phone-only below — a desktop's regions panel is
-   already open, so a button to open it would have nothing to do. The scrim
-   stays phone-only too: it exists to dismiss an overlay panel, and nothing
-   here overlays the model above 720px. */
+   host app's Workout pill, and everything else it hands over via
+   toolbarExtra (see the docs at the top of the file), lives here regardless
+   of screen size, mirroring where the muscle-group controls sit on the
+   opposite corner: a toggle on a phone, a permanently open panel top-right
+   on anything wider. History, Account, Equipment, Progress and the theme
+   toggle moved in here from their own strip in the header bar — squeezed
+   next to the greeting there, the header needed two rows to fit them; here
+   they join a toolbar that was already built to hold "more pills than fit
+   one line" by scrolling sideways instead. Muscle Groups' own toggle button
+   stays phone-only below — a desktop's regions panel is already open, so a
+   button to open it would have nothing to do. The scrim stays phone-only
+   too: it exists to dismiss an overlay panel, and nothing here overlays the
+   model above 720px. */
 .anatomy-toolbar {
-  display: flex; gap: 8px; position: absolute; z-index: 8;
-  top: 16px; left: 16px;
+  display: flex; flex-wrap: wrap; gap: 8px; position: absolute; z-index: 8;
+  top: 16px; left: 16px; right: 16px;
 }
 .anatomy-toolbar .tool { display: none; }
 .anatomy-scrim { display: none; }
 
-/* The pill's shape and badge stay exactly what they are in the header; only
-   the frosted-glass background changes, to match the floating toolbar it
-   lives in now rather than the solid header bar it left. */
-.anatomy-toolbar .workout-button {
+/* Every pill's shape and badge stay exactly what they are in the header;
+   only the frosted-glass background changes, to match the floating toolbar
+   they live in now rather than the solid header bar they left. */
+.anatomy-toolbar .workout-button,
+.anatomy-toolbar .history-button,
+.anatomy-toolbar .account-button,
+.anatomy-toolbar .help-button,
+.anatomy-toolbar .theme-toggle {
   background: var(--panel-translucent);
   backdrop-filter: blur(14px);
 }
@@ -378,37 +387,40 @@
 @media (max-width: 720px) {
   .anatomy-root .muscle { font-size: 11.5px; padding: 4px 6px; }
 
+  /* A scrolling strip rather than the desktop row's wrap: there can be
+     eight pills here now (Workout, Calisthenics, Stretching, History,
+     Account, Equipment, Progress, the theme toggle), and evenly stretching
+     that many into one phone-width line — the old flex:1 behaviour, from
+     when this toolbar only ever held two or three — would squeeze every
+     one of them down to an unreadable sliver. Scrolling keeps each pill at
+     its own natural width instead; `nowrap` on the toolbar is what stops
+     the row wrapping onto a second line before overflow-x gets a chance to
+     kick in. */
   .anatomy-toolbar {
     top: 12px; left: 12px; right: 12px;
     gap: 6px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
   }
-  /* Sized to keep every pill — Workout, and whatever a host app adds via
-     toolbarExtra — on one line on an ordinary phone. `min-width: 0` is what
-     lets a flex item shrink below its text's natural width at all; without
-     it `nowrap` + `ellipsis` below have nothing to act on and the pill just
-     pushes the row wider instead. A translation long enough to still not
-     fit degrades to an ellipsis rather than wrapping the row onto a second
-     line — which used to silently push the docked Muscle Groups panel down
-     into overlapping the pills themselves (see the --toolbar-h comment in
-     AnatomyViewer.jsx, which now fixes that regardless, but a pill's own
-     text truncating cleanly is worth having either way). */
   .anatomy-toolbar .tool,
-  .anatomy-toolbar .workout-button {
-    min-width: 0;
+  .anatomy-toolbar .workout-button,
+  .anatomy-toolbar .history-button,
+  .anatomy-toolbar .account-button,
+  .anatomy-toolbar .help-button,
+  .anatomy-toolbar .theme-toggle {
+    flex: none;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   .anatomy-toolbar .tool {
     display: flex; justify-content: center;
-    flex: 1; font-family: inherit; font-size: 11px; font-weight: 600;
-    padding: 8px 6px; border-radius: 999px; cursor: pointer;
+    font-family: inherit; font-size: 11px; font-weight: 600;
+    padding: 8px 12px; border-radius: 999px; cursor: pointer;
     background: var(--panel-translucent); backdrop-filter: blur(14px);
     border: 1px solid var(--border); color: var(--text);
   }
   .anatomy-toolbar .tool.active { border-color: var(--accent); color: var(--accent); }
   .anatomy-toolbar .workout-button {
-    flex: 1; justify-content: center;
     font-size: 11px; padding: 8px 8px 8px 12px; gap: 5px;
   }
 
