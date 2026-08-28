@@ -482,6 +482,20 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed the keyboard still covering text fields on Android, again** —
+  the `windowSoftInputMode` fix (below) was necessary but not sufficient.
+  The scroll-into-view logic still only trusted one `visualViewport`
+  resize event and scrolled once, which assumed the keyboard's own
+  animation was the only thing moving and timing the field, and that
+  Android's native `adjustResize` window resize would show up as exactly
+  that one clean signal on its own schedule. Neither held reliably enough
+  in practice — a field could still end up under the keyboard with
+  nothing left listening to rescue it. It now just keeps checking the
+  field's actual position against the actual visible height, every 150ms
+  for up to 1.5 seconds after it gets focus, and re-scrolls whenever it's
+  still (or newly) covered — it doesn't need to know why the keyboard is
+  still animating or when it'll stop, only whether the field is visible
+  yet.
 - **The header's pill row moved into the canvas toolbar instead of getting
   its own line.** The two-row split shipped last version worked, but cost a
   phone real screen height for chrome above the model. History, Account,
