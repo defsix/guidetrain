@@ -359,8 +359,17 @@
    header stops trying to sit side by side. */
 @media (max-width: 560px) {
   .explorer-bar {
-    gap: 10px;
+    gap: 6px 10px;
     padding: calc(10px + var(--safe-area-top)) 12px 10px;
+    /* Two rows, not one: logo + greeting on the first, the pill strip
+       getting the *whole* width on its own row below rather than
+       splitting it with the greeting. With History, Account, Equipment
+       and Progress all showing at once there were more pills than a
+       shared row had room for, and squeezed that tight the strip hid all
+       but the first one or two behind a horizontal scroll a reader had no
+       visual cue to even try. header-controls' flex-basis below is what
+       actually forces the break. */
+    flex-wrap: wrap;
   }
   .explorer .greeting {
     font-size: 13px;
@@ -369,16 +378,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  /* With History, Account, Equipment and Progress all showing at once, the
-     row is wider than a phone screen. `flex: none` used to refuse to shrink
-     it at all — every browser was left with only one option, overflowing the
-     whole page sideways rather than just this row, which is how a signed-in
-     reader ended up scrolled to a cropped mid-slice of every panel, not only
-     this one. Scrolling sideways within its own strip, the same pattern
-     already used for named-program tabs below, keeps every button reachable
-     without ever growing the page past the viewport. */
+  /* flex-basis: 100% forces this onto its own row under the logo/greeting
+     line above — see the comment on .explorer-bar. Still scrolls
+     sideways rather than wrapping onto a third row if a language's
+     translated labels ever don't fit even the full width, the same
+     safety net this already had when it was sharing a row. */
   .explorer .header-controls {
-    flex: 1 1 auto;
+    flex: 1 1 100%;
     min-width: 0;
     gap: 6px;
     flex-wrap: nowrap;

@@ -482,6 +482,28 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed the real cause of the keyboard still covering text fields on
+  Android**, after the earlier app-wide fix (v1.7) turned out not to be
+  enough on its own. The actual bug was native, not something the page's
+  own JavaScript could fully work around: the Android app's window was
+  never told to resize when the keyboard opened
+  (`windowSoftInputMode`), so the WebView's own visible area stayed full
+  height the whole time and every on-screen-position calculation was
+  working from a size that didn't match what was actually visible.
+  `adjustResize` is now set, so the WebView genuinely shrinks and the
+  existing scroll-into-view logic has a real, current size to work
+  against. That logic is also sturdier now in its own right — it used to
+  scroll on a blind fixed delay guessed at how long the resize takes; it
+  now waits for the resize to actually finish (via `visualViewport`'s own
+  `resize` event) before scrolling, so a slower device no longer beats the
+  timer.
+- **The header's pill row gets its own line on a phone**, rather than
+  splitting one line with the greeting next to it. With History, Account,
+  Equipment, Progress and the theme toggle all showing at once there were
+  more pills than a shared line had room for, and squeezed that tight the
+  row hid all but the first couple behind a sideways scroll with no visual
+  hint it was there. The greeting and logo keep the first line; the pills
+  get the whole width of the one under it.
 - **Custom exercises can't quietly duplicate one that's already there.**
   Adding or renaming one now checks the name against every catalogue
   exercise and everything else already added — not just for an exact
