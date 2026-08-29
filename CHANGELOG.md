@@ -482,6 +482,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed the actual measurement behind `--keyboard-height`** (the fix one
+  version ago) — a real device confirmed it still wasn't working, and the
+  reason turned out to be one step earlier than expected: the modern
+  `WindowInsetsCompat.Type.ime()` API this was reading from never
+  re-delivered a nonzero value on this device at all, keyboard open or
+  closed, so `--keyboard-height` itself never left 0 — the CSS property and
+  the scroll logic reading it were both already correct, working from a
+  number that was silently wrong at the source the whole time. Modern
+  WindowInsets dispatch isn't guaranteed to re-fire for the IME on every
+  Android version and configuration; `getWindowVisibleDisplayFrame` is the
+  older technique that predates it, asks the window manager directly for
+  what's actually visible, and is what nearly every "detect the keyboard"
+  library still falls back to for exactly this reason. The keyboard height
+  is now measured that way instead — the gap between the root view's full
+  height and its currently visible frame, rechecked on every layout pass —
+  and handed to the page the same way as before.
 - **Stopped trying to make the Android WebView's viewport shrink for the
   keyboard, and started measuring the keyboard directly instead** — a real
   device confirmed the previous fix (applying the keyboard's inset as

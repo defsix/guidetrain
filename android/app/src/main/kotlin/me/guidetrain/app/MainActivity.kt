@@ -1,6 +1,7 @@
 package me.guidetrain.app
 
 import android.content.Intent
+import android.graphics.Rect
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -83,31 +84,10 @@ class MainActivity : AppCompatActivity() {
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             safeAreaTopPx = insets.top
             safeAreaBottomPx = insets.bottom
-            // Confirmed on a real device (screenshots showed the page's own
-            // layout completely unchanged, keyboard open or closed) that
-            // neither windowSoftInputMode="adjustResize" (see
-            // AndroidManifest.xml) nor consuming the IME inset as WebView
-            // padding — the previous attempt here — actually shrinks
-            // anything once enableEdgeToEdge owns window-inset handling.
-            // window.innerHeight/visualViewport.height on this WebView
-            // never reflect the keyboard at all, so scroll-into-view logic
-            // that infers "how much room is left" from either of those is
-            // reasoning from numbers that never change. Fixing that
-            // structurally (finding whatever native call would make the
-            // WebView's own layout viewport genuinely resize) isn't
-            // something more manifest/inset tuning has managed after three
-            // attempts — so this stops trying to make the browser think
-            // its viewport shrank, and instead hands the page the one
-            // number it actually needs: the keyboard's real height, the
-            // same way injectSafeAreaInsets already hands it the status/
-            // nav-bar heights. The page does the rest itself (see
-            // scrollIntoViewOnFocus.ts) with a value that's simply true,
-            // rather than one it has to infer from a viewport that isn't
-            // moving.
-            keyboardHeightPx = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom
             injectSafeAreaInsets(webView)
             windowInsets
         }
+        setupKeyboardHeightListener()
 
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState)
@@ -190,6 +170,44 @@ class MainActivity : AppCompatActivity() {
      * --safe-area-bottom custom properties apps/web/src/index.css already
      * falls back to using env() for on other platforms.
      */
+    /**
+     * `WindowInsetsCompat.Type.ime()`, read inside `setOnApplyWindowInsetsListener`
+     * above, was the modern, "correct" way to get the keyboard's height — and
+     * on a real device it never worked: confirmed (v1.19, v1.20) that
+     * whatever the listener saw for the IME inset stayed 0 the whole time,
+     * keyboard open or closed, so nothing built on top of it — WebView
+     * padding, then this same --keyboard-height property — ever carried a
+     * real number. Insets only reliably re-dispatch to a listener like that
+     * on newer Android versions; nothing here guarantees this device (or
+     * WebView's own inset plumbing) actually does.
+     *
+     * `getWindowVisibleDisplayFrame` predates all of that — it's the
+     * technique every "detect the keyboard" library used before
+     * WindowInsets existed, and it works by asking the window manager
+     * directly for the currently visible frame rather than waiting on any
+     * dispatch that might not come. The gap between the root view's full
+     * height and how much of it is actually visible *is* the keyboard,
+     * whether or not anything above ever told this code so. A global
+     * layout listener re-checks that gap on every layout pass, which
+     * reliably includes the keyboard opening and closing.
+     */
+    private fun setupKeyboardHeightListener() {
+        val rootView = webView.rootView
+        rootView.viewTreeObserver.addOnGlobalLayoutListener {
+            val visibleFrame = Rect()
+            rootView.getWindowVisibleDisplayFrame(visibleFrame)
+            val gap = rootView.height - visibleFrame.bottom
+            // A small gap is just the nav bar or a rounding wobble, not the
+            // keyboard — a real on-screen keyboard is never under ~15% of
+            // the screen.
+            val next = if (gap > rootView.height * 0.15) gap else 0
+            if (next != keyboardHeightPx) {
+                keyboardHeightPx = next
+                injectSafeAreaInsets(webView)
+            }
+        }
+    }
+
     private fun injectSafeAreaInsets(webView: WebView) {
         val density = resources.displayMetrics.density
         val topDp = (safeAreaTopPx / density).toInt()
