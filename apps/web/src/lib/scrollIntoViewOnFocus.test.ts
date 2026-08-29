@@ -141,6 +141,51 @@ describe("scrollIntoViewOnFocus", () => {
     expect(body.style.paddingBottom).toBe("416px");
   });
 
+  it("scrolls for a covered extraVisible element even when the field itself is fully visible", () => {
+    // AutocompleteInput's own case: the field sits well clear of the
+    // keyboard, but its suggestions dropdown — position: absolute, so it
+    // doesn't affect the field's own rect at all — extends into it.
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 300, bottom: 340 }, container);
+    const dropdown = { getBoundingClientRect: () => ({ top: 344, bottom: 560 }) };
+    scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement);
+    expect(el.scrollIntoView).toHaveBeenCalled();
+  });
+
+  it("sizes the scroll margin to cover the dropdown's own overhang past the field, not just the keyboard", () => {
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 300, bottom: 340 }, container);
+    const dropdown = { getBoundingClientRect: () => ({ top: 344, bottom: 560 }) };
+    let marginDuringCall = "";
+    el.scrollIntoView = vi.fn(() => {
+      marginDuringCall = el.style.scrollMarginBottom;
+    });
+    scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement);
+    // overhang = 560 - 340 = 220, plus kb (400) plus the usual 16px margin.
+    expect(marginDuringCall).toBe("636px");
+  });
+
+  it("notices a dropdown that appears mid-poll, not just one present at focus time", () => {
+    // The dropdown doesn't exist in the DOM until there's a match to show —
+    // re-querying for it every tick (rather than once, at focus) is what
+    // lets this react once it actually mounts.
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 300, bottom: 340 }, container);
+    let dropdown: { getBoundingClientRect: () => { top: number; bottom: number } } | null = null;
+    scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement | null);
+    expect(el.scrollIntoView).not.toHaveBeenCalled();
+
+    dropdown = { getBoundingClientRect: () => ({ top: 344, bottom: 560 }) };
+    vi.advanceTimersByTime(200);
+    expect(el.scrollIntoView).toHaveBeenCalled();
+  });
+
   it("still uses visualViewport/innerHeight when --keyboard-height is 0 (iOS, desktop, the plain website)", () => {
     const body = fakeNode(undefined, null);
     stubEnv({ visualViewport: { height: 400 } }, 0, body);

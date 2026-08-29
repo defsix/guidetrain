@@ -90,7 +90,10 @@ export default function AutocompleteInput({
         }}
         onFocus={(e) => {
           setOpen(true);
-          scrollIntoViewOnFocus(e);
+          scrollIntoViewOnFocus(
+            e,
+            () => rootRef.current?.querySelector<HTMLElement>(".autocomplete-list") ?? null,
+          );
         }}
         onKeyDown={onKeyDown}
         placeholder={placeholder}

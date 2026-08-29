@@ -78,8 +78,21 @@ function nearestScrollContainer(el: HTMLElement): HTMLElement {
  * Padding creates the room to scroll into; margin is what makes
  * `scrollIntoView` actually use it instead of concluding there's nothing
  * to do.
+ *
+ * `extraVisible`, when given, is re-run on every check — not just once at
+ * focus — and its element's own bottom edge is folded into the same
+ * covered/margin math as the field's. It exists for AutocompleteInput: the
+ * suggestions list below the field is `position: absolute`, so it doesn't
+ * contribute to anything's layout size on its own, and it doesn't exist in
+ * the DOM at focus time at all — it only mounts once there's a match to
+ * show. A callback re-queried every tick is what lets this notice the
+ * dropdown once it actually appears, rather than reasoning about a moment
+ * that's already passed.
  */
-export function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
+export function scrollIntoViewOnFocus(
+  e: React.FocusEvent<HTMLElement>,
+  extraVisible?: () => HTMLElement | null,
+) {
   const el = e.currentTarget;
   const container = nearestScrollContainer(el);
   const prevPadding = container.style.paddingBottom;
@@ -101,10 +114,15 @@ export function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
     container.style.paddingBottom = kb > 0 ? `${kb + MARGIN_PX}px` : prevPadding;
 
     const rect = el.getBoundingClientRect();
+    const extraEl = extraVisible?.();
+    const bottom = extraEl ? Math.max(rect.bottom, extraEl.getBoundingClientRect().bottom) : rect.bottom;
     const visibleHeight = (window.visualViewport?.height ?? window.innerHeight) - kb;
-    if (rect.top < 0 || rect.bottom > visibleHeight) {
+    if (rect.top < 0 || bottom > visibleHeight) {
       const prevMargin = el.style.scrollMarginBottom;
-      el.style.scrollMarginBottom = `${kb + MARGIN_PX}px`;
+      // The margin only needs to cover however much of the extra element
+      // sticks out past the field's own bottom edge, plus the keyboard.
+      const overhang = Math.max(0, bottom - rect.bottom);
+      el.style.scrollMarginBottom = `${kb + overhang + MARGIN_PX}px`;
       el.scrollIntoView({ block: "nearest", behavior: "smooth" });
       el.style.scrollMarginBottom = prevMargin;
     }

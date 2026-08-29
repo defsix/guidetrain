@@ -482,6 +482,23 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Confirmed the keyboard fix now works for the exercise-name field and
+  the Goals autocomplete, and fixed the one field type that still didn't**
+  — the exercise-picker dropdown under the Goals "Exercise" field is
+  `position: absolute`, so it never contributed to anything's layout size,
+  and it doesn't exist in the DOM at all until there's a match to show —
+  the scroll-margin/padding fix could only ever see the plain input, never
+  the suggestions list hanging below it. Focusing that field now also
+  watches for its dropdown appearing (checked fresh on every poll, not just
+  once at focus, since it isn't there yet when focus first happens) and
+  folds its bottom edge into the same covered/margin math as the field
+  itself.
+- **Shrunk the keyboard diagnostic badge** — it was reported overlapping
+  the Progress panel's own Squat/Bench/Deadlift fields, which happen to
+  render in the same corner it was pinned to. Down to one short,
+  translucent line (just `kb=…`, the one number still worth watching) now
+  that the fuller raw-diagnostic form has already done its job of
+  confirming the native measurement itself is correct.
 - **The keyboard's height is now measured correctly on a real device** —
   confirmed at last, from the diagnostic readout's own numbers: `kb=397px`
   with the keyboard actually open, against a correctly-excluded ~37px gap
