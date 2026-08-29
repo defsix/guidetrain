@@ -482,6 +482,23 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Found a real gap in the keyboard fix that had nothing to do with how
+  the keyboard's height was measured** — `scrollIntoView`, even with
+  `scroll-margin-bottom` set to the keyboard's exact height, can only
+  scroll a container up to its own `scrollHeight`; it can't manufacture
+  scroll room that doesn't exist in the DOM. The field this kept getting
+  reported on (the "add an exercise yourself" form) sits at the very end of
+  a muscle's exercise list — once that list is already scrolled as far as
+  it goes, no margin gets it any further, regardless of whether the
+  keyboard's height was measured correctly. Every previous attempt could
+  have had the right number and still produced exactly the "nothing
+  happens" that kept getting reported. Focusing a field now pads its
+  actual nearest scrolling ancestor by the keyboard's height for as long as
+  it stays focused — genuinely more room to scroll into, not just a hint
+  applied to a container that was already at its limit — restored once the
+  field blurs. The diagnostic readout from the last version stays in place
+  for one more round, so the next report also confirms whether the
+  keyboard's measured height was ever the problem at all.
 - **Diagnostic build — not a fix.** Two independent native techniques for
   measuring the Android keyboard (the last two versions) both reportedly
   made no difference at all on a real device, which stops pointing at

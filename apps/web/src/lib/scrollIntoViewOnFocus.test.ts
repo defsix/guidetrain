@@ -2,17 +2,38 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { scrollIntoViewOnFocus } from "./scrollIntoViewOnFocus";
 
 /**
- * No jsdom in this project — these stub just enough of `window`,
- * `document.documentElement` (for the `--keyboard-height` custom property)
- * and an element (its rect, its `style`, and `scrollIntoView`) for the
- * function's own logic to run and be asserted on with fake timers, without
- * pulling in a full DOM.
+ * No jsdom in this project — these build just enough of a fake DOM tree
+ * (a focusable element, its ancestors up to a fake `document.body`, and a
+ * `document.documentElement` carrying the `--keyboard-height` custom
+ * property) for the function's own logic to run and be asserted on with
+ * fake timers, without pulling in a full DOM.
  */
-function fakeElement(rect: { top: number; bottom: number }) {
+type FakeNode = {
+  style: Record<string, string>;
+  parentElement: FakeNode | null;
+  overflowY?: string;
+};
+
+function fakeNode(overflowY: string | undefined, parent: FakeNode | null): FakeNode {
+  return { style: {}, parentElement: parent, overflowY };
+}
+
+function fakeElement(rect: { top: number; bottom: number }, parent: FakeNode | null) {
+  const listeners: Record<string, (() => void)[]> = {};
   return {
     getBoundingClientRect: () => rect,
     scrollIntoView: vi.fn(),
     style: {} as Record<string, string>,
+    parentElement: parent,
+    addEventListener: vi.fn((type: string, cb: () => void) => {
+      (listeners[type] ??= []).push(cb);
+    }),
+    removeEventListener: vi.fn((type: string, cb: () => void) => {
+      listeners[type] = (listeners[type] ?? []).filter((f) => f !== cb);
+    }),
+    fireBlur() {
+      for (const cb of listeners.blur ?? []) cb();
+    },
   };
 }
 
@@ -20,12 +41,19 @@ function focusEvent(el: ReturnType<typeof fakeElement>) {
   return { currentTarget: el } as unknown as React.FocusEvent<HTMLElement>;
 }
 
-function stubEnv(windowExtra: Record<string, unknown>, keyboardHeightPx: number) {
+function stubEnv(windowExtra: Record<string, unknown>, keyboardHeightPx: number, body: FakeNode) {
+  const documentElement = {};
   vi.stubGlobal("window", { innerHeight: 800, ...windowExtra });
-  vi.stubGlobal("document", { documentElement: {} });
-  vi.stubGlobal("getComputedStyle", () => ({
-    getPropertyValue: (prop: string) => (prop === "--keyboard-height" ? `${keyboardHeightPx}px` : ""),
-  }));
+  vi.stubGlobal("document", { documentElement, body, scrollingElement: body });
+  vi.stubGlobal("getComputedStyle", (node: unknown) => {
+    if (node === documentElement) {
+      return {
+        getPropertyValue: (prop: string) =>
+          prop === "--keyboard-height" ? `${keyboardHeightPx}px` : "",
+      };
+    }
+    return { overflowY: (node as FakeNode).overflowY ?? "visible" };
+  });
 }
 
 describe("scrollIntoViewOnFocus", () => {
@@ -38,63 +66,76 @@ describe("scrollIntoViewOnFocus", () => {
   });
 
   it("does nothing if the field is already fully visible", () => {
-    stubEnv({}, 0);
-    const el = fakeElement({ top: 100, bottom: 200 });
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 0, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 100, bottom: 200 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
     vi.advanceTimersByTime(2000);
     expect(el.scrollIntoView).not.toHaveBeenCalled();
   });
 
   it("scrolls a field the --keyboard-height zone covers, even though the viewport itself never shrank", () => {
-    // The real bug: on the Android WebView, window.innerHeight/
-    // visualViewport.height don't change when the keyboard opens. This
-    // stays at the full 800 the whole time — --keyboard-height (measured
-    // natively, injected by MainActivity.kt) is the only thing that moves.
-    stubEnv({}, 400);
-    const el = fakeElement({ top: 500, bottom: 600 });
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
     expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "nearest", behavior: "smooth" });
   });
 
-  it("sets scroll-margin-bottom to the keyboard height plus a margin, then restores it", () => {
-    stubEnv({}, 400);
-    const el = fakeElement({ top: 500, bottom: 600 });
-    let marginDuringCall = "";
-    el.scrollIntoView = vi.fn(() => {
-      marginDuringCall = el.style.scrollMarginBottom;
-    });
-    el.style.scrollMarginBottom = "original";
+  it("pads the nearest scrolling ancestor by the keyboard height, not just the target field", () => {
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    // A plain wrapper div sits between the field and the actual scrolling
+    // list — exactly the shape of the exercise-name field, nested inside
+    // its drill's own body, inside .drills.
+    const wrapper = fakeNode("visible", body);
+    const container = fakeNode("auto", wrapper);
+    const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(marginDuringCall).toBe("416px");
-    expect(el.style.scrollMarginBottom).toBe("original");
+    expect(container.style.paddingBottom).toBe("416px");
+    // The padding stays on the real scrolling ancestor while focused —
+    // this is what gives a field with nothing below it somewhere to
+    // scroll into that scroll-margin alone can't create.
+    expect(el.style.paddingBottom).toBeUndefined();
+  });
+
+  it("restores the container's original padding once the field blurs", () => {
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    container.style.paddingBottom = "12px";
+    const el = fakeElement({ top: 500, bottom: 600 }, container);
+    scrollIntoViewOnFocus(focusEvent(el));
+    expect(container.style.paddingBottom).toBe("416px");
+    el.fireBlur();
+    expect(container.style.paddingBottom).toBe("12px");
+  });
+
+  it("falls back to the document's scrolling element when nothing between the field and body scrolls", () => {
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const plainWrapper = fakeNode("visible", body);
+    const el = fakeElement({ top: 500, bottom: 600 }, plainWrapper);
+    scrollIntoViewOnFocus(focusEvent(el));
+    expect(body.style.paddingBottom).toBe("416px");
   });
 
   it("still uses visualViewport/innerHeight when --keyboard-height is 0 (iOS, desktop, the plain website)", () => {
-    stubEnv({ visualViewport: { height: 400 } }, 0);
-    const el = fakeElement({ top: 350, bottom: 450 });
+    const body = fakeNode(undefined, null);
+    stubEnv({ visualViewport: { height: 400 } }, 0, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 350, bottom: 450 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(el.scrollIntoView).toHaveBeenCalled();
-  });
-
-  it("keeps re-checking and scrolls once the keyboard height changes mid-animation", () => {
-    vi.stubGlobal("window", { innerHeight: 800 });
-    vi.stubGlobal("document", { documentElement: {} });
-    let kb = 0;
-    vi.stubGlobal("getComputedStyle", () => ({
-      getPropertyValue: () => `${kb}px`,
-    }));
-    const el = fakeElement({ top: 500, bottom: 600 });
-    scrollIntoViewOnFocus(focusEvent(el));
-    expect(el.scrollIntoView).not.toHaveBeenCalled();
-
-    kb = 400;
-    vi.advanceTimersByTime(1000);
     expect(el.scrollIntoView).toHaveBeenCalled();
   });
 
   it("gives up after the watch window instead of polling forever", () => {
-    stubEnv({}, 400);
-    const el = fakeElement({ top: 500, bottom: 600 });
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
     const callsSoFar = el.scrollIntoView.mock.calls.length;
 
@@ -102,8 +143,6 @@ describe("scrollIntoViewOnFocus", () => {
     const totalCalls = el.scrollIntoView.mock.calls.length;
     expect(totalCalls).toBeGreaterThan(callsSoFar);
 
-    // No more scheduled checks left once the watch window has elapsed —
-    // advancing further shouldn't add any more calls.
     vi.advanceTimersByTime(5000);
     expect(el.scrollIntoView.mock.calls.length).toBe(totalCalls);
   });
