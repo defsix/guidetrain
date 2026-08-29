@@ -482,6 +482,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed a crop the previous keyboard-avoidance change introduced on a
+  short panel** — reported on the muscle picker's own "add exercise"
+  field: the crop moved from the bottom of the field to the top. Aligning
+  the field's bottom edge with the scroll area's bottom edge, as the
+  previous fix does, asks to fit the field plus its full keyboard
+  clearance inside that area — in a panel where the "pair between sets"
+  section above the field has already taken up most of the height, there
+  isn't room for both, and the field's own top gets pushed out of view
+  instead. The clearance is now capped at whatever room the panel actually
+  has to spare, so a short panel falls back to a smaller (or no) buffer
+  rather than cropping the field itself.
 - **Expanding a stretch, calisthenics move, or muscle drill now scrolls its
   newly-revealed content into view** — tapping one open near the bottom of
   an already-scrolled list left its instructions cut off below the fold,
