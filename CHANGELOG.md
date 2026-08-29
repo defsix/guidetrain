@@ -482,6 +482,20 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Loosened swipe-down-to-dismiss's own gesture check** — `touch-action:
+  none` (shipped earlier) fixed a real bug, but wasn't the whole story: a
+  fresh report on that same build showed the swipe still not registering.
+  The remaining culprit was the gesture math itself, requiring a swipe to
+  be at least as vertical as it is horizontal (`dy > |dx|`, a straight 45°
+  cone) to count as a dismiss. That's the right shape for a synthetic test
+  event, which moves in a perfectly straight line because nothing about it
+  decays — it's the wrong shape for a real thumb, which routinely drifts
+  sideways over a real swipe, especially right at lift-off, which is the
+  one moment this checks. With `touch-action: none` already removing any
+  competing native gesture in that region, the tight ratio was only making
+  a real swipe harder to land, not protecting against anything real still
+  competes with. Now allows about twice as much sideways drift (`dy > |dx|
+  / 2`, a 63° cone) before a drag stops counting as "down."
 - **Widened the keyboard fix's timing and margin** — both fields tested
   correctly on the last version, with one small residual overlap reported.
   The likely cause: polling stopped 1.5 seconds after a field gets focus,
