@@ -12,10 +12,11 @@ type FakeNode = {
   style: Record<string, string>;
   parentElement: FakeNode | null;
   overflowY?: string;
+  clientHeight: number;
 };
 
-function fakeNode(overflowY: string | undefined, parent: FakeNode | null): FakeNode {
-  return { style: {}, parentElement: parent, overflowY };
+function fakeNode(overflowY: string | undefined, parent: FakeNode | null, clientHeight = 1000): FakeNode {
+  return { style: {}, parentElement: parent, overflowY, clientHeight };
 }
 
 function fakeElement(rect: { top: number; bottom: number }, parent: FakeNode | null) {
@@ -166,6 +167,27 @@ describe("scrollIntoViewOnFocus", () => {
     scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement);
     // overhang = 560 - 340 = 220, plus kb (400) plus the usual 32px margin.
     expect(marginDuringCall).toBe("652px");
+  });
+
+  it("caps the scroll margin at what a short container can spare, rather than cropping the field's own top", () => {
+    // A container shorter than kb + margin — the muscle picker's own
+    // "add exercise" field, once the "pair between sets" list above it
+    // has eaten most of the panel's height. Without a cap, block: "end"
+    // would still ask to fit the full 432px margin, which pushes the
+    // field's own top out of the container's visible box instead of
+    // leaving a little of the keyboard clearance uncovered.
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body, 150);
+    const el = fakeElement({ top: 500, bottom: 540 }, container);
+    let marginDuringCall = "";
+    el.scrollIntoView = vi.fn(() => {
+      marginDuringCall = el.style.scrollMarginBottom;
+    });
+    scrollIntoViewOnFocus(focusEvent(el));
+    // maxMargin = 150 (clientHeight) - 40 (field height) = 110, well under
+    // the 432px the keyboard + margin alone would ask for.
+    expect(marginDuringCall).toBe("110px");
   });
 
   it("notices a dropdown that appears mid-poll, not just one present at focus time", () => {

@@ -103,6 +103,20 @@ function nearestScrollContainer(el: HTMLElement): HTMLElement {
  * with the scrollport's own bottom edge once it decides a scroll is
  * needed, which is a fixed, repeatable position rather than "however far
  * the browser judged was enough this time."
+ *
+ * That trade cuts the other way in a short container: the muscle picker's
+ * own "add exercise" field scrolls inside `.drills`, which can end up
+ * fairly short once the "pair between sets" section above it has taken
+ * most of a panel's height. `block: "end"` doesn't know the container is
+ * short — asked to fit the field plus a margin taller than the container
+ * itself, it aligns the bottom anyway, which pushes the field's own top
+ * edge up and out of the visible box instead. Reported, accurately, as
+ * "before the bottom was cropped, now the top is." The margin is now
+ * capped at whatever the container can actually spare for it — enough
+ * room is left for the field itself to stay fully on screen even when the
+ * full clearance above the keyboard doesn't fit, on the theory that a
+ * field sitting flush against the keyboard beats one with its own top
+ * half scrolled away.
  */
 export function scrollIntoViewOnFocus(
   e: React.FocusEvent<HTMLElement>,
@@ -137,7 +151,12 @@ export function scrollIntoViewOnFocus(
       // The margin only needs to cover however much of the extra element
       // sticks out past the field's own bottom edge, plus the keyboard.
       const overhang = Math.max(0, bottom - rect.bottom);
-      el.style.scrollMarginBottom = `${kb + overhang + MARGIN_PX}px`;
+      const desiredMargin = kb + overhang + MARGIN_PX;
+      // Capped at what the container can actually spare without pushing
+      // the field's own top out of its visible box — see the doc comment
+      // above on why "end" needs this guard that "nearest" never did.
+      const maxMargin = Math.max(0, container.clientHeight - (rect.bottom - rect.top));
+      el.style.scrollMarginBottom = `${Math.min(desiredMargin, maxMargin)}px`;
       el.scrollIntoView({ block: "end", behavior: "smooth" });
       el.style.scrollMarginBottom = prevMargin;
     }
