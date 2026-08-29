@@ -482,6 +482,15 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Widened the keyboard fix's timing and margin** — both fields tested
+  correctly on the last version, with one small residual overlap reported.
+  The likely cause: polling stopped 1.5 seconds after a field gets focus,
+  and if the keyboard's own open animation is still running past that point
+  on a given device, the last correction fires against a keyboard height
+  that hasn't reached its final value yet. The watch window is longer now
+  (2.5s) and the clearance margin above the keyboard is a little more
+  generous (16px → 24px) — both there to absorb an animation still
+  settling, rather than needing the timing to land exactly right.
 - **Confirmed the keyboard fix now works for the exercise-name field and
   the Goals autocomplete, and fixed the one field type that still didn't**
   — the exercise-picker dropdown under the Goals "Exercise" field is

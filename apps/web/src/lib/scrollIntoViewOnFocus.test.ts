@@ -99,7 +99,7 @@ describe("scrollIntoViewOnFocus", () => {
     });
     el.style.scrollMarginBottom = "original";
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(marginDuringCall).toBe("416px");
+    expect(marginDuringCall).toBe("424px");
     expect(el.style.scrollMarginBottom).toBe("original");
   });
 
@@ -113,7 +113,7 @@ describe("scrollIntoViewOnFocus", () => {
     const container = fakeNode("auto", wrapper);
     const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(container.style.paddingBottom).toBe("416px");
+    expect(container.style.paddingBottom).toBe("424px");
     // The padding stays on the real scrolling ancestor while focused —
     // this is what gives a field with nothing below it somewhere to
     // scroll into that scroll-margin alone can't create.
@@ -127,7 +127,7 @@ describe("scrollIntoViewOnFocus", () => {
     container.style.paddingBottom = "12px";
     const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(container.style.paddingBottom).toBe("416px");
+    expect(container.style.paddingBottom).toBe("424px");
     el.fireBlur();
     expect(container.style.paddingBottom).toBe("12px");
   });
@@ -138,7 +138,7 @@ describe("scrollIntoViewOnFocus", () => {
     const plainWrapper = fakeNode("visible", body);
     const el = fakeElement({ top: 500, bottom: 600 }, plainWrapper);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(body.style.paddingBottom).toBe("416px");
+    expect(body.style.paddingBottom).toBe("424px");
   });
 
   it("scrolls for a covered extraVisible element even when the field itself is fully visible", () => {
@@ -165,8 +165,8 @@ describe("scrollIntoViewOnFocus", () => {
       marginDuringCall = el.style.scrollMarginBottom;
     });
     scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement);
-    // overhang = 560 - 340 = 220, plus kb (400) plus the usual 16px margin.
-    expect(marginDuringCall).toBe("636px");
+    // overhang = 560 - 340 = 220, plus kb (400) plus the usual 24px margin.
+    expect(marginDuringCall).toBe("644px");
   });
 
   it("notices a dropdown that appears mid-poll, not just one present at focus time", () => {

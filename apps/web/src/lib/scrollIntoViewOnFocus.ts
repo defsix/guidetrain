@@ -1,13 +1,18 @@
-/** How long to keep re-checking after a field gets focus, in ms. Generous —
- * a slow device's keyboard-open animation is the exact case this exists
- * for, and a stray extra check once the field is already visible costs
- * nothing. */
-const WATCH_MS = 1500;
+/** How long to keep re-checking after a field gets focus, in ms. On-device
+ * testing showed a small residual overlap even once the fix was otherwise
+ * working — the keyboard's own open animation can still be running past
+ * this window on a slower device, so the last correction fires against a
+ * kb value that hasn't reached its final height yet. Generous on purpose:
+ * a stray extra check once the field is already settled costs nothing. */
+const WATCH_MS = 2500;
 /** How often to re-check while watching. */
 const CHECK_EVERY_MS = 150;
 /** Breathing room above the keyboard (or the plain viewport edge, with no
- * keyboard involved) — flush against it reads as still covered. */
-const MARGIN_PX = 16;
+ * keyboard involved) — flush against it reads as still covered. Padded a
+ * bit past the bare minimum for the same reason WATCH_MS is generous: a
+ * few extra px of margin absorbs the last bit of an animation still
+ * settling, rather than needing the timing to land exactly right. */
+const MARGIN_PX = 24;
 
 /** Real px, read fresh every check — see the comment on --keyboard-height
  * in index.css for why this exists instead of trusting the viewport. */
