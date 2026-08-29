@@ -482,6 +482,24 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **The keyboard's height is now measured correctly on a real device** —
+  confirmed at last, from the diagnostic readout's own numbers: `kb=397px`
+  with the keyboard actually open, against a correctly-excluded ~37px gap
+  (the nav bar) with it closed. Every earlier report was real, but this is
+  the first confirmation the native side of the fix genuinely works.
+  What that same report also showed: the fix built on top of it still
+  didn't keep the field visible, and for a reason distinct from the native
+  measurement — `scrollIntoView({ block: "nearest" })` only scrolls when it
+  decides a field isn't already inside its container's own visible box, and
+  that box (container padding included) is still the field's full,
+  un-shrunk height. Nothing told it the bottom `kb` pixels of that box are
+  physically covered by the keyboard, so a field sitting there could read
+  as "already visible" and never get scrolled the rest of the way.
+  `scroll-margin-bottom` on the focused field itself, set for just the one
+  `scrollIntoView` call that needs it, is what makes the browser actually
+  treat that zone as off-limits — paired with the container padding from
+  last version, which is still what creates genuine room to scroll into in
+  the first place.
 - **Moved the keyboard diagnostic readout to the top of the screen** — the
   last round of reports confirmed why the bottom-pinned version wasn't
   showing up in the one screenshot that actually had the keyboard open:

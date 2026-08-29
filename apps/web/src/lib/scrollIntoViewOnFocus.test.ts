@@ -84,6 +84,25 @@ describe("scrollIntoViewOnFocus", () => {
     expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "nearest", behavior: "smooth" });
   });
 
+  it("sets scroll-margin-bottom on the field itself for the scrollIntoView call, then restores it", () => {
+    // Container padding alone isn't enough: scrollIntoView's own "nearest"
+    // check still measures against the container's full, un-shrunk
+    // clientHeight, so a field sitting in the keyboard-covered zone reads
+    // as "already visible" unless scroll-margin tells it otherwise.
+    const body = fakeNode(undefined, null);
+    stubEnv({}, 400, body);
+    const container = fakeNode("auto", body);
+    const el = fakeElement({ top: 500, bottom: 600 }, container);
+    let marginDuringCall = "";
+    el.scrollIntoView = vi.fn(() => {
+      marginDuringCall = el.style.scrollMarginBottom;
+    });
+    el.style.scrollMarginBottom = "original";
+    scrollIntoViewOnFocus(focusEvent(el));
+    expect(marginDuringCall).toBe("416px");
+    expect(el.style.scrollMarginBottom).toBe("original");
+  });
+
   it("pads the nearest scrolling ancestor by the keyboard height, not just the target field", () => {
     const body = fakeNode(undefined, null);
     stubEnv({}, 400, body);

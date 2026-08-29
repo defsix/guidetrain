@@ -61,6 +61,23 @@ function nearestScrollContainer(el: HTMLElement): HTMLElement {
  * padding is what makes the last field in a list reachable at all — a
  * genuinely taller scrollable area to scroll within, not a hint applied to
  * an area that was already exhausted.
+ *
+ * Padding alone turned out not to be enough either, confirmed once
+ * `--keyboard-height` itself was finally verified correct on a real
+ * device: `scrollIntoView({ block: "nearest" })` only scrolls when it
+ * decides the field isn't already within the container's own visible box —
+ * and that box, container padding included, is still the field's full,
+ * un-shrunk clientHeight. Nothing told it the bottom `kb` pixels of that
+ * box are physically covered by the keyboard, so a field sitting anywhere
+ * in that zone read as "already visible" and never got scrolled the rest
+ * of the way — or scrolled by an unrelated amount, since padding changing
+ * the container's scrollHeight mid-poll shifts what "nearest" resolves to
+ * on the next check. `scroll-margin-bottom` on the field itself is what
+ * actually tells `scrollIntoView` that zone doesn't count: set for just
+ * the one call that needs it, so nothing else on the page is affected.
+ * Padding creates the room to scroll into; margin is what makes
+ * `scrollIntoView` actually use it instead of concluding there's nothing
+ * to do.
  */
 export function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
   const el = e.currentTarget;
@@ -86,7 +103,10 @@ export function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
     const rect = el.getBoundingClientRect();
     const visibleHeight = (window.visualViewport?.height ?? window.innerHeight) - kb;
     if (rect.top < 0 || rect.bottom > visibleHeight) {
+      const prevMargin = el.style.scrollMarginBottom;
+      el.style.scrollMarginBottom = `${kb + MARGIN_PX}px`;
       el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      el.style.scrollMarginBottom = prevMargin;
     }
 
     if (Date.now() < deadline) {
