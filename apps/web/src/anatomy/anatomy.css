@@ -100,7 +100,13 @@
   background: var(--panel-translucent); border: 1px solid var(--border); backdrop-filter: blur(14px);
   border-radius: 14px; padding: 15px;
 }
-.anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; position: relative; }
+/* touch-action: none — see the matching comment on .workout-head in
+   App.css. This header isn't built on that shared class (it carries its
+   own name/description/Train-This layout instead of a plain title row),
+   but it drives the exact same useSwipeDismiss gesture and needs the same
+   fix: without it, a real touchscreen can hijack the vertical drag as a
+   native scroll before the gesture is ever seen as complete. */
+.anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; position: relative; touch-action: none; }
 .anatomy-readout .head.dragging { opacity: 0.6; }
 .anatomy-readout .body { flex: 1; }
 .anatomy-readout .mname { font-size: 16px; font-weight: 600; }

@@ -482,6 +482,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Fixed swipe-down-to-dismiss not registering on a real touchscreen** on
+  every panel that has it (the muscle readout sheet, Workout, History,
+  Progress, Equipment, Account, the account menu, and both new libraries).
+  It worked in every automated test, which dispatches the touch events
+  directly rather than through an actual gesture recognizer — and on a
+  real device, without `touch-action: none` telling the browser there's
+  nothing native to do with a touch that starts on a panel's drag handle,
+  it can hand the vertical drag to its own scroll/overscroll handling
+  instead, cancelling the gesture before useSwipeDismiss ever sees it
+  complete. Every panel's header now opts out of that, so the drag reaches
+  the code that's supposed to see it.
 - **Fixed the actual measurement behind `--keyboard-height`** (the fix one
   version ago) — a real device confirmed it still wasn't working, and the
   reason turned out to be one step earlier than expected: the modern

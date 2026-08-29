@@ -636,6 +636,15 @@
   justify-content: space-between;
   gap: 12px;
   position: relative;
+  /* Without this, a real touchscreen can hand a vertical drag here to the
+     browser's own native scroll/overscroll gesture instead of finishing it
+     as a sequence of touchmove events for useSwipeDismiss to read — it
+     still looks fine in tests, which dispatch synthetic touch events
+     directly rather than going through a real gesture recognizer that can
+     intercept and cancel mid-drag. This is what actually stops that: it
+     tells the browser up front there's nothing of its own to do with a
+     touch that starts here. */
+  touch-action: none;
 }
 
 /* A drag handle for the swipe-down-to-dismiss gesture every one of these
