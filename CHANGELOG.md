@@ -482,6 +482,30 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Expanding a stretch, calisthenics move, or muscle drill now scrolls its
+  newly-revealed content into view** — tapping one open near the bottom of
+  an already-scrolled list left its instructions cut off below the fold,
+  with nothing to bring them back on screen. A new hook scrolls the
+  just-opened content into view once it's actually rendered at its full,
+  open size (a scroll attempted right at the moment of the tap would still
+  measure the old, closed height). Unrelated to the keyboard-avoidance
+  fixes below — no keyboard is ever involved here — so it needed none of
+  that machinery, just a plain scroll-into-view once the new content
+  exists.
+- **Removed the on-screen keyboard diagnostic** — its job was confirming
+  the native keyboard-height measurement and the scroll fix built on it
+  both actually work on a real device, which is now settled. The overlay,
+  its CSS custom properties, and the native logging behind it are gone.
+- **Widened the keyboard fix's clearance margin and switched to a fixed
+  scroll target** — a small residual crop was still reported even with a
+  correctly measured keyboard height. `scrollIntoView({ block: "nearest" })`
+  only scrolls the minimum distance it judges necessary, which leaves a
+  result exposed to landing right at the edge of the margin. Now aligns a
+  focused field's bottom edge with the bottom of its scroll area every
+  time (`block: "end"`), a fixed, repeatable position rather than
+  "however far the browser judged was enough this time," with more
+  clearance above the keyboard (24px → 32px) to absorb the last bit of an
+  animation still settling.
 - **Loosened swipe-down-to-dismiss's own gesture check** — `touch-action:
   none` (shipped earlier) fixed a real bug, but wasn't the whole story: a
   fresh report on that same build showed the swipe still not registering.

@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import stretchesData from "../anatomy/stretches.json";
 import { useHoldTimer } from "../state/useHoldTimer";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
+import { useScrollExpandedIntoView } from "../state/useScrollExpandedIntoView";
 import { injuryFor, isAvoided } from "../lib/injuries";
 import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
@@ -40,6 +41,7 @@ export default function StretchingLibrary({ open, onClose, injuries }: Props) {
   const [holdingId, setHoldingId] = useState<string | null>(null);
   const hold = useHoldTimer();
   const swipe = useSwipeDismiss(onClose);
+  const registerDetail = useScrollExpandedIntoView(expanded);
 
   const muscles = useMemo(() => {
     const seen = new Set<string>();
@@ -141,7 +143,7 @@ export default function StretchingLibrary({ open, onClose, injuries }: Props) {
                     )}
                   </div>
                   {isOpen && (
-                    <div className="stretch-detail">
+                    <div className="stretch-detail" ref={registerDetail(x.id)}>
                       {x.youtube && (
                         <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
                           {t("viewer.searchYouTube")}

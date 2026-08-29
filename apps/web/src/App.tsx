@@ -1,7 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Onboarding from "./pages/Onboarding";
-import KeyboardDebugBadge from "./components/KeyboardDebugBadge";
 import "./App.css";
 
 // Lazy rather than a plain import: BodyExplorer pulls in Three.js and
@@ -16,17 +15,12 @@ const BodyExplorer = lazy(() => import("./pages/BodyExplorer"));
 
 export default function App() {
   return (
-    <>
-      {/* TEMPORARY — see KeyboardDebugBadge.tsx. Remove once the Android
-          keyboard-inset chain is confirmed working. */}
-      <KeyboardDebugBadge />
-      <Suspense fallback={<div className="splash" aria-hidden="true" />}>
-        <Routes>
-          <Route path="/" element={<Onboarding />} />
-          <Route path="/explore" element={<BodyExplorer />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Suspense>
-    </>
+    <Suspense fallback={<div className="splash" aria-hidden="true" />}>
+      <Routes>
+        <Route path="/" element={<Onboarding />} />
+        <Route path="/explore" element={<BodyExplorer />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   );
 }

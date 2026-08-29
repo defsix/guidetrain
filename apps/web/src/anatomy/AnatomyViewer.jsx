@@ -16,6 +16,7 @@ import { scrollIntoViewOnFocus } from '../lib/scrollIntoViewOnFocus';
 import VideoModal from './VideoModal';
 import { useI18n } from '../i18n/I18nProvider';
 import { useSwipeDismiss } from '../state/useSwipeDismiss';
+import { useScrollExpandedIntoView } from '../state/useScrollExpandedIntoView';
 import './anatomy.css';
 
 /** Every equipment tag a custom exercise can be filed under — the same
@@ -287,6 +288,7 @@ export default function AnatomyViewer({
   const [hover, setHover] = useState(null);
   const [region, setRegion] = useState('all');
   const [openDrill, setOpenDrill] = useState(null);
+  const registerDrillBody = useScrollExpandedIntoView(openDrill);
   const [video, setVideo] = useState(null);
   // The "add your own exercise" form, at the bottom of the list — closed by
   // default so a long catalogue list doesn't grow an always-open form under
@@ -818,7 +820,7 @@ export default function AnatomyViewer({
                       )}
                       </div>
                       {open && (
-                        <div className="drill-body">
+                        <div className="drill-body" ref={registerDrillBody(x.id)}>
                           {/* The muscles it trains, shown on the model above:
                               primary lit, secondary dimmed. */}
                           <div className="works">

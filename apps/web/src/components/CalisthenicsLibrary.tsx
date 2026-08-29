@@ -5,6 +5,7 @@ import { injuryTag, injuryNote } from "../lib/injuryMessage";
 import type { Injury } from "../state/useInjuries";
 import { useI18n } from "../i18n/I18nProvider";
 import { useSwipeDismiss } from "../state/useSwipeDismiss";
+import { useScrollExpandedIntoView } from "../state/useScrollExpandedIntoView";
 
 type Props = {
   open: boolean;
@@ -36,6 +37,7 @@ export default function CalisthenicsLibrary({
   const [muscle, setMuscle] = useState<string | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
   const swipe = useSwipeDismiss(onClose);
+  const registerDetail = useScrollExpandedIntoView(expanded);
 
   const inProgram = useMemo(() => new Set(programIds), [programIds]);
 
@@ -132,7 +134,7 @@ export default function CalisthenicsLibrary({
                     </button>
                   </div>
                   {isOpen && (
-                    <div className="calisthenics-detail">
+                    <div className="calisthenics-detail" ref={registerDetail(x.id)}>
                       {x.youtube && (
                         <a className="watch" href={x.youtube} target="_blank" rel="noreferrer noopener">
                           {t("viewer.searchYouTube")}

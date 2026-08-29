@@ -12,7 +12,7 @@ const CHECK_EVERY_MS = 150;
  * bit past the bare minimum for the same reason WATCH_MS is generous: a
  * few extra px of margin absorbs the last bit of an animation still
  * settling, rather than needing the timing to land exactly right. */
-const MARGIN_PX = 24;
+const MARGIN_PX = 32;
 
 /** Real px, read fresh every check — see the comment on --keyboard-height
  * in index.css for why this exists instead of trusting the viewport. */
@@ -93,6 +93,16 @@ function nearestScrollContainer(el: HTMLElement): HTMLElement {
  * show. A callback re-queried every tick is what lets this notice the
  * dropdown once it actually appears, rather than reasoning about a moment
  * that's already passed.
+ *
+ * `block: "end"`, not `"nearest"`: a real device still showed a small
+ * residual overlap even once every number involved was confirmed correct.
+ * "nearest" only scrolls the minimum distance it judges necessary, which
+ * leaves it more exposed to being right at the edge of the margin — a
+ * fraction of a pixel of accumulated rounding away from "technically still
+ * covered." "end" always aligns the field's (margin-extended) bottom edge
+ * with the scrollport's own bottom edge once it decides a scroll is
+ * needed, which is a fixed, repeatable position rather than "however far
+ * the browser judged was enough this time."
  */
 export function scrollIntoViewOnFocus(
   e: React.FocusEvent<HTMLElement>,
@@ -128,7 +138,7 @@ export function scrollIntoViewOnFocus(
       // sticks out past the field's own bottom edge, plus the keyboard.
       const overhang = Math.max(0, bottom - rect.bottom);
       el.style.scrollMarginBottom = `${kb + overhang + MARGIN_PX}px`;
-      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      el.scrollIntoView({ block: "end", behavior: "smooth" });
       el.style.scrollMarginBottom = prevMargin;
     }
 

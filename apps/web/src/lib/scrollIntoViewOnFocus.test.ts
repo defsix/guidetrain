@@ -81,14 +81,13 @@ describe("scrollIntoViewOnFocus", () => {
     const container = fakeNode("auto", body);
     const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "nearest", behavior: "smooth" });
+    expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "end", behavior: "smooth" });
   });
 
   it("sets scroll-margin-bottom on the field itself for the scrollIntoView call, then restores it", () => {
-    // Container padding alone isn't enough: scrollIntoView's own "nearest"
-    // check still measures against the container's full, un-shrunk
-    // clientHeight, so a field sitting in the keyboard-covered zone reads
-    // as "already visible" unless scroll-margin tells it otherwise.
+    // Container padding alone isn't enough: without scroll-margin,
+    // scrollIntoView has no way to know the bottom kb pixels of the
+    // container's own visible box are physically covered by the keyboard.
     const body = fakeNode(undefined, null);
     stubEnv({}, 400, body);
     const container = fakeNode("auto", body);
@@ -99,7 +98,7 @@ describe("scrollIntoViewOnFocus", () => {
     });
     el.style.scrollMarginBottom = "original";
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(marginDuringCall).toBe("424px");
+    expect(marginDuringCall).toBe("432px");
     expect(el.style.scrollMarginBottom).toBe("original");
   });
 
@@ -113,7 +112,7 @@ describe("scrollIntoViewOnFocus", () => {
     const container = fakeNode("auto", wrapper);
     const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(container.style.paddingBottom).toBe("424px");
+    expect(container.style.paddingBottom).toBe("432px");
     // The padding stays on the real scrolling ancestor while focused —
     // this is what gives a field with nothing below it somewhere to
     // scroll into that scroll-margin alone can't create.
@@ -127,7 +126,7 @@ describe("scrollIntoViewOnFocus", () => {
     container.style.paddingBottom = "12px";
     const el = fakeElement({ top: 500, bottom: 600 }, container);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(container.style.paddingBottom).toBe("424px");
+    expect(container.style.paddingBottom).toBe("432px");
     el.fireBlur();
     expect(container.style.paddingBottom).toBe("12px");
   });
@@ -138,7 +137,7 @@ describe("scrollIntoViewOnFocus", () => {
     const plainWrapper = fakeNode("visible", body);
     const el = fakeElement({ top: 500, bottom: 600 }, plainWrapper);
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(body.style.paddingBottom).toBe("424px");
+    expect(body.style.paddingBottom).toBe("432px");
   });
 
   it("scrolls for a covered extraVisible element even when the field itself is fully visible", () => {
@@ -165,8 +164,8 @@ describe("scrollIntoViewOnFocus", () => {
       marginDuringCall = el.style.scrollMarginBottom;
     });
     scrollIntoViewOnFocus(focusEvent(el), () => dropdown as unknown as HTMLElement);
-    // overhang = 560 - 340 = 220, plus kb (400) plus the usual 24px margin.
-    expect(marginDuringCall).toBe("644px");
+    // overhang = 560 - 340 = 220, plus kb (400) plus the usual 32px margin.
+    expect(marginDuringCall).toBe("652px");
   });
 
   it("notices a dropdown that appears mid-poll, not just one present at focus time", () => {
