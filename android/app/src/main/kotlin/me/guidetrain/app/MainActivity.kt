@@ -83,6 +83,23 @@ class MainActivity : AppCompatActivity() {
             safeAreaTopPx = insets.top
             safeAreaBottomPx = insets.bottom
             injectSafeAreaInsets(webView)
+
+            // windowSoftInputMode="adjustResize" (see AndroidManifest.xml) is
+            // what's supposed to shrink the WebView when the keyboard opens,
+            // so the page's own visualViewport-polling scroll-into-view logic
+            // has a real, current size to work against. enableEdgeToEdge
+            // above quietly breaks that: once the app owns window insets
+            // itself, Android no longer resizes the content view for the IME
+            // the classic adjustResize way — nothing was ever actually
+            // shrinking, on any device, regardless of the manifest flag.
+            // Consuming the IME inset here and applying it as bottom padding
+            // is the edge-to-edge-era replacement for what adjustResize used
+            // to do automatically: it's what makes window.innerHeight and
+            // visualViewport.height actually decrease when the keyboard
+            // shows, and back to 0 when it hides.
+            val imeBottom = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom
+            webView.setPadding(0, 0, 0, imeBottom)
+
             windowInsets
         }
 

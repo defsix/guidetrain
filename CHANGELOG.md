@@ -482,6 +482,22 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Found the actual reason the Android keyboard never moved anything, on
+  any of the last two attempts.** `windowSoftInputMode="adjustResize"` (the
+  fix from three versions ago) is what's supposed to shrink the WebView so
+  the keyboard doesn't cover a focused field — but the app also draws
+  edge-to-edge (`enableEdgeToEdge()`, for the page's own background to
+  reach the screen edges), and edge-to-edge quietly takes over window inset
+  handling from the classic mechanism `adjustResize` relies on. The app was
+  only ever consuming the status/nav-bar insets, never the keyboard's — so
+  nothing was ever actually shrinking, on any device, regardless of the
+  manifest flag or how robust the page's own scroll-into-view logic got.
+  It now also reads the IME inset and applies it as bottom padding on the
+  WebView, which is the edge-to-edge-era replacement for what
+  `adjustResize` used to do on its own: it's what makes the page's visible
+  height actually decrease when the keyboard opens, giving the existing
+  scroll-into-view logic a real resize to react to instead of one that
+  never came.
 - **History, Progress and account access moved behind the logo**, into a
   new account menu, instead of sharing the canvas toolbar with Workout,
   Calisthenics, Stretching and Equipment. They're the reader's own data —
