@@ -5,47 +5,69 @@
 const WATCH_MS = 1500;
 /** How often to re-check while watching. */
 const CHECK_EVERY_MS = 150;
+/** Breathing room above the keyboard (or the plain viewport edge, with no
+ * keyboard involved) — flush against it reads as still covered. */
+const MARGIN_PX = 16;
+
+/** Real px, read fresh every check — see the comment on --keyboard-height
+ * in index.css for why this exists instead of trusting the viewport. */
+function keyboardHeight(): number {
+  const raw = getComputedStyle(document.documentElement).getPropertyValue("--keyboard-height");
+  const n = parseFloat(raw);
+  return Number.isFinite(n) ? n : 0;
+}
 
 /**
  * On a phone, the on-screen keyboard can end up covering a focused field —
- * and, for a field with a dropdown underneath it, the dropdown too — before
- * the visible area has actually shrunk to make room for the keyboard.
+ * and, for a field with a dropdown underneath it, the dropdown too.
  *
- * This used to wait for a single `visualViewport` `resize` event to settle
- * and then scroll once. That assumed the keyboard's own animation is the
- * only thing moving the field, and that `visualViewport.resize` is the
- * signal that fires when it does. Neither held up on the Android app: with
- * `windowSoftInputMode="adjustResize"` (see AndroidManifest.xml) it's the
- * WebView's own layout viewport that shrinks, on whatever schedule the
- * native window-resize animation runs on — not guaranteed to line up with
- * one clean `visualViewport` resize, or to be done resizing by any fixed
- * delay after it starts. A field could still end up under the keyboard with
- * nothing left listening to rescue it.
+ * Two earlier versions of this both assumed the browser's own idea of the
+ * viewport — `visualViewport.height` / `window.innerHeight` — shrinks once
+ * the keyboard opens, and differed only in how long they waited for that to
+ * settle before scrolling. Neither assumption held on the Android app: a
+ * real device confirmed that on this WebView, once `enableEdgeToEdge` owns
+ * window-inset handling, those numbers never change at all when the
+ * keyboard opens, no matter what `windowSoftInputMode` says or what native
+ * insets get consumed — `scrollIntoView`'s own `block: "center"`/`"nearest"`
+ * math had nothing true to work from, waiting any amount of time was never
+ * going to fix that, and neither would waiting for an event that was never
+ * going to fire.
  *
- * So instead of waiting for a signal and trusting it once, this just checks
- * the field's actual position against the actual visible height —
- * `visualViewport.height` where it exists, `window.innerHeight` as the
- * fallback either way — repeatedly, for as long as a keyboard's open
- * animation could plausibly still be running. Whenever the field is still
- * (or newly) covered, it scrolls again. This doesn't need to know why the
- * viewport is changing shape or when it'll stop; it only needs to keep
- * asking "is the field visible yet?" until the answer is yes or time runs
- * out.
+ * So this stops inferring the covered area from the viewport at all. The
+ * native Android shell measures the keyboard directly and hands it over as
+ * `--keyboard-height` (see index.css) — 0 everywhere else, so this behaves
+ * exactly as before on iOS/desktop/the plain website, where the viewport
+ * genuinely does shrink and this number is simply always 0. Rather than
+ * trying to compute "is this visible" by hand and call `scrollIntoView`
+ * with a guessed target, it sets `scroll-margin-bottom` to the keyboard's
+ * real height for the one call that needs it (then restores whatever was
+ * there before, so nothing else on the page is affected) and lets the
+ * browser's own scrolling machinery — which already correctly avoids a
+ * `scroll-margin`, that part was never the problem — keep the field clear
+ * of a zone it now actually knows is off-limits.
+ *
+ * Still polls rather than scrolling once: the keyboard's own open animation
+ * still takes real, variable time, and the field's position on screen keeps
+ * changing while it's mid-animation regardless of whether the viewport
+ * itself ever moves.
  */
 export function scrollIntoViewOnFocus(e: React.FocusEvent<HTMLElement>) {
   const el = e.currentTarget;
   const deadline = Date.now() + WATCH_MS;
 
-  function covered() {
-    const rect = el.getBoundingClientRect();
-    const visibleHeight = window.visualViewport?.height ?? window.innerHeight;
-    return rect.top < 0 || rect.bottom > visibleHeight;
-  }
-
   function tick() {
-    if (covered()) {
-      el.scrollIntoView({ block: "center", behavior: "smooth" });
+    const kb = keyboardHeight();
+    const rect = el.getBoundingClientRect();
+    const visibleHeight = (window.visualViewport?.height ?? window.innerHeight) - kb;
+    const covered = rect.top < 0 || rect.bottom > visibleHeight;
+
+    if (covered) {
+      const prevMargin = el.style.scrollMarginBottom;
+      el.style.scrollMarginBottom = `${kb + MARGIN_PX}px`;
+      el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      el.style.scrollMarginBottom = prevMargin;
     }
+
     if (Date.now() < deadline) {
       setTimeout(tick, CHECK_EVERY_MS);
     }

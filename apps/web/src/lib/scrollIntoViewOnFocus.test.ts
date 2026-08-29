@@ -2,21 +2,30 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { scrollIntoViewOnFocus } from "./scrollIntoViewOnFocus";
 
 /**
- * No jsdom in this project — these stub just enough of `window` and an
- * element for the function's own logic (it only ever reads
- * `window.innerHeight`/`window.visualViewport.height`, and calls
- * `getBoundingClientRect()`/`scrollIntoView()` on the focused element) to
- * run and be asserted on with fake timers, without pulling in a full DOM.
+ * No jsdom in this project — these stub just enough of `window`,
+ * `document.documentElement` (for the `--keyboard-height` custom property)
+ * and an element (its rect, its `style`, and `scrollIntoView`) for the
+ * function's own logic to run and be asserted on with fake timers, without
+ * pulling in a full DOM.
  */
 function fakeElement(rect: { top: number; bottom: number }) {
   return {
     getBoundingClientRect: () => rect,
     scrollIntoView: vi.fn(),
+    style: {} as Record<string, string>,
   };
 }
 
 function focusEvent(el: ReturnType<typeof fakeElement>) {
   return { currentTarget: el } as unknown as React.FocusEvent<HTMLElement>;
+}
+
+function stubEnv(windowExtra: Record<string, unknown>, keyboardHeightPx: number) {
+  vi.stubGlobal("window", { innerHeight: 800, ...windowExtra });
+  vi.stubGlobal("document", { documentElement: {} });
+  vi.stubGlobal("getComputedStyle", () => ({
+    getPropertyValue: (prop: string) => (prop === "--keyboard-height" ? `${keyboardHeightPx}px` : ""),
+  }));
 }
 
 describe("scrollIntoViewOnFocus", () => {
@@ -29,36 +38,63 @@ describe("scrollIntoViewOnFocus", () => {
   });
 
   it("does nothing if the field is already fully visible", () => {
-    vi.stubGlobal("window", { innerHeight: 800 });
+    stubEnv({}, 0);
     const el = fakeElement({ top: 100, bottom: 200 });
     scrollIntoViewOnFocus(focusEvent(el));
     vi.advanceTimersByTime(2000);
     expect(el.scrollIntoView).not.toHaveBeenCalled();
   });
 
-  it("scrolls a field the keyboard already covers, using visualViewport height over innerHeight", () => {
-    vi.stubGlobal("window", { innerHeight: 800, visualViewport: { height: 400 } });
-    const el = fakeElement({ top: 350, bottom: 450 });
+  it("scrolls a field the --keyboard-height zone covers, even though the viewport itself never shrank", () => {
+    // The real bug: on the Android WebView, window.innerHeight/
+    // visualViewport.height don't change when the keyboard opens. This
+    // stays at the full 800 the whole time — --keyboard-height (measured
+    // natively, injected by MainActivity.kt) is the only thing that moves.
+    stubEnv({}, 400);
+    const el = fakeElement({ top: 500, bottom: 600 });
     scrollIntoViewOnFocus(focusEvent(el));
-    expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "center", behavior: "smooth" });
+    expect(el.scrollIntoView).toHaveBeenCalledWith({ block: "nearest", behavior: "smooth" });
   });
 
-  it("keeps re-checking and scrolls once the field becomes covered mid-animation", () => {
-    vi.stubGlobal("window", { innerHeight: 800, visualViewport: { height: 800 } });
+  it("sets scroll-margin-bottom to the keyboard height plus a margin, then restores it", () => {
+    stubEnv({}, 400);
+    const el = fakeElement({ top: 500, bottom: 600 });
+    let marginDuringCall = "";
+    el.scrollIntoView = vi.fn(() => {
+      marginDuringCall = el.style.scrollMarginBottom;
+    });
+    el.style.scrollMarginBottom = "original";
+    scrollIntoViewOnFocus(focusEvent(el));
+    expect(marginDuringCall).toBe("416px");
+    expect(el.style.scrollMarginBottom).toBe("original");
+  });
+
+  it("still uses visualViewport/innerHeight when --keyboard-height is 0 (iOS, desktop, the plain website)", () => {
+    stubEnv({ visualViewport: { height: 400 } }, 0);
+    const el = fakeElement({ top: 350, bottom: 450 });
+    scrollIntoViewOnFocus(focusEvent(el));
+    expect(el.scrollIntoView).toHaveBeenCalled();
+  });
+
+  it("keeps re-checking and scrolls once the keyboard height changes mid-animation", () => {
+    vi.stubGlobal("window", { innerHeight: 800 });
+    vi.stubGlobal("document", { documentElement: {} });
+    let kb = 0;
+    vi.stubGlobal("getComputedStyle", () => ({
+      getPropertyValue: () => `${kb}px`,
+    }));
     const el = fakeElement({ top: 500, bottom: 600 });
     scrollIntoViewOnFocus(focusEvent(el));
     expect(el.scrollIntoView).not.toHaveBeenCalled();
 
-    // The keyboard finishes opening well after the immediate check — a
-    // slow animation, or a native window resize that lands late.
-    (window as unknown as { visualViewport: { height: number } }).visualViewport.height = 550;
+    kb = 400;
     vi.advanceTimersByTime(1000);
     expect(el.scrollIntoView).toHaveBeenCalled();
   });
 
   it("gives up after the watch window instead of polling forever", () => {
-    vi.stubGlobal("window", { innerHeight: 800, visualViewport: { height: 400 } });
-    const el = fakeElement({ top: 350, bottom: 450 });
+    stubEnv({}, 400);
+    const el = fakeElement({ top: 500, bottom: 600 });
     scrollIntoViewOnFocus(focusEvent(el));
     const callsSoFar = el.scrollIntoView.mock.calls.length;
 

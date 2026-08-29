@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var assetLoader: WebViewAssetLoader
     private var safeAreaTopPx = 0
     private var safeAreaBottomPx = 0
+    private var keyboardHeightPx = 0
 
     // The file content waiting on the reader to pick a save location in the
     // document-picker launched below — there is only ever one export in
@@ -82,24 +83,29 @@ class MainActivity : AppCompatActivity() {
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
             safeAreaTopPx = insets.top
             safeAreaBottomPx = insets.bottom
+            // Confirmed on a real device (screenshots showed the page's own
+            // layout completely unchanged, keyboard open or closed) that
+            // neither windowSoftInputMode="adjustResize" (see
+            // AndroidManifest.xml) nor consuming the IME inset as WebView
+            // padding — the previous attempt here — actually shrinks
+            // anything once enableEdgeToEdge owns window-inset handling.
+            // window.innerHeight/visualViewport.height on this WebView
+            // never reflect the keyboard at all, so scroll-into-view logic
+            // that infers "how much room is left" from either of those is
+            // reasoning from numbers that never change. Fixing that
+            // structurally (finding whatever native call would make the
+            // WebView's own layout viewport genuinely resize) isn't
+            // something more manifest/inset tuning has managed after three
+            // attempts — so this stops trying to make the browser think
+            // its viewport shrank, and instead hands the page the one
+            // number it actually needs: the keyboard's real height, the
+            // same way injectSafeAreaInsets already hands it the status/
+            // nav-bar heights. The page does the rest itself (see
+            // scrollIntoViewOnFocus.ts) with a value that's simply true,
+            // rather than one it has to infer from a viewport that isn't
+            // moving.
+            keyboardHeightPx = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom
             injectSafeAreaInsets(webView)
-
-            // windowSoftInputMode="adjustResize" (see AndroidManifest.xml) is
-            // what's supposed to shrink the WebView when the keyboard opens,
-            // so the page's own visualViewport-polling scroll-into-view logic
-            // has a real, current size to work against. enableEdgeToEdge
-            // above quietly breaks that: once the app owns window insets
-            // itself, Android no longer resizes the content view for the IME
-            // the classic adjustResize way — nothing was ever actually
-            // shrinking, on any device, regardless of the manifest flag.
-            // Consuming the IME inset here and applying it as bottom padding
-            // is the edge-to-edge-era replacement for what adjustResize used
-            // to do automatically: it's what makes window.innerHeight and
-            // visualViewport.height actually decrease when the keyboard
-            // shows, and back to 0 when it hides.
-            val imeBottom = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            webView.setPadding(0, 0, 0, imeBottom)
-
             windowInsets
         }
 
@@ -188,9 +194,11 @@ class MainActivity : AppCompatActivity() {
         val density = resources.displayMetrics.density
         val topDp = (safeAreaTopPx / density).toInt()
         val bottomDp = (safeAreaBottomPx / density).toInt()
+        val keyboardDp = (keyboardHeightPx / density).toInt()
         webView.evaluateJavascript(
             "document.documentElement.style.setProperty('--safe-area-top', '${topDp}px');" +
-                "document.documentElement.style.setProperty('--safe-area-bottom', '${bottomDp}px');",
+                "document.documentElement.style.setProperty('--safe-area-bottom', '${bottomDp}px');" +
+                "document.documentElement.style.setProperty('--keyboard-height', '${keyboardDp}px');",
             null,
         )
     }

@@ -53,6 +53,17 @@
   --safe-area-top: env(safe-area-inset-top, 0px);
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
 
+  /* How tall the on-screen keyboard actually is, in real CSS px — read by
+     scrollIntoViewOnFocus.ts to work out how much of the screen a focused
+     field actually has to appear in. Nothing in CSS gives this directly
+     (there is no keyboard equivalent of env(safe-area-inset-*)), and on the
+     Android app, window.innerHeight/visualViewport.height don't shrink for
+     the keyboard either — confirmed on a real device, not just assumed —
+     so this is the only number either side can trust. 0 everywhere but the
+     Android shell, which overrides it with the real measured height the
+     same way it overrides the two safe-area properties above. */
+  --keyboard-height: 0px;
+
   color-scheme: light;
   font: 16px/1.5 var(--sans);
   color: var(--text);

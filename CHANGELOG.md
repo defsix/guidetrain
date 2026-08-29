@@ -482,6 +482,21 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Stopped trying to make the Android WebView's viewport shrink for the
+  keyboard, and started measuring the keyboard directly instead** — a real
+  device confirmed the previous fix (applying the keyboard's inset as
+  WebView padding) had no visible effect at all: the page's layout was
+  pixel-for-pixel identical with the keyboard open or closed, proving
+  `window.innerHeight`/`visualViewport.height` genuinely never change on
+  this WebView, no matter what native inset handling is tried. Three fixes
+  in a row assumed one of those two numbers would eventually reflect the
+  keyboard if the right manifest flag or inset were set; none of them ever
+  will on this WebView once edge-to-edge owns window insets. The native
+  Android shell now measures the keyboard's real height directly and hands
+  it to the page as a `--keyboard-height` CSS custom property — the same
+  mechanism already used for the status/nav-bar safe-area insets — and the
+  scroll-into-view logic uses that instead of inferring anything from a
+  viewport that was never going to move.
 - **Found the actual reason the Android keyboard never moved anything, on
   any of the last two attempts.** `windowSoftInputMode="adjustResize"` (the
   fix from three versions ago) is what's supposed to shrink the WebView so
