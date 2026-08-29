@@ -64,6 +64,15 @@
      same way it overrides the two safe-area properties above. */
   --keyboard-height: 0px;
 
+  /* Diagnostic-only, read by KeyboardDebugBadge.tsx — the raw inputs to
+     --keyboard-height's calculation on the Android shell (MainActivity.kt),
+     so a report can show whether the native measurement is running at all
+     with the keyboard open, and with what numbers, rather than just the
+     one value it lands on. Remove alongside the badge once that's known. */
+  --debug-layout-passes: 0;
+  --debug-root-h: 0px;
+  --debug-frame-bottom: 0px;
+
   color-scheme: light;
   font: 16px/1.5 var(--sans);
   color: var(--text);

@@ -39,6 +39,14 @@ class MainActivity : AppCompatActivity() {
     private var safeAreaTopPx = 0
     private var safeAreaBottomPx = 0
     private var keyboardHeightPx = 0
+    // Diagnostic-only — see KeyboardDebugBadge.tsx. The confirmed on-device
+    // report (v1.24) was --keyboard-height stuck at 0 with the keyboard
+    // visibly open; these are the raw inputs to that calculation, so the
+    // badge can show whether the global layout listener is firing at all,
+    // and with what numbers, rather than just the one value it produces.
+    private var debugLayoutPassCount = 0
+    private var debugRootHeightPx = 0
+    private var debugFrameBottomPx = 0
 
     // The file content waiting on the reader to pick a save location in the
     // document-picker launched below — there is only ever one export in
@@ -197,24 +205,24 @@ class MainActivity : AppCompatActivity() {
             val visibleFrame = Rect()
             rootView.getWindowVisibleDisplayFrame(visibleFrame)
             val gap = rootView.height - visibleFrame.bottom
-            // Logged unconditionally (not just on change) while this is
-            // still unconfirmed on real hardware — see
-            // KeyboardDebugBadge.tsx for the on-screen half of this same
-            // diagnostic. `adb logcat -s GuideTrainKeyboard` on a device
-            // that can be plugged in shows every layout pass's raw numbers,
-            // not just the ones that crossed the threshold below.
+            debugLayoutPassCount++
+            debugRootHeightPx = rootView.height
+            debugFrameBottomPx = visibleFrame.bottom
             Log.d(
                 "GuideTrainKeyboard",
-                "rootView.height=${rootView.height} visibleFrame.bottom=${visibleFrame.bottom} gap=$gap",
+                "pass=$debugLayoutPassCount rootView.height=${rootView.height} " +
+                    "visibleFrame.bottom=${visibleFrame.bottom} gap=$gap",
             )
             // A small gap is just the nav bar or a rounding wobble, not the
             // keyboard — a real on-screen keyboard is never under ~15% of
             // the screen.
-            val next = if (gap > rootView.height * 0.15) gap else 0
-            if (next != keyboardHeightPx) {
-                keyboardHeightPx = next
-                injectSafeAreaInsets(webView)
-            }
+            keyboardHeightPx = if (gap > rootView.height * 0.15) gap else 0
+            // Unconditional now, not just on change — v1.24 confirmed
+            // --keyboard-height stuck at 0 with the keyboard visibly open,
+            // so the badge needs to show the raw numbers live on every
+            // pass to tell whether this listener is firing at all with the
+            // keyboard open, not just the one value it lands on.
+            injectSafeAreaInsets(webView)
         }
     }
 
@@ -223,10 +231,15 @@ class MainActivity : AppCompatActivity() {
         val topDp = (safeAreaTopPx / density).toInt()
         val bottomDp = (safeAreaBottomPx / density).toInt()
         val keyboardDp = (keyboardHeightPx / density).toInt()
+        val debugRootHDp = (debugRootHeightPx / density).toInt()
+        val debugFrameBottomDp = (debugFrameBottomPx / density).toInt()
         webView.evaluateJavascript(
             "document.documentElement.style.setProperty('--safe-area-top', '${topDp}px');" +
                 "document.documentElement.style.setProperty('--safe-area-bottom', '${bottomDp}px');" +
-                "document.documentElement.style.setProperty('--keyboard-height', '${keyboardDp}px');",
+                "document.documentElement.style.setProperty('--keyboard-height', '${keyboardDp}px');" +
+                "document.documentElement.style.setProperty('--debug-layout-passes', '$debugLayoutPassCount');" +
+                "document.documentElement.style.setProperty('--debug-root-h', '${debugRootHDp}px');" +
+                "document.documentElement.style.setProperty('--debug-frame-bottom', '${debugFrameBottomDp}px');",
             null,
         )
     }

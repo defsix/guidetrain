@@ -482,6 +482,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Diagnostic build, expanded — not a fix.** The on-device report on the
+  last version confirmed `--keyboard-height` stuck at 0px with the keyboard
+  visibly open, which rules out "wrong measurement technique" for good —
+  the native side has never once produced a real number, through two
+  completely different techniques. What's still unknown is why. The
+  on-screen readout now also shows the raw inputs to that calculation
+  (`--debug-layout-passes`, `--debug-root-h`, `--debug-frame-bottom`) —
+  whether the native listener is firing at all with the keyboard open, and
+  if it is, what numbers it's actually seeing — so the next report says
+  exactly what's broken instead of narrowing "still 0" one guess at a time.
 - **Found a real gap in the keyboard fix that had nothing to do with how
   the keyboard's height was measured** — `scrollIntoView`, even with
   `scroll-margin-bottom` set to the keyboard's exact height, can only
