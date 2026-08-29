@@ -197,6 +197,16 @@ class MainActivity : AppCompatActivity() {
             val visibleFrame = Rect()
             rootView.getWindowVisibleDisplayFrame(visibleFrame)
             val gap = rootView.height - visibleFrame.bottom
+            // Logged unconditionally (not just on change) while this is
+            // still unconfirmed on real hardware — see
+            // KeyboardDebugBadge.tsx for the on-screen half of this same
+            // diagnostic. `adb logcat -s GuideTrainKeyboard` on a device
+            // that can be plugged in shows every layout pass's raw numbers,
+            // not just the ones that crossed the threshold below.
+            Log.d(
+                "GuideTrainKeyboard",
+                "rootView.height=${rootView.height} visibleFrame.bottom=${visibleFrame.bottom} gap=$gap",
+            )
             // A small gap is just the nav bar or a rounding wobble, not the
             // keyboard — a real on-screen keyboard is never under ~15% of
             // the screen.

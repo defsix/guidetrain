@@ -482,6 +482,17 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Diagnostic build — not a fix.** Two independent native techniques for
+  measuring the Android keyboard (the last two versions) both reportedly
+  made no difference at all on a real device, which stops pointing at
+  "wrong measurement technique" and starts pointing at something earlier
+  or later in the chain that guessing another native API isn't going to
+  find. This version adds a small always-on readout in the bottom-left
+  corner of the screen — `kb=… inner=… vv=…` — showing live whether
+  `--keyboard-height` ever actually reaches a real number, and what
+  `window.innerHeight`/`visualViewport.height` do or don't do, so the next
+  report says exactly where the chain breaks instead of "still doesn't
+  work." Temporary; comes out again once that's known.
 - **Fixed swipe-down-to-dismiss not registering on a real touchscreen** on
   every panel that has it (the muscle readout sheet, Workout, History,
   Progress, Equipment, Account, the account menu, and both new libraries).
