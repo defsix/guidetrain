@@ -22,6 +22,15 @@ import { useEffect, useState } from "react";
  * --debug-layout-passes itself never changes, the listener isn't firing at
  * all). Whichever of those is true says exactly what to fix next, instead
  * of guessing a third native technique blind.
+ *
+ * Pinned to the TOP of the screen, not the bottom — the first report using
+ * this badge confirmed why bottom doesn't work: a `position: fixed;
+ * bottom: 0` element sits at the bottom of the WebView's own content area,
+ * which is exactly what never shrinks for the keyboard (that's the whole
+ * bug). So the badge was getting covered by the keyboard at precisely the
+ * one moment it's needed — the keyboard only ever covers the bottom of the
+ * screen, so pinning this to the top instead is what keeps it visible
+ * regardless of keyboard state.
  */
 export default function KeyboardDebugBadge() {
   const [lines, setLines] = useState<string[]>([]);
@@ -46,7 +55,7 @@ export default function KeyboardDebugBadge() {
     <div
       style={{
         position: "fixed",
-        bottom: 8,
+        top: "calc(var(--safe-area-top, 0px) + 4px)",
         left: 8,
         zIndex: 999999,
         background: "rgba(0,0,0,0.8)",

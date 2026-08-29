@@ -482,6 +482,18 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Moved the keyboard diagnostic readout to the top of the screen** — the
+  last round of reports confirmed why the bottom-pinned version wasn't
+  showing up in the one screenshot that actually had the keyboard open:
+  `position: fixed; bottom: 0` sits at the bottom of the WebView's own
+  content area, which is exactly what never shrinks for the keyboard —
+  meaning the badge was getting covered by the keyboard at precisely the
+  moment it was needed. It also confirmed the native listener genuinely
+  fires and measures a real, small, correctly-excluded gap (matching the
+  nav bar) when the keyboard is closed — the still-open question is what
+  it reports once the keyboard is actually up, which no screenshot has
+  shown yet with the badge visible. Pinned to the top instead, which the
+  keyboard never covers.
 - **Diagnostic build, expanded — not a fix.** The on-device report on the
   last version confirmed `--keyboard-height` stuck at 0px with the keyboard
   visibly open, which rules out "wrong measurement technique" for good —
