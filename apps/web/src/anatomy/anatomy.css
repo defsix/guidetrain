@@ -373,17 +373,38 @@
   display: flex; flex-wrap: wrap; gap: 8px; position: absolute; z-index: 8;
   top: 16px; left: 16px; right: 16px;
 }
-.anatomy-toolbar .tool { display: none; }
 .anatomy-scrim { display: none; }
 
-/* Every pill's shape and badge stay exactly what they are elsewhere; only
-   the frosted-glass background changes, to match the floating toolbar they
-   live in rather than a solid panel. */
+/* The pills in this strip arrive from three unrelated base classes: .tool is
+   the viewer's own, while .workout-button and .account-button belong to the
+   host app, each sized for a different header row somewhere else. Left to
+   those, the row lands at three font sizes and two weights — Equipment a
+   larger, lighter 12.5px/400 next to its 11px/600 neighbours — which reads
+   as one toolbar assembled out of three apps. This is the single shape they
+   all take, spelled out in full rather than inherited, so a later change to
+   any one base class can't quietly pull its pill back out of line. */
+.anatomy-toolbar .tool,
 .anatomy-toolbar .workout-button,
 .anatomy-toolbar .account-button {
-  background: var(--panel-translucent);
-  backdrop-filter: blur(14px);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: inherit; font-size: 13px; font-weight: 600;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  background: var(--panel-translucent); backdrop-filter: blur(14px);
+  border: 1px solid var(--border); color: var(--text);
 }
+.anatomy-toolbar .tool { display: none; }
+.anatomy-toolbar .tool.active,
+.anatomy-toolbar .workout-button.has,
+.anatomy-toolbar .account-button.signed-in {
+  border-color: var(--accent); color: var(--accent);
+}
+/* Workout is the only pill carrying a count badge, and a rounded badge brings
+   its own visual inset — the trailing padding a bare word needs reads as a
+   gap after it. Pulling the badge back is what buys that, so the pill keeps
+   the same padding as its siblings; previously the whole of .workout-button
+   went lopsided instead, which Calisthenics and Stretching then inherited
+   despite having no badge to make room for. */
+.anatomy-toolbar .workout-button .wcount { margin-right: -5px; }
 
 @media (max-width: 720px) {
   .anatomy-root .muscle { font-size: 11.5px; padding: 4px 6px; }
@@ -403,23 +424,17 @@
     overflow-x: auto;
     overscroll-behavior-x: contain;
   }
+  /* Only what the narrower strip changes — the shape itself is shared with
+     the desktop row above, so the five pills stay identical to each other
+     at both widths rather than being normalised twice. */
   .anatomy-toolbar .tool,
   .anatomy-toolbar .workout-button,
   .anatomy-toolbar .account-button {
     flex: none;
     white-space: nowrap;
+    font-size: 11px; padding: 8px 12px; gap: 5px;
   }
-  .anatomy-toolbar .tool {
-    display: flex; justify-content: center;
-    font-family: inherit; font-size: 11px; font-weight: 600;
-    padding: 8px 12px; border-radius: 999px; cursor: pointer;
-    background: var(--panel-translucent); backdrop-filter: blur(14px);
-    border: 1px solid var(--border); color: var(--text);
-  }
-  .anatomy-toolbar .tool.active { border-color: var(--accent); color: var(--accent); }
-  .anatomy-toolbar .workout-button {
-    font-size: 11px; padding: 8px 8px 8px 12px; gap: 5px;
-  }
+  .anatomy-toolbar .tool { display: flex; }
 
   .anatomy-scrim {
     display: block; position: absolute; inset: 0; z-index: 7;

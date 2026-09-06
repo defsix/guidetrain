@@ -482,6 +482,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Matched the type across the toolbar pills above the model** — Workout,
+  Calisthenics, Stretching, Equipment and Muscles each came from a
+  different base style, written for whichever header row they originally
+  sat in, so the row rendered at three font sizes and two weights.
+  Equipment was the visible one, set larger and lighter than everything
+  beside it. Calisthenics and Stretching had a quieter version of the same
+  problem: both borrowed the Workout pill's padding, which is deliberately
+  lopsided to make room for its count badge, so their labels sat
+  off-centre despite having no badge of their own. All five now share one
+  shape at both phone and desktop widths, with the count badge pulled in
+  rather than the button skewed around it. No pill was dropped to make the
+  row fit — it still scrolls sideways, and is now slightly narrower than
+  it was.
 - **Fixed a crop the previous keyboard-avoidance change introduced on a
   short panel** — reported on the muscle picker's own "add exercise"
   field: the crop moved from the bottom of the field to the top. Aligning
