@@ -1111,7 +1111,11 @@ Three things apply only to the deployed build:
 5. ✅ Accounts and sync — Supabase, row-level security proven by attacking it
    with a second account rather than trusting the policy shape, sign-in
    merging local and remote before anything is pushed. Live at guidetrain.me
-6. A public program library — sharing a workout with someone who isn't you,
+6. Legal and compliance — a privacy policy, a medical disclaimer in the app
+   itself, and the explicit consent that syncing health data actually
+   requires. Ahead of the library below rather than behind it: see
+   [Legal and compliance](#legal-and-compliance)
+7. A public program library — sharing a workout with someone who isn't you,
    the one thing roadmap 5 didn't cover
 
 ### The intended shape
@@ -1185,7 +1189,10 @@ GitHub account.
 
 - **A public program library** — the `programs` table already has everything a
   shared workout needs; this is a visibility flag, a browse screen, and a
-  decision about moderation, not a schema change.
+  decision about moderation, not a schema change. The moderation half is the
+  expensive one, and it is not really a product decision: publishing one
+  reader's workout to another is what would make this an intermediary for
+  the first time. See [Legal and compliance](#legal-and-compliance).
 - ✅ **Custom SMTP** — the built-in mailer allowed only 2–4 confirmation emails
   an hour, the same limit on Free and Pro, and was meant for testing rather
   than real sign-ups
@@ -1205,6 +1212,96 @@ GitHub account.
   no live project is available here to click through for real — the actual
   email delivery and reset-link round trip want confirming against
   guidetrain.me.
+
+### Legal and compliance
+
+Accounts are what made this real. While everything lived in `localStorage`
+nothing left the device and there was no controller, no processing and
+nothing to disclose. Roadmap 5 changed that: `profiles.body_weight`,
+`body_weight_log`, `known_maxes` and `sets` are a weight history and a
+training history held on a server, which is data concerning health under
+GDPR Article 9 — a special category, not ordinary personal data. The
+project is EU-based, so this applies regardless of where any given reader
+is.
+
+A fair amount is already right, and it's worth naming so it doesn't get
+rebuilt:
+
+- **Erasure works, properly.** `delete_own_account()` in
+  `supabase/migrations/0005_delete_account.sql` is `security definer`,
+  takes no id parameter and reads `auth.uid()` from the caller's own JWT,
+  and every table cascades off `auth.users`. That is Article 17, self-service,
+  with nothing left behind by hand.
+- **No analytics, telemetry or trackers of any kind.** Nothing to disclose
+  because there is nothing there.
+- **Fonts are bundled** under `apps/web/src/assets/fonts`, not fetched from
+  Google, so loading a page leaks no IP address to a third party.
+- **The video player fetches nothing until it is opened**, on the `nocookie`
+  host — see the comment at the top of `VideoModal.jsx`. Click-to-load was
+  chosen for weight, but it is also the pattern that keeps an embed from
+  needing consent before the page renders.
+- **Injuries never leave the device.** `guidetrain.injuries` is local-only;
+  no migration defines a table for it and `sync.ts` does not touch it. Of
+  everything the app holds, that is the most clearly medical, and keeping it
+  off the server is worth doing deliberately rather than by accident.
+- **Custom exercises are local-only too**, which is why the app is not an
+  intermediary today — nothing a reader writes is ever shown to anyone else.
+
+What is missing, roughly in the order it should be done:
+
+- **A privacy policy.** There is currently none: no such string exists in
+  `en.json` or anywhere else. Article 13 makes the notice mandatory from the
+  first byte of personal data processed, and this is the only item on the
+  list with no defensible interim position.
+- **A medical disclaimer, surfaced in the app.** MIT disclaims warranty on
+  the *code*; it says nothing about the *service*. `prescribe()` in
+  `plans.ts` returns a working load in kilos and `prescribePercent()`
+  computes off an estimated one-rep max — the app tells people what to lift,
+  so "general fitness information, not medical advice" belongs at onboarding
+  rather than in a file nobody opens.
+- **Explicit consent for the health data**, separate and affirmative at the
+  point sync is switched on, rather than folded into a terms checkbox.
+  Article 9(2)(a) is the realistic basis for a consumer app; the general
+  Article 6 lawful bases do not cover a special category on their own.
+- **A minimum age for sign-up.** `age_group` accepts `'teen'`, and Article 8
+  puts the threshold for consent at 16 in Ireland and Germany, 14 in Spain,
+  13 elsewhere. Local-only use raises none of this; creating an account and
+  syncing a weight history does. Setting a floor on sign-up is far cheaper
+  than implementing verifiable parental consent.
+- **An Article 30 record.** The under-250-employees exemption does not apply
+  where special-category data is involved, so this is required rather than
+  optional. It is a page.
+- **A DPA with Supabase**, the project pinned to an EU region, and standard
+  contractual clauses for anything reaching the US. Google sign-in is a
+  separate transfer to Google.
+- **Data export.** Erasure exists, portability does not. Everything is
+  already JSON in `localStorage` and the server side is a mirror of it, so
+  Article 20 is close to a download button rather than a feature.
+- **A breach process.** Article 33 allows 72 hours. This needs a paragraph
+  naming who notifies whom, not a runbook.
+
+Two things worth being clear about, because both are easy to get wrong in
+the reassuring direction:
+
+**"We only aggregate, the reader supplies their own sources" is not a
+defence available here.** Aggregator and intermediary protections exist for
+content you host and pass on to other people; the app passes nothing to
+anyone. The prescriptions are the app's own, computed from the reader's log
+by code in this repository.
+
+**The public library is what changes that.** Roadmap 7 is the point at which
+a personal log becomes content shown to strangers, and it brings the whole
+intermediary question with it — notice-and-action, moderation, the lot. That
+is the reason compliance is numbered ahead of it rather than after: the
+policy is much cheaper to write before there is a sharing feature to
+retrofit it around than after.
+
+None of the above should be called done on the strength of this file. The
+Article 9 basis and the question of whether an `"avoid"` injury mode edges
+`injuries.ts` toward a medical purpose under MDCG 2019-11 are both worth an
+hour of an actual EU privacy solicitor's time; the framing of that feature
+as a reader-controlled filter rather than clinical guidance is what keeps it
+on the right side of the line.
 
 ### Asked for, not yet built
 
