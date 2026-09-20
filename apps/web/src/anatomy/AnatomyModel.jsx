@@ -151,10 +151,21 @@ export default function AnatomyModel({ url, map, theme = 'dark', selectedId, reg
 
   useEffect(() => () => useGLTF.clear?.(url), [url]);
 
+  // The body's own height in world units. Reported rather than assumed
+  // because the ground shadow in AnatomyViewer has to sit at the feet, and
+  // the only thing that knows where those are is the geometry — the mesh is
+  // centred on the origin just below, so the soles end up at -height / 2.
+  const modelHeight = useMemo(() => {
+    geometry.computeBoundingBox();
+    const v = new THREE.Vector3();
+    geometry.boundingBox.getSize(v);
+    return v.y;
+  }, [geometry]);
+
   // useGLTF suspends, so reaching this point means the model is decoded and
   // painted. That is the honest moment to drop the loading overlay — the
   // environment map may still be in flight, but the body is already there.
-  useEffect(() => { onReady && onReady(); }, [onReady]);
+  useEffect(() => { onReady && onReady(modelHeight); }, [onReady, modelHeight]);
 
   const groupPosition = [-offset.x, -offset.y, -offset.z];
 

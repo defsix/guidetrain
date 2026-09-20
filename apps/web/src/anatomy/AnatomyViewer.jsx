@@ -47,18 +47,96 @@ const MUSCLE_ORDER = [
  */
 // Scene colours per theme. The 3D canvas can't read CSS variables, so the
 // resolved theme is passed in and mapped to real colours here.
+// `ground` is [colour, opacity] for the pool under the feet — see
+// GroundShadow below for why the body needs one. It inverts between themes,
+// which looks like a mistake and isn't: on light there is real background
+// brightness for a shadow to displace, so the pool is a dark one. On a
+// near-black field a dark pool is invisible, and what actually reads as
+// ground there is the key light bouncing back off it — so dark gets a faint
+// cool *light* pool instead. Both say "the floor is here"; only one of them
+// can say it against a given background.
 const SCENE = {
   dark: {
     bg: '#0b0d12', fog: ['#0b0d12', 4, 11],
     ambient: ['#5d6b85', 1.05],
     key: ['#ffffff', 1.25], fill: ['#7fb2ff', 0.55],
+    ground: ['#9db3d4', 0.18],
   },
   light: {
     bg: '#e8ebf0', fog: ['#e8ebf0', 5, 13],
     ambient: ['#ffffff', 1.5],
     key: ['#ffffff', 1.5], fill: ['#c9d6ea', 0.7],
+    ground: ['#2b3547', 0.4],
   },
 };
+
+/**
+ * A soft shadow pool on the ground beneath the feet.
+ *
+ * The scene already has a key light, a fill and an environment map, but
+ * nothing for the body to stand on, so the figure floated in fog — the
+ * clearest single tell that the canvas was a technical surface rather than a
+ * presented one. This is the whole of the fix: one soft ellipse at the soles.
+ *
+ * A radial gradient rather than drei's ContactShadows, which was tried first.
+ * ContactShadows renders the scene to an offscreen target and blurs it every
+ * frame to derive a true silhouette — accuracy this particular scene has no
+ * use for, since the body is a single standing pose that never changes shape,
+ * and the camera sits close enough to eye level that the ground is only ever
+ * seen at a glancing angle. What reaches the screen either way is a soft
+ * ellipse. This costs one textured quad and no render passes, which matters
+ * on a phone already carrying a 1.1 MB model, and it draws identically
+ * wherever it runs instead of depending on render-target support.
+ *
+ * Rendered *inside* FrameToVisible rather than beside it. That group lifts
+ * and scales the body to keep it clear of the panels, and a plane parented to
+ * the scene instead would stay behind the moment a sheet opened, leaving the
+ * pool stranded somewhere around the model's knees.
+ */
+function GroundShadow({ height, colour, opacity }) {
+  const texture = useMemo(() => {
+    const SIZE = 128;
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = SIZE;
+    const ctx = canvas.getContext('2d');
+    const g = ctx.createRadialGradient(SIZE / 2, SIZE / 2, 0, SIZE / 2, SIZE / 2, SIZE / 2);
+    // Dense at the centre where the feet are, gone well before the edge, so
+    // the quad's own square boundary never becomes visible.
+    g.addColorStop(0, 'rgba(255,255,255,1)');
+    g.addColorStop(0.35, 'rgba(255,255,255,0.62)');
+    g.addColorStop(0.7, 'rgba(255,255,255,0.14)');
+    g.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, SIZE, SIZE);
+    const t = new THREE.CanvasTexture(canvas);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, []);
+
+  useEffect(() => () => texture.dispose(), [texture]);
+
+  return (
+    <mesh
+      // A hair above the soles rather than exactly level with them: coplanar
+      // with the lowest geometry, the two z-fight along the contact edge.
+      position={[0, -height / 2 + height * 0.004, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
+    >
+      <planeGeometry args={[height * 0.62, height * 0.62]} />
+      <meshBasicMaterial
+        map={texture}
+        color={colour}
+        transparent
+        opacity={opacity}
+        // The pool is a lighting cue, not an object: it must not occlude the
+        // feet standing in it, and it must not be relit or tone-mapped into
+        // something other than the colour asked for.
+        depthWrite={false}
+        toneMapped={false}
+      />
+    </mesh>
+  );
+}
 
 /**
  * Keeps the body inside the part of the canvas nothing is covering.
@@ -319,7 +397,13 @@ export default function AnatomyViewer({
   // The model is 1.1 MB, so on a cold connection the canvas is empty for a
   // noticeable stretch. Say so rather than showing an empty stage.
   const [ready, setReady] = useState(false);
-  const handleReady = useCallback(() => setReady(true), []);
+  // Reported by the model rather than assumed, and only used to place the
+  // ground shadow at the soles — see GroundShadow.
+  const [modelHeight, setModelHeight] = useState(null);
+  const handleReady = useCallback((height) => {
+    setReady(true);
+    if (typeof height === 'number' && height > 0) setModelHeight(height);
+  }, []);
 
   // Whether the reader has asked the system for less motion. Watched rather
   // than read once, since it can be toggled while the page is open.
@@ -601,6 +685,13 @@ export default function AnatomyViewer({
             onHover={setHover}
             onReady={handleReady}
           />
+          {modelHeight && (
+            <GroundShadow
+              height={modelHeight}
+              colour={scene.ground[0]}
+              opacity={scene.ground[1]}
+            />
+          )}
           </FrameToVisible>
           <EnvironmentBoundary>
             <Suspense fallback={null}>
