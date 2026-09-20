@@ -482,6 +482,16 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Gave the body something to stand on** — the 3D scene had lighting but no
+  ground, so the figure floated in fog, which is most of why the canvas read
+  as a technical surface rather than a presented one. There is now a soft
+  shadow pool at the feet. It inverts between themes on purpose: a dark pool
+  on the light theme, and a faint light one on dark, where a dark pool
+  against a near-black background would be invisible and what actually
+  suggests a floor is the light bouncing back off it. Drawn as a single
+  gradient quad rather than a computed shadow — the body is one standing
+  pose seen from near eye level, so the accurate version would cost a render
+  pass every frame to arrive at the same soft ellipse.
 - **Matched the type across the toolbar pills above the model** — Workout,
   Calisthenics, Stretching, Equipment and Muscles each came from a
   different base style, written for whichever header row they originally
