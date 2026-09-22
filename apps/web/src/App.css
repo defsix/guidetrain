@@ -1043,18 +1043,43 @@
    a plain wrapper rather than a pill, so it reads as "the logo is
    clickable" rather than as another button competing with History/
    Equipment/Progress for room. */
+/* The mark opens History, Progress and Account. That worked, but only once
+   somebody had already discovered it — a bare logo is the universal symbol
+   for "home", not for "menu", so three destinations were sitting behind a
+   control that gave no sign of being one. The chevron is the whole fix: it
+   is what turns a piece of branding into something that visibly opens.
+   Cheaper than moving those destinations into a navigation bar, and it
+   removes most of the reason to. */
 .logo-link {
   display: inline-flex;
+  align-items: center;
+  gap: 5px;
   background: none;
   border: 0;
-  padding: 2px;
-  margin: -2px;
-  border-radius: 8px;
+  padding: 2px 6px 2px 2px;
+  margin: -2px -6px -2px -2px;
+  border-radius: 999px;
   cursor: pointer;
 }
 .logo-link:hover,
 .logo-link:focus-visible {
   background: var(--bg);
+}
+/* Drawn from two borders rather than set as a glyph: "▾" renders at a
+   different weight and baseline in every font that has it, and this has to
+   sit beside a fixed-size mark without drifting. */
+.logo-link::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: translateY(-2px) rotate(45deg);
+}
+/* aria-expanded is already on the button for screen readers; pointing the
+   chevron at the same state costs nothing and keeps the two honest. */
+.logo-link[aria-expanded="true"]::after {
+  transform: translateY(1px) rotate(-135deg);
 }
 
 /* --- history ------------------------------------------------------------ */
