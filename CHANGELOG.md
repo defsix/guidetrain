@@ -482,6 +482,19 @@ Newest first. Numbers in brackets are pull requests.
 
 ## App
 
+- **Made the screen say what matters most on it** — three changes with one
+  cause, which is that nothing was weighted differently from anything else.
+  Selecting a muscle now reads as a real change of state: the region moves
+  above the name as a small label and the name itself grows, so the panel
+  opens with an answer rather than a paragraph. The Workout pill fills in
+  once there is a saved workout to return to — every other pill in that row
+  is somewhere to go, and that one is what the reader is already in the
+  middle of; with nothing saved it stays outlined, since there would be
+  nothing to continue. And the lightning mark, which opens History, Progress
+  and Account, now has a chevron beside it: a bare logo reads as "home"
+  rather than "menu", so those three were only findable by people who had
+  already found them. None of this adds new wording — it is the same
+  information, ordered by how much of it matters.
 - **Gave the body something to stand on** — the 3D scene had lighting but no
   ground, so the figure floated in fog, which is most of why the canvas read
   as a technical surface rather than a presented one. There is now a soft
