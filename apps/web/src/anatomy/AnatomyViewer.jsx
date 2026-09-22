@@ -798,9 +798,19 @@ export default function AnatomyViewer({
             {...readoutSwipe.handleProps}
           >
             <span className="sheet-handle" aria-hidden="true" />
+            {/* Region above the name, not below it. Selecting a muscle is the
+                one real state change on this screen, and the readout used to
+                announce it with a 16px line of text — legible, but no more
+                emphatic than anything else on the panel. Leading with the
+                region as a small eyebrow lets the muscle name itself carry
+                the weight, and reads as an answer to "where am I" before the
+                detail arrives. A real heading rather than a styled div, too:
+                it sits above the h4 the pairing section already uses, so the
+                sheet now has an outline a screen reader can move through
+                instead of one that only exists visually. */}
             <div className="body">
-              <div className="mname">{zoneName(selected)}</div>
               <div className="mmeta">{regionName(selected.region)}</div>
+              <h3 className="mname">{zoneName(selected)}</h3>
               <div className="mdesc">{zoneDesc(selected)}</div>
               {selectedInjury && (
                 <p className="minjury">{injuryNote(t, selectedInjury.mode, zoneName(selected))}</p>

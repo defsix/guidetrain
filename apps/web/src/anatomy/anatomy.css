@@ -109,10 +109,23 @@
 .anatomy-readout .head { display: flex; gap: 14px; align-items: stretch; position: relative; touch-action: none; }
 .anatomy-readout .head.dragging { opacity: 0.6; }
 .anatomy-readout .body { flex: 1; }
-.anatomy-readout .mname { font-size: 16px; font-weight: 600; }
+/* The region reads first and quietly, the muscle name second and loudly —
+   see the comment on the markup in AnatomyViewer for why that order. The
+   name is an h3, so its own browser margins have to go; the spacing here is
+   the whole of it. */
 .anatomy-readout .mmeta {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.13em;
-  text-transform: uppercase; color: var(--text-muted); margin: 3px 0 6px;
+  text-transform: uppercase; color: var(--text-muted); margin: 0 0 3px;
+}
+.anatomy-readout .mname {
+  margin: 0 0 6px;
+  font-size: 21px; font-weight: 600; line-height: 1.15;
+  /* Long names are the common case, not the exception — "Gastrocnemius /
+     Soleus" and "Latissimus Dorsi" both sit in a 340px panel beside the
+     Train This button, and several translations run longer still. Slightly
+     negative tracking buys a little of that back without the size having to
+     drop. */
+  letter-spacing: -0.015em;
 }
 .anatomy-readout .mdesc { font-size: 12px; line-height: 1.5; color: var(--text-muted); }
 /* A note the reader needs rather than one they can skip — an injury marked
@@ -394,9 +407,32 @@
 }
 .anatomy-toolbar .tool { display: none; }
 .anatomy-toolbar .tool.active,
-.anatomy-toolbar .workout-button.has,
 .anatomy-toolbar .account-button.signed-in {
   border-color: var(--accent); color: var(--accent);
+}
+/* One filled pill, and only one. Everything in this row is a destination
+   except Workout, which is the thing the reader is in the middle of — so
+   when there is a saved workout to come back to, it fills and the rest stay
+   outlined. That is a single axis of emphasis applied to the one shape they
+   all share, rather than the five competing treatments this row had before
+   the shape was unified; hierarchy needs a baseline to break, and breaking
+   it once is what makes the break mean anything.
+   With nothing saved it stays outlined like its neighbours: there is no
+   workout to continue, and a loud button promising one would be the wrong
+   kind of obvious. */
+.anatomy-toolbar .workout-button.has {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+/* The badge normally paints accent-on-neutral, which disappears into a pill
+   that is now accent all over. Inverted to a wash of the text colour
+   instead — with the old neutral left as the fallback declaration, since
+   color-mix is the one thing here an older engine might not have. */
+.anatomy-toolbar .workout-button.has .wcount {
+  background: var(--bg);
+  background: color-mix(in srgb, var(--accent-text) 22%, transparent);
+  color: var(--accent-text);
 }
 /* Workout is the only pill carrying a count badge, and a rounded badge brings
    its own visual inset — the trailing padding a bare word needs reads as a
