@@ -54,3 +54,19 @@ drop policy if exists own_body_weight_log on public.body_weight_log;
 create policy own_body_weight_log on public.body_weight_log for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- ================================================================
+-- Table privileges. Nothing above is reachable without these.
+-- ================================================================
+--
+-- Same reasoning as the matching section in 0001, in full there: a policy
+-- says which rows, a grant says whether the role may reach the table at
+-- all, and Supabase stopped issuing the second one automatically for new
+-- tables in `public` on 30 October 2026. Nothing for `anon`, which has no
+-- session and so matches no row here either.
+
+grant select, insert, update, delete on public.known_maxes     to authenticated;
+grant select, insert, update, delete on public.body_weight_log to authenticated;
+
+grant select, insert, update, delete on public.known_maxes     to service_role;
+grant select, insert, update, delete on public.body_weight_log to service_role;

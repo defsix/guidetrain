@@ -25,6 +25,20 @@ them. Both want a laptop.
    `check-rls.mjs` refuse to run if handed one.
 2. Paste `migrations/0001_accounts.sql` into the SQL editor and run it. It is
    guarded throughout, so re-running is safe.
+
+   Each migration that creates a table ends with a block of `grant`
+   statements as well as its policies, and both are needed. Supabase granted
+   Data API access to anything created in `public` automatically until 30
+   October 2026; since then a new table is reachable only if something grants
+   it explicitly, and that includes tables made by these migrations — in a
+   new project, a preview branch, or a local `supabase db reset`. A project
+   created before the change keeps the grants it already has, so re-running
+   these files against one changes nothing.
+
+   Worth knowing what it looks like if a grant ever goes missing, because it
+   does not look like a permissions problem: every statement succeeds, the
+   policies read correctly, and every query returns `permission denied`. The
+   policies are the wrong place to start looking.
 3. Prove the policies hold, against the real project:
 
    ```bash

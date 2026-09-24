@@ -150,3 +150,45 @@ drop policy if exists own_training_maxes on public.training_maxes;
 create policy own_training_maxes on public.training_maxes for all
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
+
+-- ================================================================
+-- Table privileges. Nothing above is reachable without these.
+-- ================================================================
+--
+-- Grants and policies answer two different questions, and only having an
+-- answer to both gets a row back. A grant decides whether a role may touch
+-- the table at all; a policy decides which of its rows. Supabase used to
+-- issue these grants automatically for anything created in `public`, which
+-- is why the policies above were once the whole story -- from 30 October
+-- 2026 it stops doing that for new tables, so a project built from this
+-- file after that date gets four tables that are flawlessly protected and
+-- entirely unreachable.
+--
+-- That failure is worth describing, because it does not look like this:
+-- every statement here succeeds, the policies read correctly, and every
+-- query comes back "permission denied". The comment at the top of this file
+-- sends you to the policies first, and the policies are fine.
+--
+-- Nothing is granted to `anon` on purpose. Every table here is keyed to
+-- auth.uid(), the app never reads any of them without a session (see
+-- sync.ts), and auth.uid() is null for the anon key -- so an anonymous role
+-- would hold privileges on rows it can never match. The anon key ships
+-- inside the JavaScript bundle, as the note at the top of this file says,
+-- which is reason enough not to hand it anything it has no use for.
+--
+-- Re-running this on a project that predates the change is harmless: those
+-- tables already carry these grants, and `grant` is idempotent.
+
+grant select, insert, update, delete on public.profiles       to authenticated;
+grant select, insert, update, delete on public.sets           to authenticated;
+grant select, insert, update, delete on public.programs       to authenticated;
+grant select, insert, update, delete on public.training_maxes to authenticated;
+
+-- service_role bypasses RLS by design and is never shipped to a browser --
+-- it backs the dashboard's table editor and anything server-side later.
+-- Granted to match what Supabase itself used to create, so a project built
+-- from this file lands in the same state as one built before the change.
+grant select, insert, update, delete on public.profiles       to service_role;
+grant select, insert, update, delete on public.sets           to service_role;
+grant select, insert, update, delete on public.programs       to service_role;
+grant select, insert, update, delete on public.training_maxes to service_role;
